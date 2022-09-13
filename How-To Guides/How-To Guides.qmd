@@ -1,0 +1,17 @@
+---
+title: "How-To Guides"
+---
+
+## How-To Guides
+
+### How to use templates:
+
+### How to report methods: text tutorial with images + narrated video (YouTube)
+
+### How to report measures: text tutorial with images + narrated video (YouTube)
+
+### How to report samples: text tutorial with images + narrated video (YouTube)
+
+### How to report metadata: text tutorial with images + narrated video (YouTube)
+
+## Example data for each of the 11 report tables.
