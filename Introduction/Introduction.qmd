@@ -1,0 +1,19 @@
+---
+title: "Introduction"
+---
+
+## Introduction
+
+[Placeholder for text about the PHES-ODM Project and the history of the dictionary project]
+
+# Wastewater and environmental surveillance
+
+Lorem ipsum
+
+# Values and priciples of the ODM
+
+Open data, FAIR principles, etc.
+
+# Contributing, using, and citing
+
+Lorem Ipsum
