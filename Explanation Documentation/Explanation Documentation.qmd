@@ -7,11 +7,12 @@ lot: true
 lof: true
 number-sections: true
 format:
+  html: 
+    code-fold: true
   pdf:
     geometry: 
       - top=30mm
       - left=30mm
-  docx: default
 ---
 
 # What are "Part Types"?

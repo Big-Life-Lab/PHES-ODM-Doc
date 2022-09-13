@@ -1,8 +1,0 @@
-[2,"\n"]
-[1,"\u001B[1mpandoc \u001B[22m\n"]
-[1,"  to: latex\n  output-file: Explanation-Documentation.tex\n  standalone: true\n  pdf-engine: xelatex\n  variables:\n    graphics: true\n    tables: true\n  default-image-extension: pdf\n  toc: true\n  number-sections: true\n  \n\u001B[1mmetadata\u001B[22m\n  documentclass: scrartcl\n  classoption:\n    - DIV=11\n    - numbers=noendperiod\n  papersize: letter\n  header-includes:\n    - '\\KOMAoption{captions}{tableheading}'\n  block-headings: true\n  editor: visual\n  title: PHES-ODM Explanatory Documentation\n  subtitle: Rationale and understanding of the Public Health and Environmental Surveillance Open Data Model (PHES-ODM)\n  toc-title: Table of Contents\n  lot: true\n  lof: true\n  geometry:\n    - top=30mm\n    - left=30mm\n  \n"]
-[1,"\u001B[1mrunning xelatex - 1\u001B[22m\n"]
-[1,"  This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex)\n   restricted \\write18 enabled.\n  entering extended mode\n  \n\u001B[1mupdating tlmgr\u001B[22m\n"]
-[1,"\n\u001B[1mupdating existing packages\u001B[22m\n"]
-[1,"\u001B[1mfinding package for scrartcl.cls\u001B[22m\n"]
-[1,"\u001B[1m\ncompilation failed- no matching packages\u001B[22m\nLaTeX Error: File `scrartcl.cls' not found.\n\nType X to quit or <RETURN> to proceed,\nor enter new name. (Default extension: cls)\n\nEnter file name: \n! Emergency stop.\n<read *> \n         \nl.10 ^^M\n         \n\nsee /Users/mathew/Documents/GitHub/PHES-ODM-Doc/Explanation Documentation/Explanation-Documentation.log for more information.\n"]

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.189">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>PHES-ODM Explanatory Documentation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Explanation Documentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Explanation Documentation_files/libs/quarto-html/quarto.js"></script>
+<script src="Explanation Documentation_files/libs/quarto-html/popper.min.js"></script>
+<script src="Explanation Documentation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Explanation Documentation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Explanation Documentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Explanation Documentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Explanation Documentation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Explanation Documentation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Explanation Documentation_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of Contents</h2>
+   
+  <ul>
+  <li><a href="#what-are-part-types" id="toc-what-are-part-types" class="nav-link active" data-scroll-target="#what-are-part-types"><span class="toc-section-number">1</span>  What are “Part Types”?</a></li>
+  <li><a href="#what-are-sets" id="toc-what-are-sets" class="nav-link" data-scroll-target="#what-are-sets"><span class="toc-section-number">2</span>  What are “Sets”?</a>
+  <ul class="collapse">
+  <li><a href="#rationale-behind-sets" id="toc-rationale-behind-sets" class="nav-link" data-scroll-target="#rationale-behind-sets"><span class="toc-section-number">2.1</span>  Rationale behind sets</a></li>
+  <li><a href="#why-category-sets-are-treated-differently" id="toc-why-category-sets-are-treated-differently" class="nav-link" data-scroll-target="#why-category-sets-are-treated-differently"><span class="toc-section-number">2.2</span>  Why category sets are treated differently</a></li>
+  </ul></li>
+  <li><a href="#the-what-and-why-of-specimen-ids" id="toc-the-what-and-why-of-specimen-ids" class="nav-link" data-scroll-target="#the-what-and-why-of-specimen-ids"><span class="toc-section-number">3</span>  The “what” and “why” of Specimen IDs</a></li>
+  <li><a href="#the-what-and-why-of-groups-and-classes" id="toc-the-what-and-why-of-groups-and-classes" class="nav-link" data-scroll-target="#the-what-and-why-of-groups-and-classes"><span class="toc-section-number">4</span>  The “what” and “why” of Groups and Classes</a></li>
+  <li><a href="#tables-and-table-types-within-the-odm" id="toc-tables-and-table-types-within-the-odm" class="nav-link" data-scroll-target="#tables-and-table-types-within-the-odm"><span class="toc-section-number">5</span>  Tables and table types within the ODM</a>
+  <ul class="collapse">
+  <li><a href="#program-description-tables" id="toc-program-description-tables" class="nav-link" data-scroll-target="#program-description-tables"><span class="toc-section-number">5.1</span>  Program description tables</a></li>
+  <li><a href="#results-tables" id="toc-results-tables" class="nav-link" data-scroll-target="#results-tables"><span class="toc-section-number">5.2</span>  Results tables</a></li>
+  <li><a href="#look-up-tables" id="toc-look-up-tables" class="nav-link" data-scroll-target="#look-up-tables"><span class="toc-section-number">5.3</span>  Look-up tables</a></li>
+  </ul></li>
+  <li><a href="#measures-methods-and-attributes-key-parts" id="toc-measures-methods-and-attributes-key-parts" class="nav-link" data-scroll-target="#measures-methods-and-attributes-key-parts"><span class="toc-section-number">6</span>  Measures, Methods, and Attributes: Key parts</a>
+  <ul class="collapse">
+  <li><a href="#measures" id="toc-measures" class="nav-link" data-scroll-target="#measures"><span class="toc-section-number">6.1</span>  Measures</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">6.2</span>  Methods</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="toc-section-number">6.3</span>  Attributes</a></li>
+  </ul></li>
+  <li><a href="#data-quality-and-reportability" id="toc-data-quality-and-reportability" class="nav-link" data-scroll-target="#data-quality-and-reportability"><span class="toc-section-number">7</span>  Data quality and reportability</a></li>
+  <li><a href="#time-periods-for-samples-and-measures" id="toc-time-periods-for-samples-and-measures" class="nav-link" data-scroll-target="#time-periods-for-samples-and-measures"><span class="toc-section-number">8</span>  Time periods for samples and measures</a></li>
+  <li><a href="#dates-within-the-odm" id="toc-dates-within-the-odm" class="nav-link" data-scroll-target="#dates-within-the-odm"><span class="toc-section-number">9</span>  Dates within the ODM</a></li>
+  <li><a href="#translation-and-language-capabilities" id="toc-translation-and-language-capabilities" class="nav-link" data-scroll-target="#translation-and-language-capabilities"><span class="toc-section-number">10</span>  Translation and language capabilities</a></li>
+  <li><a href="#questions-and-online-community" id="toc-questions-and-online-community" class="nav-link" data-scroll-target="#questions-and-online-community"><span class="toc-section-number">11</span>  Questions and online community</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PHES-ODM Explanatory Documentation</h1>
+<p class="subtitle lead">Rationale and understanding of the Public Health and Environmental Surveillance Open Data Model (PHES-ODM)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<section id="what-are-part-types" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> What are “Part Types”?</h1>
+<p>Within the Public Health and Environmental Surveillance Open Data Model (PHES-ODM, hereafter referred to as simply “the ODM”), every piece or component of the model structure is called a “part”.</p>
+</section>
+<section id="what-are-sets" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> What are “Sets”?</h1>
+<p>text</p>
+<section id="rationale-behind-sets" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="rationale-behind-sets"><span class="header-section-number">2.1</span> Rationale behind sets</h2>
+<p>text</p>
+</section>
+<section id="why-category-sets-are-treated-differently" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="why-category-sets-are-treated-differently"><span class="header-section-number">2.2</span> Why category sets are treated differently</h2>
+<p>text</p>
+</section>
+</section>
+<section id="the-what-and-why-of-specimen-ids" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The “what” and “why” of Specimen IDs</h1>
+<p>text</p>
+</section>
+<section id="the-what-and-why-of-groups-and-classes" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> The “what” and “why” of Groups and Classes</h1>
+<p>text</p>
+</section>
+<section id="tables-and-table-types-within-the-odm" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Tables and table types within the ODM</h1>
+<p>text</p>
+<section id="program-description-tables" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="program-description-tables"><span class="header-section-number">5.1</span> Program description tables</h2>
+<p>text</p>
+</section>
+<section id="results-tables" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="results-tables"><span class="header-section-number">5.2</span> Results tables</h2>
+<p>text</p>
+</section>
+<section id="look-up-tables" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="look-up-tables"><span class="header-section-number">5.3</span> Look-up tables</h2>
+<p>Text</p>
+</section>
+</section>
+<section id="measures-methods-and-attributes-key-parts" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Measures, Methods, and Attributes: Key parts</h1>
+<p>text</p>
+<section id="measures" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="measures"><span class="header-section-number">6.1</span> Measures</h2>
+<p>text</p>
+</section>
+<section id="methods" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">6.2</span> Methods</h2>
+<p>text</p>
+</section>
+<section id="attributes" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="attributes"><span class="header-section-number">6.3</span> Attributes</h2>
+<p>text</p>
+</section>
+</section>
+<section id="data-quality-and-reportability" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Data quality and reportability</h1>
+<p>text</p>
+</section>
+<section id="time-periods-for-samples-and-measures" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Time periods for samples and measures</h1>
+<p>text</p>
+</section>
+<section id="dates-within-the-odm" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Dates within the ODM</h1>
+<p>text</p>
+</section>
+<section id="translation-and-language-capabilities" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Translation and language capabilities</h1>
+<p>text</p>
+</section>
+<section id="questions-and-online-community" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Questions and online community</h1>
+<p>text</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
