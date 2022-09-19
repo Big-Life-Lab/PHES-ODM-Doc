@@ -4,13 +4,79 @@ title: "How-To Guides"
 
 ## How-To Guides
 
-testing 
-
 ### How to use templates:
 
 ### How to report methods: text tutorial with images + narrated video (YouTube)
 
 ### How to report measures: text tutorial with images + narrated video (YouTube)
+
+In this section you will learn how to enter in Measures in the Measures template. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". This template contains four main types of fields and, in this Guide, they have been associated with a colour: <!--# I continued the division and colour-coding of the fields from Vince’s version.  I’m open to other ideas-->
+
+-   **IDs and a Primary Unique ID (Red):** Both of these types of fields contain ID entries that you will generate.
+
+-   **Drop-down and Conditional drop-down menus (Green):** These fields have a drop-down menu in which you must select one of the options. In conditional drop-down menus, the options depend on what you entered in a previous column.
+
+-   **Free form (Blue):** In these fields, there are no restrictions on how to enter your data.
+
+Note, in this Guide, "field" refers to one column in the template, and "entry" refers to a row of information that you entered. For definitions of others terms, please see <!--# link and/or provide title to page with definitions -->.
+
+## Steps for Measures Template
+
+1.  **Columns A to H**
+
+    ![](images/Col_AH_1.png)
+
+    i)  Most of the fields in these sections require an ID, that, as mentioned previously, you will generate. They can take any form that you wish and, for most of them, there can be repetition between rows when needed. You also may have already created these IDs in a previous template. For instance, if you're entering two different measures from the same sample, then the "Sample ID" will be the same and you may have already created this ID in the Samples Template. The only exception to all of this is "Measure report ID" (column A) which is the Primary Unique ID for this table and which cannot be repeated between rows.
+    ii) The only non-ID related field in the section is Column D, "Purpose", in which you will need to select from the menu the purpose of the entry.
+
+    Below you can find some examples of entries:
+
+    ![](images/Col_AH_2.png)
+
+    Â 
+
+2.  **Columns I to M**
+
+    ![](images/Col_IM_1.png)
+
+    i)  For columns I to K, you will need to enter various dates associated with your Measure. Any format is fine. <!--# Is this true? -->
+    ii) Columns L and M ("Specimen ID" and "Fraction analyzed") contain menus in which you can select your desired option.
+
+    Below you can find some examples of entries:
+
+    ![](images/Col_IM_2.png)
+
+    Â 
+
+3.  **Columns N to S**
+
+    ![](images/Col_NS_1.png)
+
+    i)  For columns N and O, you can use the drop-down menus to select the corresponding Group and Class, respectively, of the Measure that you are entering. If you are not sure of the Group and Class, you can determine this from <!--# Not sure what document to reference --> .
+    ii) In column P, you can select the Measure that you are entering from the conditional drop-down menu. Note what is found in this menu depends on what you put into column O (the Class). If you do not see what you want, you most likely did not choose the correct Class.
+    iii) Column Q is a free form field, where you enter in the value of your measure. For instance, if your Measure is a temperature of 20 ^o^C, your value would be "20".
+    iv) In Column R you can use the conditional menu to indicate the units of your value. Using the temperature example in the previous step, it would be "Celcius". What appears in this menu depends on what you entered in the Measure ID column (column P).
+    v)  Column S contains a conditional menu to indicate the type of aggregation of your value. For example does your value represent a mean, median, etc. What appears in this menu depends on what you entered in the Unit column (column Q).
+
+    Below you can find some examples of entries:
+
+    ![](images/Col_NS_2.png)
+
+    Â 
+
+4.  **Columns T and W**
+
+    ![](images/Col_TW_1.png)
+
+    i)  Columns T, W and X are free form fields in which you can enter the indicated information.
+    ii) Columns U and V contain menus where you can choose what you would like to enter. Also, Column U ("Quality Flag") is a conditional menu which depends on the Measure (column P).
+
+    Below you can find an example of some entries:
+
+    ![](images/Col_TW_2.png)
+
+You have now entered your data in the Measures Template, congratulations!
+
 
 ### How to report samples: text tutorial with images + narrated video (YouTube)
 
