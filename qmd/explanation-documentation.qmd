@@ -25,7 +25,7 @@ Because the term "parts" refers to every component of the ODM, "part types" are 
 -   Measure Part Type
 -   Attribute Part Type
 
-Please see the \parts \reference \document (link forthcoming) for more details, but essentially methods allow the recording of methods in environmental surveillance and testing, while measures allow the recording of observations and results, and attributes capture metadata.
+Please see the [parts reference document](link forthcoming) for more details, but essentially methods allow the recording of methods in environmental surveillance and testing, while measures allow the recording of observations and results, and attributes capture metadata.
 
 The remaining 20 part types (for a total of 23 part types) are:
 
@@ -50,7 +50,7 @@ The remaining 20 part types (for a total of 23 part types) are:
 -   Unit Part Type
 -   Unit Set Part Type
 
-For information and details about all the part types, please see the \parts \reference \document (link forthcoming).
+For information and details about all the part types, please see the [parts reference document](link forthcoming).
 
 # "Sets" and the rationale behind sets
 
@@ -61,11 +61,11 @@ For information and details about all the part types, please see the \parts \ref
 -   Quality sets
 -   Specimen sets
 
-Details about these sets are their similar - but unique - applications can be found in the \parts \reference \document (link forthcoming). Importantly, "category sets" are not considered a "set" like these others. See the section below for an explanation of this difference.
+Details about these sets are their similar - but unique - applications can be found in the [parts reference document](link forthcoming). Importantly, "category sets" are not considered a "set" like these others. See the section below for an explanation of this difference.
 
 ## Why category sets are treated differently
 
-One of the reasons why "sets" are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the \parts \reference \document (link forthcoming).
+One of the reasons why "sets" are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the [parts reference document](link forthcoming).
 
 # The "what" and "why" of Specimen IDs
 
@@ -81,15 +81,15 @@ Within the ODM there are three types of tables: program description tables, resu
 
 ## Program description tables
 
-Program description tables (represented in yellow in the \ERD) are tables used to record metadata on the organizations, locations, methods, and appurtenance. These tables help to describe surveillance and testing programs, and are intended to be updated infrequently. 
+Program description tables (represented in yellow in the ERD) are tables used to record metadata on the organizations, locations, methods, and appurtenance. These tables help to describe surveillance and testing programs, and are intended to be updated infrequently. 
 
 ## Results tables
 
-Results tables (represented in blue in the \ERD) are the tables used to record details on samples and measures. These tables record the main outcomes data and are updated daily, if not more frequently.
+Results tables (represented in blue in the ERD) are the tables used to record details on samples and measures. These tables record the main outcomes data and are updated daily, if not more frequently.
 
 ## Look-up tables
 
-Look-up tables (represented in green in the \ERD) are the tables that are pre-programmed and pre-populated in the ODM. These hold information on sets, all parts, languages, and translation abilities. These are only updated by the ODM team in version updates.
+Look-up tables (represented in green in the ERD) are the tables that are pre-programmed and pre-populated in the ODM. These hold information on sets, all parts, languages, and translation abilities. These are only updated by the ODM team in version updates.
 
 # Measures, Methods, and Attributes: Key parts
 
