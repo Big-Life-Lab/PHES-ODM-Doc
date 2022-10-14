@@ -4,15 +4,18 @@ title: "How-To Guides"
 
 ## How-To Guides
 
-### How to use templates:
+### How to use templates
 
-Below you will find a series of Guides that explain how to complete templates. In these Guides, "field" refers to one column in the template, and "entry" refers to a row of information that you entered. For definitions of others terms, please see <!--# link and/or provide title to page with definitions -->.
+The main purpose of templates it to provide you with an easy way to enter in your wastewater data in the PHES-ODM format. Below you will find a series of Guides that will walk you through this process. To begin with, in these Guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. For definitions of others terms, please see <!--# link and/or provide title to page with definitions -->.
 
-The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes: <!--# I continued the division and colour-coding of the fields from Vince's version.  I'm open to other ideas-->
+The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes: 
 
--   **Label and a Primary Unique Label (Red):** Both of these types of fields contain values that are used to identify something and that you will create. In a Primary Unique Label, the value must be unique for each entry.
+-   **Label, Unique Label and Composite Unique Label (Red):** In these types of fields you will create a value that will be used as an identifier. For instance, “Sample ID” is a Label that is used to identify a particular Sample. <!--# I decided to capitalize all terms that refer to anything associated with a field (such as in this case, a sample). I'm not sure if this works... -->In a Label, these values can be repeated between entries, while in a Unique Label, they cannot. There is usually only one Unique Label per template. A Composite Unique Label occurs when two or more fields form a Primary Unique Label. An example can be found below, where while there is repetition between fields A and B, there is no repetition in the combination of the two.
+<!--# I'm not sure if you want an exapmle with more relevant entries -->
 
--   **Drop-down and Conditional drop-down menus (Green):** These fields have a drop-down menu which contain the options that can be entered. These options can be selected or typed in. In conditional drop-down menus, the options depend on what you entered in a previous column.
+![](images/composite-ex.png){fig-align="center"} 
+
+-   **Drop-down and Conditional Drop-down Menus (Green):** These fields have a drop-down menu which contain the values that can be entered. These valuess can be selected **or** typed in. In conditional drop-down menus, the valuess depend on what you entered in a previous field.
 
 -   **Free form (Blue):** In these fields, there are no restrictions on how to enter your data.
 
@@ -20,11 +23,11 @@ The templates contain four main types of fields and, in the Guides, they have be
 
 ### How to report measures: text tutorial with images + narrated video (YouTube)
 
-In this guide you will learn how to enter Measures into the Measures template. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". For definition of other terms, please see <!--#link to "How to use Templates" section and page with definitions  -->
+In this guide you will learn how to enter Measures into the Measures template. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". For definition of other terms, please see [How to use templates] and<!--#link to  page with definitions --> <!--# Should I add something about how only the first three rows are active and about the columns at the end of the template that are used in the conditional menus? -->
 
 ## Quick Start
 
-Below you will find the fields that are mandatory for this template. You will also find some examples of entries of data, with all of the columns filled and colour-coded.  A more detailed description can be found in the following section, "Detailed Description".
+Below you will find the fields that are mandatory for this template. You will also find some examples of entries of data, with all of the fields filled and colour-coded.  A more detailed description can be found in the following section, "Detailed Description".
 
 **Mandatory fields**
 
@@ -38,52 +41,52 @@ Below you will find the fields that are mandatory for this template. You will a
 
 **Examples**
 
-![](images/Col_AH_ex.png)
+![](images/Col_AH_ex.png){fig-align="center"} 
 
-![](images/Col_IM_ex.png)
+![](images/Col_IM_ex.png){fig-align="center"} 
 
-![](images/Col_NS_ex.png)
+![](images/Col_NS_ex.png){fig-align="center"} 
 
-![](images/Col_TW_ex.png)
+![](images/Col_TW_ex.png){fig-align="center"} 
 
 ## Detailed Description
 
 1.  **Columns A to H**
 
-    ![](images/Col_AH_1.png)
+    ![](images/Col_AH_1.png){fig-align="center"} 
 
-    i)  Most of the fields in these sections require a Label, that, as mentioned previously, you will create. They can take any form that you wish and, for most of them, there can be repetition between rows when needed. You also may have already created these Labels in a previous template. For instance, if you're entering two different measures from the same sample, then the "Sample ID" will be the same and you may have already created this Label in the Samples Template. The only exception to all of this is "Measure report ID" (column A) which is the Primary Unique Label for this template and which cannot be repeated between rows.
-    ii) The only non-ID related field in the section is Column D, "Purpose", in which you will need to enter one of the options from the menu.
+    i)  As you can see from the image above, for most of the fields in this section, you will be creating Labels that are associated with the Measure you are entering. They can take any form that you wish and, for most of them, they can be repeated between entries. You may have also already created these Labels in a previous template. For instance, if you're entering two different Measures from the same Sample, then the "Sample ID" will be the same and you may have already created this Label in the Samples Template. The only exception to all of this is "Measure report ID" (column A) which is the Unique Label for this template and which cannot be repeated between entries.
+    ii) The only non-Label related field in the section is "Purpose" (column D), in which you will need to enter one of the values from the menu.
 
     Â 
 
 2.  **Columns I to M**
 
-    ![](images/Col_IM_1.png)
+    ![](images/Col_IM_1.png){fig-align="center"} 
 
-    i)  For columns I to K, you will need to enter various dates associated with your Measure. Any format is fine. <!--# Is this true? -->
-    ii) Columns L and M ("Specimen ID" and "Fraction analyzed") have menus which contain the options that you can enter.
+    i)  For columns I to K, you will need to enter various dates associated with your Measure.
+    ii) Columns L and M ("Specimen ID" and "Fraction analyzed") have menus which contain the values that you can enter.
 
     Â 
 
 3.  **Columns N to S**
 
-    ![](images/Col_NS_1.png)
+    ![](images/Col_NS_1.png){fig-align="center"} 
 
-    i)  For columns N and O, you can find the in the menus the possible options for Group and Class, respectively, of the Measure that you are entering. If you are not sure of the Group and Class, you can determine this from <!--# Not sure what document to reference --> .
-    ii) In column P, you will enter the Measure of your entry. If you chose to enter in a value in column O (Class ID), the drop down menu will contain the Measures found in that Class. If you did not enter a value in column O, the menu will contain all possible Measures.
-    iii) Column Q is a free form field, where you enter in the value of your measure. For instance, if your Measure is a temperature of 20 ^o^C, your value would be "20".
-    iv) In Column R you can find the possible units of your value in the menu. Using the temperature example in the previous step, it would be "Celcius". What appears in this menu depends on what you entered in the Measure ID column (column P).
-    v)  Column S contains a conditional menu with the types of aggregation of your value. For example does your value represent a mean, median, etc. What appears in this menu depends on what you entered in the Unit column (column Q).
+    i)  Columns N and O contain menus with the possible values for Group and Class, respectively, of the Measure that you are entering. If you are not sure of the Group and Class, but wish to enter this data, you can determine this from <!--# Not sure what document to reference --> .
+    ii) In column P, you will enter the Measure of your entry. If you chose to enter in a value in "Class ID" (column O), the drop down menu will contain the Measures found in that Class. If you did not enter a value in column O, the menu will contain all possible Measures.
+    iii) Column Q is a free form field, where you will enter in the Value of your Measure. For instance, if your Measure is a temperature of 20 ^o^C, you would enter "20".
+    iv) In Column R you can find the possible Units of your Value in the menu. Using the temperature example in the previous step, it would be "Celcius". What appears in this menu depends on what you entered in the "Measure ID" field (column P).
+    v)  Column S contains a conditional menu with the types of Aggregations of your value. For example does your value represent a mean, median, etc. What appears in this menu depends on what you entered in the Unit field (column Q).
 
     Â 
 
 4.  **Columns T and W**
 
-    ![](images/Col_TW_1.png)
+    ![](images/Col_TW_1.png){fig-align="center"} 
 
     i)  Columns T, W and X are free form fields in which you can enter the indicated information.
-    ii) Columns U and V contain menus which contain the possible options that you can enter. Also, Column U ("Quality Flag") is a conditional menu which depends on the Measure (column P).
+    ii) Columns U and V contain menus with the possible values that you can enter. Also, "Quality Flag" (column U) is a conditional menu which depends on the "Measure ID" (column P).
 
 You have now entered your data in the Measures Template, congratulations!
 
