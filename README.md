@@ -11,6 +11,12 @@ This repo uses [quarto](https://quarto.org/) for its documentation purposes. All
 
 All the built files are in the [docs](./docs) folder. **This folder should only be changed and committed when publishing a new version of the documentation**.
 
-## Repo Standards
+# Repo Standards
+
+## Naming Conventions
 
 * Use [kebab-case](https://www.theserverside.com/definition/Kebab-case#:~:text=Kebab%20case%20%2D%2D%20or%20kebab,properly%20convey%20a%20resource's%20meaning.) when naming files and folder making sure to use lower case
+
+## File Organization
+
+* All assets (images, gifs etc.) should go in the [assets](./assets) folder. Follow the naming convention as above for files and folder.
