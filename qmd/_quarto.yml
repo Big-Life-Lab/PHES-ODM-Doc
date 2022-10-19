@@ -8,7 +8,6 @@ book:
   chapters:
     - index.qmd
     - explanation-documentation.qmd
-    - how-to-guides.qmd
 
 format:
   html:
