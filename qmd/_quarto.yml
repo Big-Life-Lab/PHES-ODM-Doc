@@ -1,18 +1,14 @@
 project:
-  type: website
+  type: book
   output-dir: ../docs
 
-website:
+book: 
   title: "PHES-ODM-Documentation"
-  image: "quarto.png"
-  favicon: "favicon.png"
-  site-url: https://quarto.org
-  repo-url: https://github.com/Big-Life-Lab/PHES-ODM-Doc
-  navbar:
-    background: primary
-    left:
-      - href: explanation-documentation.qmd
-        text: Home
+  repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
+  chapters:
+    - index.qmd
+    - explanation-documentation.qmd
+    - how-to-guides.qmd
 
 format:
   html:
@@ -21,3 +17,7 @@ format:
       light: [cosmo]
     code-copy: true
     code-overflow: wrap
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
