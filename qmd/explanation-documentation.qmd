@@ -1,20 +1,3 @@
----
-title: "PHES-ODM Explanatory Documentation"
-subtitle: "Rationale and understanding of the Public Health and Environmental Surveillance Open Data Model (PHES-ODM)"
-toc: true
-toc-title: "Table of Contents"
-lot: true
-lof: true
-number-sections: true
-format:
-  html: 
-    code-fold: true
-  pdf:
-    geometry: 
-      - top=30mm
-      - left=30mm
----
-
 ## What are "Parts" and "Part Types"?
 
 Within the Public Health and Environmental Surveillance Open Data Model (PHES-ODM, hereafter referred to as simply "the ODM"), every piece or component of the model structure is called a "part". Regardless of function, all of the tables, headers, and categorical inputs are all parts. This creates a foundational term so that the ODM and its structure can be discussed with greater ease by users and designers.
