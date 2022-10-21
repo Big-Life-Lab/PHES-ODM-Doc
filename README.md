@@ -9,7 +9,7 @@ This repo uses [quarto](https://quarto.org/) for its documentation purposes. All
 * When working on the documentation you can run the command `quarto preview ./qmd` in the terminal to get a live preview of your changes everytime you make a change
 * When building the documentation for publishing purposes, you can run the command `quarto render ./qmd`.
 
-All the built files are in the [docs](./docs) folder. **This folder should only be changed and committed when publishing a new version of the documentation**. Once built the docs folder contains the website as well as the built PDF.
+All the built files are in the [docs](./docs) folder. **This folder should only be changed and committed when publishing a new version of the documentation, do not commit or add this folder to any branch other than docs**. Once built the docs folder contains the website as well as the built PDF.
 
 # Repo Standards
 
