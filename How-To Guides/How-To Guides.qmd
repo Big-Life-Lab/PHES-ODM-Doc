@@ -529,7 +529,7 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
     2.  **Columns E to I**
 
-        ![](images/samples_col_AG.png){fig-align="center"}
+        ![](images/contacts_Col_EI.png){fig-align="center"}
 
     i)  Columns E and I:
 
