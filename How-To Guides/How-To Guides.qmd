@@ -21,6 +21,7 @@ The templates contain four main types of fields and, in the Guides, they have be
 ## 2) How to report methods:
 
 <!--# add link to youtube video -->
+
 In this guide you will learn how to enter Methods into the Method Sets and Methods Step templates. As described in <!--# title of document and link-->, a Method is "A procedure for collecting a sample or performing a measure". A Method Set is essentially a Method <!--# is this correct? -->. In the Method Sets template, each entry is a step in a Method Set (a step will be defined shortly).
 
 A Method Set is made up of steps, called Method Steps. In the Method Steps template, each entry represents one of these steps. A key thing to note is that a step can be a Method or a Measure. An individual step can also be used in multiple Method Sets.
@@ -33,7 +34,9 @@ For further information regarding terms and the colour-coding of columns that yo
 
 Below you will find the fields that are mandatory for the Method Steps and Method Sets template. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
 
-**Mandatory fields - Method Steps**
+### **Method Steps Template**
+
+1.  **Mandatory fields**
 
 |                                     |                               |
 |:-----------------------------------:|:-----------------------------:|
@@ -42,7 +45,7 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 |    Value (if entering a Measure)    | Unit (if entering a Measure)  |
 | Aggregation (if entering a Measure) |                               |
 
-**Definitions - Method Steps**
+2.  **Definitions**
 
 -   Method Step ID: The unique identifier for a specific method step.
 
@@ -58,20 +61,22 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 
 -   Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.
 
-**Examples - Method Steps**
+3.  **Examples**
 
 ![](images/MethSteps_Col_AG_ex.png){fig-align="center"}
 
 ![](images/MethSteps_col_HO_ex.png){fig-align="center"}
 
-**Mandatory fields - Method Sets**
+### **Method Sets Template**
+
+1.  **Mandatory fields**
 
 |                      |                   |
 |:--------------------:|:-----------------:|
 | Method Set Report ID |   Method Set ID   |
 |    Method Step ID    | Method Step Index |
 
-**Definitions - Method Sets**
+2.  **Definitions**
 
 -   Method Set Report ID: Unique identifier for a method set.
 
@@ -81,7 +86,7 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 
 -   Method Step Index: Specifies the index of a method step within a method set, i.e. the order of the steps in a set.
 
-**Examples - Method Sets**
+3.  **Examples**
 
 ![](images/methSets_Col_AD_ex.png){fig-align="center"}
 
@@ -89,11 +94,11 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 
 ## Detailed Description
 
-**Method Steps**
-
-![](images/methSteps_col_AG.png){fig-align="center"}
+### **Method Steps Template**
 
 1.  **Columns A to G**
+
+    ![](images/methSteps_col_AG.png){fig-align="center"}
 
     i)  Column A:
         -   Method Step ID (column A) is the Unique Identifier field for this template and cannot be repeated between entries. You can think of each Method Step ID value as representing a unique Method Step.
@@ -126,13 +131,11 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
     iv) Columns N and O:
         -   These are Free Form fields where you will enter values for the indicated fields.
 
-**Method Sets**
-
-![](images/methSets_Col_AD.png){fig-align="center"}
-
-![](images/methSets_Col_EH.png){fig-align="center"}
+### **Method Sets Template**
 
 1.  **Columns A to D**
+
+    ![](images/methSets_Col_AD.png){fig-align="center"}
 
     i)  Columns A to D:
         -   Method Set Report ID (column A) is the Composite Unique Identifier field for this template.
@@ -147,6 +150,8 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 
 2.  **Columns E to H**
 
+    ![](images/methSets_Col_EH.png){fig-align="center"}
+
     i)  Columns E to F:
         -   Method Set Version (column E) is a Free Form field where you will indicate the version of the Method Set. For instance, if the current Method Set that you are entering is an updated version of the original one, you would enter "2".
 
@@ -156,20 +161,21 @@ Below you will find the fields that are mandatory for the Method Steps and Metho
 
 You have now entered your data in the Method Steps and Methods Sets Template, congratulations!
 
-
 ## 3) How to report measures:
 
 <!--# add link to youtube video -->
 
-In this guide you will learn how to enter Measures into the Measures template. Each entry in this template represents a Measure. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to  page with definitions -->
+In this guide you will learn how to enter Measures into the Measures and Measures Set template. Each entry in this template represents a Measure. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". You will enter individual Measures into the Measures Template. You can then group certain Measures together and this will be entered into the Measure Sets template. For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to  page with definitions -->
 
 <!--# Should I add something about how only the first three rows are active and about the columns at the end of the template that are used in the conditional menus? -->
 
 ## Quick Start
 
-Below you will find the fields that are mandatory for this template. You will also find some defintion of terms and examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
+Below you will find the fields that are mandatory for these templates. You will also find some defintion of terms and examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
 
-**Mandatory fields**
+### Measures Template
+
+1.  **Mandatory fields**
 
 |                   |                                                    |
 |:-----------------:|:--------------------------------------------------:|
@@ -179,7 +185,7 @@ Below you will find the fields that are mandatory for this template. You will a
 |      Measure      |                       Value                        |
 |       Unit        |                    Aggregation                     |
 
-**Definitions**
+2.  **Definitions**
 
 -   Measure Report ID: Unique identifier for a measure.
 
@@ -201,17 +207,37 @@ Below you will find the fields that are mandatory for this template. You will a
 
 -   Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.
 
-**Examples**
+3.  **Examples**
 
-![](images/Col_AH_ex.png){fig-align="center"} 
+![](images/Col_AH_ex.png){fig-align="center"}
 
-![](images/Col_IM_ex.png){fig-align="center"} 
+![](images/Col_IM_ex.png){fig-align="center"}
 
-![](images/Col_NS_ex.png){fig-align="center"} 
+![](images/Col_NS_ex.png){fig-align="center"}
 
-![](images/Col_TW_ex.png){fig-align="center"} 
+![](images/Col_TW_ex.png){fig-align="center"}
+
+### **Measure Sets Template** 
+
+1.  **Mandatory fields**
+
+|               |                      |
+|:-------------:|:--------------------:|
+| Report Set ID | Method Set Report ID |
+
+2.  **Definitions**
+
+-   Report Set ID: Unique identifier that links together a group of related measures.
+
+-   Method Set Report ID: Unique identifier for a method set.
+
+3.  **Examples**
+
+    *Image will be added.*
 
 ## Detailed Description
+
+### **Measures Template**
 
 1.  **Columns A to H**
 
@@ -276,7 +302,29 @@ Below you will find the fields that are mandatory for this template. You will a
 
         -   "Reportable" refers to whether or not your entry is of good enough quality that it can be used by others. <!--# Is this correct? -->
 
-You have now entered your data in the Measures Template, congratulations!
+### **Measure Sets Template**
+
+1.  **Columns A to H**
+
+    ![](images/Col_AH_1.png){fig-align="center"}
+
+    i)  Columns A, B, E and F
+
+        -   These are all Identifier fields.
+        -   "Set Report ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Set Report ID" represents a unique Measure Set.
+        -   For the rest, you can repeat the Identifer between entries (if needed). For instance, if you are entering two different Measure Sets that came from the same Organization, then the "Organization ID" (column E) will be the same.
+        -   You may have already created these Identifiers in another template. For instance you may have created "Organization ID" in the Organizations Template.
+
+    ii) Column D
+
+        -   This is a Drop-down Menu field in which you will choose from the menu the type of Measure Set that you are entering.
+
+    iii) Columns C, G and H
+
+         -   These are all Free Form fields in which you can enter in information in any format that you wish.
+         -   "Name" (Column C) refers to .
+
+You have now entered your data in the Measures and Measure Sets Template, congratulations!
 
 ## 4) How to report samples:
 
@@ -290,7 +338,7 @@ For further information regarding terms and the colour-coding of columns that yo
 
 Below you will find the fields that are mandatory for the Samples template. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
 
-**Mandatory fields - Samples**
+1.  **Mandatory fields**
 
 |                      |                   |
 |:--------------------:|:-----------------:|
@@ -299,7 +347,7 @@ Below you will find the fields that are mandatory for the Samples template. You 
 |  Collection Period   | Collection Number |
 | Collection Date Time |                   |
 
-**Definitions**
+2.  **Definitions**
 
 -   Sample ID: Unique identifier for a sample.
 
@@ -315,7 +363,7 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
 -   Collection Date Time: The date, time and timezone the sample was taken.
 
-**Examples**
+3.  **Examples**
 
 ![](images/samples_col_AG_ex.png){fig-align="center"}
 
@@ -325,9 +373,9 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
 ## Detailed Description
 
-![](images/samples_col_AG.png){fig-align="center"}
-
 1.  **Columns A to G**
+
+    ![](images/samples_col_AG.png){fig-align="center"}
 
     i)  Columns A to E:
 
@@ -364,7 +412,7 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
 3.  **Columns O to U**
 
-    ![](images/samples_col_OU.png)
+    ![](images/samples_col_OU.png){fig-align="center"}
 
     i)  Columns O to R, T to U:
         -   These are Free Form fields.
@@ -376,7 +424,115 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
 You have now entered your data in the Samples Template, congratulations!
 
+### How to report metadata:
 
-### How to report metadata: text tutorial with images + narrated video (YouTube)
+<!--# insert video -->
+
+In this guide you will learn how to enter Metadata through a series of 8 templates. Each entry in a template will usually represent the the title of the template. For instance, in the Organizations template each row will represent an Organization. Metadata is data that gives information about other data. In the context of the PHES-ODM, metadata is anything that gives additional information about Measures, Methods and Samples.
+
+For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+
+## Quick Start
+
+Below you will find the fields that are mandatory for the metadata-related templates. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
+
+### Addresses Template
+
+1.  **Mandatory fields**
+
+|                           |            |
+|:-------------------------:|:----------:|
+|        Address ID         | Dataset ID |
+|      Address Line 1       |    City    |
+| State, Province or Region |  Country   |
+
+2.  **Definitions**
+
+-   Address ID: A unique identifier for an address.
+
+-   Dataset ID: The name of the dataset that stores information for Measures, Samples and other reporting tables.
+
+-   Address Line 1: Line 1 (the street name, number and direction) for a given address.
+
+-   City: The city where a site or organization is located; part of the address.
+
+-   State, Province or Region: The state, province, or region where a site or organization is located; part of the address.
+
+-   Country: The country where a site or organization is located; part of the address.
+
+3.  **Examples**
+
+*Images will be added*
+
+### Contacts
+
+1.  **Mandatory fields**
+
+|               |                 |
+|:-------------:|:---------------:|
+|  Contact ID   | Organization ID |
+| Contact email |                 |
+
+2.  **Definitions**
+
+-   Contact ID: A unique identifier for a given contact person.
+
+-   Organization ID: A unique identifier for the organization to which the reporter is affiliated.
+
+-   Email: Contact e-mail address, for the lab.s.
+
+3.  **Examples**
+
+*Images will be added*
+
+## Detailed Description
+
+### Addresses Template
+
+1.  **Columns A to H**
+
+    ![](images/addresses_Col_AH.png){fig-align="center"}
+
+    i)  Columns A and B:
+
+        -   These are Identifier fields.
+
+        -   "Address ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Address ID" represents a unique Address.
+
+        -   For column B (Dataset ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Addresses from the same DataSet, then this column will be the same.
+
+        -   You may have already created the Dataset ID in the Datasets Template.
+
+    ii) Columns C to H:
+
+        -   These are Free-form fields in which you can enter various information regarding the Address.
+
+    ### Contacts Template
+
+    1.  **Columns A to D**
+
+        ![](images/contacts_Col_AD.png){fig-align="center"}
+
+        i)  Columns A and B:
+
+            -   These are Identifier fields.
+
+            -   "Contact ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Contact ID" represents a unique Contact.
+
+            -   For column B (Organization ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Contacts from the same Organization, then this column will be the same.
+
+            -   You may have already created the Organization ID in the Organizations Template.
+
+        ii) Columns C to D:
+
+            -   These are Free-form fields in which you can enter the name of the Contact.
+
+    2.  **Columns E to I**
+
+        ![](images/samples_col_AG.png){fig-align="center"}
+
+    i)  Columns E and I:
+
+        -   These are Free-form fields in which you can enter various information regarding the Contact.
 
 ## Example data for each of the 11 report tables.
