@@ -1,0 +1,8 @@
+name: Check PR
+on: [pull_request]
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build docs
+        uses: actions/build-docs-composite-action
