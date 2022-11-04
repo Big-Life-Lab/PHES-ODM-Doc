@@ -7,5 +7,7 @@ runs:
       uses: quarto-dev/quarto-actions/setup@v2
     - name: Install tinytex
       run: quarto install tool tinytex
+      shell: bash
     - name: Render quarto
       run: quarto render ./qmd
+      shell: bash
