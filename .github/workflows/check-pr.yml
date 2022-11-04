@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build docs
-        uses: actions/build-docs-composite-action
+        uses: ./.github/actions/build-docs-composite-action
