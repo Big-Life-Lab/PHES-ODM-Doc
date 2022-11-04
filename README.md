@@ -26,3 +26,16 @@ All the built files are in the [docs](./docs) folder. **This folder should only 
 * The main branch (master or main) should always have the latest public/working/correct/buildable version of the documentation
 * All PRs should be made to the dev branch which has the next version of the documentation. When the dev branch is ready to be made public, it should be merged into master.
 * When a new version is released, the commit that has the new version should be tagged with the version number
+
+# Continuous Integration (CI)
+
+CI is done using github actions. Currently two actions have been setup
+
+* Whenever a PR is made and commits are pushed to the PR branch, the website is built **but not published**
+* Whenever a push is made to master, the website is build **and pushed to github pages**
+
+## Setup
+
+* [build-docs-composite-action.yml](./.github/actions/build-docs-composite-action/action.yml) contains a reusable action to build the docs using quarto
+* [check-pr.yml](./.github/workflows/check-pr.yml) contains the action run when a PR is made and commits pushed to it
+* [publish-docs.yml](./.github/workflows/publish-docs.yml) contains the action run when a push is made to master. The documentation is published to github pages in this action.
