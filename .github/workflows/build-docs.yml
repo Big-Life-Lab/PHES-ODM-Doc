@@ -9,5 +9,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install quarto
         uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install tinytex
+        run: quarto install tool tinytex
       - name: Render quarto
         run: quarto render ./qmd
