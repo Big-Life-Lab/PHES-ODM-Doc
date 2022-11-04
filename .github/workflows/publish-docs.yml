@@ -2,7 +2,7 @@ name: Publish docs to github pages
 on:
   push:
     branches:
-      - ci
+      - main
 jobs:
   publish-docs:
     runs-on: ubuntu-latest
