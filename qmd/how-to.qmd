@@ -1,0 +1,6 @@
+# How to use the ODM
+
+The how-to guides here. If needed we can group into chapters such as:
+- how to use the report table templates
+- how to request a new measure
+- how to validate ODM data (link to that web documentation)
