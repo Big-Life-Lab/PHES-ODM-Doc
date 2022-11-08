@@ -1,0 +1,22 @@
+project:
+  type: book
+  output-dir: ../docs
+
+book: 
+  title: "PHES-ODM-Documentation"
+  repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
+  chapters:
+    - index.qmd
+    - explanation-documentation.qmd
+
+format:
+  html:
+    toc: true
+    theme:
+      light: [cosmo]
+    code-copy: true
+    code-overflow: wrap
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
