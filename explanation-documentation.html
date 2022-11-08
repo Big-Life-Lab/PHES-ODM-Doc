@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHES-ODM-Documentation - 2&nbsp; What are “Parts” and “Part Types”?</title>
+<title>PHES-ODM-Documentation - What are “Parts” and “Part Types”?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./how-to.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -65,11 +66,12 @@ ul.task-list li input[type="checkbox"] {
 
 <body class="nav-sidebar floating">
 
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What are “Parts” and “Part Types”?</span></h1>
+      <h1 class="quarto-secondary-nav-title">What are “Parts” and “Part Types”?</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -100,11 +102,55 @@ ul.task-list li input[type="checkbox"] {
   <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">What are "Parts" and "Part Types"?</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">How to use the ODM</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">Tutorials</span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./ref-quide.html" class="sidebar-item-text sidebar-link">Reference guide</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./explanation-documentation.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What are “Parts” and “Part Types”?</span></a>
+  <a href="./parts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Parts</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./languages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Languages</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./translations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Translations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tables</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./partTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">partTypes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -114,29 +160,29 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sets-and-the-rationale-behind-sets" id="toc-sets-and-the-rationale-behind-sets" class="nav-link active" data-scroll-target="#sets-and-the-rationale-behind-sets"><span class="toc-section-number">2.1</span>  “Sets” and the rationale behind sets</a>
+  <li><a href="#sets-and-the-rationale-behind-sets" id="toc-sets-and-the-rationale-behind-sets" class="nav-link active" data-scroll-target="#sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</a>
   <ul class="collapse">
-  <li><a href="#why-category-sets-are-treated-differently" id="toc-why-category-sets-are-treated-differently" class="nav-link" data-scroll-target="#why-category-sets-are-treated-differently"><span class="toc-section-number">2.1.1</span>  Why category sets are treated differently</a></li>
+  <li><a href="#why-category-sets-are-treated-differently" id="toc-why-category-sets-are-treated-differently" class="nav-link" data-scroll-target="#why-category-sets-are-treated-differently">Why category sets are treated differently</a></li>
   </ul></li>
-  <li><a href="#the-what-and-why-of-specimen-ids" id="toc-the-what-and-why-of-specimen-ids" class="nav-link" data-scroll-target="#the-what-and-why-of-specimen-ids"><span class="toc-section-number">2.2</span>  The “what” and “why” of Specimen IDs</a></li>
-  <li><a href="#the-what-and-why-of-groups-and-classes" id="toc-the-what-and-why-of-groups-and-classes" class="nav-link" data-scroll-target="#the-what-and-why-of-groups-and-classes"><span class="toc-section-number">2.3</span>  The “what” and “why” of Groups and Classes</a></li>
-  <li><a href="#tables-and-table-types-within-the-odm" id="toc-tables-and-table-types-within-the-odm" class="nav-link" data-scroll-target="#tables-and-table-types-within-the-odm"><span class="toc-section-number">2.4</span>  Tables and table types within the ODM</a>
+  <li><a href="#the-what-and-why-of-specimen-ids" id="toc-the-what-and-why-of-specimen-ids" class="nav-link" data-scroll-target="#the-what-and-why-of-specimen-ids">The “what” and “why” of Specimen IDs</a></li>
+  <li><a href="#the-what-and-why-of-groups-and-classes" id="toc-the-what-and-why-of-groups-and-classes" class="nav-link" data-scroll-target="#the-what-and-why-of-groups-and-classes">The “what” and “why” of Groups and Classes</a></li>
+  <li><a href="#tables-and-table-types-within-the-odm" id="toc-tables-and-table-types-within-the-odm" class="nav-link" data-scroll-target="#tables-and-table-types-within-the-odm">Tables and table types within the ODM</a>
   <ul class="collapse">
-  <li><a href="#program-description-tables" id="toc-program-description-tables" class="nav-link" data-scroll-target="#program-description-tables"><span class="toc-section-number">2.4.1</span>  Program description tables</a></li>
-  <li><a href="#results-tables" id="toc-results-tables" class="nav-link" data-scroll-target="#results-tables"><span class="toc-section-number">2.4.2</span>  Results tables</a></li>
-  <li><a href="#look-up-tables" id="toc-look-up-tables" class="nav-link" data-scroll-target="#look-up-tables"><span class="toc-section-number">2.4.3</span>  Look-up tables</a></li>
+  <li><a href="#program-description-tables" id="toc-program-description-tables" class="nav-link" data-scroll-target="#program-description-tables">Program description tables</a></li>
+  <li><a href="#results-tables" id="toc-results-tables" class="nav-link" data-scroll-target="#results-tables">Results tables</a></li>
+  <li><a href="#look-up-tables" id="toc-look-up-tables" class="nav-link" data-scroll-target="#look-up-tables">Look-up tables</a></li>
   </ul></li>
-  <li><a href="#measures-methods-and-attributes-key-parts" id="toc-measures-methods-and-attributes-key-parts" class="nav-link" data-scroll-target="#measures-methods-and-attributes-key-parts"><span class="toc-section-number">2.5</span>  Measures, Methods, and Attributes: Key parts</a>
+  <li><a href="#measures-methods-and-attributes-key-parts" id="toc-measures-methods-and-attributes-key-parts" class="nav-link" data-scroll-target="#measures-methods-and-attributes-key-parts">Measures, Methods, and Attributes: Key parts</a>
   <ul class="collapse">
-  <li><a href="#measures" id="toc-measures" class="nav-link" data-scroll-target="#measures"><span class="toc-section-number">2.5.1</span>  Measures</a></li>
-  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="toc-section-number">2.5.2</span>  Methods</a></li>
-  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="toc-section-number">2.5.3</span>  Attributes</a></li>
+  <li><a href="#measures" id="toc-measures" class="nav-link" data-scroll-target="#measures">Measures</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
   </ul></li>
-  <li><a href="#data-quality-and-reportability" id="toc-data-quality-and-reportability" class="nav-link" data-scroll-target="#data-quality-and-reportability"><span class="toc-section-number">2.6</span>  Data quality and reportability</a></li>
-  <li><a href="#time-periods-for-samples-and-measures" id="toc-time-periods-for-samples-and-measures" class="nav-link" data-scroll-target="#time-periods-for-samples-and-measures"><span class="toc-section-number">2.7</span>  Time periods for samples and measures</a></li>
-  <li><a href="#dates-within-the-odm" id="toc-dates-within-the-odm" class="nav-link" data-scroll-target="#dates-within-the-odm"><span class="toc-section-number">2.8</span>  Dates within the ODM</a></li>
-  <li><a href="#translation-and-language-capabilities" id="toc-translation-and-language-capabilities" class="nav-link" data-scroll-target="#translation-and-language-capabilities"><span class="toc-section-number">2.9</span>  Translation and language capabilities</a></li>
-  <li><a href="#questions-and-online-community" id="toc-questions-and-online-community" class="nav-link" data-scroll-target="#questions-and-online-community"><span class="toc-section-number">2.10</span>  Questions and online community</a></li>
+  <li><a href="#data-quality-and-reportability" id="toc-data-quality-and-reportability" class="nav-link" data-scroll-target="#data-quality-and-reportability">Data quality and reportability</a></li>
+  <li><a href="#time-periods-for-samples-and-measures" id="toc-time-periods-for-samples-and-measures" class="nav-link" data-scroll-target="#time-periods-for-samples-and-measures">Time periods for samples and measures</a></li>
+  <li><a href="#dates-within-the-odm" id="toc-dates-within-the-odm" class="nav-link" data-scroll-target="#dates-within-the-odm">Dates within the ODM</a></li>
+  <li><a href="#translation-and-language-capabilities" id="toc-translation-and-language-capabilities" class="nav-link" data-scroll-target="#translation-and-language-capabilities">Translation and language capabilities</a></li>
+  <li><a href="#questions-and-online-community" id="toc-questions-and-online-community" class="nav-link" data-scroll-target="#questions-and-online-community">Questions and online community</a></li>
   </ul>
 </nav>
     </div>
@@ -145,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">What are “Parts” and “Part Types”?</span></h1>
+<h1 class="title d-none d-lg-block">What are “Parts” and “Part Types”?</h1>
 </div>
 
 
@@ -191,8 +237,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Unit Set Part Type</li>
 </ul>
 <p>For information and details about all the part types, please see the <a href="link%20forthcoming">parts reference document</a>.</p>
-<section id="sets-and-the-rationale-behind-sets" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sets-and-the-rationale-behind-sets"><span class="header-section-number">2.1</span> “Sets” and the rationale behind sets</h2>
+<section id="sets-and-the-rationale-behind-sets" class="level2">
+<h2 class="anchored" data-anchor-id="sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</h2>
 <p>“Sets” are a way of grouping together different possible categorical inputs within the ODM. The purpose behind sets is to group options together so that users only need to check a few options from a drop-down menu, rather than scroll through a long list. Sets are also designed so that a single part can be used in multiple sets, which avoids the need to create multiple versions of this part for these different use contexts. For example, if you’re taking a measure of concentration, that measure will likely populate the unit choice drop-down list with units from the “standard concentration unit set”. Units in this set include Milligrams per litre, parts per million, and Percent Primary Sludge. Similarly, if one were measuring the amount of oxygen in a wastewater sample they would be offered units from the “dissolved gas unit set”. The units in this set include parts per million, and Milligrams per litre. You see here how Milligrams per litre is used twice across the sets, but exists still as a single part in the parts list. Unit sets are only one type of set, with the others being:</p>
 <ul>
 <li>Aggregation sets</li>
@@ -201,71 +247,71 @@ ul.task-list li input[type="checkbox"] {
 <li>Specimen sets</li>
 </ul>
 <p>Details about these sets are their similar - but unique - applications can be found in the <a href="link%20forthcoming">parts reference document</a>. Importantly, “category sets” are not considered a “set” like these others. See the section below for an explanation of this difference.</p>
-<section id="why-category-sets-are-treated-differently" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="why-category-sets-are-treated-differently"><span class="header-section-number">2.1.1</span> Why category sets are treated differently</h3>
+<section id="why-category-sets-are-treated-differently" class="level3">
+<h3 class="anchored" data-anchor-id="why-category-sets-are-treated-differently">Why category sets are treated differently</h3>
 <p>One of the reasons why “sets” are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the <a href="link%20forthcoming">parts reference document</a>.</p>
 </section>
 </section>
-<section id="the-what-and-why-of-specimen-ids" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="the-what-and-why-of-specimen-ids"><span class="header-section-number">2.2</span> The “what” and “why” of Specimen IDs</h2>
+<section id="the-what-and-why-of-specimen-ids" class="level2">
+<h2 class="anchored" data-anchor-id="the-what-and-why-of-specimen-ids">The “what” and “why” of Specimen IDs</h2>
 <p>Specimen IDs indicate the level at which a measure is being done. This can be: a site measure, ie. a measure at a site such as temperature or weather; a sample measure, ie. a laboratory measurement on a sample, such as gene copies of SARS-CoV-2 per mL; a person measure, ie. a measure of something at the level of an individual person, such as a blood pressure reading; or a population measure, ie. an aggregate measure of a population, such as the number of confirmed cases of a given illness. While there is currently nothing in version 2.0 of the ODM with uses the person specimen ID explicitly, it has been included to allow for the possibility of storing individual-level data in a future version. The reason specimen IDs were created was so that there could be a single manner in which measures and methods are recorded, regardless of the level at which they were performed, while still maintaining the possibility to collect site, sample, and population measures as a distinct types of metadata.</p>
 </section>
-<section id="the-what-and-why-of-groups-and-classes" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="the-what-and-why-of-groups-and-classes"><span class="header-section-number">2.3</span> The “what” and “why” of Groups and Classes</h2>
+<section id="the-what-and-why-of-groups-and-classes" class="level2">
+<h2 class="anchored" data-anchor-id="the-what-and-why-of-groups-and-classes">The “what” and “why” of Groups and Classes</h2>
 <p>Groups and classes, similar to sets, are ways of grouping together different measures within the ODM. Given that the ODM aims to be as robust as possible and has a very long list of possible measures, groups and classes were designed to give shorter lists of measures in the drop down lists by specifying details about the kind of measure that a user is recording. Groups and classes can work together to further specify what kinds of measures are being reported. For example, the group <code>sarsCov2</code> contains many measures, but by specifying that the class is an <code>allele</code> or <code>variant</code>, the list of possible measures is pared down. Alternatively, class can be said to be non-applicable, paring down the measures in the <code>sarsCov2</code> group to only be unspecified measures of the quantity of the virus.</p>
 </section>
-<section id="tables-and-table-types-within-the-odm" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="tables-and-table-types-within-the-odm"><span class="header-section-number">2.4</span> Tables and table types within the ODM</h2>
+<section id="tables-and-table-types-within-the-odm" class="level2">
+<h2 class="anchored" data-anchor-id="tables-and-table-types-within-the-odm">Tables and table types within the ODM</h2>
 <p>Within the ODM there are three types of tables: program description tables, results tables, and look-up tables. These table types exist to differentiate the function of these tables and to highlight these differences to users. The different tables take different types of inputs and maintenance from users, so understanding the differences can be important.</p>
-<section id="program-description-tables" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="program-description-tables"><span class="header-section-number">2.4.1</span> Program description tables</h3>
+<section id="program-description-tables" class="level3">
+<h3 class="anchored" data-anchor-id="program-description-tables">Program description tables</h3>
 <p>Program description tables (represented in yellow in the ERD) are tables used to record metadata on the organizations, locations, methods, and appurtenance. These tables help to describe surveillance and testing programs, and are intended to be updated infrequently.</p>
 </section>
-<section id="results-tables" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="results-tables"><span class="header-section-number">2.4.2</span> Results tables</h3>
+<section id="results-tables" class="level3">
+<h3 class="anchored" data-anchor-id="results-tables">Results tables</h3>
 <p>Results tables (represented in blue in the ERD) are the tables used to record details on samples and measures. These tables record the main outcomes data and are updated daily, if not more frequently.</p>
 </section>
-<section id="look-up-tables" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="look-up-tables"><span class="header-section-number">2.4.3</span> Look-up tables</h3>
+<section id="look-up-tables" class="level3">
+<h3 class="anchored" data-anchor-id="look-up-tables">Look-up tables</h3>
 <p>Look-up tables (represented in green in the ERD) are the tables that are pre-programmed and pre-populated in the ODM. These hold information on sets, all parts, languages, and translation abilities. These are only updated by the ODM team in version updates.</p>
 </section>
 </section>
-<section id="measures-methods-and-attributes-key-parts" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="measures-methods-and-attributes-key-parts"><span class="header-section-number">2.5</span> Measures, Methods, and Attributes: Key parts</h2>
+<section id="measures-methods-and-attributes-key-parts" class="level2">
+<h2 class="anchored" data-anchor-id="measures-methods-and-attributes-key-parts">Measures, Methods, and Attributes: Key parts</h2>
 <p>While there are many part types, there are three main part types users should be most familiar with: measures, methods, and attributes. These three have parallels with the three table types, and the differences and details of these parts are useful to understand.</p>
-<section id="measures" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="measures"><span class="header-section-number">2.5.1</span> Measures</h3>
+<section id="measures" class="level3">
+<h3 class="anchored" data-anchor-id="measures">Measures</h3>
 <p>Measures are actually types of measures that can be performed. These can range from temperature to the number of gene copies in a sample. The measure, or <code>measureID</code>, can be selected from a drop down in the templates and it specifies the kind of measure you intend to record. The actual value of the measure is then recorded in the <code>value</code> field of the <code>measures</code> table, with units and aggregation specified in the <code>unitID</code> and <code>aggregationID</code> fields.</p>
 </section>
-<section id="methods" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">2.5.2</span> Methods</h3>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods">Methods</h3>
 <p>Similar to measures, methods are types of methods that can be performed to accomplish a measurement. These can be diverse, ranging from incubation, qPCR, or nucleic acid extraction. The method itself (<code>methodID</code>) is selected from a drop down in the templates, specifying in general terms the kind of method the user wishes to record. From there, the <code>value</code> field of the <code>methodSteps</code> table can be populated by one of the inputs from the category set associated with that <code>methodID</code>. This provides a higher level of detail for a given method. For example, the <code>methodID</code> might be <code>solidSep</code> for solid separation of a sample. The value field might then be populated with <code>cent</code> for centrifugation, indicating more details about how the sample settling was done.</p>
 </section>
-<section id="attributes" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="attributes"><span class="header-section-number">2.5.3</span> Attributes</h3>
+<section id="attributes" class="level3">
+<h3 class="anchored" data-anchor-id="attributes">Attributes</h3>
 <p>Attributes are the largest category of part type, as these refer to any most of the fields in the ODM. Attributes are fields for metadata within the ODM and range greatly in the use. They comprise everything from collection dates, to sampling period, to names.</p>
 </section>
 </section>
-<section id="data-quality-and-reportability" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="data-quality-and-reportability"><span class="header-section-number">2.6</span> Data quality and reportability</h2>
+<section id="data-quality-and-reportability" class="level2">
+<h2 class="anchored" data-anchor-id="data-quality-and-reportability">Data quality and reportability</h2>
 <p>Within the ODM there is a <code>qualityFlag</code> field present in both the <code>samples</code> and <code>measures</code> tables. This field serves to highlight whether or not there is a quality issues with the sample or the measure. The quality flag also allows a user to specify to type of quality issue. This is managed through the use of quality sets, which are the sets that contain the possible quality flags for a given measure or for samples. The idea is that this provides data on any issues with a sample and an indication of the nature of that issue. Having data about the nature and presence of a quality issue is often not sufficient for decision makers who are trying to use and interpret the data. As such, there is also a <code>reportable</code> field with is a Boolean indicator of whether or not data can or should be reported or included in final reports and decisions.</p>
 </section>
-<section id="time-periods-for-samples-and-measures" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="time-periods-for-samples-and-measures"><span class="header-section-number">2.7</span> Time periods for samples and measures</h2>
+<section id="time-periods-for-samples-and-measures" class="level2">
+<h2 class="anchored" data-anchor-id="time-periods-for-samples-and-measures">Time periods for samples and measures</h2>
 <p>Fo measures, there is a field <code>aDateStart</code> and <code>aDateEnd</code> which specify the date and time that an analysis was begun and finished. This allows for the recording of greater detail around timelines for especially long, multi-day analyses. For shorter analyses, which will likely make up the bulk of reported measures, the same dat can input in both fields. The idea is to have the reporting tables for measures be as robust as possible to allow for various kinds of timelines.</p>
 <p>For samples, there is <code>collDT</code>, <code>collDTStart</code>, and <code>collDTEnd</code>. The first field is for the collection date and time of a single grab sample, so start and end are not necessary and the other two fields can be left blank. For composite or pooled sample, the start and end date and time for collection is crucial information to know. When these two fields are populated, the <code>collDT</code>field can be left blank.</p>
 </section>
-<section id="dates-within-the-odm" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="dates-within-the-odm"><span class="header-section-number">2.8</span> Dates within the ODM</h2>
+<section id="dates-within-the-odm" class="level2">
+<h2 class="anchored" data-anchor-id="dates-within-the-odm">Dates within the ODM</h2>
 <p>There are a number of date fields within the ODM which all serve different purposes. Collection datetime (<code>collDT</code>) is the date a sample was collected, used only for grab samples. This field is left blank if the collection datetime start and end fields (<code>collDTstart</code> and <code>collDTEnd</code>) have been populated instead. Inversely, collection datetime start and end fields should be left blank if the collection datetime filed has been populated. Similarly, analysis datetime start and analysis datetime end (<code>aDateStart</code> and <code>aDateEnd</code>) are used to report the date and or timeline of an analysis for a measure.</p>
 <p>Date fields that are more related to data processing and labratory infrastructure are: the last edited date (<code>lastEdited</code>) which indicates the last time a table, or a measure or sample details, were last edited or updated; the sent date (<code>sentDate</code>), or date that a sample was sent to the lab from the field; the received date (<code>recDate</code>), or the date the sample was recieved in the lab; and the report date (<code>repDate</code>), or the date that the analysis results or measures were reported.These give a greater indication of how up to date data is, but also on the speed and efficiency of the pipeline between sampling and reported results. Dates should be reported in day/month/year format to accommodate the most popular global convention.</p>
 </section>
-<section id="translation-and-language-capabilities" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="translation-and-language-capabilities"><span class="header-section-number">2.9</span> Translation and language capabilities</h2>
+<section id="translation-and-language-capabilities" class="level2">
+<h2 class="anchored" data-anchor-id="translation-and-language-capabilities">Translation and language capabilities</h2>
 <p>The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (<code>languageLUs</code>), the translation look-up table (<code>translationLUs</code>), and the parts table (<code>partsLUs</code>). When a translation for a given part is not available, the dictionary will default to the English term.The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (<code>languageID</code>). In the translation table, the language ID is paired with every part ID (<code>partID</code>), along with the label (<code>partLabel</code>), description (<code>partDesc</code>), and instructions (<code>partInstr</code>) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.</p>
 </section>
-<section id="questions-and-online-community" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="questions-and-online-community"><span class="header-section-number">2.10</span> Questions and online community</h2>
+<section id="questions-and-online-community" class="level2">
+<h2 class="anchored" data-anchor-id="questions-and-online-community">Questions and online community</h2>
 <p>If any users have additional questions or issues with the ODM, we invite them to check out our <a href="http://odm.discourse.group/">Discourse Page</a> for discussion boards and community support. For larger issues, and to ask the ODM team to add additional fields or variables into the model, we encourage users to visit the project’s <a href="https://github.com/Big-Life-Lab/PHES-ODM/issues">GitHub repository</a> and to create and issue there so that a team member can respond.</p>
 
 
@@ -377,6 +423,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./how-to.html" class="pagination-link">
+        <span class="nav-page-text">How to use the ODM</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
