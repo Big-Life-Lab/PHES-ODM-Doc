@@ -1,0 +1,9 @@
+# Tables
+
+The list of tables in the three main groups (partType = tables, class = results, prgramDesc, lookup).
+
+## Report tables
+
+## Program Description tables
+
+## Look-up tables
