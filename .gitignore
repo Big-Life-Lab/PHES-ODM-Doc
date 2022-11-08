@@ -3,9 +3,12 @@
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
 
 # Mac files
 .DS_Store
 
 # Build website
 docs
+
+
