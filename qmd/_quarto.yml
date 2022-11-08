@@ -2,12 +2,22 @@ project:
   type: book
   output-dir: ../docs
 
-book: 
+book:
   title: "PHES-ODM-Documentation"
   repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
   chapters:
     - index.qmd
-    - explanation-documentation.qmd
+    - part: explanation-documentation.qmd
+    - part: how-to.qmd
+    - part: tutourials.qmd
+    - part: ref-quide.qmd
+      chapters:
+        - parts.qmd
+        - sets.qmd
+        - languages.qmd
+        - translations.qmd
+        - tables.qmd
+        - partTypes.qmd
 
 format:
   html:

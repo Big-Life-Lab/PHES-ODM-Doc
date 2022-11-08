@@ -1,0 +1,31 @@
+# partTypes
+
+A list of partTypes, grouped by partType. Group by partType, group and class. ie. for list measures by group and classes within groups.
+
+## Aggregations
+## Attributes
+## Categories
+## Category sets
+## Changes column
+## Classes
+## Compartments
+## Data types
+## Domains
+## Groups
+## Measures
+
+### group #1 of measures
+#### class #1 of measues within group #1
+
+## Methods
+## Missingness
+## Nomeclature
+## Part types
+## Quality measures
+## Specimens
+## Tables
+## Units
+## Aggregation scale
+## Sets
+
+

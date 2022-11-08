@@ -1,6 +1,11 @@
+# R project files
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 
+# Mac files
 .DS_Store
+
+# Build website
+docs
