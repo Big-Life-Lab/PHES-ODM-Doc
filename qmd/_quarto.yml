@@ -8,7 +8,9 @@ book:
   chapters:
     - index.qmd
     - part: explanation-documentation.qmd
+      chapters:
     - part: how-to.qmd
+      chapters:
     - part: tutourials.qmd
     - part: ref-quide.qmd
       chapters:
