@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PHES-ODM-Documentation - What are “Parts” and “Part Types”?</title>
+<title>PHES-ODM-Documentation - Getting to know the ODM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">What are “Parts” and “Part Types”?</h1>
+      <h1 class="quarto-secondary-nav-title">Getting to know the ODM</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -99,54 +99,60 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">What are "Parts" and "Part Types"?</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">How to use the ODM</span>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">Tutorials</span>
-  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./explanation.html" class="sidebar-item-text sidebar-link active">Getting to know the ODM</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how-to.html" class="sidebar-item-text sidebar-link">How to use the ODM</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutourials.html" class="sidebar-item-text sidebar-link">Tutorials</a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ref-quide.html" class="sidebar-item-text sidebar-link">Reference guide</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./parts.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Parts</span></a>
+  <a href="./parts.html" class="sidebar-item-text sidebar-link">Parts</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sets.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Sets</span></a>
+  <a href="./sets.html" class="sidebar-item-text sidebar-link">Sets</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./languages.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Languages</span></a>
+  <a href="./languages.html" class="sidebar-item-text sidebar-link">Languages</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./translations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Translations</span></a>
+  <a href="./translations.html" class="sidebar-item-text sidebar-link">Translations</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./tables.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Tables</span></a>
+  <a href="./tables.html" class="sidebar-item-text sidebar-link">Tables</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./partTypes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">partTypes</span></a>
+  <a href="./partTypes.html" class="sidebar-item-text sidebar-link">partTypes</a>
   </div>
 </li>
       </ul>
@@ -160,7 +166,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sets-and-the-rationale-behind-sets" id="toc-sets-and-the-rationale-behind-sets" class="nav-link active" data-scroll-target="#sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</a>
+  <li><a href="#what-are-parts-and-part-types" id="toc-what-are-parts-and-part-types" class="nav-link active" data-scroll-target="#what-are-parts-and-part-types">What are “Parts” and “Part Types”?</a></li>
+  <li><a href="#sets-and-the-rationale-behind-sets" id="toc-sets-and-the-rationale-behind-sets" class="nav-link" data-scroll-target="#sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</a>
   <ul class="collapse">
   <li><a href="#why-category-sets-are-treated-differently" id="toc-why-category-sets-are-treated-differently" class="nav-link" data-scroll-target="#why-category-sets-are-treated-differently">Why category sets are treated differently</a></li>
   </ul></li>
@@ -191,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">What are “Parts” and “Part Types”?</h1>
+<h1 class="title d-none d-lg-block">Getting to know the ODM</h1>
 </div>
 
 
@@ -205,6 +212,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="what-are-parts-and-part-types" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-parts-and-part-types">What are “Parts” and “Part Types”?</h2>
 <p>Within the Public Health and Environmental Surveillance Open Data Model (PHES-ODM, hereafter referred to as simply “the ODM”), every piece or component of the model structure is called a “part”. Regardless of function, all of the tables, headers, and categorical inputs are all parts. This creates a foundational term so that the ODM and its structure can be discussed with greater ease by users and designers.</p>
 <p>Because the term “parts” refers to every component of the ODM, “part types” are a way to differentiate between parts which have different functions and structures. The three most important part types are:</p>
 <ul>
@@ -237,6 +246,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Unit Set Part Type</li>
 </ul>
 <p>For information and details about all the part types, please see the <a href="link%20forthcoming">parts reference document</a>.</p>
+</section>
 <section id="sets-and-the-rationale-behind-sets" class="level2">
 <h2 class="anchored" data-anchor-id="sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</h2>
 <p>“Sets” are a way of grouping together different possible categorical inputs within the ODM. The purpose behind sets is to group options together so that users only need to check a few options from a drop-down menu, rather than scroll through a long list. Sets are also designed so that a single part can be used in multiple sets, which avoids the need to create multiple versions of this part for these different use contexts. For example, if you’re taking a measure of concentration, that measure will likely populate the unit choice drop-down list with units from the “standard concentration unit set”. Units in this set include Milligrams per litre, parts per million, and Percent Primary Sludge. Similarly, if one were measuring the amount of oxygen in a wastewater sample they would be offered units from the “dissolved gas unit set”. The units in this set include parts per million, and Milligrams per litre. You see here how Milligrams per litre is used twice across the sets, but exists still as a single part in the parts list. Unit sets are only one type of set, with the others being:</p>
@@ -419,7 +429,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
