@@ -1,4 +1,4 @@
-# partTypes
+# partTypes {.unnumbered}
 
 A list of partTypes, grouped by partType. Group by partType, group and class. ie. for list measures by group and classes within groups.
 
