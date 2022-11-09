@@ -5,6 +5,24 @@ High-level overview of the ODM
 ## What is the ODM
 
 
-## Contributing
+# Wastewater and environmental surveillance
+
+Lorem ipsum
+
+# Values and priciples of the ODM
+
+Open data, FAIR principles, etc.
+
+# ODM scope
+
+- compartments - Water (including wastewater), surface, air
+- domains - biologic, physical
+- classes - alleles, variants, mutations, sequences, proteins
+- measures - 
+
+
+# Contributing, using, and citing
+
+Lorem Ipsum
 
 ## Acknowledgement
