@@ -1,5 +1,5 @@
 # Shortcut to run
-# run_rvml("rvml/main.sqlite", "rvml/localization.sqlite", "rvml/parts-template.md", "parts", "rvml/content")
+# run_rvml("rvml/main.sqlite", "rvml/localization.sqlite", "rvml/templates/parts-template.qmd", "parts", "rvml/content")
 
 convert_excel_into_db <- function(path_to_excel, path_to_db) {
   list_of_sheets <- readxl::excel_sheets(path_to_excel)
