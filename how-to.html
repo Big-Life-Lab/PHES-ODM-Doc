@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -162,7 +162,51 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-templates" id="toc-how-to-use-templates" class="nav-link active" data-scroll-target="#how-to-use-templates">1) How to use templates</a></li>
+  <li><a href="#how-to-report-methods" id="toc-how-to-report-methods" class="nav-link" data-scroll-target="#how-to-report-methods">2) How to report methods:</a></li>
+  <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a>
+  <ul class="collapse">
+  <li><a href="#method-steps-template" id="toc-method-steps-template" class="nav-link" data-scroll-target="#method-steps-template"><strong>Method Steps Template</strong></a></li>
+  <li><a href="#method-sets-template" id="toc-method-sets-template" class="nav-link" data-scroll-target="#method-sets-template"><strong>Method Sets Template</strong></a></li>
+  </ul></li>
+  <li><a href="#detailed-description" id="toc-detailed-description" class="nav-link" data-scroll-target="#detailed-description">Detailed Description</a>
+  <ul class="collapse">
+  <li><a href="#method-steps-template-1" id="toc-method-steps-template-1" class="nav-link" data-scroll-target="#method-steps-template-1"><strong>Method Steps Template</strong></a></li>
+  <li><a href="#method-sets-template-1" id="toc-method-sets-template-1" class="nav-link" data-scroll-target="#method-sets-template-1"><strong>Method Sets Template</strong></a></li>
+  </ul></li>
+  <li><a href="#how-to-report-measures" id="toc-how-to-report-measures" class="nav-link" data-scroll-target="#how-to-report-measures">3) How to report measures:</a></li>
+  <li><a href="#quick-start-1" id="toc-quick-start-1" class="nav-link" data-scroll-target="#quick-start-1">Quick Start</a>
+  <ul class="collapse">
+  <li><a href="#measures-template" id="toc-measures-template" class="nav-link" data-scroll-target="#measures-template">Measures Template</a></li>
+  <li><a href="#measure-sets-template" id="toc-measure-sets-template" class="nav-link" data-scroll-target="#measure-sets-template"><strong>Measure Sets Template</strong></a></li>
+  </ul></li>
+  <li><a href="#detailed-description-1" id="toc-detailed-description-1" class="nav-link" data-scroll-target="#detailed-description-1">Detailed Description</a>
+  <ul class="collapse">
+  <li><a href="#measures-template-1" id="toc-measures-template-1" class="nav-link" data-scroll-target="#measures-template-1"><strong>Measures Template</strong></a></li>
+  <li><a href="#measure-sets-template-1" id="toc-measure-sets-template-1" class="nav-link" data-scroll-target="#measure-sets-template-1"><strong>Measure Sets Template</strong></a></li>
+  </ul></li>
+  <li><a href="#how-to-report-samples" id="toc-how-to-report-samples" class="nav-link" data-scroll-target="#how-to-report-samples">4) How to report samples:</a></li>
+  <li><a href="#quick-start-2" id="toc-quick-start-2" class="nav-link" data-scroll-target="#quick-start-2">Quick Start</a></li>
+  <li><a href="#detailed-description-2" id="toc-detailed-description-2" class="nav-link" data-scroll-target="#detailed-description-2">Detailed Description</a>
+  <ul class="collapse">
+  <li><a href="#how-to-report-metadata" id="toc-how-to-report-metadata" class="nav-link" data-scroll-target="#how-to-report-metadata">How to report metadata:</a></li>
+  </ul></li>
+  <li><a href="#quick-start-3" id="toc-quick-start-3" class="nav-link" data-scroll-target="#quick-start-3">Quick Start</a>
+  <ul class="collapse">
+  <li><a href="#addresses-template" id="toc-addresses-template" class="nav-link" data-scroll-target="#addresses-template">Addresses Template</a></li>
+  <li><a href="#contacts" id="toc-contacts" class="nav-link" data-scroll-target="#contacts">Contacts</a></li>
+  </ul></li>
+  <li><a href="#detailed-description-3" id="toc-detailed-description-3" class="nav-link" data-scroll-target="#detailed-description-3">Detailed Description</a>
+  <ul class="collapse">
+  <li><a href="#addresses-template-1" id="toc-addresses-template-1" class="nav-link" data-scroll-target="#addresses-template-1">Addresses Template</a></li>
+  </ul></li>
+  <li><a href="#example-data-for-each-of-the-11-report-tables." id="toc-example-data-for-each-of-the-11-report-tables." class="nav-link" data-scroll-target="#example-data-for-each-of-the-11-report-tables.">Example data for each of the 11 report tables.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -177,15 +221,740 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
 
 </header>
 
-<p>The how-to guides here. If needed we can group into chapters such as: - how to use the report table templates - how to request a new measure - how to validate ODM data (link to that web documentation)</p>
+<section id="how-to-use-templates" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-templates">1) How to use templates</h2>
+<p>The main purpose of templates it to provide you with an easy way to enter in your wastewater data in the PHES-ODM format. Below you will find a series of Guides that will walk you through this process. To begin with, in these Guides, “field” refers to a column in the template, and “entry” refers to a row of information that you entered. While these Guides will also provide definitions and explanations for some terms, most can be found here <!--# link and/or provide title to page with definitions -->..</p>
+<p>The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes:</p>
+<ul>
+<li><strong>Identifier, Unique Identifier and Composite Unique Identifer (Red):</strong> In these types of fields you will create a value that will be used to identify something. For instance, “Sample ID” is used to identify a particular Sample. <!--# I decided to capitalize all terms that refer to anything associated with a field (such as in this case, a sample). I'm not sure if this works... -->In an Identifier, these values can be repeated between entries, while in a Unique Identifier, they cannot. There is usually only one Unique Identifier per template. A Composite Unique Identifier is a type of Unique Identifier formed by two or more fields. An example can be found in colums A and B below, where while there is repetition in A and B, there is no repetition in the combination of the two. <!--# I'm not sure if you want an example with more relevant entries --></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/composite-ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ul>
+<li><p><strong>Drop-down and Conditional Drop-down Menus (Green):</strong> These fields have a drop-down menu which contain the values that can be entered. These valuess can be selected <strong>or</strong> typed in. In conditional drop-down menus, the valuess depend on what you entered in a previous field.</p></li>
+<li><p><strong>Free form (Blue):</strong> In these fields, there are no restrictions on how to enter your data.</p></li>
+</ul>
+</section>
+<section id="how-to-report-methods" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-report-methods">2) How to report methods:</h2>
+<!--# add link to youtube video -->
+<p>In this guide you will learn how to enter Methods into the Method Sets and Methods Step templates. As described in <!--# title of document and link-->, a Method is “A procedure for collecting a sample or performing a measure”. A Method Set is essentially a Method <!--# is this correct? -->. In the Method Sets template, each entry is a step in a Method Set (a step will be defined shortly).</p>
+<p>A Method Set is made up of steps, called Method Steps. In the Method Steps template, each entry represents one of these steps. A key thing to note is that a step can be a Method or a Measure. An individual step can also be used in multiple Method Sets.</p>
+<p>For instance, you might have a Method Set for an extraction procedure. This set will have multiple steps that go through this process. <!--# I have no idea if this makes sense, feel free to edit --></p>
+<p>For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+</section>
+<section id="quick-start" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
+<p>Below you will find the fields that are mandatory for the Method Steps and Method Sets template.&nbsp;You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, “Detailed Description”.</p>
+<section id="method-steps-template" class="level3">
+<h3 class="anchored" data-anchor-id="method-steps-template"><strong>Method Steps Template</strong></h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Method Step ID</td>
+<td style="text-align: center;">Method (if entering a Method)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Measure (if entering a Measure)</td>
+<td style="text-align: center;">Name</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Value (if entering a Measure)</td>
+<td style="text-align: center;">Unit (if entering a Measure)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Aggregation (if entering a Measure)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Method Step ID: The unique identifier for a specific method step.</p></li>
+<li><p>Method: A procedure for collecting a sample or performing a measure.</p></li>
+<li><p>Measure: A measurement or observation of any substance including a biological, physical or chemical substance.</p></li>
+<li><p>Name: Name of the entity. <!--# I'm not sure what this means, could Doug or Mathew expand? --></p></li>
+<li><p>Value: Value of a measure, observation or attribute.</p></li>
+<li><p>Unit: The units of a measurement.</p></li>
+<li><p>Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/MethSteps_Col_AG_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/MethSteps_col_HO_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="method-sets-template" class="level3">
+<h3 class="anchored" data-anchor-id="method-sets-template"><strong>Method Sets Template</strong></h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Method Set Report ID</td>
+<td style="text-align: center;">Method Set ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Method Step ID</td>
+<td style="text-align: center;">Method Step Index</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Method Set Report ID: Unique identifier for a method set.</p></li>
+<li><p>Method Set ID: A unique identifier for a given method set.</p></li>
+<li><p>Method Step ID: The unique identifier for a specific method step.</p></li>
+<li><p>Method Step Index: Specifies the index of a method step within a method set, i.e.&nbsp;the order of the steps in a set.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSets_Col_AD_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSets_Col_EH_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="detailed-description" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-description">Detailed Description</h2>
+<section id="method-steps-template-1" class="level3">
+<h3 class="anchored" data-anchor-id="method-steps-template-1"><strong>Method Steps Template</strong></h3>
+<ol type="1">
+<li><p><strong>Columns A to G</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSteps_col_AG.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Column A:
+<ul>
+<li>Method Step ID (column A) is the Unique Identifier field for this template and cannot be repeated between entries. You can think of each Method Step ID value as representing a unique Method Step.</li>
+</ul></li>
+<li>Columns B to C:
+<ul>
+<li><p>These are Drop-down Menu fields.</p></li>
+<li><p>You only need to enter a value into Method ID (column B) or Measure ID (column C). The former is for when you are entering a Method and the latter is for a Measure. Leave the other field <strong>blank</strong>.</p></li>
+</ul></li>
+<li>Columns D to G:
+<ul>
+<li>These are Free Form fields and you can enter the relevant information in any format that you wish.</li>
+<li>Name (column D) refers to <!--# I'm not sure what this refers to and the defintion in the parts table was not helpful --></li>
+<li>Summary (column E) is a short description of the Method Step that you are entering</li>
+<li>Method Step Version (column F) refers to whether or not you have multiple version of this Step. If you do, then you can differentiate the different versions with “1”, “2”, etc.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns H to O</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSteps_col_HO.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns H to J:
+<ul>
+<li>These are Identifier fields.</li>
+<li>You can repeat values between entries. For instance, if you are entering two different Method Steps from the same Organization, then “Organization” (column H) will be the same.</li>
+<li>You may have already created these Identifiers in another template. For instance you may have created “Organization” in the Organizations Template.</li>
+</ul></li>
+<li>Column K:
+<ul>
+<li>A Free Form field in which you will enter the Value of the Measure. If a Method is being entered, then you can put “NA” here.</li>
+</ul></li>
+<li>Columns L and M:
+<ul>
+<li><p>These are Conditional Drop-down Menu fields.</p></li>
+<li><p>Unit (column L) depends on what you entered in Measure ID (column C). If you entered a Method, then you can put “NA” in this field.</p></li>
+<li><p>Aggregation (column M) depends on what you entered in Unit (column L). If you entered a Method, then you can put “NA” in this field.</p></li>
+</ul></li>
+<li>Columns N and O:
+<ul>
+<li>These are Free Form fields where you will enter values for the indicated fields.</li>
+</ul></li>
+</ol></li>
+</ol>
+</section>
+<section id="method-sets-template-1" class="level3">
+<h3 class="anchored" data-anchor-id="method-sets-template-1"><strong>Method Sets Template</strong></h3>
+<ol type="1">
+<li><p><strong>Columns A to D</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSets_Col_AD.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns A to D:
+<ul>
+<li><p>Method Set Report ID (column A) is the Composite Unique Identifier field for this template.</p>
+<ul>
+<li><p>This value is automatically generated by the template by combining Method Set ID (column B) and Method Step Index (column D). It is important that you ensure that any combination of these two fields are not repeated.</p></li>
+<li><p>Each Method Set Report ID value represents a Step within a Method Set.</p></li>
+</ul></li>
+<li><p>Method Set ID (column B) and and Method Step ID (column C) are Identifier fields.</p></li>
+<li><p>Method Step Index (column D) is a Free Form field and indicates the position of the Method Step in its Method Set. For instance, if the Method Step being entered is the third step in the Method Set, then this value would be “3”.</p></li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns E to H</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/methSets_Col_EH.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns E to F:
+<ul>
+<li><p>Method Set Version (column E) is a Free Form field where you will indicate the version of the Method Set. For instance, if the current Method Set that you are entering is an updated version of the original one, you would enter “2”.</p></li>
+<li><p>Method Set Provenance ID (column F) is the Method Set that the one that is being entered is based upon. Thus, you would enter “NA” here unless the value of Method Set Version is 2 or greater.</p></li>
+</ul></li>
+<li>Columns G to H:
+<ul>
+<li>These are free form fields and you can enter the relevant information in any format that you wish.</li>
+</ul></li>
+</ol></li>
+</ol>
+<p>You have now entered your data in the Method Steps and Methods Sets Template, congratulations!</p>
+</section>
+</section>
+<section id="how-to-report-measures" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-report-measures">3) How to report measures:</h2>
+<!--# add link to youtube video -->
+<p>In this guide you will learn how to enter Measures into the Measures and Measures Set template. Each entry in this template represents a Measure. As described in <!--# title of document and link-->, a Measure is a “measurement or observation of any substance including a biological, physical or chemical substance”. You will enter individual Measures into the Measures Template. You can then group certain Measures together and this will be entered into the Measure Sets template. For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to  page with definitions --></p>
+<!--# Should I add something about how only the first three rows are active and about the columns at the end of the template that are used in the conditional menus? -->
+</section>
+<section id="quick-start-1" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-1">Quick Start</h2>
+<p>Below you will find the fields that are mandatory for these templates.&nbsp;You will also find some defintion of terms and examples of entries of data, with the fields filled and colour-coded.&nbsp;A more detailed description of some of the key concepts can be found in the following section, “Detailed Description”.</p>
+<section id="measures-template" class="level3">
+<h3 class="anchored" data-anchor-id="measures-template">Measures Template</h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Measure Report ID</td>
+<td style="text-align: center;">Sample ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Site ID</td>
+<td style="text-align: center;">Analysis Date End Value</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Specimen</td>
+<td style="text-align: center;">Fraction analyzed (only if Specimen ID = “Sample”)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Measure</td>
+<td style="text-align: center;">Value</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Unit</td>
+<td style="text-align: center;">Aggregation</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Measure Report ID: Unique identifier for a measure.</p></li>
+<li><p>Sample ID: Unique identifier for a sample.</p></li>
+<li><p>Site ID: Unique identifier for the location where a sample was taken.</p></li>
+<li><p>Analysis Date End: Date the measurement or analysis was completed.</p></li>
+<li><p>Specimen: The substance or thing upon which the observation was made.</p></li>
+<li><p>Fraction analyzed: Fraction of the sample that is analyzed.</p></li>
+<li><p>Measure: A measurement or observation of any substance including a biological, physical or chemical substance.</p></li>
+<li><p>Value: Value of a measure, observation or attribute.</p></li>
+<li><p>Unit: The units of a measurement.</p></li>
+<li><p>Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_AH_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_IM_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_NS_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_TW_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="measure-sets-template" class="level3">
+<h3 class="anchored" data-anchor-id="measure-sets-template"><strong>Measure Sets Template</strong></h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Report Set ID</td>
+<td style="text-align: center;">Method Set Report ID</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Report Set ID: Unique identifier that links together a group of related measures.</p></li>
+<li><p>Method Set Report ID: Unique identifier for a method set.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><p><strong>Examples</strong></p>
+<p><em>Image will be added.</em></p></li>
+</ol>
+</section>
+</section>
+<section id="detailed-description-1" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-description-1">Detailed Description</h2>
+<section id="measures-template-1" class="level3">
+<h3 class="anchored" data-anchor-id="measures-template-1"><strong>Measures Template</strong></h3>
+<ol type="1">
+<li><p><strong>Columns A to H</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_AH_1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li><p>Columns A-C, and E-H</p>
+<ul>
+<li>These are all Identifier fields.</li>
+<li>“Report ID” (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of “Report ID” represents a unique Measure.</li>
+<li>For the rest, you can repeat the Identifer between entries (if needed). For instance, if you are entering two different Measures from the same Sample, then the “Sample ID” (column C) will be the same.</li>
+<li>You may have already created these Identifiers in another template. For instance you may have created “Sample ID” in the Samples Template.</li>
+</ul></li>
+<li><p>Column D</p>
+<ul>
+<li>This is a Drop-down Menu field in which you can select a value representing the Purpose of your Measure from the menu. &nbsp; &nbsp;</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns I to M</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_IM_1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns I to K
+<ul>
+<li>These are all Free Form fields where you can enter various dates associated with your Measure.</li>
+</ul></li>
+<li>Columns L and M
+<ul>
+<li>These are Drop-down Menu fields where you can select a value that represents the Specimen, and the Fraction of the Samples that was analyzed for your Measure. &nbsp;</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns N to S</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_NS_1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns N and O
+<ul>
+<li><p>These are Drop-down Menu fields which contain the possible values for Group and Class, respectively, of the Measure that you are entering.</p></li>
+<li><p>Group and Class are not mandatory, so if you do not know them, leave these fields <strong>blank</strong>. <!--# Is blank OK or would you want something else? If it's something else, I will need to change the code for Measure--> .</p></li>
+</ul></li>
+<li>Column P
+<ul>
+<li><p>This is a Conditional Drop-down Menu fields where you will enter the Measure of your entry.</p></li>
+<li><p>If you chose to enter in a “Class ID” (column O), the drop down menu will contain the Measures found in that Class. If you did not enter a value in column O, the menu will contain all possible Measures.</p></li>
+</ul></li>
+<li>Column Q
+<ul>
+<li><p>This is a Free Form field, where you will enter in the Value of your Measure.</p></li>
+<li><p>For instance, if your Measure is a temperature of 20 <sup>o</sup>C, you would enter “20”.</p></li>
+</ul></li>
+<li>Column R
+<ul>
+<li><p>This is a Conditional Drop-down Menu field where you will choose the Units of your Value.</p></li>
+<li><p>Using the temperature example in the previous point, it would be “Celcius”. What appears in this menu depends on what you entered in the “Measure ID” field (column P).</p></li>
+</ul></li>
+<li>Column S
+<ul>
+<li><p>This is a Conditional Drop-down Menu field which contains the types of Aggregations of your value. For example does your value represent a mean, median, etc.</p></li>
+<li><p>What appears in this menu depends on what you entered in the Unit field (column Q). &nbsp;</p></li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns T and W</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_TW_1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns T, W and X
+<ul>
+<li>These are Free Form fields in which you can enter the indicated information.</li>
+<li>Index (column T) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use “1”, “2”, etc. to differentiate them. <!--# Is this correct? --></li>
+</ul></li>
+<li>Columns U and V
+<ul>
+<li><p>These columns consist of a Conditional Drop-down Menu field (Quality Flag) and a Drop-down Menu field (Reportable Data Flag).</p></li>
+<li><p>“Quality Flag” depends on the value of “Measure” (column P). You can use this to indicate it there are any quality issues with the Measure.</p></li>
+<li><p>“Reportable” refers to whether or not your entry is of good enough quality that it can be used by others. <!--# Is this correct? --></p></li>
+</ul></li>
+</ol></li>
+</ol>
+</section>
+<section id="measure-sets-template-1" class="level3">
+<h3 class="anchored" data-anchor-id="measure-sets-template-1"><strong>Measure Sets Template</strong></h3>
+<ol type="1">
+<li><p><strong>Columns A to H</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/Col_AH_1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li><p>Columns A, B, E and F</p>
+<ul>
+<li>These are all Identifier fields.</li>
+<li>“Set Report ID” (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of “Set Report ID” represents a unique Measure Set.</li>
+<li>For the rest, you can repeat the Identifer between entries (if needed). For instance, if you are entering two different Measure Sets that came from the same Organization, then the “Organization ID” (column E) will be the same.</li>
+<li>You may have already created these Identifiers in another template. For instance you may have created “Organization ID” in the Organizations Template.</li>
+</ul></li>
+<li><p>Column D</p>
+<ul>
+<li>This is a Drop-down Menu field in which you will choose from the menu the type of Measure Set that you are entering.</li>
+</ul></li>
+<li><p>Columns C, G and H</p>
+<ul>
+<li>These are all Free Form fields in which you can enter in information in any format that you wish.</li>
+<li>“Name” (Column C) refers to .</li>
+</ul></li>
+</ol></li>
+</ol>
+<p>You have now entered your data in the Measures and Measure Sets Template, congratulations!</p>
+</section>
+</section>
+<section id="how-to-report-samples" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-report-samples">4) How to report samples:</h2>
+<!--# insert video -->
+<p>In this guide you will learn how to enter Samples through the Samples template. So, each entry in this template represents a Sample. As described in <!--# title of document and link-->, a Sample is ” ” <!--# I'm not sure how you want to define this, it's not in the parts table -->.</p>
+<p>For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+</section>
+<section id="quick-start-2" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-2">Quick Start</h2>
+<p>Below you will find the fields that are mandatory for the Samples template. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, “Detailed Description”.</p>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Sample ID</td>
+<td style="text-align: center;">Site ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sample Material</td>
+<td style="text-align: center;">Sample Collection</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Collection Period</td>
+<td style="text-align: center;">Collection Number</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Collection Date Time</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Sample ID: Unique identifier for a sample.</p></li>
+<li><p>Site ID: Unique identifier for the location where a wastewater sample was taken.</p></li>
+<li><p>Sample Material: Type of sample.</p></li>
+<li><p>Sample Collection: Method used to collect the sample.</p></li>
+<li><p>Collection Period: Value of a measure, observation or attribute.</p></li>
+<li><p>Collection Number: The number of subsamples that were combined to create the sample. Use NA for continuous, proportional or passive sampling.</p></li>
+<li><p>Collection Date Time: The date, time and timezone the sample was taken.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_AG_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_HN_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_OU_ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="detailed-description-2" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-description-2">Detailed Description</h2>
+<ol type="1">
+<li><p><strong>Columns A to G</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_AG.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li><p>Columns A to E:</p>
+<ul>
+<li><p>These are Identifier fields.</p></li>
+<li><p>Sample ID (column A) is the Unique Identifier for this template and cannot be repeated between entries. You can think of each Sample ID value as representing a unique Sample.</p></li>
+<li><p>For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different Samples from the same Site, then the “Site ID” (column E) will be the same.</p></li>
+<li><p>You may have already created these Identifiers in another template. For instance you may have created “Site ID” in the Sites Template.</p></li>
+</ul></li>
+<li><p>Columns F to G:</p>
+<ul>
+<li>These are Drop-down Menu fields where you can enter information regarding the Purpose and Sample Material of your Sample.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns H to N</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_HN.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns H:
+<ul>
+<li>These is an Identifier field for the Dataset that your Sample is associated with.</li>
+</ul></li>
+<li>Columns I to K, N:
+<ul>
+<li><p>These are Drop-down Menu fields related to various characteristics of your Sample.</p></li>
+<li><p>Sample collection (column K) refers to the collection technique used to obtain the Sample that you are entering.</p></li>
+<li><p>Pooled (column N) refers to whether or not the Sample that you are entering is made up of multiple child Samples.</p>
+<!--# I'm not sure if the other fields require explanation, they seem self-explanatory --></li>
+</ul></li>
+<li>Columns L and M:
+<ul>
+<li>These are Free Form fields.</li>
+<li>Collection Period (column L) refers to the number of hours that it took to collect your Sample.</li>
+<li>Collection Number (column M) refers to the number of subsamples that were used to create Sample that you are entering.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns O to U</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/samples_col_OU.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li>Columns O to R, T to U:
+<ul>
+<li><p>These are Free Form fields.</p></li>
+<li><p>Most are related to various dates associated with your Sample.</p></li>
+</ul></li>
+<li>Column S:
+<ul>
+<li>This is a Drop-down Menu field.</li>
+<li>You can use this field to indicate if there are any quality issues with the Sample.</li>
+</ul></li>
+</ol></li>
+</ol>
+<p>You have now entered your data in the Samples Template, congratulations!</p>
+<section id="how-to-report-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-report-metadata">How to report metadata:</h3>
+<!--# insert video -->
+<p>In this guide you will learn how to enter Metadata through a series of 8 templates. Each entry in a template will usually represent the the title of the template. For instance, in the Organizations template each row will represent an Organization. Metadata is data that gives information about other data. In the context of the PHES-ODM, metadata is anything that gives additional information about Measures, Methods and Samples.</p>
+<p>For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+</section>
+</section>
+<section id="quick-start-3" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-3">Quick Start</h2>
+<p>Below you will find the fields that are mandatory for the metadata-related templates. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, “Detailed Description”.</p>
+<section id="addresses-template" class="level3">
+<h3 class="anchored" data-anchor-id="addresses-template">Addresses Template</h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Address ID</td>
+<td style="text-align: center;">Dataset ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Address Line 1</td>
+<td style="text-align: center;">City</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">State, Province or Region</td>
+<td style="text-align: center;">Country</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Address ID: A unique identifier for an address.</p></li>
+<li><p>Dataset ID: The name of the dataset that stores information for Measures, Samples and other reporting tables.</p></li>
+<li><p>Address Line 1: Line 1 (the street name, number and direction) for a given address.</p></li>
+<li><p>City: The city where a site or organization is located; part of the address.</p></li>
+<li><p>State, Province or Region: The state, province, or region where a site or organization is located; part of the address.</p></li>
+<li><p>Country: The country where a site or organization is located; part of the address.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<p><em>Images will be added</em></p>
+</section>
+<section id="contacts" class="level3">
+<h3 class="anchored" data-anchor-id="contacts">Contacts</h3>
+<ol type="1">
+<li><strong>Mandatory fields</strong></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Contact ID</td>
+<td style="text-align: center;">Organization ID</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Contact email</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Definitions</strong></li>
+</ol>
+<ul>
+<li><p>Contact ID: A unique identifier for a given contact person.</p></li>
+<li><p>Organization ID: A unique identifier for the organization to which the reporter is affiliated.</p></li>
+<li><p>Email: Contact e-mail address, for the lab.s.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Examples</strong></li>
+</ol>
+<p><em>Images will be added</em></p>
+</section>
+</section>
+<section id="detailed-description-3" class="level2">
+<h2 class="anchored" data-anchor-id="detailed-description-3">Detailed Description</h2>
+<section id="addresses-template-1" class="level3">
+<h3 class="anchored" data-anchor-id="addresses-template-1">Addresses Template</h3>
+<ol type="1">
+<li><p><strong>Columns A to H</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/addresses_Col_AH.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li><p>Columns A and B:</p>
+<ul>
+<li><p>These are Identifier fields.</p></li>
+<li><p>“Address ID” (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of “Address ID” represents a unique Address.</p></li>
+<li><p>For column B (Dataset ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Addresses from the same DataSet, then this column will be the same.</p></li>
+<li><p>You may have already created the Dataset ID in the Datasets Template.</p></li>
+</ul></li>
+<li><p>Columns C to H:</p>
+<ul>
+<li>These are Free-form fields in which you can enter various information regarding the Address.</li>
+</ul></li>
+</ol>
+<h3 id="contacts-template" class="anchored">Contacts Template</h3>
+<ol type="1">
+<li><p><strong>Columns A to D</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/contacts_Col_AD.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ol type="i">
+<li><p>Columns A and B:</p>
+<ul>
+<li><p>These are Identifier fields.</p></li>
+<li><p>“Contact ID” (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of “Contact ID” represents a unique Contact.</p></li>
+<li><p>For column B (Organization ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Contacts from the same Organization, then this column will be the same.</p></li>
+<li><p>You may have already created the Organization ID in the Organizations Template.</p></li>
+</ul></li>
+<li><p>Columns C to D:</p>
+<ul>
+<li>These are Free-form fields in which you can enter the name of the Contact.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns E to I</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/contacts_Col_EI.png" class="img-fluid figure-img"></p>
+</figure>
+</div></li>
+</ol>
+<ol type="i">
+<li><p>Columns E and I:</p>
+<ul>
+<li>These are Free-form fields in which you can enter various information regarding the Contact.</li>
+</ul></li>
+</ol></li>
+</ol>
+</section>
+</section>
+<section id="example-data-for-each-of-the-11-report-tables." class="level2">
+<h2 class="anchored" data-anchor-id="example-data-for-each-of-the-11-report-tables.">Example data for each of the 11 report tables.</h2>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -229,7 +998,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -265,24 +1051,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>

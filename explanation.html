@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.1.251">
+<meta name="generator" content="quarto-1.2.269">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -206,6 +206,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+  
     
   </div>
   
@@ -221,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Measure Part Type</li>
 <li>Attribute Part Type</li>
 </ul>
-<p>Please see the <a href="link%20forthcoming">parts reference document</a> for more details, but essentially methods allow the recording of methods in environmental surveillance and testing, while measures allow the recording of observations and results, and attributes capture metadata.</p>
+<p>Please see the <a href="link forthcoming">parts reference document</a> for more details, but essentially methods allow the recording of methods in environmental surveillance and testing, while measures allow the recording of observations and results, and attributes capture metadata.</p>
 <p>The remaining 20 part types (for a total of 23 part types) are:</p>
 <ul>
 <li>Aggregation Part Type</li>
@@ -245,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Unit Part Type</li>
 <li>Unit Set Part Type</li>
 </ul>
-<p>For information and details about all the part types, please see the <a href="link%20forthcoming">parts reference document</a>.</p>
+<p>For information and details about all the part types, please see the <a href="link forthcoming">parts reference document</a>.</p>
 </section>
 <section id="sets-and-the-rationale-behind-sets" class="level2">
 <h2 class="anchored" data-anchor-id="sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</h2>
@@ -256,10 +257,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Quality sets</li>
 <li>Specimen sets</li>
 </ul>
-<p>Details about these sets are their similar - but unique - applications can be found in the <a href="link%20forthcoming">parts reference document</a>. Importantly, “category sets” are not considered a “set” like these others. See the section below for an explanation of this difference.</p>
+<p>Details about these sets are their similar - but unique - applications can be found in the <a href="link forthcoming">parts reference document</a>. Importantly, “category sets” are not considered a “set” like these others. See the section below for an explanation of this difference.</p>
 <section id="why-category-sets-are-treated-differently" class="level3">
 <h3 class="anchored" data-anchor-id="why-category-sets-are-treated-differently">Why category sets are treated differently</h3>
-<p>One of the reasons why “sets” are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the <a href="link%20forthcoming">parts reference document</a>.</p>
+<p>One of the reasons why “sets” are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the <a href="link forthcoming">parts reference document</a>.</p>
 </section>
 </section>
 <section id="the-what-and-why-of-specimen-ids" class="level2">
@@ -369,7 +370,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
     button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
     setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
       button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
@@ -405,24 +423,42 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
   var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
   for (var i=0; i<bibliorefs.length; i++) {
     const ref = bibliorefs[i];
-    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
-    tippyHover(ref, function() {
-      var popup = window.document.createElement('div');
-      cites.forEach(function(cite) {
-        var citeDiv = window.document.createElement('div');
-        citeDiv.classList.add('hanging-indent');
-        citeDiv.classList.add('csl-entry');
-        var biblioDiv = window.document.getElementById('ref-' + cite);
-        if (biblioDiv) {
-          citeDiv.innerHTML = biblioDiv.innerHTML;
-        }
-        popup.appendChild(citeDiv);
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
       });
-      return popup.innerHTML;
-    });
+    }
   }
 });
 </script>
