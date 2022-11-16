@@ -198,6 +198,11 @@ insert_translation <-
                          translation_end_characer) <-
           DBI::dbGetQuery(db_con, quary)[[1]]
         
+        # Handling for empty translation
+        if(length(tmp_line)<1){
+          tmp_line <- ""
+        }
+        
         replace_text[[translation_start_line]] <- tmp_line
         
       }
@@ -403,7 +408,7 @@ run_content_insert <- function(db_con, content_location, db_table_name) {
     files <-
       list.files(
         path = paste0(content_location, "/", translation_code),
-        pattern = "*.qmd",
+        pattern = "*-translated.qmd",
         full.names = TRUE,
         recursive = FALSE
       )
@@ -425,7 +430,7 @@ run_rvml <- function(main_db_path, trans_db_path, template_path, template_name, 
   translation_db <- DBI::dbConnect(RSQLite::SQLite(), trans_db_path)
   main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
   
-  run_translations(translation_db, template_path, content_path, paste0(template_name,".qmd"))
+  run_translations(translation_db, template_path, content_path, paste0(template_name,"-translated",".qmd"))
   run_content_insert(main_db, content_path, template_name)
   
   RSQLite::dbDisconnect(translation_db)
