@@ -23,7 +23,7 @@ format:
   html:
     toc: true
     theme:
-      light: [cosmo]
+      light: [cosmo, ./assets/phes-odm.scss]
     code-copy: true
     code-overflow: wrap
   pdf:

@@ -1,0 +1,76 @@
+/*-- scss:defaults --*/
+
+$color_1: #333333;
+$color_2: #838c91;
+$color_3: #2ea6cc;
+$color_4: #c4c4c4;
+$font_family_1: "montserrat";
+$font_family_2: "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+$font_family_3: "montserrat";
+$font_family_4: "lora";
+$background_color_1: #ffcb6c;
+
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,600,800";
+/*https://fonts.google.com/specimen/Montserrat*/
+@import "https://fonts.googleapis.com/css?family=Lora:400,600,800";
+/*https://fonts.google.com/specimen/Lora*/
+
+/*-- scss:rules --*/
+h1 {
+  font: 800 48px "Lora";
+  color: $color_1;
+}
+h2 {
+  font: 800 32px "Lora";
+  color: $color_1;
+}
+h3 {
+  font: 800 24px "Lora";
+  color: $color_1;
+}
+h4 {
+  font: 800 20px "Lora";
+  color: $color_1;
+}
+h5 {
+  font: 600 16px "montserrat";
+  font-variant: small-caps;
+  color: $color_2;
+}
+p {
+  font-family: $font_family_1;
+  font-weight: 400;
+  color: $color_1;
+}
+a {
+  color: $color_3;
+}
+.big {
+  font-size: 1.25em;
+}
+mark {
+  background-color: $background_color_1;
+  padding: 0.2rem;
+}
+.wrapper {
+  width: 80%;
+  margin: 8rem auto;
+}
+.break {
+  height: 5vh;
+}
+.section-head {
+  margin: 2em 0;
+  font-family: $font_family_2;
+  font-size: 70%;
+  font-weight: normal;
+  padding: 1em 0;
+  color: $color_4;
+  border-bottom: 1px solid #c4c4c4;
+}
+.montserrat {
+  font-family: $font_family_3;
+}
+.lora {
+  font-family: $font_family_4;
+}
