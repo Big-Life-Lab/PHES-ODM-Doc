@@ -311,7 +311,7 @@ insert_content <- function(origin_text, lang_code, db_con, db_table_name) {
           }
         }
         # Create content object
-        quary <- paste("SELECT", quary_columns, "FROM", db_table_name)
+        quary <- paste("SELECT", quary_columns, "FROM", db_table_name, "ORDER BY PartID ASC")
         content_to_insert[[length(content_to_insert) + 1]] <-
           list(
             chunk_location = single_chunk,
