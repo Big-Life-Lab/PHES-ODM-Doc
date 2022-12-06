@@ -1,3 +1,5 @@
+#mod_sql_table("rvml/main.sqlite", "cat_info", "parts")
+
 mod_sql_table <- function(main_db_path, col_name, table_name){
 
 
