@@ -31,8 +31,6 @@ for (single_category in cat_sets) {
 
 new_table <- val_table
 new_table[[col_name]] <- ""
-insert_template_start <- "<a name=\"{{partID}}\"></a>**{{partLabel}}**"
-insert_template_end <-
 for (single_partID in names(new_col)) {
   
   sub_categories <- new_col[[single_partID]]
