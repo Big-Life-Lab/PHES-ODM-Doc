@@ -1,0 +1,9 @@
+
+
+
+```{rvml}```
+var languageRow = {{{natName}}: ({{langID}})</br>Language Family: {{langFamily}}</br>Language name: {{langName}}</br>ISO639-1 code: {{ISO6391}}</br>ISO639-2B code: {{ISO6392B}}</br>ISO639-2T code: {{ISO6392T}}</br>ISO639-3 code: {{ISO6393}}</br>ISO639-6 code: {{ISO6396}}}
+
+
+{{filter:* ,format(languageRow)}}
+```{rvml}```
