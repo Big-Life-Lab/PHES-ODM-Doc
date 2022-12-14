@@ -1,3 +1,17 @@
+# Public Health and Environmental Surveillance Open Data Model (PHEA-ODM, or ODM) Documentation
+
+*NOTE:* This documentation for PHES-ODM Version 2.0 is in the beta testing stage and so is still a work in progress. Please be aware that changes will occur regularly for the next few months. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
+
+This documentation is intended to support the adoption and use of the ODM by data custodians and data generators working in the field of environmental surveillance, specifically looking at public health. The ODM is a data model that is designed to capture data and metadata related to surveillance and store it in a consistent, shareable form. The ODM teamm has also developed a suite of tools to support validation and cleaning of formatted data. 
+
+This documentation is right for you if: 
+
+- You generate or store data from wastewater surveillance, or other environmental surveillance systems.
+- You test for biologic, chemical, and physical threats to human health.
+- You want the data you generate/store to be easy to share and interoperable.
+- You want to figure out how the ODM works and is organized.
+- You want to make your data work in the ODM format.
+
 # Background - Environmental Surveillance and the ODM {.unnumbered}
 
 Awareness of threats to public health is important for the function of modern health care systems, and environmental surveillance is presenting itself as very cost effective way to monitor for these threats. While environmental surveillance methods, like wastewater surveillance, are not entirely new, they certainly experienced an unprecedented expansion of uptake over the course of the covid-19 pandemic. 
