@@ -1,4 +1,4 @@
-#Background - Environmental Surveillance and the ODM
+# Background - Environmental Surveillance and the ODM {.unnumbered}
 
 Awareness of threats to public health is important for the function of modern health care systems, and environmental surveillance is presenting itself as very cost effective way to monitor for these threats. While environmental surveillance methods, like wastewater surveillance, are not entirely new, they certainly experienced an unprecedented expansion of uptake over the course of the covid-19 pandemic. 
 
@@ -10,7 +10,7 @@ In version 1.0 and 1.1 of the ODM, a strong data model was developed and taken u
 
 Version 2.0 of the ODM includes an entity relationship diagram (ERD) of the model, as well as a "master parts list" which details all of the components an values in the model. You will find these - along with how-to guides, tutorials, and reference materials - in this set of documentation for the model. 
 
-# Objectives and Values of the ODM
+## Objectives and Values of the ODM
 
 The over-arching objectives for the ODM are to:
 
@@ -25,7 +25,7 @@ We seek to accomplish all of the above stated goals while staying true to the gu
 - *Support FAIR data:* In 2016, a diverse set of stakeholders— representing academia, industry, funding agencies, and scholarly publishers—designed, jointly endorsed, and published the ‘FAIR Guiding Principles for scientific data management and stewardship’.1 The intent of FAIR is to improve infrastructure supporting reuse of scholarly data based on four foundational principles: Findability, Accessibility, Interoperability, and Reusability. For the ODM this means making sure that the ODM makes for data that is findable, accessible, interoperable, and reusable by considering these attributes part of the core infrastructure.
 - *Use an open science, open software approach:* Open-source software is software with source code that anyone can inspect, modify and enhance. Open-source initiatives embrace principles of open exchange, collaborative participation, rapid prototyping, transparency and community-oriented development. For the ODM this means that all work on the ODM is hosted in open-access environments, like GitHub, where anyone and everyone can transparently see the work being done, the rationale behind it, and can contribute to the project according to their ability.
 
-# Orgnaization of the Documentation
+## Orgnaization of the Documentation
 
 The documentation for version 2.0 of the ODM was written and organized with [David Laing and Divio's Grand Unified Theory of Documentation](https://documentation.divio.com/#:~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.) in mind. This means including four different pieces:
 
