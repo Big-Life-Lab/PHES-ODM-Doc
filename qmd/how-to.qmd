@@ -4,27 +4,51 @@
 
 The main purpose of templates it to provide you with an easy way to enter in your wastewater data in the PHES-ODM format. Below you will find a series of Guides that will walk you through this process. To begin with, in these Guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. While these Guides will also provide definitions and explanations for some terms, most can be found here <!--# link and/or provide title to page with definitions -->..
 
-The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes: 
+The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes:
 
 -   **Identifier, Unique Identifier and Composite Unique Identifer (Red):** In these types of fields you will create a value that will be used to identify something. For instance, "Sample ID" is used to identify a particular Sample. <!--# I decided to capitalize all terms that refer to anything associated with a field (such as in this case, a sample). I'm not sure if this works... -->In an Identifier, these values can be repeated between entries, while in a Unique Identifier, they cannot. There is usually only one Unique Identifier per template. A Composite Unique Identifier is a type of Unique Identifier formed by two or more fields. An example can be found in colums A and B below, where while there is repetition in A and B, there is no repetition in the combination of the two. <!--# I'm not sure if you want an example with more relevant entries -->
 
-![](/assets/how-to/composite-ex.png){fig-align="center"} 
+![](/assets/how-to/composite-ex.png){fig-align="center"}
 
 -   **Drop-down and Conditional Drop-down Menus (Green):** These fields have a drop-down menu which contain the values that can be entered. These valuess can be selected **or** typed in. In conditional drop-down menus, the valuess depend on what you entered in a previous field.
 
 -   **Free form (Blue):** In these fields, there are no restrictions on how to enter your data.
 
-## 2) How to report methods:
+## 2) How to record a protocol
 
-<!--# add link to youtube video -->
+When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. To store protocols efficiently in database tables, several challenges must be addressed:
 
-In this guide you will learn how to enter Methods into the Method Sets and Methods Step templates. As described in <!--# title of document and link-->, a Method is "A procedure for collecting a sample or performing a measure". A Method Set is essentially a Method <!--# is this correct? -->. In the Method Sets template, each entry is a step in a Method Set (a step will be defined shortly).
+1\. Protocols are comprised of a collection of steps.
 
-A Method Set is made up of steps, called Method Steps. In the Method Steps template, each entry represents one of these steps. A key thing to note is that a step can be a Method or a Measure. An individual step can also be used in multiple Method Sets.
+2\. Protocol steps can consist of two entries:
 
-For instance, you might have a Method Set for an extraction procedure. This set will have multiple steps that go through this process. <!--# I have no idea if this makes sense, feel free to edit -->
+-   They can prescribe the use of a specific quantity of something. This can be described using the different measures found in the PHES-ODM dictionary and assigning them a prescribed value and unit of measurement.
 
-For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+-   They can prescribe an action. The PHES-ODM calls this a method.
+
+3\. Protocol steps must be organised in the right order to convey the meaning of the protocol.
+
+4\. Steps may follow each other, or they can be done concurrently.
+
+5\. Measures found inside a protocol specify the quantity of reagents, supplies and conditions involved in the realization of a method.
+
+6\. Different protocols may use some of the same steps, but in a different order.
+
+7\. Protocols may have steps that consist in one or several (sub)protocols.
+
+8\. Protocols can be updated with new versions, or they can reference and build from other protocols.
+
+To solve these constraints, the PHES-ODM stores a protocol (e.g., what it does, who developed it, when it was developed) separately from its constituent steps. These protocol steps are stored in the \`Protocol Steps\` table. The entries in the steps table are either methods or measures.
+
+The protocol steps are linked together in their own \`Protocol Relationships\` table. Rows in the relationship table have four main attributes. The first is the protocol identifier. The three other attributes define a relationship between two steps in the protocol. The relationship is expressed in the form:
+
+\`subject → relationship → object\`
+
+Where the subject and the object can either be a protocol step or subprotocol. The available relationships (e.g., \`is_before\`, \`specifies\`, \`is_concurrent_with\`, etc.) allows one to organize the protocol is a more semantically meaningful way than by simply using a sequential order.
+
+This flexible structure allows protocol steps and subprotocols to be reused in any number of protocols. The relationships between protocols, protocol orderings, and protocol steps are shown in Figure A.
+
+![Figure A: Main entities and relationships used to represent protocols](./assets/how-to/protocols.png)
 
 ## Quick Start
 
@@ -213,7 +237,7 @@ Below you will find the fields that are mandatory for these templates. You will
 
 ![](/assets/how-to/Col_TW_ex.png){fig-align="center"}
 
-### **Measure Sets Template** 
+### **Measure Sets Template**
 
 1.  **Mandatory fields**
 
@@ -526,6 +550,8 @@ Below you will find the fields that are mandatory for the metadata-related templ
     2.  **Columns E to I**
 
         ![](/assets/how-to/contacts_Col_EI.png){fig-align="center"}
+
+    <!-- -->
 
     i)  Columns E and I:
 
