@@ -1,3 +1,4 @@
+# R project files
 .Rproj.user
 .Rhistory
 .RData
@@ -7,4 +8,11 @@
 /rvml/content/fr/part-translated_files
 /rvml/content/fr/*.html
 *.Rproj
+
+# Mac files
+.DS_Store
+
+# Build website
+docs
+
 

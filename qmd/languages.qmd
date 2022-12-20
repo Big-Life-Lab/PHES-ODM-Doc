@@ -1,0 +1,3 @@
+# Languages {.unnumbered}
+
+The language table by langID.
