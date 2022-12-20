@@ -384,47 +384,100 @@ insert_content <- function(origin_text, lang_code, db_con, db_table_name) {
 }
 
 #
-run_translations <- function(db_con, template_origin, output_path, output_file_name) {
-  valid_translations <- c("en", "fr")
-  template_text <- read_in_template(template_origin)
-  #insert_translation(tmp_line, lang_code = "fr", db_con = db)
-  dir.create(file.path(output_path), showWarnings = FALSE)
-  for (translation_code in valid_translations) {
-    dir.create(file.path(paste0(output_path,"/", translation_code)), showWarnings = FALSE)
-    translated_text <-
-      insert_translation(template_text, lang_code = translation_code, db_con = db_con)
+run_translations <-
+  function(db_con,
+           template_origin,
+           output_path,
+           output_file_name,
+           single_code_option=NULL) {
     
-    #Write output
-    fileConn <-
-      file(paste0(output_path,"/", translation_code, "/", output_file_name))
-    writeLines(translated_text, fileConn)
-    close(fileConn)
-  }
+    valid_translations <- c("en", "fr")
+    template_text <- read_in_template(template_origin)
+    dir.create(file.path(output_path), showWarnings = FALSE)
+    
+    if (is.null(single_code_option)) {
+      for (translation_code in valid_translations) {
+        dir.create(file.path(paste0(output_path, "/", translation_code)), showWarnings = FALSE)
+        translated_text <-
+          insert_translation(template_text, lang_code = translation_code, db_con = db_con)
+        
+        #Write output
+        fileConn <-
+          file(paste0(
+            output_path,
+            "/",
+            translation_code,
+            "/",
+            output_file_name
+          ))
+        writeLines(translated_text, fileConn)
+        close(fileConn)
+      }
+    }else{
+      translated_text <-
+        insert_translation(template_text, lang_code = single_code_option, db_con = db_con)
+      #Write output
+      fileConn <-
+        file(paste0(
+          output_path,
+          "/",
+          output_file_name
+        ))
+      writeLines(translated_text, fileConn)
+      close(fileConn)
+    }
 }
 
-run_content_insert <- function(db_con, content_location, db_table_name) {
-  valid_translations <- c("en", "fr")
-  for (translation_code in valid_translations) {
-    files <-
-      list.files(
-        path = paste0(content_location, "/", translation_code),
-        pattern = "*.qmd",
-        full.names = TRUE,
-        recursive = FALSE
-      )
-    lapply(files, function(x) {
-      template_text <- read_in_template(x)
+run_content_insert <-
+  function(db_con,
+           content_location,
+           db_table_name,
+           single_code_option = NULL,
+           output_file_name=NULL) {
+    
+    valid_translations <- c("en", "fr")
+    
+    if (is.null(single_code_option)) {
+      for (translation_code in valid_translations) {
+        files <-
+          list.files(
+            path = paste0(content_location, "/", translation_code),
+            pattern = "*.qmd",
+            full.names = TRUE,
+            recursive = FALSE
+          )
+        lapply(files, function(x) {
+          template_text <- read_in_template(x)
+          content_text <-
+            insert_content(template_text,
+                           lang_code = translation_code,
+                           db_con = db_con,
+                           db_table_name)
+          fileConn <-
+            file(x)
+          # Replace br tag with actual new line
+          content_text <-
+            unlist(stringr::str_split(content_text, "<br />"))
+          writeLines(content_text, fileConn)
+          close(fileConn)
+        })
+      }
+    }else{
+      template_text <- read_in_template(output_file_name)
       content_text <-
-        insert_content(template_text, lang_code = translation_code, db_con = db_con, db_table_name)
+        insert_content(template_text,
+                       lang_code = single_code_option,
+                       db_con = db_con,
+                       db_table_name)
       fileConn <-
-        file(x)
+        file(output_file_name)
       # Replace br tag with actual new line
-      content_text <- unlist(stringr::str_split(content_text, "<br />"))
+      content_text <-
+        unlist(stringr::str_split(content_text, "<br />"))
       writeLines(content_text, fileConn)
       close(fileConn)
-    })
+    }
   }
-}
 
 run_rvml <- function(main_db_path, trans_db_path, template_path, template_name, content_path){
   translation_db <- DBI::dbConnect(RSQLite::SQLite(), trans_db_path)
