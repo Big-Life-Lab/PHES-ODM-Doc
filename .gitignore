@@ -6,3 +6,5 @@
 /rvml/content/en/part-translated_files
 /rvml/content/fr/part-translated_files
 /rvml/content/fr/*.html
+*.Rproj
+
