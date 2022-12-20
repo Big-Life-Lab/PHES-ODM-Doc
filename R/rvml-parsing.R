@@ -350,10 +350,10 @@ insert_content <-
           tmp_insert <- as.character(sql_table[current_row, running_var])
           # For now while i get translations in place
           if (length(tmp_insert) < 1) {
-            tmp_insert <- "missing till i get translation"
+            tmp_insert <- "Invalid Column name"
           }
           if (is.na(tmp_insert)) {
-            tmp_insert <- "NA(maybe bug)"
+            tmp_insert <- "Invalid entry"
           }
           running_content <-
             stringr::str_replace_all(running_content,
