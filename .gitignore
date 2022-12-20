@@ -3,10 +3,6 @@
 .Rhistory
 .RData
 .Ruserdata
-/rvml/content/en/*.html
-/rvml/content/en/part-translated_files
-/rvml/content/fr/part-translated_files
-/rvml/content/fr/*.html
 *.Rproj
 
 # Mac files
