@@ -1,5 +1,16 @@
-# Shortcut to run
-# run_rvml("rvml/main.sqlite", "rvml/localization.sqlite", "rvml/templates/parts-template.qmd", "parts", "rvml/content")
+# Shortcuts to run
+#
+# Database creation
+# create_db_from_csv("data/tables/localization.sqlite", "data/raw/localization.csv", "localization")
+# convert_excel_into_db("data/tables/main.sqlite", "data/raw/ODM-dictionary.xlsx")
+#
+# Modify parts
+# #mod_sql_table("data/tables/main.sqlite", "cat_info", "parts")
+#
+# Run rvml
+# run_rvml("data/tables/main.sqlite", "data/tables/localization.sqlite", "templates/parts-template.qmd", "parts", "qmd", "en", "qmd/parts.qmd")
+
+
 
 convert_excel_into_db <- function(path_to_excel, path_to_db) {
   list_of_sheets <- readxl::excel_sheets(path_to_excel)
