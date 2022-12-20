@@ -311,7 +311,7 @@ insert_content <- function(origin_text, lang_code, db_con, db_table_name) {
           }
         }
         # Create content object
-        quary <- paste("SELECT", quary_columns, "FROM", db_table_name)
+        quary <- paste("SELECT", quary_columns, "FROM", db_table_name, "ORDER BY PartID ASC")
         content_to_insert[[length(content_to_insert) + 1]] <-
           list(
             chunk_location = single_chunk,
@@ -408,7 +408,7 @@ run_content_insert <- function(db_con, content_location, db_table_name) {
     files <-
       list.files(
         path = paste0(content_location, "/", translation_code),
-        pattern = "*-translated.qmd",
+        pattern = "*.qmd",
         full.names = TRUE,
         recursive = FALSE
       )
@@ -430,8 +430,9 @@ run_rvml <- function(main_db_path, trans_db_path, template_path, template_name, 
   translation_db <- DBI::dbConnect(RSQLite::SQLite(), trans_db_path)
   main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
   
-  run_translations(translation_db, template_path, content_path, paste0(template_name,"-translated",".qmd"))
+  run_translations(translation_db, template_path, content_path, paste0(template_name,".qmd"))
   run_content_insert(main_db, content_path, template_name)
+  
   
   RSQLite::dbDisconnect(translation_db)
   RSQLite::dbDisconnect(main_db)
