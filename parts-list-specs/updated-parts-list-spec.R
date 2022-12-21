@@ -3,7 +3,7 @@
 "Part Type:" [partType]
 "Domain ID:" [domainID]
 "Specimen ID:" [specimenID]
-"Compartment Set:" [compartSet]
+"Compartment Set:" [compSet]
 "Group ID:" [groupID]
 "Class ID:" [classID]
 "Nomenclature ID:" [nomenclatureID]
