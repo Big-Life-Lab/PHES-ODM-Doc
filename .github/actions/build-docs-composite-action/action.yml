@@ -8,6 +8,8 @@ runs:
     - name: Install tinytex
       run: quarto install tool tinytex
       shell: bash
+    - name: Install rmarkdown package
+      run: R -e 'install.packages("rmarkdown")'
     - name: Render quarto
       run: quarto render ./qmd
       shell: bash
