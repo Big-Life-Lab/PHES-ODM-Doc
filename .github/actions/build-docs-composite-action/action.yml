@@ -10,6 +10,7 @@ runs:
       shell: bash
     - name: Install rmarkdown package
       run: R -e 'install.packages("rmarkdown")'
+      shell: bash
     - name: Render quarto
       run: quarto render ./qmd
       shell: bash
