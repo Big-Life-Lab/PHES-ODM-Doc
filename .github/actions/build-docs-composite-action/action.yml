@@ -13,7 +13,7 @@ runs:
       with:
         r-version: "4.1.1"
     - name: Install rmarkdown package
-      run: R -e 'install.packages("rmarkdown")'
+      run: R -e 'install.packages("rmarkdown", "DBI", "RSQLite")'
       shell: bash
     - name: Render quarto
       run: quarto render ./qmd
