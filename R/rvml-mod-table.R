@@ -1,4 +1,4 @@
-#mod_sql_table_sub_categories("rvml/main.sqlite", "cat_info", "parts")
+#mod_sql_table_sub_categories("data/tables/main.sqlite", "cat_info", "parts")
 
 mod_sql_table_sub_categories <- function(main_db_path, col_name, table_name){
 
@@ -65,6 +65,8 @@ RSQLite::dbWriteTable(
 DBI::dbDisconnect(main_db)
 }
 
+
+# mod_sql_table_table_of_content("data/tables/main.sqlite", "parts", "table_of_contents", "cat_tables")
 mod_sql_table_table_of_content <- function(main_db_path, in_table_name, out_table_name, out_table_with_categories_name){
   
   main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
