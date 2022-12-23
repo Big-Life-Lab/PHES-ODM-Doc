@@ -33,23 +33,37 @@ quary <- paste("SELECT", "*", "FROM", "cat_tables")
 val_table <- DBI::dbGetQuery(main_db, quary)
 new_content <- ""
 running_table_name <-""
+is_there_active_table <- FALSE
 
 for (row_index in 1:nrow(val_table)) {
   working_row <- val_table[row_index, ]
   if (is.na(val_table[row_index,]$partType)) {
     next()
   } else if (val_table[row_index,]$partType == "table") {
+    if (is_there_active_table){
+      new_content <-
+      paste0(
+        new_content, "</ul>")
+      is_there_active_table <- FALSE
+    }
     running_table_name <- working_row$partID
     new_content <-
       paste0(
         new_content,"**", 
         working_row$partLabel,
-        "** (",
+        "** (<a name=\"",
         working_row$partID,
+        "\"></a>",working_row$partID,
         ") </br>",
         working_row$partDesc,
         "</br></br>"
       )
+    if(!is_there_active_table){
+      is_there_active_table <- TRUE
+      new_content <-
+      paste0(
+        new_content, "<ul>")
+    }
   }else{
     required_col_name <- paste0(running_table_name,"Required")
     
@@ -63,15 +77,20 @@ for (row_index in 1:nrow(val_table)) {
     }
     new_content <-
       paste0(
-        new_content,
+        new_content, "<li>**",
         working_row$partLabel,
-        " (",
+        "** (",
         working_row$partID,
         "):(",tmp_key_type, ") (", working_row[[required_col_name]], ") [", working_row$dataType, "]</br>",
         working_row$partDesc, working_row$sub_categories_string, 
-        "</br></br>"
+        "</li>"
       )
   }
+}
+if(is_there_active_table){
+  new_content <-
+      paste0(
+        new_content, "</ul>")
 }
 
 ```
