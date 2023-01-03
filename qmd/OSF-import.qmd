@@ -1,0 +1,40 @@
+---
+title: "Import from OSF"
+format: html
+editor: visual
+---
+
+```{r}
+#| label: getting-started
+#| echo: false
+#| output: false
+library(here)
+library(osfr)
+library(dplyr)
+library(knitr)
+library(readxl)
+
+source("../R/osf_util.R")
+
+```
+
+## Getting started
+
+This notebook helps work with `r odm_osf['name']` project files that are stored Open Science Foundation (OSF.io).
+
+The OSF.io URL for the project is **`r osf_project_url`**.
+
+There is an OSF component for each ODM versions. These component names begin with "Version".
+
+```{r}
+#| echo: false
+kable(version_names, col.names = 'The ODM versions with supporting files are:')
+```
+
+The current selected version is *`r default_version_name`*. You can modify the qmd file line 25 to change the default version.
+
+```{r}
+#| echo: false
+
+kable(file_names, col.names = paste('Available files for', default_version_name))
+```
