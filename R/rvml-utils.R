@@ -2,7 +2,7 @@
 #
 # Database creation
 # create_db_from_csv("data/tables/localization.sqlite", "data/raw/localization.csv", "localization")
-# convert_excel_into_db("data/tables/main.sqlite", "data/raw/ODM-dictionary.xlsx")
+# convert_excel_into_db("data/raw/ODM-dictionary.xlsx", "data/tables/main.sqlite")
 #
 # Modify parts
 # #mod_sql_table("data/tables/main.sqlite", "cat_info", "parts")

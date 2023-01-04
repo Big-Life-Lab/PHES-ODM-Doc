@@ -1,7 +1,12 @@
-<!--` reference1 -->
-# Tables
+---
 
-Add intro
+---
+
+
+<!--` reference1 -->
+# reference
+
+intro
 
 <!--` reference1/ -->
 
@@ -69,12 +74,10 @@ for (row_index in 1:nrow(val_table)) {
     
     tmp_key_type <- working_row[[running_table_name]]
     if(length(tmp_key_type)>0&&!is.na(tmp_key_type)) {
-      if (tolower(tmp_key_type) == "fk") {
+      if (tmp_key_type == "fK") {
         tmp_key_type <- "Foreign Key"
-      } else if (tolower(tmp_key_type) == "pk") {
+      } else if (tmp_key_type == "pK") {
         tmp_key_type <- "Primary Key"
-      } else if(tolower(tmp_key_type) == "input"){
-        next() 
       }
     }
     new_content <-
@@ -83,7 +86,7 @@ for (row_index in 1:nrow(val_table)) {
         working_row$partLabel,
         "** (",
         working_row$partID,
-        "):(",tmp_key_type, ") (Required: ", working_row[[required_col_name]], ") [", working_row$dataType, "]</br>",
+        "):(",tmp_key_type, ") (", working_row[[required_col_name]], ") [", working_row$dataType, "]</br>",
         working_row$partDesc, working_row$sub_categories_string, 
         "</li>"
       )
