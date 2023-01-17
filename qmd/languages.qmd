@@ -1,3 +1,77 @@
 # Languages {.unnumbered}
 
 The language table by langID.
+
+
+```{r, echo=FALSE}
+# @RUSTY replace to use excel directly
+main_db <-
+  DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
+quary <-
+  paste("SELECT", "*", "FROM", "languages", "ORDER BY langID")
+languages_table <- DBI::dbGetQuery(main_db, quary)
+
+output_string <- ""
+
+# Loop over rows and create outputs per row
+for (row_index in 1:nrow(languages_table)) {
+  working_row <- languages_table[row_index,]
+  
+  nat_name <- working_row$natName
+  lang_ID <- working_row$langID
+  lang_fam <- working_row$langFam
+  lang_name <- working_row$langName
+  code_1 <- working_row$ISO6391
+  code_2 <- working_row$ISO6392B
+  code_3 <- working_row$ISO6392T
+  code_4 <- working_row$ISO6393
+  code_5 <- working_row$ISO6396
+  
+  # Check for not empty values
+  # @RUSTY consider functioning out checks for length
+  if (length(nat_name) < 1) {
+    nat_name <- "Native Name is missing at the momment"
+  }
+  if (length(lang_ID) < 1) {
+    lang_ID <- "Language ID is missing at the momment"
+  }
+  if (length(lang_fam) < 1) {
+    lang_fam <- "Language Family is missing at the momment"
+  }
+  if (length(lang_name) < 1) {
+    lang_name <- "Language Name is missing at the momment"
+  }
+  if (length(code_1) < 1) {
+    code_1 <- "ISO639-1 code is missing at the momment"
+  }
+  if (length(code_2) < 1) {
+    code_2 <- "ISO639-2B code is missing at the momment"
+  }
+  if (length(code_3) < 1) {
+    code_3 <- "ISO639-2T code is missing at the momment"
+  }
+  if (length(code_4) < 1) {
+    code_4 <- "ISO639-3 code is missing at the momment"
+  }
+  if (length(code_5) < 1) {
+    code_5 <- "ISO639-6 code is missing at the momment"
+  }
+  
+  # Construct the print 
+  output_string <- glue::glue('{output_string}
+  
+                              # {nat_name}({lang_ID})
+                              Language Family: {lang_fam}  
+                              Language name: {lang_name}  
+                              ISO639-1 code: {code_1} 
+                              ISO639-2B code: {code_2} 	
+                              ISO639-2T code:	{code_3}  
+                              ISO639-3 code: {code_4} 	
+                              ISO639-6 code: {code_5}')
+}
+
+
+```
+`r output_string`
+
+
