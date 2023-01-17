@@ -1,3 +1,74 @@
 # Sets {.unnumbered}
 
 The list of sets in aphabetical order of setsID
+
+
+```{r, echo=FALSE}
+# @RUSTY replace to use excel directly
+main_db <- DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
+quary <- paste("SELECT", "*", "FROM", "sets", "ORDER BY setType")
+sets_table <- DBI::dbGetQuery(main_db, quary)
+quary <- paste("SELECT", "*", "FROM", "parts")
+parts_table <- DBI::dbGetQuery(main_db, quary)
+
+output_string <- ""
+
+
+# Find and loop over unique setTypes
+unique_set_type <- unique(sets_table$setType)
+for(set_type in unique_set_type){
+  # Create header for setType
+  part_info <- parts_table[parts_table$partID == set_type,]
+  part_label <- part_info$partLabel
+  part_instruction <- part_info$partInstr
+  if(length(part_instruction) < 1){
+    part_instruction <- "Part Instruction is missing at the moment"
+  }
+  if(length(part_label) < 1){
+    part_label <- "Part Label is missing at the moment"
+  }
+  output_string <- glue::glue('{output_string}
+                              # {part_label}({set_type})
+                                {part_instruction}
+                              ')
+  
+  # Find and loop over unique setID according to set_type
+  working_rows <- sets_table[sets_table$setType == set_type,]
+  unique_set_id <- unique(working_rows$setID)
+  for (set_ID in unique_set_id) {
+    # Create set_ID subsection
+    output_string <- glue::glue('{output_string}
+    
+                                ### {set_ID} set members:
+                                <ul>')
+    
+    # Find and loop over unique partID according to set_ID
+    sub_category_rows <- working_rows[working_rows$setID == set_ID,]
+    unique_part_id <- unique(sub_category_rows$partID)
+    for (part_ID in unique_part_id) {
+      part_info <- parts_table[parts_table$partID == part_ID,]
+      part_label <- part_info$partLabel
+      
+      if (length(part_label) < 1) {
+        # Bug in glue making entire string empty if any passed string is empty need further testing @RUSTY
+        #print(part_label)
+        #you_dont_know_how_to_use_empty_chars <- glue::glue('Im testing a meme {part_label}')
+        #print(you_dont_know_how_to_use_empty_chars)
+        #print(length(you_dont_know_how_to_use_empty_chars))
+        
+        part_label <- "Part Label is missing at the moment"
+      }
+      
+      
+      output_string <- glue::glue('{output_string}
+                                  <li>{part_label}({part_ID})</li>')
+    }
+    output_string <- glue::glue('{output_string}
+                                </ul>')
+  }
+}
+
+
+```
+
+`r output_string`
