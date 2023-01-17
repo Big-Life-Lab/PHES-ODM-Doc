@@ -1,3 +1,52 @@
 # Translations {.unnumbered}
 
-The list of translations by languageID. 
+The list of translations by langID 
+
+```{r, echo=FALSE}
+main_db <- DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
+quary <- paste("SELECT", "*", "FROM", "translations", "ORDER BY langID")
+translations_table <- DBI::dbGetQuery(main_db, quary)
+
+output_string <- ""
+
+for (row_index in 1:nrow(translations_table)) {
+  working_row <- translations_table[row_index,]
+  
+  lang_ID <- working_row$langID
+  part_label <- working_row$partLabel
+  part_ID <- working_row$partID
+  part_desc <- working_row$partDesc
+  part_instr <- working_row$partDesc
+  if(length(part_instr) < 1 || is.na(part_instr) || part_instr=="NA"){
+    part_instr = "Part Instruction is missing at this moment"
+  }
+  
+  # Not using switch case since more then one if could be true
+  # Adding these here as 0 length characters set full glue value to 0 characters
+  if(length(lang_ID) < 1){
+    lang_ID <- "Language ID is missing at this moment"
+  }
+  if(length(part_label) < 1){
+    part_label <- "Part Label is missing at this moment"
+  }
+  if(length(part_ID) < 1){
+    part_ID <- "Part ID is missing at this moment"
+  }
+  if(length(part_desc) < 1){
+    part_desc <- "Part Description is missing at this moment"
+  }
+  
+  output_string <- glue::glue('{output_string}
+                              
+                              {lang_ID}
+                              {part_label}({part_ID}):
+                              {part_desc}
+                              {part_instr}')
+}
+
+```
+
+`r output_string`
+
+
+
