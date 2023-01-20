@@ -4,10 +4,10 @@ mod_sql_table_sub_categories <- function(main_db_path, col_name, table_name){
 
 
 main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
-quary <- paste("SELECT", "*", "FROM", table_name, "ORDER BY PartID ASC")
-val_table <- DBI::dbGetQuery(main_db, quary)
-val_table <- val_table[grepl("^NA", rownames(val_table))==F,]
-cat_sets <- val_table[val_table$partType=="catSet", ]
+query <- paste("SELECT", "*", "FROM", table_name, "ORDER BY PartID ASC")
+parts_table <- DBI::dbGetQuery(main_db, query)
+parts_table <- parts_table[grepl("^NA", rownames(parts_table))==F,]
+cat_sets <- parts_table[parts_table$partType=="catSet", ]
 cat_sets[!is.na(cat_sets)]
 
 cat_sets <- unique(cat_sets[["catSetID"]])
@@ -20,8 +20,8 @@ for (single_category in cat_sets) {
   if(single_category=="NA"){
     next
   }
-  working_rows <- val_table[val_table$catSetID==single_category & val_table$partType=="category", ]
-  part_id <- val_table[val_table$catSetID==single_category & val_table$partType=="catSet", ]
+  working_rows <- parts_table[parts_table$catSetID==single_category & parts_table$partType=="category", ]
+  part_id <- parts_table[parts_table$catSetID==single_category & parts_table$partType=="catSet", ]
   
   working_rows <- working_rows[grepl("^NA", rownames(working_rows))==F,]
   part_id <- part_id[grepl("^NA", rownames(part_id))==F,]
@@ -29,7 +29,7 @@ for (single_category in cat_sets) {
   new_col[[part_id$partID]] <- list(partID = working_rows$partID, partLabel = working_rows$partLabel)
 }
 
-new_table <- val_table
+new_table <- parts_table
 new_table[[col_name]] <- ""
 for (single_partID in names(new_col)) {
   
@@ -65,16 +65,26 @@ RSQLite::dbWriteTable(
 DBI::dbDisconnect(main_db)
 }
 
-
-# mod_sql_table_table_of_content("data/tables/main.sqlite", "parts", "table_of_contents", "cat_tables")
+#' Mod Sql Table Table Of Content
+#'
+#' Create 2 new sql tables based of in_table. One table contains table of contents for reference table
+#' Second table contains the information to populate each table type and as well as their sub categories
+#'
+#' @param main_db_path System path to the main sqlite database
+#' @param in_table_name Represents the name of the sql table data is pulled from
+#' @param out_table_name Respresents the name of the sql table containing the table of content table thats created
+#' @param out_table_with_categories_name the name of the sql table that contains info on sub categories.
+#'
+#' @examples
+#' mod_sql_table_table_of_content("data/tables/main.sqlite", "parts", "table_of_contents", "cat_tables")
 mod_sql_table_table_of_content <- function(main_db_path, in_table_name, out_table_name, out_table_with_categories_name){
   
   main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
-  quary <- paste("SELECT", "*", "FROM", in_table_name)
-  val_table <- DBI::dbGetQuery(main_db, quary)
-  val_table <- val_table[grepl("^NA", rownames(val_table))==F,]
-  val_table[["sub_categories_string"]] <- ""
-  table_info <- val_table[val_table$partType=="table", ]
+  query <- paste("SELECT", "*", "FROM", in_table_name)
+  parts_table <- DBI::dbGetQuery(main_db, query)
+  parts_table <- parts_table[grepl("^NA", rownames(parts_table))==F,]
+  parts_table[["sub_categories_string"]] <- ""
+  table_parts <- parts_table[parts_table$partType=="table", ]
   
   
   table_with_categories <- data.frame()
@@ -82,63 +92,64 @@ mod_sql_table_table_of_content <- function(main_db_path, in_table_name, out_tabl
   RSQLite::dbWriteTable(
     conn = main_db,
     name = out_table_name,
-    value = table_info,
+    value = table_parts,
     row.names = FALSE,
     header = TRUE,
     overwrite=TRUE
   )
   
-  for (row_index in 1:nrow(table_info)) {
-    if(is.na(table_info[row_index, ]$partType)){
+  for (row_index in 1:nrow(table_parts)) {
+    if(is.na(table_parts[row_index, ]$partType)){
       next()
     }
-    working_row <- table_info[row_index, ]
-    table_name <- working_row$partID
+    current_table_row <- table_parts[row_index, ]
+    table_name <- current_table_row$partID
     
-    valid_sub_categories <- val_table[val_table[[table_name]]!="NA" & !is.na(val_table[[table_name]]), ]
-    if (nrow(valid_sub_categories) > 0) {
-      for (sub_categories_index in 1:nrow(valid_sub_categories)) {
-        sub_working_row <- valid_sub_categories[sub_categories_index,]
+    current_table_parts <- parts_table[parts_table[[table_name]]!="NA" & !is.na(parts_table[[table_name]]), ]
+    if (nrow(current_table_parts) > 0) {
+      for (sub_categories_index in 1:nrow(current_table_parts)) {
+        current_column <- current_table_parts[sub_categories_index,]
         
-        if (sub_working_row$partType == "catSet") {
-          sub_categories_info <- "<ul>"
-          working_cat_set_ID <- sub_working_row$catSetID
+        if (current_column$partType == "catSet") {
+          categories_string <- "<ul>"
+          working_cat_set_ID <- current_column$catSetID
           matching_sub_categories <-
-            val_table[val_table$catSetID == working_cat_set_ID &
-                        val_table$partID != sub_working_row$partID, ]
+            parts_table[parts_table$catSetID == working_cat_set_ID &
+                        parts_table$partID != current_column$partID, ]
           for (matching_sub_categories_index in 1:nrow(matching_sub_categories)) {
-            sub_sub_working_row <-
+            working_category_row <-
               matching_sub_categories[matching_sub_categories_index, ]
-            if (nrow(sub_sub_working_row) > 0 && !is.na(sub_sub_working_row$partLabel)) {
-              if (sub_sub_working_row$partLabel == "NA") {
-                next
+            if (nrow(working_category_row) > 0 && !is.na(working_category_row$partLabel)) {
+              if (working_category_row$partLabel == "NA") {
+                warning(glue::glue('{working_category_row$partID} has label set to NA'))
+                working_category_row$partLabel <- "Missing part label"
               }
               
-              sub_categories_info <-
+              categories_string <-
                 paste0(
-                  sub_categories_info,
+                  categories_string,
                   "<li>",
-                  sub_sub_working_row$partID,
+                  working_category_row$partID,
                   ": ",
-                  sub_sub_working_row$partLabel,
+                  working_category_row$partLabel,
                   "</li>"
                 )
             }
           }
-          sub_categories_info <- paste0(sub_categories_info, "</ul>")
-          valid_sub_categories[valid_sub_categories$partID == sub_working_row$partID, "sub_categories_string"] <-
-            sub_categories_info
+          categories_string <- paste0(categories_string, "</ul>")
+          current_table_parts[current_table_parts$partID == current_column$partID, "sub_categories_string"] <-
+            categories_string
         }
         
       }
     }
     
-    order_name <- paste0(table_name, "Order")
-    if(nrow(valid_sub_categories)>0 && !is.null(valid_sub_categories[[order_name]])){
-    valid_sub_categories<- valid_sub_categories[order(valid_sub_categories[[order_name]]), ]
+    table_order_column <- paste0(table_name, "Order")
+    if(nrow(current_table_parts)>0 && !is.null(current_table_parts[[table_order_column]])){
+    current_table_parts<- current_table_parts[order(current_table_parts[[table_order_column]]), ]
     }
     
-    tmp_table <- rbind(working_row, valid_sub_categories)
+    tmp_table <- rbind(current_table_row, current_table_parts)
     table_with_categories <- rbind(table_with_categories, tmp_table)
     
   }

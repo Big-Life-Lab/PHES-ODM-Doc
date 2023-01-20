@@ -12,96 +12,99 @@ intro
 
 ```{r, echo=FALSE}
 main_db <- DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
-quary <- paste("SELECT", "*", "FROM", "table_of_contents")
-val_table <- DBI::dbGetQuery(main_db, quary)
+query <- paste("SELECT", "*", "FROM", "table_of_contents")
+table_of_contents_table <- DBI::dbGetQuery(main_db, query)
 
 content_string <-""
 table_of_content <-"<ul>"
 
-for (row_index in 1:nrow(val_table)) {
-  if(is.na(val_table[row_index, ]$partType)){
-    next()
-  }
+for (row_index in 1:nrow(table_of_contents_table)) {
   
-  working_row <- val_table[row_index, ]
+  current_table_of_content_row <- table_of_contents_table[row_index, ]
   
-  content_string <- paste0(content_string, working_row$partLabel, " (", working_row$partID, ") </br>", working_row$partDesc, "</br></br>")
+  content_string <- paste0(content_string, current_table_of_content_row$partLabel, " (", current_table_of_content_row$partID, ") </br>", current_table_of_content_row$partDesc, "</br></br>")
   
-  table_of_content <- paste0(table_of_content, "<li><a href=\"#", working_row$partID, "\">", working_row$partID, "</a></li>")
+  table_of_content <- paste0(table_of_content, "<li><a href=\"#", current_table_of_content_row$partID, "\">", current_table_of_content_row$partID, "</a></li>")
   
 }
 table_of_content <- paste0(table_of_content, "</ul>")
 
 
 
-quary <- paste("SELECT", "*", "FROM", "cat_tables")
-val_table <- DBI::dbGetQuery(main_db, quary)
-new_content <- ""
+query <- paste("SELECT", "*", "FROM", "cat_tables")
+cat_table <- DBI::dbGetQuery(main_db, query)
+tables_string <- ""
 running_table_name <-""
 is_there_active_table <- FALSE
 
-for (row_index in 1:nrow(val_table)) {
-  working_row <- val_table[row_index, ]
-  if (is.na(val_table[row_index,]$partType)) {
+for (row_index in 1:nrow(cat_table)) {
+  current_cat_table_row <- cat_table[row_index, ]
+  if (is.na(cat_table[row_index,]$partType)) {
+    warning(glue::glue('{cat_table[row_index,]$partID} has missing partType and will be skipped'))
     next()
-  } else if (val_table[row_index,]$partType == "table") {
+  } else if (cat_table[row_index,]$partType == "table") {
     if (is_there_active_table){
-      new_content <-
+      tables_string <-
       paste0(
-        new_content, "</ul>")
+        tables_string, "</ul>")
       is_there_active_table <- FALSE
     }
-    running_table_name <- working_row$partID
-    new_content <-
+    running_table_name <- current_cat_table_row$partID
+    tables_string <-
       paste0(
-        new_content,"**", 
-        working_row$partLabel,
+        tables_string,"**", 
+        current_cat_table_row$partLabel,
         "** (<a name=\"",
-        working_row$partID,
-        "\"></a>",working_row$partID,
+        current_cat_table_row$partID,
+        "\"></a>",current_cat_table_row$partID,
         ") </br>",
-        working_row$partDesc,
+        current_cat_table_row$partDesc,
         "</br></br>"
       )
     if(!is_there_active_table){
       is_there_active_table <- TRUE
-      new_content <-
+      tables_string <-
       paste0(
-        new_content, "<ul>")
+        tables_string, "<ul>")
     }
   }else{
     required_col_name <- paste0(running_table_name,"Required")
     
-    tmp_key_type <- working_row[[running_table_name]]
-    if(length(tmp_key_type)>0&&!is.na(tmp_key_type)) {
-      if (tmp_key_type == "fK") {
-        tmp_key_type <- "Foreign Key"
-      } else if (tmp_key_type == "pK") {
-        tmp_key_type <- "Primary Key"
+    column_type <- current_cat_table_row[[running_table_name]]
+    prettified_column <- ""
+    if(length(column_type)>0&&!is.na(column_type)) {
+      if (column_type == "fK") {
+        prettified_column <- "(Foreign Key)"
+      } else if (column_type == "pK") {
+        prettified_column <- "(Primary Key)"
+      } else if(column_type == "header"){
+        prettified_column <- ""
+      } else{
+        next()
       }
     }
-    new_content <-
+    tables_string <-
       paste0(
-        new_content, "<li>**",
-        working_row$partLabel,
+        tables_string, "<li>**",
+        current_cat_table_row$partLabel,
         "** (",
-        working_row$partID,
-        "):(",tmp_key_type, ") (", working_row[[required_col_name]], ") [", working_row$dataType, "]</br>",
-        working_row$partDesc, working_row$sub_categories_string, 
+        current_cat_table_row$partID,
+        "):",prettified_column, " (", current_cat_table_row[[required_col_name]], ") [", current_cat_table_row$dataType, "]</br>",
+        current_cat_table_row$partDesc, current_cat_table_row$sub_categories_string, 
         "</li>"
       )
   }
 }
 if(is_there_active_table){
-  new_content <-
+  tables_string <-
       paste0(
-        new_content, "</ul>")
+        tables_string, "</ul>")
 }
 
 ```
 
 `r table_of_content`
-`r new_content`
+`r tables_string`
 
 ```{rvml}```
 
