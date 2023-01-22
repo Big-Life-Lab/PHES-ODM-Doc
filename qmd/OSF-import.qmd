@@ -38,3 +38,54 @@ The current selected version is *`r default_version_name`*. You can modify the q
 
 kable(file_names, col.names = paste('Available files for', default_version_name))
 ```
+
+from osfclient import OSF
+
+# Authenticate with OSF
+
+osf = OSF(auth=('your_username', 'your_password'))
+
+# Get the list of projects for the authenticated user
+
+projects = osf.projects()
+
+# Print the names of the projects
+
+for project in projects: print(project\['attributes'\]\['title'\])
+
+# Get the list of files for a specific project
+
+project_id = 'your_project_id' files = osf.files(project_id)
+
+# Print the names of the files
+
+for file in files: print(file\['attributes'\]\['name'\])
+
+    from osfclient import OSF
+
+    # Create a client object
+    osf = OSF()
+
+    # Authenticate using your OSF account
+    osf.auth(username='your_username', password='your_password')
+
+    # Download a file from a project
+    project_id = 'abcdefg'
+    file_id = 'hijklmn'
+    file = osf.file(project_id, file_id).download()
+
+    # Do something with the file
+    with open(file.name, 'rb') as f:
+        data = f.read()
+        print(data)
+
+You can also use the **`osfclient`** package to upload, delete and get metadata of files
+
+    Copy code#Upload a file
+    osf.file(project_id, file_id).upload('path/to/file')
+
+    #Delete a file
+    osf.file(project_id, file_id).delete()
+
+    # Get metadata of a file
+    metadata = osf.file(project_id, file_id).metadata()
