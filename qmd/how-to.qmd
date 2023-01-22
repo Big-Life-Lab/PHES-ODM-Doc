@@ -1,29 +1,37 @@
 # How to use the ODM {.unnumbered}
 
-## How-To Guides
+## How-To guides
 
 ## 1) How to use templates
 
-The main purpose of these templates it to provide you with an easy way to convert your wastewater data into the PHES-ODM format. Below you will find a series of Guides that will walk you through them. To begin with, in these Guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. While these Guides will also provide definitions and explanations for some terms, most can be found here <!--# link to Rusty's page with the definitions -->.
+ODM Excel templates provide you with an easy way to convert your wastewater data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the templates.
 
-<!--# Can you one of you write something about what order the templates/tables should be filled out?  -->
+In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. guides will also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->.
+
+The templates can be found at the OSF.io [PHES-ODM project](https://osf.io/ynp6f "https://osf.io/ynp6f"). The they can be completed in any order. More information about the tables can be found in the [getting-to-know](TBD) section. Briefly,
+
+-   `measures` and `samples` table the blue tabs and they are used day-to-day reporting of new measurements and information about how and when samples are collected. `sampleRelationships` is used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures (you can---and should--- record a [quality flag](TBD) attribute for each measure or sample in the `measures` and `samples` tables).
+
+-   Typically, there is one-time initial setup where information is entered the tables with the yellow tabs. These tables include information about `sites`, `organizations`, `contacts`, and `addresses`.
+
+-   There are supporting tables including `protocols` and `instruments` where you record information about how samples are taken and measures are reported. The tables are usually completed once and then updated when there are changes to the protocol. `protocolSteps` and `protocolRelationships` tables are part used alongside the `protocols` table. Other supporting tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
 
 <!--# Should I include an explanation regarding the "side content" in some of the templates (i.e. the code for the conditional menus and to convert the entered data into part IDs) or should I hide them in the template? -->
 
+<!--# DGM: What about an 'explanation' section at the end of the document. This could be left to a future update. The section could describe how the spreadsheets work and how they can be customized -->
+
 <!--# Should I include an explanation regarding how certain templates only have 3 rows active (because of the slow down caused by the conditional menus)? -->
 
-<!--# I tried to go with active voice (assuming that it made sense) since it's a How-to Guide.  If this doesn't fit with the other documentation, I'm fine with changing this. -->
+<!--# DGM: I would put that in the future 'explanation' section at the end-->
 
-The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes:
+The templates contain four main types of fields, each with their own for instructional purposes:
 
--   **Identifier, Unique Identifier and Composite Unique Identifier (Red):** In these fields you will create a value that will be used to identify something. For instance, Sample ID is used to identify a particular Sample. <!--# I decided to capitalize all terms that refer to anything associated with a field (such as in this case, a sample).  It works at times but not at others, feel free to edit/change as you see fit -->An Identifier can be repeated between entries, while an Unique Identifier cannot. There is usually only one Unique Identifier per template.
--   **Drop-down and Conditional Drop-down Menus (Green):** These fields have a drop-down menu which contain the values that you can either select **or** type in. In conditional drop-down menus, the values depend on what you entered in a previous field.
--   **Date Fields (Purple):** Dates are entered in these fields and must be in the form of dd/mm/yyyy. <!--# Is this the format that you want? -->
--   **Free Form Fields (Blue):** In these fields, you can enter your data with minimal restrictions. Any restrictions will be specified in the relevant sections.
+-   **Identifier, unique identifier and composite unique identifier (red):** In these fields you will create a value that will be used to identify something. For instance, `Sample ID` is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the table. e.g. `Measure ID` for the `measures` table, and `Contact ID` for the `contacts` table.
+-   **Drop-down and conditional drop-down menus (green):** These fields have a drop-down menu which contain the values that you can either select **or** type in. In conditional drop-down menus, the values depend on what you entered in a previous field.
+-   **Date Fields (purple):** Dates are entered in these fields and must be in the form of the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html "https://www.iso.org/iso-8601-date-and-time-format.html") format: `yyyy-mm-dd`. All date fields also support entries for hours, minutes, and seconds: `2022-01-01T06:11:54` and `2022-01-01T06:11:54+13:30`
+-   **Free Form Fields (blue):** In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for [temperature](docs.phes-odm.org/parts#temp "docs.phes-odm.org/parts#temp") is a real number.
 
-## 2) How to report Protocols, Protocol Steps and Protocol Relationships:
-
-<!--# add link to youtube video -->
+## 2) How to report `Protocols`, `Protocol Steps` and `Protocol Relationships`:
 
 In this guide you will learn how to enter Protocols, Protocol Steps and Protocol Relationships into their respective templates. As described in <!--# title of definitions document and link-->, a Protocol is "A procedure for collecting a sample or performing a measure". Each entry in the Protocols Template represents a unique Protocol. A Protocol is made up of Protocol Steps. In the Protocol Steps Template, each entry is one of these steps. Finally, Protocols and Protocols can be linked to each other. Each entry in the Protocol Relationships Template represents one of these relationships in the form, Subject - Relationship - Object. So, for example, to specify that Protocol Step A needs to be done before Protocol Step B, you would enter "Protocol Step A" - "is Before" - "Protocol Step B". <!--# is this correct? -->.
 
@@ -897,4 +905,4 @@ You have now entered in your Metadata, congratulations!
 
 ## Example data for each of the 11 report tables.
 
-<!--# Do you still want this section, since I'm putting in example data within the Guides? Alternatively, I can also remove the within-Guide example data.-->
+<!--# Do you still want this section, since I'm putting in example data within the guides? Alternatively, I can also remove the within-Guide example data.-->
