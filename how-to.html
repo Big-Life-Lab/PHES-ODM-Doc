@@ -174,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#measures-template" id="toc-measures-template" class="nav-link" data-scroll-target="#measures-template">Measures Template</a></li>
   <li><a href="#measure-sets-template" id="toc-measure-sets-template" class="nav-link" data-scroll-target="#measure-sets-template"><strong>Measure Sets Template</strong></a></li>
   </ul></li>
-  <li><a href="#detailed-description" id="toc-detailed-description" class="nav-link" data-scroll-target="#detailed-description">Detailed Description</a>
+  <li><a href="#detailed-description" id="toc-detailed-description" class="nav-link" data-scroll-target="#detailed-description">Detailed description</a>
   <ul class="collapse">
   <li><a href="#measures-template-1" id="toc-measures-template-1" class="nav-link" data-scroll-target="#measures-template-1"><strong>Measures template</strong></a></li>
   <li><a href="#measure-sets-template-1" id="toc-measure-sets-template-1" class="nav-link" data-scroll-target="#measure-sets-template-1"><strong>Measure Sets Template</strong></a></li>
@@ -255,13 +255,24 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-to-use-templates" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-templates">1) How to use templates</h2>
-<p>ODM Excel templates provide you with an easy way to convert your wastewater data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the templates.</p>
-<p>In these guides, “field” refers to a column in the template, and “entry” refers to a row of information that you entered. guides will also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->.</p>
-<p>The templates can be found at the OSF.io <a href="https://osf.io/ynp6f" title="https://osf.io/ynp6f">PHES-ODM project</a>. The they can be completed in any order. More information about the tables can be found in the <a href="TBD">getting-to-know</a> section. Briefly,</p>
+<p>ODM Excel report templates provide you with an easy way to enter your wastewater and other environmental data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the report templates.</p>
+<p>In these guides, “field” refers to a column in the template, and “entry” refers to a row of information that you entered. Guides also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions --></p>
+<p>The report templates can be found at the OSF.io <a href="https://osf.io/ynp6f" title="https://osf.io/ynp6f">PHES-ODM project</a>. More information about the tables can be found in the <a href="../index.qmd" title="getting-to-know">getting-to-know</a> section.</p>
+<p>Briefly,</p>
 <ul>
-<li><p><code>measures</code> and <code>samples</code> table the blue tabs and they are used day-to-day reporting of new measurements and information about how and when samples are collected. <code>measureSets</code> is an optional table that can be used to link measures together. <code>sampleRelationships</code> is also optional and used only when you have samples that are pooled or split. <code>qualityReports</code> is used for detailed quality assurance and control measures (you can—and should— record a <a href="TBD">quality flag</a> attribute for each measure or sample in the <code>measures</code> and <code>samples</code> tables).</p></li>
-<li><p>Typically, there is one-time initial setup where information is entered the tables with the yellow tabs. These tables include information about <code>sites</code>, <code>organizations</code>, <code>contacts</code>, and <code>addresses</code>.</p></li>
-<li><p>There are optonal supporting tables that include <code>protocols</code> and <code>instruments</code> where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. <code>protocolSteps</code> and <code>protocolRelationships</code> tables are part used alongside the <code>protocols</code> table. Other supporting tables include <code>polygons</code> where information is store about the sample shed and <code>datasets</code> which includes information about the data custodian and owner of the data.</p></li>
+<li><p>‘samples’ and ‘measures’ tables are used day-to-day reporting. Information about a sample will be recorded in the <code>samples</code> table. Following, any measurements are recorded in the <code>measures</code> table. A measure is ‘measurement or observation of any substance including a biological, physical or chemical substance’.</p></li>
+<li><p>There are three optional tables to support reporting samples and measures.</p>
+<ul>
+<li><p><code>sampleRelationships</code> is optional and used only when you have samples that are pooled or split.</p></li>
+<li><p><code>measureSets</code> is also an optional table that can be used to link measures together.</p></li>
+<li><p><code>qualityReports</code> is used for detailed quality assurance and control measures (you can—and should— record a <a href="TBD">quality flag</a> attribute for each measure or sample in the <code>measures</code> and <code>samples</code> tables).</p></li>
+</ul></li>
+<li><p>Typically, there is one-time initial setup where information is entered the tables with the yellow tabs in the Excel template. These tables include information about <code>sites</code>, <code>addresses</code>, <code>organizations</code>, and <code>contacts</code>.</p>
+<ul>
+<li><p><code>sites</code> is a mandantory table records information about where testing is performed.</p></li>
+<li><p><code>addresses</code>, <code>organizations</code>, and <code>contacts</code> provide the contact information for sites and also other entities such as laboratories, or database custodians.</p></li>
+</ul></li>
+<li><p>There are optional supporting tables that include <code>protocols</code> and <code>instruments</code> where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. <code>protocolSteps</code> and <code>protocolRelationships</code> tables are part used alongside the <code>protocols</code> table. Other supporting tables include <code>polygons</code> where information is store about the sample shed and <code>datasets</code> which includes information about the data custodian and owner of the data.</p></li>
 </ul>
 <!--# Should I include an explanation regarding the "side content" in some of the templates (i.e. the code for the conditional menus and to convert the entered data into part IDs) or should I hide them in the template? -->
 <!--# DGM: What about an 'explanation' section at the end of the document. This could be left to a future update. The section could describe how the spreadsheets work and how they can be customized -->
@@ -271,18 +282,18 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Identifier, unique identifier and composite unique identifier (red):</strong> In these fields you will create a value that will be used to identify something. For instance, <code>Sample ID</code> is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the table. e.g.&nbsp;<code>Measure ID</code> for the <code>measures</code> table, and <code>Contact ID</code> for the <code>contacts</code> table.</li>
 <li><strong>Drop-down and conditional drop-down menus (green):</strong> These fields have a drop-down menu which contain the values that you can either select <strong>or</strong> type in. In conditional drop-down menus, the values depend on what you entered in a previous field.</li>
-<li><strong>Date Fields (purple):</strong> Dates are entered in these fields and must be in the form of the <a href="https://www.iso.org/iso-8601-date-and-time-format.html" title="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format: <code>yyyy-mm-dd</code>. All date fields also support entries for hours, minutes, and seconds: <code>2022-01-01T06:11:54</code> and <code>2022-01-01T06:11:54+13:30</code></li>
-<li><strong>Free Form Fields (blue):</strong> In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for <a href="docs.phes-odm.org/parts#temp" title="docs.phes-odm.org/parts#temp">temperature</a> is a real number.</li>
+<li><strong>Date fields (purple):</strong> Dates are entered in these fields and must be in the form of the <a href="https://www.iso.org/iso-8601-date-and-time-format.html" title="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format: <code>yyyy-mm-dd</code>. All date fields also support entries for hours, minutes, and seconds: <code>2022-01-01T06:11:54</code> and <code>2022-01-01T06:11:54+13:30</code></li>
+<li><strong>Free form fields (blue):</strong> In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for <a href="docs.phes-odm.org/parts#temp" title="docs.phes-odm.org/parts#temp">temperature</a> is a real number.</li>
 </ul>
 </section>
 <section id="how-to-report-measures-and-measure-sets" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-report-measures-and-measure-sets">2) How to report Measures and Measure Sets:</h2>
 <!--# add link to youtube video -->
-<p>In this guide you will learn how to enter Measures and Measure Sets into their respective templates. In the <code>Measures</code> template, each entry represents a measure. As described in <a href="TBD">getting-to-know the ODM section</a>, a measure is a “measurement or observation of any substance including a biological, physical or chemical substance”. Along the same lines, in the <code>Measure Sets</code> template, each entry will be a Measure Set. A measure set is a collection of measures.</p>
+<p>In this guide you will learn how to record data in the <code>Measures</code> and <code>Measure Sets</code> table templates. In the <code>Measures</code> table, each row represents a measure. Along the same lines, in the <code>Measure Sets</code> template, each entry will be a collection or set of measures.</p>
 </section>
 <section id="quick-start" class="level2">
 <h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
-<p>Below you will find the mandatory feilds for the <code>measures</code> Table.&nbsp;You will also find some definition of terms and examples of entries of data, with all of the fields filled and colour-coded.&nbsp;A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
+<p>Below you will find the mandatory fields for the <code>measures</code> Table.&nbsp;You will also find definitions of terms and examples of entries of data, with all of the fields filled and colour-coded.&nbsp;A more detailed description of some of the key concepts can be found in the following section,Detailed description.</p>
 <section id="measures-template" class="level3">
 <h3 class="anchored" data-anchor-id="measures-template">Measures Template</h3>
 <ol type="1">
@@ -299,7 +310,7 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong><code>Aggregation</code></strong>: Statistical measures that the Measure represents.</p></li>
 <li><p><strong><code>Specimen</code></strong>: Substance or thing upon which the observation was made. Specimens include water, air, and surface. The Specimen feild is mandatory if there is more than one specimen type that is collected in database.</p></li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><p><strong>Examples</strong></p>
 <p><em>Image will be added</em></p></li>
 </ol>
@@ -319,7 +330,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="detailed-description" class="level2">
-<h2 class="anchored" data-anchor-id="detailed-description">Detailed Description</h2>
+<h2 class="anchored" data-anchor-id="detailed-description">Detailed description</h2>
 <section id="measures-template-1" class="level3">
 <h3 class="anchored" data-anchor-id="measures-template-1"><strong>Measures template</strong></h3>
 <ol type="1">
@@ -335,12 +346,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p>These are the identifier fields.</p></li>
 <li><p><code>Report ID</code> (column A) is the unique identifier for this template, and it cannot be repeated. Each Report ID represents a unique measure.</p>
 <p>The <code>Report ID</code> can be any text field up to 30 characters. If you don’t have a method to generate a <code>Report ID</code> you can use the ODM recommended formula: {Mathew, can you add the formula here}.</p></li>
-<li><p>Other identifiers can be repeats between entries (if needed). For instance, if you enter two different measures from the same sample, then the <code>Sample ID</code> (column C) will be the same.</p></li>
-<li><p>You may have already created these Identifiers in another template. For instance, you may have created <code>Sample ID</code> in the <code>samples</code> Template.</p></li>
+<li><p>Other identifiers can be repeated between entries (if needed). For instance, if you enter two different measures from the same sample, then the <code>Sample ID</code> (column C) will be the same.</p></li>
+<li><p>You may have already created these identifiers in another template. For instance, you may have created <code>Sample ID</code> in the <code>samples</code> Template.</p></li>
 </ul></li>
 <li><p>Column D</p>
 <ul>
-<li><code>Purpose</code> (optional) has a drop-down menu field in which you can select a value. <code>Regular</code> is the default purpose.</li>
+<li><code>Purpose</code> (optional) has a drop-down menu list. In the list, <code>Regular</code> is the default purpose.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns I to M</strong></p>
@@ -358,7 +369,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><code>Specimen</code> and <code>Fraction analyzed</code> have drop-down menus. Both fields are optional, but both are recommended.</li>
 <li><code>Specimen</code> is must be included your table has more than one type of specimen. When there is only one specimen, the database table record the specimen type. For example, if your <code>measures</code> table include only wastewater sample measures, you can indicate this information in the <code>databases</code> table.</li>
-<li><code>Fraction analyzed</code> applies only for water and wastewater samples; however, you should record the fraction for all samples if they are component type water or wastewater.</li>
+<li><code>Fraction analyzed</code> applies only for water and wastewater samples. You should record the fraction for all samples if they are component type water or wastewater.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns N to S</strong></p>
@@ -370,8 +381,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="i">
 <li>Columns N and O
 <ul>
-<li><p><code>Group</code> and <code>Class</code> help organize <code>Measures</code>. The fields have drop-down menus. Both fields are optional and used only if you need help finding a <code>Measure</code>.</p></li>
-<li><p>The ODM has many measures, which can make it challenging to find the measure you want. <code>Group</code> and <code>Class</code> help to narrow down a list of measures.</p></li>
+<li><p><code>Group</code> and <code>Class</code> help organize <code>Measures</code> to make a specific measure easy to find. The fields have drop-down menus. Both fields are optional and used only if you need help finding a <code>Measure</code>.</p></li>
 <li><p>For example, to find the allele measures for SARS-CoV-2 you can start by selecting <code>SARS-CoV-2</code> in the <code>Group</code> column. Next, you select <code>Allele</code> in the <code>Class</code> column. Then, you’ll see the drop-down in the <code>Measure</code> column that contains SARS-CoV-2 allele regions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -385,20 +395,15 @@ ul.task-list li input[type="checkbox"] {
 <li><p><code>Measure</code> is where you select what is being measured. A measure in ODM is a ‘measurement or observation of any substance including a biological, physical or chemical substance.’ <code>Measure</code> has a conditional drop-down menu. See above section on <code>Group</code> and <code>Class</code>.</p></li>
 <li><p>If you chose to enter in a <code>Class</code> (column O), the drop down menu will contain the <code>Measures</code> found in that <code>Class</code>. If you did not enter a value in column O, the menu will contain all possible <code>Measures</code>.</p></li>
 </ul></li>
-<li>Column Q
-<ul>
-<li>This where you will enter in the value of your <code>Measure</code>.</li>
-<li>For instance, if your <code>Measure</code> is a temperature of 20 <sup>o</sup>C, you would enter “20”.</li>
-<li>Note: Excel accepts any data type can be entered in the <code>Measure</code> column. However, each <code>Measure</code> has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found <a href="TBD">here</a>.</li>
-</ul></li>
+<li>Column Q - This where you will enter in the value of your <code>Measure</code>. - For instance, if your <code>Measure</code> is a temperature of 20 <sup>o</sup>C, you would enter “20”. - Note: Excel accepts any data type can be entered in the <code>Measure</code> column. However, each <code>Measure</code> has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found <a href="../parts.qmd#tempClass">here</a>.</li>
 <li>Column R
 <ul>
-<li><code>Units</code> is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is <code>Temperature</code>, the only unit displayed is <code>Celcsius</code>.</li>
+<li><code>Units</code> is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is <code>[Storate temperature](../parts.qmd#sTemp)</code>, the only unit displayed is <code>Celcsius</code>.</li>
 </ul></li>
 <li>Column S
 <ul>
-<li><p><code>Aggregations</code> is where you enter the aggreation of your value. TherThis is a Conditional Drop-down Menu field which contains the types of Aggregations of your value. For example does your value represent a mean, median, etc.</p></li>
-<li><p>What appears in this menu depends on what you entered in the Unit field (column R).</p></li>
+<li><p><code>Aggregations</code> is where you enter the aggregation of your value. There is a conditional drop-down menu field which contains the types of aggregations of your value. For example does your value represent a mean, median, etc.</p></li>
+<li><p>What appears in this menu list depends on what you entered in the Unit field (column R).</p></li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns T to AA</strong></p>
@@ -410,22 +415,20 @@ ul.task-list li input[type="checkbox"] {
 <ol type="i">
 <li>Columns U, V and AA
 <ul>
-<li>These are Free Form fields in which you can enter the indicated information.</li>
-<li>Index (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use “1”, “2”, etc. to differentiate them. <!--# Is this correct? --></li>
-<li>Measure License (column V) refers to the access and use licensing of the Measure that you are entering.</li>
+<li><code>Index</code> (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use “1”, “2”, etc. to differentiate them. <!--# Is this correct? --></li>
+<li><code>Measure license</code> (column V) refers to the access and use licensing of the measure that you are entering.</li>
 </ul></li>
 <li>Column T and W
 <ul>
-<li>These are Drop-down Menu fields</li>
-<li>Reportable Data Flag (column W) is where you can indicate whether your entry is of a good enough quality that it can be used by others. <!--# Is this correct? --></li>
+<li><code>Reportable</code> (column W) is where you can indicate if there are quality concerns with the measure and the measure should not be used for regular reporting. More details of the quality concerns can be recorded in the <code>quality sets</code> table. There is a drop down list this field.</li>
 </ul></li>
 <li>Column X and Y
 <ul>
-<li>These are Identifier fields that are used to indicate the Organization ID and Contact ID associated with the entry</li>
+<li>These are identifier fields that are used to indicate the <code>Organization</code> and <code>Contact</code> associated with the entry.</li>
 </ul></li>
 <li>Column Z
 <ul>
-<li>This is a Date field where you can indicate the date when the entry was updated.</li>
+<li><code>Last edited</code> field is where you indicate the date when the entry was updated. The field is used if you need to modify an entry (row) after your initial recording. You can leave this field blank if the measure was entered with no updates. Meaning, use this field only when you modify the entry (row).</li>
 </ul></li>
 </ol></li>
 </ol>
@@ -434,6 +437,19 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="measure-sets-template-1"><strong>Measure Sets Template</strong></h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+NOTE: this figure needs to be update with the correct labels.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/how-to/measureSets_Col_AG.png" class="img-fluid figure-img" width="671"></p>
