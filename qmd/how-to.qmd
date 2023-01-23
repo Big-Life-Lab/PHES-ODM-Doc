@@ -4,17 +4,31 @@
 
 ## 1) How to use templates
 
-ODM Excel templates provide you with an easy way to convert your wastewater data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the templates.
+ODM Excel report templates provide you with an easy way to enter your wastewater and other environmental data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the report templates.
 
-In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. guides will also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->.
+In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. Guides also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->
 
-The templates can be found at the OSF.io [PHES-ODM project](https://osf.io/ynp6f "https://osf.io/ynp6f"). The they can be completed in any order. More information about the tables can be found in the [getting-to-know](TBD) section. Briefly,
+The report templates can be found at the OSF.io [PHES-ODM project](https://osf.io/ynp6f "https://osf.io/ynp6f"). More information about the tables can be found in the [getting-to-know](../index.qmd "getting-to-know") section.
 
--   `measures` and `samples` table the blue tabs and they are used day-to-day reporting of new measurements and information about how and when samples are collected. `measureSets` is an optional table that can be used to link measures together. `sampleRelationships` is also optional and used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures (you can---and should--- record a [quality flag](TBD) attribute for each measure or sample in the `measures` and `samples` tables).
+Briefly,
 
--   Typically, there is one-time initial setup where information is entered the tables with the yellow tabs. These tables include information about `sites`, `organizations`, `contacts`, and `addresses`.
+-   'samples' and 'measures' tables are used day-to-day reporting. Information about a sample will be recorded in the `samples` table. Following, any measurements are recorded in the `measures` table. A measure is 'measurement or observation of any substance including a biological, physical or chemical substance'.
 
--   There are optonal supporting tables that include `protocols` and `instruments` where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. `protocolSteps` and `protocolRelationships` tables are part used alongside the `protocols` table. Other supporting tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
+-   There are three optional tables to support reporting samples and measures.
+
+    -   `sampleRelationships` is optional and used only when you have samples that are pooled or split.
+
+    -   `measureSets` is also an optional table that can be used to link measures together.
+
+    -   `qualityReports` is used for detailed quality assurance and control measures (you can---and should--- record a [quality flag](TBD) attribute for each measure or sample in the `measures` and `samples` tables).
+
+-   Typically, there is one-time initial setup where information is entered the tables with the yellow tabs in the Excel template. These tables include information about `sites`, `addresses`, `organizations`, and `contacts`.
+
+    -   `sites` is a mandantory table records information about where testing is performed.
+
+    -   `addresses`, `organizations`, and `contacts` provide the contact information for sites and also other entities such as laboratories, or database custodians.
+
+-   There are optional supporting tables that include `protocols` and `instruments` where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. `protocolSteps` and `protocolRelationships` tables are part used alongside the `protocols` table. Other supporting tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
 
 <!--# Should I include an explanation regarding the "side content" in some of the templates (i.e. the code for the conditional menus and to convert the entered data into part IDs) or should I hide them in the template? -->
 
@@ -28,18 +42,18 @@ The templates contain four main types of fields, each with their own for instruc
 
 -   **Identifier, unique identifier and composite unique identifier (red):** In these fields you will create a value that will be used to identify something. For instance, `Sample ID` is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the table. e.g. `Measure ID` for the `measures` table, and `Contact ID` for the `contacts` table.
 -   **Drop-down and conditional drop-down menus (green):** These fields have a drop-down menu which contain the values that you can either select **or** type in. In conditional drop-down menus, the values depend on what you entered in a previous field.
--   **Date Fields (purple):** Dates are entered in these fields and must be in the form of the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html "https://www.iso.org/iso-8601-date-and-time-format.html") format: `yyyy-mm-dd`. All date fields also support entries for hours, minutes, and seconds: `2022-01-01T06:11:54` and `2022-01-01T06:11:54+13:30`
--   **Free Form Fields (blue):** In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for [temperature](docs.phes-odm.org/parts#temp "docs.phes-odm.org/parts#temp") is a real number.
+-   **Date fields (purple):** Dates are entered in these fields and must be in the form of the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html "https://www.iso.org/iso-8601-date-and-time-format.html") format: `yyyy-mm-dd`. All date fields also support entries for hours, minutes, and seconds: `2022-01-01T06:11:54` and `2022-01-01T06:11:54+13:30`
+-   **Free form fields (blue):** In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for [temperature](docs.phes-odm.org/parts#temp "docs.phes-odm.org/parts#temp") is a real number.
 
 ## 2) How to report Measures and Measure Sets:
 
 <!--# add link to youtube video -->
 
-In this guide you will learn how to enter Measures and Measure Sets into their respective templates. In the `Measures` template, each entry represents a measure. As described in [getting-to-know the ODM section](TBD), a measure is a "measurement or observation of any substance including a biological, physical or chemical substance". Along the same lines, in the `Measure Sets` template, each entry will be a Measure Set. A measure set is a collection of measures.
+In this guide you will learn how to record data in the `Measures` and `Measure Sets` table templates. In the `Measures` table, each row represents a measure. Along the same lines, in the `Measure Sets` template, each entry will be a collection or set of measures.
 
 ## Quick Start
 
-Below you will find the mandatory feilds for the `measures` Table. You will also find some definition of terms and examples of entries of data, with all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.
+Below you will find the mandatory fields for the `measures` Table. You will also find definitions of terms and examples of entries of data, with all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section,Detailed description.
 
 ### Measures Template
 
@@ -63,7 +77,7 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
 
 -   **`Specimen`**: Substance or thing upon which the observation was made. Specimens include water, air, and surface. The Specimen feild is mandatory if there is more than one specimen type that is collected in database.
 
-3.  **Examples**
+2.  **Examples**
 
     *Image will be added*
 
@@ -77,7 +91,7 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
 
     *Image will be added.*
 
-## Detailed Description
+## Detailed description
 
 ### **Measures template**
 
@@ -93,13 +107,13 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
 
             The `Report ID` can be any text field up to 30 characters. If you don't have a method to generate a `Report ID` you can use the ODM recommended formula: {Mathew, can you add the formula here}.
 
-        -   Other identifiers can be repeats between entries (if needed). For instance, if you enter two different measures from the same sample, then the `Sample ID` (column C) will be the same.
+        -   Other identifiers can be repeated between entries (if needed). For instance, if you enter two different measures from the same sample, then the `Sample ID` (column C) will be the same.
 
-        -   You may have already created these Identifiers in another template. For instance, you may have created `Sample ID` in the `samples` Template.
+        -   You may have already created these identifiers in another template. For instance, you may have created `Sample ID` in the `samples` Template.
 
     ii) Column D
 
-        -   `Purpose` (optional) has a drop-down menu field in which you can select a value. `Regular` is the default purpose.
+        -   `Purpose` (optional) has a drop-down menu list. In the list, `Regular` is the default purpose.
 
 2.  **Columns I to M**
 
@@ -110,16 +124,14 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
     ii) Columns L and M
         -   `Specimen` and `Fraction analyzed` have drop-down menus. Both fields are optional, but both are recommended.
         -   `Specimen` is must be included your table has more than one type of specimen. When there is only one specimen, the database table record the specimen type. For example, if your `measures` table include only wastewater sample measures, you can indicate this information in the `databases` table.
-        -   `Fraction analyzed` applies only for water and wastewater samples; however, you should record the fraction for all samples if they are component type water or wastewater.
+        -   `Fraction analyzed` applies only for water and wastewater samples. You should record the fraction for all samples if they are component type water or wastewater.
 
 3.  **Columns N to S**
 
     ![](assets/how-to/measures_Col_NS.png){fig-align="center"}
 
     i)  Columns N and O
-        -   `Group` and `Class` help organize `Measures`. The fields have drop-down menus. Both fields are optional and used only if you need help finding a `Measure`.
-
-        -   The ODM has many measures, which can make it challenging to find the measure you want. `Group` and `Class` help to narrow down a list of measures.
+        -   `Group` and `Class` help organize `Measures` to make a specific measure easy to find. The fields have drop-down menus. Both fields are optional and used only if you need help finding a `Measure`.
 
         -   For example, to find the allele measures for SARS-CoV-2 you can start by selecting `SARS-CoV-2` in the `Group` column. Next, you select `Allele` in the `Class` column. Then, you'll see the drop-down in the `Measure` column that contains SARS-CoV-2 allele regions.
 
@@ -130,36 +142,35 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
         -   `Measure` is where you select what is being measured. A measure in ODM is a 'measurement or observation of any substance including a biological, physical or chemical substance.' `Measure` has a conditional drop-down menu. See above section on `Group` and `Class`.
 
         -   If you chose to enter in a `Class` (column O), the drop down menu will contain the `Measures` found in that `Class`. If you did not enter a value in column O, the menu will contain all possible `Measures`.
-    iii) Column Q
-         -   This where you will enter in the value of your `Measure`.
-         -   For instance, if your `Measure` is a temperature of 20 ^o^C, you would enter "20".
-         -   Note: Excel accepts any data type can be entered in the `Measure` column. However, each `Measure` has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found [here](TBD).
+    iii) Column Q - This where you will enter in the value of your `Measure`. - For instance, if your `Measure` is a temperature of 20 ^o^C, you would enter "20". - Note: Excel accepts any data type can be entered in the `Measure` column. However, each `Measure` has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found [here](../parts.qmd#tempClass).
     iv) Column R
-        -   `Units` is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is `Temperature`, the only unit displayed is `Celcsius`.
+        -   `Units` is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is `[Storate temperature](../parts.qmd#sTemp)`, the only unit displayed is `Celcsius`.
     v)  Column S
-        -   `Aggregations` is where you enter the aggreation of your value. TherThis is a Conditional Drop-down Menu field which contains the types of Aggregations of your value. For example does your value represent a mean, median, etc.
+        -   `Aggregations` is where you enter the aggregation of your value. There is a conditional drop-down menu field which contains the types of aggregations of your value. For example does your value represent a mean, median, etc.
 
-        -   What appears in this menu depends on what you entered in the Unit field (column R).
+        -   What appears in this menu list depends on what you entered in the Unit field (column R).
 
 4.  **Columns T to AA**
 
     ![](assets/how-to/measures_Col_TAA.png){fig-align="center"}
 
     i)  Columns U, V and AA
-        -   These are Free Form fields in which you can enter the indicated information.
-        -   Index (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use "1", "2", etc. to differentiate them. <!--# Is this correct? -->
-        -   Measure License (column V) refers to the access and use licensing of the Measure that you are entering.
+        -   `Index` (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use "1", "2", etc. to differentiate them. <!--# Is this correct? -->
+        -   `Measure license` (column V) refers to the access and use licensing of the measure that you are entering.
     ii) Column T and W
-        -   These are Drop-down Menu fields
-        -   Reportable Data Flag (column W) is where you can indicate whether your entry is of a good enough quality that it can be used by others. <!--# Is this correct? -->
+        -   `Reportable` (column W) is where you can indicate if there are quality concerns with the measure and the measure should not be used for regular reporting. More details of the quality concerns can be recorded in the `quality sets` table. There is a drop down list this field.
     iii) Column X and Y
-         -   These are Identifier fields that are used to indicate the Organization ID and Contact ID associated with the entry
+         -   These are identifier fields that are used to indicate the `Organization` and `Contact` associated with the entry.
     iv) Column Z
-        -   This is a Date field where you can indicate the date when the entry was updated.
+        -   `Last edited` field is where you indicate the date when the entry was updated. The field is used if you need to modify an entry (row) after your initial recording. You can leave this field blank if the measure was entered with no updates. Meaning, use this field only when you modify the entry (row).
 
 ### **Measure Sets Template**
 
 1.  **Columns A to G**
+
+    ::: callout-note
+    ## NOTE: this figure needs to be update with the correct labels.
+    :::
 
     ![](assets/how-to/measureSets_Col_AG.png){fig-align="center" width="671"}
 
@@ -177,7 +188,7 @@ Below you will find the mandatory feilds for the `measures` Table. You will als
     iii) Column F
 
          -   This is a Date field in which you can enter in the date when the entry was updated.
-
+         
 You have now entered your data in the Measures and Measure Sets Template, congratulations!
 
 ## 3) How to report Samples and Sample Relationships:
