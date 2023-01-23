@@ -1,231 +1,77 @@
 # How to use the ODM {.unnumbered}
 
+## How-To guides
+
 ## 1) How to use templates
 
-The main purpose of templates it to provide you with an easy way to enter in your wastewater data in the PHES-ODM format. Below you will find a series of Guides that will walk you through this process. To begin with, in these Guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. While these Guides will also provide definitions and explanations for some terms, most can be found here <!--# link and/or provide title to page with definitions -->..
+ODM Excel templates provide you with an easy way to convert your wastewater data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the templates.
 
-The templates contain four main types of fields and, in the Guides, they have been associated with a colour for instructional purposes: 
+In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. guides will also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->.
 
--   **Identifier, Unique Identifier and Composite Unique Identifer (Red):** In these types of fields you will create a value that will be used to identify something. For instance, "Sample ID" is used to identify a particular Sample. <!--# I decided to capitalize all terms that refer to anything associated with a field (such as in this case, a sample). I'm not sure if this works... -->In an Identifier, these values can be repeated between entries, while in a Unique Identifier, they cannot. There is usually only one Unique Identifier per template. A Composite Unique Identifier is a type of Unique Identifier formed by two or more fields. An example can be found in colums A and B below, where while there is repetition in A and B, there is no repetition in the combination of the two. <!--# I'm not sure if you want an example with more relevant entries -->
+The templates can be found at the OSF.io [PHES-ODM project](https://osf.io/ynp6f "https://osf.io/ynp6f"). The they can be completed in any order. More information about the tables can be found in the [getting-to-know](TBD) section. Briefly,
 
-![](/assets/how-to/composite-ex.png){fig-align="center"} 
+-   `measures` and `samples` table the blue tabs and they are used day-to-day reporting of new measurements and information about how and when samples are collected. `measureSets` is an optional table that can be used to link measures together. `sampleRelationships` is also optional and used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures (you can---and should--- record a [quality flag](TBD) attribute for each measure or sample in the `measures` and `samples` tables).
 
--   **Drop-down and Conditional Drop-down Menus (Green):** These fields have a drop-down menu which contain the values that can be entered. These valuess can be selected **or** typed in. In conditional drop-down menus, the valuess depend on what you entered in a previous field.
+-   Typically, there is one-time initial setup where information is entered the tables with the yellow tabs. These tables include information about `sites`, `organizations`, `contacts`, and `addresses`.
 
--   **Free form (Blue):** In these fields, there are no restrictions on how to enter your data.
+-   There are optonal supporting tables that include `protocols` and `instruments` where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. `protocolSteps` and `protocolRelationships` tables are part used alongside the `protocols` table. Other supporting tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
 
-## 2) How to report methods:
+<!--# Should I include an explanation regarding the "side content" in some of the templates (i.e. the code for the conditional menus and to convert the entered data into part IDs) or should I hide them in the template? -->
 
-<!--# add link to youtube video -->
+<!--# DGM: What about an 'explanation' section at the end of the document. This could be left to a future update. The section could describe how the spreadsheets work and how they can be customized -->
 
-In this guide you will learn how to enter Methods into the Method Sets and Methods Step templates. As described in <!--# title of document and link-->, a Method is "A procedure for collecting a sample or performing a measure". A Method Set is essentially a Method <!--# is this correct? -->. In the Method Sets template, each entry is a step in a Method Set (a step will be defined shortly).
+<!--# Should I include an explanation regarding how certain templates only have 3 rows active (because of the slow down caused by the conditional menus)? -->
 
-A Method Set is made up of steps, called Method Steps. In the Method Steps template, each entry represents one of these steps. A key thing to note is that a step can be a Method or a Measure. An individual step can also be used in multiple Method Sets.
+<!--# DGM: I would put that in the future 'explanation' section at the end-->
 
-For instance, you might have a Method Set for an extraction procedure. This set will have multiple steps that go through this process. <!--# I have no idea if this makes sense, feel free to edit -->
+The templates contain four main types of fields, each with their own for instructional purposes:
 
-For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+-   **Identifier, unique identifier and composite unique identifier (red):** In these fields you will create a value that will be used to identify something. For instance, `Sample ID` is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the table. e.g. `Measure ID` for the `measures` table, and `Contact ID` for the `contacts` table.
+-   **Drop-down and conditional drop-down menus (green):** These fields have a drop-down menu which contain the values that you can either select **or** type in. In conditional drop-down menus, the values depend on what you entered in a previous field.
+-   **Date Fields (purple):** Dates are entered in these fields and must be in the form of the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html "https://www.iso.org/iso-8601-date-and-time-format.html") format: `yyyy-mm-dd`. All date fields also support entries for hours, minutes, and seconds: `2022-01-01T06:11:54` and `2022-01-01T06:11:54+13:30`
+-   **Free Form Fields (blue):** In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for [temperature](docs.phes-odm.org/parts#temp "docs.phes-odm.org/parts#temp") is a real number.
 
-## Quick Start
-
-Below you will find the fields that are mandatory for the Method Steps and Method Sets template. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
-
-### **Method Steps Template**
-
-1.  **Mandatory fields**
-
-|                                     |                               |
-|:-----------------------------------:|:-----------------------------:|
-|           Method Step ID            | Method (if entering a Method) |
-|   Measure (if entering a Measure)   |             Name              |
-|    Value (if entering a Measure)    | Unit (if entering a Measure)  |
-| Aggregation (if entering a Measure) |                               |
-
-2.  **Definitions**
-
--   Method Step ID: The unique identifier for a specific method step.
-
--   Method: A procedure for collecting a sample or performing a measure.
-
--   Measure: A measurement or observation of any substance including a biological, physical or chemical substance.
-
--   Name: Name of the entity. <!--# I'm not sure what this means, could Doug or Mathew expand? -->
-
--   Value: Value of a measure, observation or attribute.
-
--   Unit: The units of a measurement.
-
--   Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.
-
-3.  **Examples**
-
-![](/assets/how-to/MethSteps_Col_AG_ex.png){fig-align="center"}
-
-![](/assets/how-to/MethSteps_col_HO_ex.png){fig-align="center"}
-
-### **Method Sets Template**
-
-1.  **Mandatory fields**
-
-|                      |                   |
-|:--------------------:|:-----------------:|
-| Method Set Report ID |   Method Set ID   |
-|    Method Step ID    | Method Step Index |
-
-2.  **Definitions**
-
--   Method Set Report ID: Unique identifier for a method set.
-
--   Method Set ID: A unique identifier for a given method set.
-
--   Method Step ID: The unique identifier for a specific method step.
-
--   Method Step Index: Specifies the index of a method step within a method set, i.e. the order of the steps in a set.
-
-3.  **Examples**
-
-![](/assets/how-to/methSets_Col_AD_ex.png){fig-align="center"}
-
-![](/assets/how-to/methSets_Col_EH_ex.png){fig-align="center"}
-
-## Detailed Description
-
-### **Method Steps Template**
-
-1.  **Columns A to G**
-
-    ![](/assets/how-to/methSteps_col_AG.png){fig-align="center"}
-
-    i)  Column A:
-        -   Method Step ID (column A) is the Unique Identifier field for this template and cannot be repeated between entries. You can think of each Method Step ID value as representing a unique Method Step.
-    ii) Columns B to C:
-        -   These are Drop-down Menu fields.
-
-        -   You only need to enter a value into Method ID (column B) or Measure ID (column C). The former is for when you are entering a Method and the latter is for a Measure. Leave the other field **blank**.
-    iii) Columns D to G:
-         -   These are Free Form fields and you can enter the relevant information in any format that you wish.
-         -   Name (column D) refers to <!--# I'm not sure what this refers to and the defintion in the parts table was not helpful -->
-         -   Summary (column E) is a short description of the Method Step that you are entering
-         -   Method Step Version (column F) refers to whether or not you have multiple version of this Step. If you do, then you can differentiate the different versions with "1", "2", etc.
-
-2.  **Columns H to O**
-
-    ![](/assets/how-to/methSteps_col_HO.png){fig-align="center"}
-
-    i)  Columns H to J:
-        -   These are Identifier fields.
-        -   You can repeat values between entries. For instance, if you are entering two different Method Steps from the same Organization, then "Organization" (column H) will be the same.
-        -   You may have already created these Identifiers in another template. For instance you may have created "Organization" in the Organizations Template.
-    ii) Column K:
-        -   A Free Form field in which you will enter the Value of the Measure. If a Method is being entered, then you can put "NA" here.
-    iii) Columns L and M:
-         -   These are Conditional Drop-down Menu fields.
-
-         -   Unit (column L) depends on what you entered in Measure ID (column C). If you entered a Method, then you can put "NA" in this field.
-
-         -   Aggregation (column M) depends on what you entered in Unit (column L). If you entered a Method, then you can put "NA" in this field.
-    iv) Columns N and O:
-        -   These are Free Form fields where you will enter values for the indicated fields.
-
-### **Method Sets Template**
-
-1.  **Columns A to D**
-
-    ![](/assets/how-to/methSets_Col_AD.png){fig-align="center"}
-
-    i)  Columns A to D:
-        -   Method Set Report ID (column A) is the Composite Unique Identifier field for this template.
-
-            -   This value is automatically generated by the template by combining Method Set ID (column B) and Method Step Index (column D). It is important that you ensure that any combination of these two fields are not repeated.
-
-            -   Each Method Set Report ID value represents a Step within a Method Set.
-
-        -   Method Set ID (column B) and and Method Step ID (column C) are Identifier fields.
-
-        -   Method Step Index (column D) is a Free Form field and indicates the position of the Method Step in its Method Set. For instance, if the Method Step being entered is the third step in the Method Set, then this value would be "3".
-
-2.  **Columns E to H**
-
-    ![](/assets/how-to/methSets_Col_EH.png){fig-align="center"}
-
-    i)  Columns E to F:
-        -   Method Set Version (column E) is a Free Form field where you will indicate the version of the Method Set. For instance, if the current Method Set that you are entering is an updated version of the original one, you would enter "2".
-
-        -   Method Set Provenance ID (column F) is the Method Set that the one that is being entered is based upon. Thus, you would enter "NA" here unless the value of Method Set Version is 2 or greater.
-    ii) Columns G to H:
-        -   These are free form fields and you can enter the relevant information in any format that you wish.
-
-You have now entered your data in the Method Steps and Methods Sets Template, congratulations!
-
-## 3) How to report measures:
+## 2) How to report Measures and Measure Sets:
 
 <!--# add link to youtube video -->
 
-In this guide you will learn how to enter Measures into the Measures and Measures Set template. Each entry in this template represents a Measure. As described in <!--# title of document and link-->, a Measure is a "measurement or observation of any substance including a biological, physical or chemical substance". You will enter individual Measures into the Measures Template. You can then group certain Measures together and this will be entered into the Measure Sets template. For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to  page with definitions -->
-
-<!--# Should I add something about how only the first three rows are active and about the columns at the end of the template that are used in the conditional menus? -->
+In this guide you will learn how to enter Measures and Measure Sets into their respective templates. In the `Measures` template, each entry represents a measure. As described in [getting-to-know the ODM section](TBD), a measure is a "measurement or observation of any substance including a biological, physical or chemical substance". Along the same lines, in the `Measure Sets` template, each entry will be a Measure Set. A measure set is a collection of measures.
 
 ## Quick Start
 
-Below you will find the fields that are mandatory for these templates. You will also find some defintion of terms and examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
+Below you will find the mandatory feilds for the `measures` Table. You will also find some definition of terms and examples of entries of data, with all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.
 
 ### Measures Template
 
 1.  **Mandatory fields**
 
-|                   |                                                    |
-|:-----------------:|:--------------------------------------------------:|
-| Measure Report ID |                     Sample ID                      |
-|      Site ID      |              Analysis Date End Value               |
-|     Specimen      | Fraction analyzed (only if Specimen ID = "Sample") |
-|      Measure      |                       Value                        |
-|       Unit        |                    Aggregation                     |
+-   **`Report ID`**: Unique identifier for a Measure.
 
-2.  **Definitions**
+-   **`Sample ID`**: Unique identifier for a Sample.
 
--   Measure Report ID: Unique identifier for a measure.
+-   **`Site ID`**: Unique identifier for the location where a Sample was taken.
 
--   Sample ID: Unique identifier for a sample.
+-   **`Analysis Date End`**: Date the Measure was completed.
 
--   Site ID: Unique identifier for the location where a sample was taken.
+-   **`Measure`**: A measurement or observation of any substance including a biological, physical or chemical substances.
 
--   Analysis Date End: Date the measurement or analysis was completed.
+-   **`Value`**: Value of the Measure.
 
--   Specimen: The substance or thing upon which the observation was made.
+-   **`Unit`**: Units of a value.
 
--   Fraction analyzed: Fraction of the sample that is analyzed.
+-   **`Aggregation`**: Statistical measures that the Measure represents.
 
--   Measure: A measurement or observation of any substance including a biological, physical or chemical substance.
-
--   Value: Value of a measure, observation or attribute.
-
--   Unit: The units of a measurement.
-
--   Aggregation: Statistical measures used to report a measure. Each aggregation has a corresponding value.
+-   **`Specimen`**: Substance or thing upon which the observation was made. Specimens include water, air, and surface. The Specimen feild is mandatory if there is more than one specimen type that is collected in database.
 
 3.  **Examples**
 
-![](/assets/how-to/Col_AH_ex.png){fig-align="center"}
+    *Image will be added*
 
-![](/assets/how-to/Col_IM_ex.png){fig-align="center"}
-
-![](/assets/how-to/Col_NS_ex.png){fig-align="center"}
-
-![](/assets/how-to/Col_TW_ex.png){fig-align="center"}
-
-### **Measure Sets Template** 
+### **Measure Sets Template**
 
 1.  **Mandatory fields**
 
-|               |                      |
-|:-------------:|:--------------------:|
-| Report Set ID | Method Set Report ID |
-
-2.  **Definitions**
-
--   Report Set ID: Unique identifier that links together a group of related measures.
-
--   Method Set Report ID: Unique identifier for a method set.
+-   **`Report Set ID`**: Unique identifier that links together a group of related Measures.
 
 3.  **Examples**
 
@@ -233,145 +79,176 @@ Below you will find the fields that are mandatory for these templates. You will
 
 ## Detailed Description
 
-### **Measures Template**
+### **Measures template**
 
 1.  **Columns A to H**
 
-    ![](/assets/how-to/Col_AH_1.png){fig-align="center"}
+    ![](assets/how-to/measures_Col_AH.png){fig-align="center" width="679"}
 
     i)  Columns A-C, and E-H
 
-        -   These are all Identifier fields.
-        -   "Report ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Report ID" represents a unique Measure.
-        -   For the rest, you can repeat the Identifer between entries (if needed). For instance, if you are entering two different Measures from the same Sample, then the "Sample ID" (column C) will be the same.
-        -   You may have already created these Identifiers in another template. For instance you may have created "Sample ID" in the Samples Template.
+        -   These are the identifier fields.
+
+        -   `Report ID` (column A) is the unique identifier for this template, and it cannot be repeated. Each Report ID represents a unique measure.
+
+            The `Report ID` can be any text field up to 30 characters. If you don't have a method to generate a `Report ID` you can use the ODM recommended formula: {Mathew, can you add the formula here}.
+
+        -   Other identifiers can be repeats between entries (if needed). For instance, if you enter two different measures from the same sample, then the `Sample ID` (column C) will be the same.
+
+        -   You may have already created these Identifiers in another template. For instance, you may have created `Sample ID` in the `samples` Template.
 
     ii) Column D
 
-        -   This is a Drop-down Menu field in which you can select a value representing the Purpose of your Measure from the menu.    
+        -   `Purpose` (optional) has a drop-down menu field in which you can select a value. `Regular` is the default purpose.
 
 2.  **Columns I to M**
 
-    ![](/assets/how-to/Col_IM_1.png){fig-align="center"}
+    ![](assets/how-to/measures_Col_IM.png){fig-align="center"}
 
     i)  Columns I to K
-        -   These are all Free Form fields where you can enter various dates associated with your Measure.
+        -   These are the date fields where you can enter the dates associated with your measure in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30`
     ii) Columns L and M
-        -   These are Drop-down Menu fields where you can select a value that represents the Specimen, and the Fraction of the Samples that was analyzed for your Measure.  
+        -   `Specimen` and `Fraction analyzed` have drop-down menus. Both fields are optional, but both are recommended.
+        -   `Specimen` is must be included your table has more than one type of specimen. When there is only one specimen, the database table record the specimen type. For example, if your `measures` table include only wastewater sample measures, you can indicate this information in the `databases` table.
+        -   `Fraction analyzed` applies only for water and wastewater samples; however, you should record the fraction for all samples if they are component type water or wastewater.
 
 3.  **Columns N to S**
 
-    ![](/assets/how-to/Col_NS_1.png){fig-align="center"}
+    ![](assets/how-to/measures_Col_NS.png){fig-align="center"}
 
     i)  Columns N and O
-        -   These are Drop-down Menu fields which contain the possible values for Group and Class, respectively, of the Measure that you are entering.
+        -   `Group` and `Class` help organize `Measures`. The fields have drop-down menus. Both fields are optional and used only if you need help finding a `Measure`.
 
-        -   Group and Class are not mandatory, so if you do not know them, leave these fields **blank**. <!--# Is blank OK or would you want something else? If it's something else, I will need to change the code for Measure--> .
+        -   The ODM has many measures, which can make it challenging to find the measure you want. `Group` and `Class` help to narrow down a list of measures.
+
+        -   For example, to find the allele measures for SARS-CoV-2 you can start by selecting `SARS-CoV-2` in the `Group` column. Next, you select `Allele` in the `Class` column. Then, you'll see the drop-down in the `Measure` column that contains SARS-CoV-2 allele regions.
+
+            ![](assets/how-to/group-class-Col_NO.png){fig-align="center" width="10cm" height="5.8cm"}
+
+        -   Leave these fields **blank** if you do not use them.
     ii) Column P
-        -   This is a Conditional Drop-down Menu fields where you will enter the Measure of your entry.
+        -   `Measure` is where you select what is being measured. A measure in ODM is a 'measurement or observation of any substance including a biological, physical or chemical substance.' `Measure` has a conditional drop-down menu. See above section on `Group` and `Class`.
 
-        -   If you chose to enter in a "Class ID" (column O), the drop down menu will contain the Measures found in that Class. If you did not enter a value in column O, the menu will contain all possible Measures.
+        -   If you chose to enter in a `Class` (column O), the drop down menu will contain the `Measures` found in that `Class`. If you did not enter a value in column O, the menu will contain all possible `Measures`.
     iii) Column Q
-         -   This is a Free Form field, where you will enter in the Value of your Measure.
-
-         -   For instance, if your Measure is a temperature of 20 ^o^C, you would enter "20".
+         -   This where you will enter in the value of your `Measure`.
+         -   For instance, if your `Measure` is a temperature of 20 ^o^C, you would enter "20".
+         -   Note: Excel accepts any data type can be entered in the `Measure` column. However, each `Measure` has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found [here](TBD).
     iv) Column R
-        -   This is a Conditional Drop-down Menu field where you will choose the Units of your Value.
-
-        -   Using the temperature example in the previous point, it would be "Celcius". What appears in this menu depends on what you entered in the "Measure ID" field (column P).
+        -   `Units` is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is `Temperature`, the only unit displayed is `Celcsius`.
     v)  Column S
-        -   This is a Conditional Drop-down Menu field which contains the types of Aggregations of your value. For example does your value represent a mean, median, etc.
+        -   `Aggregations` is where you enter the aggreation of your value. TherThis is a Conditional Drop-down Menu field which contains the types of Aggregations of your value. For example does your value represent a mean, median, etc.
 
-        -   What appears in this menu depends on what you entered in the Unit field (column Q).  
+        -   What appears in this menu depends on what you entered in the Unit field (column R).
 
-4.  **Columns T and W**
+4.  **Columns T to AA**
 
-    ![](/assets/how-to/Col_TW_1.png){fig-align="center"}
+    ![](assets/how-to/measures_Col_TAA.png){fig-align="center"}
 
-    i)  Columns T, W and X
+    i)  Columns U, V and AA
         -   These are Free Form fields in which you can enter the indicated information.
-        -   Index (column T) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use "1", "2", etc. to differentiate them. <!--# Is this correct? -->
-    ii) Columns U and V
-        -   These columns consist of a Conditional Drop-down Menu field (Quality Flag) and a Drop-down Menu field (Reportable Data Flag).
-
-        -   "Quality Flag" depends on the value of "Measure" (column P). You can use this to indicate it there are any quality issues with the Measure.
-
-        -   "Reportable" refers to whether or not your entry is of good enough quality that it can be used by others. <!--# Is this correct? -->
+        -   Index (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use "1", "2", etc. to differentiate them. <!--# Is this correct? -->
+        -   Measure License (column V) refers to the access and use licensing of the Measure that you are entering.
+    ii) Column T and W
+        -   These are Drop-down Menu fields
+        -   Reportable Data Flag (column W) is where you can indicate whether your entry is of a good enough quality that it can be used by others. <!--# Is this correct? -->
+    iii) Column X and Y
+         -   These are Identifier fields that are used to indicate the Organization ID and Contact ID associated with the entry
+    iv) Column Z
+        -   This is a Date field where you can indicate the date when the entry was updated.
 
 ### **Measure Sets Template**
 
-1.  **Columns A to H**
+1.  **Columns A to G**
 
-    ![](/assets/how-to/Col_AH_1.png){fig-align="center"}
+    ![](assets/how-to/measureSets_Col_AG.png){fig-align="center" width="671"}
 
-    i)  Columns A, B, E and F
+    i)  Columns A, B, D and E
 
         -   These are all Identifier fields.
-        -   "Set Report ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Set Report ID" represents a unique Measure Set.
-        -   For the rest, you can repeat the Identifer between entries (if needed). For instance, if you are entering two different Measure Sets that came from the same Organization, then the "Organization ID" (column E) will be the same.
-        -   You may have already created these Identifiers in another template. For instance you may have created "Organization ID" in the Organizations Template.
+        -   Report Set ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Report Set ID represents a unique Measure Set.
+        -   For the rest, you can repeat the Identifier between entries (if needed). For instance, if you are entering two different Measure Sets that came from the same Organization, then the Organization ID (column D) will be the same.
+        -   You may have already created these Identifiers in another template. For instance you may have created Organization ID in the Organizations Template.
 
-    ii) Column D
+    ii) Columns C and G
 
-        -   This is a Drop-down Menu field in which you will choose from the menu the type of Measure Set that you are entering.
+        -   These are Free Form fields in which you will enter the indicated information. Name (column C) refers to the name that you have given to the Measure Set.
 
-    iii) Columns C, G and H
+    iii) Column F
 
-         -   These are all Free Form fields in which you can enter in information in any format that you wish.
-         -   "Name" (Column C) refers to .
+         -   This is a Date field in which you can enter in the date when the entry was updated.
 
 You have now entered your data in the Measures and Measure Sets Template, congratulations!
 
-## 4) How to report samples:
+## 3) How to report Samples and Sample Relationships:
 
 <!--# insert video -->
 
-In this guide you will learn how to enter Samples through the Samples template. So, each entry in this template represents a Sample. As described in <!--# title of document and link-->, a Sample is " " <!--# I'm not sure how you want to define this, it's not in the parts table -->.
+In this guide you will learn how to enter Samples and Sample Relationships into their respective templates. In the Samples template, each entry represents a Sample. A Sample is the wastewater that you collected so that Measures can be made. <!--# I'm not sure how you want to define this, it's not in the parts table -->.Along the same lines, each entry in the Sample Relationships represents an interaction (or Relationship) between two Samples in the form, Subject - Relationship - Object. So, to specify that Sample A is a field sample replicate of Sample B, you would enter "Sample A" - "Field Sample Replicate" - "Sample B"
 
-For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
 
 ## Quick Start
 
-Below you will find the fields that are mandatory for the Samples template. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
+Below you will find the fields that are mandatory for the Samples and Sample Relationships template. You will also find some examples of entries of data, with the all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.
+
+### Samples Template
 
 1.  **Mandatory fields**
 
-|                      |                   |
-|:--------------------:|:-----------------:|
-|      Sample ID       |      Site ID      |
-|   Sample Material    | Sample Collection |
-|  Collection Period   | Collection Number |
-| Collection Date Time |                   |
+|      Sample ID       |        Site ID         |
+|:--------------------:|:----------------------:|
+|   Sample Material    | Sample Collection Type |
+|  Collection Period   |   Collection Number    |
+| Collection Date Time |                        |
 
 2.  **Definitions**
 
--   Sample ID: Unique identifier for a sample.
+-   Sample ID: Unique identifier for a Sample.
 
 -   Site ID: Unique identifier for the location where a wastewater sample was taken.
 
--   Sample Material: Type of sample.
+-   Sample Material: Type of Sample.
 
--   Sample Collection: Method used to collect the sample.
+-   Sample Collection Type: Method used to collect the Sample.
 
--   Collection Period: Value of a measure, observation or attribute.
+-   Collection Period: The time period over which the Sample was collected, in hours. <!--# I got this from the parts table and it is unclear to me.  Is it just the number of hours?  Or is it something like 9:00 - 12:00? -->
 
--   Collection Number: The number of subsamples that were combined to create the sample. Use NA for continuous, proportional or passive sampling.
+-   Collection Number: The number of subsamples that were combined to create the Sample. Use NA for continuous, proportional or passive sampling.
 
--   Collection Date Time: The date, time and timezone the sample was taken.
+-   Collection Date Time: The date, time and time zone the sample was taken.
 
 3.  **Examples**
 
-![](/assets/how-to/samples_col_AG_ex.png){fig-align="center"}
+    *to be added*
 
-![](/assets/how-to/samples_col_HN_ex.png){fig-align="center"}
+### Sample Relationships Template
 
-![](/assets/how-to/samples_col_OU_ex.png){fig-align="center"}
+1.  **Mandatory fields**
+
+| Sample ID Object  | Relationship |
+|:-----------------:|:------------:|
+| Sample ID Subject |              |
+
+2.  **Definitions**
+
+-   Sample ID Object: The Object (or one of the samples) of a relationship between two Samples. This will always be a Sample ID that was previously created in the Samples Template.
+
+-   Relationship: Describes relationship between two Samples.
+
+-   Sample ID Subject: The Subject (or one of the samples) of a relationship between two Samples. This will always be a Sample ID that was previously created in the Samples Template.
+
+3.  **Examples**
+
+    Examples will be added
 
 ## Detailed Description
 
+### Samples Template
+
 1.  **Columns A to G**
 
-    ![](/assets/how-to/samples_col_AG.png){fig-align="center"}
+    ![](assets/how-to/samples_col_AG.png){fig-align="center"}
 
     i)  Columns A to E:
 
@@ -379,9 +256,9 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
         -   Sample ID (column A) is the Unique Identifier for this template and cannot be repeated between entries. You can think of each Sample ID value as representing a unique Sample.
 
-        -   For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different Samples from the same Site, then the "Site ID" (column E) will be the same.
+        -   For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different Samples from the same Site, then the Site ID (column E) will be the same.
 
-        -   You may have already created these Identifiers in another template. For instance you may have created "Site ID" in the Sites Template.
+        -   You may have already created these Identifiers in another template. For instance you may have created Site ID in the Sites Template.
 
     ii) Columns F to G:
 
@@ -389,14 +266,14 @@ Below you will find the fields that are mandatory for the Samples template. You 
 
 2.  **Columns H to N**
 
-    ![](/assets/how-to/samples_col_HN.png){fig-align="center"}
+    ![](assets/how-to/samples_col_HN.png){fig-align="center"}
 
     i)  Columns H:
         -   These is an Identifier field for the Dataset that your Sample is associated with.
     ii) Columns I to K, N:
         -   These are Drop-down Menu fields related to various characteristics of your Sample.
 
-        -   Sample collection (column K) refers to the collection technique used to obtain the Sample that you are entering.
+        -   Sample Collection Type (column K) refers to the collection technique you used to obtain the Sample.
 
         -   Pooled (column N) refers to whether or not the Sample that you are entering is made up of multiple child Samples.
 
@@ -406,31 +283,223 @@ Below you will find the fields that are mandatory for the Samples template. You 
          -   Collection Period (column L) refers to the number of hours that it took to collect your Sample.
          -   Collection Number (column M) refers to the number of subsamples that were used to create Sample that you are entering.
 
-3.  **Columns O to U**
+3.  **Columns O to V**
 
-    ![](/assets/how-to/samples_col_OU.png){fig-align="center"}
+    ![](assets/how-to/samples_col_OV.png){fig-align="center"}
 
-    i)  Columns O to R, T to U:
-        -   These are Free Form fields.
+    i)  Columns O to S, U:
+        -   These are Date fields that are related to various dates associated with your Sample. These dates will be in the format dd/mm/yyyy.
+    ii) Column T:
+        -   This is a Drop-down Menu field (Reportable Data Flag) where you can indicate whether or not your entry is of a good enough quality that it can be used by others.
+    iii) Column V:
+         -   This is a Free Form field where you can indicate anything of interest..
 
-        -   Most are related to various dates associated with your Sample.
-    ii) Column S:
-        -   This is a Drop-down Menu field.
-        -   You can use this field to indicate if there are any quality issues with the Sample.
+### Sample Relationships Template
+
+1.  **Columns A to E**
+
+    ![](assets/how-to/sampleRel_col_AE.png){fig-align="center"}
+
+    i)  Columns A and C:
+
+        -   These are Identifier fields.
+
+        -   Both of these Identifiers are Sample IDs and represent Samples. You would have created them previously in the Samples Template. Note that neither of them are Unique Identifiers and, thus, can be repeated between entries.
+
+    ii) Columns B:
+
+        -   This is a Drop-down Menu field, where you can select the type of relationship between two Samples. For instance, if Sample B was a child of Sample A, you would put the Sample ID of Sample A in the Sample ID Subject field (column A), and the Sample ID of Sample B in Sample ID Object field (column C). Then you would chose "Child relationship" from the menu in this column.
+
+    iii) Columns D and E:
+
+         -   These are a Date field (column D) and a Free Form field (column E) where you can enter in the indicated information.
 
 You have now entered your data in the Samples Template, congratulations!
 
-### How to report metadata:
+## 4) How to report `Protocols`, `Protocol Steps` and `Protocol Relationships`:
 
-<!--# insert video -->
+In this guide you will learn how to enter Protocols, Protocol Steps and Protocol Relationships into their respective templates. As described in <!--# title of definitions document and link-->, a Protocol is "A procedure for collecting a sample or performing a measure". Each entry in the Protocols Template represents a unique Protocol. A Protocol is made up of Protocol Steps. In the Protocol Steps Template, each entry is one of these steps. Finally, Protocols and Protocols can be linked to each other. Each entry in the Protocol Relationships Template represents one of these relationships in the form, Subject - Relationship - Object. So, for example, to specify that Protocol Step A needs to be done before Protocol Step B, you would enter "Protocol Step A" - "is Before" - "Protocol Step B". <!--# is this correct? -->.
 
-In this guide you will learn how to enter Metadata through a series of 8 templates. Each entry in a template will usually represent the the title of the template. For instance, in the Organizations template each row will represent an Organization. Metadata is data that gives information about other data. In the context of the PHES-ODM, metadata is anything that gives additional information about Measures, Methods and Samples.
-
-For further information regarding terms and the colour-coding of columns that you will see, please refer to the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
 
 ## Quick Start
 
-Below you will find the fields that are mandatory for the metadata-related templates. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, "Detailed Description".
+Below you will find the fields that are mandatory for the Protocols, Protocol Steps and Protocol Relationships templates. You will also find some examples of entries of data, with all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.
+
+### **Protocol Steps Template**
+
+1.  **Mandatory fields**
+
+|                                     |                               |
+|:-----------------------------------:|:-----------------------------:|
+|          Protocol Step ID           | Method (if entry is a Method) |
+|   Measure (if entry is a Measure)   | Value (if entry is a Measure) |
+| Aggregation (if entry is a Measure) | Unit (if entry is a Measure)  |
+
+2.  **Definitions**
+
+-   Protocol Step ID: Unique identifier for a Protocol Step.
+
+-   Measure: A measurement or observation of any substance including a biological, physical or chemical substance.
+
+-   Method: A procedure for collecting a sample or performing a Measure.
+
+-   Value: Value of the entry.
+
+-   Aggregation: Statistical measures used to report a Measure.
+
+-   Unit: The units of a Measure.
+
+3.  **Examples**
+
+    *Image will be added*
+
+### **Protocols Template**
+
+1.  **Mandatory fields**
+
+|             |     |
+|:-----------:|:---:|
+| Protocol ID |     |
+
+2.  **Definitions**
+
+-   Protocol ID: A unique identifier for a given Protocol.
+
+3.  **Examples**
+
+*Image will be added*
+
+### **Protocol Relationships Template**
+
+1.  **Mandatory fields**
+
+|                                                |                                                          |
+|:-------------------------------:|:-------------------------------------:|
+|             Protocol ID Container              |                       Relationship                       |
+| Protocol ID Subject (if subject is a Protocol) | Protocol Step ID Subject (if subject is a Protocol Step) |
+|  Protocol ID Object (if object is a Protocol)  |  Protocol Step ID Object (if object is a Protocol Step)  |
+
+2.  **Definitions**
+
+-   Protocol ID Container: Unique identifier for a Protocol and the Steps and other Protocols that make it up.
+
+-   Relationship: Describes relationship between the Subject and Object.
+
+-   Protocol ID Subject: The Subject of a Relationship between a Protocol and a Protocol Step or Protocol.
+
+-   Protocol Step ID Subject: The Subject of a Relationship between a Protocol Step and a Protocol Step or Protocol.
+
+-   Protocol ID Object: The Object of a Relationship between a Protocol and a Protocol Step or Protocol.
+
+-   Protocol ID Step Object: The Object of a Relationship between a Protocol Step and a Protocol Step or Protocol.
+
+3.  **Examples**
+
+*Image will be added*
+
+## Detailed Description
+
+### **Protocol Steps Template**
+
+1.  **Columns A to G**
+
+    ![](assets/how-to/protSteps_col_AG.png){fig-align="center"}
+
+    i)  Column A:
+        -   Protocol Step ID (column A) is the Unique Identifier field for this template and cannot be repeated between entries. You can think of each Protocol Step ID value as representing a unique Protocol Step.
+    ii) Columns B to C:
+        -   These are Drop-down Menu fields.
+
+        -   You only need to enter a value into Method ID (column B) or Measure ID (column C). The former is for when you are entering a Method as a Protocol Step. The latter is when you are entering a Measure as a Protocol Step. Leave the other field **blank**.
+    iii) Columns D to G:
+         -   These are Free Form fields and you can enter the relevant information in any format that you wish.
+         -   Summary (column D) is a short description of the Protocol Step that you are entering.
+         -   Protocol Step Source (column E) specifies the Protocol Step which serves as a basis for the given Protocol Step.
+         -   Protocol Step Version (column F) specifies the version of a given Protocol Step.
+
+2.  **Columns H to O**
+
+    ![](assets/how-to/protSteps_col_HO.png){fig-align="center"}
+
+    i)  Columns H to J:
+        -   These are Identifier fields.
+        -   You can repeat values between entries. For instance, if you are entering two different Protocol Steps from the same Organization, then the Organization field (column H) will be the same.
+    ii) Column K:
+        -   A Free Form field in which you will enter the Value of a Measure. If a Method is being entered, then you can put "NA" here.
+    iii) Columns L and M:
+         -   These are Conditional Drop-down Menu fields.
+         -   Unit (column L) depends on what you entered in Measure ID (column C). If you entered a Method, then you can put "NA" in this field.
+         -   Aggregation (column M) depends on what you entered in Unit (column L). If you entered a Method, then you can put "NA" in this field.
+    iv) Columns N and O:
+        -   These are Free Form fields where you can enter the indicated information.
+
+### **Protocols Template**
+
+1.  **Columns A to F**
+
+    ![](assets/how-to/prot_Col_AF.png){fig-align="center"}
+
+    i)  Columns B and C:
+        -   These are Identifier fields.
+        -   Protocol ID (column B) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Protocol ID represents a unique Protocol.
+        -   For Dataset ID, you can repeat between entries (if needed). For instance, if you are entering two different Protocols from the same Dataset, then the Dataset ID (column C) will be the same.
+        -   You may have already created the Dataset IDs in the Datasets Template.
+    ii) Columns A, D to F:
+        -   These are Free Form fields in which you can enter the indicated information.
+        -   Source Protocol (column A) is where you can indicate the Protocol that served as the basis for the Protocol that is currently being entered. <!--# I'm not sure if this is an "ID" field or not -->
+        -   Name (column D) refers to the Name that you have decided to give your Protocol.
+
+2.  **Columns G to K**
+
+    ![](assets/how-to/prot_Col_GK.png){fig-align="center"}
+
+    i)  Columns G, H:
+        -   These are Identifier fields. You can repeat values between entries.
+    ii) Columns I, K:
+        -   These are Free Form fields and you can enter the relevant information in any format that you wish.
+        -   You can use the Protocol Version field (column I) to indicate the version of the Protocol that you are entering.
+    iii) Columns J:
+         -   This is a Date field where you can indicate when the entry was updated.
+
+### Protocol Relationships Template
+
+1.  **Columns A to H**
+
+    ![](assets/how-to/protRel_col_AH.png){fig-align="center"}
+
+    i)  Columns A to C, E and F:
+
+        -   These are Identifier fields.
+
+        -   All of these Identifiers are either Protocol IDs or Protocol Step IDs and represent Protocols and Protocol Steps, respectively. This includes Protocol ID Container (column A), which represents the Protocol that contains the relationships that you are entering in this template. Note that none of these fields are Unique Identifiers and, thus, can be repeated between entries.
+
+        -   You should only enter in a value for one of the two "Object" columns (column B and C); this depends on whether the Object of the relationship that you are entering is a Protocol or a Protocol Step. The same is true for the two "Subject" columns (column E and F).
+
+        -   An example will be given in point (ii) below.
+
+    ii) Columns D:
+
+        -   This is a Drop-down Menu field, where you can select the type of Relationship that is being entered.
+        -   For example, say you wanted to enter in a Relationship stating that Protocol Step A takes place before Protocol Step B in a particular Protocol Container. You would enter the relevant Identifiers in the Step ID Object field (column B) and the Step ID Subject field (column F). You would then select "is Before" from the Relationship field. Finally, to identify this relationship, you would enter in the Identifier in the Protocol ID Container field (column A)
+
+    iii) Columns G and H:
+
+         -   These are a Date field (column D) and a Free Form field (column E) where you can enter in the indicated information.
+
+You have now entered your data in the Protocol Steps, Protocols and Protocol Relationships Template, congratulations!
+
+## 5) How to report Metadata:
+
+<!--# insert video -->
+
+In this guide you will learn how to enter Metadata through a series of templates. Each entry in a template will usually represent what is found in the title of the template. For instance, in the Organizations template each row will represent an Organization. In the context of the PHES-ODM, metadata is anything that gives information that is not found in the templates related to Measures, Protocols and Samples.
+
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([1) How to use templates]) and <!--# link to definitions document -->
+
+## Quick Start
+
+Below you will find the fields that are mandatory for the metadata-related templates. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.
 
 ### Addresses Template
 
@@ -442,25 +511,23 @@ Below you will find the fields that are mandatory for the metadata-related templ
 |      Address Line 1       |    City    |
 | State, Province or Region |  Country   |
 
-2.  **Definitions**
+-   Address ID: A unique identifier for an Address.
 
--   Address ID: A unique identifier for an address.
+-   Dataset ID: The name of the Dataset that stores information for Measures, Samples and other reporting tables.
 
--   Dataset ID: The name of the dataset that stores information for Measures, Samples and other reporting tables.
+-   Address Line 1: Line 1 (the street name, number and direction) for a given Address.
 
--   Address Line 1: Line 1 (the street name, number and direction) for a given address.
+-   City: The city where a Site or Organization is located; part of the Address.
 
--   City: The city where a site or organization is located; part of the address.
+-   State, Province or Region: The state, province, or region where a Site or Organization is located; part of the Address.
 
--   State, Province or Region: The state, province, or region where a site or organization is located; part of the address.
+-   Country: The country where a Site or Organization is located; part of the Address.
 
--   Country: The country where a site or organization is located; part of the address.
-
-3.  **Examples**
+2.  **Examples**
 
 *Images will be added*
 
-### Contacts
+### Contacts Template
 
 1.  **Mandatory fields**
 
@@ -469,15 +536,131 @@ Below you will find the fields that are mandatory for the metadata-related templ
 |  Contact ID   | Organization ID |
 | Contact email |                 |
 
-2.  **Definitions**
-
 -   Contact ID: A unique identifier for a given contact person.
 
--   Organization ID: A unique identifier for the organization to which the reporter is affiliated.
+-   Organization ID: A unique identifier for the Organization to which the reporter is affiliated.
 
--   Email: Contact e-mail address, for the lab.s.
+-   Email: Contact e-mail address, for the labs.
 
-3.  **Examples**
+2.  **Examples**
+
+*Images will be added*
+
+### Datasets Template
+
+1.  **Mandatory fields**
+
+|                |         |
+|:--------------:|:-------:|
+|   Dataset ID   | License |
+| Data Custodian |         |
+
+-   Dataset ID: A unique identifier for the Dataset that stores information.
+
+-   License: The license of the Dataset.
+
+-   Data Custodian: The data custodian(s) of the database.
+
+2.  **Examples**
+
+*Images will be added*
+
+### Instruments Template
+
+1.  **Mandatory fields**
+
+|               |                 |
+|:-------------:|:---------------:|
+| Instrument ID |   Dataset ID    |
+|     Model     | Instrument Type |
+
+-   Instrument ID: A unique identifier for an Instrument.
+
+-   Dataset ID: The name of the Dataset that stores information for Measures, Samples and other reporting tables.
+
+-   Model: Model number or version of the Instrument.
+
+-   Type of Instrument used to perform the measurement.
+
+2.  **Examples**
+
+*Images will be added*
+
+### Organizations Template
+
+1.  **Mandatory fields**
+
+|                   |            |
+|:-----------------:|:----------:|
+|  Organization ID  | Address ID |
+| Organization Type |            |
+
+-   Organization ID: A unique identifier for the Organization to which the reporter is affiliated.
+-   Address ID: A unique identifier for an Address.
+-   Organization Type: Specifies the type or purpose of a given Organization.
+
+2.  **Examples**
+
+*Images will be added*
+
+### Polygons Template
+
+1.  **Mandatory fields**
+
+|                 |                                             |
+|:---------------:|:-------------------------------------------:|
+|   Polygon ID    |              Type of Geography              |
+| Well-known text | European Petroleum Survey Group Coordinates |
+
+-   Polygon ID: Unique identifier for the Polygon.
+-   Type of Geography: Type of geography that is represented by the Polygon.
+-   Well-known text: Well-known text of the Polygon.
+-   European Petroleum Survey Group Coordinates: The unique EPSG code specifying a given geospatial area.
+
+2.  **Examples**
+
+*Images will be added*
+
+### Quality Reports Template
+
+1.  **Mandatory fields**
+
+|                                             |                                                                   |
+|:---------------------------:|:-----------------------------------------:|
+|              Quality Report ID              |           Report ID (if entry is related to a Measure)            |
+| Sample ID (if entry is related to a Sample) | Report Set ID (if entry is related to a Measure in a Measure Set) |
+|                Quality Flag                 |                                                                   |
+
+-   Quality Report ID: A unique identifier for a given Quality Report.
+-   Report ID: Unique identifier for a Measure.
+-   Sample ID: Unique identifier for a Sample.
+-   Report Set ID: Unique identifier that links together a group of related Measures.
+-   Quality Flag: A field for reporting any quality concerns - of lack thereof - for a Sample or Measure.
+
+2.  **Examples**
+
+*Images will be added*
+
+### Sites Template
+
+1.  **Mandatory fields**
+
+|                                             |            |
+|:-------------------------------------------:|:----------:|
+|                   Site ID                   | Site Type  |
+|                 Sample shed                 | Contact ID |
+|                  Latitude                   | Longitude  |
+| European Petroleum Survey Group Coordinates |            |
+
+-   Site ID: Unique identifier for the location where wastewater sample was taken.
+-   Site Type: Type of Site where sample was taken.
+-   Sample shed: A geographic area, physical space, or structure. A Sample is taken from a sample shed for a representative measurement of a substance(s).
+-   Contact ID: A unique identifier for a given contact person.
+-   Latitude: Latitude in decimal coordinates of the Site.
+-   Latitude: Longitude in decimal coordinates of the Site.
+-   European Petroleum Survey Group Coordinates: The unique EPSG code specifying a given geospatial area.
+
+2.  **Examples**
 
 *Images will be added*
 
@@ -485,50 +668,235 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
 ### Addresses Template
 
-1.  **Columns A to H**
+1.  **Columns A to E**
 
-    ![](/assets/how-to/addresses_Col_AH.png){fig-align="center"}
+    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
 
     i)  Columns A and B:
 
         -   These are Identifier fields.
 
-        -   "Address ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Address ID" represents a unique Address.
+        -   Address ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Address ID represents a unique Address.
 
-        -   For column B (Dataset ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Addresses from the same DataSet, then this column will be the same.
+        -   For Dataset ID (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different Addresses from the same Dataset, then this column will be the same.
 
         -   You may have already created the Dataset ID in the Datasets Template.
 
-    ii) Columns C to H:
+    ii) Columns C to E:
 
-        -   These are Free-form fields in which you can enter various information regarding the Address.
+        -   These are Free Form fields in which you can enter various information regarding the Address.
 
-    ### Contacts Template
+2.  **Columns F to J**
 
-    1.  **Columns A to D**
+    ![](assets/how-to/addresses_Col_FJ.png){fig-align="center"}
 
-        ![](/assets/how-to/contacts_Col_AD.png){fig-align="center"}
+    i)  Columns F to J:
 
-        i)  Columns A and B:
+        -   Most of these fields are Free Form in which you can enter various information regarding the Contact.
+        -   Update Date - Last Edited (column I) is a date field.
 
-            -   These are Identifier fields.
+### Contacts Template
 
-            -   "Contact ID" (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of "Contact ID" represents a unique Contact.
+1.  **Columns A to E**
 
-            -   For column B (Organization ID), you can repeat the value between entries (if needed). For instance, if you are entering two different Contacts from the same Organization, then this column will be the same.
+    ![](assets/how-to/contacts_Col_AE.png){fig-align="center"}
 
-            -   You may have already created the Organization ID in the Organizations Template.
+    i)  Columns A to C:
 
-        ii) Columns C to D:
+        -   These are Identifier fields.
 
-            -   These are Free-form fields in which you can enter the name of the Contact.
+        -   Contact ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Contact ID represents a unique Contact.
 
-    2.  **Columns E to I**
+        -   For the rest, you can repeat the Identifier between entries (if needed). For instance, if you are entering two different Contacts that came from the same Organization, then the Organization ID (column C) will be the same.
 
-        ![](/assets/how-to/contacts_Col_EI.png){fig-align="center"}
+        -   You may have already created these Identifiers in another template. For instance you may have created Organization ID in the Organizations Template.
 
-    i)  Columns E and I:
+    ii) Columns D and E:
 
-        -   These are Free-form fields in which you can enter various information regarding the Contact.
+        -   These are Free Form fields in which you can enter the name of the Contact.
+
+2.  **Columns F to J**
+
+    ![](assets/how-to/contacts_Col_FJ.png){fig-align="center"}
+
+    i)  Columns F to J:
+
+        -   Most of these fields are Free Form in which you can enter various information regarding the Contact.
+        -   Update Date - Last Edited (column J) is a date field.
+
+### Datasets Template
+
+1.  **Columns A to G**
+
+    ![](assets/how-to/datasets_Col_AG.png){fig-align="center"}
+
+    i)  Columns A and B:
+
+        -   These are Identifier fields.
+
+        -   Dataset ID (column B) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Dataset ID represents a unique Dataset.
+
+        -   For Parent Dataset ID (column A), you can repeat the value between entries (if needed). For instance, if you are entering two different Datasets that came from the same Parent Dataset, then the Parent Dataset ID will be the same.
+
+    ii) Column C
+
+        -   This is a Date field where you can enter the date that the Dataset was created.
+
+    iii) Columns D to G:
+
+         -   These are Free Form fields in which you can enter various information related to the Dataset.
+
+2.  **Columns H to N**
+
+    ![](assets/how-to/datasets_Col_HN.png){fig-align="center"}
+
+    i)  Columns H to L:
+
+        -   These are Identifier and Free Form fields.
+        -   For information regarding Funders, you can enter their ID and Name in Funder Contact ID and Funding Agency, respectively (columns H and J).
+        -   For information regarding Data Custodians, you can enter their ID and name in Custody Contact ID and Data Custodian, respectively (columns I and K).
+
+    ii) Columns M and N:
+
+        -   These are a Date field (column L) and a Free Form field (column M) where you can enter in the indicated information.
+
+### Instruments Template
+
+1.  **Columns A to G**
+
+    ![](assets/how-to/instruments_Col_AG.png){fig-align="center"}
+
+    i)  Columns A, B, F and G:
+        -   These are Identifier fields.
+
+        -   Instrument ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Instrument ID represents a unique Instrument.
+
+        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Instruments from the same Dataset, then this column will be the same.
+
+        -   You may have already created some of the Identifiers in other Templates. For instance, you may have already created Dataset ID in the Datasets template.
+    ii) Columns C to E
+        -   These are Free Form fields where you can enter the Name (column C), Model (column D) and Manufacturer (column E) of the Instrument.
+
+2.  **Columns H to N**
+
+    ![](assets/how-to/instruments_Col_HN.png)
+
+    i)  Columns H, I, L to N:
+        -   Most of these fields are Free Form in which you can enter relevant information regarding your Instrument
+        -   You can use Index (column L) to differentiate two entries of data that are the same in the other fields. <!--# is this correct? -->
+        -   Update Date - Last Edited (column M) is a date field.
+    ii) Columns J and K:
+        -   For Instrument Type (column J), you can select from the drop-down menu the type of Instrument. If you do not see your Instrument, you can enter "Other instrument type"
+
+        -   If you entered "Other instrument type" in the Instrument Type field, you can use the Describe Other Instrument type, If Applicable field (column K) to describe your Instrument.
+
+### Organizations Template
+
+1.  **Columns A to H**
+
+    ![](assets/how-to/organizations_Col_AH.png)
+
+    i)  Columns A and C:
+        -   These are Identifier fields.
+
+        -   Organization ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Organization ID represents a unique Organization.
+
+        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Organizations from the same Address, then this column will be the same.
+
+        -   You may have already created some of the Identifiers in other Templates. For instance, you may have already created the Address ID in the Addresses Template.
+    ii) Columns D to H:
+        -   For Organization Type (column D), you can select from the menu the type of Organization that you are entering.
+        -   The rest of the columns contain Free Form or Date fields in which you can enter additional information regarding the Organization.
+
+### Polygons Template
+
+1.  **Columns A to G**
+
+    ![](assets/how-to/polygons_Col_AG.png)
+
+    i)  Columns A and B:
+        -   These are Identifier fields.
+
+        -   Polygon ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. A Polygon is an area on a map. <!--# I'm not sure how you want a polygon defined -->Each Polygon ID represents a unique Polygon.
+
+        -   For Dataset ID (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different Polygons from the same Dataset, then this column will have the same value.
+
+        -   You may have already created the Dataset ID in the Datasets Template.
+    ii) Columns C to E, G:
+        -   These are Free Form fields in which you can enter additional information regarding the Polygon.
+        -   Name (column C) is the name of the Polygon.
+        -   European Petroleum Survey Group Coordinates (column G) is a coordinate system that can be used to identify where your Polygon is. <!--# is this correct? -->
+    iii) Columns F:
+         -   For Type of geography (column F) of the Polygon, you can select one of the values from the drop-down menu.
+
+2.  **Columns H to N**
+
+    ![](assets/how-to/polygons_Col_HN.png)
+
+    i)  Columns H to J and N:
+        -   These are Free Form or Date fields in which you can enter relevant information regarding the Polygon.
+
+        -   Well-known text (column H) refers to the text markup language that can be used to represent the Polygon ( <!--# is this correct? -->
+    ii) Columns K and L:
+        -   These are Identifier fields in which the Organization ID and the Contact ID associated with the Polygon are entered.
+
+### Quality Reports Template
+
+1.  **Columns A to H**
+
+    ![](assets/how-to/qualityReports_Col_AH.png)
+
+    i)  Columns A to D:
+        -   These are Identifier fields.
+
+        -   Quality Report ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Quality Report ID represents a unique quality issue that you want to report.
+
+        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Quality Reports from the same Sample, then the Sample IDs will be the same.
+
+        -   You may have already created some of the Identifiers in other Templates. For instance, you may have already created Sample ID in the Samples template.
+    ii) Columns E and F:
+        -   Quality Flag (column E) is a Drop-down Menu field where you can select the type of quality issue that you would like to enter.
+        -   You can indicate the severity of the Quality Flag in the Severity Indicator field (column F).
+    iii) Columns G and H:
+         -   These are a Free Form field and Date field in which you can enter the indicated information.
+
+### Sites Template
+
+1.  **Columns A to F**
+
+    ![](assets/how-to/sites_Col_AF.png)
+
+    i)  Columns A to C, and F:
+        -   These are Identifier fields.
+
+        -   Site ID (column B) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Sites ID represents a unique Site.
+
+        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Sites that are found in the same Polygon, then the Polygon IDs will be the same.
+
+        -   Parent Site ID (column A) refers to the Site that is parent to the Site that is being entered. For example if the Site that is being entered is a room in a LTC facility, that the Parent Site ID would refer to the LTC facility. <!--# I'm not sure if I has this correct -->
+    ii) Columns D to E:
+        -   These are Drop-down Menu fields in which you can specify the Site Type (column D) and the type of Sample shed (column E).
+
+2.  **Columns G to M**
+
+    ![](assets/how-to/sites_Col_GM.png)
+
+    i)  Columns G to I:
+        -   These are Identifier fields for additional information that are asociated with the Site.
+    ii) Columns J to M:
+        -   These are all Free Form fields in which you can enter in relevant information about your Site.
+        -   Public Health Department or Region (column L) and Health Region (column M), refers to the Department or Region where your Site is located.
+
+3.  **Columns N to S**
+
+    ![](assets/how-to/sites_Col_NS.png)
+
+    i)  Columns N to S:
+        -   These are Free Form fields and a Date field in which you can enter in additional information of your Site.
+        -   European Petroleum Survey Group Coordinates (column Q) is a coordinate system that can be used to identify where your Site is. <!--# I'm not sure if you want something else here... -->
+
+You have now entered in your Metadata, congratulations!
 
 ## Example data for each of the 11 report tables.
+
+<!--# Do you still want this section, since I'm putting in example data within the guides? Alternatively, I can also remove the within-Guide example data.-->
