@@ -12,7 +12,7 @@ The report templates can be found at the OSF.io [PHES-ODM project](https://osf.i
 
 Briefly,
 
--   'samples' and 'measures' tables are used day-to-day reporting. Information about a sample will be recorded in the `samples` table. Following, any measurements are recorded in the `measures` table. A measure is 'measurement or observation of any substance including a biological, physical or chemical substance'.
+-   `samples` and `measures` tables are used day-to-day reporting. Information about a sample will be recorded in the `samples` table. Measurements are recorded in the `measures` table. A measure is 'measurement or observation of any substance including a biological, physical or chemical substance'.
 
 -   There are three optional tables to support reporting samples and measures.
 
