@@ -82,7 +82,6 @@ mod_sql_table_table_of_content <- function(main_db_path, in_table_name, out_tabl
   main_db <- DBI::dbConnect(RSQLite::SQLite(), main_db_path)
   query <- paste("SELECT", "*", "FROM", in_table_name)
   parts_table <- DBI::dbGetQuery(main_db, query)
-  parts_table <- parts_table[grepl("^NA", rownames(parts_table))==F,]
   parts_table[["sub_categories_string"]] <- ""
   table_parts <- parts_table[parts_table$partType=="table", ]
   
