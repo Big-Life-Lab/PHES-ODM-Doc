@@ -17,19 +17,19 @@ odm_osf <- osf_retrieve_node(osf_project)
 
 raw_data_folder <- file.path(here(),'data/raw')
 table_data_folder <- file.path(here(), 'data/tables')
-dictionary_tables <- c('parts', 'sets', 'languages', 'translations') # 
+dictionary_tables <- c('parts', 'sets', 'languages', 'translations') 
 
 # need to fix partID = protocolRelationshipsOrder, qualityReportRequired , protocolRelationshipRequiredin Dictionary_RC.xlsx
 # Columns `protocolRelationshipOrder`, `protocolRelationshipRequired`, and `qualityReportRequired` don't exist.
 # --- now fixed in the working copy of the dictionary ----
 
-# get OSF.io components, ODM versions, files
-components <- osf_ls_nodes(odm_osf)
-
+components <- osf_ls_nodes(odm_osf)  # get OSF.io components, ODM versions, files
+reference_folder <- filter(components, grepl('^Reference', name)) # get the 'Reference files' component -- where the reference files are stored.
+reference_version_folders <- osf_ls_files(reference_folder) # within reference_folder, get a list of all the folders. There is a folder for each ODM version.
 
 ####### Working with the "working copy" of the Excel dictionary ######
 # The working copies of the ODM Excel dictionaries are the Working Copy component. 
-# i.e. Working Copy/Excel Dictionaries/V2-RC2_Dictionary_Working_Copy.xlxs
+# i.e. Working Copy/Excel dictionaries/ODM_dev-dictionary_2.0.0-rc.3.xlxs
 
 # get the component "Working Copies" and an object with a list of the 
 # different versions of the Excel dictionaries
@@ -39,38 +39,28 @@ excel_dictionaries <- osf_ls_files(working_copy, path = "Excel dictionaries")
 # order by ODM dictionaries by version number
 excel_dictionaries <- excel_dictionaries[order(excel_dictionaries$name), ]
 excel_dictionary_names <- excel_dictionaries[c('name')]
-working_dictionary <- tail(excel_dictionaries, n=1)
+dev_dictionary <- tail(excel_dictionaries, n=1)
 
 # get most current working dictionary (the last dictionary in the ordered list)
-working_dictionary <- osf_retrieve_file(as.character(working_dictionary['id']))
-working_dictionary <- osf_download(working_dictionary, path = raw_data_folder, conflicts = "overwrite")
+dev_dictionary <- osf_retrieve_file(as.character(working_dictionary['id']))
+dev_dictionary <- osf_download(working_dictionary, path = raw_data_folder, conflicts = "overwrite")
 
-####### Working with version components ######
-# ODM versions each have a component with a name that starts with "Version". I.e. "Version 2.0 Release Candidate 2"
-versions <- filter(components, grepl('^Version', name))
+####### Working with reference files ######
 
 # order by ODM version containers by version number
-versions <- versions[order(versions$name), ]
-version_names <- versions[c('name')]
+reference_version_folders <- reference_version_folders[order(reference_version_folders$name), ]
+version_names <- reference_version_folders[c('name')]
 
 # use the last version, or change the default version
 default_version <- tail(versions, n=1)
 default_version_name <- tail(version_names, n=1)
+
 # default_version <- "Version 2.0 Release Candidate 2 - Dictionary & Templates"
 files <- osf_ls_files(default_version)
 file_names <- files[c('name')]
 
-#download and save the Excel dictionary and templates in ../data/raw
-dictionary <- filter(files, grepl('^Dict', name))
-dictionary <- osf_retrieve_file(as.character(dictionary['id']))
-dictionary <- osf_download(dictionary, path = raw_data_folder, conflicts = "overwrite")
-
 # The dictionary object has the folder path for the dictionary.
-dictionary_path <- as.character(dictionary['local_path']) 
-
-templates <- filter(files, grepl('^Templates', name))
-templates <- osf_retrieve_file(as.character(templates['id']))
-templates <- osf_download(templates, path = raw_data_folder, conflicts = "overwrite")
+dev_dictionary_path <- as.character(dictionary['local_path']) 
 
 # generate and save the dictionary table CSV files
 for (item in dictionary_tables) {
