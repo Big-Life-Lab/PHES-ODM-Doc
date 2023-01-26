@@ -4,7 +4,7 @@
 
 The list of tables below are for ODM version 2.0.0-rc.2 <!--# Let's add the code to display the machine-generated version -->.
 
-There are 21 tables in the ODM.<!--# I've added explanatory text. This text should be moved to our explanatory documents, but I've placed here as a temporary solution until we generate those documents. -->T
+There are 21 tables in the ODM.<!--# I've added explanatory text. This text should be moved to our explanatory documents, but I've placed here as a temporary solution until we generate those documents. -->
 
 Users can customize the tables for different purposes. The format of the tables in this reference document is for the full relational database model. The comprehensive list of tables includes all mandatory and optional headers. The table format is used for drata storage and they are informally described as "long" tables with one measure, method or attribute for each row.
 
@@ -20,7 +20,9 @@ Three tables support regular reporting. `measureSets` is an optional table that
 
 3\) **Protocol or methods tables**. `protocols` and `instruments` are where you record information about the methods used to perform sample, or make measurements or observations. how samples are taken and measures are reported. `protocolSteps` and `protocolRelationships`tables are part used alongside the `protocols` table.
 
-4\) **Other tables**. These tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data
+4\) **Other report tables**. These tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
+
+5\) **Dictionary tables**. `parts`, `sets`, `languages`, and `translations` these tables....
 
 <!--` reference1/ -->
 
