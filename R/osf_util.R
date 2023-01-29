@@ -4,6 +4,7 @@ library(here)
 library(osfr)
 library(dplyr)
 library(readxl)
+source(file.path(here(), "R/version_utils.R"))
 
 # OSF.io project information for the PHES-ODM.
 osf_project_url <- 'https://osf.io/49z2b/'
@@ -18,6 +19,11 @@ odm_osf <- osf_retrieve_node(osf_project)
 raw_data_folder <- file.path(here(),'data/raw')
 table_data_folder <- file.path(here(), 'data/tables')
 dictionary_tables <- c('parts', 'sets', 'languages', 'translations') 
+odm_file_types <- c('dev_dictionary', 'dictionary', 'templates', 'lists-planes') # add more file types here as needed.
+
+ODM_file_name <- "ODM_dev-dictionary_2.0.0-rc.1.xlxs"
+
+ODM_file_name_parts(ODM_file_name)
 
 # need to fix partID = protocolRelationshipsOrder, qualityReportRequired , protocolRelationshipRequiredin Dictionary_RC.xlsx
 # Columns `protocolRelationshipOrder`, `protocolRelationshipRequired`, and `qualityReportRequired` don't exist.
@@ -35,15 +41,21 @@ reference_version_folders <- osf_ls_files(reference_folder) # within reference_f
 # different versions of the Excel dictionaries
 working_copy <- filter(components, grepl('^Working', name))
 excel_dictionaries <- osf_ls_files(working_copy, path = "Excel dictionaries")
+new_dictionary <- osf_ls_files(working_copy, path = "new version here")
 
-# order by ODM dictionaries by version number
-excel_dictionaries <- excel_dictionaries[order(excel_dictionaries$name), ]
-excel_dictionary_names <- excel_dictionaries[c('name')]
-dev_dictionary <- tail(excel_dictionaries, n=1)
+# get the newest dictionary
 
-# get most current working dictionary (the last dictionary in the ordered list)
-dev_dictionary <- osf_retrieve_file(as.character(working_dictionary['id']))
-dev_dictionary <- osf_download(working_dictionary, path = raw_data_folder, conflicts = "overwrite")
+
+# # order by ODM dictionaries by version number
+# excel_dictionaries <- excel_dictionaries[order(excel_dictionaries$name), ]
+# excel_dictionary_names <- excel_dictionaries[c('name')]
+# latest_dev_dictionary <- tail(excel_dictionaries, n=1)
+# 
+# # get the last working dictionary (the last dictionary in the ordered list)
+# dev_dictionary <- osf_retrieve_file(as.character(latest_dev_dictionary['id']))
+# dev_dictionary <- osf_download(latest_dev_dictionary, path = raw_data_folder, conflicts = "overwrite")
+
+
 
 ####### Working with reference files ######
 
@@ -51,9 +63,13 @@ dev_dictionary <- osf_download(working_dictionary, path = raw_data_folder, confl
 reference_version_folders <- reference_version_folders[order(reference_version_folders$name), ]
 version_names <- reference_version_folders[c('name')]
 
+# check to see 
+
 # use the last version, or change the default version
-default_version <- tail(versions, n=1)
+default_version <- tail(reference_version_folders, n=1)
 default_version_name <- tail(version_names, n=1)
+
+# Working to here
 
 # default_version <- "Version 2.0 Release Candidate 2 - Dictionary & Templates"
 files <- osf_ls_files(default_version)
@@ -81,25 +97,12 @@ for (item in dictionary_tables) {
    write.csv(table, file.path(table_data_folder, table_name))
 }
 
-#### Code below is just a scratch pad of ideas and tests.
-get_partType <- function(df = parts, partType) {
-   return (filter(df, partType == "table"))
-}
-
-## write some data
-wb <- createWorkbook()
-addWorksheet(wb, "Worksheet 1")
-x <- data.frame(matrix(runif(200), ncol = 10))
-writeData(wb, sheet = 1, x = x, startCol = 2, startRow = 3, colNames = FALSE)
-
-## delete some data
-deleteData(wb, sheet = 1, cols = 3:5, rows = 5:7, gridExpand = TRUE)
-deleteData(wb, sheet = 1, cols = 7:9, rows = 5:7, gridExpand = TRUE)
-deleteData(wb, sheet = 1, cols = LETTERS, rows = 18, gridExpand = TRUE)
-if (FALSE) {
-  saveWorkbook(wb, "deleteDataExample.xlsx", overwrite = TRUE)
-}
+# generate an Excel dictionary from the development version.
+# ODM_dev-dictionary-{version}.xlxs --> ODM_dictionary-.xlxs
+# the public use dictionary excludes temporary tabs.
 
 
+
+#version_list <- c("1.2.3", "4.1.0", "5.5.0", "3.2.0-beta.1", "3.10.1")
 
 
