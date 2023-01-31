@@ -1,8 +1,12 @@
+<!--Source constants file until I get clarity for environment usage across entire package or if sourcing is enough -->
+
+`r source("../R/package_constants.R")`
+
 <!--` reference1 -->
 
 # Tables {.unnumbered}
 
-The list of tables below are for ODM version 2.0.0-rc.2 <!--# Let's add the code to display the machine-generated version -->.
+The list of tables below are for ODM version `r pkg.env$dictionary_version_used`.
 
 There are 21 tables in the ODM.<!--# I've added explanatory text. This text should be moved to our explanatory documents, but I've placed here as a temporary solution until we generate those documents. -->
 
@@ -41,8 +45,6 @@ for (row_index in 1:nrow(val_table)) {
   
   working_row <- val_table[row_index, ]
   
-  content_string <- paste0(content_string, working_row$partLabel, " (", working_row$partID, ") </br>", working_row$partDesc, "</br></br>")
-  
   table_of_content <- paste0(table_of_content, "<li><a href=\"#", working_row$partID, "\">", working_row$partID, "</a></li>")
   
 }
@@ -76,7 +78,8 @@ for (row_index in 1:nrow(val_table)) {
         working_row$partID,
         "\"></a>",working_row$partID,
         ") </br>",
-        working_row$partDesc,
+        working_row$partDesc," ",
+        working_row$partInstr,
         "</br></br>"
       )
     if(!is_there_active_table){
@@ -88,14 +91,18 @@ for (row_index in 1:nrow(val_table)) {
   }else{
     required_col_name <- paste0(running_table_name,"Required")
     
+    
+    
     tmp_key_type <- working_row[[running_table_name]]
     if(length(tmp_key_type)>0&&!is.na(tmp_key_type)) {
       if (tolower(tmp_key_type) == "fk") {
         tmp_key_type <- "Foreign Key"
       } else if (tolower(tmp_key_type) == "pk") {
         tmp_key_type <- "Primary Key"
-      } else if(tolower(tmp_key_type) == "input"){
-        next() 
+      } else if(tolower(tmp_key_type) == "header"){
+        tmp_key_type <- "Header"
+      }else {
+        next()
       }
     }
     new_content <-
@@ -104,8 +111,9 @@ for (row_index in 1:nrow(val_table)) {
         working_row$partLabel,
         "** (",
         working_row$partID,
-        "):(",tmp_key_type, ") (Required: ", working_row[[required_col_name]], ") [", working_row$dataType, "]</br>",
-        working_row$partDesc, working_row$sub_categories_string, 
+        "). ",
+        working_row$partDesc,
+        " Role: ", tmp_key_type,", ", working_row[[required_col_name]], ". Data type: ", working_row$dataType, "</br>",
         "</li>"
       )
   }
@@ -120,8 +128,5 @@ if(is_there_active_table){
 
 `r table_of_content` `r new_content`
 
-`{rvml}`
-
-`{rvml}`
 
 Page created on `r format(Sys.Date(), "%c")`, using document generator version 0.1.

@@ -85,6 +85,16 @@ mod_sql_table_table_of_content <- function(main_db_path, in_table_name, out_tabl
   parts_table[["sub_categories_string"]] <- ""
   table_parts <- parts_table[parts_table$partType=="table", ]
   
+  # Loop over table parts and remove table matches that dont have their own column
+  table_names_with_no_column <- c()
+  for (row_containing_table_index in 1:nrow(table_parts)) {
+    part_ID <- table_parts[row_containing_table_index, "partID"]
+    if(is.null(table_parts[[part_ID]])){
+      table_names_with_no_column[[length(table_names_with_no_column)+1]] <- part_ID
+    }
+  }
+  table_parts <- table_parts[!table_parts$partID %in% table_names_with_no_column, ]
+  
   
   table_with_categories <- data.frame()
   
