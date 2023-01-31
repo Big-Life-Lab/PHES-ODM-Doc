@@ -31,69 +31,87 @@ Three tables support regular reporting. `measureSets` is an optional table that
 <!--` reference1/ -->
 
 ```{r, echo=FALSE}
-main_db <- DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
-quary <- paste("SELECT", "*", "FROM", "table_of_contents")
-val_table <- DBI::dbGetQuery(main_db, quary)
+# Source utility functions
+source("../R/qmd-utils.R")
 
-content_string <-""
-table_of_content <-"<ul>"
+parts_sheet_name <- "parts"
+path_to_excel <- "../data/raw/ODM-dictionary.xlsx"
 
-for (row_index in 1:nrow(val_table)) {
-  if(is.na(val_table[row_index, ]$partType)){
+# Declaring string that will be appended during the loops
+table_of_content <- glue::glue('# Table of Contents
+                               <ul>') 
+tables_info_display_content <- ""
+
+parts_table <- readxl::read_excel(path_to_excel, sheet = parts_sheet_name)
+tables_data <- parts_table[parts_table$partType=="table" & parts_table$status=="active", ]
+
+present_column_required_information <- TRUE
+for (table_row_index in 1:nrow(tables_data)) {
+  single_table_information <- tables_data[table_row_index, ]
+  
+  table_name <- trimws(single_table_information$partID)
+  if(length(tables_info_display_content)<1){
+    print(table_name)
+  }
+  # Verify existing table name
+  if(length(table_name)<1 || trimws(table_name)==""){
+    warning("Found an empty partID with partType of table")
     next()
   }
   
-  working_row <- val_table[row_index, ]
+  required_column_name <- glue::glue('{table_name}Required')
+  order_column_name <- glue::glue('{table_name}Order')
   
-  table_of_content <- paste0(table_of_content, "<li><a href=\"#", working_row$partID, "\">", working_row$partID, "</a></li>")
+  # Append table of contents
+  table_of_content <- glue::glue('{table_of_content}<li><a href=\"#{single_table_information$partID}\">{single_table_information$partLabel}</a></li>')
   
-}
-table_of_content <- paste0(table_of_content, "</ul>")
-
-
-
-quary <- paste("SELECT", "*", "FROM", "cat_tables")
-val_table <- DBI::dbGetQuery(main_db, quary)
-new_content <- ""
-running_table_name <-""
-is_there_active_table <- FALSE
-
-for (row_index in 1:nrow(val_table)) {
-  working_row <- val_table[row_index, ]
-  if (is.na(val_table[row_index,]$partType)) {
+  # Verify needed column exists
+  if(!has_column_for_table(parts_table, table_name, table_name)){
     next()
-  } else if (val_table[row_index,]$partType == "table") {
-    if (is_there_active_table){
-      new_content <-
-      paste0(
-        new_content, "</ul>")
-      is_there_active_table <- FALSE
-    }
-    running_table_name <- working_row$partID
-    new_content <-
-      paste0(
-        new_content,"**", 
-        working_row$partLabel,
-        "** (<a name=\"",
-        working_row$partID,
-        "\"></a>",working_row$partID,
-        ") </br>",
-        working_row$partDesc," ",
-        working_row$partInstr,
-        "</br></br>"
-      )
-    if(!is_there_active_table){
-      is_there_active_table <- TRUE
-      new_content <-
-      paste0(
-        new_content, "<ul>")
-    }
+  }
+  
+  # Aquire columns that belong to the table
+  table_columns <- parts_table[parts_table[[table_name]]=="pk" | parts_table[[table_name]]=="fk" | parts_table[[table_name]]=="header", ]
+  
+  # Check for optional columns
+  if(has_column_for_table(parts_table, table_name, required_column_name)){
+    present_column_required_information <- TRUE
   }else{
-    required_col_name <- paste0(running_table_name,"Required")
+    present_column_required_information <- FALSE
+  }
+  if(has_column_for_table(parts_table, table_name, order_column_name)){
+    table_columns <- table_columns[order(table_columns[[order_column_name]]), ]
+  }
+  
+  # Verify table information @RUSTY FUNCTION THIS OUT ASAP
+  table_label <- single_table_information$partLabel
+  table_ID <- single_table_information$partID
+  table_description <- single_table_information$partDesc
+  table_instruction <- single_table_information$partInstr
+  if(length(table_label)<0) {
+    table_label <- "Label Missing"
+  }
+  if (length(table_ID) < 0) {
+    table_ID <- "ID Missing"
+  }
+  if (length(table_description) < 0) {
+    table_description <- "Description Missing"
+  }
+  if (length(table_instruction) < 0) {
+    table_instruction <- "Instuctions Missing"
+  }
+  
+  
+  # Add table information and start list creation
+  tables_info_display_content <- glue::glue('{tables_info_display_content}
+                                            **{table_label}**<a name=\"{table_ID}\">({table_ID})</a>
+                                            {table_description} {table_instruction}
+                                            <ul>')
+  
+  for (column_row_index in 1:nrow(table_columns)) {
+    column_row <- table_columns[column_row_index, ]
     
-    
-    
-    tmp_key_type <- working_row[[running_table_name]]
+    tmp_key_type <- column_row[[table_name]]
     if(length(tmp_key_type)>0&&!is.na(tmp_key_type)) {
       if (tolower(tmp_key_type) == "fk") {
         tmp_key_type <- "Foreign Key"
@@ -105,28 +123,40 @@ for (row_index in 1:nrow(val_table)) {
         next()
       }
     }
-    new_content <-
-      paste0(
-        new_content, "<li>**",
-        working_row$partLabel,
-        "** (",
-        working_row$partID,
-        "). ",
-        working_row$partDesc,
-        " Role: ", tmp_key_type,", ", working_row[[required_col_name]], ". Data type: ", working_row$dataType, "</br>",
-        "</li>"
-      )
+    
+    # Verify glue inputs @RUSTY FUNCTION THIS OUT
+    column_label <- column_row$partLabel
+    column_ID <- column_row$partID
+    column_description <- column_row$partDesc
+    column_requirement <- column_row[[required_column_name]]
+    column_dataType <- column_row$dataType
+      
+    if(length(column_label)<0){
+      column_label <- "Label Missing"
+    }
+    if(length(column_ID)<0){
+      column_ID <- "ID Missing"
+    }
+    if(length(column_description)<0){
+      column_description <- "Description Missing"
+    }
+    if(length(column_requirement)<0||is.null(column_requirement)){
+      column_requirement <- "Requirement Missing"
+    }
+    if(length(column_dataType)<0){
+      column_dataType <- "Data type Missing"
+    }
+    
+    # Structure of column display
+    tables_info_display_content <- glue::glue('{tables_info_display_content}<li>**{column_label}** (partID: {column_ID}). {column_description} Role: {tmp_key_type}, {column_requirement}. Data type: {column_dataType}</li>')
   }
+  tables_info_display_content <- glue::glue('{tables_info_display_content}</ul>')
 }
-if(is_there_active_table){
-  new_content <-
-      paste0(
-        new_content, "</ul>")
-}
-
+table_of_content <- glue::glue('{table_of_content}</ul>')
 ```
 
-`r table_of_content` `r new_content`
+
+`r table_of_content` `r tables_info_display_content`
 
 
 Page created on `r format(Sys.Date(), "%c")`, using document generator version 0.1.
