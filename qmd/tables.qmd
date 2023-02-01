@@ -83,30 +83,18 @@ for (table_row_index in 1:nrow(tables_data)) {
     table_columns <- table_columns[order(table_columns[[order_column_name]]), ]
   }
   
-  # Verify table information @RUSTY FUNCTION THIS OUT ASAP
+  # Variables being used in table display
+  # Their creation is not needed but I believe it assists in clarity
   table_label <- single_table_information$partLabel
   table_ID <- single_table_information$partID
   table_description <- single_table_information$partDesc
   table_instruction <- single_table_information$partInstr
-  if(length(table_label)<0) {
-    table_label <- "Label Missing"
-  }
-  if (length(table_ID) < 0) {
-    table_ID <- "ID Missing"
-  }
-  if (length(table_description) < 0) {
-    table_description <- "Description Missing"
-  }
-  if (length(table_instruction) < 0) {
-    table_instruction <- "Instuctions Missing"
-  }
   
-  
-  # Add table information and start list creation
+  # Structure of table display
   tables_info_display_content <- glue::glue('{tables_info_display_content}
                                             **{table_label}**<a name=\"{table_ID}\">({table_ID})</a>
                                             {table_description} {table_instruction}
-                                            <ul>')
+                                            <ul>', .null = "Missing")
   
   for (column_row_index in 1:nrow(table_columns)) {
     column_row <- table_columns[column_row_index, ]
@@ -124,31 +112,16 @@ for (table_row_index in 1:nrow(tables_data)) {
       }
     }
     
-    # Verify glue inputs @RUSTY FUNCTION THIS OUT
+    # Variables being used in column display
+    # # Their creation is not needed but I believe it assists in clarity
     column_label <- column_row$partLabel
     column_ID <- column_row$partID
     column_description <- column_row$partDesc
     column_requirement <- column_row[[required_column_name]]
     column_dataType <- column_row$dataType
-      
-    if(length(column_label)<0){
-      column_label <- "Label Missing"
-    }
-    if(length(column_ID)<0){
-      column_ID <- "ID Missing"
-    }
-    if(length(column_description)<0){
-      column_description <- "Description Missing"
-    }
-    if(length(column_requirement)<0||is.null(column_requirement)){
-      column_requirement <- "Requirement Missing"
-    }
-    if(length(column_dataType)<0){
-      column_dataType <- "Data type Missing"
-    }
     
     # Structure of column display
-    tables_info_display_content <- glue::glue('{tables_info_display_content}<li>**{column_label}** (partID: {column_ID}). {column_description} Role: {tmp_key_type}, {column_requirement}. Data type: {column_dataType}</li>')
+    tables_info_display_content <- glue::glue('{tables_info_display_content}<li>**{column_label}** (partID: {column_ID}). {column_description} Role: {tmp_key_type}, {column_requirement}. Data type: {column_dataType}</li>', .null = "Missing")
   }
   tables_info_display_content <- glue::glue('{tables_info_display_content}</ul>')
 }
