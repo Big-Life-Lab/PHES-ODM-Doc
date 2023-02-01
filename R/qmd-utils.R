@@ -8,4 +8,10 @@ has_column_for_table <- function(data_source, table_name, column_name){
   return(column_is_valid)
 }
 
-#create_html_list
+modify_and_check_glue_input <- function(string_to_check, part_ID, string_source_name){
+  if(is.null(string_to_check) || length(string_to_check)<1){
+    warning(glue::glue('{part_ID} is missing its {string_source_name} column'))
+    string_to_check <- ""
+  }
+  return(string_to_check)
+}

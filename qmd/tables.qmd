@@ -49,44 +49,52 @@ present_column_required_information <- TRUE
 for (table_row_index in 1:nrow(tables_data)) {
   single_table_information <- tables_data[table_row_index, ]
   
-  table_name <- trimws(single_table_information$partID)
-  if(length(tables_info_display_content)<1){
-    print(table_name)
-  }
-  # Verify existing table name
-  if(length(table_name)<1 || trimws(table_name)==""){
-    warning("Found an empty partID with partType of table")
+ # table_ID is assumed to be always present missing ID means invalid part
+  table_ID <- single_table_information$partID
+  if (is.null(table_ID) || length(table_ID) < 1) {
+    warning(
+      glue::glue(
+        'A part with table partType was found but no partID is found. This table will be skipped'
+      )
+    )
     next()
   }
   
-  required_column_name <- glue::glue('{table_name}Required')
-  order_column_name <- glue::glue('{table_name}Order')
+  required_column_name <- glue::glue('{table_ID}Required')
+  order_column_name <- glue::glue('{table_ID}Order')
   
   # Append table of contents
   table_of_content <- glue::glue('{table_of_content}<li><a href=\"#{single_table_information$partID}\">{single_table_information$partLabel}</a></li>')
   
   # Verify needed column exists
-  if(!has_column_for_table(parts_table, table_name, table_name)){
+  if(!has_column_for_table(parts_table, table_ID, table_ID)){
     next()
   }
   
-  # Aquire columns that belong to the table
-  table_columns <- parts_table[parts_table[[table_name]]=="pk" | parts_table[[table_name]]=="fk" | parts_table[[table_name]]=="header", ]
+  # Acquire columns that belong to the table
+  parts_table[[table_ID]] <- tolower(trimws(parts_table[[table_ID]]))
+  table_columns <-
+    parts_table[parts_table[[table_ID]] == "pk" |
+                  parts_table[[table_ID]] == "fk" |
+                  parts_table[[table_ID]] == "header",]
   
   # Check for optional columns
-  if(has_column_for_table(parts_table, table_name, required_column_name)){
+  if (has_column_for_table(parts_table, table_ID, required_column_name)) {
     present_column_required_information <- TRUE
-  }else{
+  } else{
     present_column_required_information <- FALSE
   }
-  if(has_column_for_table(parts_table, table_name, order_column_name)){
-    table_columns <- table_columns[order(table_columns[[order_column_name]]), ]
+  if (has_column_for_table(parts_table, table_ID, order_column_name)) {
+    table_columns <-
+      table_columns[order(table_columns[[order_column_name]]),]
   }
+  
   
   # Variables being used in table display
   # Their creation is not needed but I believe it assists in clarity
   table_label <- single_table_information$partLabel
-  table_ID <- single_table_information$partID
+  table_label <- modify_and_check_glue_input(table_label, table_ID, "partLabel")
+  
   table_description <- single_table_information$partDesc
   table_instruction <- single_table_information$partInstr
   
@@ -99,7 +107,7 @@ for (table_row_index in 1:nrow(tables_data)) {
   for (column_row_index in 1:nrow(table_columns)) {
     column_row <- table_columns[column_row_index, ]
     
-    tmp_key_type <- column_row[[table_name]]
+    tmp_key_type <- column_row[[table_ID]]
     if(length(tmp_key_type)>0&&!is.na(tmp_key_type)) {
       if (tolower(tmp_key_type) == "fk") {
         tmp_key_type <- "Foreign Key"
@@ -112,16 +120,38 @@ for (table_row_index in 1:nrow(tables_data)) {
       }
     }
     
-    # Variables being used in column display
-    # # Their creation is not needed but I believe it assists in clarity
-    column_label <- column_row$partLabel
+    # Column_ID is assumed to be always present missing ID means invalid part
     column_ID <- column_row$partID
+    if(is.null(column_ID) || length(column_ID)<1){
+      warning(glue::glue('{table_ID} contains a missing id for one of its columns. Missing columns are skipped'))
+      next()
+    }
+    
+    # Variables being used in column display
+    column_label <- column_row$partLabel
+    column_label <- modify_and_check_glue_input(column_label, column_ID, "partLabel")
+    
     column_description <- column_row$partDesc
+    column_description <- modify_and_check_glue_input(column_description, column_ID, "partDesc")
+    
     column_requirement <- column_row[[required_column_name]]
+    column_requirement <- modify_and_check_glue_input(column_requirement, column_ID, required_column_name)
+    
     column_dataType <- column_row$dataType
+    column_dataType <- modify_and_check_glue_input(column_dataType, column_ID, "dataType")
     
     # Structure of column display
-    tables_info_display_content <- glue::glue('{tables_info_display_content}<li>**{column_label}** (partID: {column_ID}). {column_description} Role: {tmp_key_type}, {column_requirement}. Data type: {column_dataType}</li>', .null = "Missing")
+    tables_info_display_content <- glue::glue('{tables_info_display_content}<li>**{column_label}** (partID: {column_ID}). {column_description} Role: {tmp_key_type}, {column_requirement}. Data type: {column_dataType}.')
+    
+    # Append link to catSetID if dataType is categorical
+    if(column_dataType =="categorical"){
+      column_catSetID <- column_row$catSetID
+      tables_info_display_content <- glue::glue('{tables_info_display_content}
+                                                catSet: <a href=\"/sets.html/#{column_catSetID}\">{column_catSetID}</a>')
+    }
+    
+    # Close off column list element
+    tables_info_display_content <- glue::glue('{tables_info_display_content}</li>')
   }
   tables_info_display_content <- glue::glue('{tables_info_display_content}</ul>')
 }
