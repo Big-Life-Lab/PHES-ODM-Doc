@@ -9,8 +9,8 @@ has_column_for_table <- function(data_source, table_name, column_name){
 }
 
 modify_and_check_glue_input <- function(string_to_check, part_ID, string_source_name){
-  if(is.null(string_to_check) || length(string_to_check)<1){
-    warning(glue::glue('{part_ID} is missing its {string_source_name} column'))
+  if(is.null(string_to_check) || length(string_to_check)<1 || is.na(string_to_check) || string_to_check=="NA"){
+    warning(glue::glue('{part_ID} is missing its {string_source_name} column information'))
     string_to_check <- ""
   }
   return(string_to_check)
