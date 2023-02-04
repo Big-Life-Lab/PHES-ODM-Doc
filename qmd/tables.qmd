@@ -8,49 +8,53 @@
 
 ODM version `r pkg.env$dictionary_version_used`.
 
-The ODM has 21 tables in the full relational database model. The full relationship model is informally described as "long" tables because it stores data with *one measure per row*. Within each table, there are mandatory and optional headers.
+The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
 
 ::: callout-note
-## Table support
+## Data storage
 
-It is recommended that all ODM data is stored in the 21 tables. Storing data in the recommended tables allows interoperable data sharing and is supported with [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
+It is recommended that all ODM data be stored in the 21 tables as this ensures interoperable data sharing and is supported by the [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
 
-That stated, users can create custom tables or 'views' that mix and match fields from any table. A common format for data entry is a "wide" format, where data is collected as *one day per row* with multiple measures or attributes per row. How to generate wide tables is not included in this section.
+However, users have the option to create custom tables or 'views' by combining fields from any table. The common format for data entry is a "wide" format where data is collected with *one day per row* and multiple measures or attributes per row. Please note that this guide does not cover how to generate wide tables.
 :::
 
 ## Table types
 
 There are three types of tables:
 
-1\) **Regular report tables**. The `measues` and `samples` tables are used day-to-day reporting of new measurements and information about how and when samples are collected.
+1\) **Regular report tables**. The `measures` and `samples` tables are used for daily reporting of new measurements and information on sample collection. Three tables support regular reporting - `measureSets` is an optional table used to link measures, `sampleRelationships` is an optional table used when samples are pooled or split, and `qualityReports` is used for detailed quality assurance and control measures.
 
-Three tables support regular reporting. `measureSets` is an optional table that can be used to link measures together. `sampleRelationships` is also optional and used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures.
+2\) **Contact information tables**. `sites`, `organizations`, `contacts`, and `addresses` hold contact information for the testing site and the person who performed the testing.
 
-2\) **Contact information tables**. `sites`, `organizations`, `contacts`, and `addresses` hold contact information where testing was performed and who performed testing.
+3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
 
-3\) **Protocol or methods tables**. `protocols` and `instruments` are where you record information about the methods used to perform sample, or make measurements or observations. how samples are taken and measures are reported. `protocolSteps` and `protocolRelationships`tables are part used alongside the `protocols` table.
-
-4\) **Other report tables**. `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
+4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner
 
 5\) **Dictionary tables**. `parts`, `sets`, `languages`, and `translations` are reference or look-up tables. For example, the `parts` table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units are all `parts`. `sets` are collections of parts. For example, units can be grouped together in a `unitSet`. `languages` and `translations` support translations.
 
+The `parts`, `sets`, `languages`, and `translations` tables are reference or lookup tables. For example, the `parts` table describes all elements of the ODM including tables, table headers, measures, methods, categories, and units. The `sets` table is a collection of parts, such as units grouped together in a `unitSet`. The `languages` and `translations` tables support translations.
+
 ## Header roles
 
-Tables have column header, also known as a table variable, field, or entity relationship 'attribute'. A header is the top row or the variable name in a table.
+Each table has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.
 
-Each header has a label for one of three roles.
+**Primary key** (PK) - All tables except dictionary tables have a primary key, which serves as a unique identifier for each row in the table. This means that a primary key value cannot be repeated.
 
-**Primary key** (PK) - All tables, except dictionary tables, have a primary key. A primary key serves as the unique identifier for row entries for the table. This means a primary key value cannot be repeated in a table.
+**Foreign key** (FK) - Some tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. It allows for relationships between tables to be established, making it possible to link data between different tables.
 
-**Foreign key** (FK) - Tables may have one or more foreign keys. A foreign key connects an entry to another table that holds an entry (row) with a primary key.
+**Header** (header) - This label is used in a table description when a header is not a primary or foreign key.
 
-**Header** (header) - The label 'header' in a table description when a header is not a primary or foreign key.
+::: callout-note
+## Each table has a primary key
+
+It is important to note that the headers in each table may have different roles, but each header must have one of the three roles described above. The ODM standard requires that each table have a primary key, but the number and type of foreign keys and attributes may vary depending on the table.
+:::
 
 ## Mandatory, optional, mandatoryIf
 
-A header may be mandatory or optional. In the `Measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data. The toolkit will return an error if a table lacks a mandatory header, or if there are missing row entries for mandatory fields.
+A header may be mandatory or optional. In the `measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data. The toolkit will return an error if a table lacks a mandatory header, or if there are missing row entries for mandatory fields.
 
-`mandatoryIf` headers are special header that are mandatory if special conditions apply. For example, the `Protocol steps` table have row entries that are `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes mandatory, since all measures must have a unit. So, units are `mandatoryIf` in the protocol table.
+`mandatoryIf` headers are special header that are mandatory if special conditions apply. For example, the `protocol steps` table have row entries that are `measures` or `methods`. If the row entry is a `measure`, then a unit becomes mandatory, since all measures must have a unit. So, `units` are `mandatoryIf` in the `Protocol steps` table.
 
 <!--` reference1/ -->
 
