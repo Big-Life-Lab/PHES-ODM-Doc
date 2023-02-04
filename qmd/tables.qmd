@@ -6,27 +6,51 @@
 
 # Tables {.unnumbered}
 
-The list of tables below are for ODM version `r pkg.env$dictionary_version_used`.
+ODM version `r pkg.env$dictionary_version_used`.
 
-There are 21 tables in the ODM.<!--# I've added explanatory text. This text should be moved to our explanatory documents, but I've placed here as a temporary solution until we generate those documents. -->
+The ODM has 21 tables in the full relational database model. The full relationship model is informally described as "long" tables because it stores data with *one measure per row*. Within each table, there are mandatory and optional headers.
 
-Users can customize the tables for different purposes. The format of the tables in this reference document is for the full relational database model. The comprehensive list of tables includes all mandatory and optional headers. The table format is used for drata storage and they are informally described as "long" tables with one measure, method or attribute for each row.
+::: callout-note
+## Table support
 
-Users can modify or create their own table format for data entry, analyses, or reporting. Commonly, these tables are a "wide" format where there is one day per row and multiple measures or attributes per row. How to generate wide tables is not included in this section.
+It is recommended that all ODM data is stored in the 21 tables. Storing data in the recommended tables allows interoperable data sharing and is supported with [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
+
+That stated, users can create custom tables or 'views' that mix and match fields from any table. A common format for data entry is a "wide" format, where data is collected as *one day per row* with multiple measures or attributes per row. How to generate wide tables is not included in this section.
+:::
+
+## Table types
 
 There are three types of tables:
 
 1\) **Regular report tables**. The `measues` and `samples` tables are used day-to-day reporting of new measurements and information about how and when samples are collected.
 
-Three tables support regular reporting. `measureSets` is an optional table that can be used to link measures together. `sampleRelationships` is also optional and used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures.
+Three tables support regular reporting. `measureSets` is an optional table that can be used to link measures together. `sampleRelationships` is also optional and used only when you have samples that are pooled or split. `qualityReports` is used for detailed quality assurance and control measures.
 
 2\) **Contact information tables**. `sites`, `organizations`, `contacts`, and `addresses` hold contact information where testing was performed and who performed testing.
 
 3\) **Protocol or methods tables**. `protocols` and `instruments` are where you record information about the methods used to perform sample, or make measurements or observations. how samples are taken and measures are reported. `protocolSteps` and `protocolRelationships`tables are part used alongside the `protocols` table.
 
-4\) **Other report tables**. These tables include `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
+4\) **Other report tables**. `polygons` where information is store about the sample shed and `datasets` which includes information about the data custodian and owner of the data.
 
-5\) **Dictionary tables**. `parts`, `sets`, `languages`, and `translations` these tables....
+5\) **Dictionary tables**. `parts`, `sets`, `languages`, and `translations` are reference or look-up tables. For example, the `parts` table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units are all `parts`. `sets` are collections of parts. For example, units can be grouped together in a `unitSet`. `languages` and `translations` support translations.
+
+## Header roles
+
+Tables have column header, also known as a table variable, field, or entity relationship 'attribute'. A header is the top row or the variable name in a table.
+
+Each header has a label for one of three roles.
+
+**Primary key** (PK) - All tables, except dictionary tables, have a primary key. A primary key serves as the unique identifier for row entries for the table. This means a primary key value cannot be repeated in a table.
+
+**Foreign key** (FK) - Tables may have one or more foreign keys. A foreign key connects an entry to another table that holds an entry (row) with a primary key.
+
+**Header** (header) - The label 'header' in a table description when a header is not a primary or foreign key.
+
+## Mandatory, optional, mandatoryIf
+
+A header may be mandatory or optional. In the `Measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data. The toolkit will return an error if a table lacks a mandatory header, or if there are missing row entries for mandatory fields.
+
+`mandatoryIf` headers are special header that are mandatory if special conditions apply. For example, the `Protocol steps` table have row entries that are `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes mandatory, since all measures must have a unit. So, units are `mandatoryIf` in the protocol table.
 
 <!--` reference1/ -->
 
@@ -39,7 +63,7 @@ parts_sheet_name <- "parts"
 path_to_excel <- "../data/raw/ODM-dictionary.xlsx"
 
 # Declaring string that will be appended during the loops
-table_of_content <- glue::glue('# Table of Contents
+table_of_content <- glue::glue('## Table list
                                <ul>')
 tables_info_display_content <- ""
 
@@ -198,8 +222,6 @@ for (table_row_index in 1:nrow(tables_data)) {
 table_of_content <- glue::glue('{table_of_content}</ul>')
 ```
 
-
 `r table_of_content` `r tables_info_display_content`
 
-
-Page created on `r format(Sys.Date(), "%c")`, using document generator version 0.1.
+Page created on `r format(Sys.Date(), "%c")`.
