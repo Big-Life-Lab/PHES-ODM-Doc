@@ -1,0 +1,3 @@
+<!--Source constants file until I get clarity for environment usage across entire package or if sourcing is enough -->
+`r source("../R/package_constants.R")`
+ODM version `r pkg.env$dictionary_version_used`.

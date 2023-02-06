@@ -1,12 +1,8 @@
-<!--Source constants file until I get clarity for environment usage across entire package or if sourcing is enough -->
-
-`r source("../R/package_constants.R")`
-
 <!--` reference1 -->
 
 # Tables {.unnumbered}
 
-ODM version `r pkg.env$dictionary_version_used`.
+{{< include _dictionary_version.qmd >}}
 
 The ODM has 21 tables in the full relational database model. The full relationship model is informally described as "long" tables because it stores data with *one measure per row*. Within each table, there are mandatory and optional headers.
 
@@ -224,4 +220,4 @@ table_of_content <- glue::glue('{table_of_content}</ul>')
 
 `r table_of_content` `r tables_info_display_content`
 
-Page created on `r format(Sys.Date(), "%c")`.
+{{< include _date_created.qmd >}}
