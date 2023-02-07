@@ -55,26 +55,24 @@ A header may be mandatory or optional. In the `Measures` table, examples of mand
 # Source utility functions
 source("../R/qmd-utils.R")
 
-parts_sheet_name <- "parts"
-path_to_excel <- "../data/raw/ODM-dictionary.xlsx"
+
+parts_table <-
+  readxl::read_excel(file.path("../", pkg.env$odm_dictionary_file_path),
+                     sheet = pkg.env$parts_sheet_name)
+tables_data <-
+  parts_table[parts_table[[pkg.env$part_type_column_name]] == pkg.env$part_sheet_part_type_is_table &
+                parts_table[[pkg.env$part_status_column_name]] == pkg.env$part_sheet_status_is_active,]
 
 # Declaring string that will be appended during the loops
 table_of_content <- glue::glue('## Table list
                                <ul>')
 tables_info_display_content <- ""
-
-parts_table <-
-  readxl::read_excel(path_to_excel, sheet = parts_sheet_name)
-tables_data <-
-  parts_table[parts_table$partType == "table" &
-                parts_table$status == "active", ]
-
 has_required_column <- TRUE
 for (table_row_index in 1:nrow(tables_data)) {
   single_table_information <- tables_data[table_row_index, ]
   
   # table_ID is assumed to be always present missing ID means invalid part
-  table_ID <- single_table_information$partID
+  table_ID <- single_table_information[[pkg.env$part_ID_column_name]]
   if (is.null(table_ID) ||
       length(table_ID) < 1 || is.na(table_ID)) {
     warning(
@@ -91,7 +89,7 @@ for (table_row_index in 1:nrow(tables_data)) {
   # Append table of contents
   table_of_content <-
     glue::glue(
-      '{table_of_content}<li><a href=\"#{single_table_information$partID}\">{single_table_information$partLabel}</a></li>'
+      '{table_of_content}<li><a href=\"#{single_table_information[[pkg.env$part_ID_column_name]]}\">{single_table_information[[pkg.env$part_label_column_name]]}</a></li>'
     )
   
   # Verify needed column exists
@@ -103,9 +101,9 @@ for (table_row_index in 1:nrow(tables_data)) {
   parts_table[[table_ID]] <-
     tolower(trimws(parts_table[[table_ID]]))
   table_columns <-
-    parts_table[parts_table[[table_ID]] == "pk" |
-                  parts_table[[table_ID]] == "fk" |
-                  parts_table[[table_ID]] == "header",]
+    parts_table[parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_PK |
+                  parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_FK |
+                  parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_header,]
   
   # Check for optional columns
   has_required_column <-
@@ -118,23 +116,22 @@ for (table_row_index in 1:nrow(tables_data)) {
   
   # Variables being used in table display
   # Their creation is not needed but I believe it assists in clarity
-  table_label <- single_table_information$partLabel
+  table_label <- single_table_information[[pkg.env$part_label_column_name]]
   table_label <-
-    modify_and_check_glue_input(table_label, table_ID, "partLabel")
+    modify_and_check_glue_input(table_label, table_ID, pkg.env$part_label_column_name)
   
-  table_description <- single_table_information$partDesc
-  table_description <- modify_and_check_glue_input(table_description, table_ID, "partDesc")
+  table_description <- single_table_information[[pkg.env$part_description_column_name]]
+  table_description <- modify_and_check_glue_input(table_description, table_ID, pkg.env$part_description_column_name)
   
-  table_instruction <- single_table_information$partInstr
-  table_instruction <- modify_and_check_glue_input(table_instruction, table_ID, "partInstr")
+  table_instruction <- single_table_information[[pkg.env$part_instruction_column_name]]
+  table_instruction <- modify_and_check_glue_input(table_instruction, table_ID, pkg.env$part_instruction_column_name)
   
   # Structure of table display
   tables_info_display_content <-
     glue::glue(
       '{tables_info_display_content}
       **{table_label}** <a name=\"{table_ID}\"></a>(<a href=\"/parts.html#{table_ID}\">{table_ID}</a>)
-      {table_description} {table_instruction}<ul>',
-      .null = "Missing"
+      {table_description} {table_instruction}<ul>'
     )
   
   for (column_row_index in 1:nrow(table_columns)) {
@@ -142,11 +139,11 @@ for (table_row_index in 1:nrow(tables_data)) {
     
     tmp_key_type <- column_row[[table_ID]]
     if (length(tmp_key_type) > 0 && !is.na(tmp_key_type)) {
-      if (tolower(tmp_key_type) == "fk") {
+      if (tolower(tmp_key_type) == pkg.env$parts_sheet_table_column_type_is_FK) {
         tmp_key_type <- "Foreign Key"
-      } else if (tolower(tmp_key_type) == "pk") {
+      } else if (tolower(tmp_key_type) == pkg.env$parts_sheet_table_column_type_is_PK) {
         tmp_key_type <- "Primary Key"
-      } else if (tolower(tmp_key_type) == "header") {
+      } else if (tolower(tmp_key_type) == pkg.env$parts_sheet_table_column_type_is_header) {
         tmp_key_type <- "Header"
       } else {
         next()
@@ -154,7 +151,7 @@ for (table_row_index in 1:nrow(tables_data)) {
     }
     
     # Column_ID is assumed to be always present missing ID means invalid part
-    column_ID <- column_row$partID
+    column_ID <- column_row[[pkg.env$part_ID_column_name]]
     if (is.null(column_ID) ||
         length(column_ID) < 1 || is.na(column_ID)) {
       warning(
@@ -166,13 +163,13 @@ for (table_row_index in 1:nrow(tables_data)) {
     }
     
     # Variables being used in column display
-    column_label <- column_row$partLabel
+    column_label <- column_row[[pkg.env$part_label_column_name]]
     column_label <-
-      modify_and_check_glue_input(column_label, column_ID, "partLabel")
+      modify_and_check_glue_input(column_label, column_ID, pkg.env$part_label_column_name)
     
-    column_description <- column_row$partDesc
+    column_description <- column_row[[pkg.env$part_description_column_name]]
     column_description <-
-      modify_and_check_glue_input(column_description, column_ID, "partDesc")
+      modify_and_check_glue_input(column_description, column_ID, pkg.env$part_description_column_name)
     
     column_requirement <- ""
     if (has_required_column) {
@@ -185,9 +182,9 @@ for (table_row_index in 1:nrow(tables_data)) {
       }
     }
     
-    column_dataType <- column_row$dataType
+    column_dataType <- column_row[[pkg.env$part_data_type_column_name]]
     column_dataType <-
-      modify_and_check_glue_input(column_dataType, column_ID, "dataType")
+      modify_and_check_glue_input(column_dataType, column_ID, pkg.env$part_data_type_column_name)
     
     # Structure of column display
     tables_info_display_content <-
@@ -196,10 +193,10 @@ for (table_row_index in 1:nrow(tables_data)) {
       )
     
     # Append link to catSetID if dataType is categorical
-    if (column_dataType == "categorical") {
-      column_catSetID <- column_row$catSetID
+    if (column_dataType == pkg.env$part_sheet_data_type_is_categorical) {
+      column_catSetID <- column_row[[pkg.env$part_cat_set_ID_column_name]]
       column_catSetID <-
-        modify_and_check_glue_input(column_catSetID, table_ID, "catSetID")
+        modify_and_check_glue_input(column_catSetID, table_ID, pkg.env$part_cat_set_ID_column_name)
       if (nchar(column_catSetID) > 1) {
         tables_info_display_content <-
           glue::glue(
