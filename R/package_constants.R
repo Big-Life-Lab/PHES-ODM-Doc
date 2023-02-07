@@ -40,3 +40,9 @@ pkg.env$part_sheet_data_type_is_categorical <- "categorical"
 pkg.env$parts_sheet_table_column_type_is_PK <- "pk"
 pkg.env$parts_sheet_table_column_type_is_FK <- "fk"
 pkg.env$parts_sheet_table_column_type_is_header <- "header"
+
+# String set Values
+pkg.env$part_sheet_table_column_type_set_PK <- "Primary Key"
+pkg.env$part_sheet_table_column_type_set_FK <- "Foreign Key"
+pkg.env$part_sheet_table_column_type_set_header <- "Header"
+  
