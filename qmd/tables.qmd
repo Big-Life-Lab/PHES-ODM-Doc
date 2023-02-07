@@ -76,9 +76,9 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   
   # table_ID is assumed to be always present missing ID means invalid part
   table_ID <- current_table_data[[pkg.env$part_ID_column_name]]
-  if (format_input(table_ID, optional_warning = glue::glue(
+  if (nchar(format_input(table_ID, optional_warning = glue::glue(
         'Found table part with missing partID. Skipping.'
-      ))=="") {
+      )))<=0) {
     next()
   }
     
@@ -152,12 +152,12 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     
     # Column_ID is assumed to be always present missing ID means invalid part
     column_ID <- current_table_column[[pkg.env$part_ID_column_name]]
-    if (format_input(
+    if (nchar(format_input(
       column_ID,
       optional_warning = glue::glue(
         '{table_ID} contains a missing id for one of its columns. Missing columns are skipped'
       )
-    )== "") {
+    ))<=0) {
       next()
     }
     
@@ -176,7 +176,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       column_requirement <-
         format_input(column_requirement, column_ID, required_column_name)
       # Moving comma insertion here to allow for smoother output
-      if (column_requirement != "") {
+      if (nchar(column_requirement) > 0) {
         column_requirement <- glue::glue(', {column_requirement}')
       }
     }
@@ -196,7 +196,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       column_catSetID <- current_table_column[[pkg.env$part_cat_set_ID_column_name]]
       column_catSetID <-
         format_input(column_catSetID, table_ID, pkg.env$part_cat_set_ID_column_name)
-      if (nchar(column_catSetID) > 1) {
+      if (nchar(column_catSetID) > 0) {
         tables_info_display_content <-
           glue::glue(
             '{tables_info_display_content} CatSet: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
