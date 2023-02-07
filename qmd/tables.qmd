@@ -24,9 +24,9 @@ There are three types of tables:
 
 3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
 
-4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner
+4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
 
-5\) **Dictionary tables**. `parts`, `sets`, `languages`, and `translations` are reference or look-up tables. For example, the `parts` table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units are all `parts`. `sets` are collections of parts. For example, units can be grouped together in a `unitSet`. `languages` and `translations` support translations.
+5\) **Dictionary reference tables**. `parts`, `sets`, `languages`, and `translations` are reference or look-up tables. For example, the `parts` table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units. `sets` are collections of parts. For example, units can be grouped together in a `unitSet`. `languages` and `translations` support translations.
 
 The `parts`, `sets`, `languages`, and `translations` tables are reference or lookup tables. For example, the `parts` table describes all elements of the ODM including tables, table headers, measures, methods, categories, and units. The `sets` table is a collection of parts, such as units grouped together in a `unitSet`. The `languages` and `translations` tables support translations.
 
