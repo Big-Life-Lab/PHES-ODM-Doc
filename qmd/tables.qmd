@@ -68,7 +68,7 @@ table_of_content <- glue::glue('## Table list
                                <ul>')
 tables_info_display_content <- ""
 has_required_column <- TRUE
-for (table_row_index in 1:nrow(tables_data)) {
+for (table_row_index in seq_len(nrow(tables_data))) {
   single_table_information <- tables_data[table_row_index, ]
   
   # table_ID is assumed to be always present missing ID means invalid part
@@ -134,7 +134,7 @@ for (table_row_index in 1:nrow(tables_data)) {
       {table_description} {table_instruction}<ul>'
     )
   
-  for (column_row_index in 1:nrow(table_columns)) {
+  for (column_row_index in seq_len(nrow(table_columns))) {
     column_row <- table_columns[column_row_index, ]
     
     tmp_key_type <- column_row[[table_ID]]
