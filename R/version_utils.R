@@ -46,11 +46,11 @@ find_highest_version <- function(version_list) {
   })
 }
 
-ODM_file_name_parts <- function(ODM_file_name, versioning = TRUE) {
+ODM_file_name_parts <- function(ODM_file_name = ODM_file_name, versioning = TRUE) {
   # Check whether a file is a valid ODM file name
   # If valid, return a list of the four sections of the name
   # e.g. ODM-file-2.0.0.xlsx to ('ODM', 'file', '2.0.0', 'xlsx')
-  local({
+
     # First, generates a list of the three elements separated by '_'
     split_file <- strsplit(ODM_file_name, "_")[[1]]
     
@@ -64,12 +64,11 @@ ODM_file_name_parts <- function(ODM_file_name, versioning = TRUE) {
       warning(paste0("Warning: ODM file names begin with 'ODM'. The current file name begins with '", head(split_file, 1), "'."))
     }
     
-    # If vesioning = TRUE, the element before the extension must be a valid semanatic version
+    # If versioning = TRUE, the element before the extension must be a valid semanatic version
     if (check_semantic_versions(version_ODM) == FALSE) {
       warning(paste0("Warning: File name does not contain a valid semantic version. Instead, version element is '", version_ODM, "'."))
     }
-    
     # return the list
     return (c(head(split_file,2), version_ODM, extension))
-  })
+
 }
