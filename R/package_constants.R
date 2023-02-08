@@ -37,9 +37,9 @@ pkg.env$part_sheet_status_is_active <- "active"
 pkg.env$part_sheet_data_type_is_categorical <- "categorical"
 
 # Table column values
-pkg.env$parts_sheet_table_column_type_is_PK <- "pk"
-pkg.env$parts_sheet_table_column_type_is_FK <- "fk"
-pkg.env$parts_sheet_table_column_type_is_header <- "header"
+pkg.env$part_sheet_table_column_type_is_PK <- "pk"
+pkg.env$part_sheet_table_column_type_is_FK <- "fk"
+pkg.env$part_sheet_table_column_type_is_header <- "header"
 
 # String set Values
 pkg.env$part_sheet_table_column_type_set_PK <- "Primary Key"

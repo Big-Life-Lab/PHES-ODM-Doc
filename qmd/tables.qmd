@@ -107,9 +107,9 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   parts_table[[table_ID]] <-
     tolower(trimws(parts_table[[table_ID]]))
   table_columns <-
-    parts_table[parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_PK |
-                  parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_FK |
-                  parts_table[[table_ID]] == pkg.env$parts_sheet_table_column_type_is_header,]
+    parts_table[parts_table[[table_ID]] == pkg.env$part_sheet_table_column_type_is_PK |
+                  parts_table[[table_ID]] == pkg.env$part_sheet_table_column_type_is_FK |
+                  parts_table[[table_ID]] == pkg.env$part_sheet_table_column_type_is_header,]
   
   # Check for optional columns
   has_required_column <-
