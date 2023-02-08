@@ -16,6 +16,8 @@ $background_color_1: #ffcb6c;
 /*https://fonts.google.com/specimen/Lora*/
 
 /*-- scss:rules --*/
+* { font-family: $font_family_1; }
+
 h1 {
   font: 800 36px "Lora";
   color: $color_1;
