@@ -2,7 +2,7 @@
 
 # Tables {.unnumbered}
 
-{{< include _dictionary_version.qmd >}}
+{{< include _dictionary-version.qmd >}}
 
 The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
 
@@ -221,4 +221,4 @@ table_of_content <- glue::glue('{table_of_content}</ul>')
 
 `r table_of_content` `r tables_info_display_content`
 
-{{< include _date_created.qmd >}}
+{{< include _date-created.qmd >}}
