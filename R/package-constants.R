@@ -1,6 +1,6 @@
 pkg.env <- new.env(parent = emptyenv())
 
-pkg.env$odm_dictionary_file_path <- "data/raw/ODM_dictionary_*.xlsx"
+pkg.env$dictionary_directory <- "/data/raw"
 
 pkg.env$parts_sheet_name <- "parts"
 

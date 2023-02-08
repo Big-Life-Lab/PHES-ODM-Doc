@@ -1,7 +1,7 @@
 <!--Source constants file until I get clarity for environment usage across entire package or if sourcing is enough -->
 `r source("../R/package-constants.R")`
 ```{r, echo=FALSE}
-dictionary_full_file_name <- list.files("../data/raw", pattern = "*.xlsx")
+dictionary_full_file_name <- list.files(file.path("..",pkg.env$dictionary_directory), pattern = "*.xlsx")
 dictionary_version_pattern <- "ODM_dictionary_\\s*(.*?)\\s*.xlsx"
 
 dictionary_version_used <- regmatches(dictionary_full_file_name, regexec(dictionary_version_pattern, dictionary_full_file_name))[[1]][2]

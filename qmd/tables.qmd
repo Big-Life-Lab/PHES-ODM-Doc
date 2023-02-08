@@ -54,14 +54,14 @@ A header may be mandatory or optional. In the `measures` table, examples of mand
 
 <!--` reference1/ -->
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=TRUE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions
 source("../R/qmd-utils.R")
 
 # Read in and prepare data.frames
 parts_table <-
-  readxl::read_excel(file.path("../", pkg.env$odm_dictionary_file_path),
+  readxl::read_excel(file.path("..", pkg.env$dictionary_directory, dictionary_full_file_name),
                      sheet = pkg.env$parts_sheet_name)
 tables_data <-
   parts_table[parts_table[[pkg.env$part_type_column_name]] == pkg.env$part_sheet_part_type_is_table &
