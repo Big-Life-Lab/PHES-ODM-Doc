@@ -1,7 +1,8 @@
+# Parts {.unnumbered}
 
-# Parts 
- Parts are the smallest way of describing anything in the ODM. Think of the example of parts of a car. If you own a car, your garage can access a parts list that contains every part of your car -- right down to every nut and bolt. The same is true for the ODM. 
- The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.
+Parts are the smallest way of describing anything in the ODM. Think of the example of parts of a car. If you own a car, your garage can access a parts list that contains every part of your car -- right down to every nut and bolt. The same is true for the ODM. 
+
+The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.
 
 
 <a name="4s"></a>**4s method**(4s): Nucleic acid extraction performed using the 4s method. NA </br>*Part Type:* <a href="#category">category</a></br>*Domain ID:* <a href="#Bio">Bio</a></br>*Speciment ID:* <a href="#saSpecimen">saSpecimen</a></br>*Compartment Set:* <a href="#anyCompartment">anyCompartment</a></br>*Group ID:* <a href="#procGrp">procGrp</a></br>*Class ID:* <a href="#naClass">naClass</a></br>*Nomenclature ID:* <a href="#naNomenclature">naNomenclature</a> </br>*Ontology Reference:* <a href="#NA(maybe bug)">NA(maybe bug)</a></br>*Category Set ID:* <a href="#extractCatSet">extractCatSet</a></br>*Unit Set ID:* <a href="#naUnitSet">naUnitSet</a></br>*Aggregation Scale ID:* <a href="#NA">NA</a></br>*Quality Set ID:* <a href="#NA">NA</a></br>*Reference Link:* https://www.protocols.io/view/v-4-direct-wastewater-rna-capture-and-purification-bpdfmi3n</br>*Data Type:* <a href="#varchar">varchar</a></br>*Minimum Value:* NA</br>*Maximum Value:* NA</br>*Minimum Length:* 0</br>*Maximum Length:* 30</br> 
