@@ -54,7 +54,7 @@ A header may be mandatory or optional. In the `measures` table, examples of mand
 
 <!--` reference1/ -->
 
-```{r, echo=FALSE, warning=TRUE}
+```{r, echo=FALSE, warning=FALSE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions
 source("../R/qmd-utils.R")
@@ -200,7 +200,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     if (column_dataType == pkg.env$part_sheet_data_type_is_categorical) {
       column_catSetID <- current_table_column[[pkg.env$part_cat_set_ID_column_name]]
       column_catSetID <-
-        format_input(column_catSetID, table_ID, pkg.env$part_cat_set_ID_column_name)
+        format_input(column_catSetID, column_ID, pkg.env$part_cat_set_ID_column_name)
       if (nchar(column_catSetID) > 0) {
         tables_info_display_content <-
           glue::glue(
