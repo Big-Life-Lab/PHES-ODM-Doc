@@ -132,8 +132,8 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   tables_info_display_content <-
     glue::glue(
       '{tables_info_display_content}
-      #### {table_label} 
-      (partID: <a name=\"{table_ID}\"></a><a href=\"/parts.html#{table_ID}\">{table_ID}</a>)
+      ### {table_label} 
+      partID: <a name=\"{table_ID}\"></a><a href=\"/parts.html#{table_ID}\">{table_ID}</a>.
       {table_description} {table_instruction}<ul>'
     )
   
