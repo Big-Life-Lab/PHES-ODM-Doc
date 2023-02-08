@@ -1,74 +1,12 @@
-<!--` reference1 -->
-
-# Tables {.unnumbered}
-
-{{< include _dictionary_version.qmd >}}
-
-The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
-
-::: callout-note
-## Data storage
-
-It is recommended that all ODM data be stored in the 21 tables as this ensures interoperable data sharing and is supported by the [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
-
-However, users have the option to create custom tables or 'views' by combining fields from any table. The common format for data entry is a "wide" format where data is collected with *one day per row* and multiple measures or attributes per row. Please note that this guide does not cover how to generate wide tables.
-:::
-
-## Table types
-
-There are three types of tables:
-
-1\) **Regular report tables**. The `measures` and `samples` tables are used for daily reporting of new measurements and information on sample collection. Three tables support regular reporting - `measureSets` is an optional table used to link measures, `sampleRelationships` is an optional table used when samples are pooled or split, and `qualityReports` is used for detailed quality assurance and control measures.
-
-2\) **Contact information tables**. `sites`, `organizations`, `contacts`, and `addresses` hold contact information for the testing site and the person who performed the testing.
-
-3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
-
-4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
-
-5\) **Dictionary reference tables**. `parts`, `sets`, `languages`, and `translations` are reference or look-up tables. For example, the `parts` table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units. `sets` are collections of parts. For example, units can be grouped together in a `unitSet`. `languages` and `translations` support translations.
-
-The `parts`, `sets`, `languages`, and `translations` tables are reference or lookup tables. For example, the `parts` table describes all elements of the ODM including tables, table headers, measures, methods, categories, and units. The `sets` table is a collection of parts, such as units grouped together in a `unitSet`. The `languages` and `translations` tables support translations.
-
-## Header roles
-
-Each table has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.
-
-**Primary key** (PK) - All tables except dictionary tables have a primary key, which serves as a unique identifier for each row in the table. This means that a primary key value cannot be repeated.
-
-**Foreign key** (FK) - Some tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. It allows for relationships between tables to be established, making it possible to link data between different tables.
-
-**Header** (header) - This label is used in a table description when a header is not a primary or foreign key.
-
-::: callout-note
-## Each table has a primary key
-
-It is important to note that the headers in each table may have different roles, but each header must have one of the three roles described above. The ODM standard requires that each table have a primary key, but the number and type of foreign keys and attributes may vary depending on the table.
-:::
-
-## Mandatory, optional, mandatoryIf
-
-A header may be mandatory or optional. In the `measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data. The toolkit will return an error if a table lacks a mandatory header, or if there are missing row entries for mandatory fields.
-
-`mandatoryIf` headers are special header that are mandatory if special conditions apply. For example, the `protocol steps` table have row entries that are `measures` or `methods`. If the row entry is a `measure`, then a unit becomes mandatory, since all measures must have a unit. So, `units` are `mandatoryIf` in the `Protocol steps` table.
-
-<!--` reference1/ -->
-
-```{r, echo=FALSE, warning=FALSE}
-# Can put warning=FALSE above if warnings in display are an issue
-# Source utility functions
-source("../R/qmd-utils.R")
+source("R/qmd-utils.R")
 
 # Read in and prepare data.frames
 parts_table <-
-  readxl::read_excel(file.path("../", pkg.env$odm_dictionary_file_path),
+  readxl::read_excel(file.path(pkg.env$odm_dictionary_file_path),
                      sheet = pkg.env$parts_sheet_name)
 tables_data <-
   parts_table[parts_table[[pkg.env$part_type_column_name]] == pkg.env$part_sheet_part_type_is_table &
                 parts_table[[pkg.env$part_status_column_name]] == pkg.env$part_sheet_status_is_active,]
-
-# Sort tables alphabetically based on partID
-tables_data <- tables_data[order(tables_data[[pkg.env$part_ID_column_name]]),]
 
 # Declaring string that will be appended during the loops
 table_of_content <- glue::glue('## Table list
@@ -80,11 +18,11 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   # table_ID is assumed to be always present missing ID means invalid part
   table_ID <- current_table_data[[pkg.env$part_ID_column_name]]
   if (nchar(format_input(table_ID, optional_warning = glue::glue(
-        'Found table part with missing partID. Skipping.'
-      )))<=0) {
+    'Found table part with missing partID. Skipping.'
+  )))<=0) {
     next()
   }
-    
+  
   # Variables being used in table display
   # Their creation is not needed but I believe it assists in clarity
   table_label <- current_table_data[[pkg.env$part_label_column_name]]
@@ -106,7 +44,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     next()
   }
   
-    # Acquire columns that belong to the table
+  # Acquire columns that belong to the table
   parts_table[[table_ID]] <-
     tolower(trimws(parts_table[[table_ID]]))
   table_columns <-
@@ -119,7 +57,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     has_column_for_table(parts_table, table_ID, required_column_name)
   if (has_column_for_table(parts_table, table_ID, order_column_name)) {
     table_columns <-
-      table_columns[order(as.numeric(table_columns[[order_column_name]])),]
+      table_columns[order(table_columns[[order_column_name]]),]
   }
   
   # Append table of contents
@@ -142,11 +80,11 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     detected_column_role <- current_table_column[[table_ID]]
     column_role <- "NA"
     if (length(detected_column_role) > 0 && !is.na(detected_column_role)) {
-      if (tolower(detected_column_role) == pkg.env$part_sheet_table_column_type_is_FK) {
+      if (tolower(detected_column_role) == pkg.env$parts_sheet_table_column_type_is_FK) {
         column_role <- pkg.env$part_sheet_table_column_type_set_FK
-      } else if (tolower(detected_column_role) == pkg.env$part_sheet_table_column_type_is_PK) {
+      } else if (tolower(detected_column_role) == pkg.env$parts_sheet_table_column_type_is_PK) {
         column_role <- pkg.env$part_sheet_table_column_type_set_PK
-      } else if (tolower(detected_column_role) == pkg.env$part_sheet_table_column_type_is_header) {
+      } else if (tolower(detected_column_role) == pkg.env$parts_sheet_table_column_type_is_header) {
         column_role <- pkg.env$part_sheet_table_column_type_set_header
       } else {
         next()
@@ -215,8 +153,3 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     glue::glue('{tables_info_display_content}</ul>')
 }
 table_of_content <- glue::glue('{table_of_content}</ul>')
-```
-
-`r table_of_content` `r tables_info_display_content`
-
-{{< include _date_created.qmd >}}
