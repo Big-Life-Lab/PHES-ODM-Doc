@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.2.335">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation - 1&nbsp; Parts</title>
+<title>Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation - Parts</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Parts</span></h1>
+      <h1 class="quarto-secondary-nav-title">Parts</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -127,7 +127,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./parts.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Parts</span></a>
+  <a href="./parts.html" class="sidebar-item-text sidebar-link active">Parts</a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -169,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Parts</span></h1>
+<h1 class="title d-none d-lg-block">Parts</h1>
 </div>
 
 
@@ -184,7 +184,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Parts are the smallest way of describing anything in the ODM. Think of the example of parts of a car. If you own a car, your garage can access a parts list that contains every part of your car – right down to every nut and bolt. The same is true for the ODM. The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.</p>
+<p>Parts are the smallest way of describing anything in the ODM. Think of the example of parts of a car. If you own a car, your garage can access a parts list that contains every part of your car – right down to every nut and bolt. The same is true for the ODM.</p>
+<p>The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.</p>
 <p><a name="4s"></a><strong>4s method</strong>(4s): Nucleic acid extraction performed using the 4s method. NA <br><em>Part Type:</em> <a href="#category">category</a><br><em>Domain ID:</em> <a href="#Bio">Bio</a><br><em>Speciment ID:</em> <a href="#saSpecimen">saSpecimen</a><br><em>Compartment Set:</em> <a href="#anyCompartment">anyCompartment</a><br><em>Group ID:</em> <a href="#procGrp">procGrp</a><br><em>Class ID:</em> <a href="#naClass">naClass</a><br><em>Nomenclature ID:</em> <a href="#naNomenclature">naNomenclature</a> <br><em>Ontology Reference:</em> <a href="#NA(maybe bug)">NA(maybe bug)</a><br><em>Category Set ID:</em> <a href="#extractCatSet">extractCatSet</a><br><em>Unit Set ID:</em> <a href="#naUnitSet">naUnitSet</a><br><em>Aggregation Scale ID:</em> <a href="#NA">NA</a><br><em>Quality Set ID:</em> <a href="#NA">NA</a><br><em>Reference Link:</em> https://www.protocols.io/view/v-4-direct-wastewater-rna-capture-and-purification-bpdfmi3n<br><em>Data Type:</em> <a href="#varchar">varchar</a><br><em>Minimum Value:</em> NA<br><em>Maximum Value:</em> NA<br><em>Minimum Length:</em> 0<br><em>Maximum Length:</em> 30<br></p>
 <p><a name="FiNa"></a><strong>First Nation</strong>(FiNa): Used to categorize a sampleshed that is a First Nation, or on reserve lands. Likely for internal use only, Indigenous data can and should not be shared without explicit consent of the nation in quesiton. <br><em>Part Type:</em> <a href="#category">category</a><br><em>Domain ID:</em> <a href="#naDomain">naDomain</a><br><em>Speciment ID:</em> <a href="#naSpecimenSet">naSpecimenSet</a><br><em>Compartment Set:</em> <a href="#naCompartmentSet">naCompartmentSet</a><br><em>Group ID:</em> <a href="#colGrp">colGrp</a><br><em>Class ID:</em> <a href="#naClass">naClass</a><br><em>Nomenclature ID:</em> <a href="#naNomenclature">naNomenclature</a> <br><em>Ontology Reference:</em> <a href="#NA(maybe bug)">NA(maybe bug)</a><br><em>Category Set ID:</em> <a href="#shedCatSet">shedCatSet</a><br><em>Unit Set ID:</em> <a href="#naUnitSet">naUnitSet</a><br><em>Aggregation Scale ID:</em> <a href="#NA">NA</a><br><em>Quality Set ID:</em> <a href="#NA">NA</a><br><em>Reference Link:</em> NA<br><em>Data Type:</em> <a href="#varchar">varchar</a><br><em>Minimum Value:</em> NA<br><em>Maximum Value:</em> NA<br><em>Minimum Length:</em> 0<br><em>Maximum Length:</em> 10<br></p>
 <p><a name="ICD"></a><strong>International Classification of Diseases</strong>(ICD): Classification system for diseases in humans. NA <br><em>Part Type:</em> <a href="#nomenclature">nomenclature</a><br><em>Domain ID:</em> <a href="#Bio">Bio</a><br><em>Speciment ID:</em> <a href="#poSpecimen">poSpecimen</a><br><em>Compartment Set:</em> <a href="#humanCompartment">humanCompartment</a><br><em>Group ID:</em> <a href="#naGroup">naGroup</a><br><em>Class ID:</em> <a href="#disease">disease</a><br><em>Nomenclature ID:</em> <a href="#ICD">ICD</a> <br><em>Ontology Reference:</em> <a href="#NA(maybe bug)">NA(maybe bug)</a><br><em>Category Set ID:</em> <a href="#NA">NA</a><br><em>Unit Set ID:</em> <a href="#naUnitSet">naUnitSet</a><br><em>Aggregation Scale ID:</em> <a href="#NA">NA</a><br><em>Quality Set ID:</em> <a href="#NA">NA</a><br><em>Reference Link:</em> NA<br><em>Data Type:</em> <a href="#varchar">varchar</a><br><em>Minimum Value:</em> NA<br><em>Maximum Value:</em> NA<br><em>Minimum Length:</em> 0<br><em>Maximum Length:</em> 30<br></p>
