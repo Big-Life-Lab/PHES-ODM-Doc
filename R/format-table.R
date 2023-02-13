@@ -13,7 +13,7 @@ format_table <-
            columns_to_format = NULL) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
-    ID_column_name <- constants$part_ID_column_name
+    ID_column_name <- parts_sheet_column_names$part_ID_column_name
     
     # Format all columns if columns_to_format is null
     if (is.null(columns_to_format)) {
@@ -31,20 +31,23 @@ format_table <-
     
     
     # Loop over passed columns
-    for (column_to_format in columns_to_format)
+    for (current_column_to_format in columns_to_format)
     {
       # Append then skip over columns missing from the input_table and issue appropriate warning
-      if (is.null(input_table[[column_to_format]])) {
+      if (is.null(input_table[[current_column_to_format]])) {
         warning(glue::glue(
-          '{column_to_format} is missing from {table_being_checked} sheet'
+          '{current_column_to_format} is missing from {table_being_checked} sheet.
+          New column was created with {replace_value} values.
+          
+          '
         ))
-        output_table[[column_to_format]] <- replace_value
+        output_table[[current_column_to_format]] <- replace_value
         next()
       }
       # Format missing/improper values into replace_value
-      output_table[is.na(output_table[[column_to_format]]) |
-                     is.null(output_table[[column_to_format]]) |
-                     length(output_table[[column_to_format]]) < 1, column_to_format] <-
+      output_table[is.na(output_table[[current_column_to_format]]) |
+                     is.null(output_table[[current_column_to_format]]) |
+                     length(output_table[[current_column_to_format]]) < 1, current_column_to_format] <-
         replace_value
       
     }
