@@ -19,7 +19,7 @@ verify_column <-
       warning(warning_text)
       is_valid_column <- FALSE
     }
-    return(column_is_valid)
+    return(is_valid_column)
   }
 
 #' Verify Input
