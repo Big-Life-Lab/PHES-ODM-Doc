@@ -16,33 +16,37 @@ $background_color_1: #ffcb6c;
 /*https://fonts.google.com/specimen/Lora*/
 
 /*-- scss:rules --*/
+* { font-family: $font_family_1; }
+
 h1 {
-  font: 800 48px "Lora";
+  font: 800 36px "Lora";
   color: $color_1;
 }
 h2 {
-  font: 800 32px "Lora";
+  font: 600 28px "Lora";
   color: $color_1;
 }
 h3 {
-  font: 800 24px "Lora";
+  font: 600 22px "Lora";
   color: $color_1;
 }
 h4 {
-  font: 800 20px "Lora";
+  font: 600 18px "Lora";
   color: $color_1;
 }
 h5 {
-  font: 600 16px "montserrat";
+  font: 600 14px "montserrat";
   font-variant: small-caps;
   color: $color_2;
 }
 p {
   font-family: $font_family_1;
-  font-weight: 400;
+  font: 10px;
   color: $color_1;
 }
 a {
+  font-family: $font_family_1;
+  font: 10px;
   color: $color_3;
 }
 .big {
