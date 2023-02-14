@@ -61,6 +61,17 @@ verify_string <-
     return(is_valid_string)
   }
 
+#' Verify and append
+#' 
+#' A utility function used to simplify content insertion based on the validity of passed content.
+#' 
+#' @param existing_content string you wish to append to
+#' @param content_to_verify string that is checked for validity and is used to determine what content is added
+#' @param verify_warning string containing the warning to print in case content_to_verify fails verification
+#' @param is_valid_insert string that is appended to existing_content if content_to_verify is valid
+#' @param is_invalid_insert string that is appended to existing_content if content_to_verify is invalid
+#' 
+#' @return returns existing_content with either valid or invalid insert depending on the validity of content_to_verify
 verify_and_append_content <-
   function(existing_content,
            content_to_verify,
