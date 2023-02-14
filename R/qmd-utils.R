@@ -2,18 +2,18 @@
 source(file.path(getwd(), "R", "constants.R"))
 
 #' Verify Input
-#' 
+#'
 #' Higher level function to determine appropriate verification function to use
-#' 
+#'
 #' @param input_to_check string or list of strings to check
 #' @param warning_text warning to display
-#' 
+#'
 #' @return Boolean matching appropriate function's return
-verify_input <- function(input_to_check, warning_text){
+verify_input <- function(input_to_check, warning_text) {
   is_valid_input <- TRUE
-  if(length(input_to_check)>1){
+  if (length(input_to_check) > 1) {
     is_valid_input <- verify_column(input_to_check, warning_text)
-  }else {
+  } else {
     is_valid_input <- verify_string(input_to_check, warning_text)
   }
   return(is_valid_input)
@@ -54,7 +54,25 @@ verify_string <-
     is_valid_string <- TRUE
     if (string_to_check == constants$dictionary_missing_value_replacement) {
       is_valid_string <- FALSE
-      warning(warning_text)
+      warning(glue::glue('{warning_text}
+                         
+                         '))
     }
     return(is_valid_string)
+  }
+
+verify_and_append_content <-
+  function(existing_content,
+           content_to_verify,
+           verify_warning,
+           is_valid_insert,
+           is_invalid_insert) {
+    return_content <- ""
+    if(verify_input(content_to_verify, verify_warning)){
+      return_content <- glue::glue('{existing_content}{is_valid_insert}')
+    }else{
+      return_content <- glue::glue('{existing_content}{is_invalid_insert}')
+    }
+    
+    return(return_content)
   }
