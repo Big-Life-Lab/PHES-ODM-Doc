@@ -94,6 +94,8 @@ table_name_columns <- c(all_table_column_names, all_required_column_names, all_o
 
 # Perform additional formatting on table specific columns
 parts_table <- format_table(parts_table, table_name_columns)
+parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], tolower)
+parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], trimws)
 
 # Declaring string that will be appended during the loops
 table_of_content <- glue::glue('## Table list
@@ -163,10 +165,10 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     glue::glue('
     
       ### {current_table_label} {{ #{current_table_ID} }}
-      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>.'),
+      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>. '),
     glue::glue('
       ### {current_table_ID} {{ #{current_table_ID} }}
-      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>.')
+      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>. ')
   )
   # Append table description content
   tables_info_display_content <- verify_and_append_content(
@@ -188,8 +190,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       '{current_table_ID} is missing a valid \\
       {parts_sheet_column_names$part_instruction_column_name} and will be skipped'
     ),
-    glue::glue('
-                 {current_table_instructions}'),
+    glue::glue(' {current_table_instructions}'),
     ""
   )
   # Start the table columns list 
@@ -199,7 +200,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   for (column_row_index in seq_len(nrow(table_columns))) {
     current_table_column <- table_columns[column_row_index, ]
     
-    detected_column_role <- tolower(current_table_column[[current_table_ID]])
+    detected_column_role <- current_table_column[[current_table_ID]]
     column_role <- "NA"
     if (verify_input(detected_column_role, glue::glue('Invalid column role found for {current_table_ID} table'))) {
       if (detected_column_role == constants$part_sheet_table_column_type_is_FK) {
