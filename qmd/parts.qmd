@@ -1,49 +1,30 @@
+
 # Parts {.unnumbered}
+
+{{< include _dictionary-version.qmd >}}
 
 Parts are the smallest way of describing anything in the ODM. Think of the example of parts of a car. If you own a car, your garage can access a parts list that contains every part of your car -- right down to every nut and bolt. The same is true for the ODM. 
 
 The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.
 
 ```{r, echo=FALSE}
-odm_dictionary_file_path <- "../data/raw/ODM-dictionary.xlsx"
-parts_sheet_name <- "parts"
-
-part_ID_column_name <- "partID"
-part_label_column_name <- "partLabel"
-part_description_column_name <- "partDesc"
-part_instruction_column_name <- "partInstr"
-part_type_column_name <- "partType"
-part_domain_ID_column_name <- "domainID"
-part_speciment_set_column_name <- "specimenSet"
-part_comp_set_column_name <- "compSet"
-part_group_ID_column_name <- "groupID"
-part_class_ID_column_name <- "classID"
-part_nomenclature_ID_column_name <- "nomenclatureID"
-part_ontology_reference_column_name <- "ontologyRef"
-part_cat_set_ID_column_name <- "catSetID"
-part_unit_set_ID_column_name <- "unitSetID"
-part_agg_scale_ID_column_name <- "aggScaleID"
-part_quality_set_ID_column_name <- "qualitySetID"
-part_ref_link_column_name <- "refLink"
-part_data_type_column_name <- "dataType"
-part_min_value_column_name <- "minValue"
-part_max_value_column_name <- "maxValue"
-part_min_length_column_name <- "minLength"
-part_max_length_column_name <- "maxLength"
+# Copied from stack overflow rework into clean function @RUSTY
+`%!=na%` <- function(e1, e2) (e1 != e2 | (is.na(e1) & !is.na(e2)) | (is.na(e2) & !is.na(e1))) & !(is.na(e1) & is.na(e2))
 
 # String to store parts display content
 parts_info_display_content <- ""
 
 
 parts_table <-
-  readxl::read_excel(odm_dictionary_file_path, sheet = parts_sheet_name)
+  readxl::read_excel(file.path("..", pkg.env$dictionary_directory, dictionary_full_file_name),
+                     sheet = pkg.env$parts_sheet_name)
 
 # Removal of rows containing R NA for part ID
 parts_table <-
-  parts_table[!is.na(parts_table[[part_ID_column_name]]), ]
+  parts_table[!is.na(parts_table[[pkg.env$part_ID_column_name]]), ]
 # Removal of rows containing R NULL for part ID
 parts_table <-
-  parts_table[!is.null(parts_table[[part_ID_column_name]]), ]
+  parts_table[!is.null(parts_table[[pkg.env$part_ID_column_name]]), ]
 
 # Loop over all the used columns and check for their existence
 # Will use function from tables for now ignore and assume all columns present
@@ -54,53 +35,55 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   
   # Utilize function from tables to verify every column is not null NA or "NA"
   # Currently just use built in glue to set null to "MISSING"
-  part_ID <- part_row[[part_ID_column_name]]
-  part_label <- part_row[[part_label_column_name]]
-  part_description <- part_row[[part_description_column_name]]
-  part_instruction <- part_row[[part_instruction_column_name]]
-  part_type <- part_row[[part_type_column_name]]
-  part_domain_ID <- part_row[[part_domain_ID_column_name]]
-  part_speciment_set <- part_row[[part_speciment_set_column_name]]
-  part_comp_set <- part_row[[part_comp_set_column_name]]
-  part_group_ID <- part_row[[part_group_ID_column_name]]
-  part_class_ID <- part_row[[part_class_ID_column_name]]
-  part_nomenclature_ID <- part_row[[part_nomenclature_ID_column_name]]
-  part_ontology_reference <- part_row[[part_ontology_reference_column_name]]
-  part_cat_set_ID <- part_row[[part_cat_set_ID_column_name]]
-  part_unit_set_ID <- part_row[[part_unit_set_ID_column_name]]
-  part_agg_scale_ID <- part_row[[part_agg_scale_ID_column_name]]
-  part_quality_set_ID <- part_row[[part_quality_set_ID_column_name]]
-  part_ref_link <- part_row[[part_ref_link_column_name]]
-  part_data_type <- part_row[[part_data_type_column_name]]
-  part_min_value <- part_row[[part_min_value_column_name]]
-  part_max_value <- part_row[[part_max_value_column_name]]
-  part_min_length <- part_row[[part_min_length_column_name]]
-  part_max_length <- part_row[[part_max_length_column_name]]
+  part_ID <- part_row[[pkg.env$part_ID_column_name]]
+  part_label <- part_row[[pkg.env$part_label_column_name]]
+  part_description <- part_row[[pkg.env$part_description_column_name]]
+  part_instruction <- part_row[[pkg.env$part_instruction_column_name]]
+  part_type <- part_row[[pkg.env$part_type_column_name]]
+  part_domain_ID <- part_row[[pkg.env$part_domain_ID_column_name]]
+  part_speciment_set <- part_row[[pkg.env$part_speciment_set_column_name]]
+  part_comp_set <- part_row[[pkg.env$part_comp_set_column_name]]
+  part_group_ID <- part_row[[pkg.env$part_group_ID_column_name]]
+  part_class_ID <- part_row[[pkg.env$part_class_ID_column_name]]
+  part_nomenclature_ID <- part_row[[pkg.env$part_nomenclature_ID_column_name]]
+  part_ontology_reference <- part_row[[pkg.env$part_ontology_reference_column_name]]
+  part_cat_set_ID <- part_row[[pkg.env$part_cat_set_ID_column_name]]
+  part_unit_set_ID <- part_row[[pkg.env$part_unit_set_ID_column_name]]
+  part_agg_scale_ID <- part_row[[pkg.env$part_agg_scale_ID_column_name]]
+  part_quality_set_ID <- part_row[[pkg.env$part_quality_set_ID_column_name]]
+  part_ref_link <- part_row[[pkg.env$part_ref_link_column_name]]
+  part_data_type <- part_row[[pkg.env$part_data_type_column_name]]
+  part_min_value <- part_row[[pkg.env$part_min_value_column_name]]
+  part_max_value <- part_row[[pkg.env$part_max_value_column_name]]
+  part_min_length <- part_row[[pkg.env$part_min_length_column_name]]
+  part_max_length <- part_row[[pkg.env$part_max_length_column_name]]
   
   # Assemble the display string
   parts_info_display_content <-
     glue::glue(
       '{parts_info_display_content}
-      <a name="{part_ID}"></a>**{part_label}** ({part_ID}):
-      {part_description} {part_instruction}
-      *Part Type:* <a href="#{part_type}">{part_type}</a>
-      *Domain ID:* <a href="#{part_domain_ID}">{{part_domain_ID}}</a>
-      *Speciment ID:* <a href="#{part_speciment_set}">{part_speciment_set}</a>
-      *Compartment Set:* <a href="#{part_comp_set}">{part_comp_set}</a>
-      *Group ID:* <a href="#{part_group_ID}">{part_group_ID}</a>
-      *Class ID:* <a href="#{part_class_ID}">{part_class_ID}</a>
-      *Nomenclature ID:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a>
-      *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a>
-      *Category Set ID:* <a href="#{part_cat_set_ID}">{part_cat_set_ID}</a>
-      *Unit Set ID:* <a href="#{part_unit_set_ID}">{part_unit_set_ID}</a>
-      *Aggregation Scale ID:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a>
-      *Quality Set ID:* <a href="#{part_quality_set_ID}">{part_quality_set_ID}</a>
-      *Reference Link:* {part_ref_link}
-      *Data Type:* <a href="#{part_data_type}">{part_data_type}</a>
-      *Minimum Value:* {part_min_value}
-      *Maximum Value:* {part_max_value}
-      *Minimum Length:* {part_min_length}
-      *Maximum Length:* {part_max_length}
+      
+      ### {part_label} {{ #{part_ID} }} 
+      ({part_ID}):
+      {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
+      *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
+      *Domain ID:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
+      *Speciment ID:* <a href="#{part_speciment_set}">{part_speciment_set}</a> </br>
+      *Compartment Set:* <a href="#{part_comp_set}">{part_comp_set}</a> </br>
+      *Group ID:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
+      *Class ID:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
+      *Nomenclature ID:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
+      *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a> </br>
+      *Category Set ID:* <a href="#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
+      *Unit Set ID:* <a href="#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
+      *Aggregation Scale ID:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
+      *Quality Set ID:* <a href="#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
+      *Reference Link:* {part_ref_link} </br>
+      *Data Type:* <a href="#{part_data_type}">{part_data_type}</a> </br>
+      *Minimum Value:* {part_min_value} </br>
+      *Maximum Value:* {part_max_value} </br>
+      *Minimum Length:* {part_min_length} </br>
+      *Maximum Length:* {part_max_length} </br>
       ')
   
   # Add support for sub categories
