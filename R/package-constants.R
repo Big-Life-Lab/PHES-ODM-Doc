@@ -28,6 +28,8 @@ pkg.env$part_min_value_column_name <- "minValue"
 pkg.env$part_max_value_column_name <- "maxValue"
 pkg.env$part_min_length_column_name <- "minLength"
 pkg.env$part_max_length_column_name <- "maxLength"
+pkg.env$part_first_release_column_name <- "firstReleased"
+pkg.env$part_last_updated_column_name <- "lastUpdated"
 
 # Column values
 pkg.env$part_sheet_part_type_is_table <- "table"

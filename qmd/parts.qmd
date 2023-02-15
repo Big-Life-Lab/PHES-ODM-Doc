@@ -63,6 +63,9 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   part_max_value <- part_row[[pkg.env$part_max_value_column_name]]
   part_min_length <- part_row[[pkg.env$part_min_length_column_name]]
   part_max_length <- part_row[[pkg.env$part_max_length_column_name]]
+  part_status <- part_row[[pkg.env$part_status_column_name]]
+  part_first_released <- part_row[[pkg.env$part_first_release_column_name]]
+  part_last_updated <- part_row[[pkg.env$part_last_updated_column_name]]
   
   # Assemble the display string
   parts_info_display_content <-
@@ -90,6 +93,9 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       *Maximum Value:* {part_max_value} </br>
       *Minimum Length:* {part_min_length} </br>
       *Maximum Length:* {part_max_length} </br>
+      *Part Status:* {if (part_status %!=na% pkg.env$part_sheet_status_is_active) glue::glue(\'**{part_status}**\') else part_status }. \\
+      First released: {part_first_released}. \\
+      Last updated: {part_last_updated}. </br>
       ')
   
   # Add support for sub categories
