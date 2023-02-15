@@ -32,15 +32,12 @@ parts_table <-
 parts_table <-
   parts_table[!is.null(parts_table[[pkg.env$part_ID_column_name]]), ]
 
-# Loop over all the used columns and check for their existence
-# Will use function from tables for now ignore and assume all columns present
-
 # Loop over every part
 for (part_row_index in seq_len(nrow(parts_table))) {
   part_row <- parts_table[part_row_index,]
   
-  # Utilize function from tables to verify every column is not null NA or "NA"
-  # Currently just use built in glue to set null to "MISSING"
+  # Declare variables used
+  # Once tables is merged format and verify input
   part_ID <- part_row[[pkg.env$part_ID_column_name]]
   part_label <- part_row[[pkg.env$part_label_column_name]]
   part_description <- part_row[[pkg.env$part_description_column_name]]
@@ -97,8 +94,6 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       First released: {part_first_released}. \\
       Last updated: {part_last_updated}. </br>
       ')
-  
-  # Add support for sub categories
 }
 
 
