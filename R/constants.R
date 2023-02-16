@@ -31,6 +31,8 @@ parts_sheet_column_names$part_min_value_column_name <- "minValue"
 parts_sheet_column_names$part_max_value_column_name <- "maxValue"
 parts_sheet_column_names$part_min_length_column_name <- "minLength"
 parts_sheet_column_names$part_max_length_column_name <- "maxLength"
+parts_sheet_column_names$part_first_release_column_name <- "firstReleased"
+parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 
 # Column values
 constants$part_sheet_part_type_is_table <- "table"

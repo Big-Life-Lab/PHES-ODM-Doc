@@ -1,4 +1,10 @@
-
+---
+project:
+  execute-dir: ../
+---
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
 # Parts {.unnumbered}
 
 {{< include _dictionary-version.qmd >}}
@@ -8,6 +14,10 @@ Parts are the smallest way of describing anything in the ODM. Think of the examp
 The ODM has a part ID (partID) and part description (partDescription) for every measure, method and attribute. There are also partIDs for measure categories, units, aggregations, and other parts. Below is the part list.
 
 ```{r, echo=FALSE}
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
 # Function to check if left side is not equal to right side while working with NAs
 `%!=na%` <-
   function(left_operand, right_operand) {
@@ -21,18 +31,21 @@ The ODM has a part ID (partID) and part description (partDescription) for every 
 parts_info_display_content <- ""
 
 
-parts_table <-
-  readxl::read_excel(file.path("..", pkg.env$dictionary_directory, dictionary_full_file_name),
-                     sheet = pkg.env$parts_sheet_name)
+# Read in and prepare parts data.frame
+parts_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+
 
 # Removal of rows containing R NA for part ID
 parts_table <-
-  parts_table[!is.na(parts_table[[pkg.env$part_ID_column_name]]), ]
+  parts_table[!is.na(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
 # Removal of rows containing R NULL for part ID
 parts_table <-
-  parts_table[!is.null(parts_table[[pkg.env$part_ID_column_name]]), ]
+  parts_table[!is.null(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
 # Sort parts alphabetically by partID
-parts_table <- parts_table[order(parts_table[[pkg.env$part_ID_column_name]]), ]
+parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
 
 # Loop over every part
 for (part_row_index in seq_len(nrow(parts_table))) {
@@ -40,31 +53,31 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   
   # Declare variables used
   # Once tables is merged format and verify input
-  part_ID <- part_row[[pkg.env$part_ID_column_name]]
-  part_label <- part_row[[pkg.env$part_label_column_name]]
-  part_description <- part_row[[pkg.env$part_description_column_name]]
-  part_instruction <- part_row[[pkg.env$part_instruction_column_name]]
-  part_type <- part_row[[pkg.env$part_type_column_name]]
-  part_domain_ID <- part_row[[pkg.env$part_domain_ID_column_name]]
-  part_speciment_set <- part_row[[pkg.env$part_speciment_set_column_name]]
-  part_comp_set <- part_row[[pkg.env$part_comp_set_column_name]]
-  part_group_ID <- part_row[[pkg.env$part_group_ID_column_name]]
-  part_class_ID <- part_row[[pkg.env$part_class_ID_column_name]]
-  part_nomenclature_ID <- part_row[[pkg.env$part_nomenclature_ID_column_name]]
-  part_ontology_reference <- part_row[[pkg.env$part_ontology_reference_column_name]]
-  part_cat_set_ID <- part_row[[pkg.env$part_cat_set_ID_column_name]]
-  part_unit_set_ID <- part_row[[pkg.env$part_unit_set_ID_column_name]]
-  part_agg_scale_ID <- part_row[[pkg.env$part_agg_scale_ID_column_name]]
-  part_quality_set_ID <- part_row[[pkg.env$part_quality_set_ID_column_name]]
-  part_ref_link <- part_row[[pkg.env$part_ref_link_column_name]]
-  part_data_type <- part_row[[pkg.env$part_data_type_column_name]]
-  part_min_value <- part_row[[pkg.env$part_min_value_column_name]]
-  part_max_value <- part_row[[pkg.env$part_max_value_column_name]]
-  part_min_length <- part_row[[pkg.env$part_min_length_column_name]]
-  part_max_length <- part_row[[pkg.env$part_max_length_column_name]]
-  part_status <- part_row[[pkg.env$part_status_column_name]]
-  part_first_released <- part_row[[pkg.env$part_first_release_column_name]]
-  part_last_updated <- part_row[[pkg.env$part_last_updated_column_name]]
+  part_ID <- part_row[[parts_sheet_column_names$part_ID_column_name]]
+  part_label <- part_row[[parts_sheet_column_names$part_label_column_name]]
+  part_description <- part_row[[parts_sheet_column_names$part_description_column_name]]
+  part_instruction <- part_row[[parts_sheet_column_names$part_instruction_column_name]]
+  part_type <- part_row[[parts_sheet_column_names$part_type_column_name]]
+  part_domain_ID <- part_row[[parts_sheet_column_names$part_domain_ID_column_name]]
+  part_speciment_set <- part_row[[parts_sheet_column_names$part_speciment_set_column_name]]
+  part_comp_set <- part_row[[parts_sheet_column_names$part_comp_set_column_name]]
+  part_group_ID <- part_row[[parts_sheet_column_names$part_group_ID_column_name]]
+  part_class_ID <- part_row[[parts_sheet_column_names$part_class_ID_column_name]]
+  part_nomenclature_ID <- part_row[[parts_sheet_column_names$part_nomenclature_ID_column_name]]
+  part_ontology_reference <- part_row[[parts_sheet_column_names$part_ontology_reference_column_name]]
+  part_cat_set_ID <- part_row[[parts_sheet_column_names$part_cat_set_ID_column_name]]
+  part_unit_set_ID <- part_row[[parts_sheet_column_names$part_unit_set_ID_column_name]]
+  part_agg_scale_ID <- part_row[[parts_sheet_column_names$part_agg_scale_ID_column_name]]
+  part_quality_set_ID <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
+  part_ref_link <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
+  part_data_type <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
+  part_min_value <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
+  part_max_value <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
+  part_min_length <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
+  part_max_length <- part_row[[parts_sheet_column_names$part_max_length_column_name]]
+  part_status <- part_row[[parts_sheet_column_names$part_status_column_name]]
+  part_first_released <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
+  part_last_updated <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
   
   # Assemble the display string
   parts_info_display_content <-
@@ -92,7 +105,7 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       *Maximum Value:* {part_max_value} </br>
       *Minimum Length:* {part_min_length} </br>
       *Maximum Length:* {part_max_length} </br>
-      *Part Status:* {if (part_status %!=na% pkg.env$part_sheet_status_is_active) glue::glue(\'**{part_status}**\') else part_status }. \\
+      *Part Status:* {if (part_status %!=na% constants$part_sheet_status_is_active) glue::glue(\'**{part_status}**\') else part_status }. \\
       First released: {part_first_released}. \\
       Last updated: {part_last_updated}. </br>
       ')
