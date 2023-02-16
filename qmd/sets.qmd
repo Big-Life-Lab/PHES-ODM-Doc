@@ -1,10 +1,24 @@
+---
+project:
+  execute-dir: ../
+---
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
 # Sets {.unnumbered}
+{{< include _dictionary-version.qmd >}}
 
 The list of sets in aphabetical order of setsID
 
 
 ```{r, echo=FALSE}
 # Utility Functions
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
+
 handle_empty_character_vector <-
   function(check_vector, replace_string) {
     if (length(check_vector) < 1) {
@@ -29,12 +43,17 @@ list_creation <- function(string_to_append, list_values){
 
 
 
-# @RUSTY replace to use excel directly
-main_db <- DBI::dbConnect(RSQLite::SQLite(), "../data/tables/main.sqlite")
-quary <- paste("SELECT", "*", "FROM", "sets", "ORDER BY setType")
-sets_table <- DBI::dbGetQuery(main_db, quary)
-quary <- paste("SELECT", "*", "FROM", "parts")
-parts_table <- DBI::dbGetQuery(main_db, quary)
+
+sets_table <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+
+parts_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+
+# @RUSTY SORT BY setType
 
 # Clean input from NA from Excel imports
 sets_table <- sets_table[!is.na(sets_table$partID),]
