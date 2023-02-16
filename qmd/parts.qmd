@@ -31,6 +31,8 @@ parts_table <-
 # Removal of rows containing R NULL for part ID
 parts_table <-
   parts_table[!is.null(parts_table[[pkg.env$part_ID_column_name]]), ]
+# Sort parts alphabetically by partID
+parts_table <- parts_table[order(parts_table[[pkg.env$part_ID_column_name]]), ]
 
 # Loop over every part
 for (part_row_index in seq_len(nrow(parts_table))) {
@@ -70,7 +72,7 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       '{parts_info_display_content}
       
       ### {part_label} {{ #{part_ID} }} 
-      ({part_ID}):
+      ({part_ID}).
       {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
       *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
       *Domain ID:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
