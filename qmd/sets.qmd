@@ -12,7 +12,7 @@ knitr::opts_knit$set(root.dir = normalizePath("../"))
 The list of sets in aphabetical order of setsID
 
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 # Utility Functions
 # Source utility functions
 source("R/qmd-utils.R")
@@ -30,81 +30,84 @@ handle_empty_character_vector <-
 
 list_creation <- function(string_to_append, list_values){
   string_to_append <- glue::glue('{string_to_append} 
-                                 <ul>')
+                                 <ul>', .null = "NA")
   for (list_element in list_values) {
     string_to_append <- glue::glue('{string_to_append} 
-                                   <li> {list_element} </li>')
+                                   <li> {list_element} </li>', .null = "NA")
   }
   string_to_append <- glue::glue('{string_to_append} 
-                                 </ul>')
+                                 </ul>', .null = "NA")
   return(string_to_append)
 }
 
+# Generate, format and order sets table
+sets_table_source <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$sets_sheet_name)
+sets_table <- format_table(sets_table_source)
+sets_table <- sets_table[order(sets_table[[sets_sheet_column_names$part_set_type_column_name]]), ]
 
-
-
-
-sets_table <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
-                     sheet = constants$parts_sheet_name)
-parts_table <- format_table(parts_table_source, parts_sheet_column_names)
-
+# Generate and format parts table
 parts_table_source <-
   readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
                      sheet = constants$parts_sheet_name)
 parts_table <- format_table(parts_table_source, parts_sheet_column_names)
 
-# @RUSTY SORT BY setType
-
-# Clean input from NA from Excel imports
-sets_table <- sets_table[!is.na(sets_table$partID),]
-parts_table <- parts_table[!is.na(parts_table$partID),]
-
-output_string <- ""
+display_content <- ""
 
 
 # Find and loop over unique setTypes
-unique_set_types <- unique(sets_table$setType)
-for(set_type in unique_set_types){
+unique_set_types <-
+  unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
+for (set_type in unique_set_types) {
   # Create header for setType
-  set_type_info <- parts_table[parts_table$partID == set_type,]
+  set_type_info <-
+    parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
+  if(nrow(set_type_info)<1){
+        warning(glue::glue('{set_type} has no valid set info'))
+        next()
+      }
+  set_type_label <-
+    set_type_info[[parts_sheet_column_names$part_label_column_name]]
+  set_type_instruction <-
+    set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
   
-  set_type_label <- set_type_info$partLabel
-  set_type_label <- handle_empty_character_vector(set_type_label, "Part Label is missing at the moment")
   
-  set_type_instruction <- set_type_info$partInstr
-  set_type_instruction <- handle_empty_character_vector(set_type_instruction, "Part Instruction is missing at the moment")
-  
-  output_string <- glue::glue('{output_string}
-                              # {set_type_label}({set_type})
+  display_content <- glue::glue('{display_content}
+                              ## {set_type_label} {{ #{set_type} }}
+                              ({set_type})
                                 {set_type_instruction}
-                              ')
+                              ', .null = "NA")
   
   # Find and loop over unique setID according to set_type
-  rows_for_current_set_type <- sets_table[sets_table$setType == set_type,]
-  unique_set_IDs <- unique(rows_for_current_set_type$setID)
+  rows_for_current_set_type <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type,]
+  unique_set_IDs <- unique(rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]])
   for (set_ID in unique_set_IDs) {
     # Create set_ID subsection
-    output_string <- glue::glue('{output_string}
+    display_content <- glue::glue('{display_content}
     
-                                ### {set_ID} set members:')
+                                ### {set_ID} 
+                                set members:', .null = "NA")
     list_values <- list()
     
     # Find and loop over unique partID according to set_ID
-    current_set_ID_rows <- rows_for_current_set_type[rows_for_current_set_type$setID == set_ID,]
-    unique_part_IDs <- unique(current_set_ID_rows$partID)
+    current_set_ID_rows <- rows_for_current_set_type[rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]] == set_ID,]
+    unique_part_IDs <- unique(current_set_ID_rows[[parts_sheet_column_names$part_ID_column_name]])
     for (part_ID in unique_part_IDs) {
-      part_info <- parts_table[parts_table$partID == part_ID,]
-      part_label <- part_info$partLabel
-      part_label <- handle_empty_character_vector(part_label, "Part Label is missing at the moment")
+      part_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID,]
+      if(nrow(part_info)<1){
+        warning(glue::glue('{part_ID} has no valid part info'))
+        next()
+      }
+      part_label <- part_info[[parts_sheet_column_names$part_label_column_name]]
       
-      list_values[[length(list_values)+1]] <- glue::glue('{part_label}({part_ID})')
+      list_values[[length(list_values)+1]] <- glue::glue('{part_label}({part_ID})', .null = "NA")
       
     }
-    output_string <- list_creation(output_string, list_values)
+    display_content <- list_creation(display_content, list_values)
   }
 }
 
 
 ```
 
-`r output_string`
+`r display_content`

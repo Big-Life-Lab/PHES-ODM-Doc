@@ -1,11 +1,13 @@
 constants <- list()
 parts_sheet_column_names <- list()
+sets_sheet_column_names <- list()
 
 constants$dictionary_directory <- "data/raw"
 
 constants$dictionary_missing_value_replacement <- "NA"
 
 constants$parts_sheet_name <- "parts"
+constants$sets_sheet_name <- "sets"
 
 # Column names for the parts sheet
 parts_sheet_column_names$part_ID_column_name <- "partID"
@@ -34,6 +36,9 @@ parts_sheet_column_names$part_max_length_column_name <- "maxLength"
 parts_sheet_column_names$part_first_release_column_name <- "firstReleased"
 parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 
+# Column names for sets sheet
+sets_sheet_column_names$part_set_type_column_name <- "setType"
+sets_sheet_column_names$part_set_ID_column_name <- "setID"
 # Column values
 constants$part_sheet_part_type_is_table <- "table"
 constants$part_sheet_status_is_active <- "active"
