@@ -1,63 +1,89 @@
-#' Has Column for Table
-#' 
-#' Function to check for existence of column in data source. 
-#' Creates an appropriate warning and returns boolean based on its presence.
-#' 
-#' @param data_source data.frame which might contain the column.
-#' @param table_name the name of the table whose column is being checked.
-#' @param column_name the name of the column being checked.
-#' 
-#' @return boolean equal to existence of column_name column in data_source.
-has_column_for_table <-
-  function(data_source, table_name, column_name) {
-    column_is_valid <- TRUE
-    if (is.null(data_source[[column_name]])) {
-      warning(glue::glue(
-        '{table_name} table does not have a valid {column_name} column'
-      ))
-      column_is_valid <- FALSE
+# Source constants when not using pkg.env
+source(file.path(getwd(), "R", "constants.R"))
+
+#' Verify Input
+#'
+#' Higher level function to determine appropriate verification function to use
+#'
+#' @param input_to_check string or list of strings to check
+#' @param warning_text warning to display
+#'
+#' @return Boolean matching appropriate function's return
+verify_input <- function(input_to_check, warning_text) {
+  is_valid_input <- TRUE
+  if (length(input_to_check) > 1) {
+    is_valid_input <- verify_column(input_to_check, warning_text)
+  } else {
+    is_valid_input <- verify_string(input_to_check, warning_text)
+  }
+  return(is_valid_input)
+}
+
+#' Verify Column
+#'
+#' Function to check if column was created by format_table.
+#' Creates an appropriate warning and returns FALSE if
+#' column only contains constants$dictionary_missing_value_replacement.
+#'
+#' @param column_to_check column values to check.
+#' @param warning_text warning to display if column was created with only constants$dictionary_missing_value_replacement
+#'
+#' @return Boolean equal to if column was created with only constants$dictionary_missing_value_replacement
+verify_column <-
+  function(column_to_check, warning_text) {
+    is_valid_column <- TRUE
+    if (length(unique(column_to_check)) == 1 &&
+        unique(column_to_check) == constants$dictionary_missing_value_replacement) {
+      is_valid_column <- FALSE
+      warning(warning_text)
     }
-    return(column_is_valid)
+    return(is_valid_column)
   }
 
-#' Format Input
-#' 
-#' Formats input to make it compliant with glue,
-#' as well as issuing warning to the location of missing data.
-#' 
-#' @param string_to_check the string being checked for being empty.
-#' @param part_ID Id of the part in string to check, optional parameter used in construction of the warning.
-#' @param string_source_name Name of the table string_to_check comes from, optional parameter used in construction of the warning.
-#' @param optional_warning A warning overwrite string to bypass warning creation when partID or table name are missing.
-#' 
-#' @return string_to_check as is or modified into "" if it fails the check.
-format_input <-
+#' Verify String
+#'
+#' Verify that input contains values not equal to constants$dictionary_missing_value_replacement
+#'
+#' @param string_to_check String to check for matching constants$dictionary_missing_value_replacement
+#' @param warning_text Warning to issue if string to check is constants$dictionary_missing_value_replacement
+#'
+#' @return Boolean equal to string to check matching constants$dictionary_missing_value_replacement or not
+verify_string <-
   function(string_to_check,
-           part_ID = NULL,
-           string_source_name = NULL,
-           optional_warning = NULL) {
-    if (is.null(string_to_check) ||
-        length(string_to_check) < 1 ||
-        is.na(string_to_check) || string_to_check == "NA") {
-      # Check for proper function usage
-      if (is.null(part_ID) && is.null(string_source_name)) {
-        if (is.null(optional_warning)) {
-          stop(
-            glue::glue(
-              'Improper format_input function arguments. If part_ID and string_source_name are empty optional_warning must not be empty'
-            )
-          )
-        } else {
-          warning(optional_warning)
-          string_to_check <- ""
-        }
-      }else {
-        warning(glue::glue(
-          '{part_ID} is missing its {string_source_name} column information'
-        ))
-        string_to_check <- ""
-      }
-      
+           warning_text) {
+    is_valid_string <- TRUE
+    if (string_to_check == constants$dictionary_missing_value_replacement) {
+      is_valid_string <- FALSE
+      warning(glue::glue('{warning_text}
+                         
+                         '))
     }
-    return(string_to_check)
+    return(is_valid_string)
+  }
+
+#' Verify and append
+#' 
+#' A utility function used to simplify content insertion based on the validity of passed content.
+#' 
+#' @param existing_content string you wish to append to
+#' @param content_to_verify string that is checked for validity and is used to determine what content is added
+#' @param verify_warning string containing the warning to print in case content_to_verify fails verification
+#' @param is_valid_insert string that is appended to existing_content if content_to_verify is valid
+#' @param is_invalid_insert string that is appended to existing_content if content_to_verify is invalid
+#' 
+#' @return returns existing_content with either valid or invalid insert depending on the validity of content_to_verify
+verify_and_append_content <-
+  function(existing_content,
+           content_to_verify,
+           verify_warning,
+           is_valid_insert,
+           is_invalid_insert) {
+    return_content <- ""
+    if(verify_input(content_to_verify, verify_warning)){
+      return_content <- glue::glue('{existing_content}{is_valid_insert}')
+    }else{
+      return_content <- glue::glue('{existing_content}{is_invalid_insert}')
+    }
+    
+    return(return_content)
   }
