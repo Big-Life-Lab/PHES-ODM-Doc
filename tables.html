@@ -213,44 +213,30 @@ Data storage
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It is recommended that all ODM data be stored in the 21 tables as this ensures interoperable data sharing and is supported by the <a href="https://validate-docs.phes-odm.org" title="ODM validation toolkit">ODM validation toolkit</a> and other ODM libraries.</p>
-<p>However, users have the option to create custom tables or ‘views’ by combining fields from any table. The common format for data entry is a “wide” format where data is collected with <em>one day per row</em> and multiple measures or attributes per row. Please note that this guide does not cover how to generate wide tables.</p>
+<p>Store all ODM data in the 21 recommended tables to ensure optimal interoprablity and support by the <a href="https://validate-docs.phes-odm.org" title="ODM validation toolkit">ODM validation toolkit</a> and other ODM libraries.</p>
+<p>Users can, however, create custom tables or ‘views’ by merging fields from any table. A common format for data entry format are “wide” table format, with <em>one day per row</em> and multiple measures or attributes per row. It is important to note that this guide does not provide instructions on generating wide tables.</p>
 </div>
 </div>
 <section id="table-types" class="level2">
 <h2 class="anchored" data-anchor-id="table-types">Table types</h2>
-<p>There are three types of tables:</p>
-<p>1) <strong>Regular report tables</strong>. The <code>measures</code> and <code>samples</code> tables are used for daily reporting of new measurements and information on sample collection. Three tables support regular reporting - <code>measureSets</code> is an optional table used to link measures, <code>sampleRelationships</code> is an optional table used when samples are pooled or split, and <code>qualityReports</code> is used for detailed quality assurance and control measures.</p>
-<p>2) <strong>Contact information tables</strong>. <code>sites</code>,&nbsp;<code>organizations</code>,&nbsp;<code>contacts</code>, and&nbsp;<code>addresses</code> hold contact information for the testing site and the person who performed the testing.</p>
+<p>There are five table types:</p>
+<p>1) <strong>Regular report tables</strong>. The <code>measures</code> and <code>samples</code> tables are used for daily reporting of new measurements and information on sample collection. There are three tables that support regular reporting:- <code>measureSets</code> (optional) is used to link measures, <code>sampleRelationships</code> (optional) is used when samples are pooled or split, and <code>qualityReports</code> is used for detailed quality assurance and control measures.</p>
+<p>2) <strong>Contact information tables</strong>. The <code>sites</code>, <code>organizations</code>, <code>contacts</code>, and <code>addresses</code> tables store contact information for the testing site and the person who performed the testing.</p>
 <p>3) <strong>Protocol or methods tables</strong>. The <code>protocols</code> and <code>instruments</code> tables hold information on the methods used for sample collection or measurement. <code>protocolSteps</code> and <code>protocolRelationships</code> tables are used in conjunction with the <code>protocols</code> table.</p>
 <p>4) <strong>Other report tables</strong>.&nbsp;The <code>polygons</code> table stores information on the sample area and the <code>datasets</code> table includes information on the data custodian and owner.</p>
-<p>5) <strong>Dictionary reference tables</strong>. <code>parts</code>, <code>sets</code>, <code>languages</code>, and <code>translations</code> are reference or look-up tables. For example, the <code>parts</code> table describe all elements of the ODM, including tables, table headers, measures, methods, categories, and units. <code>sets</code> are collections of parts. For example, units can be grouped together in a <code>unitSet</code>. <code>languages</code> and <code>translations</code> support translations.</p>
-<p>The <code>parts</code>, <code>sets</code>, <code>languages</code>, and <code>translations</code> tables are reference or lookup tables. For example, the <code>parts</code> table describes all elements of the ODM including tables, table headers, measures, methods, categories, and units. The <code>sets</code> table is a collection of parts, such as units grouped together in a <code>unitSet</code>. The <code>languages</code> and <code>translations</code> tables support translations.</p>
+<p>5) <strong>Dictionary reference tables</strong>. The <code>parts</code> table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The <code>sets</code> table stores collections of parts, such as units grouped together in a unitSet. The <code>languages</code> and <code>translations</code> tables support translations.</p>
 </section>
 <section id="header-roles" class="level2">
 <h2 class="anchored" data-anchor-id="header-roles">Header roles</h2>
-<p>Each table has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.</p>
-<p><strong>Primary key</strong> (PK) - All tables except dictionary tables have a primary key, which serves as a unique identifier for each row in the table. This means that a primary key value cannot be repeated.</p>
-<p><strong>Foreign key</strong> (FK) - Some tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. It allows for relationships between tables to be established, making it possible to link data between different tables.</p>
+<p>Each table in the ODM has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.</p>
+<p><strong>Primary key</strong> (PK) - With the exception of the dictionary tables, all tables have one primary key. The primary key serves as a unique identifier for each row in the table, meaning that a primary key value cannot be repeated.</p>
+<p><strong>Foreign key</strong> (FK) - Tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. This allows for relationships to be established between tables, making it possible to link data between different tables.</p>
 <p><strong>Header</strong> (header) - This label is used in a table description when a header is not a primary or foreign key.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Each table has a primary key
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>It is important to note that the headers in each table may have different roles, but each header must have one of the three roles described above. The ODM standard requires that each table have a primary key, but the number and type of foreign keys and attributes may vary depending on the table.</p>
-</div>
-</div>
 </section>
 <section id="mandatory-optional-mandatoryif" class="level2">
 <h2 class="anchored" data-anchor-id="mandatory-optional-mandatoryif">Mandatory, optional, mandatoryIf</h2>
-<p>A header may be mandatory or optional. In the <code>measures</code> table, examples of mandatory headers are the <code>measureID</code> and <code>measurement date</code>. The ODM validation toolkit can be used to validate data. The toolkit will return an error if a table lacks a mandatory header, or if there are missing row entries for mandatory fields.</p>
-<p><code>mandatoryIf</code> headers are special header that are mandatory if special conditions apply. For example, the <code>protocol steps</code> table have row entries that are <code>measures</code> or <code>methods</code>. If the row entry is a <code>measure</code>, then a unit becomes mandatory, since all measures must have a unit. So, <code>units</code> are <code>mandatoryIf</code> in the <code>Protocol steps</code> table.</p>
+<p>Each header may be classified as either <code>mandatory</code> or <code>optional</code>. In the <code>measures</code> table, examples of mandatory headers are the <code>measureID</code> and <code>measurement date</code>. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.</p>
+<p>Additionally, there are special headers called <code>mandatoryIf</code> headers. These headers are mandatory if certain conditions apply. For example, the <code>protocol steps</code> table has row entries that are either <code>measures</code> or <code>methods</code>. If the row entry is a <code>measure</code>, then a <code>unit</code> becomes <code>mandatory</code> since all measures must have a unit. Therefore, units are <code>mandatoryIf</code> in the protocol steps table.</p>
 <!--` reference1/ -->
 <div class="cell">
 
@@ -1366,7 +1352,7 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Thu Feb 16 00:00:00 2023.</p>
+<p>Page created on Fri Feb 17 00:00:00 2023.</p>
 
 
 </section>
