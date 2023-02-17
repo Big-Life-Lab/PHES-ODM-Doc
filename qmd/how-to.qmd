@@ -8,7 +8,7 @@ ODM Excel report templates provide you with an easy way to enter your wastewater
 
 In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. Guides also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions -->
 
-The report templates can be found at the OSF.io [PHES-ODM project](https://osf.io/ynp6f "https://osf.io/ynp6f"). More information about the tables can be found in the [getting-to-know](../index.qmd "getting-to-know") section.
+The report templates can be found at the OSF.io [PHES-ODM reference file folder](https://osf.io/ab9se/). More information about the tables can be found in the [getting-to-know](../index.qmd "getting-to-know") section.
 
 Briefly,
 
@@ -188,7 +188,7 @@ Below you will find the mandatory fields for the `measures` Table. You will als
     iii) Column F
 
          -   This is a Date field in which you can enter in the date when the entry was updated.
-         
+
 You have now entered your data in the Measures and Measure Sets Template, congratulations!
 
 ## 3) How to report Samples and Sample Relationships:
