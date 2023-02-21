@@ -61,7 +61,7 @@ for (set_type in unique_set_types) {
     parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
   # Issue warning and skip if no matching information on setType is found in parts
   if(nrow(set_type_info)<1){
-        warning(glue::glue('{set_type} has no valid set info'))
+        warning(glue::glue('{set_type} has no valid set info and is skipped'))
         next()
       }
   set_type_label <-
@@ -76,7 +76,7 @@ for (set_type in unique_set_types) {
   # <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>
   display_content <- glue::glue('{display_content}
                               ## {set_type_label} {{ #{set_type} }}
-                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_description} {set_type_instruction}
+                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
                                 
                               ', .null = constants$dictionary_missing_value_replacement)
   
@@ -87,7 +87,7 @@ for (set_type in unique_set_types) {
     set_ID_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_ID, ]
     # Handle no rows found for set_ID in parts
     if(nrow(set_ID_info)<1){
-      warning(glue::glue('Set ID:{set_ID} has no data in parts sheet'))
+      warning(glue::glue('Set ID:{set_ID} has no data in parts sheet and is skipped'))
       next()
     }
     set_ID_part_label <- set_ID_info[[parts_sheet_column_names$part_label_column_name]]
@@ -120,7 +120,7 @@ for (set_type in unique_set_types) {
       part_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID,]
       # Verify that parts contains the requested part information
       if(nrow(part_info)<1){
-        warning(glue::glue('{part_ID} part in {set_ID} set for {set_type} set type has no valid part info'))
+        warning(glue::glue('{part_ID} part in {set_ID} set for {set_type} set type has no valid part info and is skipped'))
         next()
       }
       
