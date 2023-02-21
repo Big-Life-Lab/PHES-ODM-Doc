@@ -10,7 +10,8 @@ source(file.path(getwd(), "R", "constants.R"))
 #' @return data.frame containing formatted input
 format_table <-
   function(input_table,
-           columns_to_format = NULL) {
+           columns_to_format = NULL,
+           remove_duplicate = FALSE) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
@@ -27,7 +28,19 @@ format_table <-
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
-                     length(output_table[[ID_column_name]]) > 0, ]
+                     length(output_table[[ID_column_name]]) > 0,]
+    # Remove rows with duplicate partID
+    if(remove_duplicate){
+      duplicated_rows <- output_table[duplicated(output_table[[ID_column_name]]), ]
+      output_table <- output_table[!duplicated(output_table[[ID_column_name]]), ]
+      # Display warning for removed duplicated rows
+      removed_ID_names <- unique(duplicated_rows[ID_column_name])
+      for (removed_ID in removed_ID_names) {
+        warning(glue::glue('{removed_ID} ID was removed due to it having a duplicate {ID_column_name}
+                           
+                           '))
+      }
+    }
     
     
     # Loop over passed columns
@@ -35,12 +48,14 @@ format_table <-
     {
       # Append then skip over columns missing from the input_table and issue appropriate warning
       if (is.null(input_table[[current_column_to_format]])) {
-        warning(glue::glue(
-          '{current_column_to_format} is missing from {table_being_checked} sheet.
+        warning(
+          glue::glue(
+            '{current_column_to_format} is missing from {table_being_checked} sheet.
           New column was created with {replace_value} values.
-          
+
           '
-        ))
+          )
+        )
         output_table[[current_column_to_format]] <- replace_value
         next()
       }
