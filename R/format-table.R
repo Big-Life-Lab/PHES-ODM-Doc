@@ -28,18 +28,22 @@ format_table <-
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
-                     length(output_table[[ID_column_name]]) > 0,]
+                     length(output_table[[ID_column_name]]) > 0, ]
     # Remove rows with duplicate partID
-    if(remove_duplicate){
-      duplicated_rows <- output_table[duplicated(output_table[[ID_column_name]]), ]
-      output_table <- output_table[!duplicated(output_table[[ID_column_name]]), ]
+    if (remove_duplicate) {
+      duplicated_rows <-
+        output_table[duplicated(output_table[[ID_column_name]]),]
+      output_table <-
+        output_table[!duplicated(output_table[[ID_column_name]]),]
       # Display warning for removed duplicated rows
-      removed_ID_names <- unique(duplicated_rows[ID_column_name])
-      for (removed_ID in removed_ID_names) {
-        warning(glue::glue('{removed_ID} ID was removed due to it having a duplicate {ID_column_name}
-                           
-                           '))
-      }
+      removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
+      warning(
+        glue::glue(
+          '{removed_ID_names} ID contais duplicate {ID_column_name} only the first instance is used.
+
+                           '
+        )
+      )
     }
     
     
