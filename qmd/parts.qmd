@@ -28,14 +28,6 @@ The unique construction of part IDs serves several purposes in addition to gener
 source("R/qmd-utils.R")
 # Source table formatting
 source("R/format-table.R")
-# Function to check if left side is not equal to right side while working with NAs
-`%!=na%` <-
-  function(left_operand, right_operand) {
-    (left_operand != right_operand |
-       (is.na(left_operand) & !is.na(right_operand)) | 
-       (!is.na(left_operand) & is.na(right_operand))) &
-      !(is.na(left_operand) & is.na(right_operand))
-  }
 
 # String to store parts display content
 parts_info_display_content <- ""

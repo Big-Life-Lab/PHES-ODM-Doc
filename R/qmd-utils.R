@@ -108,3 +108,12 @@ create_html_list <- function(string_to_append, list_values){
                                  </ul>', .null = "NA")
   return(string_to_append)
 }
+
+# Function to check if left side is not equal to right side while working with NAs
+`%!=na%` <-
+  function(left_operand, right_operand) {
+    (left_operand != right_operand |
+       (is.na(left_operand) & !is.na(right_operand)) | 
+       (!is.na(left_operand) & is.na(right_operand))) &
+      !(is.na(left_operand) & is.na(right_operand))
+  }
