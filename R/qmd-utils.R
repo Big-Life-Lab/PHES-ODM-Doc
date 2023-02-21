@@ -109,7 +109,14 @@ create_html_list <- function(string_to_append, list_values){
   return(string_to_append)
 }
 
-# Function to check if left side is not equal to right side while working with NAs
+#' Not equal to NA
+#' 
+#' Utility function to compare not equal when NA inputs are possible.
+#' 
+#' @param left_operand operand for left side of !=
+#' @param right_operand operand for right side of !=
+#' 
+#' @return Boolean representing != of left and right side
 `%!=na%` <-
   function(left_operand, right_operand) {
     (left_operand != right_operand |
