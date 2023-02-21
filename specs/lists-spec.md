@@ -39,7 +39,6 @@ table
 unitSet
 unit
 
-1.1\) By heading do you mean the h2 or h3 from sets? 
 
 2\) Is there any further filtering you want done? In the past we have discussed filterring for only inputs is this no longer the case?
 
