@@ -73,22 +73,43 @@ for (set_type in unique_set_types) {
     set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
   verify_input(set_type_instruction, glue::glue('Set type instructions are missing for {set_type}'))
   
-  
+  # <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>
   display_content <- glue::glue('{display_content}
                               ## {set_type_label} {{ #{set_type} }}
-                              ({set_type})
-                                {set_type_instruction}
+                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_instruction}
+                                
                               ', .null = constants$dictionary_missing_value_replacement)
   
   # Find and loop over unique setID according to set_type
   rows_for_current_set_type <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type,]
   unique_set_IDs <- unique(rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]])
   for (set_ID in unique_set_IDs) {
+    set_ID_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_ID, ]
+    # Handle no rows found for set_ID in parts
+    if(nrow(set_ID_info)<1){
+      warning(glue::glue('Set ID:{set_ID} has no data in parts sheet'))
+      next()
+    }
+    set_ID_part_label <- set_ID_info[[parts_sheet_column_names$part_label_column_name]]
     # Create set_ID subsection
-    display_content <- glue::glue('{display_content}
-    
-                                ### {set_ID} 
-                                Set members:', .null = constants$dictionary_missing_value_replacement)
+    display_content <- verify_and_append_content(
+      display_content,
+      set_ID_part_label,
+      glue::glue(
+        'Set ID: {set_ID} has no valid {parts_sheet_column_names$part_label_column_name}'
+      ),
+      glue::glue('
+      
+                 ### {set_ID_part_label} {{ #{set_ID} }}
+                 
+                 '
+      ),
+      glue::glue('
+      
+                 ### {set_ID}
+                 
+                 '
+      ))
     # Create list to hold a values for html list
     list_values <- list()
     
@@ -102,11 +123,22 @@ for (set_type in unique_set_types) {
         warning(glue::glue('{part_ID} part in {set_ID} set for {set_type} set type has no valid part info'))
         next()
       }
-
-      part_label <- part_info[[parts_sheet_column_names$part_label_column_name]]
-      verify_input(part_label, glue::glue('Part label is missing for {part_ID}'))
       
-      list_values[[length(list_values)+1]] <- list(content = glue::glue('{part_label}({part_ID})', .null = constants$dictionary_missing_value_replacement), warning_text = glue::glue('Part ID: {part_ID} is invalid in set ID:  {set_ID}'))
+      # Declare display elements
+      part_label <- part_info[[parts_sheet_column_names$part_label_column_name]]
+      part_description <- part_info[[parts_sheet_column_names$part_description_column_name]]
+      part_status <- part_info[[parts_sheet_column_names$part_status_column_name]]
+      part_first_released <- part_info[[parts_sheet_column_names$part_first_release_column_name]]
+      part_last_updated <- part_info[[parts_sheet_column_names$part_last_updated_column_name]]
+      
+      # Verify display elements
+      verify_input(part_label, glue::glue('Part label is missing for {part_ID}'))
+      verify_input(part_description, glue::glue('Part description is missing for {part_ID}'))
+      verify_input(part_status, glue::glue('Part status is missing for {part_ID}'))
+      verify_input(part_first_released, glue::glue('Part first released is missing for {part_ID}'))
+      verify_input(part_last_updated, glue::glue('Part last updates is missing for {part_ID}'))
+      
+      list_values[[length(list_values)+1]] <- glue::glue('**{part_label}**({part_ID}). {part_description} Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.', .null = constants$dictionary_missing_value_replacement)
       
     }
     display_content <- create_html_list(display_content, list_values)
