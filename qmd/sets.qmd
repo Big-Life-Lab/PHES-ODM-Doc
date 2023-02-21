@@ -38,26 +38,6 @@ source("R/qmd-utils.R")
 # Source table formatting
 source("R/format-table.R")
 
-handle_empty_character_vector <-
-  function(check_vector, replace_string) {
-    if (length(check_vector) < 1) {
-      return(replace_string)
-    }else{
-      return(check_vector)
-    }
-  }
-
-list_creation <- function(string_to_append, list_values){
-  string_to_append <- glue::glue('{string_to_append} 
-                                 <ul>', .null = "NA")
-  for (list_element in list_values) {
-    string_to_append <- glue::glue('{string_to_append} 
-                                   <li> {list_element} </li>', .null = "NA")
-  }
-  string_to_append <- glue::glue('{string_to_append} 
-                                 </ul>', .null = "NA")
-  return(string_to_append)
-}
 
 # Generate, format and order sets table
 sets_table_source <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
@@ -81,21 +61,24 @@ for (set_type in unique_set_types) {
   # Create header for setType
   set_type_info <-
     parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
+  # Issue warning and skip if no matching information on setType is found in parts
   if(nrow(set_type_info)<1){
         warning(glue::glue('{set_type} has no valid set info'))
         next()
       }
   set_type_label <-
     set_type_info[[parts_sheet_column_names$part_label_column_name]]
+  verify_input(set_type_label, glue::glue('Set type label is missing for {set_type}'))
   set_type_instruction <-
     set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
+  verify_input(set_type_instruction, glue::glue('Set type instructions are missing for {set_type}'))
   
   
   display_content <- glue::glue('{display_content}
                               ## {set_type_label} {{ #{set_type} }}
                               ({set_type})
                                 {set_type_instruction}
-                              ', .null = "NA")
+                              ', .null = constants$dictionary_missing_value_replacement)
   
   # Find and loop over unique setID according to set_type
   rows_for_current_set_type <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type,]
@@ -105,7 +88,8 @@ for (set_type in unique_set_types) {
     display_content <- glue::glue('{display_content}
     
                                 ### {set_ID} 
-                                set members:', .null = "NA")
+                                Set members:', .null = constants$dictionary_missing_value_replacement)
+    # Create list to hold a values for html list
     list_values <- list()
     
     # Find and loop over unique partID according to set_ID
@@ -113,16 +97,19 @@ for (set_type in unique_set_types) {
     unique_part_IDs <- unique(current_set_ID_rows[[parts_sheet_column_names$part_ID_column_name]])
     for (part_ID in unique_part_IDs) {
       part_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID,]
+      # Verify that parts contains the requested part information
       if(nrow(part_info)<1){
-        warning(glue::glue('{part_ID} has no valid part info'))
+        warning(glue::glue('{part_ID} part in {set_ID} set for {set_type} set type has no valid part info'))
         next()
       }
+
       part_label <- part_info[[parts_sheet_column_names$part_label_column_name]]
+      verify_input(part_label, glue::glue('Part label is missing for {part_ID}'))
       
-      list_values[[length(list_values)+1]] <- glue::glue('{part_label}({part_ID})', .null = "NA")
+      list_values[[length(list_values)+1]] <- list(content = glue::glue('{part_label}({part_ID})', .null = constants$dictionary_missing_value_replacement), warning_text = glue::glue('Part ID: {part_ID} is invalid in set ID:  {set_ID}'))
       
     }
-    display_content <- list_creation(display_content, list_values)
+    display_content <- create_html_list(display_content, list_values)
   }
 }
 
