@@ -13,3 +13,34 @@ Each partID in the listSet becomes a heading for a list.
 3\) combine the 10 headers of the listSet with the other with the other sets. Sort by alphabetical order. Display.
 
 \--\>
+
+Questions for the implementation
+
+1\) There are more then 10 parts is this intented or a typo? Bellow are the parts found in rc.3.7 with setID of listSet.
+dataType
+aggScale
+aggSet
+aggregation
+attribute
+class
+compartment
+domain
+group
+measure
+method
+missingness
+missingnessSet
+nomenclature
+quality
+qualitySet
+specSet
+specimen
+table
+unitSet
+unit
+
+1.1\) By heading do you mean the h2 or h3 from sets? 
+
+2\) Is there any further filtering you want done? In the past we have discussed filterring for only inputs is this no longer the case?
+
+3\) You wish sets and lists to be sorted alphabetically together or should that be done after. Keeping sets first and sorted then lists sorted.
