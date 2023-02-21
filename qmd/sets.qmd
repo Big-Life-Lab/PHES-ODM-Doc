@@ -2,15 +2,34 @@
 project:
   execute-dir: ../
 ---
+
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
 
 # Sets {.unnumbered}
+
+\<!\--#
+
+Rusty, I am thinking of combing together sets, lists, and categories into one list. They are all similar. This may pose a small challenge to you since these 'lists' are identified using different approaches - and then we'd knit together by alphabetical order.
+
+The following identifies lists.
+
+1\) in the `sets` table, filter setID = listSet. There should be 10 parts: measure, method, domain, group, class, nomenclature, aggscale, status, partType, unit.
+
+Each partID in the listSet becomes a heading for a list.
+
+2\) The elements of the list are identified from the `parts` table filter partType = each of the 10 parts of the listSet. For example, filter on partType = measure. That will generate a list of measures that comprise the list or categories for the heading "measure".
+
+3\) combine the 10 headers of the listSet with the other with the other sets. Sort by alphabetical order. Display.
+
+\--\>
+
+Sets are lists of categories and other parts. For example, `Collection category set` ([collectionCatSet](link%20in%20this%20page)) contains a list of the different collection types including: `Moore swab`, `Grab sample`, `Flow proportional sample`, etc.
+
+Sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g. `Sample not collected`), PCR measures (`inhibition preset`), and sequencing measures (`low depth of coverage`), but all quality sets share the `No quality concerns` indicator.
+
 {{< include _dictionary-version.qmd >}}
-
-The list of sets in aphabetical order of setsID
-
 
 ```{r, echo=FALSE, warning=FALSE}
 # Utility Functions
