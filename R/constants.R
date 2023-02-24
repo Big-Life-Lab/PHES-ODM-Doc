@@ -42,6 +42,7 @@ sets_sheet_column_names$part_set_ID_column_name <- "setID"
 # Column values
 constants$part_sheet_part_type_is_table <- "table"
 constants$part_sheet_status_is_active <- "active"
+constants$part_sheet_status_is_development <- "development"
 constants$part_sheet_data_type_is_categorical <- "categorical"
 
 # Table column values
