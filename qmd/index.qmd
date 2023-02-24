@@ -1,43 +1,58 @@
-# Public Health and Environmental Surveillance Open Data Model (PHEA-ODM, or ODM) Documentation
+# Public Health and Environmental Surveillance Open Data Model - Documentation
 
-*NOTE:* This documentation for PHES-ODM Version 2.0 is in the beta testing stage and so is still a work in progress. Please be aware that changes will occur regularly for the next few months. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
+::: callout-warning
+This documentation for PHES-ODM Version 2.0.0 is in the beta testing stage and so is still a work in progress. Please be aware that changes will occur regularly in the next weeks. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
+:::
 
-This documentation is intended to support the adoption and use of the ODM by data custodians and data generators working in the field of environmental surveillance, specifically looking at public health. The ODM is a data model that is designed to capture data and metadata related to surveillance and store it in a consistent, shareable form. The ODM teamm has also developed a suite of tools to support validation and cleaning of formatted data. 
+This documentation is intended to support the adoption and use of the ODM by data custodians and data generators working in the field of environmental surveillance, specifically looking at public health. The ODM is a data model that is designed to capture data and metadata related to surveillance and store it in a consistent, shareable form. The ODM includes a suite of tools to support validation and cleaning of formatted data.
 
-This documentation is right for you if: 
+This documentation is right for you if:
 
-- You generate or store data from wastewater surveillance, or other environmental surveillance systems.
-- You test for biologic, chemical, and physical threats to human health.
-- You want the data you generate/store to be easy to share and interoperable.
-- You want to figure out how the ODM works and is organized.
-- You want to make your data work in the ODM format.
+-   You generate or store data from wastewater surveillance, or other environmental surveillance systems.
+-   You want the data you generate/store to be easy to share and interoperable.
+-   You want to figure out how the ODM works and is organized.
+-   You want to make your data work in the ODM format.
+
+## What is PHES-ODM?
+
+The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source dictionary and a set of data tools to facilitate interoperable environmental surveillance and research. The data model specifies how to store environmental measurements gathered from diverse specimens such as water, air, surfaces, sites, and populations. Moreover, the model includes a standardized, extensible approach to capture sample metadata (i.e., where and how samples were collected), program metadata (i.e., who, what, where, when, and why samples and measurements were taken), and protocols (i.e., how samples were collected and measurements were performed).
+
+The ODM model provides software tools that support the collection and use of data formatted in ODM. These tools include generating data from polymerase chain reaction (PCR) output, data validation, recording data into input templates, generating wide tables for analysis, and producing SQL database definitions for data storage.
+
+The ODM model aims to facilitate the entire life cycle of environmental data collection, including metadata for Laboratory Information and Management Systems (LIMS) to ensure data provenance and quality control. While a research team can use the ODM to support their data management, its true strength lies in supporting collaborations that seek to share and combine samples and measurements. The model also includes a standard approach to transform stored data from the 'long format' to a 'wide format' that is commonly used by data analysts for public health surveillance programs and research.
+
+Overall, the PHES-ODM model provides tools to streamline the process of data collection, increase data quality, and enhance the efficiency of environmental surveillance and research efforts.
+
+## Getting started
+
+This documentation ...
 
 # Background - Environmental Surveillance and the ODM {.unnumbered}
 
-Awareness of threats to public health is important for the function of modern health care systems, and environmental surveillance is presenting itself as very cost effective way to monitor for these threats. While environmental surveillance methods, like wastewater surveillance, are not entirely new, they certainly experienced an unprecedented expansion of uptake over the course of the covid-19 pandemic. 
+Awareness of threats to public health is important for the function of modern health care systems, and environmental surveillance is presenting itself as very cost effective way to monitor for these threats. While environmental surveillance methods, like wastewater surveillance, are not entirely new, they certainly experienced an unprecedented expansion of uptake over the course of the covid-19 pandemic.
 
 Early on in the pandemic, the urgency with which new information was required meant that wastewater monitoring programs in particular were started quickly. This was true globally, with data often being collected in desktop spreadsheets and with labs running all their own PCR assays and assessing quality and doing data cleaning themselves. This work was crucial to monitoring viral levels in communities at the time, and so the urgency and speed of expansion which led to a very diverse field was perhaps unavoidable. Namely, the rapidly expanding field meant that new methods and measures were being rapidly introduced, with no consistent approach to reporting findings or coherent data quality standards. The field is also, by its very nature, complex with many systematic, environmental and laboratory-based factors affecting the signal. Furthermore, viral sequencing and other genetic measurements generate enormous amounts of complicated data. Add this to the fact that the field has many stakeholders who generate and use data all over the world, with data management and governance practices that can vary enormously, and are left with a field with enormous struggles sharing and collecting interoperable data.
 
-To address issues of interoperability and to enable stronger data sharing, our team built and developed version one of the Public Health Environmental Surveillance Open Data Model (PHES-ODM, or ODM). A data model, like the ODM, seeks to replicate the real-world processes through which data is collected using data elements and data relationships. Ultimately, the goal of the ODM is to create a single, unified structure for data storage and collection, and in doing so allow for data to be shared, aggregated, and analyzed with greater ease, advancing the science of wastewater-based epidemiology (WBE) and of environmental surveillance as a whole. 
+To address issues of interoperability and to enable stronger data sharing, our team built and developed version one of the Public Health Environmental Surveillance Open Data Model (PHES-ODM, or ODM). A data model, like the ODM, seeks to replicate the real-world processes through which data is collected using data elements and data relationships. Ultimately, the goal of the ODM is to create a single, unified structure for data storage and collection, and in doing so allow for data to be shared, aggregated, and analyzed with greater ease, advancing the science of wastewater-based epidemiology (WBE) and of environmental surveillance as a whole.
 
-In version 1.0 and 1.1 of the ODM, a strong data model was developed and taken up by collaborators in the Ontario Wastewater Surveillance Initiative, among other programs. WBE has been advancing quickly through the pandemic, however, and version 1.0 was created before the community was aware that variants and sequencing would be of such crucial importance. Since version 1.0, wastewater testing has expanded from solely looking for severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), to also test for other targets, including influenza, respiratory syncytial virus (RSV), poliovirus, and even antimicrobial drug resistance (AMR) and various enteropathogens. As such, version 2.0 of the ODM required a large-scale reworking of the original model. This has expanded the model to incorporate data from any kind of environmental surveillance (ie. surface testing, air measures, wastewater testing), to allow for the tracking of more granular metadata, and to record details on sequencing and variants. The work was done with the support and consultation of many experts and collaborators, most notably from the Public Health Agency of Canada's National Microbiology Lab; the European Commission Joint Research Centre; the Ontario Ministry of Environment, Conservation, and Parks; and many partners in academic labs across Canada. 
+In version 1.0 and 1.1 of the ODM, a strong data model was developed and taken up by collaborators in the Ontario Wastewater Surveillance Initiative, among other programs. WBE has been advancing quickly through the pandemic, however, and version 1.0 was created before the community was aware that variants and sequencing would be of such crucial importance. Since version 1.0, wastewater testing has expanded from solely looking for severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2), to also test for other targets, including influenza, respiratory syncytial virus (RSV), poliovirus, and even antimicrobial drug resistance (AMR) and various enteropathogens. As such, version 2.0 of the ODM required a large-scale reworking of the original model. This has expanded the model to incorporate data from any kind of environmental surveillance (ie. surface testing, air measures, wastewater testing), to allow for the tracking of more granular metadata, and to record details on sequencing and variants. The work was done with the support and consultation of many experts and collaborators, most notably from the Public Health Agency of Canada's National Microbiology Lab; the European Commission Joint Research Centre; the Ontario Ministry of Environment, Conservation, and Parks; and many partners in academic labs across Canada.
 
-Version 2.0 of the ODM includes an entity relationship diagram (ERD) of the model, as well as a "master parts list" which details all of the components an values in the model. You will find these - along with how-to guides, tutorials, and reference materials - in this set of documentation for the model. 
+Version 2.0 of the ODM includes an entity relationship diagram (ERD) of the model, as well as a "master parts list" which details all of the components an values in the model. You will find these - along with how-to guides, tutorials, and reference materials - in this set of documentation for the model.
 
 ## Objectives and Values of the ODM
 
 The over-arching objectives for the ODM are to:
 
-- Include provision for any biological, chemical or physical property, including antimicrobial resistance, drugs and toxins. Biological properties include variants, sequences, alleles, mutations and proteins.
-- Include the ability to store data from samples from air, surface samples, and wastewater (water).
-- Include protocol reporting, including metadata for methods that may affect measurement across laboratories.
-- Include reporting of quality control and assurance. Each measure can have multiple quality control and assurance measures.
+-   Include provision for any biological, chemical or physical property, including antimicrobial resistance, drugs and toxins. Biological properties include variants, sequences, alleles, mutations and proteins.
+-   Include the ability to store data from samples from air, surface samples, and wastewater (water).
+-   Include protocol reporting, including metadata for methods that may affect measurement across laboratories.
+-   Include reporting of quality control and assurance. Each measure can have multiple quality control and assurance measures.
 
 We seek to accomplish all of the above stated goals while staying true to the guiding values of the ODM project. These values are to:
 
-- *Support Data Custodians and Data Users:* The data model should support data custodians and data users across the lifecycle of environmental surveillance. Users include wastewater laboratories, municipalities, public health (international, federal, provincial, and local), researchers, and others (citizen data scientists, data aggregators, news agencies). The lifecycle includes data collection and management in municipalities and laboratories, surveillance, research and other uses (public reporting by aggregator sites). For the ODM this means supporting users and building tools to support the ODM, and also means that we must make the ODM Comprehensive. The ODM must include measures from other wastewater dictionaries.
-- *Support FAIR data:* In 2016, a diverse set of stakeholders— representing academia, industry, funding agencies, and scholarly publishers—designed, jointly endorsed, and published the ‘FAIR Guiding Principles for scientific data management and stewardship’.1 The intent of FAIR is to improve infrastructure supporting reuse of scholarly data based on four foundational principles: Findability, Accessibility, Interoperability, and Reusability. For the ODM this means making sure that the ODM makes for data that is findable, accessible, interoperable, and reusable by considering these attributes part of the core infrastructure.
-- *Use an open science, open software approach:* Open-source software is software with source code that anyone can inspect, modify and enhance. Open-source initiatives embrace principles of open exchange, collaborative participation, rapid prototyping, transparency and community-oriented development. For the ODM this means that all work on the ODM is hosted in open-access environments, like GitHub, where anyone and everyone can transparently see the work being done, the rationale behind it, and can contribute to the project according to their ability.
+-   *Support Data Custodians and Data Users:* The data model should support data custodians and data users across the lifecycle of environmental surveillance. Users include wastewater laboratories, municipalities, public health (international, federal, provincial, and local), researchers, and others (citizen data scientists, data aggregators, news agencies). The lifecycle includes data collection and management in municipalities and laboratories, surveillance, research and other uses (public reporting by aggregator sites). For the ODM this means supporting users and building tools to support the ODM, and also means that we must make the ODM Comprehensive. The ODM must include measures from other wastewater dictionaries.
+-   *Support FAIR data:* In 2016, a diverse set of stakeholders--- representing academia, industry, funding agencies, and scholarly publishers---designed, jointly endorsed, and published the 'FAIR Guiding Principles for scientific data management and stewardship'.1 The intent of FAIR is to improve infrastructure supporting reuse of scholarly data based on four foundational principles: Findability, Accessibility, Interoperability, and Reusability. For the ODM this means making sure that the ODM makes for data that is findable, accessible, interoperable, and reusable by considering these attributes part of the core infrastructure.
+-   *Use an open science, open software approach:* Open-source software is software with source code that anyone can inspect, modify and enhance. Open-source initiatives embrace principles of open exchange, collaborative participation, rapid prototyping, transparency and community-oriented development. For the ODM this means that all work on the ODM is hosted in open-access environments, like GitHub, where anyone and everyone can transparently see the work being done, the rationale behind it, and can contribute to the project according to their ability.
 
 ## Orgnaization of the Documentation
 
@@ -52,8 +67,3 @@ The documentation for version 2.0 of the ODM was written and organized with [Dav
 *Explanation:* Oriented to understanding, this piece must explain. This piece of the documentation should ideally take the form of a discursive explanation. As an analogy, consider explanation as being akin to an article on culinary social history.
 
 We hope that the documentation serves its purpose and that you find it useful in figuring out how to best use the ODM and its suite of tools. If you do encounter any issues or questions that do not seem to have an easy answer, please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or consult [our Discourse page](https://odm.discourse.group/).
-
-
-
-
-
