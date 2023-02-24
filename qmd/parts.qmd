@@ -14,11 +14,9 @@ knitr::opts_knit$set(root.dir = normalizePath("../"))
 Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. Similarly, the ODM has a `part ID` ([partID](https://docs.phes-odm.org/parts.html#partID)) and `part description` ([partDescription](https://docs.phes-odm.org/parts.html#partDesc)) for every measure, method, and attribute. There are also `part IDs` for `units`, `aggregations`, and other `parts`. The part list is presented below.
 
 ::: {.callout-tip collapse="true"}
-## Did you know that each part ID has its own URL?
+## Did you know you can identify part IDs by their specific naming format?
 
-Throughout the ODM documentation, part IDs are typically placed in parentheses with a URL link, as shown here: https://docs.phes-odm.org/parts.html#partID. The section after the # contains the partID.
-
-You can identify part IDs by their specific naming format. Each part ID starts with a lowercase character and contains no special characters. Parts have less than 12 characters, while part types such as units and aggregations have a maximum of seven characters.
+Each part ID starts with a lowercase character and contains no special characters. Parts have less than 12 characters, while part types such as units and aggregations have a maximum of seven characters.
 
 The unique construction of part IDs serves several purposes in addition to generating valid URLs. Users can create wide table variable names (headers) using part IDs that are valid in all open software languages. ODM supports a standard method of generating wide variable names by concatenating partIDs with an underscore, `_`. For this reason, some part types have a limit of seven characters to ensure the total length of wide names remains less than 35 characters, which is the character limit length of some statistical language software. The wide variable naming method will be added to the documentation.
 :::
