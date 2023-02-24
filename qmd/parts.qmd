@@ -1,5 +1,117 @@
+---
+project:
+  execute-dir: ../
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
 # Parts {.unnumbered}
 
-The list of parts from alphabetical order of part ID.
+{{< include _dictionary-version.qmd >}}
 
-Ctreat the list so that there is a persistent link for each part. i.e. 
+Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. Similarly, the ODM has a `part ID` ([partID](https://docs.phes-odm.org/parts.html#partID)) and `part description` ([partDescription](https://docs.phes-odm.org/parts.html#partDesc)) for every measure, method, and attribute. There are also `part IDs` for `units`, `aggregations`, and other `parts`. The part list is presented below.
+
+::: {.callout-tip collapse="true"}
+## Did you know you can identify part IDs by their specific naming format?
+
+Each part ID starts with a lowercase character and contains no special characters. Parts have less than 12 characters, while part types such as units and aggregations have a maximum of seven characters.
+
+The unique construction of part IDs serves several purposes in addition to generating valid URLs. Users can create wide table variable names (headers) using part IDs that are valid in all open software languages. ODM supports a standard method of generating wide variable names by concatenating partIDs with an underscore, `_`. For this reason, some part types have a limit of seven characters to ensure the total length of wide names remains less than 35 characters, which is the character limit length of some statistical language software. The wide variable naming method will be added to the documentation.
+:::
+
+```{r, echo=FALSE}
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
+
+# String to store parts display content
+parts_info_display_content <- ""
+
+
+# Read in and prepare parts data.frame
+parts_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+
+
+# Removal of rows containing R NA for part ID
+parts_table <-
+  parts_table[!is.na(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
+# Removal of rows containing R NULL for part ID
+parts_table <-
+  parts_table[!is.null(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
+# Sort parts alphabetically by partID
+parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
+
+# Loop over every part
+for (part_row_index in seq_len(nrow(parts_table))) {
+  part_row <- parts_table[part_row_index,]
+  
+  # Declare variables used
+  # Once tables is merged format and verify input
+  part_ID <- part_row[[parts_sheet_column_names$part_ID_column_name]]
+  part_label <- part_row[[parts_sheet_column_names$part_label_column_name]]
+  part_description <- part_row[[parts_sheet_column_names$part_description_column_name]]
+  part_instruction <- part_row[[parts_sheet_column_names$part_instruction_column_name]]
+  part_type <- part_row[[parts_sheet_column_names$part_type_column_name]]
+  part_domain_ID <- part_row[[parts_sheet_column_names$part_domain_ID_column_name]]
+  part_speciment_set <- part_row[[parts_sheet_column_names$part_speciment_set_column_name]]
+  part_comp_set <- part_row[[parts_sheet_column_names$part_comp_set_column_name]]
+  part_group_ID <- part_row[[parts_sheet_column_names$part_group_ID_column_name]]
+  part_class_ID <- part_row[[parts_sheet_column_names$part_class_ID_column_name]]
+  part_nomenclature_ID <- part_row[[parts_sheet_column_names$part_nomenclature_ID_column_name]]
+  part_ontology_reference <- part_row[[parts_sheet_column_names$part_ontology_reference_column_name]]
+  part_cat_set_ID <- part_row[[parts_sheet_column_names$part_cat_set_ID_column_name]]
+  part_unit_set_ID <- part_row[[parts_sheet_column_names$part_unit_set_ID_column_name]]
+  part_agg_scale_ID <- part_row[[parts_sheet_column_names$part_agg_scale_ID_column_name]]
+  part_quality_set_ID <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
+  part_ref_link <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
+  part_data_type <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
+  part_min_value <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
+  part_max_value <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
+  part_min_length <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
+  part_max_length <- part_row[[parts_sheet_column_names$part_max_length_column_name]]
+  part_status <- part_row[[parts_sheet_column_names$part_status_column_name]]
+  part_first_released <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
+  part_last_updated <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
+  
+  # Assemble the display string
+  parts_info_display_content <-
+    glue::glue(
+      '{parts_info_display_content}
+      
+      ### {part_label} {{ #{part_ID} }} 
+      ({part_ID}).
+      {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
+      *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
+      *Domain ID:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
+      *Speciment ID:* <a href="#{part_speciment_set}">{part_speciment_set}</a> </br>
+      *Compartment Set:* <a href="#{part_comp_set}">{part_comp_set}</a> </br>
+      *Group ID:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
+      *Class ID:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
+      *Nomenclature ID:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
+      *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a> </br>
+      *Category Set ID:* <a href="/sets.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
+      *Unit Set ID:* <a href="#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
+      *Aggregation Scale ID:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
+      *Quality Set ID:* <a href="#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
+      *Reference Link:* {part_ref_link} </br>
+      *Data Type:* <a href="#{part_data_type}">{part_data_type}</a> </br>
+      *Minimum Value:* {part_min_value} </br>
+      *Maximum Value:* {part_max_value} </br>
+      *Minimum Length:* {part_min_length} </br>
+      *Maximum Length:* {part_max_length} </br>
+      *Part Status:* {if (part_status %!=na% constants$part_sheet_status_is_active) glue::glue(\'**{part_status}**\') else part_status }. \\
+      First released: {part_first_released}. \\
+      Last updated: {part_last_updated}. </br>
+      ')
+}
+
+
+```
+
+`r parts_info_display_content`

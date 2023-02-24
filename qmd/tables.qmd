@@ -1,9 +1,310 @@
+---
+project:
+  execute-dir: ../
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
+<!--` reference1 -->
+
 # Tables {.unnumbered}
 
-The list of tables in the three main groups (partType = tables, class = results, prgramDesc, lookup).
+{{< include _dictionary-version.qmd >}}
 
-## Report tables
+The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
 
-## Program Description tables
+::: callout-note
+## Data storage
 
-## Look-up tables
+Store all ODM data in the 21 recommended tables to ensure optimal interoprablity and support by the [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
+
+Users can, however, create custom tables or 'views' by merging fields from any table. A common format for data entry format are "wide" table format, with *one day per row* and multiple measures or attributes per row. It is important to note that this guide does not provide instructions on generating wide tables.
+:::
+
+## Table types
+
+There are five table types:
+
+1\) **Regular report tables**. The `measures` and `samples` tables are used for daily reporting of new measurements and information on sample collection. There are three tables that support regular reporting:- `measureSets` (optional) is used to link measures, `sampleRelationships` (optional) is used when samples are pooled or split, and `qualityReports` is used for detailed quality assurance and control measures.
+
+2\) **Contact information tables**. The `sites`, `organizations`, `contacts`, and `addresses` tables store contact information for the testing site and the person who performed the testing.
+
+3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
+
+4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
+
+5\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations.
+
+## Header roles
+
+Each table in the ODM has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.
+
+**Primary key** (PK) - With the exception of the dictionary tables, all tables have one primary key. The primary key serves as a unique identifier for each row in the table, meaning that a primary key value cannot be repeated.
+
+**Foreign key** (FK) - Tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. This allows for relationships to be established between tables, making it possible to link data between different tables.
+
+**Header** (header) - This label is used in a table description when a header is not a primary or foreign key.
+
+## Mandatory, optional, mandatoryIf
+
+Each header may be classified as either `mandatory` or `optional`. In the `measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.
+
+Additionally, there are special headers called `mandatoryIf` headers. These headers are mandatory if certain conditions apply. For example, the `protocol steps` table has row entries that are either `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes `mandatory` since all measures must have a unit. Therefore, units are `mandatoryIf` in the protocol steps table.
+
+<!--` reference1/ -->
+
+```{r, echo=FALSE, warning=FALSE}
+# Can put warning=FALSE above if warnings in display are an issue
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
+
+
+
+# Read in and prepare parts data.frame
+parts_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+
+# Generate tables data.frame
+tables_data <-
+  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
+                parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+
+# Sort tables alphabetically based on partID
+tables_data <- tables_data[order(tables_data[[parts_sheet_column_names$part_ID_column_name]]),]
+
+# Utilize tables_data to generate names of table specific columns
+all_required_column_names <-
+  glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Required')
+all_order_column_names <-
+  glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Order')
+all_table_column_names <- tables_data[[parts_sheet_column_names$part_ID_column_name]]
+table_name_columns <- c(all_table_column_names, all_required_column_names, all_order_column_names)
+
+# Perform additional formatting on table specific columns
+parts_table <- format_table(parts_table, table_name_columns)
+parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], tolower)
+parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], trimws)
+
+# Declaring string that will be appended during the loops
+table_of_content <- glue::glue('## Table list
+                               <ul>')
+tables_info_display_content <- ""
+
+for (table_row_index in seq_len(nrow(tables_data))) {
+  current_table_data <- tables_data[table_row_index, ]
+  # Invalid partIDs are removed during format_table so no further verification is needed
+  current_table_ID <- current_table_data[[parts_sheet_column_names$part_ID_column_name]]
+  current_table_order_column_name <- all_order_column_names[[table_row_index]]
+  current_table_required_column_name <- all_required_column_names[[table_row_index]]
+  
+  
+  # Acquire columns that belong to the table
+  table_columns <-
+    parts_table[parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_PK |
+                  parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_FK |
+                  parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_header,]
+  # In case a table has no PK, FK, header
+  if(nrow(table_columns)==0){
+    warning(glue::glue('{current_table_ID} Does not have any valid columns
+                       
+                       '))
+    next()
+  }
+  
+  # Order table columns by the order column if valid column is present
+  if (verify_input(
+    table_columns[[current_table_order_column_name]],
+    glue::glue(
+      '{current_table_ID} Does not have a valid order column.
+      No ordering was done
+      
+      ')
+  )) {
+    table_columns <-
+      table_columns[order(as.numeric(table_columns[[current_table_order_column_name]])), ]
+  }
+  
+  # Pull out display content
+  current_table_label <- current_table_data[[parts_sheet_column_names$part_label_column_name]]
+  current_table_description <- current_table_data[[parts_sheet_column_names$part_description_column_name]]
+  current_table_instructions <- current_table_data[[parts_sheet_column_names$part_instruction_column_name]]
+  
+  # Append table display content
+  table_of_content <-
+    glue::glue(
+      '{table_of_content}<li><a href=\"#{current_table_ID}\">'
+    )
+  # Append table label related content
+  table_of_content <- verify_and_append_content(
+    table_of_content,
+    current_table_label,
+    glue::glue(
+      '{current_table_ID} is missing a valid {parts_sheet_column_names$part_label_column_name} \\
+      substituting {parts_sheet_column_names$part_ID_column_name} instead.'),
+    glue::glue('{current_table_label}</a></li>'),
+    glue::glue('{current_table_ID}</a></li>')
+  )
+  tables_info_display_content <- verify_and_append_content(
+    tables_info_display_content,
+    current_table_label,
+    glue::glue(
+      '{current_table_ID} is missing a valid {parts_sheet_column_names$part_label_column_name} \\
+      substituting {parts_sheet_column_names$part_ID_column_name} instead.'),
+    glue::glue('
+    
+      ### {current_table_label} {{ #{current_table_ID} }}
+      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>. '),
+    glue::glue('
+      ### {current_table_ID} {{ #{current_table_ID} }}
+      partID: <a href=\"/parts.html#{current_table_ID}\">{current_table_ID}</a>. ')
+  )
+  # Append table description content
+  tables_info_display_content <- verify_and_append_content(
+    tables_info_display_content,
+    current_table_description,
+    glue::glue(
+      '{current_table_ID} is missing a valid \\
+      {parts_sheet_column_names$part_description_column_name} and will be skipped'
+    ),
+    glue::glue('
+                 {current_table_description}'),
+    ""
+  )
+  # Append table instruction content
+  tables_info_display_content <- verify_and_append_content(
+    tables_info_display_content,
+    current_table_instructions,
+    glue::glue(
+      '{current_table_ID} is missing a valid \\
+      {parts_sheet_column_names$part_instruction_column_name} and will be skipped'
+    ),
+    glue::glue(' {current_table_instructions}'),
+    ""
+  )
+  # Start the table columns list 
+  tables_info_display_content <-
+    glue::glue('{tables_info_display_content}<ul>')
+  
+  for (column_row_index in seq_len(nrow(table_columns))) {
+    current_table_column <- table_columns[column_row_index, ]
+    
+    detected_column_role <- current_table_column[[current_table_ID]]
+    column_role <- "NA"
+    if (verify_input(detected_column_role, glue::glue('Invalid column role found for {current_table_ID} table'))) {
+      if (detected_column_role == constants$part_sheet_table_column_type_is_FK) {
+        column_role <- constants$part_sheet_table_column_type_set_FK
+      } else if (detected_column_role == constants$part_sheet_table_column_type_is_PK) {
+        column_role <- constants$part_sheet_table_column_type_set_PK
+      } else if (detected_column_role == constants$part_sheet_table_column_type_is_header) {
+        column_role <- constants$part_sheet_table_column_type_set_header
+      } 
+    }
+    
+    # Column_ID is assumed to be always present missing ID means invalid part
+    column_ID <- current_table_column[[parts_sheet_column_names$part_ID_column_name]]
+    
+    # Variables being used in column display
+    column_label <- current_table_column[[parts_sheet_column_names$part_label_column_name]]
+    column_description <- current_table_column[[parts_sheet_column_names$part_description_column_name]]
+    column_required <- current_table_column[[current_table_required_column_name]]
+    column_dataType <- current_table_column[[parts_sheet_column_names$part_data_type_column_name]]
+    
+    # Append column display
+    tables_info_display_content <-
+      glue::glue(
+        '{tables_info_display_content}<li>')
+    
+    # Append column label info
+    tables_info_display_content <- verify_and_append_content(
+      tables_info_display_content,
+      column_label,
+      glue::glue(
+        '{column_ID} in {current_table_ID} table is missing a valid \\
+        {parts_sheet_column_names$part_label_column_name} \\
+        substituting {parts_sheet_column_names$part_ID_column_name} instead'
+      ),
+      glue::glue(
+        '**{column_label}** (<a href=\"/parts.html#{column_ID}\">{column_ID}</a>).'),
+      glue::glue(
+        '**{column_ID}** (<a href=\"/parts.html#{column_ID}\">{column_ID}</a>).')
+    )
+    # Append column description
+    tables_info_display_content <- verify_and_append_content(
+      tables_info_display_content,
+      column_description,
+      glue::glue(
+        '{column_ID} in {current_table_ID} table is missing a valid \\
+      {parts_sheet_column_names$part_description_column_name} and this information will not be displayed'
+      ),
+      glue::glue(
+        ' {column_description}'),
+      ""
+    )
+    # Append column Role
+    tables_info_display_content <- verify_and_append_content(
+      tables_info_display_content,
+      column_role,
+      glue::glue(
+        '{column_ID} in {current_table_ID} table is missing a valid \\
+      {current_table_ID} and this information will not be displayed'
+      ),
+      glue::glue('</br>Role: {column_role}.'),
+      ""
+    )
+    # Append column Requirement
+    tables_info_display_content <- verify_and_append_content(
+      tables_info_display_content,
+      column_required,
+      glue::glue(
+        '{column_ID} in {current_table_ID} table is missing a valid \\
+      {current_table_required_column_name} and this information will not be displayed'
+      ),
+      glue::glue('</br>Requirement: {column_required}.'),
+      ""
+      )
+    # Append column data type
+    tables_info_display_content <- verify_and_append_content(
+      tables_info_display_content,
+      column_dataType,
+      glue::glue(
+        '{column_ID} in {current_table_ID} table is missing a valid \\
+      {parts_sheet_column_names$part_data_type_column_name} and this information will not be displayed'
+      ),
+      glue::glue('</br>Data type: {column_dataType}.'),
+      ""
+      )
+    # Append link to catSetID if dataType is categorical
+    if (column_dataType == constants$part_sheet_data_type_is_categorical) {
+      column_catSetID <- current_table_column[[parts_sheet_column_names$part_cat_set_ID_column_name]]
+      tables_info_display_content <- verify_and_append_content(
+        tables_info_display_content,
+        column_catSetID,
+        glue::glue('{column_ID} in {current_table_ID} table has data type of \\
+                   {constants$part_sheet_data_type_is_categorical} but no valid \\
+                   {parts_sheet_column_names$part_cat_set_ID_column_name}'),
+        glue::glue(
+          ' CatSet: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
+        ),
+        ""
+      )
+    }
+    
+    # Close off column list element
+    tables_info_display_content <-
+      glue::glue('{tables_info_display_content}</li>')
+  }
+  tables_info_display_content <-
+    glue::glue('{tables_info_display_content}</ul>')
+}
+table_of_content <- glue::glue('{table_of_content}</ul>')
+```
+
+`r table_of_content` `r tables_info_display_content`
+
+{{< include _date-created.qmd >}}

@@ -1,3 +1,134 @@
+---
+project:
+  execute-dir: ../
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
 # Sets {.unnumbered}
 
-The list of sets in aphabetical order of setsID
+{{< include _dictionary-version.qmd >}}
+
+Sets are lists of categories and other parts. For example, `Collection category set` ([collectionCatSet](file:///Users/dmanuel/github/PHES-ODM-Doc/docs/sets.html#collectCatSet)) contains a list of the different collection types including: `Moore swab`, `Grab sample`, `Flow proportional sample`, etc.
+
+Some sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g. `Sample not collected`), PCR measures (`inhibition preset`), and sequencing measures (`low depth of coverage`), but all quality sets share the `No quality concerns` indicator.
+
+```{r, echo=FALSE, warning=FALSE}
+# Utility Functions
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
+
+# Generate, format and order sets table
+sets_table_source <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$sets_sheet_name)
+sets_table <- format_table(sets_table_source)
+sets_table <- sets_table[order(sets_table[[sets_sheet_column_names$part_set_type_column_name]]), ]
+
+# Generate and format parts table
+parts_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$parts_sheet_name)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
+
+display_content <- ""
+
+# Find and loop over unique setTypes
+unique_set_types <-
+  unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
+for (set_type in unique_set_types) {
+  # Create header for setType
+  set_type_info <-
+    parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
+  # Issue warning and skip if no matching information on setType is found in parts
+  if(nrow(set_type_info)<1){
+        warning(glue::glue('{set_type} has no valid set info and is skipped'))
+        next()
+      }
+  set_type_label <-
+    set_type_info[[parts_sheet_column_names$part_label_column_name]]
+  verify_input(set_type_label, glue::glue('Set type label is missing for {set_type}'))
+  set_type_instruction <-
+    set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
+  verify_input(set_type_instruction, glue::glue('Set type instructions are missing for {set_type}'))
+  set_type_description <- set_type_info[[parts_sheet_column_names$part_description_column_name]]
+  verify_input(set_type_description, glue::glue('Set type description is missing for {set_type}'))
+  
+  # <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>
+  display_content <- glue::glue('{display_content}
+                              ## {set_type_label} {{ #{set_type} }}
+                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
+                                
+                              ', .null = constants$dictionary_missing_value_replacement)
+  
+  # Find and loop over unique setID according to set_type
+  rows_for_current_set_type <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type,]
+  unique_set_IDs <- unique(rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]])
+  for (set_ID in unique_set_IDs) {
+    set_ID_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_ID, ]
+    # Handle no rows found for set_ID in parts
+    if(nrow(set_ID_info)<1){
+      warning(glue::glue('Set ID:{set_ID} has no data in parts sheet and is skipped'))
+      next()
+    }
+    set_ID_part_label <- set_ID_info[[parts_sheet_column_names$part_label_column_name]]
+    # Create set_ID subsection
+    display_content <- verify_and_append_content(
+      display_content,
+      set_ID_part_label,
+      glue::glue(
+        'Set ID: {set_ID} has no valid {parts_sheet_column_names$part_label_column_name}'
+      ),
+      glue::glue('
+      
+                 ### {set_ID_part_label} {{ #{set_ID} }}
+                 
+                 '
+      ),
+      glue::glue('
+      
+                 ### {set_ID}
+                 
+                 '
+      ))
+    # Create list to hold a values for html list
+    list_values <- list()
+    
+    # Find and loop over unique partID according to set_ID
+    current_set_ID_rows <- rows_for_current_set_type[rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]] == set_ID,]
+    unique_part_IDs <- unique(current_set_ID_rows[[parts_sheet_column_names$part_ID_column_name]])
+    for (part_ID in unique_part_IDs) {
+      part_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID,]
+      # Verify that parts contains the requested part information
+      if(nrow(part_info)<1){
+        warning(glue::glue('{part_ID} part in {set_ID} set for {set_type} set type has no valid part info and is skipped'))
+        next()
+      }
+      
+      # Declare display elements
+      part_label <- part_info[[parts_sheet_column_names$part_label_column_name]]
+      part_description <- part_info[[parts_sheet_column_names$part_description_column_name]]
+      part_status <- part_info[[parts_sheet_column_names$part_status_column_name]]
+      part_first_released <- part_info[[parts_sheet_column_names$part_first_release_column_name]]
+      part_last_updated <- part_info[[parts_sheet_column_names$part_last_updated_column_name]]
+      
+      # Verify display elements
+      verify_input(part_label, glue::glue('Part label is missing for {part_ID}'))
+      verify_input(part_description, glue::glue('Part description is missing for {part_ID}'))
+      verify_input(part_status, glue::glue('Part status is missing for {part_ID}'))
+      verify_input(part_first_released, glue::glue('Part first released is missing for {part_ID}'))
+      verify_input(part_last_updated, glue::glue('Part last updates is missing for {part_ID}'))
+      
+      list_values[[length(list_values)+1]] <- glue::glue('**{part_label}**({part_ID}). {part_description} Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.', .null = constants$dictionary_missing_value_replacement)
+      
+    }
+    display_content <- create_html_list(display_content, list_values)
+  }
+}
+
+```
+
+`r display_content`

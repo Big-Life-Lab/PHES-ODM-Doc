@@ -13,15 +13,15 @@ book:
     - index.qmd
     - explanation.qmd
     - how-to.qmd
-    - tutourials.qmd
+    #- tutourials.qmd
     - part: ref-quide.qmd
       chapters:
         - parts.qmd
         - sets.qmd
-        - languages.qmd
-        - translations.qmd
+        #- languages.qmd
+        #- translations.qmd
         - tables.qmd
-        - partTypes.qmd
+        #- partTypes.qmd
 
 format:
   html:
