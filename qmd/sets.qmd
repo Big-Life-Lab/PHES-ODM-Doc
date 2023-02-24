@@ -40,6 +40,11 @@ display_content <- ""
 unique_set_types <-
   unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
 for (set_type in unique_set_types) {
+  # Removing dictSet
+  if(set_type==constants$set_type_is_dictSet){
+    next()
+  }
+  
   # Create header for setType
   set_type_info <-
     parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
@@ -59,7 +64,7 @@ for (set_type in unique_set_types) {
   
   display_content <- glue::glue('{display_content}
                               ## {set_type_label} {{ #{set_type} }}
-                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
+                              <a href=\"/parts.html#{set_type}\">({set_type})</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
                                 
                               ', .null = constants$dictionary_missing_value_replacement)
   
