@@ -1,4 +1,6 @@
-# Public Health and Environmental Surveillance Open Data Model - Documentation
+# Introduction {.unnumbered}
+
+<!-- {{< include _dictionary-version.qmd >}}   -->
 
 ::: callout-warning
 This documentation for PHES-ODM Version 2.0.0 is in the beta testing. Please be aware that changes will occur regularly in the next weeks. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
@@ -8,9 +10,47 @@ The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or OD
 
 This documentation is intended for those who want to understand how the ODM model works, its organizational structure, and how to use it effectively for their program. It is also a useful resource for those who currently use a different data dictionary and wish to share their data with a program that uses the ODM. If you need to share your data with another program that uses a different data dictionary, this documentation can help you compare and create a common cross-walk between dictionaries. The ODM starts as a conceptual model that represents real-world processes through data elements and data relationships, which are common to all environmental and public health surveillance systems.
 
-## How to use the documentation
+## Quick start
 
-...
+You can get to know the ODM by imaging how to record a polymerase chain reaction (PCR) test result for SARS-CoV-2 from a wastewater sample.
+
+### 1. Get oriented to the ODM tables where you record results
+
+![**Figure 1 - Key ODM tables for recording data**](assets/intro/ODM-model-tables.png){fig-align="center"}
+
+The `Sample report table` ([samples](https://docs.phes-odm.org/tables.html#samples "Samples report table")) and the `Measure report table` ([measures](https://docs.phes-odm.org/tables.html#samples "Measures report table")) are where you record information about samples and measures.
+
+### 2. View mandatory and optional data fields in the tables reference guide
+
+You can view mandatory and optional data field here: ([samples](https://docs.phes-odm.org/tables.html#samples "Samples report table")) and ([measures](https://docs.phes-odm.org/tables.html#samples "Measures report table")). 'Mandatory' means they are fields are needed to ensure interoperablity.
+
+::: {.callout-tip collapse="true"}
+## What are ODM parts and how to find them?
+
+In the ODM, tables are an example of an part. A part name can be identified by its text style like `this`. The part ID often follows the part in parenthesis, with a link to the part.
+
+So, `Sample report table` is the part name, and ([samples](https://docs.phes-odm.org/tables.html#samples "Samples report table")) is the part ID and link to the documentation for that part.
+
+You can find out more about parts on the [reference guide section](https://docs.phes-odm.org/parts.html).
+:::
+
+### 3. Try entering example data in ODM Excel templates
+
+Keep in mind, ODM templates are only examples of how to use the ODM dictionary to record data. Templates are available at [OSF.io](https://osf.io/ab9se/). The '[How to use the ODM](https://docs.phes-odm.org/how-to.html)" section describes how to enter information into tables.
+
+#### Storing sample data in an ODM template
+
+A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. The sample template stores one sample per row. The `Sample report table` has seven mandatory fields.
+
+{{< video https://vimeo.com/802349692 >}}
+
+#### Storing measure data in an ODM template
+
+A `measure` ([measureID](parts.qmd#measureID)) is defined as a measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e. a site, sample, person or population). The measure template stores on measures per row. If you recorded PCR results for two SARS-CoV-2, say the N1 (covN1) and N1 (covN2) regions, you would record each on its own line. This is referred as the "long" table format, and it is the main format for storing measures. You can create "wide" tables that store multiple measures in one row, or you can mix and match to generate tables that have both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is an example of a hybrid template (see  the 'Airports" folder). 
+
+(Video)
+
+## How to use the documentation
 
 (documentation roadmap).
 

@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation"
-  subtitle: "Version 2.0 RC2"
+  subtitle: "Version 2.0.0-rc.3.10"
   date: last-modified
   date-format: iso
   license: CC BY-SA
