@@ -87,3 +87,40 @@ verify_and_append_content <-
     
     return(return_content)
   }
+
+
+#' Create html list
+#' 
+#' Utility function for creating html list out of an R list and appending it to a string.
+#' 
+#' @param string_to_append a string containing the string you wish to append to
+#' @param list_values a R list containing elements you wish to add to the string as html list
+#' 
+#' @return string containing list_values as an html list
+create_html_list <- function(string_to_append, list_values){
+  string_to_append <- glue::glue('{string_to_append} 
+                                 <ul>', .null = "NA")
+  for (list_element in list_values) {
+    string_to_append <- glue::glue('{string_to_append} 
+                                   <li> {list_element} </li>', .null = "NA")
+  }
+  string_to_append <- glue::glue('{string_to_append} 
+                                 </ul>', .null = "NA")
+  return(string_to_append)
+}
+
+#' Not equal to NA
+#' 
+#' Utility function to compare not equal when NA inputs are possible.
+#' 
+#' @param left_operand operand for left side of !=
+#' @param right_operand operand for right side of !=
+#' 
+#' @return Boolean representing != of left and right side
+`%!=na%` <-
+  function(left_operand, right_operand) {
+    (left_operand != right_operand |
+       (is.na(left_operand) & !is.na(right_operand)) | 
+       (!is.na(left_operand) & is.na(right_operand))) &
+      !(is.na(left_operand) & is.na(right_operand))
+  }

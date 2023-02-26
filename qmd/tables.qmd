@@ -68,7 +68,7 @@ source("R/format-table.R")
 parts_table_source <-
   readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
                      sheet = constants$parts_sheet_name)
-parts_table <- format_table(parts_table_source, parts_sheet_column_names)
+parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 # Generate tables data.frame
 tables_data <-
