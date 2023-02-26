@@ -1,5 +1,7 @@
 # Introduction {.unnumbered}
 
+> Make it easy as possible to collect and share high-quality, interoperable environmental surveillance data
+
 <!-- {{< include _dictionary-version.qmd >}}   -->
 
 ::: callout-warning
@@ -9,6 +11,26 @@ This documentation for PHES-ODM Version 2.0.0 is in the beta testing. Please be 
 The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source data model and set of tools aimed at promoting global collaboration and use of environment and public health data. The ODM model facilitates interoperable environmental surveillance and research by improving quality reporting data, enhancing data management, and supporting data provenance and sharing.
 
 This documentation is intended for those who want to understand how the ODM model works, its organizational structure, and how to use it effectively for their program. It is also a useful resource for those who currently use a different data dictionary and wish to share their data with a program that uses the ODM. If you need to share your data with another program that uses a different data dictionary, this documentation can help you compare and create a common cross-walk between dictionaries. The ODM starts as a conceptual model that represents real-world processes through data elements and data relationships, which are common to all environmental and public health surveillance systems.
+
+## How to use the documentation
+
+There are three <!--# actually four sections once tutorials are added --> document sections, each with a different purpose.[^index-1]
+
+[^index-1]: [David Laing and Divio's Grand Unified Theory of Documentation.](https://documentation.divio.com/#:~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.)
+
+*Getting to know the ODM* is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.
+
+*How to use the ODM* are step-by-step guides to help you use different aspects of the ODM such as report templates.
+
+*Reference* is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
+
+### Future documentation
+
+Tutorials and videos are being develop. Tutorials will help newcomers get started. They will be lessons on how to:
+
+-   Describe a protocol using protocol tables. <!--#  *Tutorials:* Oriented to learning, this piece must allow the newcomer to get started. This piece of the documentation should ideally take the form of a lesson. As an analogy, consider tutorials as being akin to teaching a small child how to cook.-->
+
+-   Make wide names and report templates using wide names.
 
 ## Quick start
 
@@ -58,26 +80,6 @@ The "who, where, and why" for measures is stored in contact tables. "How", the m
 
 ![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/subway.png){fig-align="center"}
 
-## How to use the documentation
-
-There are three <!--# actually four sections once tutorials are added --> document sections, each with a different purpose.[^index-1]
-
-[^index-1]: \[David Laing and Divio's Grand Unified Theory of Documentation.\](https://documentation.divio.com/#:\~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.)
-
-\*Getting to know the ODM\* is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.
-
-\*How to use the ODM\* are step-by-step guides to help you use different aspects of the ODM such as report templates.
-
-\*Reference\* is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
-
-### Future documentation
-
-Tutorials and videos are being develop. Tutorials will help newcomers get started. They will be lessons on how to:
-
--   Describe a protocol using protocol tables. <!--#  *Tutorials:* Oriented to learning, this piece must allow the newcomer to get started. This piece of the documentation should ideally take the form of a lesson. As an analogy, consider tutorials as being akin to teaching a small child how to cook.-->
-
--   Make wide names and report templates using wide names.
-
 ### Getting help
 
-We hope that the documentation serves its purpose and that you find it useful in figuring out how to best use the ODM and its suite of tools. If you do encounter any issues or questions that do not seem to have an easy answer, please \[create an issue on our GitHub repository\](https://github.com/Big-Life-Lab/PHES-ODM) or consult \[our Discourse page\](https://odm.discourse.group/).
+We hope that the documentation serves its purpose and that you find it useful in figuring out how to best use the ODM and its suite of tools. If you do encounter any issues or questions that do not seem to have an easy answer, please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or consult [our Discourse page](https://odm.discourse.group/).
