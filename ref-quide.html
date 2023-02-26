@@ -164,7 +164,26 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>The book section has the parts and other lists. The chapters are organized so that there can be persistent links for the look-up tables (parts, sets, language, translations.)</p>
+<p>The reference guide is a technical description of the ODM <code>parts</code>. There are three sections to the reference guide.</p>
+<ul>
+<li><p><a href="https://docs.phes-odm.org/parts.html"><code>parts</code></a> – Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. There are over 900 parts, all listed in alphabetical order. Each part has up to 60 different attributes such as the part name and description.</p></li>
+<li><p><a href="https://docs.phes-odm.org/tables.html"><code>tables</code></a> - The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as “long” tables as it stores data with one measurement per row. The most important tables are the ‘report’ tables that are used for daily reporting of measures and samples.</p></li>
+<li><p><a href="https://docs.phes-odm.org/sets.html"><code>sets</code></a> - Sets are lists or collections of parts. You can think of sets as the elements of drop down lists or categories.</p></li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Did you know that each part ID has its own URL?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every part, table, and set has its own URL, that is created using the partID. partIDs are usually parentheses that follow a part, table, or set name.</p>
+<p>For example, ‘airport’ is a sample shed category which would appear as: <code>Airport</code> (<a href="https://docs.phes-odm.org/parts.html#airport">airport</a>). The pernament link to the airport partID is, <a href="https://docs.phes-odm.org/parts.html#airport" class="uri">https://docs.phes-odm.org/parts.html#airport</a>. Airport also is listed in the <code>Sampleshed category set</code> (<a href="https://docs.phes-odm.org/sets.html#shedCatSet">shedCatSet</a>).</p>
+</div>
+</div>
 
 
 
