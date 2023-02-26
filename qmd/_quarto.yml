@@ -11,6 +11,7 @@ book:
   repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
   chapters:
     - index.qmd
+    - background.qmd
     - explanation.qmd
     - how-to.qmd
     #- tutourials.qmd
