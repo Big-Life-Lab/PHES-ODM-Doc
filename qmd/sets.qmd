@@ -40,6 +40,11 @@ display_content <- ""
 unique_set_types <-
   unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
 for (set_type in unique_set_types) {
+  # Removing dictSet
+  if(set_type==constants$set_type_is_dictSet){
+    next()
+  }
+  
   # Create header for setType
   set_type_info <-
     parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type, ]
@@ -57,16 +62,16 @@ for (set_type in unique_set_types) {
   set_type_description <- set_type_info[[parts_sheet_column_names$part_description_column_name]]
   verify_input(set_type_description, glue::glue('Set type description is missing for {set_type}'))
   
-  # <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>
   display_content <- glue::glue('{display_content}
                               ## {set_type_label} {{ #{set_type} }}
-                              partID: <a href=\"/parts.html#{set_type}\">{set_type}</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
+                              <a href=\"/parts.html#{set_type}\">({set_type})</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
                                 
                               ', .null = constants$dictionary_missing_value_replacement)
   
   # Find and loop over unique setID according to set_type
   rows_for_current_set_type <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type,]
   unique_set_IDs <- unique(rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]])
+  unique_set_IDs <- sort(unique_set_IDs)
   for (set_ID in unique_set_IDs) {
     set_ID_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_ID, ]
     # Handle no rows found for set_ID in parts
@@ -100,6 +105,7 @@ for (set_type in unique_set_types) {
     # Find and loop over unique partID according to set_ID
     current_set_ID_rows <- rows_for_current_set_type[rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]] == set_ID,]
     unique_part_IDs <- unique(current_set_ID_rows[[parts_sheet_column_names$part_ID_column_name]])
+    unique_part_IDs <- sort(unique_part_IDs)
     for (part_ID in unique_part_IDs) {
       part_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID,]
       # Verify that parts contains the requested part information
@@ -122,7 +128,7 @@ for (set_type in unique_set_types) {
       verify_input(part_first_released, glue::glue('Part first released is missing for {part_ID}'))
       verify_input(part_last_updated, glue::glue('Part last updates is missing for {part_ID}'))
       
-      list_values[[length(list_values)+1]] <- glue::glue('**{part_label}**({part_ID}). {part_description} Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.', .null = constants$dictionary_missing_value_replacement)
+      list_values[[length(list_values)+1]] <- glue::glue('**{part_label}** <a href=\"/parts.html#{part_ID}\">({part_ID})</a>. {part_description} </br>Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.', .null = constants$dictionary_missing_value_replacement)
       
     }
     display_content <- create_html_list(display_content, list_values)
