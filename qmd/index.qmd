@@ -46,13 +46,24 @@ A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volum
 
 #### Storing measure data in an ODM template
 
-A `measure` ([measureID](parts.qmd#measureID)) is defined as a measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e. a site, sample, person or population). The measure template stores on measures per row. If you recorded PCR results for two SARS-CoV-2, say the N1 (covN1) and N1 (covN2) regions, you would record each on its own line. This is referred as the "long" table format, and it is the main format for storing measures. You can create "wide" tables that store multiple measures in one row, or you can mix and match to generate tables that have both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is an example of a hybrid template (see  the 'Airports" folder). 
+A `measure` ([measureID](parts.qmd#measureID)) is defined as a measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e. a site, sample, person or population). The measure template stores on measures per row. If you recorded PCR results for two SARS-CoV-2, say the N1 (covN1) and N1 (covN2) regions, you would record each on its own line. This is referred as the "long" table format, and it is the main format for storing measures. You can create "wide" tables that store multiple measures in one row, or you can mix and match to generate tables that have both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is an example of a hybrid template (see the 'Airports" folder).
 
 (Video)
+
+### 4. Next steps
+
+Recording SARS-CoV-2 PCR measures are examples of storing information for a `sample`. You can also record measures for a `site` (i.e. wastewater `flow rate` (\[flowRate\](parts.qmd#flowRate)), or the `population` served by site (i.e. Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed, or municipality). Figure 2 shows subway lines for the these three specimens (`sample`, `site`, and `population`).
+
+The "who, where, and why" for measures is stored in contact tables. "How", the measure protocol or method, is stored in the `protocols` tables.
+
+![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/subway.png){fig-align="center"}
 
 ## How to use the documentation
 
 (documentation roadmap).
+
+```{=html}
+<!--# 
 
 ## What is PHES-ODM?
 
@@ -89,6 +100,7 @@ We seek to accomplish all of the above stated goals while staying true to the gu
 -   *Support FAIR data:* In 2016, a diverse set of stakeholders--- representing academia, industry, funding agencies, and scholarly publishers---designed, jointly endorsed, and published the 'FAIR Guiding Principles for scientific data management and stewardship'.1 The intent of FAIR is to improve infrastructure supporting reuse of scholarly data based on four foundational principles: Findability, Accessibility, Interoperability, and Reusability. For the ODM this means making sure that the ODM makes for data that is findable, accessible, interoperable, and reusable by considering these attributes part of the core infrastructure.
 -   *Use an open science, open software approach:* Open-source software is software with source code that anyone can inspect, modify and enhance. Open-source initiatives embrace principles of open exchange, collaborative participation, rapid prototyping, transparency and community-oriented development. For the ODM this means that all work on the ODM is hosted in open-access environments, like GitHub, where anyone and everyone can transparently see the work being done, the rationale behind it, and can contribute to the project according to their ability.
 
+
 ## Orgnaization of the Documentation
 
 The documentation for version 2.0 of the ODM was written and organized with [David Laing and Divio's Grand Unified Theory of Documentation](https://documentation.divio.com/#:~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.) in mind. This means including four different pieces:
@@ -102,3 +114,6 @@ The documentation for version 2.0 of the ODM was written and organized with [Dav
 *Explanation:* Oriented to understanding, this piece must explain. This piece of the documentation should ideally take the form of a discursive explanation. As an analogy, consider explanation as being akin to an article on culinary social history.
 
 We hope that the documentation serves its purpose and that you find it useful in figuring out how to best use the ODM and its suite of tools. If you do encounter any issues or questions that do not seem to have an easy answer, please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or consult [our Discourse page](https://odm.discourse.group/).
+
+-->
+```
