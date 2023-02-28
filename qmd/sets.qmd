@@ -39,6 +39,7 @@ display_content <- ""
 # Find and loop over unique setTypes
 unique_set_types <-
   unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
+sets_list <- list()
 for (set_type in unique_set_types) {
   # Removing dictSet
   if(set_type==constants$set_type_is_dictSet){
@@ -62,8 +63,7 @@ for (set_type in unique_set_types) {
   set_type_description <- set_type_info[[parts_sheet_column_names$part_description_column_name]]
   verify_input(set_type_description, glue::glue('Set type description is missing for {set_type}'))
   
-  display_content <- glue::glue('{display_content}
-                              ## {set_type_label} {{ #{set_type} }}
+  set_display <- glue::glue('## {set_type_label} {{ #{set_type} }}
                               <a href=\"/parts.html#{set_type}\">({set_type})</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }
                                 
                               ', .null = constants$dictionary_missing_value_replacement)
@@ -81,8 +81,8 @@ for (set_type in unique_set_types) {
     }
     set_ID_part_label <- set_ID_info[[parts_sheet_column_names$part_label_column_name]]
     # Create set_ID subsection
-    display_content <- verify_and_append_content(
-      display_content,
+    set_display <- verify_and_append_content(
+      set_display,
       set_ID_part_label,
       glue::glue(
         'Set ID: {set_ID} has no valid {parts_sheet_column_names$part_label_column_name}'
@@ -131,8 +131,9 @@ for (set_type in unique_set_types) {
       list_values[[length(list_values)+1]] <- glue::glue('**{part_label}** <a href=\"/parts.html#{part_ID}\">({part_ID})</a>. {part_description} </br>Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.', .null = constants$dictionary_missing_value_replacement)
       
     }
-    display_content <- create_html_list(display_content, list_values)
+    set_display <- create_html_list(set_display, list_values)
   }
+  sets_list[[set_type]] <- set_display
 }
 
 # Create lists
@@ -166,8 +167,7 @@ for (list_ID in unique_list_part_IDs) {
   verify_input(set_type_description,
                glue::glue('List description is missing for {list_ID}'))
   
-  list_display_info <- glue::glue(
-  '\n\n## {list_label} {{ #{list_ID} }}
+  list_display_info <- glue::glue('## {list_label} {{ #{list_ID} }}
   <a href=\"/parts.html#{list_ID}\">({list_ID})</a>. {list_description} {if (list_instruction %!=na% constants$dictionary_missing_value_replacement) list_instruction else "" }
 
                               '
@@ -215,8 +215,10 @@ for (list_ID in unique_list_part_IDs) {
   }
   list_of_lists[[list_ID]] <- create_html_list(list_display_info, list_elements_list)
 }
+display_list <- append(sets_list, list_of_lists)
+display_list <- display_list[order(names(display_list))]
 
-list_display <- paste(list_of_lists, collapse = "\n")
+list_display <- paste(display_list, collapse = "\n")
 ```
 
 `r display_content`
