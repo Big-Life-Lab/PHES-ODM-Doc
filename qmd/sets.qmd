@@ -135,6 +135,89 @@ for (set_type in unique_set_types) {
   }
 }
 
+# Create lists
+list_set_rows <-
+  sets_table[sets_table[[sets_sheet_column_names$part_set_ID_column_name]] == constants$set_ID_is_list_set, ]
+unique_list_part_IDs <- unique(list_set_rows[[parts_sheet_column_names$part_ID_column_name]])
+list_of_lists <- list()
+
+for (list_ID in unique_list_part_IDs) {
+  list_info_row <-
+    parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] ==
+                  list_ID, ]
+  # Verify that parts contains the requested part information
+  if (nrow(list_info_row) < 1) {
+    warning(
+      glue::glue(
+        '{list_ID} has no valid part info and is skipped'
+      )
+    )
+    next()
+  }
+  list_label <-
+    list_info_row[[parts_sheet_column_names$part_label_column_name]]
+  verify_input(list_label, glue::glue('List label is missing for {list_ID}'))
+  list_instruction <-
+    list_info_row[[parts_sheet_column_names$part_instruction_column_name]]
+  verify_input(list_instruction,
+               glue::glue('List instructions are missing for {list_ID}'))
+  list_description <-
+    list_info_row[[parts_sheet_column_names$part_description_column_name]]
+  verify_input(set_type_description,
+               glue::glue('List description is missing for {list_ID}'))
+  
+  list_display_info <- glue::glue(
+  '\n\n## {list_label} {{ #{list_ID} }}
+  <a href=\"/parts.html#{list_ID}\">({list_ID})</a>. {list_description} {if (list_instruction %!=na% constants$dictionary_missing_value_replacement) list_instruction else "" }
+
+                              '
+  )
+  
+  list_elements_info_rows <- parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == list_ID, ]
+  list_elements <- unique(list_elements_info_rows[[parts_sheet_column_names$part_ID_column_name]])
+  list_elements_list <- list()
+  for (element_ID in list_elements) {
+    element_info <-
+      list_elements_info_rows[list_elements_info_rows[[parts_sheet_column_names$part_ID_column_name]] == element_ID, ]
+    # Verify that parts contains the requested part information
+    if (nrow(element_info) < 1) {
+      warning(glue::glue('{element_ID} has no valid part info and is skipped'))
+      next()
+    }
+    
+    # Declare display elements
+    element_label <-
+      element_info[[parts_sheet_column_names$part_label_column_name]]
+    element_description <-
+      element_info[[parts_sheet_column_names$part_description_column_name]]
+    element_status <-
+      element_info[[parts_sheet_column_names$part_status_column_name]]
+    element_first_released <-
+      element_info[[parts_sheet_column_names$part_first_release_column_name]]
+    element_last_updated <-
+      element_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    
+    # Verify display elements
+    verify_input(element_label, glue::glue('Part label is missing for {element_ID}'))
+    verify_input(element_description,
+                 glue::glue('Part description is missing for {element_ID}'))
+    verify_input(element_status, glue::glue('Part status is missing for {element_ID}'))
+    verify_input(element_first_released,
+                 glue::glue('Part first released is missing for {element_ID}'))
+    verify_input(element_last_updated,
+                 glue::glue('Part last updates is missing for {element_ID}'))
+    
+    list_elements_list[[element_ID]] <-
+      glue::glue(
+        '**{element_label}** <a href=\"/parts.html#{element_ID}\">({element_ID})</a>. {element_description} </br>Status: {element_status}. First released: {element_first_released}. Last updated: {element_last_updated}.',
+        .null = constants$dictionary_missing_value_replacement
+      )
+  }
+  list_of_lists[[list_ID]] <- create_html_list(list_display_info, list_elements_list)
+}
+
+list_display <- paste(list_of_lists, collapse = "\n")
 ```
 
 `r display_content`
+`r list_display`
