@@ -15,6 +15,8 @@ format_table <-
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
+    status_column_name <-
+      parts_sheet_column_names$part_status_column_name
     
     # Format all columns if columns_to_format is null
     if (is.null(columns_to_format)) {
@@ -24,17 +26,23 @@ format_table <-
     # Copy over input_table
     output_table <- input_table
     
+    # Remove parts under development
+    if (!is.null(input_table[[status_column_name]])) {
+      output_table <-
+        output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development, ]
+    }
+    
     # Strip off rows where partID is invalid
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
-                     length(output_table[[ID_column_name]]) > 0, ]
+                     length(output_table[[ID_column_name]]) > 0,]
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
-        output_table[duplicated(output_table[[ID_column_name]]),]
+        output_table[duplicated(output_table[[ID_column_name]]), ]
       output_table <-
-        output_table[!duplicated(output_table[[ID_column_name]]),]
+        output_table[!duplicated(output_table[[ID_column_name]]), ]
       # Display warning for removed duplicated rows
       removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
       warning(
