@@ -45,6 +45,7 @@ constants$part_sheet_status_is_active <- "active"
 constants$part_sheet_status_is_development <- "development"
 constants$part_sheet_data_type_is_categorical <- "categorical"
 constants$set_type_is_dictSet <- "dictSet"
+constants$set_type_is_catSet <- "catSet"
 constants$set_ID_is_list_set <- "listSet"
 
 # Table column values

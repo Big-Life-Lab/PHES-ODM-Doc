@@ -58,8 +58,8 @@ sets_list <- list()
 unique_set_types <-
   unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
 for (set_type in unique_set_types) {
-  # Removing dictSet set type
-  if (set_type == constants$set_type_is_dictSet) {
+  # Removing dictSet set type and catSet
+  if (set_type == constants$set_type_is_dictSet || set_type == constants$set_type_is_catSet) {
     next()
   }
   
@@ -118,6 +118,33 @@ for (set_type in unique_set_types) {
       glue::glue('\n\n
                  ### {set_ID}')
     )
+    # Declare additional setID display
+    set_ID_part_description <- set_ID_info[[parts_sheet_column_names$part_description_column_name]]
+    set_ID_part_instruction <- set_ID_info[[parts_sheet_column_names$part_instruction_column_name]]
+    set_ID_part_status <- set_ID_info[[parts_sheet_column_names$part_status_column_name]]
+    set_ID_part_first_released <- set_ID_info[[parts_sheet_column_names$part_first_release_column_name]]
+    set_ID_part_last_updated <- set_ID_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    
+    # Verify display elements
+    verify_input(set_ID_part_description,
+                 glue::glue('Part description is missing for {set_ID}'))
+    verify_input(set_ID_part_instruction,
+                 glue::glue('Part instruction is missing for {set_ID}'))
+    verify_input(set_ID_part_status,
+                 glue::glue('Part status is missing for {set_ID}'))
+    verify_input(set_ID_part_first_released,
+                 glue::glue('Part first released is missing for {set_ID}'))
+    verify_input(set_ID_part_last_updated,
+                 glue::glue('Part last updates is missing for {set_ID}'))
+    
+    set_display <- glue::glue(
+      '{set_display}
+<a href=\"/parts.html#{set_ID}\">({set_ID})</a>{set_ID_part_description} \\
+{if(set_ID_part_instruction %!=na% constants$dictionary_missing_value_replacement) set_ID_part_instruction else ""} </br>
+Status: {set_ID_part_status}. First Released: {set_ID_part_first_released}. \\
+Last updated: {set_ID_part_last_updated}.'
+    )
+    
     # Create list to hold a values for html list
     list_values <- list()
     
@@ -256,8 +283,87 @@ for (list_ID in unique_list_part_IDs) {
   list_of_lists[[list_ID]] <-
     create_html_list(list_display_info, list_elements_list)
 }
+
+# Create list for categorical displays
+categories_list <- list()
+categories_info_table <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == constants$set_type_is_catSet, ]
+unique_category_set_IDs <- unique(categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]])
+for (category_set_ID in unique_category_set_IDs) {
+  category_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]==category_set_ID, ]
+  if (nrow(category_info) < 1) {
+    warning(glue::glue('{category_set_ID} has no valid info in parts and is skipped'))
+    next()
+  }
+  category_label <-
+    category_info[[parts_sheet_column_names$part_label_column_name]]
+  verify_input(set_type_label,
+               glue::glue('Category label is missing for {category_set_ID}'))
+  category_instruction <-
+    category_info[[parts_sheet_column_names$part_instruction_column_name]]
+  verify_input(
+    set_type_instruction,
+    glue::glue('Category instructions are missing for {category_set_ID}')
+  )
+  category_description <-
+    category_info[[parts_sheet_column_names$part_description_column_name]]
+  verify_input(set_type_description,
+               glue::glue('Category description is missing for {category_set_ID}'))
+  
+  category_display <- glue::glue(
+    '## {category_label} {{ #{category_set_ID} }}
+                              <a href=\"/parts.html#{category_set_ID}\">({category_set_ID})</a>. {category_description} {if (category_instruction %!=na% constants$dictionary_missing_value_replacement) category_instruction else "" }')
+  
+  # Create category sub categories
+  sub_categories_info_table <- categories_info_table[categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]]== category_set_ID, ]
+  unique_sub_categories_parts <- unique(sub_categories_info_table[[parts_sheet_column_names$part_ID_column_name]])
+  sub_categories_list <- list()
+  for (sub_category_ID in unique_sub_categories_parts) {
+    sub_category_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == sub_category_ID, ]
+    # Verify that parts contains the requested part information
+    if (nrow(sub_category_info) < 1) {
+      warning(glue::glue('{sub_category_ID} has no valid part info and is skipped'))
+      next()
+    }
+    
+    # Declare display elements
+    sub_category_label <-
+      sub_category_info[[parts_sheet_column_names$part_label_column_name]]
+    sub_category_description <-
+      sub_category_info[[parts_sheet_column_names$part_description_column_name]]
+    sub_category_status <-
+      sub_category_info[[parts_sheet_column_names$part_status_column_name]]
+    sub_category_first_released <-
+      sub_category_info[[parts_sheet_column_names$part_first_release_column_name]]
+    sub_category_last_updated <-
+      sub_category_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    
+    # Verify display elements
+    verify_input(sub_category_label,
+                 glue::glue('Part label is missing for {sub_category_ID}'))
+    verify_input(sub_category_description,
+                 glue::glue('Part description is missing for {sub_category_ID}'))
+    verify_input(sub_category_status,
+                 glue::glue('Part status is missing for {sub_category_ID}'))
+    verify_input(
+      sub_category_first_released,
+      glue::glue('Part first released is missing for {sub_category_ID}')
+    )
+    verify_input(sub_category_last_updated,
+                 glue::glue('Part last updates is missing for {sub_category_ID}'))
+    
+    sub_categories_list[[sub_category_ID]] <-
+      glue::glue(
+        '**{sub_category_label}** <a href=\"/parts.html#{sub_category_ID}\">({sub_category_ID})</a>. {sub_category_description} </br>Status: {sub_category_status}. First released: {sub_category_first_released}. Last updated: {sub_category_last_updated}.'
+      )
+  }
+  categories_list[[category_set_ID]] <-
+    create_html_list(category_display, sub_categories_list)
+  
+}
+
 # Combine sets and lists then sort on names of list
 display_list <- append(sets_list, list_of_lists)
+display_list <- append(display_list, categories_list)
 display_list <- display_list[order(names(display_list))]
 
 display <- paste(display_list, collapse = "\n")
