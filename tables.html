@@ -206,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>ODM version 2.0.0-rc.3.9.</p>
+<p>ODM version 2.0.0-rc.3.10.</p>
 <p>The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as “long” tables as it stores data with one measurement per row. Each table has mandatory and optional headers.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -565,13 +565,16 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Fraction analyzed</strong> (<a href="./parts.html#fractionID">fractionID</a>). Fraction of the sample that is analyzed.<br>Role: Foreign Key.<br>Requirement: recommended.<br>Data type: categorical. CatSet: <a href="./sets.html#fractionCatSet">fractionCatSet</a>
 </li>
 <li>
+<strong>Missingness set ID</strong> (<a href="./parts.html#missingID">missingID</a>). Missingess set for a part<br>Role: Foreign Key.<br>Requirement: recommended.<br>Data type: categorical. CatSet: <a href="./sets.html#fractionCatSet">fractionCatSet</a>
+</li>
+<li>
 <strong>Group</strong> (<a href="./parts.html#groupID">groupID</a>). Unique identifier for a group of measures. Mostly applicable for measures, methods, units, and aggregations.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
 <strong>Class</strong> (<a href="./parts.html#classID">classID</a>). A unique identifier for a class, which is akin to a sub-group; it’s a way of grouping parts within a given groupID. A group can have one or more classes to describe different parts of the class.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
-<strong>Measure</strong> (<a href="./parts.html#measureID">measureID</a>). A measurement or observation of any substance including a biological, physical or chemical substance.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Measure</strong> (<a href="./parts.html#measureID">measureID</a>). A measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e.&nbsp;a site, sample, person or population).<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Value</strong> (<a href="./parts.html#value">value</a>). Value of a measure, observation or attribute.<br>Role: Header.<br>Requirement: mandatory.
@@ -652,7 +655,7 @@ partID: <a href="./parts.html#organizations">organizations</a>. The table that c
 <strong>Address ID</strong> (<a href="./parts.html#addressID">addressID</a>). A unique identifier for an address.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Organization Type</strong> (<a href="./parts.html#orgTypeID">orgTypeID</a>). Specifies the type or purpose of a given organization.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
+<strong>Organization Type</strong> (<a href="./parts.html#orgType">orgType</a>). Specifies the type or purpose of a given organization.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical. CatSet: <a href="./sets.html#orgTypeCatSet">orgTypeCatSet</a>
 </li>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
@@ -694,7 +697,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Domain ID</strong> (<a href="./parts.html#domainID">domainID</a>). Domain is the highest level of describing of a measure. There are three domain types: biologic (i.e.&nbsp;Covid-19, chemical (i.e.&nbsp;nitrogen), physical measure (temperature).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
-<strong>Specimen set</strong> (<a href="./parts.html#specimenSet">specimenSet</a>). The set of valid specimens that apply to another given part.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Specimen sets</strong> (<a href="./parts.html#specimenSet">specimenSet</a>). The set of valid specimens that apply to another given part.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Group</strong> (<a href="./parts.html#groupID">groupID</a>). Unique identifier for a group of measures. Mostly applicable for measures, methods, units, and aggregations.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
@@ -725,6 +728,9 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 </li>
 <li>
 <strong>Quality set ID</strong> (<a href="./parts.html#qualitySetID">qualitySetID</a>). The quality set that corresponds to a given part. Only applicable for samples and measures.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Missingness set ID</strong> (<a href="./parts.html#missingID">missingID</a>). Missingess set for a part<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical. CatSet: <a href="./sets.html#fractionCatSet">fractionCatSet</a>
 </li>
 <li>
 <strong>Status</strong> (<a href="./parts.html#status">status</a>). Whether the part is still active and can be used in the most current ODM version. Values are ‘active’ or ‘inactive’.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -793,7 +799,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sites table column order</strong> (<a href="./parts.html#sitesOrder">sitesOrder</a>). Specifies the order of the columns in a Sites table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
 </li>
 <li>
-<strong>Sample report table</strong> (<a href="./parts.html#samples">samples</a>). The table that contains information about a sample, where a sample is defined as a representative volume of wastewater, air, or surface substance taken from a Site which is then analysed by a lab (organization).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Sample report table</strong> (<a href="./parts.html#samples">samples</a>). The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Requirement</strong> (<a href="./parts.html#samplesRequired">samplesRequired</a>). Specifies the columns required in a Samples table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1057,7 +1063,7 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 <strong>Method</strong> (<a href="./parts.html#methodID">methodID</a>). A procedure for collecting a sample or performing a measure.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: categorical.
 </li>
 <li>
-<strong>Measure</strong> (<a href="./parts.html#measureID">measureID</a>). A measurement or observation of any substance including a biological, physical or chemical substance.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
+<strong>Measure</strong> (<a href="./parts.html#measureID">measureID</a>). A measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e.&nbsp;a site, sample, person or population).<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
 </li>
 <li>
 <strong>Summary</strong> (<a href="./parts.html#summ">summ</a>). Short description of the assay and how it is different from the other assay methods.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -1129,7 +1135,7 @@ partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for 
 </section>
 <section id="sampleRelationships" class="level3">
 <h3 class="anchored" data-anchor-id="sampleRelationships">Sample relationships table</h3>
-partID: <a href="./parts.html#sampleRelationships">sampleRelationships</a>. Table for recording the relationships between samples. Specifically designed to capture information on parent-child relationships between samples, and allow for tracking sample lineage for single and pooled samples.
+partID: <a href="./parts.html#sampleRelationships">sampleRelationships</a>. Table for recording the relationships between samples. Samples can be pooled or split. The sample relationships table holds information on parent-child relationships between samples, and allow for tracking sample lineage for single and pooled samples.
 <ul>
 <li>
 <strong>Sample ID Subject</strong> (<a href="./parts.html#sampleIDSub">sampleIDSub</a>). Populated by <code>sampleID</code> - this specifies the subject of a sample relationship.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1150,7 +1156,7 @@ partID: <a href="./parts.html#sampleRelationships">sampleRelationships</a>. Tabl
 </section>
 <section id="samples" class="level3">
 <h3 class="anchored" data-anchor-id="samples">Sample report table</h3>
-partID: <a href="./parts.html#samples">samples</a>. The table that contains information about a sample, where a sample is defined as a representative volume of wastewater, air, or surface substance taken from a Site which is then analysed by a lab (organization).
+partID: <a href="./parts.html#samples">samples</a>. The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. Samples can be combined, split, stored and reused. The <code>Sample relationships</code> (sampleRelationships) is used to describe the relationships between samples.
 <ul>
 <li>
 <strong>Sample ID</strong> (<a href="./parts.html#sampleID">sampleID</a>). Unique identifier for a sample.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1198,7 +1204,7 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 <strong>Pooled</strong> (<a href="./parts.html#pooled">pooled</a>). Is this a pooled sample, and therefore composed of multiple child samples obtained at different sites<br>Role: Header.<br>Requirement: optional.<br>Data type: boolean.
 </li>
 <li>
-<strong>Collection date time</strong> (<a href="./parts.html#collDT">collDT</a>). for grab samples this is the date, time and timezone the sample was taken.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: datetime.
+<strong>Collection date time</strong> (<a href="./parts.html#collDT">collDT</a>). For grab samples this is the date, time and timezone the sample was taken.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: datetime.
 </li>
 <li>
 <strong>Collection date time start</strong> (<a href="./parts.html#collDTStart">collDTStart</a>). For integrated time averaged samples this is the date, time and timezone the sample was started being taken.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
@@ -1297,10 +1303,10 @@ partID: <a href="./parts.html#sites">sites</a>. The table that contains informat
 <strong>Description</strong> (<a href="./parts.html#descr">descr</a>). A detailed description as an attirbute for describing results or program elements.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Public health department or region</strong> (<a href="./parts.html#pHDept">pHDept</a>). The public health department or region where the site or institute is located. See also <code>healthRegion</code> if there is a separate regional health care delivery authority.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Public health department or region</strong> (<a href="./parts.html#pHDept">pHDept</a>). The public health department or region where the site or institute is located. See also <code>healthReg</code> if there is a separate regional health care delivery authority.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Health planning region</strong> (<a href="./parts.html#healthReg">healthReg</a>). The health planning authority where is site or insititute is located. See also <code>publicHealthDepartment</code><br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Health planning region</strong> (<a href="./parts.html#healthReg">healthReg</a>). The health planning authority where is site is located. See also <code>pHDept</code>.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Population Served</strong> (<a href="./parts.html#popServ">popServ</a>). An attribute of a site, which specifies the population of/population served by a given site.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.
@@ -1354,7 +1360,7 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Tue Feb 28 00:00:00 2023.</p>
+<p>Page created on Fri Mar 3 00:00:00 2023.</p>
 
 
 </section>
