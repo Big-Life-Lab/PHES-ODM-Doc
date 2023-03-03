@@ -7,7 +7,9 @@ constants$dictionary_directory <- "data/raw"
 constants$dictionary_missing_value_replacement <- "NA"
 
 constants$parts_sheet_name <- "parts"
+constants$parts_file_name <- "parts"
 constants$sets_sheet_name <- "sets"
+constants$sets_file_name <- "sets"
 
 # Column names for the parts sheet
 parts_sheet_column_names$part_ID_column_name <- "partID"

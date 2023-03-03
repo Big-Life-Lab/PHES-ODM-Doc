@@ -106,6 +106,13 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   part_description <- gsub("`", "\\\\`", part_description)
   part_instruction <- gsub("`", "\\\\`", part_instruction)
   
+  # Generate appropriate link locations for attributes that could contain sets
+  part_comp_set_location <- determine_link_source(part_comp_set)
+  part_quality_set_ID_location <- determine_link_source(part_quality_set_ID)
+  part_cat_set_ID_location <- determine_link_source(part_cat_set_ID)
+  part_unit_set_ID_location <- determine_link_source(part_unit_set_ID)
+  part_speciment_set_location <- determine_link_source(part_speciment_set)
+  
   # Assemble the display string
   parts_info_display_content <-
     glue::glue(
@@ -116,16 +123,16 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
       *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
       *Domain ID:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
-      *Speciment ID:* <a href="#{part_speciment_set}">{part_speciment_set}</a> </br>
-      *Compartment Set:* <a href="#{part_comp_set}">{part_comp_set}</a> </br>
+      *Speciment ID:* <a href="/{part_speciment_set_location}.html#{part_speciment_set}">{part_speciment_set}</a> </br>
+      *Compartment Set:* <a href="/{part_comp_set_location}.html#{part_comp_set}">{part_comp_set}</a> </br>
       *Group ID:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
       *Class ID:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
       *Nomenclature ID:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
       *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a> </br>
-      *Category Set ID:* <a href="/sets.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
-      *Unit Set ID:* <a href="#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
+      *Category Set ID:* <a href="/{part_cat_set_ID_location}.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
+      *Unit Set ID:* <a href="/{part_unit_set_ID_location}.html#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
       *Aggregation Scale ID:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
-      *Quality Set ID:* <a href="#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
+      *Quality Set ID:* <a href="/{part_quality_set_ID_location}.html#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
       *Reference Link:* {part_ref_link} </br>
       *Data Type:* <a href="#{part_data_type}">{part_data_type}</a> </br>
       *Minimum Value:* {part_min_value} </br>
