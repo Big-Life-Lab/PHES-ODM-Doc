@@ -845,7 +845,7 @@ You have now entered in your Metadata, congratulations!
 
 ## Notes regarding templates
 
-### Templates with conditional menus (`measures` and `protocol steps`)
+### Templates with conditional menus (Measures and Protocol steps)
 
 #### Adding more conditional menus
 
@@ -871,7 +871,7 @@ You have now entered in your Metadata, congratulations!
 
 -   If you obtained an error with these menus check if any changes were made to the `parts` table.
 
-### Templates with menus (all templates other than `measure sets`, `protocols`, `contacts`, `addresses` and `datasets` templates)
+### Templates with menus (all templates other than the Measure sets, Protocols, Contacts, Addresses and Datasets templates)
 
 #### Part IDs
 
