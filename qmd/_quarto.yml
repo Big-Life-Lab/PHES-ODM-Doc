@@ -4,24 +4,25 @@ project:
 
 book:
   title: "Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation"
-  subtitle: "Version 2.0 RC2"
+  subtitle: "Version 2.0.0-rc.3.10"
   date: last-modified
   date-format: iso
   license: CC BY-SA
   repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
   chapters:
     - index.qmd
+    - background.qmd
     - explanation.qmd
     - how-to.qmd
-    - tutourials.qmd
+    #- tutourials.qmd
     - part: ref-quide.qmd
       chapters:
         - parts.qmd
         - sets.qmd
-        - languages.qmd
-        - translations.qmd
+        #- languages.qmd
+        #- translations.qmd
         - tables.qmd
-        - partTypes.qmd
+        #- partTypes.qmd
 
 format:
   html:
