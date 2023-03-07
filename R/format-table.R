@@ -11,7 +11,8 @@ source(file.path(getwd(), "R", "constants.R"))
 format_table <-
   function(input_table,
            columns_to_format = NULL,
-           remove_duplicate = FALSE) {
+           remove_duplicate = FALSE,
+           strip_invalid_part_ID = TRUE) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
@@ -33,10 +34,12 @@ format_table <-
     }
     
     # Strip off rows where partID is invalid
+    if(strip_invalid_part_ID){
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
                      length(output_table[[ID_column_name]]) > 0,]
+    }
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
