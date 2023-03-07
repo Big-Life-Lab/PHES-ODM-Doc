@@ -10,7 +10,7 @@ The guides below walk you through each of the report templates. In these guides,
 
 As a starting point:
 
--   [`Samples`]{.underline} and *`Measures`* tables are used for day-to-day reporting. You can record information about a sample in the `samples` table. Measurements are recorded in the `measures` table. A measure is "measurement or observation of any substance including a biological, physical or chemical substance".
+-   `Samples` and `Measures` tables are used for day-to-day reporting. You can record information about a sample in the `samples` table. Measurements are recorded in the `measures` table. A measure is "measurement or observation of any substance including a biological, physical or chemical substance".
 
 -   There are three optional tables that support the reporting of samples and measures:
 
