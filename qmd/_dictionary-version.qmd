@@ -1,9 +1,21 @@
 <!--Source constants file until I get clarity for environment usage across entire package or if sourcing is enough -->
 `r source("R/constants.R")`
 ```{r, echo=FALSE}
-dictionary_full_file_name <- list.files(file.path(getwd(),constants$dictionary_directory), pattern = "^ODM.*xlsx$")
-dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
+source("R/version-utils.R")
 
-dictionary_version_used <- regmatches(dictionary_full_file_name, regexec(dictionary_version_pattern, dictionary_full_file_name))[[1]][2]
+dictionary_full_file_names <- list.files(file.path(getwd(),constants$dictionary_directory), pattern = "^ODM.*xlsx$")
+
+max_version <- get_latest_version(dictionary_full_file_names)
+max_version <- as.character(max_version)
+
+# Keeping old name for now to work with all existing qmds
+dictionary_full_file_name <-""
+for (dictionary_name in dictionary_full_file_names) {
+  if(grepl(max_version, dictionary_name)){
+    dictionary_full_file_name <- dictionary_name
+  }
+}
+
+dictionary_version_used <- max_version
 ```
 ODM version `r dictionary_version_used`.
