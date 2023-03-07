@@ -1,6 +1,7 @@
 constants <- list()
 parts_sheet_column_names <- list()
 sets_sheet_column_names <- list()
+languages_sheet_column_names <- list()
 
 constants$dictionary_directory <- "data/raw"
 
@@ -10,6 +11,7 @@ constants$parts_sheet_name <- "parts"
 constants$parts_file_name <- "parts"
 constants$sets_sheet_name <- "sets"
 constants$sets_file_name <- "sets"
+constants$languages_sheet_name <- "languages"
 
 # Column names for the parts sheet
 parts_sheet_column_names$part_ID_column_name <- "part"
@@ -41,6 +43,19 @@ parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 # Column names for sets sheet
 sets_sheet_column_names$part_set_type_column_name <- "setType"
 sets_sheet_column_names$part_set_ID_column_name <- "set"
+
+#Column names for languages sheet
+languages_sheet_column_names$lang_ID <- "langID"
+languages_sheet_column_names$lang_fam <- "langFam"
+languages_sheet_column_names$lang_name <- "langName"
+languages_sheet_column_names$nat_name <- "natName"
+languages_sheet_column_names$iso6391 <- "iso6391"
+languages_sheet_column_names$iso6392B <- "iso6392B"
+languages_sheet_column_names$iso6392T <- "iso6392T"
+languages_sheet_column_names$iso6393 <- "iso6393"
+languages_sheet_column_names$iso6396 <- "iso6396"
+
+
 # Column values
 constants$part_sheet_part_type_is_table <- "tables"
 constants$part_sheet_status_is_active <- "active"
