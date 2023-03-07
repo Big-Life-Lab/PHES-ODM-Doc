@@ -32,19 +32,19 @@ output_string <- ""
 
 # Loop over rows and create outputs per row
 for (row_index in seq_len(nrow(languages_table))) {
-  working_row <- languages_table[row_index, ]
+  languages_table_row <- languages_table[row_index, ]
   
   #Assumed to be valid and present
-  lang_ID <- working_row[[languages_sheet_column_names$lang_ID]]
+  lang_ID <- languages_table_row[[languages_sheet_column_names$lang_ID]]
   
-  nat_name <- working_row[[languages_sheet_column_names$nat_name]]
-  lang_fam <- working_row[[languages_sheet_column_names$lang_fam]]
-  lang_name <- working_row[[languages_sheet_column_names$lang_name]]
-  code_1 <- working_row[[languages_sheet_column_names$iso6391]]
-  code_2 <- working_row[[languages_sheet_column_names$iso6392B]]
-  code_3 <- working_row[[languages_sheet_column_names$iso6392T]]
-  code_4 <- working_row[[languages_sheet_column_names$iso6393]]
-  code_5 <- working_row[[languages_sheet_column_names$iso6396]]
+  nat_name <- languages_table_row[[languages_sheet_column_names$nat_name]]
+  lang_fam <- languages_table_row[[languages_sheet_column_names$lang_fam]]
+  lang_name <- languages_table_row[[languages_sheet_column_names$lang_name]]
+  code_1 <- languages_table_row[[languages_sheet_column_names$iso6391]]
+  code_2 <- languages_table_row[[languages_sheet_column_names$iso6392B]]
+  code_3 <- languages_table_row[[languages_sheet_column_names$iso6392T]]
+  code_4 <- languages_table_row[[languages_sheet_column_names$iso6393]]
+  code_5 <- languages_table_row[[languages_sheet_column_names$iso6396]]
   
   # Verify display elements
   verify_input(nat_name,
