@@ -19,7 +19,7 @@ book:
       chapters:
         - parts.qmd
         - sets.qmd
-        - languages.qmd
+        #- languages.qmd
         #- translations.qmd
         - tables.qmd
         #- partTypes.qmd
