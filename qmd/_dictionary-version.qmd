@@ -5,17 +5,10 @@ source("R/version-utils.R")
 
 dictionary_full_file_names <- list.files(file.path(getwd(),constants$dictionary_directory), pattern = "^ODM.*xlsx$")
 
-max_version <- get_latest_version(dictionary_full_file_names)
-max_version <- as.character(max_version)
+latest_version_info <- get_latest_version(dictionary_full_file_names)
 
-# Keeping old name for now to work with all existing qmds
-dictionary_full_file_name <-""
-for (dictionary_name in dictionary_full_file_names) {
-  if(grepl(max_version, dictionary_name)){
-    dictionary_full_file_name <- dictionary_name
-  }
-}
+dictionary_version_used <- latest_version_info[[1]]
+dictionary_full_file_name <- latest_version_info[[2]]
 
-dictionary_version_used <- max_version
 ```
 ODM version `r dictionary_version_used`.

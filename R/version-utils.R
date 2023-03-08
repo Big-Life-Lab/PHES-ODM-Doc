@@ -4,17 +4,16 @@
 #' 
 #' @param file_names string or string vector containing file names with valid semantic versioning
 #' 
-#' @return semver object containing the latest version
+#' @return vector containing latest version and latest version file name 
 get_latest_version <- function(file_names) {
+  # Display warning for multiple dictionaries as only 1 should be stored on github
+  if(length(file_names)>1){
+    warning('Multiple dictionaries found only one dictionary should be stored.')
+  }
   
-  # Cant extract without knowing file name will await clarification
-  # files_info_source <-
-  #   readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
-  #                      sheet = "files")
-  
-  # Will attempt to extract from file if possible
   dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
   version_numbers <- c()
+  latest_version_file_name <- ""
   
   for (file_name in file_names) {
     version_number <-
@@ -28,6 +27,14 @@ get_latest_version <- function(file_names) {
   formated_versions <- semver::parse_version(version_numbers)
   
   latest_version <- max(formated_versions)
+  
+  # convert the svptr class into string 
+  latest_version <- as.character(latest_version)
+  
+  # Find the file name with the latest version
+  latest_version_file_name <- file_names[[latest_version %in% version_numbers]]
+  
+  return(c(latest_version, latest_version_file_name))
   
 }
 
