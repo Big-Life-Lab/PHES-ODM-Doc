@@ -124,3 +124,24 @@ create_html_list <- function(string_to_append, list_values){
        (!is.na(left_operand) & is.na(right_operand))) &
       !(is.na(left_operand) & is.na(right_operand))
   }
+
+#' Determine link source
+#' 
+#' Outputs a string depending on the input containing suffix of "Set"
+#' 
+#' @param input_ID string containing the ID to check for suffix
+#' 
+#' @return string with sets or parts depending on suffix of input_ID
+determine_link_source <- function(input_ID){
+  link_to_parts <- constants$parts_file_name
+  link_to_sets <- constants$sets_file_name
+  
+  link_source <- ""
+  
+  if(grepl(".*Set$", input_ID)){
+    link_source <- link_to_sets
+  }else{
+    link_source <- link_to_parts
+  }
+  return(link_source)
+}

@@ -289,7 +289,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
                    {constants$part_sheet_data_type_is_categorical} but no valid \\
                    {parts_sheet_column_names$part_cat_set_ID_column_name}'),
         glue::glue(
-          ' CatSet: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
+          '</br>Measure, method or attribute set: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
         ),
         ""
       )

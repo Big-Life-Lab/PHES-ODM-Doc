@@ -38,12 +38,10 @@ parts_table_source <-
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 
-# Removal of rows containing R NA for part ID
+# Removal of parts under development
 parts_table <-
-  parts_table[!is.na(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
-# Removal of rows containing R NULL for part ID
-parts_table <-
-  parts_table[!is.null(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
+  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != constants$part_sheet_status_is_development, ]
+
 # Sort parts alphabetically by partID
 parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
 
@@ -52,7 +50,6 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   part_row <- parts_table[part_row_index,]
   
   # Declare variables used
-  # Once tables is merged format and verify input
   part_ID <- part_row[[parts_sheet_column_names$part_ID_column_name]]
   part_label <- part_row[[parts_sheet_column_names$part_label_column_name]]
   part_description <- part_row[[parts_sheet_column_names$part_description_column_name]]
@@ -79,6 +76,43 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   part_first_released <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
   part_last_updated <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
   
+  # Verify input
+  verify_input(part_label, glue::glue('Part label is missing for {part_ID}\n'))
+  verify_input(part_description, glue::glue('Part description is missing for {part_ID}\n'))
+  verify_input(part_instruction, glue::glue('Part instruction is missing for {part_ID}\n'))
+  verify_input(part_type, glue::glue('Part type is missing for {part_ID}\n'))
+  verify_input(part_domain_ID, glue::glue('Part domain ID is missing for {part_ID}\n'))
+  verify_input(part_speciment_set, glue::glue('Part speciment set is missing for {part_ID}\n'))
+  verify_input(part_comp_set, glue::glue('Part comp set is missing for {part_ID}\n'))
+  verify_input(part_group_ID, glue::glue('Part group ID is missing for {part_ID}\n'))
+  verify_input(part_class_ID, glue::glue('Part class ID is missing for {part_ID}\n'))
+  verify_input(part_nomenclature_ID, glue::glue('Part nomenclature ID is missing for {part_ID}\n'))
+  verify_input(part_ontology_reference, glue::glue('Part ontology_reference is missing for {part_ID}\n'))
+  verify_input(part_cat_set_ID, glue::glue('Part cat set ID is missing for {part_ID}\n'))
+  verify_input(part_unit_set_ID, glue::glue('Part unit set ID is missing for {part_ID}\n'))
+  verify_input(part_agg_scale_ID, glue::glue('Part agg scale ID is missing for {part_ID}\n'))
+  verify_input(part_quality_set_ID, glue::glue('Part quality set ID is missing for {part_ID}\n'))
+  verify_input(part_ref_link, glue::glue('Part ref link is missing for {part_ID}\n'))
+  verify_input(part_data_type, glue::glue('Part data type is missing for {part_ID}\n'))
+  verify_input(part_min_value, glue::glue('Part min value is missing for {part_ID}\n'))
+  verify_input(part_max_value, glue::glue('Part max value is missing for {part_ID}\n'))
+  verify_input(part_min_length, glue::glue('Part min length is missing for {part_ID}\n'))
+  verify_input(part_max_length, glue::glue('Part max length is missing for {part_ID}\n'))
+  verify_input(part_status, glue::glue('Part status is missing for {part_ID}\n'))
+  verify_input(part_first_released, glue::glue('Part first released is missing for {part_ID}\n'))
+  verify_input(part_last_updated, glue::glue('Part last updated is missing for {part_ID}\n'))
+  
+  # Escape any backticks in desc and inst
+  part_description <- gsub("`", "\\\\`", part_description)
+  part_instruction <- gsub("`", "\\\\`", part_instruction)
+  
+  # Generate appropriate link locations for attributes that could contain sets
+  part_comp_set_location <- determine_link_source(part_comp_set)
+  part_quality_set_ID_location <- determine_link_source(part_quality_set_ID)
+  part_cat_set_ID_location <- determine_link_source(part_cat_set_ID)
+  part_unit_set_ID_location <- determine_link_source(part_unit_set_ID)
+  part_speciment_set_location <- determine_link_source(part_speciment_set)
+  
   # Assemble the display string
   parts_info_display_content <-
     glue::glue(
@@ -88,17 +122,17 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       ({part_ID}).
       {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
       *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
-      *Domain ID:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
-      *Speciment ID:* <a href="#{part_speciment_set}">{part_speciment_set}</a> </br>
-      *Compartment Set:* <a href="#{part_comp_set}">{part_comp_set}</a> </br>
-      *Group ID:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
-      *Class ID:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
-      *Nomenclature ID:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
+      *Domain:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
+      *Speciment ID:* <a href="/{part_speciment_set_location}.html#{part_speciment_set}">{part_speciment_set}</a> </br>
+      *Compartment Set:* <a href="/{part_comp_set_location}.html#{part_comp_set}">{part_comp_set}</a> </br>
+      *Group:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
+      *Class:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
+      *Nomenclature:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
       *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a> </br>
-      *Category Set ID:* <a href="/sets.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
-      *Unit Set ID:* <a href="#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
-      *Aggregation Scale ID:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
-      *Quality Set ID:* <a href="#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
+      *Category Set ID:* <a href="/{part_cat_set_ID_location}.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
+      *Unit Set:* <a href="/{part_unit_set_ID_location}.html#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
+      *Aggregation Scale:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
+      *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
       *Reference Link:* {part_ref_link} </br>
       *Data Type:* <a href="#{part_data_type}">{part_data_type}</a> </br>
       *Minimum Value:* {part_min_value} </br>
@@ -110,8 +144,6 @@ for (part_row_index in seq_len(nrow(parts_table))) {
       Last updated: {part_last_updated}. </br>
       ')
 }
-
-
 ```
 
 `r parts_info_display_content`
