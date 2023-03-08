@@ -296,17 +296,17 @@ for (category_set_ID in unique_category_set_IDs) {
   }
   category_label <-
     category_info[[parts_sheet_column_names$part_label_column_name]]
-  verify_input(set_type_label,
+  verify_input(category_label,
                glue::glue('Category label is missing for {category_set_ID}'))
   category_instruction <-
     category_info[[parts_sheet_column_names$part_instruction_column_name]]
   verify_input(
-    set_type_instruction,
+    category_instruction,
     glue::glue('Category instructions are missing for {category_set_ID}')
   )
   category_description <-
     category_info[[parts_sheet_column_names$part_description_column_name]]
-  verify_input(set_type_description,
+  verify_input(category_description,
                glue::glue('Category description is missing for {category_set_ID}'))
   
   category_display <- glue::glue(
