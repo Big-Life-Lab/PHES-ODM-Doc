@@ -227,7 +227,7 @@ for (list_ID in unique_list_part_IDs) {
                glue::glue('List instructions are missing for {list_ID}'))
   list_description <-
     list_info_row[[parts_sheet_column_names$part_description_column_name]]
-  verify_input(set_type_description,
+  verify_input(list_description,
                glue::glue('List description is missing for {list_ID}'))
   
   list_display_info <- glue::glue(
