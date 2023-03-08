@@ -2,40 +2,34 @@
 
 ## What are "Parts" and "Part Types"? 
 
-Within the Public Health and Environmental Surveillance Open Data Model (PHES-ODM, hereafter referred to as simply "the ODM"), every piece or component of the model structure is called a "part". Regardless of function, all of the tables, headers, and categorical inputs are all parts. This creates a foundational term so that the ODM and its structure can be discussed with greater ease by users and designers.
+Within the ODM, every component or element of the model and the dictionary is called a "part". Parts are grouped into "part types".
 
 Because the term "parts" refers to every component of the ODM, "part types" are a way to differentiate between parts which have different functions and structures. The three most important part types are:
 
--   Method Part Type
--   Measure Part Type
--   Attribute Part Type
+- **Measures**: A measurement or observation of any substance including a biological, physical or chemical substance.
+- **Methods**: A procedure for collecting a sample or performing a measure. 
+- **Attributes**: A description of the who, where, when, and why of environmental surveillance. 
 
-Please see the [parts reference document](link forthcoming) for more details, but essentially methods allow the recording of methods in environmental surveillance and testing, while measures allow the recording of observations and results, and attributes capture metadata.
+See the [parts reference document](ref-guide.qmd) for more details.
 
-The remaining 20 part types (for a total of 23 part types) are:
+The are additional part types to support the dictionary including:
 
--   Aggregation Part Type
--   Aggregation Scale Part Type
--   Aggregation Set Part Type
--   Category Part Type
--   Category Set Part Type
--   Class Part Type
--   Compartment Part Type
--   Compartment Set Part Type
--   Dictionary Part Type
--   Domain Part Type
--   Group Part Type
--   Missingness Part Type
--   Nomenclature Part Type
--   Quality Part Type
--   Quality Set Part Type
--   Specimen Part Type
--   Specimen Set Part Type
--   Table Part Type
--   Unit Part Type
--   Unit Set Part Type
+-   Aggregations
+-   Aggregation scales
+-   Categories
+-   Classes
+-   Compartments
+-   Dictionary support
+-   Domains
+-   Groups
+-   Missingness
+-   Nomenclature
+-   Quality indicators
+-   Specimens
+-   Tables
+-   Units
 
-For information and details about all the part types, please see the [parts reference document](link forthcoming).
+For information and details about all the part types, please see the [parts reference document](ref-guide.qmd).
 
 ## "Sets" and the rationale behind sets
 

@@ -1,29 +1,13 @@
 # Background {.unnumbered}
 
-## Overview
+The ODM is designed to support a broad range of users in the field of environmental surveillance, including wastewater laboratories, municipalities, public health agencies, researchers, and citizen scientists. Its goal is to provide a comprehensive and extensible approach to data collection and management across the lifecycle of environmental surveillance, from sample collection and analysis to public reporting.
 
-The data model specifies how to store environmental measurements taken from different sources, including water (including wastewater), air, and surfaces. The model also includes a standardized and extensible approach to capturing sample data --- such as where and how samples were collected --- program data --- such as who, what, where, when, and why samples and measurements were taken --- and protocols, which detail how samples were collected and measurements were performed.
+The ODM dictionary includes provisions for a wide range of biological, chemical, and physical properties, such as antimicrobial resistance, drugs, and toxins, as well as metadata for laboratory protocols that may affect measurement consistency across laboratories. The ODM supports laboratory information and management systems (LIMS) with measure to describe ensure data quality control and provenance.
 
-The ODM model provides software tools to support the collection and use of data formatted in ODM. These tools enable data validation, recording of data into input templates, generating wide tables for analysis, and producing SQL database definitions for data storage. As an open model, third parties can extend the model, such as the European Union Digital European Exchange Platform (EU4S-DEEP) data templates for wastewater surveillance at airports, European Union [Digital European Exchange Platform (EU4S-DEEP)](https://wastewater-observatory.jrc.ec.europa.eu) data templates for wastewater surveillance at airports, the [CETO Epidemiologic platform](https://ceto.ca), and [Ottawa Automatic Data Pipeline](https://phes-odm.org) to analyse qPCR data and transform it to ODM format.
+To support the open science principle of FAIR data (Findable, Accessible, Interoperable, and Reusable), the ODM strives to make its data easily discoverable, accessible, and usable by all stakeholders.[^background-1] It also adopts an open-source approach, allowing anyone to inspect, modify, and enhance the codebase in a transparent and collaborative manner on platforms like GitHub.
 
-## Uses and users
+While the ODM is a complex dictionary, it includes tools to support its use, such as data validation, input templates, and SQL database definitions for data storage. Additionally, it supports collaborations among different organizations seeking to share and combine samples and measurements. As an open model, third parties can extend the model, such as the European Union Digital European Exchange Platform (EU4S-DEEP) data templates for wastewater surveillance at airports, European Union [Digital European Exchange Platform (EU4S-DEEP)](https://wastewater-observatory.jrc.ec.europa.eu) data templates for wastewater surveillance at airports, the [CETO Epidemiologic platform](https://ceto.ca), and [Ottawa Automatic Data Pipeline](https://phes-odm.org) to analyse qPCR data and transform it to ODM format.
 
-The data model seeks to support data generators, custodians, and users across the lifecycle of environmental surveillance. Users include wastewater laboratories, municipalities, public health (international, federal, provincial, and local), researchers, and others (citizen data scientists, data aggregators, news agencies). The lifecycle includes data collection and management in municipalities and laboratories, surveillance, research and other uses (public reporting by aggregator sites). The ODM dictionary supports laboratory information and management systems (LIMS) to ensure data provenance and quality control. Although a research team can use the ODM to support their data management, its primary strength lies in supporting collaborations that seek to share and combine samples and measurements as the field of surveillance and science evolves.
-
-To support a wide range of users, the OMD should be comprehensive and extendable with the following objectives:
-
--   Include provision for any biological, chemical or physical property, including antimicrobial resistance, drugs and toxins. Biological properties include variants, sequences, alleles, mutations and proteins.
--   Include the ability to store data from samples from air, surface samples, and wastewater (water).
--   Include protocol reporting, including metadata for methods that may affect measurement across laboratories.
--   Include reporting of quality control and assurance. Each measure can have multiple quality control and assurance measures.
-
-As a robust dictionary, the ODM can be complex. This means the ODM includes tools to support the use of ODM. The ODM includes measures from other wastewater dictionaries and can act as a cross-walk between dictionaries.
-
-## Open science open software approach
-
-ODM accomplishes the objectives the open science principle that everyone should be able to benefit from and contribute to environmental surveillance and science.
-
--   *Support FAIR data:* In 2016, a diverse set of stakeholders--- representing academia, industry, funding agencies, and scholarly publishers---designed, jointly endorsed, and published the 'FAIR Guiding Principles for scientific data management and stewardship'.[^background-1] The intent of FAIR is to improve infrastructure supporting reuse of scholarly data based on four foundational principles: Findability, Accessibility, Interoperability, and Reusability. For the ODM this means making sure that the ODM makes for data that is findable, accessible, interoperable, and reusable by considering these attributes part of the core infrastructure.
--   *Use an open science, open software approach:* Open-source software is software with source code that anyone can inspect, modify and enhance. Open-source initiatives embrace principles of open exchange, collaborative participation, rapid prototyping, transparency and community-oriented development. For the ODM this means that all work on the ODM is hosted in open-access environments, like GitHub, where anyone and everyone can transparently see the work being done, the rationale behind it, and can contribute to the project according to their ability.
+Overall, the ODM aims to support the evolving field of environmental surveillance and science by providing a standardized, extensible approach to data collection and management.
 
 [^background-1]: [FAIR Priniciples](https://go-fair.org/fair-principles/).
