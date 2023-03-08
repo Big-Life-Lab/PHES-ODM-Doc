@@ -14,7 +14,8 @@ Imports:
     DBI,
     RSQLite,
     glue,
-    readxl
+    readxl,
+    semver
 License: @DOUG @Yulric I don't know what license is used
 URL: https://github.com/Big-Life-Lab/PHES-ODM-Doc
 BugReports: https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues
