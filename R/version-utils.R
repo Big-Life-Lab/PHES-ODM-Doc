@@ -13,7 +13,6 @@ get_latest_version <- function(file_names) {
   
   dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
   version_numbers <- c()
-  latest_version_file_name <- ""
   
   for (file_name in file_names) {
     version_number <-
