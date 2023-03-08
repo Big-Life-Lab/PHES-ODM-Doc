@@ -4,7 +4,7 @@
 #' 
 #' @param file_names string or string vector containing file names with valid semantic versioning
 #' 
-#' @return vector containing latest version and latest version file name 
+#' @return vector of strings containing latest version and latest version file name 
 get_latest_version <- function(file_names) {
   # Display warning for multiple dictionaries as only 1 should be stored on github
   if(length(file_names)>1){
