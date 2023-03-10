@@ -55,12 +55,14 @@ Additionally, there are special headers called `mandatoryIf` headers. These head
 
 <!--` reference1/ -->
 
-```{r, echo=FALSE, warning=FALSE}
+```{r, echo=FALSE, warning=TRUE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions
 source("R/qmd-utils.R")
 # Source table formatting
 source("R/format-table.R")
+# Source warning utils
+source("R/warning-utils.R")
 
 
 
@@ -111,20 +113,14 @@ for (table_row_index in seq_len(nrow(tables_data))) {
                   parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_header,]
   # In case a table has no PK, FK, header
   if(nrow(table_columns)==0){
-    warning(glue::glue('{current_table_ID} Does not have any valid columns
-                       
-                       '))
+    warning(skipped_and_invalid(current_table_ID))
     next()
   }
   
   # Order table columns by the order column if valid column is present
   if (verify_input(
     table_columns[[current_table_order_column_name]],
-    glue::glue(
-      '{current_table_ID} Does not have a valid order column.
-      No ordering was done
-      
-      ')
+    skipped_order(current_table_ID)
   )) {
     table_columns <-
       table_columns[order(as.numeric(table_columns[[current_table_order_column_name]])), ]
@@ -144,18 +140,14 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   table_of_content <- verify_and_append_content(
     table_of_content,
     current_table_label,
-    glue::glue(
-      '{current_table_ID} is missing a valid {parts_sheet_column_names$part_label_column_name} \\
-      substituting {parts_sheet_column_names$part_ID_column_name} instead.'),
+    missing_and_substituted(current_table_ID, "part label", "part ID"),
     glue::glue('{current_table_label}</a></li>'),
     glue::glue('{current_table_ID}</a></li>')
   )
   tables_info_display_content <- verify_and_append_content(
     tables_info_display_content,
     current_table_label,
-    glue::glue(
-      '{current_table_ID} is missing a valid {parts_sheet_column_names$part_label_column_name} \\
-      substituting {parts_sheet_column_names$part_ID_column_name} instead.'),
+    missing_and_substituted(current_table_ID, "part label", "part ID"),
     glue::glue('
     
       ### {current_table_label} {{ #{current_table_ID} }}
@@ -168,10 +160,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   tables_info_display_content <- verify_and_append_content(
     tables_info_display_content,
     current_table_description,
-    glue::glue(
-      '{current_table_ID} is missing a valid \\
-      {parts_sheet_column_names$part_description_column_name} and will be skipped'
-    ),
+    missing_warning("Part description", current_table_ID),
     glue::glue('
                  {current_table_description}'),
     ""
@@ -180,10 +169,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   tables_info_display_content <- verify_and_append_content(
     tables_info_display_content,
     current_table_instructions,
-    glue::glue(
-      '{current_table_ID} is missing a valid \\
-      {parts_sheet_column_names$part_instruction_column_name} and will be skipped'
-    ),
+    missing_warning("Part Instructions", current_table_ID),
     glue::glue(' {current_table_instructions}'),
     ""
   )
@@ -196,7 +182,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     
     detected_column_role <- current_table_column[[current_table_ID]]
     column_role <- "NA"
-    if (verify_input(detected_column_role, glue::glue('Invalid column role found for {current_table_ID} table'))) {
+    if (verify_input(detected_column_role, missing_warning("Valid column role", current_table_ID))) {
       if (detected_column_role == constants$part_sheet_table_column_type_is_FK) {
         column_role <- constants$part_sheet_table_column_type_set_FK
       } else if (detected_column_role == constants$part_sheet_table_column_type_is_PK) {
@@ -224,11 +210,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_label,
-      glue::glue(
-        '{column_ID} in {current_table_ID} table is missing a valid \\
-        {parts_sheet_column_names$part_label_column_name} \\
-        substituting {parts_sheet_column_names$part_ID_column_name} instead'
-      ),
+      missing_and_substituted(column_ID, "part label", "part ID"),
       glue::glue(
         '**{column_label}** (<a href=\"/parts.html#{column_ID}\">{column_ID}</a>).'),
       glue::glue(
@@ -238,10 +220,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_description,
-      glue::glue(
-        '{column_ID} in {current_table_ID} table is missing a valid \\
-      {parts_sheet_column_names$part_description_column_name} and this information will not be displayed'
-      ),
+      missing_warning("Part description", column_ID),
       glue::glue(
         ' {column_description}'),
       ""
@@ -250,10 +229,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_role,
-      glue::glue(
-        '{column_ID} in {current_table_ID} table is missing a valid \\
-      {current_table_ID} and this information will not be displayed'
-      ),
+      missing_warning(current_table_ID, column_ID),
       glue::glue('</br>Role: {column_role}.'),
       ""
     )
@@ -261,10 +237,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_required,
-      glue::glue(
-        '{column_ID} in {current_table_ID} table is missing a valid \\
-      {current_table_required_column_name} and this information will not be displayed'
-      ),
+      missing_warning(current_table_required_column_name, column_ID),
       glue::glue('</br>Requirement: {column_required}.'),
       ""
       )
@@ -272,10 +245,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_dataType,
-      glue::glue(
-        '{column_ID} in {current_table_ID} table is missing a valid \\
-      {parts_sheet_column_names$part_data_type_column_name} and this information will not be displayed'
-      ),
+      missing_warning("Part data type", column_ID),
       glue::glue('</br>Data type: {column_dataType}.'),
       ""
       )
@@ -285,9 +255,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,
         column_catSetID,
-        glue::glue('{column_ID} in {current_table_ID} table has data type of \\
-                   {constants$part_sheet_data_type_is_categorical} but no valid \\
-                   {parts_sheet_column_names$part_cat_set_ID_column_name}'),
+        ivalid_cat_link(column_ID),
         glue::glue(
           '</br>Measure, method or attribute set: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
         ),
