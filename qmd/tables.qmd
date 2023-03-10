@@ -27,15 +27,15 @@ Users can, however, create custom tables or 'views' by merging fields from any t
 
 There are five table types:
 
-1\) **Regular report tables**. The `measures` and `samples` tables are used for daily reporting of new measurements and information on sample collection. There are three tables that support regular reporting:- `measureSets` (optional) is used to link measures, `sampleRelationships` (optional) is used when samples are pooled or split, and `qualityReports` is used for detailed quality assurance and control measures.
+1) **Regular report tables**. The `Measures` and `Samples` tables are used for daily reporting of new measurements and information on sample collection. There are three tables that support regular reporting:- `MeasureSets` (optional) is used to link measures, `SampleRelationships` (optional) is used when samples are pooled or split, and `QualityReports` is used for detailed quality assurance and control measures.
 
-2\) **Contact information tables**. The `sites`, `organizations`, `contacts`, and `addresses` tables store contact information for the testing site and the person who performed the testing.
+2) **Contact information tables**. The `Sites`, `Organizations`, `Contacts`, and `Addresses` tables store contact information for the testing site and the person who performed the testing.
 
-3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
+3) **Protocol or methods tables**. The `Protocols` and `Instruments` tables hold information on the methods used for sample collection or measurement. `ProtocolSteps` and `protocolRelationships` tables are used in conjunction with the `Protocols` table.
 
-4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
+4) **Other report tables**. The `Polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
 
-5\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations.
+5) **Dictionary reference tables**. The `Parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `Sets` table stores collections of parts, such as units grouped together in a unitSet. The `Languages` and `Translations` tables support translations.
 
 ## Header roles
 
@@ -47,11 +47,11 @@ Each table in the ODM has column headers, also known as table variables, fields,
 
 **Header** (header) - This label is used in a table description when a header is not a primary or foreign key.
 
-## Mandatory, optional, mandatoryIf
+## Mandatory, optional, mandatory if
 
-Each header may be classified as either `mandatory` or `optional`. In the `measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.
+Each header may be classified as either `Mandatory` or `Mptional`. In the `Measures` table, examples of mandatory headers are the `Measure ID` and `Measurement date`. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.
 
-Additionally, there are special headers called `mandatoryIf` headers. These headers are mandatory if certain conditions apply. For example, the `protocol steps` table has row entries that are either `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes `mandatory` since all measures must have a unit. Therefore, units are `mandatoryIf` in the protocol steps table.
+Additionally, there are special headers called `Mandatory if` headers. These headers are mandatory if certain conditions apply. For example, the `protocol steps` table has row entries that are either `Measures` or `Methods`. If the row entry is a `Measure`, then a `unit` becomes `Mandatory` since all measures must have a unit. Therefore, units are `Mandatory if` in the protocol steps table.
 
 <!--` reference1/ -->
 
