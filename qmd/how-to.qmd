@@ -6,7 +6,7 @@
 
 ODM Excel report templates provide you with an easy way to enter your wastewater and other environmental data into the relevant PHES-ODM tables (more information about the tables can be found in the [getting-to-know](explanation.qmd) section). The templates also serve as an interactive way to get to know the ODM and can be found at the OSF.io [PHES-ODM reference file folder](https://osf.io/ab9se/).
 
-The guides below walk you through each of the report templates. In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. The guides also provide definitions and explanations for some terms; more complete information can be found in the Reference Guide - [Parts document](parts.qmd). If you have any questions or comments, you can post them on our [Discourse forum](https://odm.discourse.group).
+The guides below will walk you through each of the report templates. In these guides, "field" refers to a column in the template, and "entry" refers to a row of information that you entered. The guides also provide definitions and explanations for some terms; more complete information can be found in the Reference Guide - [Parts document](parts.qmd). If you have any questions or comments, you can post them on our [Discourse forum](https://odm.discourse.group).
 
 As a starting point:
 
