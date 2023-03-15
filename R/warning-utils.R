@@ -1,17 +1,8 @@
 # Source constants
 source("R/constants.R")
 
-# Declaring commonly used contexts
-context_list <- list()
-context_list$label <- "Part Label"
-context_list$description <- "Part description"
-context_list$instruction <- "Part instruction"
-# Not sure if adding all of them is a good idea @Rusty check with @Yulric
-
-
-
 missing_warning <- function(context, ID){
-  glue::glue('{context} is missing for {ID}.\n')
+  glue::glue('Part {context} is missing for {ID}.\n')
 }
 missing_and_substituted <- function(ID, context, replacement){
   glue::glue(
