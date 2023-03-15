@@ -23,6 +23,20 @@ source("R/qmd-utils.R")
 source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
+source("R/template-utils.R")
+
+# Display string templates
+header_template <-
+  '## {partLabel} {{ #{partID} }}
+  <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} {if (partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else "" }'
+
+set_sub_header_template <- '<a href=\"/parts.html#{partID}\">({partID})</a>{partDesc} \\
+{if(partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else ""} </br>
+Status: {status}. First Released: {firstReleased}. \\
+Last updated: {lastUpdated}.'
+
+part_bullet_template <- '**{partLabel}** <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} </br>Status: {status}. First released: {firstReleased}. Last updated: {lastUpdated}.'
+
 
 # Extract, format and order sets table on set type
 sets_table_source <-
@@ -73,24 +87,18 @@ for (set_type in unique_set_types) {
     warning(skipped_and_missing(set_type))
     next()
   }
-  set_type_label <-
-    set_type_info[[parts_sheet_column_names$part_label_column_name]]
-  verify_input(set_type_label,
-               missing_warning("Set type label", set_type))
-  set_type_instruction <-
-    set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
-  verify_input(
-    set_type_instruction,
-    missing_warning("Set type instructions", set_type)
-  )
-  set_type_description <-
-    set_type_info[[parts_sheet_column_names$part_description_column_name]]
-  verify_input(set_type_description,
-               missing_warning("Set type description", set_type))
   
-  set_display <- glue::glue(
-    '## {set_type_label} {{ #{set_type} }}
-                              <a href=\"/parts.html#{set_type}\">({set_type})</a>. {set_type_description} {if (set_type_instruction %!=na% constants$dictionary_missing_value_replacement) set_type_instruction else "" }')
+  #
+  set_header_input <- list()
+  set_header_input[["partID"]] <- set_type
+  set_header_input[["partLabel"]] <-
+    set_type_info[[parts_sheet_column_names$part_label_column_name]]
+  set_header_input[["partInstr"]] <-
+    set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
+  set_header_input[["partDesc"]] <-
+    set_type_info[[parts_sheet_column_names$part_description_column_name]]
+  
+  set_display <- generate_display(header_template, set_header_input, set_type)
   
   # Find and loop over unique setID according to set_type
   rows_for_current_set_type <-
@@ -121,31 +129,18 @@ for (set_type in unique_set_types) {
                  ### {set_ID}')
     )
     # Declare additional setID display
-    set_ID_part_description <- set_ID_info[[parts_sheet_column_names$part_description_column_name]]
-    set_ID_part_instruction <- set_ID_info[[parts_sheet_column_names$part_instruction_column_name]]
-    set_ID_part_status <- set_ID_info[[parts_sheet_column_names$part_status_column_name]]
-    set_ID_part_first_released <- set_ID_info[[parts_sheet_column_names$part_first_release_column_name]]
-    set_ID_part_last_updated <- set_ID_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    set_ID_input <- list()
+    set_ID_input[["partID"]] <- set_ID
+    set_ID_input[["partDesc"]] <- set_ID_info[[parts_sheet_column_names$part_description_column_name]]
+    set_ID_input[["partInstr"]] <- set_ID_info[[parts_sheet_column_names$part_instruction_column_name]]
+    set_ID_input[["status"]] <- set_ID_info[[parts_sheet_column_names$part_status_column_name]]
+    set_ID_input[["firstReleased"]] <- set_ID_info[[parts_sheet_column_names$part_first_release_column_name]]
+    set_ID_input[["lastUpdated"]] <- set_ID_info[[parts_sheet_column_names$part_last_updated_column_name]]
     
-    # Verify display elements
-    verify_input(set_ID_part_description,
-                 missing_warning("Part description", set_ID))
-    verify_input(set_ID_part_instruction,
-                 missing_warning("Part instruction", set_ID))
-    verify_input(set_ID_part_status,
-                 missing_warning("Part status", set_ID))
-    verify_input(set_ID_part_first_released,
-                 missing_warning("Part first released", set_ID))
-    verify_input(set_ID_part_last_updated,
-                 missing_warning("Part last updates", set_ID))
     
     set_display <- glue::glue(
       '{set_display}
-<a href=\"/parts.html#{set_ID}\">({set_ID})</a>{set_ID_part_description} \\
-{if(set_ID_part_instruction %!=na% constants$dictionary_missing_value_replacement) set_ID_part_instruction else ""} </br>
-Status: {set_ID_part_status}. First Released: {set_ID_part_first_released}. \\
-Last updated: {set_ID_part_last_updated}.'
-    )
+      {generate_display(set_sub_header_template, set_ID_input, set_ID)}')
     
     # Create list to hold a values for html list
     list_values <- list()
@@ -167,32 +162,22 @@ Last updated: {set_ID_part_last_updated}.'
         next()
       }
       # Declare display elements
-      part_label <-
+      part_input <- list()
+      part_input[["partID"]] <- part_ID
+      part_input[["partLabel"]] <-
         part_info[[parts_sheet_column_names$part_label_column_name]]
-      part_description <-
+      part_input[["partDesc"]] <-
         part_info[[parts_sheet_column_names$part_description_column_name]]
-      part_status <-
+      part_input[["status"]] <-
         part_info[[parts_sheet_column_names$part_status_column_name]]
-      part_first_released <-
+      part_input[["firstReleased"]] <-
         part_info[[parts_sheet_column_names$part_first_release_column_name]]
-      part_last_updated <-
+      part_input[["lastUpdated"]] <-
         part_info[[parts_sheet_column_names$part_last_updated_column_name]]
       
-      # Verify display elements
-      verify_input(part_label,
-                   missing_warning("Part label", part_ID))
-      verify_input(part_description,
-                   missing_warning("Part description", part_ID))
-      verify_input(part_status,
-                   missing_warning("Part status", part_ID))
-      verify_input(part_first_released,
-                   missing_warning("Part first released", part_ID))
-      verify_input(part_last_updated,
-                   missing_warning("Part last updates", part_ID))
       
-      list_values[[length(list_values) + 1]] <-
-        glue::glue(
-          '**{part_label}** <a href=\"/parts.html#{part_ID}\">({part_ID})</a>. {part_description} </br>Status: {part_status}. First released: {part_first_released}. Last updated: {part_last_updated}.')
+      
+      list_values[[length(list_values) + 1]] <- generate_display(part_bullet_template, part_input, part_ID)
       
     }
     set_display <- create_html_list(set_display, list_values)
@@ -218,22 +203,17 @@ for (list_ID in unique_list_part_IDs) {
     warning(skipped_and_missing(list_ID))
     next()
   }
-  list_label <-
+  list_input <- list()
+  list_input[["partID"]] <- list_ID
+  list_input[["partLabel"]] <-
     list_info_row[[parts_sheet_column_names$part_label_column_name]]
-  verify_input(list_label, missing_warning("List label", list_ID))
-  list_instruction <-
+  list_input[["partInstr"]] <-
     list_info_row[[parts_sheet_column_names$part_instruction_column_name]]
-  verify_input(list_instruction,
-               missing_warning("List instructions", list_ID))
-  list_description <-
+  list_input[["partDesc"]] <-
     list_info_row[[parts_sheet_column_names$part_description_column_name]]
-  verify_input(list_description,
-               missing_warning("List description", list_ID))
   
-  list_display_info <- glue::glue(
-    '## {list_label} {{ #{list_ID} }}
-  <a href=\"/parts.html#{list_ID}\">({list_ID})</a>. {list_description} {if (list_instruction %!=na% constants$dictionary_missing_value_replacement) list_instruction else "" }'
-  )
+  list_display_info <- generate_display(header_template, list_input, list_ID)
+   
   
   list_elements_info_rows <-
     parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == list_ID,]
@@ -250,35 +230,21 @@ for (list_ID in unique_list_part_IDs) {
     }
     
     # Declare display elements
-    element_label <-
+    element_input <- list()
+    element_input[["partID"]] <- element_ID
+    element_input[["partLabel"]] <-
       element_info[[parts_sheet_column_names$part_label_column_name]]
-    element_description <-
+    element_input[["partDesc"]] <-
       element_info[[parts_sheet_column_names$part_description_column_name]]
-    element_status <-
+    element_input[["status"]] <-
       element_info[[parts_sheet_column_names$part_status_column_name]]
-    element_first_released <-
+    element_input[["firstReleased"]] <-
       element_info[[parts_sheet_column_names$part_first_release_column_name]]
-    element_last_updated <-
+    element_input[["lastUpdated"]] <-
       element_info[[parts_sheet_column_names$part_last_updated_column_name]]
     
-    # Verify display elements
-    verify_input(element_label,
-                 missing_warning("Part label", element_ID))
-    verify_input(element_description,
-                 missing_warning("Part description", element_ID))
-    verify_input(element_status,
-                 missing_warning("Part status", element_ID))
-    verify_input(
-      element_first_released,
-      missing_warning("Part first released", element_ID)
-    )
-    verify_input(element_last_updated,
-                 missing_warning("Part last updates", element_ID))
     
-    list_elements_list[[element_ID]] <-
-      glue::glue(
-        '**{element_label}** <a href=\"/parts.html#{element_ID}\">({element_ID})</a>. {element_description} </br>Status: {element_status}. First released: {element_first_released}. Last updated: {element_last_updated}.'
-      )
+    list_elements_list[[element_ID]] <- generate_display(part_bullet_template, element_input, element_ID)
   }
   list_of_lists[[list_ID]] <-
     create_html_list(list_display_info, list_elements_list)
@@ -294,24 +260,17 @@ for (category_set_ID in unique_category_set_IDs) {
     warning(skipped_and_missing(category_set_ID))
     next()
   }
-  category_label <-
-    category_info[[parts_sheet_column_names$part_label_column_name]]
-  verify_input(category_label,
-               missing_warning("Category label", category_set_ID))
-  category_instruction <-
-    category_info[[parts_sheet_column_names$part_instruction_column_name]]
-  verify_input(
-    category_instruction,
-    missing_warning("Category instructions", category_set_ID)
-  )
-  category_description <-
-    category_info[[parts_sheet_column_names$part_description_column_name]]
-  verify_input(category_description,
-               missing_warning("Category description", category_set_ID))
   
-  category_display <- glue::glue(
-    '## {category_label} {{ #{category_set_ID} }}
-                              <a href=\"/parts.html#{category_set_ID}\">({category_set_ID})</a>. {category_description} {if (category_instruction %!=na% constants$dictionary_missing_value_replacement) category_instruction else "" }')
+  category_input <- list()
+  category_input[["partID"]] <- category_set_ID
+  category_input[["partLabel"]] <-
+    category_info[[parts_sheet_column_names$part_label_column_name]]
+  category_input[["partInstr"]] <-
+    category_info[[parts_sheet_column_names$part_instruction_column_name]]
+  category_input[["partDesc"]] <-
+    category_info[[parts_sheet_column_names$part_description_column_name]]
+  
+  category_display <- generate_display(header_template, category_input, category_set_ID)
   
   # Create category sub categories
   sub_categories_info_table <- categories_info_table[categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]]== category_set_ID, ]
@@ -326,35 +285,21 @@ for (category_set_ID in unique_category_set_IDs) {
     }
     
     # Declare display elements
-    sub_category_label <-
+    sub_categories_input <- list()
+    sub_categories_input[["partID"]] <- sub_category_ID
+    sub_categories_input[["partLabel"]] <-
       sub_category_info[[parts_sheet_column_names$part_label_column_name]]
-    sub_category_description <-
+    sub_categories_input[["partDesc"]] <-
       sub_category_info[[parts_sheet_column_names$part_description_column_name]]
-    sub_category_status <-
+    sub_categories_input[["status"]] <-
       sub_category_info[[parts_sheet_column_names$part_status_column_name]]
-    sub_category_first_released <-
+    sub_categories_input[["firstReleased"]] <-
       sub_category_info[[parts_sheet_column_names$part_first_release_column_name]]
-    sub_category_last_updated <-
+    sub_categories_input[["lastUpdated"]] <-
       sub_category_info[[parts_sheet_column_names$part_last_updated_column_name]]
     
-    # Verify display elements
-    verify_input(sub_category_label,
-                 missing_warning("Part label", sub_category_ID))
-    verify_input(sub_category_description,
-                 missing_warning("Part description", sub_category_ID))
-    verify_input(sub_category_status,
-                 missing_warning("Part status", sub_category_ID))
-    verify_input(
-      sub_category_first_released,
-      missing_warning("Part first released", sub_category_ID)
-    )
-    verify_input(sub_category_last_updated,
-                 missing_warning("Part last updates", sub_category_ID))
     
-    sub_categories_list[[sub_category_ID]] <-
-      glue::glue(
-        '**{sub_category_label}** <a href=\"/parts.html#{sub_category_ID}\">({sub_category_ID})</a>. {sub_category_description} </br>Status: {sub_category_status}. First released: {sub_category_first_released}. Last updated: {sub_category_last_updated}.'
-      )
+    sub_categories_list[[sub_category_ID]] <- generate_display(part_bullet_template, sub_categories_input, sub_category_ID)
   }
   categories_list[[category_set_ID]] <-
     create_html_list(category_display, sub_categories_list)
