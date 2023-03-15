@@ -28,6 +28,33 @@ source("R/qmd-utils.R")
 source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
+source("R/template-utils.R")
+
+# String to store parts display template
+parts_display_template <- '### {partLabel} {{ #{partID} }} 
+      ({partID}). {partDesc} {if (partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else "" } </br>
+      *Part Type:* <a href="#{partType}">{partType}</a> </br>
+      *Domain:* <a href="#{domain}">{domain}</a> </br>
+      *Speciment ID:* <a href="/{part_speciment_set_location}.html#{specimenSet}">{specimenSet}</a> </br>
+      *Compartment Set:* <a href="/{part_comp_set_location}.html#{compartmentSet}">{compartmentSet}</a> </br>
+      *Group:* <a href="#{group}">{group}</a> </br>
+      *Class:* <a href="#{class}">{class}</a> </br>
+      *Nomenclature:* <a href="#{nomenclature}">{nomenclature}</a> </br>
+      *Ontology Reference:* <a href="#{ontologyRef}">{ontologyRef}</a> </br>
+      *Category Set ID:* <a href="/{part_cat_set_ID_location}.html#{mmaSet}">{mmaSet}</a> </br>
+      *Unit Set:* <a href="/{part_unit_set_ID_location}.html#{unitSet}">{unitSet}</a> </br>
+      *Aggregation Scale:* <a href="#{aggregationScale}">{aggregationScale}</a> </br>
+      *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{qualitySet}">{qualitySet}</a> </br>
+      *Reference Link:* {refLink} </br>
+      *Data Type:* <a href="#{dataType}">{dataType}</a> </br>
+      *Minimum Value:* {minValue} </br>
+      *Maximum Value:* {maxValue} </br>
+      *Minimum Length:* {minLength} </br>
+      *Maximum Length:* {maxLength} </br>
+      *Part Status:* {if (status %!=na% constants$part_sheet_status_is_active) glue::glue(\'**{status}**\') else status }. \\
+      First released: {firstReleased}. \\
+      Last updated: {lastUpdated}. </br>
+      '
 
 # String to store parts display content
 parts_info_display_content <- ""
@@ -52,98 +79,51 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   part_row <- parts_table[part_row_index,]
   
   # Declare variables used
-  part_ID <- part_row[[parts_sheet_column_names$part_ID_column_name]]
-  part_label <- part_row[[parts_sheet_column_names$part_label_column_name]]
-  part_description <- part_row[[parts_sheet_column_names$part_description_column_name]]
-  part_instruction <- part_row[[parts_sheet_column_names$part_instruction_column_name]]
-  part_type <- part_row[[parts_sheet_column_names$part_type_column_name]]
-  part_domain_ID <- part_row[[parts_sheet_column_names$part_domain_ID_column_name]]
-  part_speciment_set <- part_row[[parts_sheet_column_names$part_speciment_set_column_name]]
-  part_comp_set <- part_row[[parts_sheet_column_names$part_comp_set_column_name]]
-  part_group_ID <- part_row[[parts_sheet_column_names$part_group_ID_column_name]]
-  part_class_ID <- part_row[[parts_sheet_column_names$part_class_ID_column_name]]
-  part_nomenclature_ID <- part_row[[parts_sheet_column_names$part_nomenclature_ID_column_name]]
-  part_ontology_reference <- part_row[[parts_sheet_column_names$part_ontology_reference_column_name]]
-  part_cat_set_ID <- part_row[[parts_sheet_column_names$part_cat_set_ID_column_name]]
-  part_unit_set_ID <- part_row[[parts_sheet_column_names$part_unit_set_ID_column_name]]
-  part_agg_scale_ID <- part_row[[parts_sheet_column_names$part_agg_scale_ID_column_name]]
-  part_quality_set_ID <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
-  part_ref_link <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
-  part_data_type <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
-  part_min_value <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
-  part_max_value <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
-  part_min_length <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
-  part_max_length <- part_row[[parts_sheet_column_names$part_max_length_column_name]]
-  part_status <- part_row[[parts_sheet_column_names$part_status_column_name]]
-  part_first_released <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
-  part_last_updated <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
-  
-  # Verify input
-  verify_input(part_label, missing_warning("Part label", part_ID))
-  verify_input(part_description, missing_warning("Part description", part_ID))
-  verify_input(part_instruction, missing_warning("Part instruction", part_ID))
-  verify_input(part_type, missing_warning("Part type", part_ID))
-  verify_input(part_domain_ID, missing_warning("Part domain ID", part_ID))
-  verify_input(part_speciment_set, missing_warning("Part speciment set", part_ID))
-  verify_input(part_comp_set, missing_warning("Part comp set", part_ID))
-  verify_input(part_group_ID, missing_warning("Part group ID", part_ID))
-  verify_input(part_class_ID, missing_warning("Part class ID", part_ID))
-  verify_input(part_nomenclature_ID, missing_warning("Part nomenclature ID", part_ID))
-  verify_input(part_ontology_reference, missing_warning("Part ontology_reference", part_ID))
-  verify_input(part_cat_set_ID, missing_warning("Part cat set ID", part_ID))
-  verify_input(part_unit_set_ID, missing_warning("Part unit set ID", part_ID))
-  verify_input(part_agg_scale_ID, missing_warning("Part agg scale ID", part_ID))
-  verify_input(part_quality_set_ID, missing_warning("Part quality set ID", part_ID))
-  verify_input(part_ref_link, missing_warning("Part ref link", part_ID))
-  verify_input(part_data_type, missing_warning("Part data type", part_ID))
-  verify_input(part_min_value, missing_warning("Part min value", part_ID))
-  verify_input(part_max_value, missing_warning("Part max value", part_ID))
-  verify_input(part_min_length, missing_warning("Part min length", part_ID))
-  verify_input(part_max_length, missing_warning("Part max length", part_ID))
-  verify_input(part_status, missing_warning("Part status", part_ID))
-  verify_input(part_first_released, missing_warning("Part first released", part_ID))
-  verify_input(part_last_updated, missing_warning("Part last updated", part_ID))
+  display_input <- list()
+  display_input[["partID"]] <- part_row[[parts_sheet_column_names$part_ID_column_name]]
+  display_input[["partLabel"]] <- part_row[[parts_sheet_column_names$part_label_column_name]]
+  display_input[["partDesc"]] <- part_row[[parts_sheet_column_names$part_description_column_name]]
+  display_input[["partInstr"]] <- part_row[[parts_sheet_column_names$part_instruction_column_name]]
+  display_input[["partType"]] <- part_row[[parts_sheet_column_names$part_type_column_name]]
+  display_input[["domain"]] <- part_row[[parts_sheet_column_names$part_domain_ID_column_name]]
+  display_input[["specimenSet"]] <- part_row[[parts_sheet_column_names$part_speciment_set_column_name]]
+  display_input[["compartmentSet"]] <- part_row[[parts_sheet_column_names$part_comp_set_column_name]]
+  display_input[["group"]] <- part_row[[parts_sheet_column_names$part_group_ID_column_name]]
+  display_input[["class"]] <- part_row[[parts_sheet_column_names$part_class_ID_column_name]]
+  display_input[["nomenclature"]] <- part_row[[parts_sheet_column_names$part_nomenclature_ID_column_name]]
+  display_input[["ontologyRef"]] <- part_row[[parts_sheet_column_names$part_ontology_reference_column_name]]
+  display_input[["mmaSet"]] <- part_row[[parts_sheet_column_names$part_cat_set_ID_column_name]]
+  display_input[["unitSet"]] <- part_row[[parts_sheet_column_names$part_unit_set_ID_column_name]]
+  display_input[["aggregationScale"]] <- part_row[[parts_sheet_column_names$part_agg_scale_ID_column_name]]
+  display_input[["qualitySet"]] <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
+  display_input[["refLink"]] <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
+  display_input[["dataType"]] <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
+  display_input[["minValue"]] <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
+  display_input[["maxValue"]] <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
+  display_input[["minLength"]] <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
+  display_input[["maxLength"]] <- part_row[[parts_sheet_column_names$part_max_length_column_name]]
+  display_input[["status"]] <- part_row[[parts_sheet_column_names$part_status_column_name]]
+  display_input[["firstReleased"]] <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
+  display_input[["lastUpdated"]] <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
   
   # Escape any backticks in desc and inst
-  part_description <- gsub("`", "\\\\`", part_description)
-  part_instruction <- gsub("`", "\\\\`", part_instruction)
+  display_input[["partDesc"]] <- gsub("`", "\\\\`", display_input[["partDesc"]])
+  display_input[["partInstr"]] <- gsub("`", "\\\\`", display_input[["partInstr"]])
   
   # Generate appropriate link locations for attributes that could contain sets
-  part_comp_set_location <- determine_link_source(part_comp_set)
-  part_quality_set_ID_location <- determine_link_source(part_quality_set_ID)
-  part_cat_set_ID_location <- determine_link_source(part_cat_set_ID)
-  part_unit_set_ID_location <- determine_link_source(part_unit_set_ID)
-  part_speciment_set_location <- determine_link_source(part_speciment_set)
+  display_input[["part_comp_set_location"]] <- determine_link_source(display_input[["compartmentSet"]])
+  display_input[["part_quality_set_ID_location"]] <- determine_link_source(display_input[["qualitySet"]])
+  display_input[["part_cat_set_ID_location"]] <- determine_link_source(display_input[["mmaSet"]])
+  display_input[["part_unit_set_ID_location"]] <- determine_link_source(display_input[["unitSet"]])
+  display_input[["part_speciment_set_location"]] <- determine_link_source(display_input[["specimenSet"]])
   
   # Assemble the display string
+  single_part_display <- generate_display(parts_display_template, display_input, display_input[["partID"]])
   parts_info_display_content <-
     glue::glue(
       '{parts_info_display_content}
       
-      ### {part_label} {{ #{part_ID} }} 
-      ({part_ID}).
-      {part_description} {if (part_instruction %!=na% "NA") part_instruction else "" } </br>
-      *Part Type:* <a href="#{part_type}">{part_type}</a> </br>
-      *Domain:* <a href="#{part_domain_ID}">{part_domain_ID}</a> </br>
-      *Speciment ID:* <a href="/{part_speciment_set_location}.html#{part_speciment_set}">{part_speciment_set}</a> </br>
-      *Compartment Set:* <a href="/{part_comp_set_location}.html#{part_comp_set}">{part_comp_set}</a> </br>
-      *Group:* <a href="#{part_group_ID}">{part_group_ID}</a> </br>
-      *Class:* <a href="#{part_class_ID}">{part_class_ID}</a> </br>
-      *Nomenclature:* <a href="#{part_nomenclature_ID}">{part_nomenclature_ID}</a> </br>
-      *Ontology Reference:* <a href="#{part_ontology_reference}">{part_ontology_reference}</a> </br>
-      *Category Set ID:* <a href="/{part_cat_set_ID_location}.html#{part_cat_set_ID}">{part_cat_set_ID}</a> </br>
-      *Unit Set:* <a href="/{part_unit_set_ID_location}.html#{part_unit_set_ID}">{part_unit_set_ID}</a> </br>
-      *Aggregation Scale:* <a href="#{part_agg_scale_ID}">{part_agg_scale_ID}</a> </br>
-      *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{part_quality_set_ID}">{part_quality_set_ID}</a> </br>
-      *Reference Link:* {part_ref_link} </br>
-      *Data Type:* <a href="#{part_data_type}">{part_data_type}</a> </br>
-      *Minimum Value:* {part_min_value} </br>
-      *Maximum Value:* {part_max_value} </br>
-      *Minimum Length:* {part_min_length} </br>
-      *Maximum Length:* {part_max_length} </br>
-      *Part Status:* {if (part_status %!=na% constants$part_sheet_status_is_active) glue::glue(\'**{part_status}**\') else part_status }. \\
-      First released: {part_first_released}. \\
-      Last updated: {part_last_updated}. </br>
+      {single_part_display}
       ')
 }
 ```
