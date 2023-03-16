@@ -12,7 +12,7 @@ constants$sets_sheet_name <- "sets"
 constants$sets_file_name <- "sets"
 
 # Column names for the parts sheet
-parts_sheet_column_names$part_ID_column_name <- "part"
+parts_sheet_column_names$part_ID_column_name <- "partID"
 parts_sheet_column_names$part_status_column_name <- "status"
 parts_sheet_column_names$part_label_column_name <- "partLabel"
 parts_sheet_column_names$part_description_column_name <- "partDesc"
@@ -40,7 +40,7 @@ parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 
 # Column names for sets sheet
 sets_sheet_column_names$part_set_type_column_name <- "setType"
-sets_sheet_column_names$part_set_ID_column_name <- "set"
+sets_sheet_column_names$part_set_ID_column_name <- "setID"
 # Column values
 constants$part_sheet_part_type_is_table <- "tables"
 constants$part_sheet_status_is_active <- "active"
