@@ -26,3 +26,10 @@ ivalid_cat_link <- function(ID){
                    {constants$part_sheet_data_type_is_categorical} but no valid \\
                    {parts_sheet_column_names$part_cat_set_ID_column_name}')
 }
+duplicate_ID <- function(ID){
+  glue::glue('Duplicate ID: {ID} found only the first instance is used.')
+}
+column_missing_and_populated <- function(column_name){
+  glue::glue('{column_name} is missing from the sheet.
+          New column was created.')
+}
