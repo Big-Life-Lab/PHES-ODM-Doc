@@ -30,7 +30,7 @@ format_table <-
     # Remove parts under development
     if (!is.null(input_table[[status_column_name]])) {
       output_table <-
-        output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development, ]
+        output_table[output_table[[status_column_name]] %!=na% constants$status_is_development, ]
     }
     
     # Strip off rows where partID is invalid

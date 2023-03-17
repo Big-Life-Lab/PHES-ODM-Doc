@@ -74,8 +74,8 @@ parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove
 
 # Generate tables data.frame
 tables_data <-
-  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_type_is_table &
+                parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$status_is_active,]
 
 # Sort tables alphabetically based on partID
 tables_data <- tables_data[order(tables_data[[parts_sheet_column_names$part_ID_column_name]]),]
@@ -250,7 +250,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       ""
       )
     # Append link to catSetID if dataType is categorical
-    if (column_dataType == constants$part_sheet_data_type_is_categorical) {
+    if (column_dataType == constants$data_type_is_categorical) {
       column_catSetID <- current_table_column[[parts_sheet_column_names$part_cat_set_ID_column_name]]
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,

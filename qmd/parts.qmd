@@ -51,7 +51,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
       *Maximum Length:* {maxLength} </br>
-      *Part Status:* {if (status %!=na% constants$part_sheet_status_is_active) glue::glue(\'**{status}**\') else status }. \\
+      *Part Status:* {if (status %!=na% constants$status_is_active) glue::glue(\'**{status}**\') else status }. \\
       First released: {firstReleased}. \\
       Last updated: {lastUpdated}. </br>
       '
@@ -69,7 +69,7 @@ parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove
 
 # Removal of parts under development
 parts_table <-
-  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != constants$part_sheet_status_is_development, ]
+  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != constants$status_is_development, ]
 
 # Sort parts alphabetically by partID
 parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
