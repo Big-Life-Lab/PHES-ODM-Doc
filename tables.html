@@ -155,6 +155,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mandatory-optional-mandatoryif" id="toc-mandatory-optional-mandatoryif" class="nav-link" data-scroll-target="#mandatory-optional-mandatoryif">Mandatory, optional, mandatoryIf</a></li>
   <li><a href="#table-list" id="toc-table-list" class="nav-link" data-scroll-target="#table-list">Table list</a>
   <ul class="collapse">
+  <li><a href="#addresses" id="toc-addresses" class="nav-link" data-scroll-target="#addresses">Address table</a></li>
   <li><a href="#contacts" id="toc-contacts" class="nav-link" data-scroll-target="#contacts">Contact table</a></li>
   <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Dataset table</a></li>
   <li><a href="#instruments" id="toc-instruments" class="nav-link" data-scroll-target="#instruments">Instrument table</a></li>
@@ -205,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>ODM version 2.0.0-rc.3.16.</p>
+<p>ODM version v2.0.0.</p>
 <p>The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as “long” tables as it stores data with one measurement per row. Each table has mandatory and optional headers.</p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -249,6 +250,9 @@ Data storage
 <section id="table-list" class="level2">
 <h2 class="anchored" data-anchor-id="table-list">Table list</h2>
 <ul>
+<li>
+<a href="#addresses">Address table</a>
+</li>
 <li>
 <a href="#contacts">Contact table</a>
 </li>
@@ -304,6 +308,42 @@ Data storage
 <a href="#translations">Translation look-up table</a>
 </li>
 </ul>
+<section id="addresses" class="level3">
+<h3 class="anchored" data-anchor-id="addresses">Address table</h3>
+partID: <a href="./parts.html#addresses">addresses</a>. The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals). The Sites, Organizations, and Contacts tables include a link to the addresses table through Address ID.
+<ul>
+<li>
+<strong>Address ID</strong> (<a href="./parts.html#addressID">addressID</a>). A unique identifier for an address.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Dataset ID</strong> (<a href="./parts.html#datasetID">datasetID</a>). The name of the dataset that stores information for MeasureReport, SampleReport and other reporting tables.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Address Line 1</strong> (<a href="./parts.html#addL1">addL1</a>). Line 1 (the street name, number and direction) for a given address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Address Line 2</strong> (<a href="./parts.html#addL2">addL2</a>). Line 2 (the unit number) for a given address.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>City</strong> (<a href="./parts.html#city">city</a>). The city where a site or organization is located; part of the address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>State, Province, or Region</strong> (<a href="./parts.html#stateProvReg">stateProvReg</a>). The state, province, or region where a site or organization is located; part of the address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Postal or Zip Code</strong> (<a href="./parts.html#pCode">pCode</a>). The zip code or postal code for a given address, specifying a specifc geographic area.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Country</strong> (<a href="./parts.html#country">country</a>). The country where a site or organization is located; part of the address.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+</ul>
+</section>
 <section id="contacts" class="level3">
 <h3 class="anchored" data-anchor-id="contacts">Contact table</h3>
 partID: <a href="./parts.html#contacts">contacts</a>. The table that contains information about a contact; a person who is the contact of a site or laboratory. adapt from verson 1 documentation
@@ -420,13 +460,13 @@ partID: <a href="./parts.html#instruments">instruments</a>. The table that conta
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Instrument Type</strong> (<a href="./parts.html#insType">insType</a>). Type of instrument used to perform the measurement.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#insTypeCatSet">insTypeCatSet</a>
+<strong>Instrument Type</strong> (<a href="./parts.html#insType">insType</a>). Type of instrument used to perform the measurement.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Describe other instrument type, if applicable</strong> (<a href="./parts.html#insTypeOth">insTypeOth</a>). Description of the instrument in case it is not listed in instrumentType.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Index</strong> (<a href="./parts.html#index">index</a>). Index number in case the measurement was taken multiple times.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+<strong>Index</strong> (<a href="./parts.html#index">index</a>). Index number in case the measurement was taken multiple times.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
@@ -495,7 +535,7 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Sample ID</strong> (<a href="./parts.html#sampleID">sampleID</a>). Unique identifier for a sample.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Purpose</strong> (<a href="./parts.html#purpose">purpose</a>). The reason the measure or sample was taken.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#purposeCatSet">purposeCatSet</a>
+<strong>Purpose</strong> (<a href="./parts.html#purpose">purpose</a>). The reason the measure or sample was taken.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#purposeSet">purposeSet</a>
 </li>
 <li>
 <strong>Polygon ID</strong> (<a href="./parts.html#polygonID">polygonID</a>). Unique identifier for the polygon.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: varchar.
@@ -522,7 +562,7 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Specimen</strong> (<a href="./parts.html#specimen">specimen</a>). The substance or thing upon which the observation was made.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
-<strong>Fraction analyzed</strong> (<a href="./parts.html#fraction">fraction</a>). Fraction of the sample that is analyzed.<br>Role: Foreign Key.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#fractionCatSet">fractionCatSet</a>
+<strong>Fraction analyzed</strong> (<a href="./parts.html#fraction">fraction</a>). Fraction of the sample that is analyzed.<br>Role: Foreign Key.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#fractionSet">fractionSet</a>
 </li>
 <li>
 <strong>Group</strong> (<a href="./parts.html#group">group</a>). Unique identifier for a group of measures. Mostly applicable for measures, methods, units, and aggregations.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
@@ -531,22 +571,22 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Class</strong> (<a href="./parts.html#class">class</a>). A unique identifier for a class, which is akin to a sub-group; it’s a way of grouping parts within a given group. A group can have one or more classes to describe different parts of the class.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
-<strong>Measure</strong> (<a href="./parts.html#measure">measure</a>). A measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e.&nbsp;a site, sample, person or population).<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Measure</strong> (<a href="./parts.html#measure">measure</a>). A measurement or observation of any substance including a biological, physical or chemical substance.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Value</strong> (<a href="./parts.html#value">value</a>). A meaure or sample taken for a validation study.<br>Role: Header.<br>Requirement: mandatory.
+<strong>Value</strong> (<a href="./parts.html#value">value</a>). Value of a measure, observation or attribute.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Unit</strong> (<a href="./parts.html#unit">unit</a>). The units of a measurement.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
-<strong>Aggregation</strong> (<a href="./parts.html#aggreation">aggreation</a>). Statistical measures used to report a measure. Each aggregation has a corresponding value.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
+<strong>Aggregation</strong> (<a href="./parts.html#aggregation">aggregation</a>). Statistical measures used to report a measure. Each aggregation has a corresponding value.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Nomenclature</strong> (<a href="./parts.html#nomenclature">nomenclature</a>). A classification system to report the measure class. Only applicable to variants, mutations, and diseases.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
-<strong>Index</strong> (<a href="./parts.html#index">index</a>). Index number in case the measurement was taken multiple times.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+<strong>Index</strong> (<a href="./parts.html#index">index</a>). Index number in case the measurement was taken multiple times.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Measure license</strong> (<a href="./parts.html#mesureLic">mesureLic</a>). Specifies the access and use licensing for a given single measurement.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -618,13 +658,13 @@ partID: <a href="./parts.html#organizations">organizations</a>. The table that c
 <strong>Dataset ID</strong> (<a href="./parts.html#datasetID">datasetID</a>). The name of the dataset that stores information for MeasureReport, SampleReport and other reporting tables.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Organization Type</strong> (<a href="./parts.html#orgType">orgType</a>). Specifies the type or purpose of a given organization.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgTypeCatSet">orgTypeCatSet</a>
+<strong>Organization Type</strong> (<a href="./parts.html#orgType">orgType</a>). Specifies the type or purpose of a given organization.<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgTypeSet">orgTypeSet</a>
 </li>
 <li>
-<strong>Organization level</strong> (<a href="./parts.html#orgLevel">orgLevel</a>). The geographic level of an organization.<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgLevelCatSet">orgLevelCatSet</a>
+<strong>Organization level</strong> (<a href="./parts.html#orgLevel">orgLevel</a>). The geographic level of an organization.<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgLevelSet">orgLevelSet</a>
 </li>
 <li>
-<strong>Organization sector</strong> (<a href="./parts.html#orgSector">orgSector</a>). The sector of an organization<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgSectorCatSet">orgSectorCatSet</a>
+<strong>Organization sector</strong> (<a href="./parts.html#orgSector">orgSector</a>). The sector of an organization<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#orgSectorSet">orgSectorSet</a>
 </li>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
@@ -639,13 +679,13 @@ partID: <a href="./parts.html#organizations">organizations</a>. The table that c
 partID: <a href="./parts.html#parts">parts</a>. Look up table containing all parts in of the data model. Contains all parts, including self-referential parts.
 <ul>
 <li>
-<strong>Part ID</strong> (<a href="./parts.html#partID">partID</a>). The unique identify of any entity within the dictionary.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Part identifier</strong> (<a href="./parts.html#partID">partID</a>). The unique identify of any entity within the dictionary.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Label</strong> (<a href="./parts.html#partLabel">partLabel</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Part types</strong> (<a href="./parts.html#partType">partType</a>). Part types describe the purpose or use of the part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Part types</strong> (<a href="./parts.html#partType">partType</a>). Part types describe the purpose or use of the part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Short names</strong> (<a href="./parts.html#shortName">shortName</a>). Shortened names for tables and other important parts for use in wide names.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -660,7 +700,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Domain</strong> (<a href="./parts.html#domain">domain</a>). Domain is the highest level of describing of a measure.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
-<strong>Specimen sets</strong> (<a href="./parts.html#specimenSets">specimenSets</a>). Sets of specimens.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Specimen sets</strong> (<a href="./parts.html#specimenSets">specimenSets</a>). Sets of specimens.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Group</strong> (<a href="./parts.html#group">group</a>). Unique identifier for a group of measures. Mostly applicable for measures, methods, units, and aggregations.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
@@ -690,7 +730,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Quality set</strong> (<a href="./parts.html#qualitySetID">qualitySetID</a>). The quality set that corresponds to a given part. Only applicable for samples and measures.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Missingness sets</strong> (<a href="./parts.html#missingnessSets">missingnessSets</a>). Missingness sets for measures, methods or attributes.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Missingness sets</strong> (<a href="./parts.html#missingnessSets">missingnessSets</a>). Missingness sets for measures, methods or attributes.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Status</strong> (<a href="./parts.html#status">status</a>). Whether the part is still active and can be used in the most current ODM version. Values are ‘active’ or ‘inactive’.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -708,10 +748,10 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Protocol steps table</strong> (<a href="./parts.html#protocolSteps">protocolSteps</a>). The table for collecting metadata on individual steps in a protocol, methodological process, or assay.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Protocol Relationship header req</strong> (<a href="./parts.html#protocolRelationshipsRequired">protocolRelationshipsRequired</a>). Specifies the columns required in the Protocol Organization table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Protocol Relationship table required headers</strong> (<a href="./parts.html#protocolRelationshipsRequired">protocolRelationshipsRequired</a>). Specifies the columns required in the Protocol Organization table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Protocol steps header req</strong> (<a href="./parts.html#protocolStepsRequired">protocolStepsRequired</a>). Specifies the columns required in a Protocol Steps table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Protocol steps table required headers</strong> (<a href="./parts.html#protocolStepsRequired">protocolStepsRequired</a>). Specifies the columns required in a Protocol Steps table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Protocol steps table column order</strong> (<a href="./parts.html#protocolStepsOrder">protocolStepsOrder</a>). Specifies the order of the columns in a Protocol Steps table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -726,7 +766,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Measure report table</strong> (<a href="./parts.html#measures">measures</a>). The table that contains information and details about a given measure<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Measures header req</strong> (<a href="./parts.html#measuresRequired">measuresRequired</a>). Specifies the columns required in a Measures table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Measures table required headers</strong> (<a href="./parts.html#measuresRequired">measuresRequired</a>). Specifies the columns required in a Measures table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Measures table column order</strong> (<a href="./parts.html#measuresOrder">measuresOrder</a>). Specifies the order of the columns in a Measures table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -738,13 +778,13 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Measure sets table column order</strong> (<a href="./parts.html#measureSetsOrder">measureSetsOrder</a>). Specifies the order of the columns in a Measure Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
 </li>
 <li>
-<strong>Measure Set header req</strong> (<a href="./parts.html#measureSetsRequired">measureSetsRequired</a>). Specifies the columns required in a Measure Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Measure Set table required headers</strong> (<a href="./parts.html#measureSetsRequired">measureSetsRequired</a>). Specifies the columns required in a Measure Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Dataset table</strong> (<a href="./parts.html#datasets">datasets</a>). A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Dataset header req</strong> (<a href="./parts.html#datasetsRequired">datasetsRequired</a>). Specifies the columns required in a Datasets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Dataset table required headers</strong> (<a href="./parts.html#datasetsRequired">datasetsRequired</a>). Specifies the columns required in a Datasets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Datasets table column order</strong> (<a href="./parts.html#datasetsOrder">datasetsOrder</a>). Specifies the order of the columns in a Datasets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -753,7 +793,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sites table</strong> (<a href="./parts.html#sites">sites</a>). The table that contains information about a site; the location where an environmental sample was taken.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Sites header req</strong> (<a href="./parts.html#sitesRequired">sitesRequired</a>). Specifies the columns required in a Sites table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Sites table required headers</strong> (<a href="./parts.html#sitesRequired">sitesRequired</a>). Specifies the columns required in a Sites table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sites table column order</strong> (<a href="./parts.html#sitesOrder">sitesOrder</a>). Specifies the order of the columns in a Sites table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -762,7 +802,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sample report table</strong> (<a href="./parts.html#samples">samples</a>). The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Sample header req</strong> (<a href="./parts.html#samplesRequired">samplesRequired</a>). Specifies the columns required in a Samples table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Sample table required headers</strong> (<a href="./parts.html#samplesRequired">samplesRequired</a>). Specifies the columns required in a Samples table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Samples table column order</strong> (<a href="./parts.html#samplesOrder">samplesOrder</a>). Specifies the order of the columns in a Samples table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -771,7 +811,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Address table</strong> (<a href="./parts.html#addresses">addresses</a>). The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Address header req</strong> (<a href="./parts.html#addressesRequired">addressesRequired</a>). Specifies the columns required in a Addresses table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Address table required headers</strong> (<a href="./parts.html#addressesRequired">addressesRequired</a>). Specifies the columns required in a Addresses table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Addresses table column order</strong> (<a href="./parts.html#addressesOrder">addressesOrder</a>). Specifies the order of the columns in the Addresses table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -780,7 +820,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Contact table</strong> (<a href="./parts.html#contacts">contacts</a>). The table that contains information about a contact; a person who is the contact of a site or laboratory.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Contact header req</strong> (<a href="./parts.html#contactsRequired">contactsRequired</a>). Specifies the columns required in a Contacts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Contact table required headers</strong> (<a href="./parts.html#contactsRequired">contactsRequired</a>). Specifies the columns required in a Contacts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Contacts table column order</strong> (<a href="./parts.html#contactsOrder">contactsOrder</a>). Specifies the order of the columns in a Contacts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -789,7 +829,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Organization table</strong> (<a href="./parts.html#organizations">organizations</a>). The table that contains information about a laboratory.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Organziation header req</strong> (<a href="./parts.html#organizationsRequired">organizationsRequired</a>). Specifies the columns required in a Organizations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Organziation table required headers</strong> (<a href="./parts.html#organizationsRequired">organizationsRequired</a>). Specifies the columns required in a Organizations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Organizations table column order</strong> (<a href="./parts.html#organizationsOrder">organizationsOrder</a>). Specifies the order of the columns in a Organizations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -798,7 +838,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Instrument table</strong> (<a href="./parts.html#instruments">instruments</a>). The table that contains information about instruments.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Instrutment header req</strong> (<a href="./parts.html#instrumentsRequired">instrumentsRequired</a>). Specifies the columns required in the Instruments table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Instrutment table required headers</strong> (<a href="./parts.html#instrumentsRequired">instrumentsRequired</a>). Specifies the columns required in the Instruments table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Instruments table column order</strong> (<a href="./parts.html#instrumentsOrder">instrumentsOrder</a>). Specifies the order of the columns in the Instruments table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -807,7 +847,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Polygon table</strong> (<a href="./parts.html#polygons">polygons</a>). The table that contains information about the geometry of a geographic area.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Polygon header req</strong> (<a href="./parts.html#polygonsRequired">polygonsRequired</a>). Specifies the columns required in a Polygons table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Polygon table required headers</strong> (<a href="./parts.html#polygonsRequired">polygonsRequired</a>). Specifies the columns required in a Polygons table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Polygons table column order</strong> (<a href="./parts.html#polygonsOrder">polygonsOrder</a>). Specifies the order of the columns in a Polygons table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -816,7 +856,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Language Look-up table</strong> (<a href="./parts.html#languages">languages</a>). Look up table for all languages, used to give structure to the translation table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Language header req</strong> (<a href="./parts.html#languagesRequired">languagesRequired</a>). Required headers in the Languages table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Language table required headers</strong> (<a href="./parts.html#languagesRequired">languagesRequired</a>). Required headers in the Languages table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Language table column order</strong> (<a href="./parts.html#languagesOrder">languagesOrder</a>). Specifies the order of the columns in the Languages table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -828,7 +868,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Parts Look-up table</strong> (<a href="./parts.html#parts">parts</a>). Look up table containing all parts in of the data model.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Tranalation header req</strong> (<a href="./parts.html#translationsRequired">translationsRequired</a>). Required headers in the Translations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Translation table required headers</strong> (<a href="./parts.html#translationsRequired">translationsRequired</a>). Required headers in the Translations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Parts table column order</strong> (<a href="./parts.html#partsOrder">partsOrder</a>). Order of headers in the Parts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -837,7 +877,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Translation table column order</strong> (<a href="./parts.html#translationsOrder">translationsOrder</a>). Specifies the order of the columns in the Translation table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
 </li>
 <li>
-<strong>Parts header req</strong> (<a href="./parts.html#partsRequired">partsRequired</a>). Required headers in the Parts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Parts table required headers</strong> (<a href="./parts.html#partsRequired">partsRequired</a>). Required headers in the Parts table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sets look-up table</strong> (<a href="./parts.html#sets">sets</a>). Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -846,13 +886,13 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sets table column order</strong> (<a href="./parts.html#setsOrder">setsOrder</a>). Specifies the order of the columns in the Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
 </li>
 <li>
-<strong>Sets header req</strong> (<a href="./parts.html#setsRequired">setsRequired</a>). Required headers in the Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Sets table required headers</strong> (<a href="./parts.html#setsRequired">setsRequired</a>). Required headers in the Sets table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Quality reports table</strong> (<a href="./parts.html#qualityReports">qualityReports</a>). The table for recording the various quality metrics and indicators for samples and measures.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Quality report header req</strong> (<a href="./parts.html#qualityReportsRequired">qualityReportsRequired</a>). Specifies the columns required in the Quality Reports table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Quality report table required headers</strong> (<a href="./parts.html#qualityReportsRequired">qualityReportsRequired</a>). Specifies the columns required in the Quality Reports table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Quality rerpots table column order</strong> (<a href="./parts.html#qualityReportsOrder">qualityReportsOrder</a>). Specifies the order of the columns in the Quality Reports table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -861,7 +901,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sample relationships table</strong> (<a href="./parts.html#sampleRelationships">sampleRelationships</a>). Table for recording the relationships between samples.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Sample relationships header req</strong> (<a href="./parts.html#sampleRelationshipsRequired">sampleRelationshipsRequired</a>). Specifies the columns required in a Sample Relationships table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Sample relationships table required headers</strong> (<a href="./parts.html#sampleRelationshipsRequired">sampleRelationshipsRequired</a>). Specifies the columns required in a Sample Relationships table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sample relationships table column order</strong> (<a href="./parts.html#sampleRelationshipsOrder">sampleRelationshipsOrder</a>). Specifies the order of the columns in a Sample Relationships table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -870,7 +910,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Protocols table</strong> (<a href="./parts.html#protocols">protocols</a>). The table for protocols.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Protocols header req</strong> (<a href="./parts.html#protocolsRequired">protocolsRequired</a>). Specifies the columns required in the Protocols table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Protocols table required headers</strong> (<a href="./parts.html#protocolsRequired">protocolsRequired</a>). Specifies the columns required in the Protocols table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Protocols table column order</strong> (<a href="./parts.html#protocolsOrder">protocolsOrder</a>). Specifies the order of the columns in the Protocols table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
@@ -879,7 +919,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Data types</strong> (<a href="./parts.html#dataTypes">dataTypes</a>). The data type for a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Data types</strong> (<a href="./parts.html#dataTypes">dataTypes</a>). The data type for a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Minimum value part support</strong> (<a href="./parts.html#minValue">minValue</a>). The minimum value of part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -915,7 +955,7 @@ partID: <a href="./parts.html#polygons">polygons</a>. The table that contains in
 <strong>Polygon Population</strong> (<a href="./parts.html#polyPop">polyPop</a>). An attribute of a polygon, which specifies the population of that polygon. A rough estimate of the number of human residents.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Type of geography</strong> (<a href="./parts.html#geoType">geoType</a>). Type of geography that is represented by the polygon.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#geoTypeCatSet">geoTypeCatSet</a>
+<strong>Type of geography</strong> (<a href="./parts.html#geoType">geoType</a>). Type of geography that is represented by the polygon.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#geoTypeSet">geoTypeSet</a>
 </li>
 <li>
 <strong>European Petroleum Survey Group Coordinates</strong> (<a href="./parts.html#geoEPSG">geoEPSG</a>). The unique EPSG code specifying a given geospatial area.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: float.
@@ -1023,7 +1063,7 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 <strong>Method</strong> (<a href="./parts.html#method">method</a>). A procedure for collecting a sample or performing a measure.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: categorical.
 </li>
 <li>
-<strong>Measure</strong> (<a href="./parts.html#measure">measure</a>). A measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e.&nbsp;a site, sample, person or population).<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
+<strong>Measure</strong> (<a href="./parts.html#measure">measure</a>). A measurement or observation of any substance including a biological, physical or chemical substance.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
 </li>
 <li>
 <strong>Summary</strong> (<a href="./parts.html#summ">summ</a>). Short description of the assay and how it is different from the other assay methods.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -1047,13 +1087,13 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 <strong>Instrument ID</strong> (<a href="./parts.html#instrumentID">instrumentID</a>). A unique identifier for an instrument.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
-<strong>Value</strong> (<a href="./parts.html#value">value</a>). A meaure or sample taken for a validation study.<br>Role: Header.<br>Requirement: mandatoryIf.
+<strong>Value</strong> (<a href="./parts.html#value">value</a>). Value of a measure, observation or attribute.<br>Role: Header.<br>Requirement: mandatoryif.<br>Data type: varchar.
 </li>
 <li>
 <strong>Unit</strong> (<a href="./parts.html#unit">unit</a>). The units of a measurement.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: categorical.
 </li>
 <li>
-<strong>Aggregation</strong> (<a href="./parts.html#aggreation">aggreation</a>). Statistical measures used to report a measure. Each aggregation has a corresponding value.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: categorical.
+<strong>Aggregation</strong> (<a href="./parts.html#aggregation">aggregation</a>). Statistical measures used to report a measure. Each aggregation has a corresponding value.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: categorical.
 </li>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
@@ -1068,7 +1108,7 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for recording the various quality metrics and indicators for samples and measures.
 <ul>
 <li>
-<strong>Quality report</strong> (<a href="./parts.html#qualityID">qualityID</a>). A unique identifier for a given quality report.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Quality report ID</strong> (<a href="./parts.html#qualityID">qualityID</a>). A unique identifier for a given quality report.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Report ID</strong> (<a href="./parts.html#measureRepID">measureRepID</a>). Unique identifier for a measurement.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
@@ -1134,10 +1174,10 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 <strong>Site ID</strong> (<a href="./parts.html#siteID">siteID</a>). Unique identifier for the location where a sample was taken.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Purpose</strong> (<a href="./parts.html#purpose">purpose</a>). The reason the measure or sample was taken.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#purposeCatSet">purposeCatSet</a>
+<strong>Purpose</strong> (<a href="./parts.html#purpose">purpose</a>). The reason the measure or sample was taken.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#purposeSet">purposeSet</a>
 </li>
 <li>
-<strong>Sample material</strong> (<a href="./parts.html#saMaterial">saMaterial</a>). Type of sample.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#sampleMatCatSet">sampleMatCatSet</a>
+<strong>Sample material</strong> (<a href="./parts.html#saMaterial">saMaterial</a>). Type of sample.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#sampleMatSet">sampleMatSet</a>
 </li>
 <li>
 <strong>Dataset ID</strong> (<a href="./parts.html#datasetID">datasetID</a>). The name of the dataset that stores information for MeasureReport, SampleReport and other reporting tables.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: varchar.
@@ -1146,10 +1186,10 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 <strong>Sample origin</strong> (<a href="./parts.html#origin">origin</a>). An attribute of a sample specifying the origin.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
-<strong>Replicate Type</strong> (<a href="./parts.html#repType">repType</a>). Attirbute of a sample, specifying whether the sample is unique, or a replicate. And if it is a replicate, what type of replicate is it?<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#replicateCatSet">replicateCatSet</a>
+<strong>Replicate Type</strong> (<a href="./parts.html#repType">repType</a>). Attirbute of a sample, specifying whether the sample is unique, or a replicate. And if it is a replicate, what type of replicate is it?<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#replicateSet">replicateSet</a>
 </li>
 <li>
-<strong>Sample collection type</strong> (<a href="./parts.html#collType">collType</a>). The type of collection.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#collectCatSet">collectCatSet</a>
+<strong>Sample collection type</strong> (<a href="./parts.html#collType">collType</a>). The type of collection.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#collectSet">collectSet</a>
 </li>
 <li>
 <strong>Collection period</strong> (<a href="./parts.html#collPer">collPer</a>). Collection period. The time period over which the sample was collected, in hours. Alternatively, use collectionStart and collectionEnd.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: float.
@@ -1194,7 +1234,7 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 partID: <a href="./parts.html#sets">sets</a>. Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together. This table manages many-to-many relationships and category recycling within the ODM.
 <ul>
 <li>
-<strong>Set</strong> (<a href="./parts.html#set">set</a>). The unique identifier of a value set.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Set ID</strong> (<a href="./parts.html#setID">setID</a>). The unique identifier of a value set.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Set type</strong> (<a href="./parts.html#setType">setType</a>). The type of set. i.e.&nbsp;quality set, aggregation set, unit set<br>Role: Header.<br>Requirement: mandatory.
@@ -1242,10 +1282,10 @@ partID: <a href="./parts.html#sites">sites</a>. The table that contains informat
 <strong>Polygon ID</strong> (<a href="./parts.html#polygonID">polygonID</a>). Unique identifier for the polygon.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Site Type</strong> (<a href="./parts.html#siteType">siteType</a>). Type of site or institution where sample was taken.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#siteTypeCatSet">siteTypeCatSet</a>
+<strong>Site Type</strong> (<a href="./parts.html#siteType">siteType</a>). Type of site or institution where sample was taken.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#siteTypeSet">siteTypeSet</a>
 </li>
 <li>
-<strong>Sample shed</strong> (<a href="./parts.html#sampleShed">sampleShed</a>). A geographic area, physical space, or structure. A sample is taken from a sampleshed for a representative measurement of a substance(s).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#shedCatSet">shedCatSet</a>
+<strong>Sample shed</strong> (<a href="./parts.html#sampleShed">sampleShed</a>). A geographic area, physical space, or structure. A sample is taken from a sampleshed for a representative measurement of a substance(s).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#shedSet">shedSet</a>
 </li>
 <li>
 <strong>Address ID</strong> (<a href="./parts.html#addressID">addressID</a>). A unique identifier for an address.<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: varchar.
@@ -1296,7 +1336,7 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Language ID</strong> (<a href="./parts.html#lang">lang</a>). Language code for translation purposes. Specifies the langage for each translation, other than the default English.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Part ID</strong> (<a href="./parts.html#partID">partID</a>). The unique identify of any entity within the dictionary.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Part identifier</strong> (<a href="./parts.html#partID">partID</a>). The unique identify of any entity within the dictionary.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Label</strong> (<a href="./parts.html#partLabel">partLabel</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1320,7 +1360,7 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Thu Mar 9 00:00:00 2023.</p>
+<p>Page created on Fri Mar 17 00:00:00 2023.</p>
 
 
 </section>
