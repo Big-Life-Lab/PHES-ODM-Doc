@@ -81,3 +81,30 @@ format_table <-
     
     return(output_table)
   }
+
+
+#' Check values for tables
+#' 
+#' Check that values present in the specified columns in the input table match the passed valid_values.
+#' Outputs a warning when case sensitive has no match but case insensitive matches.
+#' 
+#' @param input_table data.frame containing input data
+#' @param column_names vector of names of the columns within input_table to check
+#' @param valid_values vector of valid values withing the columns
+check_values_for_table <- function(input_table, column_names, valid_values){
+  lowered_valid_values <- lapply(valid_values, tolower)
+  for (table_column in column_names) {
+    # Collect all unique values
+    unique_values <- unique(input_table[[table_column]])
+    # In case I want to return valid values rather then just check
+    #checked_values <- c()
+    for (value_to_check in unique_values) {
+      if(value_to_check %in% valid_values){
+        #checked_values <- append(checked_values, value_to_check)
+        next()
+      }else if(tolower(value_to_check) %in% lowered_valid_values){
+        warning(glue::glue('{table_column} Does not use appropriate case for {value_to_check}'))
+      }
+    }
+  }
+}
