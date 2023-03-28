@@ -2,19 +2,16 @@
 source("R/constants-sets.R")
 source("R/constants-parts.R")
 
-constants <- list()
-constants$dictionary_directory <- "data/raw"
 
-constants$dictionary_missing_value_replacement <- "NA"
 
-constants$parts_sheet_name <- "parts"
+
 constants$parts_qmd_file_name <- "parts"
-constants$sets_sheet_name <- "sets"
+
 constants$sets_qmd_file_name <- "sets"
 
 
 # Column values
-constants$part_type_is_table <- "tables"
+
 constants$status_is_active <- "active"
 constants$status_is_development <- "development"
 constants$data_type_is_categorical <- "categorical"

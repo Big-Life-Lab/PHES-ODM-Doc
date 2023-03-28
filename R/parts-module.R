@@ -1,4 +1,5 @@
 parts_sheet_column_names <- list()
+parts <- list()
 
 # Column names for the parts sheet
 parts_sheet_column_names$part_ID_column_name <- "part"
@@ -26,3 +27,5 @@ parts_sheet_column_names$part_min_length_column_name <- "minLength"
 parts_sheet_column_names$part_max_length_column_name <- "maxLength"
 parts_sheet_column_names$part_first_release_column_name <- "firstReleased"
 parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
+
+parts$part_type_is_table <- "tables"
