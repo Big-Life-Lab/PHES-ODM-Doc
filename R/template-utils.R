@@ -45,3 +45,23 @@ extract_variables <- function(template){
     return_vars <- append(return_vars, detected_variable)
   }
 }
+
+bullet_point_template_population <- function(part_info){
+  # Declare display elements
+  part_input <- list()
+  part_input[["partID"]] <- part_ID
+  part_input[["partLabel"]] <-
+    part_info[[parts_sheet_column_names$part_label_column_name]]
+  part_input[["partDesc"]] <-
+    part_info[[parts_sheet_column_names$part_description_column_name]]
+  part_input[["status"]] <-
+    part_info[[parts_sheet_column_names$part_status_column_name]]
+  part_input[["firstReleased"]] <-
+    part_info[[parts_sheet_column_names$part_first_release_column_name]]
+  part_input[["lastUpdated"]] <-
+    part_info[[parts_sheet_column_names$part_last_updated_column_name]]
+  
+  
+  
+  return(generate_display(part_bullet_template, part_input, part_ID))
+}

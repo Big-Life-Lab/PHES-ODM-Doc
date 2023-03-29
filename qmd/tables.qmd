@@ -137,17 +137,19 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       '{table_of_content}<li><a href=\"#{current_table_ID}\">'
     )
   # Append table label related content
+  part_label_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_label_column_name, parts_sheet_column_names$part_label_column_name]
+  part_ID_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_ID_column_name, parts_sheet_column_names$part_label_column_name]
   table_of_content <- verify_and_append_content(
     table_of_content,
     current_table_label,
-    missing_and_substituted(current_table_ID, "part label", "part ID"),
+    missing_and_substituted(current_table_ID, part_label_label, part_ID_label),
     glue::glue('{current_table_label}</a></li>'),
     glue::glue('{current_table_ID}</a></li>')
   )
   tables_info_display_content <- verify_and_append_content(
     tables_info_display_content,
     current_table_label,
-    missing_and_substituted(current_table_ID, "part label", "part ID"),
+    missing_and_substituted(current_table_ID, part_label_label, part_ID_label),
     glue::glue('
     
       ### {current_table_label} {{ #{current_table_ID} }}
@@ -210,7 +212,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_label,
-      missing_and_substituted(column_ID, "part label", "part ID"),
+      missing_and_substituted(column_ID, part_label_label, part_ID_label),
       glue::glue(
         '**{column_label}** (<a href=\"/parts.html#{column_ID}\">{column_ID}</a>).'),
       glue::glue(
