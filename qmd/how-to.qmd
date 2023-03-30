@@ -344,7 +344,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
     *Image will be added*
 
-### **`Protocols Template`** 
+### **`Protocols` template** 
 
 1.  **Mandatory fields**
 
@@ -358,7 +358,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 1.  **Mandatory fields**
 
--   `Protocol ID container`: The unique identifier for the `Protocol relationships` template. Each value represents a protocol, and the step(s) and other protocol(s) that make it up.
+-   `Protocol ID container`: The unique identifier for the `Protocol relationships` template. Each value represents a protocol, and the step(s) and other protocol(s) that make it up. This identifier should also be a `Protocol ID` that was created using the `Protocols` template.
 
 -   `Relationship`: Describes the relationship between the subject and object.
 
@@ -457,7 +457,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
         -   These are identifier fields.
 
-        -   All of these identifiers are either `Protocol ID` values or `Protocol Step ID` values, and represent protocols and protocol steps, respectively. This includes `Protocol ID Container` (column A), which is `Protocol ID` that contains the relationships that you are entering in this template. Note that none of these fields are unique identifiers and, thus, they can be repeated between entries.
+        -   All of these identifiers are either `Protocol ID` values or `Protocol Step ID` values, and represent protocols and protocol steps, respectively. This includes `Protocol ID Container` (column A), which is a `Protocol ID` that contains the relationships that you are entering in this template. Note that none of these fields are unique identifiers and, thus, they can be repeated between entries.
 
         -   You should only enter a value for one of the two `object` columns (column B and C); this depends on whether the object of the relationship that you are entering is a protocol or a protocol step. The same is true for the two `subject` columns (column E and F).
 
@@ -836,9 +836,9 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
     ![](assets/how-to/sites_Col_GM.png)
 
-    i)  Columns G to I:
-        -   These are identifier fields that you can use to record additional information about the site.
-    ii) Columns J to M:
+    i)  Columns G to I, L and M:
+        -   These are identifier fields that you can use to record additional information about the site. `Primary reporting authority ID` (column L) and `Secondary reporting authority ID` (column M) are `Organization ID`s that you would have created using the `Organization` template.
+    ii) Columns J and K:
         -   These are all free form fields in which you can enter in relevant information about the site.
 
 3.  **Columns N to S**
