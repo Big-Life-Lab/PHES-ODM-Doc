@@ -2,18 +2,24 @@
 #' 
 #' Populates passed template with values from display_variables after verifying.
 #' 
-#' @param template string template containg variables to insert surrounded by {}
+#' @param template string template containing variables to insert surrounded by {}
 #' @param display_variables named list with values to insert where name is equal to name in template
-#' @param ID string containing ID used in warning generation
+#' @param ID string containing ID. Used when displaying warnings in case of errors in the input.
 #' 
 #' @return string which contains the populated template
 generate_display <- function(template, display_variables, ID){
   # Check if appropriate variables were past for a template
-  detected_variables <- extract_variables(template)
-  for (single_variable in detected_variables) {
+  template_variables <- extract_variables(template)
+  # Flag for missing variables
+  missing_variable_detected <- FALSE
+  for (single_variable in template_variables) {
     if(!(single_variable %in% names(display_variables))){
-      stop(glue::glue('{single_variable} Is missing from the passed display'))
+      missing_variable_detected <- TRUE
+      warning(glue::glue('Template variable {single_variable} is missing from the passed display_variables list.\n'))
     }
+  }
+  if(missing_variable_detected){
+    stop()
   }
   
   # Verify display inputs
