@@ -6,11 +6,9 @@ source("R/constants.R")
 #' @param file_names string or string vector containing file names with valid semantic versioning
 #'
 #' @return vector of strings containing latest version and latest version file name
-get_latest_version <- function() {
+get_latest_version <- function(file_names) {
   dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
-  file_names <-
-    list.files(file.path(getwd(), constants$dictionary_directory),
-               pattern = "^ODM.*xlsx$")
+  
   # Display warning for multiple dictionaries as only 1 should be stored on github
   if (length(file_names) > 1) {
     warning('Multiple dictionaries found only one dictionary should be stored.')

@@ -1,8 +1,11 @@
 
 ```{r, echo=FALSE}
 source("R/version-utils.R")
-
-latest_version_info <- get_latest_version()
+source("R/constants.R")
+file_names <-
+    list.files(file.path(getwd(), constants$dictionary_directory),
+               pattern = "^ODM.*xlsx$")
+latest_version_info <- get_latest_version(file_names)
 
 dictionary_version_used <- latest_version_info[[1]]
 dictionary_full_file_name <- latest_version_info[[2]]
