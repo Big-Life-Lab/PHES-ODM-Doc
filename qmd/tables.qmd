@@ -257,7 +257,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,
         column_catSetID,
-        ivalid_cat_link(column_ID),
+        invalid_cat_link(column_ID),
         glue::glue(
           '</br>Measure, method or attribute set: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
         ),
