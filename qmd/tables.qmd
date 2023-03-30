@@ -55,7 +55,7 @@ Additionally, there are special headers called `mandatoryIf` headers. These head
 
 <!--` reference1/ -->
 
-```{r, echo=FALSE, warning=TRUE}
+```{r, echo=FALSE, warning=FALSE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions
 source("R/qmd-utils.R")
