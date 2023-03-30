@@ -41,12 +41,14 @@ format_table <-
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
-        output_table[duplicated(output_table[[ID_column_name]]), ]
+        output_table[duplicated(output_table[[ID_column_name]]),]
       output_table <-
-        output_table[!duplicated(output_table[[ID_column_name]]), ]
+        output_table[!duplicated(output_table[[ID_column_name]]),]
       # Display warning for removed duplicated rows
       removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
-      warning(duplicate_ID(removed_ID_names))
+      if (length(removed_ID_names) > 0) {
+        warning(duplicate_ID(removed_ID_names))
+      }
     }
     
     
