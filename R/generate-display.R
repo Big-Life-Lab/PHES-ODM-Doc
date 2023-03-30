@@ -9,18 +9,21 @@
 #' @return string which contains the populated template
 generate_display <- function(template, display_variables, ID){
   # Check if appropriate variables were past for a template
-  template_variables <- extract_variables(template)
-  # Flag for missing variables
-  missing_variable_detected <- FALSE
-  for (single_variable in template_variables) {
-    if(!(single_variable %in% names(display_variables))){
-      missing_variable_detected <- TRUE
-      warning(glue::glue('Template variable {single_variable} is missing from the passed display_variables list.\n'))
-    }
-  }
-  if(missing_variable_detected){
-    stop()
-  }
+  
+  # Need to fix code bellow to allow extraction of variables when md formatting is passed
+  
+  # template_variables <- extract_variables(template)
+  # # Flag for missing variables
+  # missing_variable_detected <- FALSE
+  # for (single_variable in template_variables) {
+  #   if(!(single_variable %in% names(display_variables))){
+  #     missing_variable_detected <- TRUE
+  #     warning(glue::glue('Template variable {single_variable} is missing from the passed display_variables list.\n'))
+  #   }
+  # }
+  # if(missing_variable_detected){
+  #   stop()
+  # }
   
   # Verify display inputs
   for (column_name in names(display_variables)) {
@@ -38,18 +41,20 @@ generate_display <- function(template, display_variables, ID){
 #' 
 #' @param template string to check for variables
 #' 
-#' @return vector of variables used
+#' @return vector of strings
 extract_variables <- function(template){
-  variable_patter <- "\\{(.*?)\\}"
+  variable_pattern <- "\\{(.*?)\\}"
   
-  all_detected_vars <- unique(regmatches(template, gregexpr(variable_patter, template))[[1]])
+  all_detected_vars <- unique(regmatches(template, gregexpr(variable_pattern, template))[[1]])
   
-  return_vars <- c()
+  template_variables <- c()
   # Strip brackets for easier comparison
   for (detected_variable in all_detected_vars) {
     detected_variable <- gsub('\\{|\\}', '', detected_variable)
-    return_vars <- append(return_vars, detected_variable)
+    template_variables <- append(template_variables, detected_variable)
   }
+  
+  return(template_variables)
 }
 
 #' Bullet point template population
