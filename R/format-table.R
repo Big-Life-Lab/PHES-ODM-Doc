@@ -6,6 +6,8 @@ source(file.path(getwd(), "R", "constants.R"))
 #'
 #' @param input_table data.frame to format
 #' @param columns_to_format vector containing names of columns to format. If not passed all columns are formatted.
+#' @param remove_duplicate boolean to toggle duplicate ID removal.
+#' @param strip_invalid_part_ID boolean to toggle removal of invalid IDs in partID column.
 #'
 #' @return data.frame containing formatted input
 format_table <-
