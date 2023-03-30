@@ -46,7 +46,16 @@ extract_variables <- function(template){
   }
 }
 
-bullet_point_template_population <- function(part_info){
+#' Bullet point template population
+#' 
+#' Populates the bullet point template with preset inputs
+#' 
+#' @param part_info data.table containing raw parts information
+#' @param partID string containing the ID
+#' @param part_bullet_template string containing display template
+#' 
+#' @return glue object string populated using part_info
+bullet_point_template_population <- function(part_info, partID, part_bullet_template){
   # Declare display elements
   part_input <- list()
   part_input[["partID"]] <- part_ID
