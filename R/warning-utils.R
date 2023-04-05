@@ -5,10 +5,10 @@ source("R/constants.R")
 #' 
 #' Warning for when information is missing for a part.
 #' 
-#' @param column_name string storing the column name. 
-#' @param ID string storing the ID of a part.
+#' @param column_name string storing the name of the column with missing information. 
+#' @param ID string storing the ID of a part with missing information.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning about the missing part.
 missing_warning <- function(column_name, ID){
   glue::glue('Part {column_name} is missing for {ID}.\n')
 }
@@ -18,8 +18,8 @@ missing_warning <- function(column_name, ID){
 #' Warning for when information is missing but is replaced with additional information.
 #' 
 #' @param ID string storing the ID of a part.
-#' @param column_name string storing the column name.
-#' @param replacement string storing column name that's used as replacement.
+#' @param column_name string storing the name of the column with missing information.
+#' @param replacement string storing the column name whose values are used as replacement.
 #' 
 #' @return String with the populated warning.
 missing_and_substituted <- function(ID, column_name, replacement){
@@ -89,7 +89,7 @@ duplicate_ID <- function(ID){
 #' 
 #' Warning for when no valid column is found and one is created.
 #' 
-#' @param column_name String containing the name of the missing column.
+#' @param column_name string storing the name of the column with missing information.
 #' 
 #' @return String with the populated warning.
 column_missing_and_populated <- function(column_name){

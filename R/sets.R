@@ -1,12 +1,11 @@
 #' Bullet point template population
 #' 
-#' Populates the bullet point template with preset inputs
+#' Populates the bullet point template with preset inputs.
 #' 
-#' @param part_info data.table containing raw parts information
-#' @param partID string containing the ID
-#' @param part_bullet_template string containing display template
+#' @param part_info data.table containing raw parts information.
+#' @param part_bullet_template string containing display the bullet display template.
 #' 
-#' @return glue object string populated using part_info
+#' @return glue object string populated using part_info.
 bullet_point_template_population <- function(part_info, part_bullet_template){
   # Declare display elements
   part_ID <- part_info[[parts_sheet_column_names$part_ID_column_name]]
