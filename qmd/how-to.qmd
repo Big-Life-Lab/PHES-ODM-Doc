@@ -36,7 +36,7 @@ The templates contain four main types of fields; in these how-to guides they are
 
 -   **Date fields (purple):** Dates are entered in these fields and must be in the form of the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html "https://www.iso.org/iso-8601-date-and-time-format.html") format: `yyyy-mm-dd`. All date fields also support entries for hours, minutes, and seconds: `2022-01-01T06:11:54` and `2022-01-01T06:11:54+13:30`
 
--   **Free form fields (blue):** In these fields, you can enter your data in any format that you wish. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that cannot be validated in Excel. The data type of a measure can be checked in the reference list for the measure. For example, the data type for [Sample temperature](docs.phes-odm.org/parts#temp "docs.phes-odm.org/parts#temp") is a real number.
+-   **Free form fields (blue):** In these fields, you can enter your data in any format that you wish. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that cannot be validated in Excel. The data type of a measure can be checked in the reference list for the measure. For example, the data type for [Sample temperature](parts.qmd#temp") is a real number.
 
 ### Conditional menus
 
@@ -48,13 +48,13 @@ All of this was done because, in an online environment (such as Excel Online), t
 
 ## 2) How to report Measures and Measure sets
 
-In this guide you will learn how to record data in the `Measure report` (or 'measures') and `Measure set report` (or `measureSets`) templates. In the `Measure report` template, each row represents a measure. Along the same lines, in the `Measure set report` template, each entry represents a collection or set of measures.
+In this guide you will learn how to record data in the `Measure report` (or `measures` Excel tab) and `Measure set report` (or `measureSets` tab) templates. In the `Measure report` template, each row represents a measure. Along the same lines, in the `Measure set report` template, each entry represents a collection or set of measures.
 
-You can find additional information regarding terms and the colour-coding of columns at the beginning of this document ([How-To guides]) and the Reference Guide - Parts document.
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this document ([How-To guides]) and the Reference Guide - [Parts document]((parts.qmd)).
 
 ## Quick Start
 
-Below you will find the mandatory fields for the `Measure report` and `Measure set report` templates. You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed description.
+Below you will find the mandatory fields for the `Measure report` and `Measure set report` templates. You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed description.
 
 ### `Measure report` template
 
@@ -196,7 +196,7 @@ You have now entered your data in the `Measure report` and `Measure set report` 
 
 ## 3) How to report samples and sample relationships:
 
-In this guide you will learn how to enter information about samples and sample relationships into their respective templates. In the `Sample report` (or `samples`) template, each entry represents a sample. A sample is the wastewater that you collected so that measures can be made. Along the same lines, each entry in the `Sample relationships` (or`sampleRelationships`) template represents an interaction (or relationship) between two samples in the form "subject - relationship - object". So, to specify that Sample A is a field sample replicate of Sample B, you would enter `Sample ID` of A - `Field sample replicate` - `Sample ID` of B.
+In this guide you will learn how to enter information about samples and sample relationships into their respective templates. In the `Sample report` (or `samples` tab) template, each entry represents a sample. A sample is the wastewater that you collected so that measures can be made. Along the same lines, each entry in the `Sample relationships` (or`sampleRelationships`) template represents an interaction (or relationship) between two samples in the form "subject - relationship - object". So, to specify that Sample A is a field sample replicate of Sample B, you would enter `Sample ID` of A - `Field sample replicate` - `Sample ID` of B.
 
 You can find additional information regarding terms and the colour-coding of columns at the beginning of this document ([How-To guides]) and the Reference Guide - Parts document.
 
@@ -344,7 +344,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
     *Image will be added*
 
-### **`Protocols` template** 
+### **`Protocols` template**
 
 1.  **Mandatory fields**
 
@@ -748,8 +748,8 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
         -   You may have already created some of the identifiers in other templates. For instance, you may have already created the `Address ID` in the `Address` template.
     ii) Columns B and C:
-        -   These columns are free form fields in which you can enter additional information regarding the organization.    
-    
+        -   These columns are free form fields in which you can enter additional information regarding the organization.
+
 2.  **Columns F to J**
 
     ![](assets/how-to/organizations_Col_FJ.png)
