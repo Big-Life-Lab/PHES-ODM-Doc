@@ -21,7 +21,7 @@ missing_warning <- function(column_name, ID){
 #' @param column_name string storing the name of the column with missing information.
 #' @param replacement string storing the column name whose values are used as replacement.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning about missing and substituted values.
 missing_and_substituted <- function(ID, column_name, replacement){
   glue::glue(
     'ID: {ID} is missing a valid {column_name} substituting {replacement} instead.\n')
@@ -31,9 +31,9 @@ missing_and_substituted <- function(ID, column_name, replacement){
 #' 
 #' Warning for when information is missing and is skipped from display.
 #' 
-#' @param ID string storing the ID of a part.
+#' @param ID string storing the ID of a part which is skipped.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning about skipped parts.
 skipped_and_missing <- function(ID){
   glue::glue('ID: {ID} is missing from parts and will be skipped.\n')
 }
@@ -43,9 +43,9 @@ skipped_and_missing <- function(ID){
 #' Warning for when a part that's related to a table has no valid columns 
 #' and is skipped for display.
 #' 
-#' @param ID string containing the ID of a part.
+#' @param ID string containing the ID of a part that does not have valid table columns.
 #' 
-#' @return String with the populated warning. 
+#' @return String with the populated warning about skipping invalid table partIDs. 
 skipped_and_invalid <- function(ID){
   glue::glue('ID: {ID} does not have any valid columns and will be skipped.\n')
 }
@@ -54,9 +54,9 @@ skipped_and_invalid <- function(ID){
 #' 
 #' Warning for when no valid order column is found therefore ordering is skipped.
 #' 
-#' @param ID string containing the ID of a part.
+#' @param ID string containing the ID of a part responsible for a table with no order columns.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning explaining skipped ordering when an order column is missing.
 skipped_order <- function(ID){
   glue::glue('ID: {ID} does not have a valid order column. No ordering was done.\n')
 }
@@ -65,9 +65,9 @@ skipped_order <- function(ID){
 #' 
 #' Warning for when no valid categorical link is present.
 #' 
-#' @param ID string containing the ID of a part.
+#' @param ID string containing the ID of a part which does not have a valid category link.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning containing explanation of the invalid cat link.
 invalid_cat_link <- function(ID){
   glue::glue('ID: {ID} has data type of \\
                    {constants$part_sheet_data_type_is_categorical} but no valid \\
@@ -78,9 +78,9 @@ invalid_cat_link <- function(ID){
 #' 
 #' Warning for when duplicate IDs are present in the dictionary.
 #' 
-#' @param ID string containing the ID of a part.
+#' @param ID string containing the ID of a part that has a duplicate row.
 #' 
-#' @return String with the populated warning.
+#' @return String with the populated warning stating which ID was duplicate.
 duplicate_ID <- function(ID){
   glue::glue('Duplicate ID: {ID} found only the first instance is used.\n')
 }
