@@ -6,12 +6,15 @@ source(file.path(getwd(), "R", "constants.R"))
 #'
 #' @param input_table data.frame to format
 #' @param columns_to_format vector containing names of columns to format. If not passed all columns are formatted.
+#' @param remove_duplicate boolean to toggle duplicate partID removal.
+#' @param check_table_values boolean to toggle checking for table specific values within table columns.
 #'
 #' @return data.frame containing formatted input
 format_table <-
   function(input_table,
            columns_to_format = NULL,
-           remove_duplicate = FALSE) {
+           remove_duplicate = FALSE,
+           check_table_values = FALSE) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
@@ -79,32 +82,50 @@ format_table <-
       
     }
     
+    # Check table related values
+    if (check_table_values) {
+      # Retrieve table related rows then columns
+      tables_data <-
+        output_table[output_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
+                       output_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+      all_table_column_names <-
+        tables_data[[parts_sheet_column_names$part_ID_column_name]]
+      check_values_for_table(
+        output_table,
+        all_table_column_names,
+        c(
+          constants$part_sheet_table_column_type_is_PK,
+          constants$part_sheet_table_column_type_is_FK,
+          constants$part_sheet_table_column_type_is_header,
+          constants$part_sheet_table_column_type_is_input,
+          constants$dictionary_missing_value_replacement
+        )
+      )
+    }
+    
     return(output_table)
   }
 
 
 #' Check values for tables
-#' 
+#'
 #' Check that values present in the specified columns in the input table match the passed valid_values.
 #' Outputs a warning when case sensitive has no match but case insensitive matches.
-#' 
+#'
 #' @param input_table data.frame containing input data
 #' @param column_names vector of names of the columns within input_table to check
 #' @param valid_values vector of valid values withing the columns
-check_values_for_table <- function(input_table, column_names, valid_values){
-  lowered_valid_values <- lapply(valid_values, tolower)
-  for (table_column in column_names) {
-    # Collect all unique values
-    unique_values <- unique(input_table[[table_column]])
-    # In case I want to return valid values rather then just check
-    #checked_values <- c()
-    for (value_to_check in unique_values) {
-      if(value_to_check %in% valid_values){
-        #checked_values <- append(checked_values, value_to_check)
-        next()
-      }else if(tolower(value_to_check) %in% lowered_valid_values){
-        warning(glue::glue('{table_column} Does not use appropriate case for {value_to_check}'))
+check_values_for_table <-
+  function(input_table, column_names, valid_values) {
+    for (table_column in column_names) {
+      unique_values <- unique(input_table[[table_column]])
+      for (single_value in unique_values) {
+        if(!(single_value %in% valid_values)){
+          # Gather parts info using invalid values
+          invalid_parts_info <- input_table[input_table[[table_column]]==single_value, ]
+          partID <- invalid_parts_info[[parts_sheet_column_names$part_ID_column_name]]
+          warning(glue::glue('Part ID: {partID} contains an invalid value({single_value}), in column: {table_column}.\n\n'))
+        }
       }
     }
   }
-}
