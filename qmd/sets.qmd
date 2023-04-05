@@ -165,7 +165,7 @@ for (set_type in unique_set_types) {
       
       
       list_values[[length(list_values) + 1]] <-
-        bullet_point_template_population(part_info, part_ID, part_bullet_template)
+        bullet_point_template_population(part_info, part_bullet_template)
       
     }
     set_display <- create_html_list(set_display, list_values)
@@ -218,7 +218,7 @@ for (list_ID in unique_list_part_IDs) {
     }
     
     list_elements_list[[element_ID]] <-
-      bullet_point_template_population(element_info, element_ID, part_bullet_template)
+      bullet_point_template_population(element_info, part_bullet_template)
   }
   list_of_lists[[list_ID]] <-
     create_html_list(list_display_info, list_elements_list)
@@ -259,7 +259,7 @@ for (category_set_ID in unique_category_set_IDs) {
     }
     
     sub_categories_list[[sub_category_ID]] <-
-      bullet_point_template_population(sub_category_info, sub_category_ID, part_bullet_template)
+      bullet_point_template_population(sub_category_info, part_bullet_template)
   }
   categories_list[[category_set_ID]] <-
     create_html_list(category_display, sub_categories_list)
