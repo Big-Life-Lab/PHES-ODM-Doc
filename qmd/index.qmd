@@ -1,12 +1,6 @@
 # Introduction {.unnumbered}
 
-> Make it easy as possible to collect and share high-quality, interoperable environmental surveillance data
-
-<!-- {{< include _dictionary-version.qmd >}}   -->
-
-::: callout-warning
-This documentation for PHES-ODM Version 2.0.0 is in the beta testing. Please be aware that changes will occur regularly in the next weeks. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
-:::
+> Make collecting and sharing high-quality, interoperable environmental surveillance data as easy as possible.
 
 The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source data model and set of tools aimed at promoting global collaboration and use of environment and public health data. The ODM model facilitates interoperable environmental surveillance and research by improving quality reporting data, enhancing data management, and supporting data provenance and sharing.
 
@@ -18,11 +12,11 @@ There are three <!--# actually four sections once tutorials are added --> docume
 
 [^index-1]: [David Laing and Divio's Grand Unified Theory of Documentation.](https://documentation.divio.com/#:~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.)
 
-*Getting to know the ODM* is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.
+[*Getting to know the ODM*](explanation.qmd) is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.
 
-*How to use the ODM* are step-by-step guides to help you use different aspects of the ODM such as report templates.
+[*How to use the ODM*](how-to.qmd) are step-by-step guides to help you use different aspects of the ODM such as report templates.
 
-*Reference* is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
+[*Reference*](ref-guide.qmd) is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
 
 ### Future documentation
 
@@ -49,11 +43,11 @@ You can view mandatory and optional data field here: ([samples](https://docs.phe
 ::: {.callout-tip collapse="true"}
 ## What are ODM parts and how to find them?
 
-In the ODM, tables are an example of an part. A part name can be identified by its text style like `this`. The part ID often follows the part in parenthesis, with a link to the part.
+In the ODM, tables are an example of an part. A part name can be identified by its text style like `this`. The part identifier often follows the part in parenthesis, with a link to the part in the reference section.
 
-So, `Sample report table` is the part name, and ([samples](https://docs.phes-odm.org/tables.html#samples "Samples report table")) is the part ID and link to the documentation for that part.
+So, `Sample report table` is the part name, and ([samples](tables.qmd#samples)) is the part ID and link to the documentation for that part.
 
-You can find out more about parts on the [reference guide section](https://docs.phes-odm.org/parts.html).
+You can find out more about parts on the [reference guide section](parts.qmd).
 :::
 
 ### 3. Try entering example data in ODM Excel templates
@@ -62,21 +56,21 @@ Keep in mind, ODM templates are only examples of how to use the ODM dictionary t
 
 #### Storing sample data in an ODM template
 
-A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. The sample template stores one sample per row. The `Sample report table` has seven mandatory fields.
+A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. The sample template stores one sample per row. The `Sample report table` has seven mandatory fields that are listed in the [reference[(tables.qmd#samples)] for the table. 
 
 {{< video https://vimeo.com/802349692 >}}
 
 #### Storing measure data in an ODM template
 
-A `measure` ([measureID](parts.qmd#measureID)) is defined as a measurement or observation of any substance including a biological, physical or chemical substance. An measurement is recorded from a specimen (i.e. a site, sample, person or population). The measure template stores on measures per row. If you recorded PCR results for two SARS-CoV-2, say the N1 (covN1) and N1 (covN2) regions, you would record each on its own line. This is referred as the "long" table format, and it is the main format for storing measures. You can create "wide" tables that store multiple measures in one row, or you can mix and match to generate tables that have both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is an example of a hybrid template (see the 'Airports" folder).
+A `measure` ([measure](parts.qmd#measureID)) is an observation or measurement of any substance, including biological, physical, or chemical substances, obtained from a specimen such including a site, sample, person, or population. Each measure is stored in the `Measures table` template as a separate row, following the "long" table format, which is the primary method for storing measures. For example, if you recorded PCR results for two SARS-CoV-2 regions, covN1 and covN2, you would record each measurement on a separate line. Alternatively, you can use a "wide" table format to store multiple measures in a single row or create tables that combine both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is a hybrid template that exemplifies this (found in the "Airports" folder).
 
 (Video)
 
 ### 4. Next steps
 
-Recording SARS-CoV-2 PCR measures are examples of storing information for a `sample`. You can also record measures for a `site` (i.e. wastewater `flow rate` (\[flowRate\](parts.qmd#flowRate)), or the `population` served by site (i.e. Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed, or municipality). Figure 2 shows subway lines for the these three specimens (`sample`, `site`, and `population`).
+In addition to recording measures from samples, you can also record measures for a specific site, such as wastewater flow rate ([flowRate](parts.qmd#flowrate)), or the population served by the site, such as the Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed or municipality. **Figure 2** illustrates the these three types of measurements: `sample`, `site`, and `population`.
 
-The "who, where, and why" for measures is stored in contact tables. "How", the measure protocol or method, is stored in the `protocols` tables.
+The "who, where, and why" of these measurements is stored in contact tables, while the "how," which refers to the measurement protocol or method, is stored in the protocols tables.
 
 ![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/subway.png){fig-align="center"}
 
