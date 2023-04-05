@@ -152,19 +152,22 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#how-to-guides" id="toc-how-to-guides" class="nav-link active" data-scroll-target="#how-to-guides">How-To guides</a></li>
-  <li><a href="#how-to-use-templates" id="toc-how-to-use-templates" class="nav-link" data-scroll-target="#how-to-use-templates">1) How to use templates</a></li>
-  <li><a href="#how-to-report-measures-and-measure-sets" id="toc-how-to-report-measures-and-measure-sets" class="nav-link" data-scroll-target="#how-to-report-measures-and-measure-sets">2) How to report Measures and Measure Sets:</a></li>
+  <li><a href="#how-to-use-templates" id="toc-how-to-use-templates" class="nav-link" data-scroll-target="#how-to-use-templates">1) How to use templates</a>
+  <ul class="collapse">
+  <li><a href="#conditional-menus" id="toc-conditional-menus" class="nav-link" data-scroll-target="#conditional-menus">Conditional menus</a></li>
+  </ul></li>
+  <li><a href="#how-to-report-measures-and-measure-sets" id="toc-how-to-report-measures-and-measure-sets" class="nav-link" data-scroll-target="#how-to-report-measures-and-measure-sets">2) How to report Measures and Measure sets</a></li>
   <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a>
   <ul class="collapse">
-  <li><a href="#measures-template" id="toc-measures-template" class="nav-link" data-scroll-target="#measures-template">Measures Template</a></li>
+  <li><a href="#measure-report-template" id="toc-measure-report-template" class="nav-link" data-scroll-target="#measure-report-template"><code>Measure report</code> template</a></li>
   <li><a href="#measure-sets-template" id="toc-measure-sets-template" class="nav-link" data-scroll-target="#measure-sets-template"><strong>Measure Sets Template</strong></a></li>
   </ul></li>
   <li><a href="#detailed-description" id="toc-detailed-description" class="nav-link" data-scroll-target="#detailed-description">Detailed description</a>
   <ul class="collapse">
-  <li><a href="#measures-template-1" id="toc-measures-template-1" class="nav-link" data-scroll-target="#measures-template-1"><strong>Measures template</strong></a></li>
-  <li><a href="#measure-sets-template-1" id="toc-measure-sets-template-1" class="nav-link" data-scroll-target="#measure-sets-template-1"><strong>Measure Sets Template</strong></a></li>
+  <li><a href="#measures-template" id="toc-measures-template" class="nav-link" data-scroll-target="#measures-template"><strong>Measures template</strong></a></li>
+  <li><a href="#measure-set-report-template" id="toc-measure-set-report-template" class="nav-link" data-scroll-target="#measure-set-report-template"><strong><code>Measure set report</code> template</strong></a></li>
   </ul></li>
-  <li><a href="#how-to-report-samples-and-sample-relationships" id="toc-how-to-report-samples-and-sample-relationships" class="nav-link" data-scroll-target="#how-to-report-samples-and-sample-relationships">3) How to report Samples and Sample Relationships:</a></li>
+  <li><a href="#how-to-report-samples-and-sample-relationships" id="toc-how-to-report-samples-and-sample-relationships" class="nav-link" data-scroll-target="#how-to-report-samples-and-sample-relationships">3) How to report samples and sample relationships:</a></li>
   <li><a href="#quick-start-1" id="toc-quick-start-1" class="nav-link" data-scroll-target="#quick-start-1">Quick Start</a>
   <ul class="collapse">
   <li><a href="#samples-template" id="toc-samples-template" class="nav-link" data-scroll-target="#samples-template">Samples Template</a></li>
@@ -172,46 +175,50 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#detailed-description-1" id="toc-detailed-description-1" class="nav-link" data-scroll-target="#detailed-description-1">Detailed Description</a>
   <ul class="collapse">
-  <li><a href="#samples-template-1" id="toc-samples-template-1" class="nav-link" data-scroll-target="#samples-template-1">Samples Template</a></li>
-  <li><a href="#sample-relationships-template-1" id="toc-sample-relationships-template-1" class="nav-link" data-scroll-target="#sample-relationships-template-1">Sample Relationships Template</a></li>
+  <li><a href="#sample-report-template" id="toc-sample-report-template" class="nav-link" data-scroll-target="#sample-report-template"><code>Sample report</code> template</a></li>
+  <li><a href="#sample-relationships-template-1" id="toc-sample-relationships-template-1" class="nav-link" data-scroll-target="#sample-relationships-template-1"><code>Sample relationships</code> template</a></li>
   </ul></li>
-  <li><a href="#how-to-report-protocols-protocol-steps-and-protocol-relationships" id="toc-how-to-report-protocols-protocol-steps-and-protocol-relationships" class="nav-link" data-scroll-target="#how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report <code>Protocols</code>, <code>Protocol Steps</code> and <code>Protocol Relationships</code>:</a></li>
+  <li><a href="#how-to-report-protocols-protocol-steps-and-protocol-relationships" id="toc-how-to-report-protocols-protocol-steps-and-protocol-relationships" class="nav-link" data-scroll-target="#how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report protocols, protocol steps and protocol relationships:</a></li>
   <li><a href="#quick-start-2" id="toc-quick-start-2" class="nav-link" data-scroll-target="#quick-start-2">Quick Start</a>
   <ul class="collapse">
-  <li><a href="#protocol-steps-template" id="toc-protocol-steps-template" class="nav-link" data-scroll-target="#protocol-steps-template"><strong>Protocol Steps Template</strong></a></li>
-  <li><a href="#protocols-template" id="toc-protocols-template" class="nav-link" data-scroll-target="#protocols-template"><strong>Protocols Template</strong></a></li>
-  <li><a href="#protocol-relationships-template" id="toc-protocol-relationships-template" class="nav-link" data-scroll-target="#protocol-relationships-template"><strong>Protocol Relationships Template</strong></a></li>
+  <li><a href="#protocol-steps-template" id="toc-protocol-steps-template" class="nav-link" data-scroll-target="#protocol-steps-template"><strong><code>Protocol steps</code> template</strong></a></li>
+  <li><a href="#protocols-template" id="toc-protocols-template" class="nav-link" data-scroll-target="#protocols-template"><strong><code>Protocols</code> template</strong></a></li>
+  <li><a href="#protocol-relationships-template" id="toc-protocol-relationships-template" class="nav-link" data-scroll-target="#protocol-relationships-template"><strong><code>Protocol relationships</code> template</strong></a></li>
   </ul></li>
   <li><a href="#detailed-description-2" id="toc-detailed-description-2" class="nav-link" data-scroll-target="#detailed-description-2">Detailed Description</a>
   <ul class="collapse">
-  <li><a href="#protocol-steps-template-1" id="toc-protocol-steps-template-1" class="nav-link" data-scroll-target="#protocol-steps-template-1"><strong>Protocol Steps Template</strong></a></li>
-  <li><a href="#protocols-template-1" id="toc-protocols-template-1" class="nav-link" data-scroll-target="#protocols-template-1"><strong>Protocols Template</strong></a></li>
-  <li><a href="#protocol-relationships-template-1" id="toc-protocol-relationships-template-1" class="nav-link" data-scroll-target="#protocol-relationships-template-1">Protocol Relationships Template</a></li>
+  <li><a href="#protocol-steps-template-1" id="toc-protocol-steps-template-1" class="nav-link" data-scroll-target="#protocol-steps-template-1"><strong><code>Protocol steps</code> template</strong></a></li>
+  <li><a href="#protocols-template-1" id="toc-protocols-template-1" class="nav-link" data-scroll-target="#protocols-template-1"><strong><code>Protocols</code> template</strong></a></li>
+  <li><a href="#protocol-relationships-template-1" id="toc-protocol-relationships-template-1" class="nav-link" data-scroll-target="#protocol-relationships-template-1"><code>Protocol relationships</code> template</a></li>
   </ul></li>
-  <li><a href="#how-to-report-metadata" id="toc-how-to-report-metadata" class="nav-link" data-scroll-target="#how-to-report-metadata">5) How to report Metadata:</a></li>
+  <li><a href="#how-to-report-metadata" id="toc-how-to-report-metadata" class="nav-link" data-scroll-target="#how-to-report-metadata">5) How to report metadata</a></li>
   <li><a href="#quick-start-3" id="toc-quick-start-3" class="nav-link" data-scroll-target="#quick-start-3">Quick Start</a>
   <ul class="collapse">
-  <li><a href="#addresses-template" id="toc-addresses-template" class="nav-link" data-scroll-target="#addresses-template">Addresses Template</a></li>
-  <li><a href="#contacts-template" id="toc-contacts-template" class="nav-link" data-scroll-target="#contacts-template">Contacts Template</a></li>
-  <li><a href="#datasets-template" id="toc-datasets-template" class="nav-link" data-scroll-target="#datasets-template">Datasets Template</a></li>
-  <li><a href="#instruments-template" id="toc-instruments-template" class="nav-link" data-scroll-target="#instruments-template">Instruments Template</a></li>
-  <li><a href="#organizations-template" id="toc-organizations-template" class="nav-link" data-scroll-target="#organizations-template">Organizations Template</a></li>
-  <li><a href="#polygons-template" id="toc-polygons-template" class="nav-link" data-scroll-target="#polygons-template">Polygons Template</a></li>
-  <li><a href="#quality-reports-template" id="toc-quality-reports-template" class="nav-link" data-scroll-target="#quality-reports-template">Quality Reports Template</a></li>
-  <li><a href="#sites-template" id="toc-sites-template" class="nav-link" data-scroll-target="#sites-template">Sites Template</a></li>
+  <li><a href="#address-or-addresses-template" id="toc-address-or-addresses-template" class="nav-link" data-scroll-target="#address-or-addresses-template"><code>Address</code> (or <code>addresses</code>) template</a></li>
+  <li><a href="#contact-or-contacts-template" id="toc-contact-or-contacts-template" class="nav-link" data-scroll-target="#contact-or-contacts-template"><code>Contact</code> (or <code>contacts</code>) template</a></li>
+  <li><a href="#dataset-or-datasets-template" id="toc-dataset-or-datasets-template" class="nav-link" data-scroll-target="#dataset-or-datasets-template"><code>Dataset</code> (or <code>datasets</code>) template</a></li>
+  <li><a href="#instrument-or-instruments-template" id="toc-instrument-or-instruments-template" class="nav-link" data-scroll-target="#instrument-or-instruments-template"><code>Instrument</code> (or <code>instruments</code>) Template</a></li>
+  <li><a href="#organization-or-organizations-template" id="toc-organization-or-organizations-template" class="nav-link" data-scroll-target="#organization-or-organizations-template"><code>Organization</code> (or <code>organizations</code>) template</a></li>
+  <li><a href="#polygon-or-polygons-template" id="toc-polygon-or-polygons-template" class="nav-link" data-scroll-target="#polygon-or-polygons-template"><code>Polygon</code> (or <code>polygons</code>) template</a></li>
+  <li><a href="#quality-reports-or-qualityreports-template" id="toc-quality-reports-or-qualityreports-template" class="nav-link" data-scroll-target="#quality-reports-or-qualityreports-template"><code>Quality reports</code> (or <code>qualityReports</code>) template</a></li>
+  <li><a href="#sites-or-sites-template" id="toc-sites-or-sites-template" class="nav-link" data-scroll-target="#sites-or-sites-template"><code>Sites</code> (or <code>sites</code>) template</a></li>
   </ul></li>
   <li><a href="#detailed-description-3" id="toc-detailed-description-3" class="nav-link" data-scroll-target="#detailed-description-3">Detailed Description</a>
   <ul class="collapse">
-  <li><a href="#addresses-template-1" id="toc-addresses-template-1" class="nav-link" data-scroll-target="#addresses-template-1">Addresses Template</a></li>
-  <li><a href="#contacts-template-1" id="toc-contacts-template-1" class="nav-link" data-scroll-target="#contacts-template-1">Contacts Template</a></li>
-  <li><a href="#datasets-template-1" id="toc-datasets-template-1" class="nav-link" data-scroll-target="#datasets-template-1">Datasets Template</a></li>
-  <li><a href="#instruments-template-1" id="toc-instruments-template-1" class="nav-link" data-scroll-target="#instruments-template-1">Instruments Template</a></li>
-  <li><a href="#organizations-template-1" id="toc-organizations-template-1" class="nav-link" data-scroll-target="#organizations-template-1">Organizations Template</a></li>
-  <li><a href="#polygons-template-1" id="toc-polygons-template-1" class="nav-link" data-scroll-target="#polygons-template-1">Polygons Template</a></li>
-  <li><a href="#quality-reports-template-1" id="toc-quality-reports-template-1" class="nav-link" data-scroll-target="#quality-reports-template-1">Quality Reports Template</a></li>
-  <li><a href="#sites-template-1" id="toc-sites-template-1" class="nav-link" data-scroll-target="#sites-template-1">Sites Template</a></li>
+  <li><a href="#address-template" id="toc-address-template" class="nav-link" data-scroll-target="#address-template"><code>Address</code> template</a></li>
+  <li><a href="#contact-template" id="toc-contact-template" class="nav-link" data-scroll-target="#contact-template"><code>Contact</code> template</a></li>
+  <li><a href="#dataset-template" id="toc-dataset-template" class="nav-link" data-scroll-target="#dataset-template"><code>Dataset</code> template</a></li>
+  <li><a href="#instrument-template" id="toc-instrument-template" class="nav-link" data-scroll-target="#instrument-template"><code>Instrument</code> template</a></li>
+  <li><a href="#organization-template" id="toc-organization-template" class="nav-link" data-scroll-target="#organization-template"><code>Organization</code> template</a></li>
+  <li><a href="#polygon-template" id="toc-polygon-template" class="nav-link" data-scroll-target="#polygon-template"><code>Polygon</code> template</a></li>
+  <li><a href="#quality-reports-template" id="toc-quality-reports-template" class="nav-link" data-scroll-target="#quality-reports-template"><code>Quality reports</code> template</a></li>
+  <li><a href="#sites-template" id="toc-sites-template" class="nav-link" data-scroll-target="#sites-template"><code>Sites</code> template</a></li>
   </ul></li>
-  <li><a href="#example-data-for-each-of-the-11-report-tables." id="toc-example-data-for-each-of-the-11-report-tables." class="nav-link" data-scroll-target="#example-data-for-each-of-the-11-report-tables.">Example data for each of the 11 report tables.</a></li>
+  <li><a href="#notes-regarding-templates" id="toc-notes-regarding-templates" class="nav-link" data-scroll-target="#notes-regarding-templates">Notes regarding templates</a>
+  <ul class="collapse">
+  <li><a href="#templates-with-conditional-menus-measure-report-and-protocol-steps" id="toc-templates-with-conditional-menus-measure-report-and-protocol-steps" class="nav-link" data-scroll-target="#templates-with-conditional-menus-measure-report-and-protocol-steps">Templates with conditional menus (<code>Measure report</code> and <code>Protocol steps</code>)</a></li>
+  <li><a href="#templates-with-menus-all-templates-other-than-the-measure-sets-protocols-contact-address-and-dataset-templates" id="toc-templates-with-menus-all-templates-other-than-the-measure-sets-protocols-contact-address-and-dataset-templates" class="nav-link" data-scroll-target="#templates-with-menus-all-templates-other-than-the-measure-sets-protocols-contact-address-and-dataset-templates">Templates with menus (all templates other than the <code>Measure sets</code>, <code>Protocols</code>, <code>Contact</code>, <code>Address</code> and <code>Dataset</code> templates)</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -240,60 +247,61 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="how-to-use-templates" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-templates">1) How to use templates</h2>
-<p>ODM Excel report templates provide you with an easy way to enter your wastewater and other environmental data into the PHES-ODM format. The templates also serve as an interactive way to get to know the ODM. Below you will find a series of guides that will walk you through how to enter data into the report templates.</p>
-<p>In these guides, “field” refers to a column in the template, and “entry” refers to a row of information that you entered. Guides also provide definitions and explanations for some terms; however, more complete information is found in the most can be found in the reference section of the ODM documentation. <!--# link to Rusty's page with the definitions --></p>
-<p>The report templates can be found at the OSF.io <a href="https://osf.io/ab9se/">PHES-ODM reference file folder</a>. More information about the tables can be found in the <a href="../index.qmd" title="getting-to-know">getting-to-know</a> section.</p>
-<p>Briefly,</p>
+<p>ODM Excel report templates provide you with an easy way to enter your wastewater and other environmental data into the relevant PHES-ODM tables (more information about the tables can be found in the <a href="./explanation.html">getting-to-know</a> section). The templates also serve as an interactive way to get to know the ODM and can be found at the OSF.io <a href="https://osf.io/ab9se/">PHES-ODM reference file folder</a>.</p>
+<p>The guides below will walk you through each of the report templates. In these guides, “field” refers to a column in the template, and “entry” refers to a row of information that you entered. The guides also provide definitions and explanations for some terms; more complete information can be found in the Reference Guide - <a href="./parts.html">Parts document</a>. If you have any questions or comments, you can post them on our <a href="https://odm.discourse.group">Discourse forum</a>.</p>
+<p>As a starting point:</p>
 <ul>
-<li><p><code>samples</code> and <code>measures</code> tables are used day-to-day reporting. Information about a sample will be recorded in the <code>samples</code> table. Measurements are recorded in the <code>measures</code> table. A measure is ‘measurement or observation of any substance including a biological, physical or chemical substance’.</p></li>
-<li><p>There are three optional tables to support reporting samples and measures.</p>
+<li><p><code>Sample report</code> and <code>Measure report</code> tables are used for day-to-day reporting. You can record information about a sample in the <code>Sample report</code> table. Measures (or measurements) are recorded in the <code>Measure report</code> table. A measure is “measurement or observation of any substance including a biological, physical or chemical substance”.</p></li>
+<li><p>There are three optional tables that support the reporting of samples and measures:</p>
 <ul>
-<li><p><code>sampleRelationships</code> is optional and used only when you have samples that are pooled or split.</p></li>
-<li><p><code>measureSets</code> is also an optional table that can be used to link measures together.</p></li>
-<li><p><code>qualityReports</code> is used for detailed quality assurance and control measures (you can—and should— record a <a href="TBD">quality flag</a> attribute for each measure or sample in the <code>measures</code> and <code>samples</code> tables).</p></li>
+<li><p><code>Sample relationships</code> is used only when you have samples that are pooled or split.</p></li>
+<li><p><code>Measure set report</code> can be used to link measures together.</p></li>
+<li><p><code>Quality reports</code> is used for detailed quality assurance and control reporting (you can, and should, record a quality flag attribute for each measure or sample in the <code>Measure report</code> and <code>Sample report</code> tables).</p></li>
 </ul></li>
-<li><p>Typically, there is one-time initial setup where information is entered the tables with the yellow tabs in the Excel template. These tables include information about <code>sites</code>, <code>addresses</code>, <code>organizations</code>, and <code>contacts</code>.</p>
+<li><p>Typically, there is a one time initial setup where you will need to enter information into the <code>Sites</code>, <code>Address</code>, <code>Organization</code>, and <code>Contact</code> tables.</p>
 <ul>
-<li><p><code>sites</code> is a mandantory table records information about where testing is performed.</p></li>
-<li><p><code>addresses</code>, <code>organizations</code>, and <code>contacts</code> provide the contact information for sites and also other entities such as laboratories, or database custodians.</p></li>
+<li><p><code>Sites</code> is mandatory and records information about where testing is performed.</p></li>
+<li><p><code>Address</code>, <code>Organization</code>, and <code>Contact</code> provide the contact information for sites and entities such as laboratories.</p></li>
 </ul></li>
-<li><p>There are optional supporting tables that include <code>protocols</code> and <code>instruments</code> where you record information about how samples are taken and measures are reported. These tables are usually completed once and then updated when there are changes to the protocol. <code>protocolSteps</code> and <code>protocolRelationships</code> tables are part used alongside the <code>protocols</code> table. Other supporting tables include <code>polygons</code> where information is store about the sample shed and <code>datasets</code> which includes information about the data custodian and owner of the data.</p></li>
+<li><p>There are optional supporting tables, such as <code>Protocols</code> and <code>Instrument</code>, where you can use the templates to record information about how samples are taken and how measures are reported. You only need to compete these tables once and then update them as needed. <code>Protocol steps</code> and <code>Protocol relationships</code> tables are used alongside the <code>Protocols</code> table. Other supporting tables include <code>Polygon</code>, which stores information about the sample shed, and <code>Dataset</code>, which stores information about the data custodian and owner of the data.</p></li>
 </ul>
-<!--# Should I include an explanation regarding the "side content" in some of the templates (i.e. the code for the conditional menus and to convert the entered data into part IDs) or should I hide them in the template? -->
-<!--# DGM: What about an 'explanation' section at the end of the document. This could be left to a future update. The section could describe how the spreadsheets work and how they can be customized -->
-<!--# Should I include an explanation regarding how certain templates only have 3 rows active (because of the slow down caused by the conditional menus)? -->
-<!--# DGM: I would put that in the future 'explanation' section at the end-->
-<p>The templates contain four main types of fields, each with their own for instructional purposes:</p>
+<p>The templates contain four main types of fields; in these how-to guides they are colour-coded for instructional purposes:</p>
 <ul>
-<li><strong>Identifier, unique identifier and composite unique identifier (red):</strong> In these fields you will create a value that will be used to identify something. For instance, <code>Sample ID</code> is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the table. e.g.&nbsp;<code>Measure ID</code> for the <code>measures</code> table, and <code>Contact ID</code> for the <code>contacts</code> table.</li>
-<li><strong>Drop-down and conditional drop-down menus (green):</strong> These fields have a drop-down menu which contain the values that you can either select <strong>or</strong> type in. In conditional drop-down menus, the values depend on what you entered in a previous field.</li>
-<li><strong>Date fields (purple):</strong> Dates are entered in these fields and must be in the form of the <a href="https://www.iso.org/iso-8601-date-and-time-format.html" title="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format: <code>yyyy-mm-dd</code>. All date fields also support entries for hours, minutes, and seconds: <code>2022-01-01T06:11:54</code> and <code>2022-01-01T06:11:54+13:30</code></li>
-<li><strong>Free form fields (blue):</strong> In these fields, you can enter your data. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that can not be validated in Excel. Data types each measure can be checked in the reference list for the measure. For example, the data type for <a href="docs.phes-odm.org/parts#temp" title="docs.phes-odm.org/parts#temp">temperature</a> is a real number.</li>
+<li><p><strong>Identifier and unique identifier (red):</strong> In these fields you will create a value that will be used to identify something. For instance, <code>Sample ID</code> is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the template. For example, <code>Measure ID</code> for the <code>Measure report</code> template, and <code>Contact ID</code> for the <code>Contact</code> template.</p></li>
+<li><p><strong>Drop-down and conditional drop-down menus (green):</strong> These fields have a drop-down menu which contain the values that you can either select <strong>or</strong> type in. In conditional drop-down menus, the values depend on what you entered in a previous field.</p></li>
+<li><p><strong>Date fields (purple):</strong> Dates are entered in these fields and must be in the form of the <a href="https://www.iso.org/iso-8601-date-and-time-format.html" title="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format: <code>yyyy-mm-dd</code>. All date fields also support entries for hours, minutes, and seconds: <code>2022-01-01T06:11:54</code> and <code>2022-01-01T06:11:54+13:30</code></p></li>
+<li><p><strong>Free form fields (blue):</strong> In these fields, you can enter your data in any format that you wish. Any restrictions will be specified in the relevant sections. Keep in mind, different measures may have different data types that cannot be validated in Excel. The data type of a measure can be checked in the reference list for the measure. For example, the data type for <a href="./parts.html#temp&quot;">Sample temperature</a> is a real number.</p></li>
 </ul>
+<section id="conditional-menus" class="level3">
+<h3 class="anchored" data-anchor-id="conditional-menus">Conditional menus</h3>
+<p>Conditional menus use the FILTER function (which is present in Excel 2019 and later) and are only functional in the first three rows of their respective templates. In addition, the auto-calculation has been disabled. Thus, you will need to press the “Calculate Sheet” button, which is in the “Formulas” tab after entering the value in the field upon which the conditional menu is based upon; this button is outlined in red in the image below (the image is for Excel Online). For example, for the <code>Measure</code> conditional menu in the <code>Measure report</code> template, you would select a value in the <code>Class</code> field, press “Calculate Sheet” and then the correct values will show up in the menu of the <code>Measure</code> field.</p>
+<p><img src="assets/how-to/cond_menu.png" class="img-fluid"></p>
+<p>All of this was done because, in an online environment (such as Excel Online), the code for the conditional menus work can cause the templates to run very slowly. You can reactivate the auto-calculation if you wish. For further information about how to expand these menus to additional rows and other aspects of the templates, see <a href="#notes-regarding-templates">Notes regarding templates</a>.</p>
+</section>
 </section>
 <section id="how-to-report-measures-and-measure-sets" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-report-measures-and-measure-sets">2) How to report Measures and Measure Sets:</h2>
-<!--# add link to youtube video -->
-<p>In this guide you will learn how to record data in the <code>Measures</code> and <code>Measure Sets</code> table templates. In the <code>Measures</code> table, each row represents a measure. Along the same lines, in the <code>Measure Sets</code> template, each entry will be a collection or set of measures.</p>
+<h2 class="anchored" data-anchor-id="how-to-report-measures-and-measure-sets">2) How to report Measures and Measure sets</h2>
+<p>In this guide you will learn how to record data in the <code>Measure report</code> (or <code>measures</code> Excel tab) and <code>Measure set report</code> (or <code>measureSets</code> tab) templates. In the <code>Measure report</code> template, each row represents a measure. Along the same lines, in the <code>Measure set report</code> template, each entry represents a collection or set of measures.</p>
+<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this document (<a href="#how-to-guides">How-To guides</a>) and the Reference Guide - <a href="(parts.qmd)">Parts document</a>.</p>
 </section>
 <section id="quick-start" class="level2">
 <h2 class="anchored" data-anchor-id="quick-start">Quick Start</h2>
-<p>Below you will find the mandatory fields for the <code>measures</code> Table.&nbsp;You will also find definitions of terms and examples of entries of data, with all of the fields filled and colour-coded.&nbsp;A more detailed description of some of the key concepts can be found in the following section,Detailed description.</p>
-<section id="measures-template" class="level3">
-<h3 class="anchored" data-anchor-id="measures-template">Measures Template</h3>
+<p>Below you will find the mandatory fields for the <code>Measure report</code> and <code>Measure set report</code> templates. You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed description.</p>
+<section id="measure-report-template" class="level3">
+<h3 class="anchored" data-anchor-id="measure-report-template"><code>Measure report</code> template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
 <ul>
-<li><p><strong><code>Report ID</code></strong>: Unique identifier for a Measure.</p></li>
-<li><p><strong><code>Sample ID</code></strong>: Unique identifier for a Sample.</p></li>
-<li><p><strong><code>Site ID</code></strong>: Unique identifier for the location where a Sample was taken.</p></li>
-<li><p><strong><code>Analysis Date End</code></strong>: Date the Measure was completed.</p></li>
+<li><p><strong><code>Report ID</code></strong>: Unique identifier for the <code>Measure report</code> template. Each value represents a measure.</p></li>
+<li><p><strong><code>Sample ID</code></strong>: Identifier for the sample that is associated with each measure.</p></li>
+<li><p><strong><code>Site ID</code></strong>: Identifier for the location where a sample was taken.</p></li>
+<li><p><strong><code>Analysis Date End</code></strong>: Date the measure was completed.</p></li>
 <li><p><strong><code>Measure</code></strong>: A measurement or observation of any substance including a biological, physical or chemical substances.</p></li>
-<li><p><strong><code>Value</code></strong>: Value of the Measure.</p></li>
+<li><p><strong><code>Value</code></strong>: Value of the measure.</p></li>
 <li><p><strong><code>Unit</code></strong>: Units of a value.</p></li>
-<li><p><strong><code>Aggregation</code></strong>: Statistical measures that the Measure represents.</p></li>
-<li><p><strong><code>Specimen</code></strong>: Substance or thing upon which the observation was made. Specimens include water, air, and surface. The Specimen feild is mandatory if there is more than one specimen type that is collected in database.</p></li>
+<li><p><strong><code>Aggregation</code></strong>: Statistical measure that the measure represents (for example “mean”).</p></li>
+<li><p><strong><code>Specimen</code></strong>: Substance or thing upon which the observation was made. Specimens include <code>Population</code>, <code>Sample</code>, and <code>Site</code>. This field is only mandatory if there is more than one specimen type that is collected in the dataset.</p></li>
 </ul>
 <ol start="2" type="1">
 <li><p><strong>Examples</strong></p>
@@ -306,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Mandatory fields</strong></li>
 </ol>
 <ul>
-<li><strong><code>Report Set ID</code></strong>: Unique identifier that links together a group of related Measures.</li>
+<li><strong><code>Report set ID</code></strong>: Unique identifier for the <code>Measure set report</code> template. Each value represents a group of related measures.</li>
 </ul>
 <ol start="3" type="1">
 <li><p><strong>Examples</strong></p>
@@ -316,8 +324,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="detailed-description" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-description">Detailed description</h2>
-<section id="measures-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="measures-template-1"><strong>Measures template</strong></h3>
+<section id="measures-template" class="level3">
+<h3 class="anchored" data-anchor-id="measures-template"><strong>Measures template</strong></h3>
 <ol type="1">
 <li><p><strong>Columns A to H</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -328,15 +336,14 @@ ul.task-list li input[type="checkbox"] {
 <ol type="i">
 <li><p>Columns A-C, and E-H</p>
 <ul>
-<li><p>These are the identifier fields.</p></li>
-<li><p><code>Report ID</code> (column A) is the unique identifier for this template, and it cannot be repeated. Each Report ID represents a unique measure.</p>
-<p>The <code>Report ID</code> can be any text field up to 30 characters. If you don’t have a method to generate a <code>Report ID</code> you can use the ODM recommended formula: {Mathew, can you add the formula here}.</p></li>
-<li><p>Other identifiers can be repeated between entries (if needed). For instance, if you enter two different measures from the same sample, then the <code>Sample ID</code> (column C) will be the same.</p></li>
-<li><p>You may have already created these identifiers in another template. For instance, you may have created <code>Sample ID</code> in the <code>samples</code> Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Report ID</code> (column A) is the unique identifier for this template, and it cannot be repeated. You can think of each <code>Report ID</code> as representing a unique measure. The field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>You can repeat the other fields between entries (if needed). For instance, if you enter two different measures from the same sample, then the <code>Sample ID</code> (column C) will be the same.</p></li>
+<li><p>You may have already created these identifiers in another template. For instance, you may have created <code>Sample ID</code> in the <code>Sample report</code> template.</p></li>
 </ul></li>
 <li><p>Column D</p>
 <ul>
-<li><code>Purpose</code> (optional) has a drop-down menu list. In the list, <code>Regular</code> is the default purpose.</li>
+<li><code>Purpose</code> has a drop-down menu. If you are unsure what to put, select <code>Regular</code>.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns I to M</strong></p>
@@ -348,13 +355,13 @@ ul.task-list li input[type="checkbox"] {
 <ol type="i">
 <li>Columns I to K
 <ul>
-<li>These are the date fields where you can enter the dates associated with your measure in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. <code>2022-01-01T06:11:54</code> or <code>2022-01-01T06:11:54+13:30</code></li>
+<li>These are date fields where you can enter the dates associated with your measure in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. <code>2022-01-01T06:11:54</code> or <code>2022-01-01T06:11:54+13:30</code></li>
 </ul></li>
 <li>Columns L and M
 <ul>
-<li><code>Specimen</code> and <code>Fraction analyzed</code> have drop-down menus. Both fields are optional, but both are recommended.</li>
-<li><code>Specimen</code> is must be included your table has more than one type of specimen. When there is only one specimen, the database table record the specimen type. For example, if your <code>measures</code> table include only wastewater sample measures, you can indicate this information in the <code>databases</code> table.</li>
-<li><code>Fraction analyzed</code> applies only for water and wastewater samples. You should record the fraction for all samples if they are component type water or wastewater.</li>
+<li><code>Specimen</code> and <code>Fraction analyzed</code> have drop-down menus. In general both fields are optional, but both are recommended (see next point for the exception).</li>
+<li><code>Specimen</code> is mandatory when the data you are entering has more than one type of specimen. When there is only one specimen, the <code>Dataset</code> table records the specimen type. For example, if your <code>Measure report</code> table includes only wastewater sample measures, you can indicate this information in the <code>Dataset</code> table.</li>
+<li><code>Fraction analyzed</code> applies only for water and wastewater samples. You should record the fraction for all samples if the compartment type is water or wastewater.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns N to S</strong></p>
@@ -366,75 +373,64 @@ ul.task-list li input[type="checkbox"] {
 <ol type="i">
 <li>Columns N and O
 <ul>
-<li><p><code>Group</code> and <code>Class</code> help organize <code>Measures</code> to make a specific measure easy to find. The fields have drop-down menus. Both fields are optional and used only if you need help finding a <code>Measure</code>.</p></li>
-<li><p>For example, to find the allele measures for SARS-CoV-2 you can start by selecting <code>SARS-CoV-2</code> in the <code>Group</code> column. Next, you select <code>Allele</code> in the <code>Class</code> column. Then, you’ll see the drop-down in the <code>Measure</code> column that contains SARS-CoV-2 allele regions.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/how-to/group-class-Col_NO.png" style="width:10cm;height:5.8cm" class="figure-img"></p>
-</figure>
-</div></li>
+<li><p><code>Group</code> and <code>Class</code> help organize the <code>Measure</code> field by making specific measures easier to find (see the example in the next section). Both fields have a drop-down menu and are optional.</p></li>
 <li><p>Leave these fields <strong>blank</strong> if you do not use them.</p></li>
 </ul></li>
 <li>Column P
 <ul>
-<li><p><code>Measure</code> is where you select what is being measured. A measure in ODM is a ‘measurement or observation of any substance including a biological, physical or chemical substance.’ <code>Measure</code> has a conditional drop-down menu. See above section on <code>Group</code> and <code>Class</code>.</p></li>
-<li><p>If you chose to enter in a <code>Class</code> (column O), the drop down menu will contain the <code>Measures</code> found in that <code>Class</code>. If you did not enter a value in column O, the menu will contain all possible <code>Measures</code>.</p></li>
+<li><p><code>Measure</code> is where you select what is being measured. A measure in ODM is a “measurement or observation of any substance including a biological, physical or chemical substance”.</p></li>
+<li><p><code>Measure</code> has a conditional drop-down menu. If you chose to enter in a <code>Class</code> (column O), the drop down menu will contain the <code>Measures</code> found in that <code>Class</code>. As mentioned, you can also enter a value into <code>Group</code> to help organize everything. If you did not enter a value in column O, the menu will contain all possible measures.</p></li>
+<li><p>For example, to find the allele measures for SARS-CoV-2 you can start by selecting <code>SARS-CoV-2</code> in the <code>Group</code> column. Next, you select <code>Alleles</code> in the <code>Class</code> field. Then, in the drop-down menu of the <code>Measure</code> field, you will see all the possible measures that contain SARS-CoV-2 allele regions.</p>
+<p><img src="assets/how-to/group-class-Col_NO.png" class="img-fluid" width="503"></p></li>
 </ul></li>
-<li>Column Q - This where you will enter in the value of your <code>Measure</code>. - For instance, if your <code>Measure</code> is a temperature of 20 <sup>o</sup>C, you would enter “20”. - Note: Excel accepts any data type can be entered in the <code>Measure</code> column. However, each <code>Measure</code> has a specific data type. Data types can be found in the reference documentation for each measure. For example, the data type for temperature can be found <a href="../parts.qmd#tempClass">here</a>.</li>
+<li>Column Q
+<ul>
+<li><p><code>Value</code> is where you enter the value of your measure. For instance, if you recorded an <code>Environmental temperature</code> of 20 <sup>o</sup>C, you would enter “20”.</p></li>
+<li><p>Note: While the value you enter into this field can be of any data type, each measure is associated with a specific one. Data types for each measure can be found in the reference documentation. For example, the data type for <code>Environmental temperature</code> can be found <a href="../parts.qmd#airTemp">here</a>.</p></li>
+</ul></li>
 <li>Column R
 <ul>
-<li><code>Units</code> is where you enter the unit for your measure. There is a conditional drop-down list of the units that are valid for the measure in column P. For example, if the measure is <code>[Storate temperature](../parts.qmd#sTemp)</code>, the only unit displayed is <code>Celcsius</code>.</li>
+<li><code>Unit</code> is where you enter the unit of your measure. This is a conditional drop-down menu field that lists all units that are valid for what was entered in the <code>Measure</code> field. For example, if selected <code>Environmental temperature</code> in the <code>Measure</code> field, the only unit displayed is <code>Celsius</code>.</li>
 </ul></li>
 <li>Column S
 <ul>
-<li><p><code>Aggregations</code> is where you enter the aggregation of your value. There is a conditional drop-down menu field which contains the types of aggregations of your value. For example does your value represent a mean, median, etc.</p></li>
-<li><p>What appears in this menu list depends on what you entered in the Unit field (column R).</p></li>
+<li><p><code>Aggregations</code> is where you enter the aggregation of your value using a drop-down menu. For instance, does your value represent a mean, median, etc.</p></li>
+<li><p>What appears in this menu list depends on what you entered in the <code>Unit</code> field (column R).</p></li>
 </ul></li>
 </ol></li>
-<li><p><strong>Columns T to AA</strong></p>
+<li><p><strong>Columns T to AB</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="assets/how-to/measures_Col_TAA.png" class="img-fluid figure-img"></p>
+<p><img src="assets/how-to/measures_Col_TAB.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 <ol type="i">
-<li>Columns U, V and AA
+<li>Columns U, V, Z and AB
 <ul>
-<li><code>Index</code> (column U) is used if you have multiple entries with the exact same values in the other fields. If this is the case you could use “1”, “2”, etc. to differentiate them. <!--# Is this correct? --></li>
+<li>These are free-form fields.</li>
+<li><code>Index</code> (column U) is used if you have multiple entries with the same values in most of the other fields; an example is when you make replicates of measures. If this is the case you can enter “1”, “2”, etc. in this field to differentiate them.</li>
 <li><code>Measure license</code> (column V) refers to the access and use licensing of the measure that you are entering.</li>
 </ul></li>
 <li>Column T and W
 <ul>
-<li><code>Reportable</code> (column W) is where you can indicate if there are quality concerns with the measure and the measure should not be used for regular reporting. More details of the quality concerns can be recorded in the <code>quality sets</code> table. There is a drop down list this field.</li>
+<li>These are fields which contain drop-down menus.</li>
+<li><code>Reportable</code> (column W) is where you can indicate if the measure should not be used for regular reporting due to quality concerns. You can record more details of the quality concerns in the <code>Quality reports</code> template.</li>
 </ul></li>
 <li>Column X and Y
 <ul>
-<li>These are identifier fields that are used to indicate the <code>Organization</code> and <code>Contact</code> associated with the entry.</li>
+<li>These are identifier fields that are used to indicate the organization and contact person associated with the entry.</li>
 </ul></li>
-<li>Column Z
+<li>Column AA
 <ul>
-<li><code>Last edited</code> field is where you indicate the date when the entry was updated. The field is used if you need to modify an entry (row) after your initial recording. You can leave this field blank if the measure was entered with no updates. Meaning, use this field only when you modify the entry (row).</li>
+<li><code>Last edited</code> is where you can indicate the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="measure-sets-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="measure-sets-template-1"><strong>Measure Sets Template</strong></h3>
+<section id="measure-set-report-template" class="level3">
+<h3 class="anchored" data-anchor-id="measure-set-report-template"><strong><code>Measure set report</code> template</strong></h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-NOTE: this figure needs to be update with the correct labels.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="assets/how-to/measureSets_Col_AG.png" class="img-fluid figure-img" width="671"></p>
@@ -443,75 +439,49 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A, B, D and E</p>
 <ul>
-<li>These are all Identifier fields.</li>
-<li>Report Set ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Report Set ID represents a unique Measure Set.</li>
-<li>For the rest, you can repeat the Identifier between entries (if needed). For instance, if you are entering two different Measure Sets that came from the same Organization, then the Organization ID (column D) will be the same.</li>
-<li>You may have already created these Identifiers in another template. For instance you may have created Organization ID in the Organizations Template.</li>
-</ul></li>
-<li><p>Columns C and G</p>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Report Set ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. In essence, each value of <code>Report set ID</code> represents a unique measure set. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest, you can repeat the identifier between entries (if needed). For instance, if you are entering two different measure sets that came from the same organization, then the <code>Organization ID</code> (column D) will be the same.</p></li>
+<li><p>You may have already created these identifiers in another template. For instance you may have created <code>Organization ID</code> in the <code>Organization</code> template.</p></li>
+</ul>
+<p>Columns C and G</p>
 <ul>
-<li>These are Free Form fields in which you will enter the indicated information. Name (column C) refers to the name that you have given to the Measure Set.</li>
+<li>These are free form fields in which you can enter the indicated information. <code>Name</code> (column C) refers to the name that you have given to the measure set.</li>
 </ul></li>
 <li><p>Column F</p>
 <ul>
-<li>This is a Date field in which you can enter in the date when the entry was updated.</li>
+<li><code>Last edited</code> is a date field in which you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
-<p>You have now entered your data in the Measures and Measure Sets Template, congratulations!</p>
+<p>You have now entered your data in the <code>Measure report</code> and <code>Measure set report</code> templates, congratulations!</p>
 </section>
 </section>
 <section id="how-to-report-samples-and-sample-relationships" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-report-samples-and-sample-relationships">3) How to report Samples and Sample Relationships:</h2>
-<!--# insert video -->
-<p>In this guide you will learn how to enter Samples and Sample Relationships into their respective templates. In the Samples template, each entry represents a Sample. A Sample is the wastewater that you collected so that Measures can be made. <!--# I'm not sure how you want to define this, it's not in the parts table -->.Along the same lines, each entry in the Sample Relationships represents an interaction (or Relationship) between two Samples in the form, Subject - Relationship - Object. So, to specify that Sample A is a field sample replicate of Sample B, you would enter “Sample A” - “Field Sample Replicate” - “Sample B”</p>
-<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+<h2 class="anchored" data-anchor-id="how-to-report-samples-and-sample-relationships">3) How to report samples and sample relationships:</h2>
+<p>In this guide you will learn how to enter information about samples and sample relationships into their respective templates. In the <code>Sample report</code> (or <code>samples</code> tab) template, each entry represents a sample. A sample is the wastewater that you collected so that measures can be made. Along the same lines, each entry in the <code>Sample relationships</code> (or<code>sampleRelationships</code>) template represents an interaction (or relationship) between two samples in the form “subject - relationship - object”. So, to specify that Sample A is a field sample replicate of Sample B, you would enter <code>Sample ID</code> of A - <code>Field sample replicate</code> - <code>Sample ID</code> of B.</p>
+<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this document (<a href="#how-to-guides">How-To guides</a>) and the Reference Guide - Parts document.</p>
 </section>
 <section id="quick-start-1" class="level2">
 <h2 class="anchored" data-anchor-id="quick-start-1">Quick Start</h2>
-<p>Below you will find the fields that are mandatory for the Samples and Sample Relationships template. You will also find some examples of entries of data, with the all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
+<p>Below you will find the fields that are mandatory for the <code>Sample report</code> and <code>Sample relationships</code> templates. You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
 <section id="samples-template" class="level3">
 <h3 class="anchored" data-anchor-id="samples-template">Samples Template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Sample ID</th>
-<th style="text-align: center;">Site ID</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Sample Material</td>
-<td style="text-align: center;">Sample Collection Type</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Collection Period</td>
-<td style="text-align: center;">Collection Number</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Collection Date Time</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Definitions</strong></li>
-</ol>
 <ul>
-<li><p>Sample ID: Unique identifier for a Sample.</p></li>
-<li><p>Site ID: Unique identifier for the location where a wastewater sample was taken.</p></li>
-<li><p>Sample Material: Type of Sample.</p></li>
-<li><p>Sample Collection Type: Method used to collect the Sample.</p></li>
-<li><p>Collection Period: The time period over which the Sample was collected, in hours. <!--# I got this from the parts table and it is unclear to me.  Is it just the number of hours?  Or is it something like 9:00 - 12:00? --></p></li>
-<li><p>Collection Number: The number of subsamples that were combined to create the Sample. Use NA for continuous, proportional or passive sampling.</p></li>
-<li><p>Collection Date Time: The date, time and time zone the sample was taken.</p></li>
+<li><p><strong><code>Sample ID</code></strong>: Unique identifier for the <code>Sample report</code> template. Each value represents a sample.</p></li>
+<li><p><strong><code>Site ID</code></strong>: Identifier for the location where a sample was taken.</p></li>
+<li><p><strong><code>Sample material</code></strong>: Type of material that the sample is made of.</p></li>
+<li><p><strong><code>Sample collection type</code></strong>: Method used to collect the sample.</p></li>
+<li><p><strong><code>Collection period</code></strong>: The time period over which the sample was collected, in hours.</p></li>
+<li><p><strong><code>Collection number</code></strong>: The number of subsamples that were combined to create the sample. Use NA for continuous, proportional or passive sampling.</p></li>
+<li><p><strong><code>Collection date time</code></strong>: The date, time and time zone the sample was taken.</p></li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><p><strong>Examples</strong></p>
-<p><em>to be added</em></p></li>
+<p><em>Image will be added</em></p></li>
 </ol>
 </section>
 <section id="sample-relationships-template" class="level3">
@@ -519,38 +489,21 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Sample ID Object</th>
-<th style="text-align: center;">Relationship</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Sample ID Subject</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Definitions</strong></li>
-</ol>
 <ul>
-<li><p>Sample ID Object: The Object (or one of the samples) of a relationship between two Samples. This will always be a Sample ID that was previously created in the Samples Template.</p></li>
-<li><p>Relationship: Describes relationship between two Samples.</p></li>
-<li><p>Sample ID Subject: The Subject (or one of the samples) of a relationship between two Samples. This will always be a Sample ID that was previously created in the Samples Template.</p></li>
+<li><p><strong><code>Sample ID object</code></strong>: The object (or one of the samples) of a relationship between two samples. This will always be a <code>Sample ID</code> that was previously created in the <code>Sample report</code> template.</p></li>
+<li><p><strong><code>Relationship</code></strong>: Describes the relationship between two samples.</p></li>
+<li><p><strong><code>Sample ID subject</code></strong>: The subject (or one of the samples) of a relationship between two samples. This will always be a <code>Sample ID</code> that was previously created in the <code>Sample report</code> template.</p></li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><p><strong>Examples</strong></p>
-<p>Examples will be added</p></li>
+<p><em>Image will be added</em></p></li>
 </ol>
 </section>
 </section>
 <section id="detailed-description-1" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-description-1">Detailed Description</h2>
-<section id="samples-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="samples-template-1">Samples Template</h3>
+<section id="sample-report-template" class="level3">
+<h3 class="anchored" data-anchor-id="sample-report-template"><code>Sample report</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -561,65 +514,55 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A to E:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Sample ID (column A) is the Unique Identifier for this template and cannot be repeated between entries. You can think of each Sample ID value as representing a unique Sample.</p></li>
-<li><p>For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different Samples from the same Site, then the Site ID (column E) will be the same.</p></li>
-<li><p>You may have already created these Identifiers in another template. For instance you may have created Site ID in the Sites Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Sample ID</code> (column A) is the unique identifier for this template and cannot be repeated between entries. You can think of each <code>Sample ID</code> value as representing a unique sample. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different samples from the same site, then the <code>Site ID</code> (column E) will be the same.</p></li>
+<li><p>You may have already created these identifiers in another template. For instance you may have created <code>Site ID</code> in the <code>Sites</code> template.</p></li>
 </ul></li>
 <li><p>Columns F to G:</p>
 <ul>
-<li>These are Drop-down Menu fields where you can enter information regarding the Purpose and Sample Material of your Sample.</li>
+<li>These are fields that contain drop-down menus where you can enter information regarding the <code>Purpose</code> (column F) and <code>Sample material</code> (column G) of your sample.</li>
 </ul></li>
 </ol></li>
-<li><p><strong>Columns H to N</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/how-to/samples_col_HN.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<li><p><strong>Columns H to O</strong></p>
+<p><img src="assets/how-to/samples_Col_HO.png" class="img-fluid"></p>
 <ol type="i">
 <li>Columns H:
 <ul>
-<li>These is an Identifier field for the Dataset that your Sample is associated with.</li>
+<li><code>Dataset ID</code> is an identifier field for the dataset that your sample is associated with.</li>
 </ul></li>
-<li>Columns I to K, N:
+<li>Columns I to K, O:
 <ul>
-<li><p>These are Drop-down Menu fields related to various characteristics of your Sample.</p></li>
-<li><p>Sample Collection Type (column K) refers to the collection technique you used to obtain the Sample.</p></li>
-<li><p>Pooled (column N) refers to whether or not the Sample that you are entering is made up of multiple child Samples.</p>
-<!--# I'm not sure if the other fields require explanation, they seem self-explanatory --></li>
+<li><p>These fields contain drop-down menus and are related to various characteristics of your sample.</p></li>
+<li><p><code>Sample collection type</code> (column K) refers to the collection technique you used to obtain the sample.</p></li>
+<li><p><code>Pooled</code> (column O) refers to whether or not the sample that you are entering is made up of multiple child samples.</p></li>
 </ul></li>
-<li>Columns L and M:
+<li>Columns L to N:
 <ul>
-<li>These are Free Form fields.</li>
-<li>Collection Period (column L) refers to the number of hours that it took to collect your Sample.</li>
-<li>Collection Number (column M) refers to the number of subsamples that were used to create Sample that you are entering.</li>
+<li>These are free form fields.</li>
+<li><code>Collection period</code> (column L) refers to the number of hours that you took to collect the sample.</li>
+<li><code>Collection number</code> (column M) refers to the number of subsamples that were used to create Sample that you are entering.</li>
+<li><code>Collection number and period</code> (column N) is a combination of the previous two fields.</li>
 </ul></li>
 </ol></li>
-<li><p><strong>Columns O to V</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/how-to/samples_col_OV.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
+<li><p><strong>Columns P to W</strong></p>
+<p><img src="assets/how-to/samples_Col_PW.png" class="img-fluid"></p>
 <ol type="i">
-<li>Columns O to S, U:
+<li>Columns P to T, V:
 <ul>
-<li>These are Date fields that are related to various dates associated with your Sample. These dates will be in the format dd/mm/yyyy.</li>
+<li>These are date fields that are related to your sample. These dates will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. <code>2022-01-01T06:11:54</code> or <code>2022-01-01T06:11:54+13:30.</code></li>
+<li><code>Last edited</code> is where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.</li>
 </ul></li>
-<li>Column T:
+<li>Column U and W:
 <ul>
-<li>This is a Drop-down Menu field (Reportable Data Flag) where you can indicate whether or not your entry is of a good enough quality that it can be used by others.</li>
-</ul></li>
-<li>Column V:
-<ul>
-<li>This is a Free Form field where you can indicate anything of interest..</li>
+<li><code>Reportable</code> (column U) is a drop-down menu field where you can indicate if the sample should not be used for regular reporting due to quality concerns. You can record more details of the quality concerns in the <code>Quality reports</code> table.</li>
+<li><code>Notes</code> (column W) is a free form field where you can indicate anything of interest.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
 <section id="sample-relationships-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="sample-relationships-template-1">Sample Relationships Template</h3>
+<h3 class="anchored" data-anchor-id="sample-relationships-template-1"><code>Sample relationships</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to E</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -630,128 +573,76 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A and C:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Both of these Identifiers are Sample IDs and represent Samples. You would have created them previously in the Samples Template. Note that neither of them are Unique Identifiers and, thus, can be repeated between entries.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p>Both of these identifiers are <code>Sample ID</code> values and represent samples. You would have created them previously in the <code>Sample report</code> template. Neither of them are unique identifiers and, thus, can be repeated between entries.</p></li>
 </ul></li>
 <li><p>Columns B:</p>
 <ul>
-<li>This is a Drop-down Menu field, where you can select the type of relationship between two Samples. For instance, if Sample B was a child of Sample A, you would put the Sample ID of Sample A in the Sample ID Subject field (column A), and the Sample ID of Sample B in Sample ID Object field (column C). Then you would chose “Child relationship” from the menu in this column.</li>
+<li><code>Relationship</code> is a drop-down menu field where you can select the type of relationship between two samples. For instance, if Sample B was a child of Sample A, you would put the <code>Sample ID</code> of Sample A in the <code>Sample ID subject</code> field (column A), and the <code>Sample ID</code> of Sample B in <code>Sample ID object</code> field (column C). Then you would chose <code>Child relationship</code> from the menu in this column.</li>
 </ul></li>
 <li><p>Columns D and E:</p>
 <ul>
-<li>These are a Date field (column D) and a Free Form field (column E) where you can enter in the indicated information.</li>
+<li>These are a date field (column D) and a free form field (column E) where you can enter in the indicated information.</li>
+<li><code>Last edited</code> (column D) is where you can enter in the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
-<p>You have now entered your data in the Samples Template, congratulations!</p>
+<p>You have now entered your data in the <code>Sample report</code> and <code>Sample relationships</code> templates, congratulations!</p>
 </section>
 </section>
 <section id="how-to-report-protocols-protocol-steps-and-protocol-relationships" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report <code>Protocols</code>, <code>Protocol Steps</code> and <code>Protocol Relationships</code>:</h2>
-<p>In this guide you will learn how to enter Protocols, Protocol Steps and Protocol Relationships into their respective templates. As described in <!--# title of definitions document and link-->, a Protocol is “A procedure for collecting a sample or performing a measure”. Each entry in the Protocols Template represents a unique Protocol. A Protocol is made up of Protocol Steps. In the Protocol Steps Template, each entry is one of these steps. Finally, Protocols and Protocols can be linked to each other. Each entry in the Protocol Relationships Template represents one of these relationships in the form, Subject - Relationship - Object. So, for example, to specify that Protocol Step A needs to be done before Protocol Step B, you would enter “Protocol Step A” - “is Before” - “Protocol Step B”. <!--# is this correct? -->.</p>
-<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+<h2 class="anchored" data-anchor-id="how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report protocols, protocol steps and protocol relationships:</h2>
+<p>In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is “A procedure for collecting a sample or performing a measure”. Each entry in the <code>Protocols</code> (or <code>protocols</code>) template represents a unique protocol. A protocol is made up of protocol steps. In the <code>Protocol steps</code> (or <code>protocolSteps</code>) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the <code>Protocol relationships</code> (or <code>protocolRelationships</code>) template represents one of these relationships in the form, “subject - relationship - object”. So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the <code>Protocol step ID</code> of A - <code>Is Before</code> - <code>Protocol Step ID</code> of B.</p>
+<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-guides">How-To guides</a>) and the Reference Guide - Parts document.</p>
 </section>
 <section id="quick-start-2" class="level2">
 <h2 class="anchored" data-anchor-id="quick-start-2">Quick Start</h2>
-<p>Below you will find the fields that are mandatory for the Protocols, Protocol Steps and Protocol Relationships templates.&nbsp;You will also find some examples of entries of data, with all of the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
+<p>Below you will find the fields that are mandatory for the <code>Protocols</code>, <code>Protocol steps</code> and <code>Protocol relationships</code> templates.&nbsp;You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
 <section id="protocol-steps-template" class="level3">
-<h3 class="anchored" data-anchor-id="protocol-steps-template"><strong>Protocol Steps Template</strong></h3>
+<h3 class="anchored" data-anchor-id="protocol-steps-template"><strong><code>Protocol steps</code> template</strong></h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Protocol Step ID</td>
-<td style="text-align: center;">Method (if entry is a Method)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Measure (if entry is a Measure)</td>
-<td style="text-align: center;">Value (if entry is a Measure)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Aggregation (if entry is a Measure)</td>
-<td style="text-align: center;">Unit (if entry is a Measure)</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Definitions</strong></li>
-</ol>
 <ul>
-<li><p>Protocol Step ID: Unique identifier for a Protocol Step.</p></li>
-<li><p>Measure: A measurement or observation of any substance including a biological, physical or chemical substance.</p></li>
-<li><p>Method: A procedure for collecting a sample or performing a Measure.</p></li>
-<li><p>Value: Value of the entry.</p></li>
-<li><p>Aggregation: Statistical measures used to report a Measure.</p></li>
-<li><p>Unit: The units of a Measure.</p></li>
+<li><p><code>Protocol Step ID</code>: The unique identifier for the <code>protocol steps</code> template. Each value represents a protocol step.</p></li>
+<li><p><code>Measure</code>: A measurement or observation of any substance including a biological, physical or chemical substance.</p></li>
+<li><p><code>Method</code>: A procedure for collecting a sample or performing a measure.</p></li>
+<li><p><code>Value</code>: Value of the entry. This is only mandatory if the entry is a measure.</p></li>
+<li><p><code>Aggregation</code>: Statistical measures used to report a measure (for example, “mean”). This is only mandatory if the entry is a measure.</p></li>
+<li><p><code>Unit</code>: The units of the value. This is only mandatory if the entry is a measure.</p></li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><p><strong>Examples</strong></p>
 <p><em>Image will be added</em></p></li>
 </ol>
 </section>
 <section id="protocols-template" class="level3">
-<h3 class="anchored" data-anchor-id="protocols-template"><strong>Protocols Template</strong></h3>
+<h3 class="anchored" data-anchor-id="protocols-template"><strong><code>Protocols</code> template</strong></h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Protocol ID</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Definitions</strong></li>
-</ol>
 <ul>
-<li>Protocol ID: A unique identifier for a given Protocol.</li>
+<li><code>Protocol ID</code>: The unique identifier for the <code>Protocols</code> template. Each value represents a protocol.</li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Image will be added</em></p>
 </section>
 <section id="protocol-relationships-template" class="level3">
-<h3 class="anchored" data-anchor-id="protocol-relationships-template"><strong>Protocol Relationships Template</strong></h3>
+<h3 class="anchored" data-anchor-id="protocol-relationships-template"><strong><code>Protocol relationships</code> template</strong></h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<colgroup>
-<col style="width: 45%">
-<col style="width: 54%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Protocol ID Container</td>
-<td style="text-align: center;">Relationship</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Protocol ID Subject (if subject is a Protocol)</td>
-<td style="text-align: center;">Protocol Step ID Subject (if subject is a Protocol Step)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Protocol ID Object (if object is a Protocol)</td>
-<td style="text-align: center;">Protocol Step ID Object (if object is a Protocol Step)</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li><strong>Definitions</strong></li>
-</ol>
 <ul>
-<li><p>Protocol ID Container: Unique identifier for a Protocol and the Steps and other Protocols that make it up.</p></li>
-<li><p>Relationship: Describes relationship between the Subject and Object.</p></li>
-<li><p>Protocol ID Subject: The Subject of a Relationship between a Protocol and a Protocol Step or Protocol.</p></li>
-<li><p>Protocol Step ID Subject: The Subject of a Relationship between a Protocol Step and a Protocol Step or Protocol.</p></li>
-<li><p>Protocol ID Object: The Object of a Relationship between a Protocol and a Protocol Step or Protocol.</p></li>
-<li><p>Protocol ID Step Object: The Object of a Relationship between a Protocol Step and a Protocol Step or Protocol.</p></li>
+<li><p><code>Protocol ID container</code>: The unique identifier for the <code>Protocol relationships</code> template. Each value represents a protocol, and the step(s) and other protocol(s) that make it up. This identifier should also be a <code>Protocol ID</code> that was created using the <code>Protocols</code> template.</p></li>
+<li><p><code>Relationship</code>: Describes the relationship between the subject and object.</p></li>
+<li><p><code>Protocol ID subject</code>: Identifier of the subject of a relationship between a protocol, and a protocol step or protocol. This is only mandatory is the subject is a procotol.</p></li>
+<li><p><code>Protocol step ID subject</code>: Identifier of the subject of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory is the subject is a protocol step.</p></li>
+<li><p><code>Protocol ID object</code>: Identifier of the object of a relationship between a protocol, and a protocol step or protocol. This is only mandatory if the object is a protocol.</p></li>
+<li><p><code>Protocol ID step object</code>: Identifier of the object of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory if the object is a protocol step.</p></li>
 </ul>
-<ol start="3" type="1">
+<ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Image will be added</em></p>
@@ -760,7 +651,7 @@ NOTE: this figure needs to be update with the correct labels.
 <section id="detailed-description-2" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-description-2">Detailed Description</h2>
 <section id="protocol-steps-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="protocol-steps-template-1"><strong>Protocol Steps Template</strong></h3>
+<h3 class="anchored" data-anchor-id="protocol-steps-template-1"><strong><code>Protocol steps</code> template</strong></h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -769,21 +660,22 @@ NOTE: this figure needs to be update with the correct labels.
 </figure>
 </div>
 <ol type="i">
-<li>Column A:
+<li>Column A and E:
 <ul>
-<li>Protocol Step ID (column A) is the Unique Identifier field for this template and cannot be repeated between entries. You can think of each Protocol Step ID value as representing a unique Protocol Step.</li>
+<li>These are identifier fields.</li>
+<li><code>Protocol step ID</code> (column A) is the unique identifier field for this template and cannot be repeated between entries. You can think of each <code>Protocol Step ID</code> value as representing a unique protocol step. This field can be any combination of letters or words up to 30 characters.</li>
+<li><code>Protocol step source</code> (column E) specifies the protocol step that you used as a basis for the given protocol step (it will be a previous <code>Protocol step ID</code>).</li>
 </ul></li>
 <li>Columns B to C:
 <ul>
-<li><p>These are Drop-down Menu fields.</p></li>
-<li><p>You only need to enter a value into Method ID (column B) or Measure ID (column C). The former is for when you are entering a Method as a Protocol Step. The latter is when you are entering a Measure as a Protocol Step. Leave the other field <strong>blank</strong>.</p></li>
+<li><p>These are fields with drop-down menus.</p></li>
+<li><p>You only need to enter a value into <code>Method</code> (column B) or <code>Measure</code> (column C). The former is for when you are entering a method as a protocol step. The latter is when you are entering a measure as a protocol step. Leave the other field <strong>blank</strong>.</p></li>
 </ul></li>
-<li>Columns D to G:
+<li>Columns D, F and G:
 <ul>
-<li>These are Free Form fields and you can enter the relevant information in any format that you wish.</li>
-<li>Summary (column D) is a short description of the Protocol Step that you are entering.</li>
-<li>Protocol Step Source (column E) specifies the Protocol Step which serves as a basis for the given Protocol Step.</li>
-<li>Protocol Step Version (column F) specifies the version of a given Protocol Step.</li>
+<li>These are free form fields.</li>
+<li><code>Summary</code> (column D) is a short description of the protocol step that you are entering.</li>
+<li><code>Protocol step version</code> (column F) specifies the version of a given protocol step.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns H to O</strong></p>
@@ -795,28 +687,30 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li>Columns H to J:
 <ul>
-<li>These are Identifier fields.</li>
-<li>You can repeat values between entries. For instance, if you are entering two different Protocol Steps from the same Organization, then the Organization field (column H) will be the same.</li>
+<li>These are identifier fields.</li>
+<li>You can repeat values between entries. For instance, if you are entering two different protocol steps from the same organization, then the <code>Organization ID</code> field (column H) will be the same.</li>
 </ul></li>
 <li>Column K:
 <ul>
-<li>A Free Form field in which you will enter the Value of a Measure. If a Method is being entered, then you can put “NA” here.</li>
+<li><code>Value</code> is a free form field where, if the protocol step is a measure, you can enter its value.</li>
 </ul></li>
 <li>Columns L and M:
 <ul>
-<li>These are Conditional Drop-down Menu fields.</li>
-<li>Unit (column L) depends on what you entered in Measure ID (column C). If you entered a Method, then you can put “NA” in this field.</li>
-<li>Aggregation (column M) depends on what you entered in Unit (column L). If you entered a Method, then you can put “NA” in this field.</li>
+<li>These fields contain conditional drop-down menu fields.</li>
+<li><code>Unit</code> (column L) depends on what you entered in <code>Measure</code> (column C). This field is only applicable if the protocol step is a measure.</li>
+<li><code>Aggregation</code> (column M) depends on what you entered in <code>Unit</code> (column L). This field is only applicable if the protocol step is a measure.</li>
 </ul></li>
 <li>Columns N and O:
 <ul>
-<li>These are Free Form fields where you can enter the indicated information.</li>
+<li><p>These are a date field (column N) and a free form field (column O) where you can enter in the indicated information.</p></li>
+<li><p><code>Last edited</code> (column N) is where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</p>
+<p>This date will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. <code>2022-01-01T06:11:54</code> or <code>2022-01-01T06:11:54+13:30.</code></p></li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
 <section id="protocols-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="protocols-template-1"><strong>Protocols Template</strong></h3>
+<h3 class="anchored" data-anchor-id="protocols-template-1"><strong><code>Protocols</code> template</strong></h3>
 <ol type="1">
 <li><p><strong>Columns A to F</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -825,18 +719,18 @@ NOTE: this figure needs to be update with the correct labels.
 </figure>
 </div>
 <ol type="i">
-<li>Columns B and C:
+<li>Columns A to C:
 <ul>
-<li>These are Identifier fields.</li>
-<li>Protocol ID (column B) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Protocol ID represents a unique Protocol.</li>
-<li>For Dataset ID, you can repeat between entries (if needed). For instance, if you are entering two different Protocols from the same Dataset, then the Dataset ID (column C) will be the same.</li>
-<li>You may have already created the Dataset IDs in the Datasets Template.</li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Protocol ID</code> (column B) is the unique identifier for this template, and cannot be repeated between entries. In essence, each value of <code>Protocol ID</code> represents a unique protocol. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For <code>Dataset ID</code>(column C), you can repeat between entries (if needed). For instance, if you are entering two different protocols from the same dataset, then the <code>Dataset ID</code> will be the same.</p></li>
+<li><p>You may have already created the <code>Dataset ID</code> values in the <code>Dataset</code> template.</p></li>
+<li><p><code>Source Protocol ID</code> (column A) is where you can enter the <code>Protocol ID</code> of the protocol that served as the basis for the protocol that is currently being entered.</p></li>
 </ul></li>
-<li>Columns A, D to F:
+<li>Columns D to F:
 <ul>
-<li>These are Free Form fields in which you can enter the indicated information.</li>
-<li>Source Protocol (column A) is where you can indicate the Protocol that served as the basis for the Protocol that is currently being entered. <!--# I'm not sure if this is an "ID" field or not --></li>
-<li>Name (column D) refers to the Name that you have decided to give your Protocol.</li>
+<li>These are free form fields in which you can enter the indicated information.</li>
+<li><code>Name</code> (column D) refers to the name that you have decided to give your protocol.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns G to K</strong></p>
@@ -848,22 +742,22 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li>Columns G, H:
 <ul>
-<li>These are Identifier fields. You can repeat values between entries.</li>
+<li>These are identifier fields. You can repeat values between entries.</li>
 </ul></li>
 <li>Columns I, K:
 <ul>
-<li>These are Free Form fields and you can enter the relevant information in any format that you wish.</li>
-<li>You can use the Protocol Version field (column I) to indicate the version of the Protocol that you are entering.</li>
+<li>These are free form fields.</li>
+<li><code>Protocol version</code> (column I) is where you can indicate the version of the protocol that you are entering.</li>
 </ul></li>
 <li>Columns J:
 <ul>
-<li>This is a Date field where you can indicate when the entry was updated.</li>
+<li><code>Last edited</code> is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
 <section id="protocol-relationships-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="protocol-relationships-template-1">Protocol Relationships Template</h3>
+<h3 class="anchored" data-anchor-id="protocol-relationships-template-1"><code>Protocol relationships</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to H</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -874,275 +768,158 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A to C, E and F:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>All of these Identifiers are either Protocol IDs or Protocol Step IDs and represent Protocols and Protocol Steps, respectively. This includes Protocol ID Container (column A), which represents the Protocol that contains the relationships that you are entering in this template. Note that none of these fields are Unique Identifiers and, thus, can be repeated between entries.</p></li>
-<li><p>You should only enter in a value for one of the two “Object” columns (column B and C); this depends on whether the Object of the relationship that you are entering is a Protocol or a Protocol Step. The same is true for the two “Subject” columns (column E and F).</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p>All of these identifiers are either <code>Protocol ID</code> values or <code>Protocol Step ID</code> values, and represent protocols and protocol steps, respectively. This includes <code>Protocol ID Container</code> (column A), which is a <code>Protocol ID</code> that contains the relationships that you are entering in this template. Note that none of these fields are unique identifiers and, thus, they can be repeated between entries.</p></li>
+<li><p>You should only enter a value for one of the two <code>object</code> columns (column B and C); this depends on whether the object of the relationship that you are entering is a protocol or a protocol step. The same is true for the two <code>subject</code> columns (column E and F).</p></li>
 <li><p>An example will be given in point (ii) below.</p></li>
 </ul></li>
 <li><p>Columns D:</p>
 <ul>
-<li>This is a Drop-down Menu field, where you can select the type of Relationship that is being entered.</li>
-<li>For example, say you wanted to enter in a Relationship stating that Protocol Step A takes place before Protocol Step B in a particular Protocol Container. You would enter the relevant Identifiers in the Step ID Object field (column B) and the Step ID Subject field (column F). You would then select “is Before” from the Relationship field. Finally, to identify this relationship, you would enter in the Identifier in the Protocol ID Container field (column A)</li>
+<li><code>Relationship</code> contains a drop-down menu; it is where you can select the type of relationship that is being entered.</li>
+<li>For example, pretend you wanted to enter a relationship stating that Protocol step A takes place before Protocol step B in a particular protocol container. You would enter the relevant identifiers in the <code>Step ID Object</code> field (column B) and the <code>Step ID subject</code> field (column F). You would then select <code>Is Before</code> from the <code>Relationship</code> field. Finally, to identify this relationship, you would enter in the identifier in the <code>Protocol ID Container</code> field (column A)</li>
 </ul></li>
 <li><p>Columns G and H:</p>
 <ul>
-<li>These are a Date field (column D) and a Free Form field (column E) where you can enter in the indicated information.</li>
+<li>These are a date field (column G) and a free form field (column H) where you can enter in the indicated information.</li>
+<li><code>Last edited</code> (column G) is where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
-<p>You have now entered your data in the Protocol Steps, Protocols and Protocol Relationships Template, congratulations!</p>
+<p>You have now entered your data in the <code>Protocol steps</code>, <code>Protocols</code> and <code>Protocol relationships</code> templates, congratulations!</p>
 </section>
 </section>
 <section id="how-to-report-metadata" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-report-metadata">5) How to report Metadata:</h2>
-<!--# insert video -->
-<p>In this guide you will learn how to enter Metadata through a series of templates. Each entry in a template will usually represent what is found in the title of the template. For instance, in the Organizations template each row will represent an Organization. In the context of the PHES-ODM, metadata is anything that gives information that is not found in the templates related to Measures, Protocols and Samples.</p>
-<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-use-templates">1) How to use templates</a>) and <!--# link to definitions document --></p>
+<h2 class="anchored" data-anchor-id="how-to-report-metadata">5) How to report metadata</h2>
+<p>In this guide you will learn how to enter in the metadata of your wastewater data through a series of templates. Each entry in a template will usually represents what is found in the title of the template. For instance, in the <code>Organizations</code> template each row will represent an organization. In the context of the PHES-ODM, metadata is anything that gives general information about the data that you are entering and is not found in the templates related to measures, protocols and samples.</p>
+<p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-guides">How-To guides</a>) and the Reference Guide - Parts document.</p>
 </section>
 <section id="quick-start-3" class="level2">
 <h2 class="anchored" data-anchor-id="quick-start-3">Quick Start</h2>
-<p>Below you will find the fields that are mandatory for the metadata-related templates. You will also find some examples of entries of data, with the fields filled and colour-coded. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
-<section id="addresses-template" class="level3">
-<h3 class="anchored" data-anchor-id="addresses-template">Addresses Template</h3>
+<p>Below you will find the fields that are mandatory for the metadata-related templates. You will also find definitions of these fields and examples of entries of data. A more detailed description of some of the key concepts can be found in the following section, Detailed Description.</p>
+<section id="address-or-addresses-template" class="level3">
+<h3 class="anchored" data-anchor-id="address-or-addresses-template"><code>Address</code> (or <code>addresses</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Address ID</td>
-<td style="text-align: center;">Dataset ID</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Address Line 1</td>
-<td style="text-align: center;">City</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">State, Province or Region</td>
-<td style="text-align: center;">Country</td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li><p>Address ID: A unique identifier for an Address.</p></li>
-<li><p>Dataset ID: The name of the Dataset that stores information for Measures, Samples and other reporting tables.</p></li>
-<li><p>Address Line 1: Line 1 (the street name, number and direction) for a given Address.</p></li>
-<li><p>City: The city where a Site or Organization is located; part of the Address.</p></li>
-<li><p>State, Province or Region: The state, province, or region where a Site or Organization is located; part of the Address.</p></li>
-<li><p>Country: The country where a Site or Organization is located; part of the Address.</p></li>
+<li><p><code>Address ID</code>: The unique identifier for the <code>Address</code> template. Each value represents an address.</p></li>
+<li><p><code>Dataset ID</code>: The identifier of the dataset that stores information for measures, samples and other reporting tables.</p></li>
+<li><p><code>Address line 1</code>: Line 1 (the street name, number and direction) for a given address of a site or organization.</p></li>
+<li><p><code>City</code>: The city where a site or organization is located; part of the address.</p></li>
+<li><p><code>State, province or region</code>: The state, province, or region where a site or organization is located; part of the address.</p></li>
+<li><p><code>Country</code>: The country where a site or organization is located; part of the address.</p></li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="contacts-template" class="level3">
-<h3 class="anchored" data-anchor-id="contacts-template">Contacts Template</h3>
+<section id="contact-or-contacts-template" class="level3">
+<h3 class="anchored" data-anchor-id="contact-or-contacts-template"><code>Contact</code> (or <code>contacts</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Contact ID</td>
-<td style="text-align: center;">Organization ID</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Contact email</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li><p>Contact ID: A unique identifier for a given contact person.</p></li>
-<li><p>Organization ID: A unique identifier for the Organization to which the reporter is affiliated.</p></li>
-<li><p>Email: Contact e-mail address, for the labs.</p></li>
+<li><p><code>Contact ID</code>: The unique identifier for the <code>Contact</code> template. Each value represents a contact person.</p></li>
+<li><p><code>Organization ID</code>: An identifier for the organization to which the contact person is affiliated.</p></li>
+<li><p><code>Email</code>: Contact e-mail address.</p></li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="datasets-template" class="level3">
-<h3 class="anchored" data-anchor-id="datasets-template">Datasets Template</h3>
+<section id="dataset-or-datasets-template" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-or-datasets-template"><code>Dataset</code> (or <code>datasets</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Dataset ID</td>
-<td style="text-align: center;">License</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Data Custodian</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li><p>Dataset ID: A unique identifier for the Dataset that stores information.</p></li>
-<li><p>License: The license of the Dataset.</p></li>
-<li><p>Data Custodian: The data custodian(s) of the database.</p></li>
+<li><p><code>Dataset ID</code>: A unique identifier for the <code>Dataset</code> template. Each value represents a dataset.</p></li>
+<li><p><code>License</code>: The license of the dataset.</p></li>
+<li><p><code>Data custodian</code>: The data custodian of the database. This is represented by an <code>Organization ID</code> and would have been created in the <code>Organization</code> template.</p></li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="instruments-template" class="level3">
-<h3 class="anchored" data-anchor-id="instruments-template">Instruments Template</h3>
+<section id="instrument-or-instruments-template" class="level3">
+<h3 class="anchored" data-anchor-id="instrument-or-instruments-template"><code>Instrument</code> (or <code>instruments</code>) Template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Instrument ID</td>
-<td style="text-align: center;">Dataset ID</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Model</td>
-<td style="text-align: center;">Instrument Type</td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li><p>Instrument ID: A unique identifier for an Instrument.</p></li>
-<li><p>Dataset ID: The name of the Dataset that stores information for Measures, Samples and other reporting tables.</p></li>
-<li><p>Model: Model number or version of the Instrument.</p></li>
-<li><p>Type of Instrument used to perform the measurement.</p></li>
+<li><p><code>Instrument ID</code>: The unique identifier for the <code>Instrument</code> template. Each value represents an instrument.</p></li>
+<li><p><code>Dataset ID</code>: The identifier of the dataset that stores information for measures, samples and other reporting tables.</p></li>
+<li><p><code>Model</code>: Model number or version of the instrument.</p></li>
+<li><p><code>Instrument type</code>: The type of instrument used to perform the measurement.</p></li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="organizations-template" class="level3">
-<h3 class="anchored" data-anchor-id="organizations-template">Organizations Template</h3>
+<section id="organization-or-organizations-template" class="level3">
+<h3 class="anchored" data-anchor-id="organization-or-organizations-template"><code>Organization</code> (or <code>organizations</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Organization ID</td>
-<td style="text-align: center;">Address ID</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Organization Type</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li>Organization ID: A unique identifier for the Organization to which the reporter is affiliated.</li>
-<li>Address ID: A unique identifier for an Address.</li>
-<li>Organization Type: Specifies the type or purpose of a given Organization.</li>
+<li><code>Organization ID</code>: The unique identifier for the <code>Organization</code> template. Each value represents an organization to which the reporter is affiliated.</li>
+<li><code>Address ID</code>: An identifier for the address of the organization.</li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="polygons-template" class="level3">
-<h3 class="anchored" data-anchor-id="polygons-template">Polygons Template</h3>
+<section id="polygon-or-polygons-template" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-or-polygons-template"><code>Polygon</code> (or <code>polygons</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Polygon ID</td>
-<td style="text-align: center;">Type of Geography</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Well-known text</td>
-<td style="text-align: center;">European Petroleum Survey Group Coordinates</td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li>Polygon ID: Unique identifier for the Polygon.</li>
-<li>Type of Geography: Type of geography that is represented by the Polygon.</li>
-<li>Well-known text: Well-known text of the Polygon.</li>
-<li>European Petroleum Survey Group Coordinates: The unique EPSG code specifying a given geospatial area.</li>
+<li><code>Polygon ID</code>: The unique identifier for the <code>Polygon</code> template. Each value represents a polygon.</li>
+<li><code>Type of geography</code>: Type of geography that is represented by the polygon.</li>
+<li><code>Well-known text</code>: Well-known text of the polygon.</li>
+<li><code>European Petroleum Survey Group Coordinates</code>: A code that specifies a given geospatial area.</li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="quality-reports-template" class="level3">
-<h3 class="anchored" data-anchor-id="quality-reports-template">Quality Reports Template</h3>
+<section id="quality-reports-or-qualityreports-template" class="level3">
+<h3 class="anchored" data-anchor-id="quality-reports-or-qualityreports-template"><code>Quality reports</code> (or <code>qualityReports</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<colgroup>
-<col style="width: 40%">
-<col style="width: 59%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Quality Report ID</td>
-<td style="text-align: center;">Report ID (if entry is related to a Measure)</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Sample ID (if entry is related to a Sample)</td>
-<td style="text-align: center;">Report Set ID (if entry is related to a Measure in a Measure Set)</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Quality Flag</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li>Quality Report ID: A unique identifier for a given Quality Report.</li>
-<li>Report ID: Unique identifier for a Measure.</li>
-<li>Sample ID: Unique identifier for a Sample.</li>
-<li>Report Set ID: Unique identifier that links together a group of related Measures.</li>
-<li>Quality Flag: A field for reporting any quality concerns - of lack thereof - for a Sample or Measure.</li>
+<li><code>Quality report ID</code>: The unique identifier for the <code>Quality reports</code> template. Each value represents a quality issue that you wish to report.</li>
+<li><code>Report ID</code>: An identifier for a measure. This is only mandatory if the entry is about a measure.</li>
+<li><code>Sample ID</code>: An identifier for a sample. This is only mandatory if the entry is about a sample.</li>
+<li><code>Report set ID</code>: An identifier that links together a group of related measures. This is only mandatory if the entry is related to a measure set.</li>
+<li><code>Quality flag</code>: A field for reporting any quality concerns for a sample or measure.</li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
 </ol>
 <p><em>Images will be added</em></p>
 </section>
-<section id="sites-template" class="level3">
-<h3 class="anchored" data-anchor-id="sites-template">Sites Template</h3>
+<section id="sites-or-sites-template" class="level3">
+<h3 class="anchored" data-anchor-id="sites-or-sites-template"><code>Sites</code> (or <code>sites</code>) template</h3>
 <ol type="1">
 <li><strong>Mandatory fields</strong></li>
 </ol>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Site ID</td>
-<td style="text-align: center;">Site Type</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Sample shed</td>
-<td style="text-align: center;">Contact ID</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Latitude</td>
-<td style="text-align: center;">Longitude</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">European Petroleum Survey Group Coordinates</td>
-<td style="text-align: center;"></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li>Site ID: Unique identifier for the location where wastewater sample was taken.</li>
-<li>Site Type: Type of Site where sample was taken.</li>
-<li>Sample shed: A geographic area, physical space, or structure. A Sample is taken from a sample shed for a representative measurement of a substance(s).</li>
-<li>Contact ID: A unique identifier for a given contact person.</li>
-<li>Latitude: Latitude in decimal coordinates of the Site.</li>
-<li>Latitude: Longitude in decimal coordinates of the Site.</li>
-<li>European Petroleum Survey Group Coordinates: The unique EPSG code specifying a given geospatial area.</li>
+<li><code>Site ID</code>: The unique identifier for the <code>Sites</code> template. Each value represents the site where a wastewater sample was taken.</li>
+<li><code>Site type</code>: Type of site where a sample was taken.</li>
+<li><code>Sample shed</code>: A geographic area, physical space, or structure. A sample is taken from a sample shed for a representative measurement of a substance.</li>
+<li><code>Contact ID</code>: An identifier for a given contact person.</li>
+<li><code>Latitude</code>: Latitude in decimal coordinates of the site.</li>
+<li><code>Latitude</code>: Longitude in decimal coordinates of the site.</li>
+<li><code>European Petroleum Survey Group Coordinates</code>: A code that specifies a given geospatial area.</li>
 </ul>
 <ol start="2" type="1">
 <li><strong>Examples</strong></li>
@@ -1152,8 +929,8 @@ NOTE: this figure needs to be update with the correct labels.
 </section>
 <section id="detailed-description-3" class="level2">
 <h2 class="anchored" data-anchor-id="detailed-description-3">Detailed Description</h2>
-<section id="addresses-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="addresses-template-1">Addresses Template</h3>
+<section id="address-template" class="level3">
+<h3 class="anchored" data-anchor-id="address-template"><code>Address</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to E</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -1164,14 +941,14 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A and B:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Address ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Address ID represents a unique Address.</p></li>
-<li><p>For Dataset ID (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different Addresses from the same Dataset, then this column will be the same.</p></li>
-<li><p>You may have already created the Dataset ID in the Datasets Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Address ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each <code>Address ID</code> value as representing a unique address. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For <code>Dataset ID</code> (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different addresses from the same dataset, then this column will be the same.</p></li>
+<li><p>You may have already created the <code>Dataset ID</code> in the <code>Dataset</code> template.</p></li>
 </ul></li>
 <li><p>Columns C to E:</p>
 <ul>
-<li>These are Free Form fields in which you can enter various information regarding the Address.</li>
+<li>These are free form fields in which you can enter various information about the address.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns F to J</strong></p>
@@ -1183,14 +960,15 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns F to J:</p>
 <ul>
-<li>Most of these fields are Free Form in which you can enter various information regarding the Contact.</li>
-<li>Update Date - Last Edited (column I) is a date field.</li>
+<li><p>Most of these are free form fields where you can enter the indicated information about the address.</p></li>
+<li><p><code>Last edited</code> (column I) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</p>
+<p>This date will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. <code>2022-01-01T06:11:54</code> or <code>2022-01-01T06:11:54+13:30.</code></p></li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="contacts-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="contacts-template-1">Contacts Template</h3>
+<section id="contact-template" class="level3">
+<h3 class="anchored" data-anchor-id="contact-template"><code>Contact</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to E</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -1201,14 +979,14 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A to C:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Contact ID (column A) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Contact ID represents a unique Contact.</p></li>
-<li><p>For the rest, you can repeat the Identifier between entries (if needed). For instance, if you are entering two different Contacts that came from the same Organization, then the Organization ID (column C) will be the same.</p></li>
-<li><p>You may have already created these Identifiers in another template. For instance you may have created Organization ID in the Organizations Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Contact ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each <code>Contact ID</code> value as representing a unique contact person. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the fields, you can repeat the values between entries (if needed). For instance, if you are entering two different contacts that came from the same organization, then the <code>Organization ID</code> (column C) will be the same.</p></li>
+<li><p>You may have already created these Identifiers in another template. For instance you may have created <code>Organization ID</code> in the <code>Organization</code> template.</p></li>
 </ul></li>
 <li><p>Columns D and E:</p>
 <ul>
-<li>These are Free Form fields in which you can enter the name of the Contact.</li>
+<li>These are free form fields in which you can enter the name of the contact.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns F to J</strong></p>
@@ -1220,14 +998,14 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns F to J:</p>
 <ul>
-<li>Most of these fields are Free Form in which you can enter various information regarding the Contact.</li>
-<li>Update Date - Last Edited (column J) is a date field.</li>
+<li>Most of these fields are free form in which you can enter various information regarding the contact.</li>
+<li><code>Last Edited</code> (column I) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="datasets-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="datasets-template-1">Datasets Template</h3>
+<section id="dataset-template" class="level3">
+<h3 class="anchored" data-anchor-id="dataset-template"><code>Dataset</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -1238,17 +1016,17 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns A and B:</p>
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Dataset ID (column B) is the Unique Identifier for this template, and cannot be repeated between entries. In essence, each value of Dataset ID represents a unique Dataset.</p></li>
-<li><p>For Parent Dataset ID (column A), you can repeat the value between entries (if needed). For instance, if you are entering two different Datasets that came from the same Parent Dataset, then the Parent Dataset ID will be the same.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Dataset ID</code> (column B) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of <code>Dataset ID</code> as representing a unique dataset. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For <code>Parent dataset ID</code> (column A), you can repeat the value between entries (if needed). For instance, if you are entering two different datasets that came from the same parent dataset, then the <code>Parent dataset ID</code> will be the same.</p></li>
 </ul></li>
 <li><p>Column C</p>
 <ul>
-<li>This is a Date field where you can enter the date that the Dataset was created.</li>
+<li><code>Dataset creation date</code> is a date field where you can enter the date that the dataset was created.</li>
 </ul></li>
 <li><p>Columns D to G:</p>
 <ul>
-<li>These are Free Form fields in which you can enter various information related to the Dataset.</li>
+<li>These are free form fields in which you can enter various information related to the dataset.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns H to N</strong></p>
@@ -1260,19 +1038,20 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li><p>Columns H to L:</p>
 <ul>
-<li>These are Identifier and Free Form fields.</li>
-<li>For information regarding Funders, you can enter their ID and Name in Funder Contact ID and Funding Agency, respectively (columns H and J).</li>
-<li>For information regarding Data Custodians, you can enter their ID and name in Custody Contact ID and Data Custodian, respectively (columns I and K).</li>
+<li>These are identifier fields.</li>
+<li>For information regarding funders, you can enter their <code>Funder Contact ID</code> (which is a <code>Contact ID</code> created in the <code>Contact</code> template) and <code>Funding Agency</code> (which is a <code>Organization ID</code> created in the <code>Organization</code> template) in columns I and K.</li>
+<li>For information regarding Data Custodians, you can enter their <code>Custody Contact ID</code> (which is a <code>Contact ID</code> created in the <code>Contact</code> template) and <code>Data Custodian ID</code> (which is a <code>Organization ID</code> created in the <code>Organization</code> template) in columns J and L.</li>
 </ul></li>
 <li><p>Columns M and N:</p>
 <ul>
-<li>These are a Date field (column L) and a Free Form field (column M) where you can enter in the indicated information.</li>
+<li>These are a date field (column M) and a free form field (column N) where you can enter in the indicated information.</li>
+<li><code>Last edited</code> (column M) is the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="instruments-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="instruments-template-1">Instruments Template</h3>
+<section id="instrument-template" class="level3">
+<h3 class="anchored" data-anchor-id="instrument-template"><code>Instrument</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
 <div class="quarto-figure quarto-figure-center">
@@ -1283,14 +1062,14 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li>Columns A, B, F and G:
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Instrument ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Instrument ID represents a unique Instrument.</p></li>
-<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Instruments from the same Dataset, then this column will be the same.</p></li>
-<li><p>You may have already created some of the Identifiers in other Templates. For instance, you may have already created Dataset ID in the Datasets template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Instrument ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. In essence, you can think of each <code>Instrument ID</code> value as representing a unique instrument. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different instruments from the same dataset, then <code>Dataset ID</code> column will be the same.</p></li>
+<li><p>You may have already created some of the identifiers in other templates. For instance, you may have already created <code>Dataset ID</code> in the <code>Datasets</code> template.</p></li>
 </ul></li>
 <li>Columns C to E
 <ul>
-<li>These are Free Form fields where you can enter the Name (column C), Model (column D) and Manufacturer (column E) of the Instrument.</li>
+<li>These are free form fields where you can enter the <code>Name</code> (column C), <code>Model</code> (column D) and <code>Manufacturer</code> (column E) of the instrument.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns H to N</strong></p>
@@ -1298,132 +1077,145 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li>Columns H, I, L to N:
 <ul>
-<li>Most of these fields are Free Form in which you can enter relevant information regarding your Instrument</li>
-<li>You can use Index (column L) to differentiate two entries of data that are the same in the other fields. <!--# is this correct? --></li>
-<li>Update Date - Last Edited (column M) is a date field.</li>
+<li>Most of these fields are free form in which you can enter relevant information regarding your instrument</li>
+<li>You can use <code>Index</code> (column L) to differentiate two entries of data that are the same in the other fields.</li>
+<li><code>Last Edited</code> (column M) is a date field where you can indicate the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 <li>Columns J and K:
 <ul>
-<li><p>For Instrument Type (column J), you can select from the drop-down menu the type of Instrument. If you do not see your Instrument, you can enter “Other instrument type”</p></li>
-<li><p>If you entered “Other instrument type” in the Instrument Type field, you can use the Describe Other Instrument type, If Applicable field (column K) to describe your Instrument.</p></li>
+<li><p>For <code>Instrument type</code> (column J), you can select from the drop-down menu the type of instrument. If you do not see your instrument, you can enter <code>Other instrument</code>.</p></li>
+<li><p>If you entered <code>Other instrument</code> in the <code>Instrument type</code> field, you can use the <code>Describe other instrument type, if applicable</code> field (column K) to describe your instrument.</p></li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="organizations-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="organizations-template-1">Organizations Template</h3>
+<section id="organization-template" class="level3">
+<h3 class="anchored" data-anchor-id="organization-template"><code>Organization</code> template</h3>
 <ol type="1">
-<li><p><strong>Columns A to H</strong></p>
-<p><img src="assets/how-to/organizations_Col_AH.png" class="img-fluid"></p>
+<li><p><strong>Columns A to E</strong></p>
+<p><img src="assets/how-to/organizations_Col_AE.png" class="img-fluid"></p>
 <ol type="i">
-<li>Columns A and C:
+<li>Columns A, D and E:
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Organization ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Organization ID represents a unique Organization.</p></li>
-<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Organizations from the same Address, then this column will be the same.</p></li>
-<li><p>You may have already created some of the Identifiers in other Templates. For instance, you may have already created the Address ID in the Addresses Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Organization ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of <code>Orgnization ID</code> as representing a unique organization. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different organizations with the same address, then the <code>Address ID</code> will be the same.</p></li>
+<li><p>You may have already created some of the identifiers in other templates. For instance, you may have already created the <code>Address ID</code> in the <code>Address</code> template.</p></li>
 </ul></li>
-<li>Columns D to H:
+<li>Columns B and C:
 <ul>
-<li>For Organization Type (column D), you can select from the menu the type of Organization that you are entering.</li>
-<li>The rest of the columns contain Free Form or Date fields in which you can enter additional information regarding the Organization.</li>
+<li>These columns are free form fields in which you can enter additional information regarding the organization.</li>
+</ul></li>
+</ol></li>
+<li><p><strong>Columns F to J</strong></p>
+<p><img src="assets/how-to/organizations_Col_FJ.png" class="img-fluid"></p>
+<ol type="i">
+<li>Columns F to H:
+<ul>
+<li>These are fields with drop-down menus where you can select various characteristics of the organization that you are entering.</li>
+</ul></li>
+<li>Columns I and J:
+<ul>
+<li>These are a date field (column I) and a free form field (column J) where you can enter in the indicated information.</li>
+<li><code>Last edited</code> (column I) is the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="polygons-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="polygons-template-1">Polygons Template</h3>
+<section id="polygon-template" class="level3">
+<h3 class="anchored" data-anchor-id="polygon-template"><code>Polygon</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to G</strong></p>
 <p><img src="assets/how-to/polygons_Col_AG.png" class="img-fluid"></p>
 <ol type="i">
 <li>Columns A and B:
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Polygon ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. A Polygon is an area on a map. <!--# I'm not sure how you want a polygon defined -->Each Polygon ID represents a unique Polygon.</p></li>
-<li><p>For Dataset ID (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different Polygons from the same Dataset, then this column will have the same value.</p></li>
-<li><p>You may have already created the Dataset ID in the Datasets Template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Polygon ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. A polygon is something that describes the geometry of a geographic area. You can think of each value of <code>Polygon ID</code> as representing a unique polygon. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For <code>Dataset ID</code> (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different polygons from the same dataset, then this column will have the same value.</p></li>
+<li><p>You may have already created the <code>Dataset ID</code> in the <code>Dataset</code> template.</p></li>
 </ul></li>
 <li>Columns C to E, G:
 <ul>
-<li>These are Free Form fields in which you can enter additional information regarding the Polygon.</li>
-<li>Name (column C) is the name of the Polygon.</li>
-<li>European Petroleum Survey Group Coordinates (column G) is a coordinate system that can be used to identify where your Polygon is. <!--# is this correct? --></li>
+<li>These are free form fields in which you can enter additional information regarding the Polygon.</li>
+<li><code>Name</code> (column C) is the name of the polygon.</li>
+<li><code>European Petroleum Survey Group Coordinates</code> (column G) is a coordinate system that can be used to identify where a polygon is.</li>
 </ul></li>
 <li>Columns F:
 <ul>
-<li>For Type of geography (column F) of the Polygon, you can select one of the values from the drop-down menu.</li>
+<li>For <code>Type of geography</code> (column F) of the polygon, you can select one of the values from the drop-down menu.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns H to N</strong></p>
 <p><img src="assets/how-to/polygons_Col_HN.png" class="img-fluid"></p>
 <ol type="i">
-<li>Columns H to J and N:
+<li>Columns H to J, M and N:
 <ul>
-<li><p>These are Free Form or Date fields in which you can enter relevant information regarding the Polygon.</p></li>
-<li><p>Well-known text (column H) refers to the text markup language that can be used to represent the Polygon ( <!--# is this correct? --></p></li>
+<li><p>These are free form fields and a date field in which you can enter relevant information regarding the polygon.</p></li>
+<li><p><code>Well-known text</code> (column H) refers to the text markup language that can be used to represent the polygon.</p></li>
+<li><p><code>Last edited</code> (column M) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</p></li>
 </ul></li>
 <li>Columns K and L:
 <ul>
-<li>These are Identifier fields in which the Organization ID and the Contact ID associated with the Polygon are entered.</li>
+<li>These are identifier fields in which the <code>Organization ID</code> and the <code>Contact ID</code> associated with the polygon are entered.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="quality-reports-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="quality-reports-template-1">Quality Reports Template</h3>
+<section id="quality-reports-template" class="level3">
+<h3 class="anchored" data-anchor-id="quality-reports-template"><code>Quality reports</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to H</strong></p>
 <p><img src="assets/how-to/qualityReports_Col_AH.png" class="img-fluid"></p>
 <ol type="i">
 <li>Columns A to D:
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Quality Report ID (column A) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Quality Report ID represents a unique quality issue that you want to report.</p></li>
-<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Quality Reports from the same Sample, then the Sample IDs will be the same.</p></li>
-<li><p>You may have already created some of the Identifiers in other Templates. For instance, you may have already created Sample ID in the Samples template.</p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Quality report ID</code> (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of <code>Quality Report ID</code> as representing a unique quality issue that you want to report. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different quality reports for the same sample, then the <code>Sample ID</code> column will be the same.</p></li>
+<li><p>You may have already created some of the identifiers in other templates. For instance, you may have already created the <code>Sample ID</code> in the <code>Sample report</code> template.</p></li>
 </ul></li>
 <li>Columns E and F:
 <ul>
-<li>Quality Flag (column E) is a Drop-down Menu field where you can select the type of quality issue that you would like to enter.</li>
-<li>You can indicate the severity of the Quality Flag in the Severity Indicator field (column F).</li>
+<li><code>Quality flag</code> (column E) is a drop-down menu field where you can select the type of quality issue that you would like to enter.</li>
+<li><code>Severity indicator</code> (column F) is is also a drop-down menu field where you can indicate the severity of the quality flag.</li>
 </ul></li>
 <li>Columns G and H:
 <ul>
-<li>These are a Free Form field and Date field in which you can enter the indicated information.</li>
+<li>These are a free form field and a date field in which you can enter the indicated information.</li>
+<li><code>Last edited</code> (column M) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
 </section>
-<section id="sites-template-1" class="level3">
-<h3 class="anchored" data-anchor-id="sites-template-1">Sites Template</h3>
+<section id="sites-template" class="level3">
+<h3 class="anchored" data-anchor-id="sites-template"><code>Sites</code> template</h3>
 <ol type="1">
 <li><p><strong>Columns A to F</strong></p>
 <p><img src="assets/how-to/sites_Col_AF.png" class="img-fluid"></p>
 <ol type="i">
-<li>Columns A to C, and F:
+<li>Columns A to D:
 <ul>
-<li><p>These are Identifier fields.</p></li>
-<li><p>Site ID (column B) is the Unique identifier for this template, and cannot be repeated between entries. In essence, each Sites ID represents a unique Site.</p></li>
-<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different Sites that are found in the same Polygon, then the Polygon IDs will be the same.</p></li>
-<li><p>Parent Site ID (column A) refers to the Site that is parent to the Site that is being entered. For example if the Site that is being entered is a room in a LTC facility, that the Parent Site ID would refer to the LTC facility. <!--# I'm not sure if I has this correct --></p></li>
+<li><p>These are identifier fields.</p></li>
+<li><p><code>Site ID</code> (column B) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of <code>Site ID</code> as representing a unique site. This field can be any combination of letters or words up to 30 characters.</p></li>
+<li><p>For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different sites that are found in the same polygon, then the <code>Polygon ID</code> values will be the same.</p></li>
+<li><p><code>Parent site ID</code> (column A) refers to the site that is parent to the site that is being entered. For example if the site that is being entered is a room in a facility, then the <code>Parent site ID</code> would refer to the facility.</p></li>
 </ul></li>
-<li>Columns D to E:
+<li>Columns E and F:
 <ul>
-<li>These are Drop-down Menu fields in which you can specify the Site Type (column D) and the type of Sample shed (column E).</li>
+<li>These are drop-down menu fields in which you can specify the <code>Site Type</code> (column E) and the type of <code>Sample shed</code> (column F).</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns G to M</strong></p>
 <p><img src="assets/how-to/sites_Col_GM.png" class="img-fluid"></p>
 <ol type="i">
-<li>Columns G to I:
+<li>Columns G to I, L and M:
 <ul>
-<li>These are Identifier fields for additional information that are asociated with the Site.</li>
+<li>These are identifier fields that you can use to record additional information about the site. <code>Primary reporting authority ID</code> (column L) and <code>Secondary reporting authority ID</code> (column M) are <code>Organization ID</code>s that you would have created using the <code>Organization</code> template.</li>
 </ul></li>
-<li>Columns J to M:
+<li>Columns J and K:
 <ul>
-<li>These are all Free Form fields in which you can enter in relevant information about your Site.</li>
-<li>Public Health Department or Region (column L) and Health Region (column M), refers to the Department or Region where your Site is located.</li>
+<li>These are all free form fields in which you can enter in relevant information about the site.</li>
 </ul></li>
 </ol></li>
 <li><p><strong>Columns N to S</strong></p>
@@ -1431,19 +1223,60 @@ NOTE: this figure needs to be update with the correct labels.
 <ol type="i">
 <li>Columns N to S:
 <ul>
-<li>These are Free Form fields and a Date field in which you can enter in additional information of your Site.</li>
-<li>European Petroleum Survey Group Coordinates (column Q) is a coordinate system that can be used to identify where your Site is. <!--# I'm not sure if you want something else here... --></li>
+<li>These are free form fields and a date field where you can enter in additional information about the Site.</li>
+<li><code>European Petroleum Survey Group Coordinates</code> (column Q) is a coordinate system that can be used to identify where your site is.</li>
+<li><code>Last Edited</code> (column S) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.</li>
 </ul></li>
 </ol></li>
 </ol>
-<p>You have now entered in your Metadata, congratulations!</p>
+<p>You have now entered in your metadata, congratulations!</p>
 </section>
 </section>
-<section id="example-data-for-each-of-the-11-report-tables." class="level2">
-<h2 class="anchored" data-anchor-id="example-data-for-each-of-the-11-report-tables.">Example data for each of the 11 report tables.</h2>
-<!--# Do you still want this section, since I'm putting in example data within the guides? Alternatively, I can also remove the within-Guide example data.-->
+<section id="notes-regarding-templates" class="level2">
+<h2 class="anchored" data-anchor-id="notes-regarding-templates">Notes regarding templates</h2>
+<section id="templates-with-conditional-menus-measure-report-and-protocol-steps" class="level3">
+<h3 class="anchored" data-anchor-id="templates-with-conditional-menus-measure-report-and-protocol-steps">Templates with conditional menus (<code>Measure report</code> and <code>Protocol steps</code>)</h3>
+<section id="adding-more-conditional-menus" class="level4">
+<h4 class="anchored" data-anchor-id="adding-more-conditional-menus">Adding more conditional menus</h4>
+<ul>
+<li><p>The code to determine the entries for the conditional menus are found to the right of the main template. Unlike the main template, the rows containing the code will not be alternating in colour.</p></li>
+<li><p>The code is only present for the first three rows. If you want to use conditional menus for additional rows, you will need to copy the code to these rows as well as create the menus in the desired cells. As an example, pretend that you wanted to add a <code>Measure</code> field conditional menu to row 5 in the <code>Measure report</code> template. The first thing you would do is copy the code from AF4 to AF5 (see below, all images in this example are from Excel Online).</p>
+<p><img src="assets/how-to/ccond_menu.png" class="img-fluid"></p></li>
+<li><p>Then, to create the new menu, you would go to P5 (which is where the new conditional menu will be located). You would select “Data validation”, which is under “Data Tools” in the “Data” tab (it is outlined in red in the image below).</p>
+<p><img src="assets/how-to/ccond_menu2.png" class="img-fluid"></p></li>
+<li><p>Finally, you would select “List” from the “Allow” menu and then enter the following text “=$AF$5#” under “Source”. The column and row indicators (“AF” and “5”, in this example) match up with where you copied the new code (“AF5”).</p>
+<p><img src="assets/how-to/ccond_menu3.png" class="img-fluid"></p>
+<p>For additional menus, repeat the above steps. Adding conditional menus in an online environment (such as Excel Online) may slow down the templates considerably.</p></li>
+</ul>
+</section>
+<section id="troubleshooting-conditional-menus" class="level4">
+<h4 class="anchored" data-anchor-id="troubleshooting-conditional-menus">Troubleshooting conditional menus</h4>
+<ul>
+<li><p>The conditional menus work by searching the <code>partLabels</code> column in the <code>parts</code> table that is included with the templates.</p></li>
+<li><p>If you obtained an error with these menus check if any changes were made to the <code>parts</code> table.</p></li>
+</ul>
+</section>
+</section>
+<section id="templates-with-menus-all-templates-other-than-the-measure-sets-protocols-contact-address-and-dataset-templates" class="level3">
+<h3 class="anchored" data-anchor-id="templates-with-menus-all-templates-other-than-the-measure-sets-protocols-contact-address-and-dataset-templates">Templates with menus (all templates other than the <code>Measure sets</code>, <code>Protocols</code>, <code>Contact</code>, <code>Address</code> and <code>Dataset</code> templates)</h3>
+<section id="part-ids" class="level4">
+<h4 class="anchored" data-anchor-id="part-ids">Part IDs</h4>
+<ul>
+<li><p>In the main parts of each of the templates, labels are used in the menus.</p></li>
+<li><p>If you wish to have the part IDs of these values, they are located to the right of the main template and, if applicable, the code for the conditional menus. Unlike the main template, the rows containing the part IDs will not be alternating in colour.</p></li>
+<li><p>The part IDs are present in the first 100 rows of each of the templates.</p></li>
+</ul>
+</section>
+<section id="troubleshooting-menus-not-including-conditional-menus" class="level4">
+<h4 class="anchored" data-anchor-id="troubleshooting-menus-not-including-conditional-menus">Troubleshooting menus (not including conditional menus)</h4>
+<ul>
+<li><p>The menus are based on what is found in the <code>lists</code> tab that is included with the templates.</p></li>
+<li><p>If you obtained an error with these menus check if any changes were made to the <code>lists</code> tab.</p></li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
