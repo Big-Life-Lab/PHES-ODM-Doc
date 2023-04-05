@@ -24,6 +24,7 @@ source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
 source("R/generate-display.R")
+source("R/sets.R")
 
 # Display string templates
 header_template <-
