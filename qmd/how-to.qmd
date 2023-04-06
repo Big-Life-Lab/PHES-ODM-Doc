@@ -246,7 +246,7 @@ Below you will find the fields that are mandatory for the `Sample report` and `S
 
 1.  **Columns A to G**
 
-    ![](assets/how-to/samples_col_AG.png){fig-align="center"}
+    ![](assets/how-to/samples_Col_AG.png){fig-align="center"}
 
     i)  Columns A to E:
 
@@ -295,7 +295,7 @@ Below you will find the fields that are mandatory for the `Sample report` and `S
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/sampleRel_col_AE.png){fig-align="center"}
+    ![](assets/how-to/sampleRel_Col_AE.png){fig-align="center"}
 
     i)  Columns A and C:
 
@@ -380,7 +380,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 1.  **Columns A to G**
 
-    ![](assets/how-to/protSteps_col_AG.png){fig-align="center"}
+    ![](assets/how-to/protSteps_Col_AG.png){fig-align="center"}
 
     i)  Column A and E:
         -   These are identifier fields.
@@ -397,7 +397,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 2.  **Columns H to O**
 
-    ![](assets/how-to/protSteps_col_HO.png){fig-align="center"}
+    ![](assets/how-to/protSteps_Col_HO.png){fig-align="center"}
 
     i)  Columns H to J:
         -   These are identifier fields.
@@ -451,7 +451,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 1.  **Columns A to H**
 
-    ![](assets/how-to/protRel_col_AH.png){fig-align="center"}
+    ![](assets/how-to/protRel_Col_AH.png){fig-align="center"}
 
     i)  Columns A to C, E and F:
 
