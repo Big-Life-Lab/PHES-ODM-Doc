@@ -6,7 +6,7 @@
 #' @param part_bullet_template string containing display the bullet display template.
 #' 
 #' @return glue object string populated using part_info.
-bullet_point_template_population <- function(part_info, part_bullet_template){
+generate_bullet_point_display <- function(part_info, part_bullet_template){
   # Declare display elements
   part_ID <- part_info[[parts_sheet_column_names$part_ID_column_name]]
   part_input <- list()
