@@ -28,10 +28,10 @@ source("R/template-utils.R")
 # Display string templates
 header_template <-
   '## {partLabel} {{ #{partID} }}
-  <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} {if (partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else "" }'
+  <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} {if (partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else "" }'
 
 set_sub_header_template <- '<a href=\"/parts.html#{partID}\">({partID})</a>{partDesc} \\
-{if(partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else ""} </br>
+{if(partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else ""} </br>
 Status: {status}. First Released: {firstReleased}. \\
 Last updated: {lastUpdated}.'
 
@@ -43,10 +43,10 @@ sets_table_source <-
   readxl::read_excel(
     file.path(
       getwd(),
-      constants$dictionary_directory,
+      dictionary$dictionary_directory,
       dictionary_full_file_name
     ),
-    sheet = constants$sets_sheet_name
+    sheet = dictionary$sets_sheet_name
   )
 sets_table <- format_table(sets_table_source)
 sets_table <-
@@ -57,10 +57,10 @@ parts_table_source <-
   readxl::read_excel(
     file.path(
       getwd(),
-      constants$dictionary_directory,
+      dictionary$dictionary_directory,
       dictionary_full_file_name
     ),
-    sheet = constants$parts_sheet_name
+    sheet = dictionary$parts_sheet_name
   )
 parts_table <-
   format_table(parts_table_source,
@@ -75,7 +75,7 @@ unique_set_types <-
   unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
 for (set_type in unique_set_types) {
   # Removing dictSet set type and catSet
-  if (set_type == constants$set_type_is_dictSet || set_type == constants$set_type_is_catSet) {
+  if (set_type == sets_sheet_values$set_type_is_dictSet || set_type == sets_sheet_values$set_type_is_catSet) {
     next()
   }
   
@@ -187,7 +187,7 @@ for (set_type in unique_set_types) {
 
 # Create lists
 list_set_rows <-
-  sets_table[sets_table[[sets_sheet_column_names$part_set_ID_column_name]] == constants$set_ID_is_list_set,]
+  sets_table[sets_table[[sets_sheet_column_names$part_set_ID_column_name]] == sets_sheet_values$set_ID_is_list_set,]
 unique_list_part_IDs <-
   unique(list_set_rows[[parts_sheet_column_names$part_ID_column_name]])
 
@@ -252,7 +252,7 @@ for (list_ID in unique_list_part_IDs) {
 
 # Create list for categorical displays
 categories_list <- list()
-categories_info_table <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == constants$set_type_is_catSet, ]
+categories_info_table <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == sets_sheet_values$set_type_is_catSet, ]
 unique_category_set_IDs <- unique(categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]])
 for (category_set_ID in unique_category_set_IDs) {
   category_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]==category_set_ID, ]

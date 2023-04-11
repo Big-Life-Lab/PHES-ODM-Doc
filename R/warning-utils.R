@@ -23,7 +23,7 @@ skipped_order <- function(ID){
 
 ivalid_cat_link <- function(ID){
   glue::glue('{ID} has data type of \\
-                   {constants$data_type_is_categorical} but no valid \\
+                   {parts$data_type_is_categorical} but no valid \\
                    {parts_sheet_column_names$part_cat_set_ID_column_name}')
 }
 duplicate_ID <- function(ID){

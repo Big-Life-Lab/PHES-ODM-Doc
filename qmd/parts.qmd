@@ -32,7 +32,7 @@ source("R/template-utils.R")
 
 # String to store parts display template
 parts_display_template <- '### {partLabel} {{ #{partID} }} 
-      ({partID}). {partDesc} {if (partInstr %!=na% constants$dictionary_missing_value_replacement) partInstr else "" } </br>
+      ({partID}). {partDesc} {if (partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else "" } </br>
       *Part Type:* <a href="#{partType}">{partType}</a> </br>
       *Domain:* <a href="#{domain}">{domain}</a> </br>
       *Speciment ID:* <a href="/{part_speciment_set_location}.html#{specimenSet}">{specimenSet}</a> </br>
@@ -51,7 +51,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
       *Maximum Length:* {maxLength} </br>
-      *Part Status:* {if (status %!=na% constants$status_is_active) glue::glue(\'**{status}**\') else status }. \\
+      *Part Status:* {if (status %!=na% parts$status_is_active) glue::glue(\'**{status}**\') else status }. \\
       First released: {firstReleased}. \\
       Last updated: {lastUpdated}. </br>
       '
@@ -62,14 +62,14 @@ parts_info_display_content <- ""
 
 # Read in and prepare parts data.frame
 parts_table_source <-
-  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
-                     sheet = constants$parts_sheet_name)
+  readxl::read_excel(file.path(getwd(),dictionary$dictionary_directory, dictionary_full_file_name),
+                     sheet = dictionary$parts_sheet_name)
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 
 # Removal of parts under development
 parts_table <-
-  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != constants$status_is_development, ]
+  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != parts$status_is_development, ]
 
 # Sort parts alphabetically by partID
 parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
