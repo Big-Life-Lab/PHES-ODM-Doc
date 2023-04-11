@@ -19,7 +19,9 @@ format_table <-
            table_being_checked = "parts",
            replace_value = constants$dictionary_missing_value_replacement,
            ID_column_name = parts_sheet_column_names$part_ID_column_name,
-           remove_development_parts = TRUE) {
+           remove_development_parts = TRUE,
+           append_null_columns = TRUE,
+           replace_invalid_values = TRUE) {
     status_column_name <-
       parts_sheet_column_names$part_status_column_name
     
@@ -64,15 +66,18 @@ format_table <-
       # Append then skip over columns missing from the input_table and issue appropriate warning
       if (is.null(input_table[[current_column_to_format]])) {
         warning(column_missing_and_populated(current_column_to_format))
-        output_table[[current_column_to_format]] <- replace_value
+        if(append_null_columns) {
+          output_table[[current_column_to_format]] <- replace_value
+        }
         next()
       }
       # Format missing/improper values into replace_value
-      output_table[is.na(output_table[[current_column_to_format]]) |
-                     is.null(output_table[[current_column_to_format]]) |
-                     length(output_table[[current_column_to_format]]) < 1, current_column_to_format] <-
-        replace_value
-      
+      if(replace_invalid_values) {
+        output_table[is.na(output_table[[current_column_to_format]]) |
+                       is.null(output_table[[current_column_to_format]]) |
+                       length(output_table[[current_column_to_format]]) < 1, current_column_to_format] <-
+          replace_value
+      } 
     }
     
     return(output_table)
