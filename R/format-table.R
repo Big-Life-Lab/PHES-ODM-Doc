@@ -9,6 +9,12 @@ source(file.path(getwd(), "R", "warning-utils.R"))
 #' @param columns_to_format vector containing names of columns to format. If not passed all columns are formatted.
 #' @param remove_duplicate boolean to toggle duplicate ID removal.
 #' @param strip_invalid_part_ID boolean to toggle removal of invalid IDs in partID column.
+#' @param table_being_checked string representing the name of the table being checked.
+#' @param replace_value string representing the value to use for replacement of invalid values.
+#' @param ID_column_name string representing the name of the ID column for the passed table.
+#' @param remove_development_parts boolean to toggle removal of parts in development.
+#' @param append_null_columns boolean to toggle appending of new columns when a null column is found.
+#' @param replace_invalid_values boolean to toggle replacing of invalid values within a column.
 #'
 #' @return data.frame containing formatted input
 format_table <-
