@@ -1,5 +1,6 @@
 # Source constants when not using pkg.env
 source(file.path(getwd(), "R", "constants.R"))
+source(file.path(getwd(), "R", "warning-utils.R"))
 #' Format Table
 #'
 #' Formats table based on columns_to_format replacing any NA, "NA", or NULL with "N/A"
@@ -45,18 +46,14 @@ format_table <-
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
-        output_table[duplicated(output_table[[ID_column_name]]), ]
+        output_table[duplicated(output_table[[ID_column_name]]),]
       output_table <-
-        output_table[!duplicated(output_table[[ID_column_name]]), ]
+        output_table[!duplicated(output_table[[ID_column_name]]),]
       # Display warning for removed duplicated rows
       removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
-      warning(
-        glue::glue(
-          '{removed_ID_names} ID contais duplicate {ID_column_name} only the first instance is used.
-
-                           '
-        )
-      )
+      if (length(removed_ID_names) > 0) {
+        warning(duplicate_ID(removed_ID_names))
+      }
     }
     
     
@@ -65,14 +62,7 @@ format_table <-
     {
       # Append then skip over columns missing from the input_table and issue appropriate warning
       if (is.null(input_table[[current_column_to_format]])) {
-        warning(
-          glue::glue(
-            '{current_column_to_format} is missing from {table_being_checked} sheet.
-          New column was created with {replace_value} values.
-
-          '
-          )
-        )
+        warning(column_missing_and_populated(current_column_to_format))
         output_table[[current_column_to_format]] <- replace_value
         next()
       }
