@@ -18,7 +18,8 @@ format_table <-
            strip_invalid_part_ID = TRUE,
            table_being_checked = "parts",
            replace_value = constants$dictionary_missing_value_replacement,
-           ID_column_name = parts_sheet_column_names$part_ID_column_name) {
+           ID_column_name = parts_sheet_column_names$part_ID_column_name,
+           remove_development_parts = TRUE) {
     status_column_name <-
       parts_sheet_column_names$part_status_column_name
     
@@ -31,7 +32,7 @@ format_table <-
     output_table <- input_table
     
     # Remove parts under development
-    if (!is.null(input_table[[status_column_name]])) {
+    if (!is.null(input_table[[status_column_name]]) && remove_development_parts) {
       output_table <-
         output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development, ]
     }
