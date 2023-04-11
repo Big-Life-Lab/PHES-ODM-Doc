@@ -29,3 +29,15 @@ parts_sheet_column_names$part_first_release_column_name <- "firstReleased"
 parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 
 parts$part_type_is_table <- "tables"
+parts$data_type_is_categorical <- "categorical"
+# Table column values
+parts$part_sheet_table_column_type_is_PK <- "pk"
+parts$part_sheet_table_column_type_is_FK <- "fk"
+parts$part_sheet_table_column_type_is_header <- "header"
+parts$status_is_active <- "active"
+parts$status_is_development <- "development"
+
+# String set Values
+parts$part_sheet_table_column_type_set_PK <- "Primary Key"
+parts$part_sheet_table_column_type_set_FK <- "Foreign Key"
+parts$part_sheet_table_column_type_set_header <- "Header"
