@@ -88,8 +88,6 @@ table_name_columns <- c(all_table_column_names, all_required_column_names, all_o
 
 # Perform additional formatting on table specific columns
 parts_table <- format_table(parts_table, table_name_columns, check_table_values = TRUE)
-check_values_for_table(parts_table, all_table_column_names, c(constants$part_sheet_table_column_type_is_PK, constants$part_sheet_table_column_type_is_FK, constants$part_sheet_table_column_type_is_header))
-#parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], tolower)
 parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], trimws)
 
 # Declaring string that will be appended during the loops
