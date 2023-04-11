@@ -15,7 +15,7 @@ Sets are lists of categories and other parts. For example, `Collection category 
 
 Sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g. `Sample not collected`), PCR measures (`Inhibition preset`), and sequencing measures (`Low depth of coverage`), but all quality sets share the `No quality concerns` indicator.
 
-```{r, echo=FALSE, warning=TRUE}
+```{r, echo=FALSE, warning=FALSE}
 # Utility Functions
 # Source utility functions
 source("R/qmd-utils.R")
@@ -24,6 +24,9 @@ source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
 source("R/template-utils.R")
+source("R/dictionary-module.R")
+source("R/parts-module.R")
+source("R/sets-module.R")
 
 # Display string templates
 header_template <-

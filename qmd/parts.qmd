@@ -21,7 +21,7 @@ Each part ID starts with a lowercase character and contains no special character
 The unique construction of part IDs serves several purposes in addition to generating valid URLs. Users can create wide table variable names (headers) using part IDs that are valid in all open software languages. ODM supports a standard method of generating wide variable names by concatenating partIDs with an underscore, `_`. For this reason, some part types have a limit of seven characters to ensure the total length of wide names remains less than 35 characters, which is the character limit length of some statistical language software. The wide variable naming method will be added to the documentation.
 :::
 
-```{r, echo=FALSE, warning=TRUE}
+```{r, echo=FALSE, warning=FALSE}
 # Source utility functions
 source("R/qmd-utils.R")
 # Source table formatting
@@ -29,6 +29,8 @@ source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
 source("R/template-utils.R")
+source("R/dictionary-module.R")
+source("R/parts-module.R")
 
 # String to store parts display template
 parts_display_template <- '### {partLabel} {{ #{partID} }} 

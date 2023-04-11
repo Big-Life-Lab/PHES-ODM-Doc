@@ -1,5 +1,5 @@
 # Source constants
-source("R/constants.R")
+source(file.path(getwd(), "R", "parts-module.R"))
 
 missing_warning <- function(context, ID){
   glue::glue('Part {context} is missing for {ID}.\n')

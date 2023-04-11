@@ -1,5 +1,5 @@
 sets_sheet_column_names <- list()
-sets_sheet_values <- list
+sets_sheet_values <- list()
 
 # Column names for sets sheet
 sets_sheet_column_names$part_set_type_column_name <- "setType"

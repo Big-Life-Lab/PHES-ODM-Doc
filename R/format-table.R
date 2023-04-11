@@ -1,5 +1,6 @@
 # Source constants when not using pkg.env
-source(file.path(getwd(), "R", "constants.R"))
+source(file.path(getwd(), "R", "dictionary-module.R"))
+source(file.path(getwd(), "R", "parts-module.R"))
 source(file.path(getwd(), "R", "warning-utils.R"))
 #' Format Table
 #'
