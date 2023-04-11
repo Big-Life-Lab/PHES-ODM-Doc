@@ -7,14 +7,12 @@ source(file.path(getwd(), "R", "constants.R"))
 #' @param input_table data.frame to format
 #' @param columns_to_format vector containing names of columns to format. If not passed all columns are formatted.
 #' @param remove_duplicate boolean to toggle duplicate partID removal.
-#' @param check_table_values boolean to toggle checking for table specific values within table columns.
 #'
 #' @return data.frame containing formatted input
 format_table <-
   function(input_table,
            columns_to_format = NULL,
-           remove_duplicate = FALSE,
-           check_table_values = FALSE) {
+           remove_duplicate = FALSE) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
@@ -82,26 +80,7 @@ format_table <-
       
     }
     
-    # Check table related values
-    if (check_table_values) {
-      # Retrieve table related rows then columns
-      tables_data <-
-        output_table[output_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                       output_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
-      all_table_column_names <-
-        tables_data[[parts_sheet_column_names$part_ID_column_name]]
-      check_values_for_table(
-        output_table,
-        all_table_column_names,
-        c(
-          constants$part_sheet_table_column_type_is_PK,
-          constants$part_sheet_table_column_type_is_FK,
-          constants$part_sheet_table_column_type_is_header,
-          constants$part_sheet_table_column_type_is_input,
-          constants$dictionary_missing_value_replacement
-        )
-      )
-    }
+    
     
     return(output_table)
   }
@@ -129,3 +108,37 @@ check_values_for_table <-
       }
     }
   }
+
+#' Format part table
+#' 
+#' A wrapper function that combines format_table and check_values_for_table. 
+#' Both formatting the table and displaying table data specific warnings.
+#' 
+#' @param input_table data.frame containing the parts table
+#' @param column_names string vector containing columns to check
+#' 
+#' @return data.frame containing the formated parts table
+format_parts_table <- function(input_table, column_names) {
+  # Perform regular table_formatting
+  output_table <- format_table(input_table, column_names)
+  # Retrieve table related rows then columns
+  tables_data <-
+    output_table[output_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
+                   output_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active, ]
+  all_table_column_names <-
+    tables_data[[parts_sheet_column_names$part_ID_column_name]]
+  
+  check_values_for_table(
+    output_table,
+    all_table_column_names,
+    c(
+      constants$part_sheet_table_column_type_is_PK,
+      constants$part_sheet_table_column_type_is_FK,
+      constants$part_sheet_table_column_type_is_header,
+      constants$part_sheet_table_column_type_is_input,
+      constants$dictionary_missing_value_replacement
+    )
+  )
+  
+  return(output_table)
+}
