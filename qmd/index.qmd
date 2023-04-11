@@ -2,12 +2,6 @@
 
 > Make collecting and sharing high-quality, interoperable environmental surveillance data as easy as possible.
 
-<!-- {{< include _dictionary-version.qmd >}}   -->
-
-::: callout-warning
-This documentation for the PHES-ODM Version 2.0.0 release candidate. Please be aware that changes will occur regularly in the next weeks. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
-:::
-
 The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source data model and set of tools aimed at promoting global collaboration and use of environment and public health data. The ODM model facilitates interoperable environmental surveillance and research by improving quality reporting data, enhancing data management, and supporting data provenance and sharing.
 
 This documentation is intended for those who want to understand how the ODM model works, its organizational structure, and how to use it effectively for their program. It is also a useful resource for those who currently use a different data dictionary and wish to share their data with a program that uses the ODM. If you need to share your data with another program that uses a different data dictionary, this documentation can help you compare and create a common cross-walk between dictionaries. The ODM starts as a conceptual model that represents real-world processes through data elements and data relationships, which are common to all environmental and public health surveillance systems.
