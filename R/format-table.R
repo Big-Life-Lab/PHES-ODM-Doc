@@ -15,10 +15,10 @@ format_table <-
   function(input_table,
            columns_to_format = NULL,
            remove_duplicate = FALSE,
-           strip_invalid_part_ID = TRUE) {
-    table_being_checked <- "parts"
-    replace_value <- constants$dictionary_missing_value_replacement
-    ID_column_name <- parts_sheet_column_names$part_ID_column_name
+           strip_invalid_part_ID = TRUE,
+           table_being_checked = "parts",
+           replace_value = constants$dictionary_missing_value_replacement,
+           ID_column_name = parts_sheet_column_names$part_ID_column_name) {
     status_column_name <-
       parts_sheet_column_names$part_status_column_name
     
