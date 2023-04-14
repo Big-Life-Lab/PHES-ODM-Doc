@@ -1,6 +1,6 @@
 
 ```{r, echo=FALSE}
-source("R/dictionary-module.R")
+source("R/odm-dictionary-file.R")
 dictionary_full_file_name <- list.files(file.path(getwd(),dictionary$dictionary_directory), pattern = "^ODM.*xlsx$")
 dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
 

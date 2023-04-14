@@ -1,5 +1,5 @@
 # Source constants when not using pkg.env
-source(file.path(getwd(), "R", "dictionary-module.R"))
+source(file.path(getwd(), "R", "odm-dictionary-file.R"))
 
 #' Verify Input
 #'
