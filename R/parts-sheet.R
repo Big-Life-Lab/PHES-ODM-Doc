@@ -37,7 +37,4 @@ parts$part_sheet_table_column_type_is_header <- "header"
 parts$status_is_active <- "active"
 parts$status_is_development <- "development"
 
-# String set Values
-parts$part_sheet_table_column_type_set_PK <- "Primary Key"
-parts$part_sheet_table_column_type_set_FK <- "Foreign Key"
-parts$part_sheet_table_column_type_set_header <- "Header"
+

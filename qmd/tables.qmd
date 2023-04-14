@@ -65,7 +65,10 @@ source("R/format-table.R")
 source("R/warning-utils.R")
 source("R/odm-dictionary-file.R")
 source("R/parts-sheet.R")
-
+# String set Values
+parts$part_sheet_table_column_type_set_PK <- "Primary Key"
+parts$part_sheet_table_column_type_set_FK <- "Foreign Key"
+parts$part_sheet_table_column_type_set_header <- "Header"
 
 
 # Read in and prepare parts data.frame
