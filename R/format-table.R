@@ -30,20 +30,20 @@ format_table <-
     # Remove parts under development
     if (!is.null(input_table[[status_column_name]])) {
       output_table <-
-        output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development, ]
+        output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development,]
     }
     
     # Strip off rows where partID is invalid
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
-                     length(output_table[[ID_column_name]]) > 0,]
+                     length(output_table[[ID_column_name]]) > 0, ]
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
-        output_table[duplicated(output_table[[ID_column_name]]), ]
+        output_table[duplicated(output_table[[ID_column_name]]),]
       output_table <-
-        output_table[!duplicated(output_table[[ID_column_name]]), ]
+        output_table[!duplicated(output_table[[ID_column_name]]),]
       # Display warning for removed duplicated rows
       removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
       warning(
@@ -99,37 +99,53 @@ check_values_for_table <-
     for (table_column in column_names) {
       unique_values <- unique(input_table[[table_column]])
       for (single_value in unique_values) {
-        if(!(single_value %in% valid_values)){
+        if (!(single_value %in% valid_values)) {
           # Gather parts info using invalid values
-          invalid_parts_info <- input_table[input_table[[table_column]]==single_value, ]
-          partID <- invalid_parts_info[[parts_sheet_column_names$part_ID_column_name]]
-          warning(glue::glue('Part ID: {partID} contains an invalid value({single_value}), in column: {table_column}.\n\n'))
+          invalid_parts_info <-
+            input_table[input_table[[table_column]] == single_value,]
+          partID <-
+            invalid_parts_info[[parts_sheet_column_names$part_ID_column_name]]
+          warning(
+            glue::glue(
+              'Part ID: {partID} contains an invalid value({single_value}), in column: {table_column}.\n\n'
+            )
+          )
         }
       }
     }
   }
 
 #' Format part table
-#' 
-#' A wrapper function that combines format_table and check_values_for_table. 
+#'
+#' A wrapper function that combines format_table and check_values_for_table.
 #' Both formatting the table and displaying table data specific warnings.
-#' 
-#' @param input_table data.frame containing the parts table
-#' @param column_names string vector containing columns to check
-#' 
+#'
+#' @param parts_table data.frame containing the parts table
+#'
 #' @return data.frame containing the formated parts table
-format_parts_table <- function(input_table, column_names) {
-  # Perform regular table_formatting
-  output_table <- format_table(input_table, column_names)
+format_parts_table <- function(parts_table) {
   # Retrieve table related rows then columns
   tables_data <-
-    output_table[output_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                   output_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active, ]
+    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
+                   parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+  
+  # Utilize tables_data to generate names of table specific columns
+  all_required_column_names <-
+    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Required')
+  all_order_column_names <-
+    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Order')
   all_table_column_names <-
     tables_data[[parts_sheet_column_names$part_ID_column_name]]
+  table_name_columns <-
+    c(all_table_column_names,
+      all_required_column_names,
+      all_order_column_names)
+  
+  # Perform regular table_formatting
+  formatted_parts_table <- format_table(parts_table, table_name_columns)
   
   check_values_for_table(
-    output_table,
+    formatted_parts_table,
     all_table_column_names,
     c(
       constants$part_sheet_table_column_type_is_PK,
