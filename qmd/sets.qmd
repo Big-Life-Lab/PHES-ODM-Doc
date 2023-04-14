@@ -31,10 +31,10 @@ source("R/sets-sheet.R")
 # Display string templates
 header_template <-
   '## {partLabel} {{ #{partID} }}
-  <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} {if (partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else "" }'
+  <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} {if (partInstr %!=na% odm_dictionary$dictionary_missing_value_replacement) partInstr else "" }'
 
 set_sub_header_template <- '<a href=\"/parts.html#{partID}\">({partID})</a>{partDesc} \\
-{if(partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else ""} </br>
+{if(partInstr %!=na% odm_dictionary$dictionary_missing_value_replacement) partInstr else ""} </br>
 Status: {status}. First Released: {firstReleased}. \\
 Last updated: {lastUpdated}.'
 
@@ -46,10 +46,10 @@ sets_table_source <-
   readxl::read_excel(
     file.path(
       getwd(),
-      dictionary$dictionary_directory,
+      odm_dictionary$dictionary_directory,
       dictionary_full_file_name
     ),
-    sheet = dictionary$sets_sheet_name
+    sheet = odm_dictionary$sets_sheet_name
   )
 sets_table <- format_table(sets_table_source)
 sets_table <-
@@ -60,10 +60,10 @@ parts_table_source <-
   readxl::read_excel(
     file.path(
       getwd(),
-      dictionary$dictionary_directory,
+      odm_dictionary$dictionary_directory,
       dictionary_full_file_name
     ),
-    sheet = dictionary$parts_sheet_name
+    sheet = odm_dictionary$parts_sheet_name
   )
 parts_table <-
   format_table(parts_table_source,

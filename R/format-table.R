@@ -15,7 +15,7 @@ format_table <-
            columns_to_format = NULL,
            remove_duplicate = FALSE) {
     table_being_checked <- "parts"
-    replace_value <- dictionary$dictionary_missing_value_replacement
+    replace_value <- odm_dictionary$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
     status_column_name <-
       parts_sheet_column_names$part_status_column_name

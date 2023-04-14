@@ -73,8 +73,8 @@ parts$part_sheet_table_column_type_set_header <- "Header"
 
 # Read in and prepare parts data.frame
 parts_table_source <-
-  readxl::read_excel(file.path(getwd(),dictionary$dictionary_directory, dictionary_full_file_name),
-                     sheet = dictionary$parts_sheet_name)
+  readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, dictionary_full_file_name),
+                     sheet = odm_dictionary$parts_sheet_name)
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 # Generate tables data.frame

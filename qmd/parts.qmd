@@ -34,7 +34,7 @@ source("R/parts-sheet.R")
 
 # String to store parts display template
 parts_display_template <- '### {partLabel} {{ #{partID} }} 
-      ({partID}). {partDesc} {if (partInstr %!=na% dictionary$dictionary_missing_value_replacement) partInstr else "" } </br>
+      ({partID}). {partDesc} {if (partInstr %!=na% odm_dictionary$dictionary_missing_value_replacement) partInstr else "" } </br>
       *Part Type:* <a href="#{partType}">{partType}</a> </br>
       *Domain:* <a href="#{domain}">{domain}</a> </br>
       *Speciment ID:* <a href="/{part_speciment_set_location}.html#{specimenSet}">{specimenSet}</a> </br>
@@ -64,8 +64,8 @@ parts_info_display_content <- ""
 
 # Read in and prepare parts data.frame
 parts_table_source <-
-  readxl::read_excel(file.path(getwd(),dictionary$dictionary_directory, dictionary_full_file_name),
-                     sheet = dictionary$parts_sheet_name)
+  readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, dictionary_full_file_name),
+                     sheet = odm_dictionary$parts_sheet_name)
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 
