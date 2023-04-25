@@ -42,6 +42,7 @@ format_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
                      length(output_table[[ID_column_name]]) > 0, ]
+    }
     # Remove rows with duplicate partID
     if (remove_duplicate) {
       duplicated_rows <-
@@ -149,5 +150,5 @@ format_parts_table <- function(parts_table) {
     )
   )
   
-  return(output_table)
+  return(formatted_parts_table)
 }
