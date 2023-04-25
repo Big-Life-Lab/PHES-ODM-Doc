@@ -1108,18 +1108,6 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for recording the various quality metrics and indicators for samples and measures.
 <ul>
 <li>
-<strong>Quality report ID</strong> (<a href="./parts.html#qualityID">qualityID</a>). A unique identifier for a given quality report.<br>Role: Primary Key.<br>Requirement: mandatory.<br>Data type: varchar.
-</li>
-<li>
-<strong>Report ID</strong> (<a href="./parts.html#measureRepID">measureRepID</a>). Unique identifier for a measurement.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
-</li>
-<li>
-<strong>Sample ID</strong> (<a href="./parts.html#sampleID">sampleID</a>). Unique identifier for a sample.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
-</li>
-<li>
-<strong>Report set ID</strong> (<a href="./parts.html#meaureSetRepID">meaureSetRepID</a>). Unique identifier that links together a group of related measures.<br>Role: Foreign Key.<br>Requirement: mandatoryIf.<br>Data type: varchar.
-</li>
-<li>
 <strong>Quality flag</strong> (<a href="./parts.html#qualityFlag">qualityFlag</a>). A field for reporting any quality concerns - of lack thereof - for a sample or measure.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
@@ -1187,9 +1175,6 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 </li>
 <li>
 <strong>Replicate Type</strong> (<a href="./parts.html#repType">repType</a>). Attirbute of a sample, specifying whether the sample is unique, or a replicate. And if it is a replicate, what type of replicate is it?<br>Role: Foreign Key.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#replicateSet">replicateSet</a>
-</li>
-<li>
-<strong>Sample collection type</strong> (<a href="./parts.html#collType">collType</a>). The type of collection.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#collectSet">collectSet</a>
 </li>
 <li>
 <strong>Collection period</strong> (<a href="./parts.html#collPer">collPer</a>). Collection period. The time period over which the sample was collected, in hours. Alternatively, use collectionStart and collectionEnd.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: float.
@@ -1360,7 +1345,7 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Fri Apr 14 00:00:00 2023.</p>
+<p>Page created on Tue Apr 25 00:00:00 2023.</p>
 
 
 </section>
