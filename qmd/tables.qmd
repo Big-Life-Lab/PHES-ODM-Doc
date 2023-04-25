@@ -66,9 +66,9 @@ source("R/warning-utils.R")
 source("R/odm-dictionary-file.R")
 source("R/parts-sheet.R")
 # String set Values
-parts$part_sheet_table_column_type_set_PK <- "Primary Key"
-parts$part_sheet_table_column_type_set_FK <- "Foreign Key"
-parts$part_sheet_table_column_type_set_header <- "Header"
+part_sheet_table_column_type_set_PK <- "Primary Key"
+part_sheet_table_column_type_set_FK <- "Foreign Key"
+part_sheet_table_column_type_set_header <- "Header"
 
 
 # Read in and prepare parts data.frame
@@ -189,11 +189,11 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     column_role <- "NA"
     if (verify_input(detected_column_role, missing_warning("Valid column role", current_table_ID))) {
       if (detected_column_role == parts$part_sheet_table_column_type_is_FK) {
-        column_role <- parts$part_sheet_table_column_type_set_FK
+        column_role <- part_sheet_table_column_type_set_FK
       } else if (detected_column_role == parts$part_sheet_table_column_type_is_PK) {
-        column_role <- parts$part_sheet_table_column_type_set_PK
+        column_role <- part_sheet_table_column_type_set_PK
       } else if (detected_column_role == parts$part_sheet_table_column_type_is_header) {
-        column_role <- parts$part_sheet_table_column_type_set_header
+        column_role <- part_sheet_table_column_type_set_header
       } 
     }
     

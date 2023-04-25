@@ -133,10 +133,10 @@ create_html_list <- function(string_to_append, list_values){
 #' 
 #' @return string with sets or parts depending on suffix of input_ID
 determine_link_source <- function(input_ID){
-  odm_dictionary$parts_qmd_file_name <- "parts"
-  odm_dictionary$sets_qmd_file_name <- "sets"
-  link_to_parts <- odm_dictionary$parts_qmd_file_name
-  link_to_sets <- odm_dictionary$sets_qmd_file_name
+  parts_qmd_file_name <- "parts"
+  sets_qmd_file_name <- "sets"
+  link_to_parts <- parts_qmd_file_name
+  link_to_sets <- sets_qmd_file_name
   
   link_source <- ""
   
