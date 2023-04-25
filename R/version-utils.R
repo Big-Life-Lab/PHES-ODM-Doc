@@ -15,6 +15,8 @@ get_latest_version <- function() {
   # Display warning for multiple dictionaries as only 1 should be stored on github
   if (length(file_names) > 1) {
     warning('Multiple dictionaries found only one dictionary should be stored.')
+  }else if(length(file_names)==0){
+    stop("No valid files were detected. Make sure the dictionary file is named correctly.")
   }
   
   
