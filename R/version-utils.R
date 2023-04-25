@@ -1,4 +1,5 @@
 source("R/constants.R")
+source("R/semver-handling.R")
 #' Get latest version
 #'
 #' Get the latest version from vector of file names
@@ -7,7 +8,7 @@ source("R/constants.R")
 #'
 #' @return vector of strings containing latest version and latest version file name
 get_latest_version <- function() {
-  dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
+  dictionary_version_pattern <- "ODM_dictionary_(\\d.*?).xlsx"
   file_names <-
     list.files(file.path(getwd(), constants$dictionary_directory),
                pattern = dictionary_version_pattern)
@@ -26,12 +27,8 @@ get_latest_version <- function() {
     version_numbers <- append(version_numbers, version_number)
   }
   
-  parsed_versions <- semver::parse_version(version_numbers)
   
-  latest_version <- max(parsed_versions)
-  
-  # convert the svptr class into string
-  latest_version <- as.character(latest_version)
+  latest_version <- get_max_version(version_numbers)
   
   # Find the file name with the latest version
   latest_version_file_name <-
