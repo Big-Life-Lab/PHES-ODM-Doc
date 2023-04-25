@@ -65,9 +65,10 @@ constants$set_type_is_catSet <- "mmaSet"
 constants$set_ID_is_list_set <- "listSet"
 
 # Table column values
-constants$part_sheet_table_column_type_is_PK <- "pk"
-constants$part_sheet_table_column_type_is_FK <- "fk"
+constants$part_sheet_table_column_type_is_PK <- "pK"
+constants$part_sheet_table_column_type_is_FK <- "fK"
 constants$part_sheet_table_column_type_is_header <- "header"
+constants$part_sheet_table_column_type_is_input <- "input"
 
 # String set Values
 constants$part_sheet_table_column_type_set_PK <- "Primary Key"
