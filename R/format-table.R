@@ -1,18 +1,21 @@
 # Source constants when not using pkg.env
 source(file.path(getwd(), "R", "constants.R"))
+source(file.path(getwd(), "R", "warning-utils.R"))
 #' Format Table
 #'
 #' Formats table based on columns_to_format replacing any NA, "NA", or NULL with "N/A"
 #'
 #' @param input_table data.frame to format
 #' @param columns_to_format vector containing names of columns to format. If not passed all columns are formatted.
-#' @param remove_duplicate boolean to toggle duplicate partID removal.
+#' @param remove_duplicate boolean to toggle duplicate ID removal.
+#' @param strip_invalid_part_ID boolean to toggle removal of invalid IDs in partID column.
 #'
 #' @return data.frame containing formatted input
 format_table <-
   function(input_table,
            columns_to_format = NULL,
-           remove_duplicate = FALSE) {
+           remove_duplicate = FALSE,
+           strip_invalid_part_ID = TRUE) {
     table_being_checked <- "parts"
     replace_value <- constants$dictionary_missing_value_replacement
     ID_column_name <- parts_sheet_column_names$part_ID_column_name
@@ -34,6 +37,7 @@ format_table <-
     }
     
     # Strip off rows where partID is invalid
+    if(strip_invalid_part_ID){
     output_table <-
       output_table[!is.na(output_table[[ID_column_name]]) &
                      !is.null(output_table[[ID_column_name]]) &
@@ -46,13 +50,9 @@ format_table <-
         output_table[!duplicated(output_table[[ID_column_name]]),]
       # Display warning for removed duplicated rows
       removed_ID_names <- unique(duplicated_rows[[ID_column_name]])
-      warning(
-        glue::glue(
-          '{removed_ID_names} ID contais duplicate {ID_column_name} only the first instance is used.
-
-                           '
-        )
-      )
+      if (length(removed_ID_names) > 0) {
+        warning(duplicate_ID(removed_ID_names))
+      }
     }
     
     
@@ -61,14 +61,7 @@ format_table <-
     {
       # Append then skip over columns missing from the input_table and issue appropriate warning
       if (is.null(input_table[[current_column_to_format]])) {
-        warning(
-          glue::glue(
-            '{current_column_to_format} is missing from {table_being_checked} sheet.
-          New column was created with {replace_value} values.
-
-          '
-          )
-        )
+        warning(column_missing_and_populated(current_column_to_format))
         output_table[[current_column_to_format]] <- replace_value
         next()
       }
