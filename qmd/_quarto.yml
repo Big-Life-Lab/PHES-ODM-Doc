@@ -9,6 +9,9 @@ book:
   date-format: iso
   license: CC 4.0 BY-SA
   repo-url: "https://github.com/Big-Life-Lab/PHES-ODM-Doc"
+  sidebar:
+    search: true
+    logo: ./assets/ODM-logo.png
   chapters:
     - index.qmd
     - background.qmd
