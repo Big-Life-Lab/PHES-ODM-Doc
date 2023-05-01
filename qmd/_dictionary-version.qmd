@@ -6,4 +6,4 @@ dictionary_version_pattern <- "ODM_dictionary_(.*?).xlsx"
 
 dictionary_version_used <- regmatches(dictionary_full_file_name, regexec(dictionary_version_pattern, dictionary_full_file_name))[[1]][2]
 ```
-ODM version `r dictionary_version_used`.
+ODM `r dictionary_version_used`.
