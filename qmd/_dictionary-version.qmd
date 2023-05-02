@@ -1,6 +1,6 @@
 
 ```{r, echo=FALSE}
-source("R/version-utils.R")
+source("R/get-latest-version.R")
 
 latest_version_info <- get_latest_version()
 
