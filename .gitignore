@@ -12,3 +12,5 @@
 docs
 
 
+
+*.code-workspace
