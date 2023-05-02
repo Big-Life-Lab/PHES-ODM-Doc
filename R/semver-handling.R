@@ -60,7 +60,7 @@ get_max_version <- function(versions_strings) {
 convert_to_semver <- function(version_string) {
   # Regex contains slightly modified official semver regex found here: https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
   # The modifications involve required new line and start of string.
-  version_extraction_regex <-
+  semver_regex <-
     '(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?'
   
   supported_pre_releases <- c("alpha", "beta", "rc")
@@ -71,22 +71,47 @@ convert_to_semver <- function(version_string) {
   # Element 5 is <pre-release> information according to https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions
   # Element 6 is <build> information according to https://semver.org/#backusnaur-form-grammar-for-valid-semver-versions
   formated_version <- regmatches(version_string,
-                                 regexec(version_extraction_regex, version_string))[[1]][1:5]
+                                 regexec(semver_regex, version_string))[[1]][1:5]
   
   # Split semantic pre-release info
   pre_release <- formated_version[[5]]
   if (pre_release != "") {
     pre_release_info <- strsplit(pre_release, "\\.")
     pre_release_name <- pre_release_info[[1]][[1]]
-    for (semantic_weight in seq_len(length(supported_pre_releases))) {
-      if (pre_release_name == supported_pre_releases[[semantic_weight]]) {
-        pre_release_info[[1]][[1]] <- semantic_weight
+    
+    # Supporting only 3 version numbers with pre_release tag
+    if (length(pre_release_info[[1]]) > 4) {
+      stop(
+        glue::glue(
+          'Only 3 version numbers are allowed after a pre-release tag, {version_string} contains more.'
+        )
+      )
+    }
+    # Loop over remaining pre_release info
+    for (pre_release_index in 2:seq_len(length(supported_pre_releases))) {
+      current_pre_release_info <-
+        pre_release_info[[1]][[pre_release_index]]
+      # Supporting only 1 pre_release tag
+      if (is.na(as.numeric(current_pre_release_info))) {
+        stop(
+          glue::glue(
+            'A second pre_release tag was found in {version_string}, only one version tag is allowed.'
+          )
+        )
+      }
+      
+    }
+    
+    is_supported_tag <- FALSE
+    for (supported_pre_release_index in seq_len(length(supported_pre_releases))) {
+      if (pre_release_name == supported_pre_releases[[supported_pre_release_index]]) {
+        is_supported_tag <- TRUE
       }
     }
     # Handle no valid match
-    if (is.na(as.numeric(pre_release_info[[1]][[1]]))) {
+    if (!is_supported_tag) {
       stop(glue::glue(
-        'Invalid semantic versioning found in {formated_version[[1]]}'
+        'Invalid pre-release tag found {pre_release_name}, only alpha, beta, rc are supported at the moment'
       ))
     }
     # Append info as further basic versioning
