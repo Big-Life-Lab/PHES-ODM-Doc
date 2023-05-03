@@ -47,6 +47,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{qualitySet}">{qualitySet}</a> </br>
       *Reference Link:* {refLink} </br>
       *Data Type:* <a href="#{dataType}">{dataType}</a> </br>
+      *Missingness Set:* <a href="#{missingnessSet}">{missingnessSet} </br>
       *Minimum Value:* {minValue} </br>
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
@@ -98,6 +99,7 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   display_input[["qualitySet"]] <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
   display_input[["refLink"]] <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
   display_input[["dataType"]] <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
+  display_input[["missingnessSet"]] <- part_row[[parts_sheet_column_names$part_missingness_set_column_name]]
   display_input[["minValue"]] <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
   display_input[["maxValue"]] <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
   display_input[["minLength"]] <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
