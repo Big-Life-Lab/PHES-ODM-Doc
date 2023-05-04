@@ -1,3 +1,5 @@
+# Storing supported pre-release tags
+supported_pre_releases <- c("alpha", "beta", "rc")
 #' Get max version
 #'
 #' Extract max version from vector of version strings.
@@ -6,45 +8,16 @@
 #'
 #' @return string representing the max version found
 get_max_version <- function(versions_strings) {
-  versions_list <- list()
-  for (version_index in seq_len(length(versions_strings))) {
-    versions_list[[version_index]] <-
-      convert_to_semver(versions_strings[[version_index]])
-  }
-  # R does not appear to contain a do while and this is the suggested approach
-  version_element_index <- 2
   max_version <- list()
-  repeat {
-    # Can't use version variable name due to it being a base R function
-    for (version_number in versions_list) {
-      if (length(max_version) < 1) {
-        max_version <- list(version_number)
-      } else{
-        max_version_subset <-
-          as.numeric(max_version[[1]][[version_element_index]])
-        current_version_subset <-
-          as.numeric(version_number[[version_element_index]])
-        # Empty values equate to later version
-        if (is.na(current_version_subset) ||
-            current_version_subset > max_version_subset) {
-          # reset list
-          max_version <- list(version_number)
-        } else if (current_version_subset == max_version_subset) {
-          # Append if only one other element exists
-          max_version[[length(max_version) + 1]] <- version_number
-        }
-      }
-    }
-    if (length(max_version) <= 1) {
-      break
-    } else{
-      version_element_index <- version_element_index + 1
-      # Reduce the versions to check to only contain current maxes
-      versions_list <- max_version
-      max_version <- list()
+  for (version_index in seq_len(length(versions_strings))) {
+    current_version <-
+      convert_to_semver(versions_strings[[version_index]])
+    if (length(max_version) == 0) {
+      max_version <- current_version
+    } else if (greater_then_version(current_version, max_version)) {
+      max_version <- current_version
     }
   }
-  
   # Return the original full version string
   return(max_version[[1]][[1]])
 }
@@ -63,7 +36,6 @@ convert_to_semver <- function(version_string) {
   semver_regex <-
     '(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?'
   
-  supported_pre_releases <- c("alpha", "beta", "rc")
   # The regex always returns original string and 5 groups
   # The below command returns a list with 1 element inside the element is a vector of 6 characters
   # The first character is original string
@@ -88,7 +60,7 @@ convert_to_semver <- function(version_string) {
       )
     }
     # Loop over remaining pre_release info
-    for (pre_release_index in 2:seq_len(length(supported_pre_releases))) {
+    for (pre_release_index in seq(2, length(supported_pre_releases))) {
       current_pre_release_info <-
         pre_release_info[[1]][[pre_release_index]]
       # Supporting only 1 pre_release tag
@@ -110,9 +82,11 @@ convert_to_semver <- function(version_string) {
     }
     # Handle no valid match
     if (!is_supported_tag) {
-      stop(glue::glue(
-        'Invalid pre-release tag found {pre_release_name}, only alpha, beta, rc are supported at the moment'
-      ))
+      stop(
+        glue::glue(
+          'Invalid pre-release tag found {pre_release_name}, only alpha, beta, rc are supported at the moment'
+        )
+      )
     }
     # Append info as further basic versioning
     # Removing the 5th element as its been converted
@@ -121,4 +95,40 @@ convert_to_semver <- function(version_string) {
   }
   
   return(formated_version)
+}
+
+greater_then_version <- function(left_version, right_version) {
+  # Looping over version information
+  # Skipping 1st element as it stores full version string
+  # Setting max loop to 8 since there are 3 versions and 1 prerelease tag and 3 pre-release version numbers
+  for (version_index in 2:8) {
+    left_current_version <- left_version[[version_index]]
+    right_current_version <- right_version[[version_index]]
+    # 5th element is alway the tag version and needs to be treated differently
+    if (version_index == 5) {
+      if (left_current_version == right_current_version) {
+        next()
+      } else if ((left_version == "" &&
+                  right_version != "") ||
+                 (
+                   which(supported_pre_releases %in% left_current_version) > which(supported_pre_releases %in% right_current_version)
+                 )) {
+        return(TRUE)
+      } else if ((right_version == "" && left_version != "") ||
+                 (
+                   which(supported_pre_releases %in% right_current_version) > which(supported_pre_releases %in% left_current_version)
+                 )) {
+        return(FALSE)
+      } else{
+        
+      }
+    }
+    if (as.numeric(left_current_version) > as.numeric(right_current_version)) {
+      return(TRUE)
+    } else if (as.numeric(left_current_version) < as.numeric(right_current_version)) {
+      return(FALSE)
+    } else if (as.numeric(left_current_version) == as.numeric(right_current_version)) {
+      next()
+    }
+  }
 }
