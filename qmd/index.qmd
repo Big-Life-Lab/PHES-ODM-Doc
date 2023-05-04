@@ -5,9 +5,6 @@ project:
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
-{{< include _dictionary-version.qmd >}} 
-Documention v{{< meta book.version >}}.
-
 # Introduction {.unnumbered}
 
 > Facilitating the Collection and Sharing of High-Quality, Interoperable Environmental Surveillance Data: A Community Open Science Project. 
