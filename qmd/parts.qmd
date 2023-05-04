@@ -47,7 +47,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{qualitySet}">{qualitySet}</a> </br>
       *Reference Link:* {refLink} </br>
       *Data Type:* <a href="#{dataType}">{dataType}</a> </br>
-      *Missingness Set:* <a href="#{missingnessSet}">{missingnessSet} </br>
+      *Missingness Set:* <a href="/{part_missingness_set_location}.html#{missingnessSet}">{missingnessSet} </a> </br>
       *Minimum Value:* {minValue} </br>
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
@@ -118,6 +118,8 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   display_input[["part_cat_set_ID_location"]] <- determine_link_source(display_input[["mmaSet"]])
   display_input[["part_unit_set_ID_location"]] <- determine_link_source(display_input[["unitSet"]])
   display_input[["part_speciment_set_location"]] <- determine_link_source(display_input[["specimenSet"]])
+  display_input[["part_missingness_set_location"]] <-
+    determine_link_source(display_input[["missingnessSet"]])
   
   # Assemble the display string
   single_part_display <- generate_display(parts_display_template, display_input, display_input[["partID"]])
