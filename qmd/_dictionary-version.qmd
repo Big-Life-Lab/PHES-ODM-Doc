@@ -2,7 +2,7 @@
 ```{r, echo=FALSE}
 source("R/get-latest-version.R")
 
-latest_version_info <- get_latest_version()
+latest_version_info <- get_latest_version_data()
 
 dictionary_version_used <- latest_version_info[[1]]
 dictionary_full_file_name <- latest_version_info[[2]]
