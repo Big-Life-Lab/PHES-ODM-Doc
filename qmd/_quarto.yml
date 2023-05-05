@@ -4,8 +4,10 @@ project:
 
 book:
   title: "Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation"
+  output-file: "ODM-documentation-v2.0.1"
   version: "2.0.1"
-  #subtitle: 
+  subtitle: |
+      Dictionary v2.0.0. <br>Documentation V2.0.1.
   date: last-modified
   date-format: iso
   license: CC 4.0 BY-SA
@@ -33,7 +35,7 @@ book:
   page-footer:
     left: |
       #Dictionary v2.0.0<br>Documentation V2.0.1
-
+      
 format:
   html:
     toc: true
@@ -42,14 +44,10 @@ format:
     code-copy: true
     code-overflow: wrap
     lang: en-ca
-    use_issues_button: true
-    use_repository_button: true
-
   pdf:
     documentclass: scrbook
     toc: true
     number-sections: true
     colorlinks: true
-    
   epub:
     css: ./assets/phes-odm.css
