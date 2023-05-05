@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-04-28">
+<meta name="dcterms.date" content="2023-05-05">
 
 <title>Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</title>
 <style>
@@ -87,11 +87,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="././assets/ODM-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/tree/main/qmd/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
     </div>
       </div>
@@ -128,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./ref-quide.html" class="sidebar-item-text sidebar-link">
+            <a href="./ref-guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reference guide</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -181,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/blob/main/qmd/index.qmd" class="toc-action">View source</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -189,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</h1>
-<p class="subtitle lead">Version 2.0.0</p>
+<p class="subtitle lead"></p><p>Dictionary v2.0.0. Documentation v2.0.1.</p><p></p>
 </div>
 
 
@@ -200,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2023-04-28</p>
+      <p class="date">2023-05-05</p>
     </div>
   </div>
   
@@ -213,7 +233,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Introduction</h1>
 <blockquote class="blockquote">
-<p>Make collecting and sharing high-quality, interoperable environmental surveillance data as easy as possible.</p>
+<p>Facilitating the Collection and Sharing of High-Quality, Interoperable Environmental Surveillance Data: A Community Open Science Project.</p>
 </blockquote>
 <p>The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source data model and set of tools aimed at promoting global collaboration and use of environment and public health data. The ODM model facilitates interoperable environmental surveillance and research by improving quality reporting data, enhancing data management, and supporting data provenance and sharing.</p>
 <p>This documentation is intended for those who want to understand how the ODM model works, its organizational structure, and how to use it effectively for their program. It is also a useful resource for those who currently use a different data dictionary and wish to share their data with a program that uses the ODM. If you need to share your data with another program that uses a different data dictionary, this documentation can help you compare and create a common cross-walk between dictionaries. The ODM starts as a conceptual model that represents real-world processes through data elements and data relationships, which are common to all environmental and public health surveillance systems.</p>
@@ -222,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 <p>There are three <!--# actually four sections once tutorials are added --> document sections, each with a different purpose.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><a href="./explanation.html"><em>Getting to know the ODM</em></a> is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.</p>
 <p><a href="./how-to.html"><em>How to use the ODM</em></a> are step-by-step guides to help you use different aspects of the ODM such as report templates.</p>
-<p><a href="ref-guide.qmd"><em>Reference</em></a> is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set – along with their attributes.</p>
+<p><a href="./ref-guide.html"><em>Reference</em></a> is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set – along with their attributes.</p>
 <section id="future-documentation" class="level3">
 <h3 class="anchored" data-anchor-id="future-documentation">Future documentation</h3>
 <p>Tutorials and videos are being develop. Tutorials will help newcomers get started. They will be lessons on how to:</p>
@@ -551,6 +571,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Dictionary v2.0.0<br>Documentation v2.0.1</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 
