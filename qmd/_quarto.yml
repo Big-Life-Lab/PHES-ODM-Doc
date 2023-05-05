@@ -28,10 +28,7 @@ book:
       chapters:
         - parts.qmd
         - sets.qmd
-          #- languages.qmd
-          #- translations.qmd
         - tables.qmd
-          #- partTypes.qmd
   page-footer:
     left: |
       #Dictionary v2.0.0<br>Documentation V2.0.1
