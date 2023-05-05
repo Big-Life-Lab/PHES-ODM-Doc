@@ -56,7 +56,7 @@ languages_sheet_column_names$iso6393 <- "iso6393"
 languages_sheet_column_names$iso6396 <- "iso6396"
 
 # Column values
-constants$part_sheet_part_type_is_table <- "tables"
+constants$part_sheet_part_type_is_table <- "table"
 constants$part_sheet_status_is_active <- "active"
 constants$part_sheet_status_is_development <- "development"
 constants$part_sheet_data_type_is_categorical <- "categorical"
