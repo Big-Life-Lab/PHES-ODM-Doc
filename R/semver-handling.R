@@ -108,13 +108,13 @@ greater_then_version <- function(left_version, right_version) {
     if (version_index == 5) {
       if (left_current_version == right_current_version) {
         next()
-      } else if ((left_version == "" &&
-                  right_version != "") ||
+      } else if ((left_current_version == "" &&
+                  right_current_version != "") ||
                  (
                    which(supported_pre_releases %in% left_current_version) > which(supported_pre_releases %in% right_current_version)
                  )) {
         return(TRUE)
-      } else if ((right_version == "" && left_version != "") ||
+      } else if ((right_current_version == "" && left_current_version != "") ||
                  (
                    which(supported_pre_releases %in% right_current_version) > which(supported_pre_releases %in% left_current_version)
                  )) {

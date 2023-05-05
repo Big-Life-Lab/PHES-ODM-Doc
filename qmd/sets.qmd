@@ -39,30 +39,12 @@ Last updated: {lastUpdated}.'
 part_bullet_template <- '**{partLabel}** <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} </br>Status: {status}. First released: {firstReleased}. Last updated: {lastUpdated}.'
 
 
-# Extract, format and order sets table on set type
-sets_table_source <-
-  readxl::read_excel(
-    file.path(
-      getwd(),
-      constants$dictionary_directory,
-      dictionary_full_file_name
-    ),
-    sheet = constants$sets_sheet_name
-  )
+# Format and order sets table on set type
 sets_table <- format_table(sets_table_source)
 sets_table <-
   sets_table[order(sets_table[[sets_sheet_column_names$part_set_type_column_name]]),]
 
-# Generate and format parts table
-parts_table_source <-
-  readxl::read_excel(
-    file.path(
-      getwd(),
-      constants$dictionary_directory,
-      dictionary_full_file_name
-    ),
-    sheet = constants$parts_sheet_name
-  )
+# Format parts table
 parts_table <-
   format_table(parts_table_source,
                parts_sheet_column_names,

@@ -36,6 +36,17 @@ get_latest_version <- function() {
   latest_version_file_name <-
     file_names[[latest_version %in% version_numbers]]
   
-  return(c(latest_version, latest_version_file_name))
+  parts_sheet <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, latest_version_file_name),
+                     sheet = constants$parts_sheet_name)
+  sets_sheet <- readxl::read_excel(
+    file.path(
+      getwd(),
+      constants$dictionary_directory,
+      latest_version_file_name
+    ),
+    sheet = constants$sets_sheet_name
+  )
+  
+  return(list(latest_version, latest_version_file_name, parts_sheet, sets_sheet))
   
 }

@@ -6,6 +6,8 @@ latest_version_info <- get_latest_version()
 
 dictionary_version_used <- latest_version_info[[1]]
 dictionary_full_file_name <- latest_version_info[[2]]
+parts_table_source <- latest_version_info[[3]]
+sets_table_source <- latest_version_info[[4]]
 
 ```
 ODM version `r dictionary_version_used`.
