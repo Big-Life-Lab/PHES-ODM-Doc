@@ -144,7 +144,7 @@ Below you will find the mandatory fields for the `Measure report` and `Measure s
     iii) Column Q
          -   `Value` is where you enter the value of your measure. For instance, if you recorded an `Environmental temperature` of 20 ^o^C, you would enter "20".
 
-         -   Note: While the value you enter into this field can be of any data type, each measure is associated with a specific one. Data types for each measure can be found in the reference documentation. For example, the data type for `Environmental temperature` can be found [here](../parts.qmd#airTemp).
+         -   Note: While the value you enter into this field can be of any data type, each measure is associated with a specific one. Data types for each measure can be found in the reference documentation. For example, the data type for `Environmental temperature` can be found [here](parts.qmd#airTemp).
     iv) Column R
         -   `Unit` is where you enter the unit of your measure. This is a conditional drop-down menu field that lists all units that are valid for what was entered in the `Measure` field. For example, if selected `Environmental temperature` in the `Measure` field, the only unit displayed is `Celsius`.
     v)  Column S

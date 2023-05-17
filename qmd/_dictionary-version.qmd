@@ -10,4 +10,5 @@ parts_table_source <- latest_version_info$dictionary$parts
 sets_table_source <- latest_version_info$dictionary$sets
 
 ```
-ODM version `r dictionary_version_used`.
+Dictionary `r dictionary_version_used`.
+```
