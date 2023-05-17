@@ -31,10 +31,9 @@ get_latest_dictionary <- function() {
   
   
   latest_version <- get_max_version(version_numbers)
-  
   # Find the file name with the latest version
   latest_version_file_name <-
-    file_names[[latest_version %in% version_numbers]]
+    file_names[which(version_numbers == latest_version)]
   
   parts_sheet <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, latest_version_file_name),
                      sheet = constants$parts_sheet_name)
@@ -54,6 +53,5 @@ get_latest_dictionary <- function() {
 		parts = parts_sheet, 
 		sets = sets_sheet
 	)
-  )
-  
+  ))
 }
