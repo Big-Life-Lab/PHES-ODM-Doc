@@ -47,6 +47,13 @@ get_latest_dictionary <- function() {
     sheet = constants$sets_sheet_name
   )
   
-  return(list(latest_version, latest_version_file_name, parts_sheet, sets_sheet))
+  return(list(
+	version = latest_version, 
+	file_name = latest_version_file_name, 
+	dictionary = list(
+		parts = parts_sheet, 
+		sets = sets_sheet
+	)
+  )
   
 }
