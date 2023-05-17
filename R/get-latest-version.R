@@ -7,7 +7,7 @@ source("R/semver-handling.R")
 #' @param file_names string or string vector containing file names with valid semantic versioning
 #'
 #' @return vector of strings containing latest version and latest version file name
-get_latest_version_data <- function() {
+get_latest_dictionary <- function() {
   dictionary_version_pattern <- "ODM_dictionary_(\\d.*?).xlsx"
   file_names <-
     list.files(file.path(getwd(), constants$dictionary_directory),
