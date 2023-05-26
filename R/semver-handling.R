@@ -38,7 +38,7 @@ get_max_version <- function(version_strings) {
 #'
 #' @param version_string string representing the version as one full string.
 #'
-#' @return list containing the version split into seperate elements.
+#' @return named list containg the initial string split into: major, minor, patch, pre_release_type, pre_release_version.
 convert_to_semver <- function(version_string) {
   # Regex contains slightly modified official semver regex found here: https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
   # The modifications involve required new line and start of string.
