@@ -133,8 +133,8 @@ check_values_for_table <-
 format_parts_table <- function(parts_table) {
   # Retrieve table related rows then columns
   tables_data <-
-    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                   parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
+                   parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
   
   # Utilize tables_data to generate names of table specific columns
   all_required_column_names <-
@@ -155,11 +155,11 @@ format_parts_table <- function(parts_table) {
     formatted_parts_table,
     all_table_column_names,
     c(
-      constants$part_sheet_table_column_type_is_PK,
-      constants$part_sheet_table_column_type_is_FK,
-      constants$part_sheet_table_column_type_is_header,
-      constants$part_sheet_table_column_type_is_input,
-      constants$dictionary_missing_value_replacement
+      parts$part_sheet_table_column_type_is_PK,
+      parts$part_sheet_table_column_type_is_FK,
+      parts$part_sheet_table_column_type_is_header,
+      parts$part_sheet_table_column_type_is_input,
+      odm_dictionary$dictionary_missing_value_replacement
     )
   )
   

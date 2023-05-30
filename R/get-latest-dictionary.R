@@ -1,4 +1,4 @@
-source("R/constants.R")
+source("R/odm-dictionary-file.R")
 source("R/semver-handling.R")
 #' Get latest version
 #'
@@ -10,7 +10,7 @@ source("R/semver-handling.R")
 get_latest_dictionary <- function() {
   dictionary_version_pattern <- "ODM_dictionary_(\\d.*?).xlsx"
   file_names <-
-    list.files(file.path(getwd(), constants$dictionary_directory),
+    list.files(file.path(getwd(), odm_dictionary$dictionary_directory),
                pattern = dictionary_version_pattern)
   # Display warning for multiple dictionaries as only 1 should be stored on github
   if (length(file_names) > 1) {
@@ -35,15 +35,15 @@ get_latest_dictionary <- function() {
   latest_version_file_name <-
     file_names[which(version_numbers == latest_version)]
   
-  parts_sheet <- readxl::read_excel(file.path(getwd(),constants$dictionary_directory, latest_version_file_name),
-                     sheet = constants$parts_sheet_name)
+  parts_sheet <- readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, latest_version_file_name),
+                     sheet = odm_dictionary$parts_sheet_name)
   sets_sheet <- readxl::read_excel(
     file.path(
       getwd(),
-      constants$dictionary_directory,
+      odm_dictionary$dictionary_directory,
       latest_version_file_name
     ),
-    sheet = constants$sets_sheet_name
+    sheet = odm_dictionary$sets_sheet_name
   )
   
   return(list(

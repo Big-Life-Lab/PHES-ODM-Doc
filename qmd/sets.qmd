@@ -23,7 +23,6 @@ source("R/qmd-utils.R")
 source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
-source("R/template-utils.R")
 source("R/odm-dictionary-file.R")
 source("R/parts-sheet.R")
 source("R/sets-sheet.R")

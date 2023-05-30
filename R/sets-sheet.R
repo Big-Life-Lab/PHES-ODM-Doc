@@ -3,7 +3,7 @@ sets_sheet_values <- list()
 
 # Column names for sets sheet
 sets_sheet_column_names$part_set_type_column_name <- "setType"
-sets_sheet_column_names$part_set_ID_column_name <- "set"
+sets_sheet_column_names$part_set_ID_column_name <- "setID"
 
 # Sets specific values
 sets_sheet_values$set_type_is_dictSet <- "dictSet"

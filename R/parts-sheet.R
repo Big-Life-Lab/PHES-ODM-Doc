@@ -35,6 +35,7 @@ parts$data_type_is_categorical <- "categorical"
 parts$part_sheet_table_column_type_is_PK <- "pk"
 parts$part_sheet_table_column_type_is_FK <- "fk"
 parts$part_sheet_table_column_type_is_header <- "header"
+parts$part_sheet_table_column_type_is_input <- "input"
 parts$status_is_active <- "active"
 parts$status_is_development <- "development"
 
