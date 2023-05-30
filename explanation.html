@@ -209,6 +209,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#time-periods-for-samples-and-measures" id="toc-time-periods-for-samples-and-measures" class="nav-link" data-scroll-target="#time-periods-for-samples-and-measures">Time periods for samples and measures</a></li>
   <li><a href="#dates-within-the-odm" id="toc-dates-within-the-odm" class="nav-link" data-scroll-target="#dates-within-the-odm">Dates within the ODM</a></li>
   <li><a href="#translation-and-language-capabilities" id="toc-translation-and-language-capabilities" class="nav-link" data-scroll-target="#translation-and-language-capabilities">Translation and language capabilities</a></li>
+  <li><a href="#recording-protocols" id="toc-recording-protocols" class="nav-link" data-scroll-target="#recording-protocols">Recording protocols</a></li>
   <li><a href="#questions-and-online-community" id="toc-questions-and-online-community" class="nav-link" data-scroll-target="#questions-and-online-community">Questions and online community</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/blob/main/qmd/explanation.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -334,6 +335,35 @@ ul.task-list li input[type="checkbox"] {
 <section id="translation-and-language-capabilities" class="level2">
 <h2 class="anchored" data-anchor-id="translation-and-language-capabilities">Translation and language capabilities</h2>
 <p>The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (<code>languageLUs</code>), the translation look-up table (<code>translationLUs</code>), and the parts table (<code>partsLUs</code>). When a translation for a given part is not available, the dictionary will default to the English term.The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (<code>languageID</code>). In the translation table, the language ID is paired with every part ID (<code>partID</code>), along with the label (<code>partLabel</code>), description (<code>partDesc</code>), and instructions (<code>partInstr</code>) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.</p>
+</section>
+<section id="recording-protocols" class="level2">
+<h2 class="anchored" data-anchor-id="recording-protocols">Recording protocols</h2>
+<p>When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. To store protocols efficiently in database tables, several challenges must be addressed:</p>
+<ol type="1">
+<li>Protocols are comprised of a collection of steps.</li>
+<li>Protocol steps can consist of two entries:
+<ul>
+<li><p>They can prescribe the use of a specific quantity of something. This can be described using the different measures found in the PHES-ODM dictionary and assigning them a prescribed value and unit of measurement.</p></li>
+<li><p>They can prescribe an action. The PHES-ODM calls this a method.</p></li>
+</ul></li>
+<li>Protocol steps must be organised in the right order to convey the meaning of the protocol.</li>
+<li>Steps may follow each other, or they can be done concurrently.</li>
+<li>Measures found inside a protocol specify the quantity of reagents, supplies and conditions involved in the realization of a method.</li>
+<li>Different protocols may use some of the same steps, but in a different order.</li>
+<li>Protocols may have steps that consist in one or several (sub)protocols.</li>
+<li>Protocols can be updated with new versions, or they can reference and build from other protocols.</li>
+</ol>
+<p>To solve these constraints, the PHES-ODM stores a protocol (e.g., what it does, who developed it, when it was developed) separately from its constituent steps. These protocol steps are stored in the <code>Protocol Steps</code> table. The entries in the steps table are either methods or measures.</p>
+<p>The protocol steps are linked together in their own <code>Protocol Relationships</code> table. Rows in the relationship table have four main attributes. The first is the protocol identifier. The three other attributes define a relationship between two steps in the protocol. The relationship is expressed in the form:</p>
+<p><code>subject → relationship → object</code></p>
+<p>Where the subject and the object can either be a protocol step or subprotocol. The available relationships (e.g., <code>is_before</code>, <code>specifies</code>, <code>is_concurrent_with</code>, etc.) allows one to organize the protocol is a more semantically meaningful way than by simply using a sequential order.</p>
+<p>This flexible structure allows protocol steps and subprotocols to be reused in any number of protocols. The relationships between protocols, protocol orderings, and protocol steps are shown in Figure A.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/protocols.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure A: Main entities and relationships used to represent protocols</figcaption>
+</figure>
+</div>
 </section>
 <section id="questions-and-online-community" class="level2">
 <h2 class="anchored" data-anchor-id="questions-and-online-community">Questions and online community</h2>

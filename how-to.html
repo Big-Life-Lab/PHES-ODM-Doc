@@ -213,7 +213,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sample-report-template" id="toc-sample-report-template" class="nav-link" data-scroll-target="#sample-report-template"><code>Sample report</code> template</a></li>
   <li><a href="#sample-relationships-template-1" id="toc-sample-relationships-template-1" class="nav-link" data-scroll-target="#sample-relationships-template-1"><code>Sample relationships</code> template</a></li>
   </ul></li>
-  <li><a href="#how-to-report-protocols-protocol-steps-and-protocol-relationships" id="toc-how-to-report-protocols-protocol-steps-and-protocol-relationships" class="nav-link" data-scroll-target="#how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report protocols, protocol steps and protocol relationships:</a></li>
+  <li><a href="#how-to-record-a-protocol" id="toc-how-to-record-a-protocol" class="nav-link" data-scroll-target="#how-to-record-a-protocol">4) How to record a protocol</a></li>
   <li><a href="#quick-start-2" id="toc-quick-start-2" class="nav-link" data-scroll-target="#quick-start-2">Quick Start</a>
   <ul class="collapse">
   <li><a href="#protocol-steps-template" id="toc-protocol-steps-template" class="nav-link" data-scroll-target="#protocol-steps-template"><strong><code>Protocol steps</code> template</strong></a></li>
@@ -298,7 +298,16 @@ ul.task-list li input[type="checkbox"] {
 <li><p><code>Sites</code> is mandatory and records information about where testing is performed.</p></li>
 <li><p><code>Address</code>, <code>Organization</code>, and <code>Contact</code> provide the contact information for sites and entities such as laboratories.</p></li>
 </ul></li>
-<li><p>There are optional supporting tables, such as <code>Protocols</code> and <code>Instrument</code>, where you can use the templates to record information about how samples are taken and how measures are reported. You only need to compete these tables once and then update them as needed. <code>Protocol steps</code> and <code>Protocol relationships</code> tables are used alongside the <code>Protocols</code> table. Other supporting tables include <code>Polygon</code>, which stores information about the sample shed, and <code>Dataset</code>, which stores information about the data custodian and owner of the data.</p></li>
+<li><p>There are optional supporting tables, such as <code>Protocols</code> and <code>Instrument</code>, where you can use the templates to record information about how samples are taken and how measures are reported. You only need to compete these tables once and then update them as needed.</p></li>
+</ul>
+<pre><code>-   `Protocol steps` and `Protocol relationships` tables are used alongside the `Protocols` table. </code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./assets/how-to/composite-ex.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<ul>
+<li>Other supporting tables include <code>Polygon</code>, which stores information about the sample shed, and <code>Dataset</code>, which stores information about the data custodian and owner of the data.</li>
 </ul>
 <p>The templates contain four main types of fields; in these how-to guides they are colour-coded for instructional purposes:</p>
 <ul>
@@ -625,8 +634,8 @@ ul.task-list li input[type="checkbox"] {
 <p>You have now entered your data in the <code>Sample report</code> and <code>Sample relationships</code> templates, congratulations!</p>
 </section>
 </section>
-<section id="how-to-report-protocols-protocol-steps-and-protocol-relationships" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-report-protocols-protocol-steps-and-protocol-relationships">4) How to report protocols, protocol steps and protocol relationships:</h2>
+<section id="how-to-record-a-protocol" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-record-a-protocol">4) How to record a protocol</h2>
 <p>In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is “A procedure for collecting a sample or performing a measure”. Each entry in the <code>Protocols</code> (or <code>protocols</code>) template represents a unique protocol. A protocol is made up of protocol steps. In the <code>Protocol steps</code> (or <code>protocolSteps</code>) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the <code>Protocol relationships</code> (or <code>protocolRelationships</code>) template represents one of these relationships in the form, “subject - relationship - object”. So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the <code>Protocol step ID</code> of A - <code>Is Before</code> - <code>Protocol Step ID</code> of B.</p>
 <p>You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide (<a href="#how-to-guides">How-To guides</a>) and the Reference Guide - Parts document.</p>
 </section>

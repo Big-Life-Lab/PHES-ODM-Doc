@@ -328,7 +328,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Dictionary 2.0.0.</p>
+<p>Dictionary 2.1.0.</p>
 <p>Sets are lists of categories and other parts. For example, <code>Collection category set</code> (<a href="file:///Users/dmanuel/github/PHES-ODM-Doc/docs/sets.html#collectCatSet">collectionCatSet</a>) contains a list of the different collection types including: <code>Moore swab</code>, <code>Grab sample</code>, <code>Flow proportional sample</code>, etc.</p>
 <p>Sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g.&nbsp;<code>Sample not collected</code>), PCR measures (<code>Inhibition preset</code>), and sequencing measures (<code>Low depth of coverage</code>), but all quality sets share the <code>No quality concerns</code> indicator.</p>
 <section id="aggregations" class="level2">
@@ -593,7 +593,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Address Line 2</strong> <a href="./parts.html#addL2">(addL2)</a>. Line 2 (the unit number) for a given address. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Address ID</strong> <a href="./parts.html#addressID">(addressID)</a>. A unique identifier for an address. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Parent Site ID</strong> <a href="./parts.html#parSiteID">(parSiteID)</a>. The siteID that is a parent to another siteID; usually the sub-site will be contained in the parentSite. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Administrative regions</strong> <a href="./parts.html#admRegLevel">(admRegLevel)</a>. Administrative regions <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -621,6 +621,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Assay ID</strong> <a href="./parts.html#asID">(asID)</a>. Links with the AssayMethod used to perform the analysis. Use instrument.ID for measures that are not viral measures. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Capital city endonym</strong> <a href="./parts.html#capitalEndonym">(capitalEndonym)</a>. The name locals use for their country’s capital. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Capital city exonym</strong> <a href="./parts.html#capitalExonym">(capitalExonym)</a>. The English name foreigners use for the country’s capital. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>City</strong> <a href="./parts.html#city">(city)</a>. The city where a site or organization is located; part of the address. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -656,13 +662,19 @@ ul.task-list li input[type="checkbox"] {
 <strong>Compartment</strong> <a href="./parts.html#compartment">(compartment)</a>. The attribute identifying the substance from which where a sample was taken. For more information, see partID = compartment. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Contact ID</strong> <a href="./parts.html#contactID">(contactID)</a>. A unique identifier for a given contact person. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Site ID</strong> <a href="./parts.html#siteID">(siteID)</a>. Unique identifier for the location where a sample was taken. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Contact name</strong> <a href="./parts.html#contactName">(contactName)</a>. Contact person or group, for the lab. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Country</strong> <a href="./parts.html#country">(country)</a>. The country where a site or organization is located; part of the address. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Country endonym</strong> <a href="./parts.html#countryEndonym">(countryEndonym)</a>. The name locals use for their country. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Country exonym</strong> <a href="./parts.html#countryExonym">(countryExonym)</a>. The English name foreigners use for the country. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Countries or sovereign states</strong> <a href="./parts.html#countryLevel">(countryLevel)</a>. Countries or sovereign states <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -692,7 +704,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Date</strong> <a href="./parts.html#date">(date)</a>. Date <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Description</strong> <a href="./parts.html#descr">(descr)</a>. A detailed description as an attirbute for describing results or program elements. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Polygon ID</strong> <a href="./parts.html#polygonID">(polygonID)</a>. Unique identifier for the polygon. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Access to details deprecated</strong> <a href="./parts.html#detailsDep">(detailsDep)</a>. More details on the existing confidentiality requirements of this measurement. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
@@ -713,19 +725,19 @@ ul.task-list li input[type="checkbox"] {
 <strong>Fraction analyzed</strong> <a href="./parts.html#fraction">(fraction)</a>. Fraction of the sample that is analyzed. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Funder Contact ID</strong> <a href="./parts.html#funderCont">(funderCont)</a>. A unique identifier for funders. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Funder contact ID</strong> <a href="./parts.html#funderCont">(funderCont)</a>. A unique identifier for a funder. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Funding agency ID</strong> <a href="./parts.html#funderID">(funderID)</a>. The funding agency of the dataset. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>European Petroleum Survey Group Coordinates</strong> <a href="./parts.html#geoEPSG">(geoEPSG)</a>. The unique EPSG code specifying a given geospatial area. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Site Type</strong> <a href="./parts.html#siteType">(siteType)</a>. Type of site or institution where sample was taken. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Latitude</strong> <a href="./parts.html#geoLat">(geoLat)</a>. Geographical location, latitude in decimal coordinates, ie.: (45.424721) <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Sample shed</strong> <a href="./parts.html#sampleShed">(sampleShed)</a>. A geographic area, physical space, or structure. A sample is taken from a sampleshed for a representative measurement of a substance(s). <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Longitude</strong> <a href="./parts.html#geoLong">(geoLong)</a>. Geographical location, longitude in decimal coordinates, ie.: (-75.695000) <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Address ID</strong> <a href="./parts.html#addressID">(addressID)</a>. A unique identifier for an address. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Type of geography</strong> <a href="./parts.html#geoType">(geoType)</a>. Type of geography that is represented by the polygon. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -764,6 +776,15 @@ ul.task-list li input[type="checkbox"] {
 <strong>ISO639-6</strong> <a href="./parts.html#iso6396">(iso6396)</a>. A set of international standards that lists short codes for language names. ISO 639-6 builds off ISO639-3 with the use of four-letter codes, and allowing users to differenciate between variants of languages and language families, such as histroical vs.&nbsp;revived versions of languages. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>ISO 3166-1 alpha-2 country code</strong> <a href="./parts.html#isoCode">(isoCode)</a>. The ISO 3166-1 alpha-2 code, a two-letter country code which is also used to create the ISO 3166-2 country subdivision code and the Internet country code top-level domain. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>ISO 3166-1 alpha-3 country code</strong> <a href="./parts.html#isoCodeX">(isoCodeX)</a>. The ISO 3166-1 alpha-3 code, a three-letter country code which may allow a better visual association between the code and the country names than the 3166-1 alpha-2 code. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>ISO 3166-2 code for country sub-domain</strong> <a href="./parts.html#isoZone">(isoZone)</a>. The ISO 3166-2 codes for the names of the principal subdivisions (e.g., provinces, states, departments, regions) of all countries coded in ISO 3166-1. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Lab ID default depricated</strong> <a href="./parts.html#labDefDep">(labDefDep)</a>. Used as default when a new sample is created by this reporter. See ID in Lab table. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -779,7 +800,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>Language name</strong> <a href="./parts.html#langName">(langName)</a>. Specifies the name of the language in roman alphabet characters for translation and language tracking purposes. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Last edited</strong> <a href="./parts.html#lastEdited">(lastEdited)</a>. The date the entry was last updated. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>National language script</strong> <a href="./parts.html#langScript">(langScript)</a>. The language(s) and script(s) used for the country’s capital endonyms. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Organization ID</strong> <a href="./parts.html#organizationID">(organizationID)</a>. A unique identifier for the organization to which the reporter is affiliated. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Last name of contact</strong> <a href="./parts.html#lastName">(lastName)</a>. Specifies the last name of a given contact. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -821,7 +845,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Municipalities or communes</strong> <a href="./parts.html#municipalLevel">(municipalLevel)</a>. Municipalities or communes <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Name</strong> <a href="./parts.html#name">(name)</a>. Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Contact ID</strong> <a href="./parts.html#contactID">(contactID)</a>. A unique identifier for a given contact person. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>English name for countries</strong> <a href="./parts.html#nameEngl">(nameEngl)</a>. English-language name of a given country. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Official state name</strong> <a href="./parts.html#nameOfficial">(nameOfficial)</a>. Official english-language name of a given state. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Native Name</strong> <a href="./parts.html#natName">(natName)</a>. The native name of the language, i.e.&nbsp;what the language is called by its speakers. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -833,10 +863,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Nomenclature</strong> <a href="./parts.html#nomenclature">(nomenclature)</a>. A classification system to report the measure class. Only applicable to variants, mutations, and diseases. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Notes</strong> <a href="./parts.html#notes">(notes)</a>. A note used to describe details that are not captured in other attrbitutes <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Name</strong> <a href="./parts.html#name">(name)</a>. Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Organization ID</strong> <a href="./parts.html#organizationID">(organizationID)</a>. A unique identifier for the organization to which the reporter is affiliated. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>ISO 3166-1 numeric country code</strong> <a href="./parts.html#numCode">(numCode)</a>. The ISO 3166-1 numeric code, a three-digit country code which is identical to that developed and maintained by the United Nations Statistics Division, with the advantage of script (writing system) independence, and hence useful for people or systems using non-Latin scripts. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Description</strong> <a href="./parts.html#descr">(descr)</a>. A detailed description of a measure, method, or attribute. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Organization level</strong> <a href="./parts.html#orgLevel">(orgLevel)</a>. The geographic level of an organization. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -860,7 +893,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Parent sample ID</strong> <a href="./parts.html#parent">(parent)</a>. If this sample has been pooled into one big sample for analysis this indicates the sample of the larger pooled sample. <br>Status: depreciated. First released: 1.1.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Parent Site ID</strong> <a href="./parts.html#parSiteID">(parSiteID)</a>. The siteID that is a parent to another siteID; usually the sub-site will be contained in the parentSite. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Primary reporting authority ID</strong> <a href="./parts.html#repOrg1">(repOrg1)</a>. The primary or most responsible authority for rountine surveillance reports or findings, or where the site is located. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Postal or Zip Code</strong> <a href="./parts.html#pCode">(pCode)</a>. The zip code or postal code for a given address, specifying a specifc geographic area. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -872,7 +905,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Contact phone</strong> <a href="./parts.html#phone">(phone)</a>. Contact phone number, for the lab. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Polygon ID</strong> <a href="./parts.html#polygonID">(polygonID)</a>. Unique identifier for the polygon. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Secondary reporting authority ID</strong> <a href="./parts.html#repOrg2">(repOrg2)</a>. The secondary, additional or alternative authority for rountine surveillance reports or findings, or where the site is located. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Polygon Population</strong> <a href="./parts.html#polyPop">(polyPop)</a>. An attribute of a polygon, which specifies the population of that polygon. A rough estimate of the number of human residents. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -884,7 +917,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Type of date for case reporting depreciated</strong> <a href="./parts.html#popDateTypeDep">(popDateTypeDep)</a>. Type of date used for confirmed cases. Typically, report or episode are reported. Onset and test date is not usually reported within aggregate data. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population Served</strong> <a href="./parts.html#popServ">(popServ)</a>. An attribute of a site, which specifies the population of/population served by a given site. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Health Region for a Site</strong> <a href="./parts.html#healthRegion">(healthRegion)</a>. A free-text variable for listing the health region for a given site. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Protocol ID</strong> <a href="./parts.html#protocolID">(protocolID)</a>. A unique identifier for a given protocol. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -929,10 +962,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>Reference link</strong> <a href="./parts.html#refLink">(refLink)</a>. Link to the reference material for a part. May link to literature on a method, measure, etc. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Primary reporting authority</strong> <a href="./parts.html#repOrg1">(repOrg1)</a>. The primary or most responsible authority for rountine surveillance reports or findings, or where the site is located. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>Population Served</strong> <a href="./parts.html#popServ">(popServ)</a>. An attribute of a site, which specifies the population of/population served by a given site. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Secondary reporting authority</strong> <a href="./parts.html#repOrg2">(repOrg2)</a>. The secondary, additional or alternative authority for rountine surveillance reports or findings, or where the site is located. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>Latitude</strong> <a href="./parts.html#geoLat">(geoLat)</a>. Geographical location, latitude in decimal coordinates, ie.: (45.424721) <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Reportable</strong> <a href="./parts.html#reportable">(reportable)</a>. Flag for whether a measure is reportable or not, based on confidence in the measure and methods applied. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -965,13 +998,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Sample relationship</strong> <a href="./parts.html#sampleRelID">(sampleRelID)</a>. Attribute for specifying the relationship between a sample subject and object. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Sample shed</strong> <a href="./parts.html#sampleShed">(sampleShed)</a>. A geographic area, physical space, or structure. A sample is taken from a sampleshed for a representative measurement of a substance(s). <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Longitude</strong> <a href="./parts.html#geoLong">(geoLong)</a>. Geographical location, longitude in decimal coordinates, ie.: (-75.695000) <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Access to self</strong> <a href="./parts.html#self">(self)</a>. If this is ‘no’, this data will not be shown on the portal when this reporter logs in. If missing, data will be available to this reporter. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Date sample was sent</strong> <a href="./parts.html#sentDate">(sentDate)</a>. The date the sample was sent for analyses at a laboratory. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Date sample was sent</strong> <a href="./parts.html#sentDate">(sentDate)</a>. NA <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Set ID</strong> <a href="./parts.html#setID">(setID)</a>. The unique identifier of a value set. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -989,13 +1022,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Site ID default</strong> <a href="./parts.html#siteDef">(siteDef)</a>. Used as default when a new sample is created by this reporter. See ID in Site table. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Site ID</strong> <a href="./parts.html#siteID">(siteID)</a>. Unique identifier for the location where a sample was taken. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>European Petroleum Survey Group Coordinates</strong> <a href="./parts.html#geoEPSG">(geoEPSG)</a>. The unique EPSG code specifying a given geospatial area. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Site measure ID</strong> <a href="./parts.html#siteMeasureID">(siteMeasureID)</a>. Unique identifier for wide table only. Use when all measures are performed on a single sample. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Site Type</strong> <a href="./parts.html#siteType">(siteType)</a>. Type of site or institution where sample was taken. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Last edited</strong> <a href="./parts.html#lastEdited">(lastEdited)</a>. The date the entry was last updated. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Sewer network file link depreciated 2</strong> <a href="./parts.html#snfl">(snfl)</a>. Link to a file that has any detailed information about the sewer network associated with the site (any format). <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
@@ -1005,6 +1038,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Protocol step source ID</strong> <a href="./parts.html#sourceStep">(sourceStep)</a>. Specifies the protocol step which serves as a basis for a given protocol step. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Sovereign status of a country</strong> <a href="./parts.html#sovereignty">(sovereignty)</a>. Sovereign status of a country, indicating which state has the highest jurisdiction over a given territory. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Specimen</strong> <a href="./parts.html#specimen">(specimen)</a>. The substance or thing upon which the observation was made. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -1037,6 +1073,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Summary</strong> <a href="./parts.html#summ">(summ)</a>. Short description of the assay and how it is different from the other assay methods. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Country code top-level domain</strong> <a href="./parts.html#tld">(tld)</a>. The internet top-level domain generally used or reserved for a country, sovereign state, or dependent territory identified with a country code. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Type other depreciate2</strong> <a href="./parts.html#tyOtDep2">(tyOtDep2)</a>. Description of the site when the site is not listed. See siteType. <br>Status: depreciated. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1049,10 +1088,22 @@ ul.task-list li input[type="checkbox"] {
 <strong>U site measure ID</strong> <a href="./parts.html#uSiteMeasureID">(uSiteMeasureID)</a>. Unique identifier for each measurement for a site. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Coordinated universal time (UTC) zone</strong> <a href="./parts.html#utc">(utc)</a>. UTC – Time zone. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Coordinated universal time (UTC) zone in daylight savings</strong> <a href="./parts.html#utcDST">(utcDST)</a>. Time zone during Daylight Saving Time. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Value</strong> <a href="./parts.html#value">(value)</a>. Value of a measure, observation or attribute. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Measure identification (wide table)</strong> <a href="./parts.html#wMeasureID">(wMeasureID)</a>. Unique identifier for wide table only. Use when all measures are performed on a single sample at the same time and same laboratory. Suggestion: siteID_sampleID_LabID_reportDate_ID. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>English name of country sub-domains</strong> <a href="./parts.html#zoneName">(zoneName)</a>. The english-language name for a given country sub-domain. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Notes</strong> <a href="./parts.html#notes">(notes)</a>. A note used to describe details that are not captured in other attrbitutes <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
@@ -1377,6 +1428,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Absolute humidity</strong> <a href="./parts.html#absHum">(absHum)</a>. A measure of the total mass of water vapour present in the air per volume of air. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Adenovirus 40</strong> <a href="./parts.html#adv40">(adv40)</a>. Adenovirus serotype 40. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Adenovirus 41</strong> <a href="./parts.html#adv41">(adv41)</a>. Adenovirus serotype 41. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Environmental temperature</strong> <a href="./parts.html#airTemp">(airTemp)</a>. Environmental temperature. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1389,7 +1446,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Beta</strong> <a href="./parts.html#beta">(beta)</a>. B.1.351 <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>5-Day carbonaceous kiochemical oxygen demand</strong> <a href="./parts.html#bod5c">(bod5c)</a>. The&nbsp;quantity&nbsp;of&nbsp;oxygen&nbsp;utilized&nbsp;for the biochemical&nbsp;degradation&nbsp;of&nbsp;organic matter&nbsp;under&nbsp;standard&nbsp;laboratory procedures&nbsp;in five (5) days in the&nbsp;presence of a&nbsp;nitrification inhibitor,&nbsp;expressed&nbsp;in&nbsp;milligrams per litre&nbsp;(mg/l). <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>5-Day carbonaceous biochemical oxygen demand</strong> <a href="./parts.html#bod5c">(bod5c)</a>. The&nbsp;quantity&nbsp;of&nbsp;oxygen&nbsp;utilized&nbsp;for the biochemical&nbsp;degradation&nbsp;of&nbsp;organic matter&nbsp;under&nbsp;standard&nbsp;laboratory procedures&nbsp;in five (5) days in the&nbsp;presence of a&nbsp;nitrification inhibitor,&nbsp;expressed&nbsp;in&nbsp;milligrams per litre&nbsp;(mg/l). <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>5-day total biochemical oxygen demand</strong> <a href="./parts.html#bod5t">(bod5t)</a>. 5 day total biochemical oxygen demand. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
@@ -1401,10 +1458,22 @@ ul.task-list li input[type="checkbox"] {
 <strong>BRSV-N</strong> <a href="./parts.html#brsvN">(brsvN)</a>. bovine respiratory syncytial virus capsid protein gene region <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Campylobacter</strong> <a href="./parts.html#camp">(camp)</a>. Campylobacter. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Candida auris</strong> <a href="./parts.html#cAuris">(cAuris)</a>. The yeast species Candida auris, or C. auris. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Carbapenemase-encoding genes</strong> <a href="./parts.html#cbp">(cbp)</a>. Carbapenemase-encoding genes. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Carbon Dioxide</strong> <a href="./parts.html#co2">(co2)</a>. A measure of an amount or concentraion of carbon dioxide. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Chemical Oxygen Demand</strong> <a href="./parts.html#cod">(cod)</a>. Chemical oxygen demand. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Colistin resistance</strong> <a href="./parts.html#colis">(colis)</a>. Colistin-resistant bacteria. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Water conductivity</strong> <a href="./parts.html#cond">(cond)</a>. Measurement of conductivity of sample or site. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -1441,9 +1510,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>crAssphage-N</strong> <a href="./parts.html#cra">(cra)</a>. crAssphage virus capsid protein gene region <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
-</li>
-<li>
-<strong>Cycle threshold or quantification cycle (Ct or Cq)</strong> <a href="./parts.html#ct">(ct)</a>. Cycle thresholds in a PCR assay. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>d377y delta-variant gene target</strong> <a href="./parts.html#d377y">(d377y)</a>. d377y delta-variant gene target. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -1518,6 +1584,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Sarbecovirus-specific E sars-cov-2 gene target</strong> <a href="./parts.html#eSarbec">(eSarbec)</a>. Sarbecovirus-specific E sars-cov-2 gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>ESBL-encoding genes</strong> <a href="./parts.html#esbl">(esbl)</a>. Extended-spectrum beta-lactamase-encoding genes. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Estimated frequency of reads</strong> <a href="./parts.html#estFreqReads">(estFreqReads)</a>. Estimated frequency of reads in a sequencing assay <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1531,6 +1600,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Influenza virus measure</strong> <a href="./parts.html#flu">(flu)</a>. General influenza virus measure <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Influenza A virus</strong> <a href="./parts.html#fluA">(fluA)</a>. Influenza A virus. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Influenza virus A1</strong> <a href="./parts.html#fluA1">(fluA1)</a>. Influenza virus A1 type <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -1617,6 +1689,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Murine Hepatitis Virus</strong> <a href="./parts.html#mhv">(mhv)</a>. A measure for amount of murine hepatitis viurs. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Mpox</strong> <a href="./parts.html#mpox">(mpox)</a>. The virus known as Mpox, previously also known as Monkey Pox. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>ms2 coliphage</strong> <a href="./parts.html#ms2Col">(ms2Col)</a>. Measure of the amount of ms2 coliphage. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1648,6 +1723,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>niid_2019-ncov_n sars-cov-2 gene target</strong> <a href="./parts.html#niid19">(niid19)</a>. niid_2019-ncov_n sars-cov-2 gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Norovirus</strong> <a href="./parts.html#noro">(noro)</a>. Norovirus. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Norovirus G1</strong> <a href="./parts.html#noroG1">(noroG1)</a>. Norovirus genogroup 1 <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -1764,6 +1842,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Respiratory syncytial virus</strong> <a href="./parts.html#rsv">(rsv)</a>. Respiratory syncytial virus. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Respiratory syncytial virus A</strong> <a href="./parts.html#rsvA">(rsvA)</a>. Respiratory syncytial virus (RSV) A. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
+<strong>Respiratory syncytial virus B</strong> <a href="./parts.html#rsvB">(rsvB)</a>. Respiratory syncytial virus (RSV) B. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>s2083i omicron-variant gene target</strong> <a href="./parts.html#s2083i&nbsp;">(s2083i&nbsp;)</a>. s2083i omicron-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1789,6 +1873,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Specific humidity</strong> <a href="./parts.html#specHum">(specHum)</a>. Measure for specific humidity, the unit is the ratio of the mass of water vapour and the mass of total air. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Shiga-toxin-producing Escheria coli (STEC)</strong> <a href="./parts.html#stec">(stec)</a>. Shiga-toxin-producing Escheria coli (STEC). <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
 </li>
 <li>
 <strong>Storage temp</strong> <a href="./parts.html#sTemp">(sTemp)</a>. Temperature that the sample is stored at in Celsius. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -1851,6 +1938,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>v2930l delta-variant gene target</strong> <a href="./parts.html#v2930l">(v2930l)</a>. v2930l delta-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Vancomycin resistance</strong> <a href="./parts.html#vanc">(vanc)</a>. Vancomycin resistant bacteria. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Size in volume</strong> <a href="./parts.html#vol">(vol)</a>. Total volume of water or sludge sampled. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -1873,6 +1963,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>y505h omicron-variant gene target</strong> <a href="./parts.html#y505h&nbsp;">(y505h&nbsp;)</a>. y505h omicron-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>SARS-CoV-2-N200</strong> <a href="./parts.html#covN200">(covN200)</a>. SARS-CoV-2 nucleocapsid gene, amino acids 199-202. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
@@ -2002,10 +2095,10 @@ ul.task-list li input[type="checkbox"] {
 <a href="./parts.html#booleanSet">(booleanSet)</a>Set that contains the valid possible values for a boolean measure (TRUE or FALSE). <br> Status: active. First Released: 2.0.0. Last updated: 2.0.0.
 <ul>
 <li>
-<strong>FALSE</strong> <a href="./parts.html#false">(false)</a>. Boolean data type = FALSE <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>FALSE</strong> <a href="./parts.html#false">(false)</a>. Boolean data type = FALSE <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>TRUE</strong> <a href="./parts.html#true">(true)</a>. Boolean data type = TRUE <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+<strong>TRUE</strong> <a href="./parts.html#true">(true)</a>. Boolean data type = TRUE <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
@@ -2023,7 +2116,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>COSCa ball</strong> <a href="./parts.html#cosca">(cosca)</a>. COSCa passive sampling device. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Flow proportional sample</strong> <a href="./parts.html#flowPr">(flowPr)</a>. A flow proportionalcomposite sample generally collected by an autosampler. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Flow proportional sample</strong> <a href="./parts.html#flowPr">(flowPr)</a>. A flow proportional composite sample generally collected by an autosampler. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Grab sample</strong> <a href="./parts.html#grb">(grb)</a>. A single large representative grab sample. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -2035,7 +2128,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Surface swab</strong> <a href="./parts.html#surfSw">(surfSw)</a>. Surface swab. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Time proportional sample</strong> <a href="./parts.html#timePr">(timePr)</a>. A time proportionalcomposite sample generally collected by an autosampler. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Time proportional sample</strong> <a href="./parts.html#timePr">(timePr)</a>. A time proportional composite sample generally collected by an autosampler. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Volume proportional sample</strong> <a href="./parts.html#volPr">(volPr)</a>. A volume proportional sample generally collected by an autosampler. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -2269,7 +2362,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Long-term care - assisted living or retirement home</strong> <a href="./parts.html#ltcfAl">(ltcfAl)</a>. A residential facility that provides assistance with daily care but generally does not provide skilled nursing care. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Public healith agency</strong> <a href="./parts.html#pubHealth">(pubHealth)</a>. Public health agency. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Public health agency</strong> <a href="./parts.html#pubHealth">(pubHealth)</a>. Public health agency. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>School</strong> <a href="./parts.html#school">(school)</a>. A school serving students in the kindergarten to 12th grade range <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -2302,13 +2395,13 @@ ul.task-list li input[type="checkbox"] {
 <a href="./parts.html#originSet">(originSet)</a>The set for storing the valid categorical values of sample origin. <br> Status: active. First Released: 2.0.0. Last updated: 2.0.0.
 <ul>
 <li>
-<strong>Derived sample</strong> <a href="./parts.html#derived">(derived)</a>. Specifies a sample that is derrived or made from another sample or material. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Derived sample</strong> <a href="./parts.html#derived">(derived)</a>. A sample that is derived or made from another sample or material. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Field sample</strong> <a href="./parts.html#field">(field)</a>. Specifies a sample taken from the field; directly collected from an area for testing. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Synthetic sample</strong> <a href="./parts.html#synthetic">(synthetic)</a>. Specifies a synthetic, or artificially derrived sample. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Synthetic sample</strong> <a href="./parts.html#synthetic">(synthetic)</a>. A synthetic or artificially generated sample. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
@@ -3241,6 +3334,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Contact table</strong> <a href="./parts.html#contacts">(contacts)</a>. The table that contains information about a contact; a person who is the contact of a site or laboratory. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Countries look-up tables</strong> <a href="./parts.html#countries">(countries)</a>. Look up table for the possible country inputs. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
+<li>
 <strong>Dataset table</strong> <a href="./parts.html#datasets">(datasets)</a>. A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -3297,6 +3393,9 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>Wide name table</strong> <a href="./parts.html#wideNames">(wideNames)</a>. The table for wide names. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
+<li>
+<strong>Zones look-up table</strong> <a href="./parts.html#zones">(zones)</a>. Look up table for the possible sub-national region or zone inputs. <br>Status: active. First released: 2.1.0. Last updated: 2.1.0.
+</li>
 </ul>
 </section>
 <section id="units" class="level2">
@@ -3332,6 +3431,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Confirmed cases test date</strong> <a href="./parts.html#conTest">(conTest)</a>. Date that the covid-19 test was performed for a confirmed case. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Cycle threshold or quantification cycle (Ct or Cq)</strong> <a href="./parts.html#ct">(ct)</a>. Cycle thresholds in a PCR assay. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Cumulative count</strong> <a href="./parts.html#cuCo">(cuCo)</a>. Units for describing a population measure of a cumulative count of cases of a given disease. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -3493,13 +3595,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Frequency of variants detected</strong> <a href="./parts.html#varFreq">(varFreq)</a>. A description of the frequency of a variants detected. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 1 dose of vaccine</strong> <a href="./parts.html#vax1">(vax1)</a>. A measure of the population with a single dose of vaccine. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 1 or more doses of vaccine</strong> <a href="./parts.html#vax1">(vax1)</a>. A measure of the population with a single dose of vaccine. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 2 doses of vaccine</strong> <a href="./parts.html#vax2">(vax2)</a>. Population with 2 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 2 or more doses of vaccine</strong> <a href="./parts.html#vax2">(vax2)</a>. Population with 2 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 3 doses of vaccine</strong> <a href="./parts.html#vax3">(vax3)</a>. Population with 3 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 3 or more doses of vaccine</strong> <a href="./parts.html#vax3">(vax3)</a>. Population with 3 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Years</strong> <a href="./parts.html#years">(years)</a>. A unit for indicating a length of time in years. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -3712,13 +3814,13 @@ ul.task-list li input[type="checkbox"] {
 <strong>Number of tests performed</strong> <a href="./parts.html#test">(test)</a>. Number of tests performed. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 1 dose of vaccine</strong> <a href="./parts.html#vax1">(vax1)</a>. A measure of the population with a single dose of vaccine. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 1 or more doses of vaccine</strong> <a href="./parts.html#vax1">(vax1)</a>. A measure of the population with a single dose of vaccine. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 2 doses of vaccine</strong> <a href="./parts.html#vax2">(vax2)</a>. Population with 2 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 2 or more doses of vaccine</strong> <a href="./parts.html#vax2">(vax2)</a>. Population with 2 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Population with 3 doses of vaccine</strong> <a href="./parts.html#vax3">(vax3)</a>. Population with 3 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Population with 3 or more doses of vaccine</strong> <a href="./parts.html#vax3">(vax3)</a>. Population with 3 doses of vaccine <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
