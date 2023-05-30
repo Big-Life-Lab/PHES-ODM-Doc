@@ -1,12 +1,13 @@
+---
+project:
+  execute-dir: ../
+---
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
 # Introduction {.unnumbered}
 
-> Make collecting and sharing high-quality, interoperable environmental surveillance data as easy as possible.
-
-<!-- {{< include _dictionary-version.qmd >}}   -->
-
-::: callout-warning
-This documentation for the PHES-ODM Version 2.0.0 release candidate. Please be aware that changes will occur regularly in the next weeks. If there is something you'd like to see in the documentation that you cannot currently find, please please [create an issue on our GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM) or post about it on [our Discourse page](https://odm.discourse.group/).
-:::
+> Facilitating the Collection and Sharing of High-Quality, Interoperable Environmental Surveillance Data: A Community Open Science Project. 
 
 The Public Health and Environmental Surveillance Open Data Model (PHES-ODM or ODM) is an open-source data model and set of tools aimed at promoting global collaboration and use of environment and public health data. The ODM model facilitates interoperable environmental surveillance and research by improving quality reporting data, enhancing data management, and supporting data provenance and sharing.
 

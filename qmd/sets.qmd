@@ -27,6 +27,8 @@ source("R/template-utils.R")
 source("R/odm-dictionary-file.R")
 source("R/parts-sheet.R")
 source("R/sets-sheet.R")
+source("R/generate-display.R")
+source("R/sets.R")
 
 # Display string templates
 header_template <-
@@ -41,30 +43,12 @@ Last updated: {lastUpdated}.'
 part_bullet_template <- '**{partLabel}** <a href=\"/parts.html#{partID}\">({partID})</a>. {partDesc} </br>Status: {status}. First released: {firstReleased}. Last updated: {lastUpdated}.'
 
 
-# Extract, format and order sets table on set type
-sets_table_source <-
-  readxl::read_excel(
-    file.path(
-      getwd(),
-      odm_dictionary$dictionary_directory,
-      dictionary_full_file_name
-    ),
-    sheet = odm_dictionary$sets_sheet_name
-  )
+# Format and order sets table on set type
 sets_table <- format_table(sets_table_source)
 sets_table <-
   sets_table[order(sets_table[[sets_sheet_column_names$part_set_type_column_name]]),]
 
-# Generate and format parts table
-parts_table_source <-
-  readxl::read_excel(
-    file.path(
-      getwd(),
-      odm_dictionary$dictionary_directory,
-      dictionary_full_file_name
-    ),
-    sheet = odm_dictionary$parts_sheet_name
-  )
+# Format parts table
 parts_table <-
   format_table(parts_table_source,
                parts_sheet_column_names,
@@ -164,23 +148,10 @@ for (set_type in unique_set_types) {
         )
         next()
       }
-      # Declare display elements
-      part_input <- list()
-      part_input[["partID"]] <- part_ID
-      part_input[["partLabel"]] <-
-        part_info[[parts_sheet_column_names$part_label_column_name]]
-      part_input[["partDesc"]] <-
-        part_info[[parts_sheet_column_names$part_description_column_name]]
-      part_input[["status"]] <-
-        part_info[[parts_sheet_column_names$part_status_column_name]]
-      part_input[["firstReleased"]] <-
-        part_info[[parts_sheet_column_names$part_first_release_column_name]]
-      part_input[["lastUpdated"]] <-
-        part_info[[parts_sheet_column_names$part_last_updated_column_name]]
       
       
-      
-      list_values[[length(list_values) + 1]] <- generate_display(part_bullet_template, part_input, part_ID)
+      list_values[[length(list_values) + 1]] <-
+        generate_bullet_point_display(part_info, part_bullet_template)
       
     }
     set_display <- create_html_list(set_display, list_values)
@@ -232,22 +203,8 @@ for (list_ID in unique_list_part_IDs) {
       next()
     }
     
-    # Declare display elements
-    element_input <- list()
-    element_input[["partID"]] <- element_ID
-    element_input[["partLabel"]] <-
-      element_info[[parts_sheet_column_names$part_label_column_name]]
-    element_input[["partDesc"]] <-
-      element_info[[parts_sheet_column_names$part_description_column_name]]
-    element_input[["status"]] <-
-      element_info[[parts_sheet_column_names$part_status_column_name]]
-    element_input[["firstReleased"]] <-
-      element_info[[parts_sheet_column_names$part_first_release_column_name]]
-    element_input[["lastUpdated"]] <-
-      element_info[[parts_sheet_column_names$part_last_updated_column_name]]
-    
-    
-    list_elements_list[[element_ID]] <- generate_display(part_bullet_template, element_input, element_ID)
+    list_elements_list[[element_ID]] <-
+      generate_bullet_point_display(element_info, part_bullet_template)
   }
   list_of_lists[[list_ID]] <-
     create_html_list(list_display_info, list_elements_list)
@@ -287,22 +244,8 @@ for (category_set_ID in unique_category_set_IDs) {
       next()
     }
     
-    # Declare display elements
-    sub_categories_input <- list()
-    sub_categories_input[["partID"]] <- sub_category_ID
-    sub_categories_input[["partLabel"]] <-
-      sub_category_info[[parts_sheet_column_names$part_label_column_name]]
-    sub_categories_input[["partDesc"]] <-
-      sub_category_info[[parts_sheet_column_names$part_description_column_name]]
-    sub_categories_input[["status"]] <-
-      sub_category_info[[parts_sheet_column_names$part_status_column_name]]
-    sub_categories_input[["firstReleased"]] <-
-      sub_category_info[[parts_sheet_column_names$part_first_release_column_name]]
-    sub_categories_input[["lastUpdated"]] <-
-      sub_category_info[[parts_sheet_column_names$part_last_updated_column_name]]
-    
-    
-    sub_categories_list[[sub_category_ID]] <- generate_display(part_bullet_template, sub_categories_input, sub_category_ID)
+    sub_categories_list[[sub_category_ID]] <-
+      generate_bullet_point_display(sub_category_info, part_bullet_template)
   }
   categories_list[[category_set_ID]] <-
     create_html_list(category_display, sub_categories_list)

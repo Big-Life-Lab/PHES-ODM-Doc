@@ -2,7 +2,7 @@ parts_sheet_column_names <- list()
 parts <- list()
 
 # Column names for the parts sheet
-parts_sheet_column_names$part_ID_column_name <- "part"
+parts_sheet_column_names$part_ID_column_name <- "partID"
 parts_sheet_column_names$part_status_column_name <- "status"
 parts_sheet_column_names$part_label_column_name <- "partLabel"
 parts_sheet_column_names$part_description_column_name <- "partDesc"
@@ -21,6 +21,7 @@ parts_sheet_column_names$part_agg_scale_ID_column_name <- "aggregationScale"
 parts_sheet_column_names$part_quality_set_ID_column_name <- "qualitySet"
 parts_sheet_column_names$part_ref_link_column_name <- "refLink"
 parts_sheet_column_names$part_data_type_column_name <- "dataType"
+parts_sheet_column_names$part_missingness_set_column_name <- "missingnessSet"
 parts_sheet_column_names$part_min_value_column_name <- "minValue"
 parts_sheet_column_names$part_max_value_column_name <- "maxValue"
 parts_sheet_column_names$part_min_length_column_name <- "minLength"

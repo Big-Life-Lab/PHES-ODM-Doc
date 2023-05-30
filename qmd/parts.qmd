@@ -31,6 +31,7 @@ source("R/warning-utils.R")
 source("R/template-utils.R")
 source("R/odm-dictionary-file.R")
 source("R/parts-sheet.R")
+source("R/generate-display.R")
 
 # String to store parts display template
 parts_display_template <- '### {partLabel} {{ #{partID} }} 
@@ -49,6 +50,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Quality Set:* <a href="/{part_quality_set_ID_location}.html#{qualitySet}">{qualitySet}</a> </br>
       *Reference Link:* {refLink} </br>
       *Data Type:* <a href="#{dataType}">{dataType}</a> </br>
+      *Missingness Set:* <a href="/{part_missingness_set_location}.html#{missingnessSet}">{missingnessSet} </a> </br>
       *Minimum Value:* {minValue} </br>
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
@@ -62,10 +64,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
 parts_info_display_content <- ""
 
 
-# Read in and prepare parts data.frame
-parts_table_source <-
-  readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, dictionary_full_file_name),
-                     sheet = odm_dictionary$parts_sheet_name)
+# Prepare parts data.frame
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 
@@ -100,6 +99,7 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   display_input[["qualitySet"]] <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
   display_input[["refLink"]] <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
   display_input[["dataType"]] <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
+  display_input[["missingnessSet"]] <- part_row[[parts_sheet_column_names$part_missingness_set_column_name]]
   display_input[["minValue"]] <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
   display_input[["maxValue"]] <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
   display_input[["minLength"]] <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
@@ -118,6 +118,8 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   display_input[["part_cat_set_ID_location"]] <- determine_link_source(display_input[["mmaSet"]])
   display_input[["part_unit_set_ID_location"]] <- determine_link_source(display_input[["unitSet"]])
   display_input[["part_speciment_set_location"]] <- determine_link_source(display_input[["specimenSet"]])
+  display_input[["part_missingness_set_location"]] <-
+    determine_link_source(display_input[["missingnessSet"]])
   
   # Assemble the display string
   single_part_display <- generate_display(parts_display_template, display_input, display_input[["partID"]])

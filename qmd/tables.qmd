@@ -72,9 +72,6 @@ part_sheet_table_column_type_set_header <- "Header"
 
 
 # Read in and prepare parts data.frame
-parts_table_source <-
-  readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, dictionary_full_file_name),
-                     sheet = odm_dictionary$parts_sheet_name)
 parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove_duplicate = TRUE)
 
 # Generate tables data.frame
@@ -94,8 +91,7 @@ all_table_column_names <- tables_data[[parts_sheet_column_names$part_ID_column_n
 table_name_columns <- c(all_table_column_names, all_required_column_names, all_order_column_names)
 
 # Perform additional formatting on table specific columns
-parts_table <- format_table(parts_table, table_name_columns)
-parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], tolower)
+parts_table <- format_parts_table(parts_table)
 parts_table[all_table_column_names] <- lapply(parts_table[all_table_column_names], trimws)
 
 # Declaring string that will be appended during the loops
@@ -142,17 +138,19 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       '{table_of_content}<li><a href=\"#{current_table_ID}\">'
     )
   # Append table label related content
+  part_label_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_label_column_name, parts_sheet_column_names$part_label_column_name]
+  part_ID_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_ID_column_name, parts_sheet_column_names$part_label_column_name]
   table_of_content <- verify_and_append_content(
     table_of_content,
     current_table_label,
-    missing_and_substituted(current_table_ID, "part label", "part ID"),
+    missing_and_substituted(current_table_ID, part_label_label, part_ID_label),
     glue::glue('{current_table_label}</a></li>'),
     glue::glue('{current_table_ID}</a></li>')
   )
   tables_info_display_content <- verify_and_append_content(
     tables_info_display_content,
     current_table_label,
-    missing_and_substituted(current_table_ID, "part label", "part ID"),
+    missing_and_substituted(current_table_ID, part_label_label, part_ID_label),
     glue::glue('
     
       ### {current_table_label} {{ #{current_table_ID} }}
@@ -215,7 +213,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     tables_info_display_content <- verify_and_append_content(
       tables_info_display_content,
       column_label,
-      missing_and_substituted(column_ID, "part label", "part ID"),
+      missing_and_substituted(column_ID, part_label_label, part_ID_label),
       glue::glue(
         '**{column_label}** (<a href=\"/parts.html#{column_ID}\">{column_ID}</a>).'),
       glue::glue(
@@ -260,7 +258,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,
         column_catSetID,
-        ivalid_cat_link(column_ID),
+        invalid_cat_link(column_ID),
         glue::glue(
           '</br>Measure, method or attribute set: <a href=\"/sets.html#{column_catSetID}\">{column_catSetID}</a>'
         ),
