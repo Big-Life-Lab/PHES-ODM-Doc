@@ -106,6 +106,34 @@ Date fields that are more related to data processing and labratory infrastructur
 
 The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (`languageLUs`), the translation look-up table (`translationLUs`), and the parts table (`partsLUs`). When a translation for a given part is not available, the dictionary will default to the English term.The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (`languageID`). In the translation table, the language ID is paired with every part ID (`partID`), along with the label (`partLabel`), description (`partDesc`), and instructions (`partInstr`) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.
 
+## Recording protocols
+
+When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. To store protocols efficiently in database tables, several challenges must be addressed:
+
+1.  Protocols are comprised of a collection of steps.
+2.  Protocol steps can consist of two entries:
+    -   They can prescribe the use of a specific quantity of something. This can be described using the different measures found in the PHES-ODM dictionary and assigning them a prescribed value and unit of measurement.
+
+    -   They can prescribe an action. The PHES-ODM calls this a method.
+3.  Protocol steps must be organised in the right order to convey the meaning of the protocol.
+4.  Steps may follow each other, or they can be done concurrently.
+5.  Measures found inside a protocol specify the quantity of reagents, supplies and conditions involved in the realization of a method.
+6.  Different protocols may use some of the same steps, but in a different order.
+7.  Protocols may have steps that consist in one or several (sub)protocols.
+8.  Protocols can be updated with new versions, or they can reference and build from other protocols.
+
+To solve these constraints, the PHES-ODM stores a protocol (e.g., what it does, who developed it, when it was developed) separately from its constituent steps. These protocol steps are stored in the `Protocol Steps` table. The entries in the steps table are either methods or measures.
+
+The protocol steps are linked together in their own `Protocol Relationships` table. Rows in the relationship table have four main attributes. The first is the protocol identifier. The three other attributes define a relationship between two steps in the protocol. The relationship is expressed in the form:
+
+`subject → relationship → object`
+
+Where the subject and the object can either be a protocol step or subprotocol. The available relationships (e.g., `is_before`, `specifies`, `is_concurrent_with`, etc.) allows one to organize the protocol is a more semantically meaningful way than by simply using a sequential order.
+
+This flexible structure allows protocol steps and subprotocols to be reused in any number of protocols. The relationships between protocols, protocol orderings, and protocol steps are shown in Figure A.
+
+![Figure A: Main entities and relationships used to represent protocols](./assets/how-to/protocols.png)
+
 ## Questions and online community
 
 If any users have additional questions or issues with the ODM, we invite them to check out our [Discourse Page](http://odm.discourse.group/) for discussion boards and community support. For larger issues, and to ask the ODM team to add additional fields or variables into the model, we encourage users to visit the project's [GitHub repository](https://github.com/Big-Life-Lab/PHES-ODM/issues) and to create and issue there so that a team member can respond.

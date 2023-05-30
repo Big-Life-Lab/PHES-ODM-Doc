@@ -26,9 +26,16 @@ As a starting point:
 
     -   `Address`, `Organization`, and `Contact` provide the contact information for sites and entities such as laboratories.
 
--   There are optional supporting tables, such as `Protocols` and `Instrument`, where you can use the templates to record information about how samples are taken and how measures are reported. You only need to compete these tables once and then update them as needed. `Protocol steps` and `Protocol relationships` tables are used alongside the `Protocols` table. Other supporting tables include `Polygon`, which stores information about the sample shed, and `Dataset`, which stores information about the data custodian and owner of the data.
+ -   There are optional supporting tables, such as `Protocols` and `Instrument`, where you can use the templates to record information about how samples are taken and how measures are reported. You only need to compete these tables once and then update them as needed.
+ 
+    -   `Protocol steps` and `Protocol relationships` tables are used alongside the `Protocols` table. 
 
-The templates contain four main types of fields; in these how-to guides they are colour-coded for instructional purposes:
+![](/assets/how-to/composite-ex.png){fig-align="center"}
+
+ -    Other supporting tables include `Polygon`, which stores information about the sample shed, and `Dataset`, which stores information about the data custodian and owner of the data.
+ 
+ 
+ The templates contain four main types of fields; in these how-to guides they are colour-coded for instructional purposes:
 
 -   **Identifier and unique identifier (red):** In these fields you will create a value that will be used to identify something. For instance, `Sample ID` is used to identify each unique sample. An identifier can be repeated between entries, while an unique identifier cannot. There is usually only one unique identifier per template, and they correspond to the name of the template. For example, `Measure ID` for the `Measure report` template, and `Contact ID` for the `Contact` template.
 
@@ -314,7 +321,7 @@ Below you will find the fields that are mandatory for the `Sample report` and `S
 
 You have now entered your data in the `Sample report` and `Sample relationships` templates, congratulations!
 
-## 4) How to report protocols, protocol steps and protocol relationships:
+## 4) How to record a protocol
 
 In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is "A procedure for collecting a sample or performing a measure". Each entry in the `Protocols` (or `protocols`) template represents a unique protocol. A protocol is made up of protocol steps. In the `Protocol steps` (or `protocolSteps`) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the `Protocol relationships` (or `protocolRelationships`) template represents one of these relationships in the form, "subject - relationship - object". So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the `Protocol step ID` of A - `Is Before` - `Protocol Step ID` of B.
 
@@ -889,6 +896,7 @@ You have now entered in your metadata, congratulations!
 -   If you wish to have the part IDs of these values, they are located to the right of the main template and, if applicable, the code for the conditional menus. Unlike the main template, the rows containing the part IDs will not be alternating in colour.
 
 -   The part IDs are present in the first 100 rows of each of the templates.
+
 
 #### Troubleshooting menus (not including conditional menus)
 
