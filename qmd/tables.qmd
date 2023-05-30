@@ -63,7 +63,12 @@ source("R/qmd-utils.R")
 source("R/format-table.R")
 # Source warning utils
 source("R/warning-utils.R")
-
+source("R/odm-dictionary-file.R")
+source("R/parts-sheet.R")
+# String set Values
+part_sheet_table_column_type_set_PK <- "Primary Key"
+part_sheet_table_column_type_set_FK <- "Foreign Key"
+part_sheet_table_column_type_set_header <- "Header"
 
 
 # Read in and prepare parts data.frame
@@ -71,8 +76,8 @@ parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove
 
 # Generate tables data.frame
 tables_data <-
-  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
+                parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
 
 # Sort tables alphabetically based on partID
 tables_data <- tables_data[order(tables_data[[parts_sheet_column_names$part_ID_column_name]]),]
@@ -104,9 +109,9 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   
   # Acquire columns that belong to the table
   table_columns <-
-    parts_table[parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_PK |
-                  parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_FK |
-                  parts_table[[current_table_ID]] == constants$part_sheet_table_column_type_is_header,]
+    parts_table[parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_PK |
+                  parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_FK |
+                  parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_header,]
   # In case a table has no PK, FK, header
   if(nrow(table_columns)==0){
     warning(skipped_and_invalid(current_table_ID))
@@ -181,12 +186,12 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     detected_column_role <- current_table_column[[current_table_ID]]
     column_role <- "NA"
     if (verify_input(detected_column_role, missing_warning("Valid column role", current_table_ID))) {
-      if (detected_column_role == constants$part_sheet_table_column_type_is_FK) {
-        column_role <- constants$part_sheet_table_column_type_set_FK
-      } else if (detected_column_role == constants$part_sheet_table_column_type_is_PK) {
-        column_role <- constants$part_sheet_table_column_type_set_PK
-      } else if (detected_column_role == constants$part_sheet_table_column_type_is_header) {
-        column_role <- constants$part_sheet_table_column_type_set_header
+      if (detected_column_role == parts$part_sheet_table_column_type_is_FK) {
+        column_role <- part_sheet_table_column_type_set_FK
+      } else if (detected_column_role == parts$part_sheet_table_column_type_is_PK) {
+        column_role <- part_sheet_table_column_type_set_PK
+      } else if (detected_column_role == parts$part_sheet_table_column_type_is_header) {
+        column_role <- part_sheet_table_column_type_set_header
       } 
     }
     
@@ -248,7 +253,7 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       ""
       )
     # Append link to catSetID if dataType is categorical
-    if (column_dataType == constants$part_sheet_data_type_is_categorical) {
+    if (column_dataType == parts$data_type_is_categorical) {
       column_catSetID <- current_table_column[[parts_sheet_column_names$part_cat_set_ID_column_name]]
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,

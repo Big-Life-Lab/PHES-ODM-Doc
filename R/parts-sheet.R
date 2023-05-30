@@ -1,17 +1,5 @@
-constants <- list()
 parts_sheet_column_names <- list()
-sets_sheet_column_names <- list()
-languages_sheet_column_names <- list()
-
-constants$dictionary_directory <- "data/raw"
-
-constants$dictionary_missing_value_replacement <- "NA"
-
-constants$parts_sheet_name <- "parts"
-constants$parts_file_name <- "parts"
-constants$sets_sheet_name <- "sets"
-constants$sets_file_name <- "sets"
-constants$languages_sheet_name <- "languages"
+parts <- list()
 
 # Column names for the parts sheet
 parts_sheet_column_names$part_ID_column_name <- "partID"
@@ -41,38 +29,14 @@ parts_sheet_column_names$part_max_length_column_name <- "maxLength"
 parts_sheet_column_names$part_first_release_column_name <- "firstReleased"
 parts_sheet_column_names$part_last_updated_column_name <- "lastUpdated"
 
-# Column names for sets sheet
-sets_sheet_column_names$part_set_type_column_name <- "setType"
-sets_sheet_column_names$part_set_ID_column_name <- "setID"
-
-#Column names for languages sheet
-languages_sheet_column_names$lang_ID <- "langID"
-languages_sheet_column_names$lang_fam <- "langFam"
-languages_sheet_column_names$lang_name <- "langName"
-languages_sheet_column_names$nat_name <- "natName"
-languages_sheet_column_names$iso6391 <- "iso6391"
-languages_sheet_column_names$iso6392B <- "iso6392B"
-languages_sheet_column_names$iso6392T <- "iso6392T"
-languages_sheet_column_names$iso6393 <- "iso6393"
-languages_sheet_column_names$iso6396 <- "iso6396"
-
-# Column values
-constants$part_sheet_part_type_is_table <- "table"
-constants$part_sheet_status_is_active <- "active"
-constants$part_sheet_status_is_development <- "development"
-constants$part_sheet_data_type_is_categorical <- "categorical"
-constants$set_type_is_dictSet <- "dictSet"
-constants$set_type_is_catSet <- "mmaSet"
-constants$set_ID_is_list_set <- "listSet"
-
+parts$part_type_is_table <- "tables"
+parts$data_type_is_categorical <- "categorical"
 # Table column values
-constants$part_sheet_table_column_type_is_PK <- "pK"
-constants$part_sheet_table_column_type_is_FK <- "fK"
-constants$part_sheet_table_column_type_is_header <- "header"
-constants$part_sheet_table_column_type_is_input <- "input"
+parts$part_sheet_table_column_type_is_PK <- "pk"
+parts$part_sheet_table_column_type_is_FK <- "fk"
+parts$part_sheet_table_column_type_is_header <- "header"
+parts$part_sheet_table_column_type_is_input <- "input"
+parts$status_is_active <- "active"
+parts$status_is_development <- "development"
 
-# String set Values
-constants$part_sheet_table_column_type_set_PK <- "Primary Key"
-constants$part_sheet_table_column_type_set_FK <- "Foreign Key"
-constants$part_sheet_table_column_type_set_header <- "Header"
-  
+

@@ -1,5 +1,6 @@
 # Source constants when not using pkg.env
-source(file.path(getwd(), "R", "constants.R"))
+source(file.path(getwd(), "R", "odm-dictionary-file.R"))
+source(file.path(getwd(), "R", "parts-sheet.R"))
 source(file.path(getwd(), "R", "warning-utils.R"))
 #' Format Table
 #'
@@ -23,7 +24,7 @@ format_table <-
            remove_duplicate = FALSE,
            strip_invalid_part_ID = TRUE,
            table_being_checked = "parts",
-           replace_value = constants$dictionary_missing_value_replacement,
+           replace_value = odm_dictionary$dictionary_missing_value_replacement,
            ID_column_name = parts_sheet_column_names$part_ID_column_name,
            remove_development_parts = TRUE,
            append_null_columns = TRUE,
@@ -42,7 +43,7 @@ format_table <-
     # Remove parts under development
     if (!is.null(input_table[[status_column_name]]) && remove_development_parts) {
       output_table <-
-        output_table[output_table[[status_column_name]] %!=na% constants$part_sheet_status_is_development,]
+        output_table[output_table[[status_column_name]] %!=na% parts$status_is_development, ]
     }
     
     # Strip off rows where partID is invalid
@@ -132,8 +133,8 @@ check_values_for_table <-
 format_parts_table <- function(parts_table) {
   # Retrieve table related rows then columns
   tables_data <-
-    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == constants$part_sheet_part_type_is_table &
-                   parts_table[[parts_sheet_column_names$part_status_column_name]] == constants$part_sheet_status_is_active,]
+    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
+                   parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
   
   # Utilize tables_data to generate names of table specific columns
   all_required_column_names <-
@@ -154,11 +155,11 @@ format_parts_table <- function(parts_table) {
     formatted_parts_table,
     all_table_column_names,
     c(
-      constants$part_sheet_table_column_type_is_PK,
-      constants$part_sheet_table_column_type_is_FK,
-      constants$part_sheet_table_column_type_is_header,
-      constants$part_sheet_table_column_type_is_input,
-      constants$dictionary_missing_value_replacement
+      parts$part_sheet_table_column_type_is_PK,
+      parts$part_sheet_table_column_type_is_FK,
+      parts$part_sheet_table_column_type_is_header,
+      parts$part_sheet_table_column_type_is_input,
+      odm_dictionary$dictionary_missing_value_replacement
     )
   )
   
