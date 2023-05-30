@@ -35,7 +35,7 @@ There are five table types:
 
 4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
 
-5\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations.
+5\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations. The `countries` and `zones` tables standardize location information to the ISO-2 and ISO-3 to reduce ambiguity and free-text errors when populating these fields, while improving interoperability of location metadata.
 
 ## Header roles
 
