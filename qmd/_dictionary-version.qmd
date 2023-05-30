@@ -1,5 +1,5 @@
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE}
 source("R/get-latest-dictionary.R")
 
 latest_version_info <- get_latest_dictionary()
@@ -11,4 +11,3 @@ sets_table_source <- latest_version_info$dictionary$sets
 
 ```
 Dictionary `r dictionary_version_used`.
-```
