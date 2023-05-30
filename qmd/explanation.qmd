@@ -106,7 +106,7 @@ Date fields that are more related to data processing and labratory infrastructur
 
 The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (`languageLUs`), the translation look-up table (`translationLUs`), and the parts table (`partsLUs`). When a translation for a given part is not available, the dictionary will default to the English term.The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (`languageID`). In the translation table, the language ID is paired with every part ID (`partID`), along with the label (`partLabel`), description (`partDesc`), and instructions (`partInstr`) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.
 
-# Recording protocols
+## Recording protocols
 
 When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. To store protocols efficiently in database tables, several challenges must be addressed:
 
