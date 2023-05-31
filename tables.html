@@ -259,7 +259,7 @@ Data storage
 <p>2) <strong>Contact information tables</strong>. The <code>sites</code>, <code>organizations</code>, <code>contacts</code>, and <code>addresses</code> tables store contact information for the testing site and the person who performed the testing.</p>
 <p>3) <strong>Protocol or methods tables</strong>. The <code>protocols</code> and <code>instruments</code> tables hold information on the methods used for sample collection or measurement. <code>protocolSteps</code> and <code>protocolRelationships</code> tables are used in conjunction with the <code>protocols</code> table.</p>
 <p>4) <strong>Other report tables</strong>.&nbsp;The <code>polygons</code> table stores information on the sample area and the <code>datasets</code> table includes information on the data custodian and owner.</p>
-<p>5) <strong>Dictionary reference tables</strong>. The <code>parts</code> table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The <code>sets</code> table stores collections of parts, such as units grouped together in a unitSet. The <code>languages</code> and <code>translations</code> tables support translations.</p>
+<p>5) <strong>Dictionary reference tables</strong>. The <code>parts</code> table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The <code>sets</code> table stores collections of parts, such as units grouped together in a unitSet. The <code>languages</code> and <code>translations</code> tables support translations. The <code>countries</code> and <code>zones</code> tables standardize location information to the ISO-2 and ISO-3 to reduce ambiguity and free-text errors when populating these fields, while improving interoperability of location metadata.</p>
 </section>
 <section id="header-roles" class="level2">
 <h2 class="anchored" data-anchor-id="header-roles">Header roles</h2>
@@ -1195,7 +1195,7 @@ partID: <a href="./parts.html#zones">zones</a>. Look up table for the possible s
 <strong>English name of country sub-domains</strong> (<a href="./parts.html#zoneName">zoneName</a>). The english-language name for a given country sub-domain.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Tue May 30 00:00:00 2023.</p>
+<p>Page created on Wed May 31 00:00:00 2023.</p>
 
 
 </section>
