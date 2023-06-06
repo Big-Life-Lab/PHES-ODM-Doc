@@ -8,19 +8,19 @@
 #' @return glue object string populated using part_info.
 generate_bullet_point_display <- function(part_info, part_bullet_template){
   # Declare display elements
-  part_ID <- part_info[[parts_sheet_column_names$part_ID_column_name]]
+  part_ID <- part_info[[parts_sheet_column_names$part_id]]
   part_input <- list()
   part_input[["partID"]] <- part_ID
   part_input[["partLabel"]] <-
-    part_info[[parts_sheet_column_names$part_label_column_name]]
+    part_info[[parts_sheet_column_names$part_label]]
   part_input[["partDesc"]] <-
-    part_info[[parts_sheet_column_names$part_description_column_name]]
+    part_info[[parts_sheet_column_names$part_description]]
   part_input[["status"]] <-
-    part_info[[parts_sheet_column_names$part_status_column_name]]
+    part_info[[parts_sheet_column_names$status]]
   part_input[["firstReleased"]] <-
-    part_info[[parts_sheet_column_names$part_first_release_column_name]]
+    part_info[[parts_sheet_column_names$first_release]]
   part_input[["lastUpdated"]] <-
-    part_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    part_info[[parts_sheet_column_names$last_updated]]
   
   
   

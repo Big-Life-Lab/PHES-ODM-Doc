@@ -54,7 +54,7 @@ parts_display_template <- '### {partLabel} {{ #{partID} }}
       *Maximum Value:* {maxValue} </br>
       *Minimum Length:* {minLength} </br>
       *Maximum Length:* {maxLength} </br>
-      *Part Status:* {if (status %!=na% parts$status_is_active) glue::glue(\'**{status}**\') else status }. \\
+      *Part Status:* {if (status %!=na% parts$status$categories$active) glue::glue(\'**{status}**\') else status }. \\
       First released: {firstReleased}. \\
       Last updated: {lastUpdated}. </br>
       '
@@ -69,10 +69,10 @@ parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove
 
 # Removal of parts under development
 parts_table <-
-  parts_table[parts_table[[parts_sheet_column_names$part_status_column_name]] != parts$status_is_development, ]
+  parts_table[parts_table[[parts_sheet_column_names$status]] != parts$status$categories$development, ]
 
 # Sort parts alphabetically by partID
-parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_ID_column_name]]), ]
+parts_table <- parts_table[order(parts_table[[parts_sheet_column_names$part_id]]), ]
 
 # Loop over every part
 for (part_row_index in seq_len(nrow(parts_table))) {
@@ -80,32 +80,32 @@ for (part_row_index in seq_len(nrow(parts_table))) {
   
   # Declare variables used
   display_input <- list()
-  display_input[["partID"]] <- part_row[[parts_sheet_column_names$part_ID_column_name]]
-  display_input[["partLabel"]] <- part_row[[parts_sheet_column_names$part_label_column_name]]
-  display_input[["partDesc"]] <- part_row[[parts_sheet_column_names$part_description_column_name]]
-  display_input[["partInstr"]] <- part_row[[parts_sheet_column_names$part_instruction_column_name]]
-  display_input[["partType"]] <- part_row[[parts_sheet_column_names$part_type_column_name]]
-  display_input[["domain"]] <- part_row[[parts_sheet_column_names$part_domain_ID_column_name]]
-  display_input[["specimenSet"]] <- part_row[[parts_sheet_column_names$part_speciment_set_column_name]]
-  display_input[["compartmentSet"]] <- part_row[[parts_sheet_column_names$part_comp_set_column_name]]
-  display_input[["group"]] <- part_row[[parts_sheet_column_names$part_group_ID_column_name]]
-  display_input[["class"]] <- part_row[[parts_sheet_column_names$part_class_ID_column_name]]
-  display_input[["nomenclature"]] <- part_row[[parts_sheet_column_names$part_nomenclature_ID_column_name]]
-  display_input[["ontologyRef"]] <- part_row[[parts_sheet_column_names$part_ontology_reference_column_name]]
-  display_input[["mmaSet"]] <- part_row[[parts_sheet_column_names$part_cat_set_ID_column_name]]
-  display_input[["unitSet"]] <- part_row[[parts_sheet_column_names$part_unit_set_ID_column_name]]
-  display_input[["aggregationScale"]] <- part_row[[parts_sheet_column_names$part_agg_scale_ID_column_name]]
-  display_input[["qualitySet"]] <- part_row[[parts_sheet_column_names$part_quality_set_ID_column_name]]
-  display_input[["refLink"]] <- part_row[[parts_sheet_column_names$part_ref_link_column_name]]
-  display_input[["dataType"]] <- part_row[[parts_sheet_column_names$part_data_type_column_name]]
-  display_input[["missingnessSet"]] <- part_row[[parts_sheet_column_names$part_missingness_set_column_name]]
-  display_input[["minValue"]] <- part_row[[parts_sheet_column_names$part_min_value_column_name]]
-  display_input[["maxValue"]] <- part_row[[parts_sheet_column_names$part_max_value_column_name]]
-  display_input[["minLength"]] <- part_row[[parts_sheet_column_names$part_min_length_column_name]]
-  display_input[["maxLength"]] <- part_row[[parts_sheet_column_names$part_max_length_column_name]]
-  display_input[["status"]] <- part_row[[parts_sheet_column_names$part_status_column_name]]
-  display_input[["firstReleased"]] <- part_row[[parts_sheet_column_names$part_first_release_column_name]]
-  display_input[["lastUpdated"]] <- part_row[[parts_sheet_column_names$part_last_updated_column_name]]
+  display_input[["partID"]] <- part_row[[parts_sheet_column_names$part_id]]
+  display_input[["partLabel"]] <- part_row[[parts_sheet_column_names$part_label]]
+  display_input[["partDesc"]] <- part_row[[parts_sheet_column_names$part_description]]
+  display_input[["partInstr"]] <- part_row[[parts_sheet_column_names$part_instruction]]
+  display_input[["partType"]] <- part_row[[parts_sheet_column_names$part_type]]
+  display_input[["domain"]] <- part_row[[parts_sheet_column_names$domain]]
+  display_input[["specimenSet"]] <- part_row[[parts_sheet_column_names$specimen_set]]
+  display_input[["compartmentSet"]] <- part_row[[parts_sheet_column_names$compartment_set]]
+  display_input[["group"]] <- part_row[[parts_sheet_column_names$group]]
+  display_input[["class"]] <- part_row[[parts_sheet_column_names$class]]
+  display_input[["nomenclature"]] <- part_row[[parts_sheet_column_names$nomenclature]]
+  display_input[["ontologyRef"]] <- part_row[[parts_sheet_column_names$ontology_reference]]
+  display_input[["mmaSet"]] <- part_row[[parts_sheet_column_names$mma_set]]
+  display_input[["unitSet"]] <- part_row[[parts_sheet_column_names$unit_set]]
+  display_input[["aggregationScale"]] <- part_row[[parts_sheet_column_names$aggregation_scale]]
+  display_input[["qualitySet"]] <- part_row[[parts_sheet_column_names$quality_set]]
+  display_input[["refLink"]] <- part_row[[parts_sheet_column_names$reference_link]]
+  display_input[["dataType"]] <- part_row[[parts_sheet_column_names$data_type]]
+  display_input[["missingnessSet"]] <- part_row[[parts_sheet_column_names$missingness_set]]
+  display_input[["minValue"]] <- part_row[[parts_sheet_column_names$min_value]]
+  display_input[["maxValue"]] <- part_row[[parts_sheet_column_names$max_value]]
+  display_input[["minLength"]] <- part_row[[parts_sheet_column_names$min_length]]
+  display_input[["maxLength"]] <- part_row[[parts_sheet_column_names$max_length]]
+  display_input[["status"]] <- part_row[[parts_sheet_column_names$status]]
+  display_input[["firstReleased"]] <- part_row[[parts_sheet_column_names$first_released]]
+  display_input[["lastUpdated"]] <- part_row[[parts_sheet_column_names$last_updated]]
   
   # Escape any backticks in desc and inst
   display_input[["partDesc"]] <- gsub("`", "\\\\`", display_input[["partDesc"]])

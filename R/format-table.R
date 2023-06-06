@@ -25,12 +25,12 @@ format_table <-
            strip_invalid_part_ID = TRUE,
            table_being_checked = "parts",
            replace_value = odm_dictionary$dictionary_missing_value_replacement,
-           ID_column_name = parts_sheet_column_names$part_ID_column_name,
+           ID_column_name = parts_sheet_column_names$part_id,
            remove_development_parts = TRUE,
            append_null_columns = TRUE,
            replace_invalid_values = TRUE) {
     status_column_name <-
-      parts_sheet_column_names$part_status_column_name
+      parts_sheet_column_names$status
     
     # Format all columns if columns_to_format is null
     if (is.null(columns_to_format)) {
@@ -43,7 +43,7 @@ format_table <-
     # Remove parts under development
     if (!is.null(input_table[[status_column_name]]) && remove_development_parts) {
       output_table <-
-        output_table[output_table[[status_column_name]] %!=na% parts$status_is_development, ]
+        output_table[output_table[[status_column_name]] %!=na% parts$status$categories$development, ]
     }
     
     # Strip off rows where partID is invalid
@@ -111,7 +111,7 @@ check_values_for_table <-
           invalid_parts_info <-
             input_table[input_table[[table_column]] == single_value,]
           partID <-
-            invalid_parts_info[[parts_sheet_column_names$part_ID_column_name]]
+            invalid_parts_info[[parts_sheet_column_names$part_id]]
           warning(
             glue::glue(
               'Part ID: {partID} contains an invalid value({single_value}), in column: {table_column}.\n\n'
@@ -133,16 +133,16 @@ check_values_for_table <-
 format_parts_table <- function(parts_table) {
   # Retrieve table related rows then columns
   tables_data <-
-    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
-                   parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
+    parts_table[parts_table[[parts_sheet_column_names$part_type]] == parts$part_type$categories$table &
+                   parts_table[[parts_sheet_column_names$status]] == parts$status$categories$active,]
   
   # Utilize tables_data to generate names of table specific columns
   all_required_column_names <-
-    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Required')
+    glue::glue('{tables_data[[parts_sheet_column_names$part_id]]}Required')
   all_order_column_names <-
-    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Order')
+    glue::glue('{tables_data[[parts_sheet_column_names$part_id]]}Order')
   all_table_column_names <-
-    tables_data[[parts_sheet_column_names$part_ID_column_name]]
+    tables_data[[parts_sheet_column_names$part_id]]
   table_name_columns <-
     c(all_table_column_names,
       all_required_column_names,
@@ -155,10 +155,10 @@ format_parts_table <- function(parts_table) {
     formatted_parts_table,
     all_table_column_names,
     c(
-      parts$part_sheet_table_column_type_is_PK,
-      parts$part_sheet_table_column_type_is_FK,
-      parts$part_sheet_table_column_type_is_header,
-      parts$part_sheet_table_column_type_is_input,
+      table_column_metadata$table$categories$primary_key,
+      table_column_metadata$table$categories$foreign_key,
+      table_column_metadata$table$categories$header,
+      table_column_metadata$table$categories$input,
       odm_dictionary$dictionary_missing_value_replacement
     )
   )
