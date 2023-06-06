@@ -87,7 +87,7 @@ The following commands can be used to build the documentation:
 
 ## Versioning
 
-The documentation version follows the version label of the main ODM dictionary found [here](https://github.com/Big-Life-Lab/PHES-ODM-doc). Versions are synced at the level of "Minor" for the three-part version number (Major.Minor.Patch). The documation and main dictionary can differ at the patch level. Meaning, v2.0.1 of the documentation can support v2.0.0, with differences only in the documentation text, not the dictionary structure or content.
+The documentation version follows the version label of the main ODM dictionary found [here](https://github.com/Big-Life-Lab/PHES-ODM-doc). Versions are synced at the level of "Major" and "Minor" for the three-part version number (Major.Minor.Patch). The documation and main dictionary can differ at the patch level. Meaning, v2.0.1 of the documentation can support v2.0.0, with differences only in the documentation text, not the dictionary structure or content.
 
 ## Naming Conventions
 
