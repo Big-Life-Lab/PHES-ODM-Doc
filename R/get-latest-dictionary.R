@@ -2,12 +2,12 @@ source("R/odm-dictionary-file.R")
 source("R/semver-handling.R")
 #' Get latest version
 #'
-#' Get the latest version from vector of file names
+#' Get the latest dictionary version
 #'
-#' @param file_names string or string vector containing file names with valid semantic versioning
+#' @param load_sheets boolean toggle to load commonly used sheets
 #'
-#' @return vector of strings containing latest version and latest version file name
-get_latest_dictionary <- function() {
+#' @return list containing latest version, latest dictionary file name, and commonly used sheets
+get_latest_dictionary <- function(load_sheets = TRUE) {
   dictionary_version_pattern <- "ODM_dictionary_(\\d.*?).xlsx"
   file_names <-
     list.files(file.path(getwd(), odm_dictionary$dictionary_directory),
@@ -34,17 +34,27 @@ get_latest_dictionary <- function() {
   # Find the file name with the latest version
   latest_version_file_name <-
     file_names[which(version_numbers == latest_version)]
-  
-  parts_sheet <- readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, latest_version_file_name),
-                     sheet = odm_dictionary$parts_sheet_name)
-  sets_sheet <- readxl::read_excel(
-    file.path(
-      getwd(),
-      odm_dictionary$dictionary_directory,
-      latest_version_file_name
-    ),
-    sheet = odm_dictionary$sets_sheet_name
-  )
+  parts_sheet <- FALSE
+  sets_sheet <- FALSE
+  if(load_sheets) {
+    parts_sheet <-
+      readxl::read_excel(
+        file.path(
+          getwd(),
+          odm_dictionary$dictionary_directory,
+          latest_version_file_name
+        ),
+        sheet = odm_dictionary$parts_sheet_name
+      )
+    sets_sheet <- readxl::read_excel(
+      file.path(
+        getwd(),
+        odm_dictionary$dictionary_directory,
+        latest_version_file_name
+      ),
+      sheet = odm_dictionary$sets_sheet_name
+    )
+  }
   
   return(list(
 	version = latest_version, 

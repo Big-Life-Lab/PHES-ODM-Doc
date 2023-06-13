@@ -1,11 +1,6 @@
----
-project:
-  execute-dir: ../
----
-```{r setup, echo=FALSE}
-knitr::opts_knit$set(root.dir = normalizePath("../"))
-```
 # Introduction {.unnumbered}
+
+{{< include _intro-test.qmd >}}
 
 > Facilitating the Collection and Sharing of High-Quality, Interoperable Environmental Surveillance Data: A Community Open Science Project. 
 
