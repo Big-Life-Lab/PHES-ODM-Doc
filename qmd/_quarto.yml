@@ -6,8 +6,6 @@ book:
   title: "Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation"
   output-file: "ODM-documentation-v2.0.1"
   version: "2.0.1"
-  subtitle: |
-      Dictionary v2.0.0. Documentation v2.0.1.
   date: last-modified
   date-format: iso
   license: CC 4.0 BY-SA
@@ -29,9 +27,6 @@ book:
         - parts.qmd
         - sets.qmd
         - tables.qmd
-  page-footer:
-    left: |
-      Dictionary v2.0.0<br>Documentation v2.0.1
       
 format:
   html:
