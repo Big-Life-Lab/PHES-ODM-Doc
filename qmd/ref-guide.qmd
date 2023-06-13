@@ -1,5 +1,7 @@
 # Reference guide {.unnumbered}
 
+{{< include _dictionary-version.qmd >}}
+
 The reference guide is a technical description of the ODM `parts`. There are three sections to the reference guide.
 
 -   [`parts`](https://docs.phes-odm.org/parts.html) -- Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. There are over 900 parts, all listed in alphabetical order. Each part has up to 60 different attributes such as the part name and description.

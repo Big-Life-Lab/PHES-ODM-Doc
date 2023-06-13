@@ -1,3 +1,5 @@
 # Translations {.unnumbered}
 
+{{< include _dictionary-version.qmd >}}
+
 The list of translations by languageID. 

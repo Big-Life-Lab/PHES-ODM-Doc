@@ -1,12 +1,3 @@
----
-project:
-  execute-dir: ../
----
-
-```{r setup, echo=FALSE}
-knitr::opts_knit$set(root.dir = normalizePath("../"))
-```
-
 # Sets {.unnumbered}
 
 {{< include _dictionary-version.qmd >}}
@@ -14,7 +5,9 @@ knitr::opts_knit$set(root.dir = normalizePath("../"))
 Sets are lists of categories and other parts. For example, `Collection category set` ([collectionCatSet](file:///Users/dmanuel/github/PHES-ODM-Doc/docs/sets.html#collectCatSet)) contains a list of the different collection types including: `Moore swab`, `Grab sample`, `Flow proportional sample`, etc.
 
 Sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g. `Sample not collected`), PCR measures (`Inhibition preset`), and sequencing measures (`Low depth of coverage`), but all quality sets share the `No quality concerns` indicator.
-
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
 ```{r, echo=FALSE, warning=FALSE}
 # Utility Functions
 # Source utility functions

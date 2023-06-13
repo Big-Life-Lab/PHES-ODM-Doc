@@ -1,5 +1,7 @@
 # How to use the ODM {.unnumbered}
 
+{{< include _dictionary-version.qmd >}}
+
 ## How-To guides
 
 ## 1) How to use templates
