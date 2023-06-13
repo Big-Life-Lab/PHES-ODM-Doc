@@ -61,6 +61,7 @@ Additionally, there are special headers called `mandatoryIf` headers. These head
 source("R/qmd-utils.R")
 # Source table formatting
 source("R/format-table.R")
+source("R/parts.R")
 # Source warning utils
 source("R/warning-utils.R")
 source("R/odm-dictionary-file.R")
