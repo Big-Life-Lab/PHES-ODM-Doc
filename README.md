@@ -116,3 +116,8 @@ CI is done using github actions. Currently, there are two actions:
 -   [build-docs-composite-action.yml](./.github/actions/build-docs-composite-action/action.yml) contains a reusable action to build the docs using quarto
 -   [check-pr.yml](./.github/workflows/check-pr.yml) contains the action run when a PR is made and commits pushed to it
 -   [publish-docs.yml](./.github/workflows/publish-docs.yml) contains the action run when a push is made to master. The documentation is published to github pages in this action.
+
+# Updating documentation
+
+When a new feature is ready for release it should be first PRd to dev. Once the PR to dev is merged, and dev is ready to be merged to main a version update must be done.
+To update the version of the documentation the DESCRIPTION file needs to be modified with the appropriate version number incrament. In addition the dictionary file should be checked that it's name reflects its version accurately.
