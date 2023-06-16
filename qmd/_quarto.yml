@@ -27,7 +27,6 @@ book:
         - parts.qmd
         - sets.qmd
         - tables.qmd
-      
 format:
   html:
     toc: true
