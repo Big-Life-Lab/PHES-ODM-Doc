@@ -12,7 +12,8 @@ Depends:
 Imports:
     rmarkdown,
     glue,
-    readxl
+    readxl,
+    osfr
 License: cc-by-4.0 + file LICENSE
 URL: https://github.com/Big-Life-Lab/PHES-ODM-Doc
 BugReports: https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues
