@@ -49,7 +49,6 @@ validate_version <- function() {
     matching_versions <- TRUE
   }
   
-  #ASK YULRIC IF THIS IS OKAY
   return(
     list(
       dictionary_name = file_names,
@@ -68,7 +67,6 @@ validate_files_sheet <- function(dictionary_name, version) {
                                              dictionary_name),
                                    sheet = "sets")
   
-  # Check with YULRIC
   # Remove any rows where name is na
   files_sheet_formatted <-
     files_sheet[files_sheet$fileType %in% valid_file_types, c(
@@ -118,7 +116,7 @@ validate_files_sheet <- function(dictionary_name, version) {
     }
   }
   if (errors != "") {
-    warning(errors)
+    stop(errors)
   }
   return(list(csv = csv_to_extract, excel = excel_to_extract))
 }
