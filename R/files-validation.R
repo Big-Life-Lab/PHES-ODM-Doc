@@ -1,6 +1,13 @@
 tmp_downloads <- "data/tmp"
 valid_file_types <- c("csv", "excel")
-
+#' Create release files
+#' 
+#' Creates release files given the user OSF link and auth token.
+#' 
+#' @param OSF_LINK link to the dictionary stored on OSF used for updating.
+#' @param OSF_TOKEN OSF auth token used for modifying OSF directories
+#' 
+#' @export
 create_release_files <- function(OSF_LINK, OSF_TOKEN) {
   # Download file using passed credentials
   osfr::osf_auth(OSF_TOKEN)
