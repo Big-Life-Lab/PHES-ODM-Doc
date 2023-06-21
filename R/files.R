@@ -29,3 +29,5 @@ files <- list(
     name = "githubLocation"
   )
 )
+
+files_sheet_column_names <- lapply(files[names(files)], `[[`, 1)

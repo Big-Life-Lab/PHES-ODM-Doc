@@ -103,21 +103,12 @@ validate_files_sheet <- function(dictionary_name, version, dictionary_path) {
       dictionary_path,
       dictionary_name
     ),
-    sheet = "sets"
+    sheet = odm_dictionary$sets_sheet_name
   )
   
   # Remove any rows with not supported fileType.
   files_sheet_formatted <-
-    files_sheet[files_sheet$fileType %in% files$file_type$categories, c(
-      "fileID",
-      "name",
-      "fileType",
-      "partID",
-      "addHeaders",
-      "destinations",
-      "osfLocation",
-      "githubLocation"
-    )]
+    files_sheet[files_sheet$fileType %in% files$file_type$categories, files_sheet_column_names]
   # insert version
   files_sheet_formatted$name <-
     gsub('\\{version\\}', version, files_sheet_formatted$name)
@@ -126,9 +117,9 @@ validate_files_sheet <- function(dictionary_name, version, dictionary_path) {
   errors <- ""
   for (row_index in 1:nrow(files_sheet_formatted)) {
     working_row <- files_sheet_formatted[row_index,]
-    partID <- working_row[["partID"]]
-    fileType <- working_row[["fileType"]]
-    if (fileType == "csv") {
+    partID <- working_row[[files$part_ID$name]]
+    fileType <- working_row[[files$file_type$name]]
+    if (fileType == files$file_type$categories$csv) {
       sets_info <- sets_sheet[sets_sheet$setID == partID, "partID"]
       if (nrow(sets_info) >= 1) {
         # Append error
@@ -140,7 +131,7 @@ validate_files_sheet <- function(dictionary_name, version, dictionary_path) {
       } else{
         csv_to_extract <- c(csv_to_extract, partID)
       }
-    } else if (fileType == "excel") {
+    } else if (fileType == files$file_type$categories$excel) {
       sets_info <- sets_sheet[sets_sheet$setID == partID, "partID"]
       if (nrow(sets_info) >= 1) {
         excel_to_extract[[partID]] <- sets_info
