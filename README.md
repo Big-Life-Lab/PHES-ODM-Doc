@@ -87,7 +87,7 @@ The following commands can be used to build the documentation:
 
 ## Versioning
 
-The documentation version follows the version label of the main ODM dictionary found [here](https://github.com/Big-Life-Lab/PHES-ODM-doc). Versions are synced at the level of "Major" and "Minor" for the three-part version number (Major.Minor.Patch). The documation and main dictionary can differ at the patch level. Meaning, v2.0.1 of the documentation can support v2.0.0, with differences only in the documentation text, not the dictionary structure or content.
+The documentation version follows the version label of the main ODM dictionary found [here](https://github.com/Big-Life-Lab/PHES-ODM-doc). Versions are synced at the level of "Major" and "Minor" for the three-part version number (Major.Minor.Patch). The documentation and main dictionary can differ at the patch level. Meaning, v2.0.1 of the documentation can support v2.0.0, with differences only in the documentation text, not the dictionary structure or content.
 
 ## Naming Conventions
 
@@ -119,5 +119,4 @@ CI is done using github actions. Currently, there are two actions:
 
 # Updating documentation
 
-When a new feature is ready for release it should be first PRd to dev. Once the PR to dev is merged, and dev is ready to be merged to main a version update must be done.
-To update the version of the documentation the DESCRIPTION file needs to be modified with the appropriate version number incrament. In addition the dictionary file should be checked that it's name reflects its version accurately.
+When a new feature is ready for release it should be first PRd to dev. Once the PR to dev is merged, and dev is ready to be merged to main a version update must be done. To update the version of the documentation the DESCRIPTION file needs to be modified with the appropriate version number increment. In addition, the dictionary file should be checked that its version name is correct.
