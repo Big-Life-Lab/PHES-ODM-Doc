@@ -1,3 +1,5 @@
+source(file.path(getwd(), "R", "dictionary-utils.R"))
+
 parts <- list(
   part_id = list(
     name = "partID"
@@ -106,6 +108,6 @@ table_column_metadata = list(
   )
 )
 
-parts_sheet_column_names <- lapply(parts[names(parts)], `[[`, 1)
+parts_sheet_column_names <- get_column_names(parts)
 
 
