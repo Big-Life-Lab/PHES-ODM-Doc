@@ -2,107 +2,103 @@
 project:
   execute-dir: ../
 ---
+
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
-# Long-format, Wide-format, and Wide-names {.unnumbered}
+
+# Long-format, wide-format, and wide-names {.unnumbered}
 
 ## Wide-format and long-format data
 
-Wide- and long-formats are two broad categories for describing how to store or record data. For our purposes, long-format describes a situation with one row for each observation, measure, or data point. Wide-format describes a situation where all observations, measures, or data points of one day are recorded in one row. 
+Wide- and long-formats are two broad categories for describing how to store or record data. For our purposes, long-format describes a situation with one row for each observation, measure, or data point. Wide-format describes a situation where all observations, measures, or data points of one day are recorded in one row.
 
 For example, below is a long-format table for recording wastewater surveillance data:
 
-| date | measure | value | unit |
-|------|---------|-------|------|
-|dec 17| covid N1| 32.1  | gc/mL|
-|dec 17| PMMoV   | 16.2  | gc/mL|
-|dec 17| pH      | 8.2   | unitless|
-|dec 20| covid N1| 34.6  | gc/mL|
-|dec 20| PMMoV   | 19.6  | gc/mL|
-|dec 20| pH      | 7.9   | unitless|
+| date   | measure  | value | unit     |
+|--------|----------|-------|----------|
+| dec 17 | covid N1 | 32.1  | gc/mL    |
+| dec 17 | PMMoV    | 16.2  | gc/mL    |
+| dec 17 | pH       | 8.2   | unitless |
+| dec 20 | covid N1 | 34.6  | gc/mL    |
+| dec 20 | PMMoV    | 19.6  | gc/mL    |
+| dec 20 | pH       | 7.9   | unitless |
 
 The same table but in a wide-format is shown here:
 
-| date | covid N1 (gc/mL) | PMMoV (gc/mL) | pH |
-|------|------------------|---------------|----|
-|dec 17|  32.1            | 16.2          | 8.2|
-|dec 20|  34.6            | 19.6          | 7.9|
+| date   | covid N1 (gc/mL) | PMMoV (gc/mL) | pH  |
+|--------|------------------|---------------|-----|
+| dec 17 | 32.1             | 16.2          | 8.2 |
+| dec 20 | 34.6             | 19.6          | 7.9 |
 
-With each additional field for recording data points, the wide-format table becomes wider, and the long-format table become longer. 
+With each additional field for recording data points, the wide-format table becomes wider, and the long-format table become longer.
 
 ## Issues with moving between formats
 
-Data visualizations and analysis workflows commonly use wide-data, and it can be faster to input data in wide-format because there is less repetition. This is because date, sample ID, and other fields are not reentered across rows. Long-format is preferred for storage and aggregation. 
+Data visualizations and analysis workflows commonly use wide-data, and it can be faster to input data in wide-format because there is less repetition. This is because date, sample ID, and other fields are not reentered across rows. Long-format is preferred for storage and aggregation.
 
 The diversity in how wide-data is recorded can impact transparency and interoperability. Particularly, this creates problems when merging data from multiple sources. When data is merged between labs, wide-format tables can have hundreds of columns and missing data in many fields. When transforming data from one format to another, there may be differences in naming conventions. This can lead to mistakes in how the data is mapped, and create errors in the database where information is being stored.
 
-## PHES-ODM Approach to wide- and long-formats
+## PHES-ODM approach to wide- and long-formats
 
-The PHES-ODM is designed as a series of long-format tables, but aims to provide robust infrastructure to support wide-formats. This support includes managing mapping between long- and wide-formats. TO streamline mapping between formats, we have created a standardized approach to generating wide-format column names (or wide-names).
+The PHES-ODM is designed as a series of long-format tables, but aims to provide robust infrastructure to support wide-formats. This support includes managing mapping between long- and wide-formats. To streamline mapping between formats, we have created a standardized approach to generating wide-format column names (or wide-names).
 
-![**Figure 1 - Wide- and Long-Names**](assets/Long-to-wide-name example.png){fig-align="center"}
+![**Figure 1 - Wide- and Long-names**](assets/Long-to-wide-name%20example.png){fig-align="center"}
 
-For long-data in the ODM, names are all made using camel case (ex: `exampleName`). Each long format name is also a 'part', which are the building blocks of the data model. All wide-format names are snake case (ex: `example_name`). Each section of the snake case wide name is an individual part that is combined to form the fully-specified wide-name. Using this approach, wide-names can be parsed automatically to move and transform data between formats without introducing errors.
+For long-formatted data in the ODM, names are all made using camel case (ex: `exampleName`). Each long format name is a 'part', which are the building blocks of the data model. All wide-format names are snake case (ex: `example_name`). Each section of the snake case wide name is an individual part that is combined to form the fully-specified wide-name. Using this approach, wide-names can be parsed automatically to move and transform data between formats without introducing errors.
 
-# Wide-Names
+# Wide-names
 
 The exact formula used to generate a wide-name in the ODM depends on the kind of data point you are recording. The three kinds of data and metadata for these column names are either attributes, measures, or protocol steps. An attribute column is metadata. These columns provide context about a measure, protocol, or sample. Measure columns report a specific measure, either from a site, sample, or population. Lastly, protocol columns report a specific protocol step or detail for a measure.
 
 ## Attributes
 
-The wide-name formula for attributes is `tableShortName_attribute`. 
+The wide-name formula for attributes is `tableShortName_attribute`.
 
 For example, to record the sample material in long-format you would navigate to the `samples` table and populate the `saMaterial` column. In wide-format, all data are recorded in a single table. The table and attribute are combined for the wide-name, creating the name `sm_saMaterial` for this attribute. Here `sm` is the short name for the samples table, and `saMaterial` is the column name for the sample matrix or material.
 
 ## Measures
 
-For measures, what is being recorded is the `value` field. The wide-name formula for a measure or measure-value is`compartment_specimen_fraction_measure_unit_aggregation_index_attribute`, where the `attribute` at the end is always `value`. 
+For measures, what is being recorded is the `value` field. The wide-name formula for a measure or measure-value is`compartment_specimen_fraction_measure_unit_aggregation_index_attribute`, where the `attribute` at the end is always `value`.
 
-The ODM long-format specifies a `measure` column in the `measures` table, as well as a column for `units` and one for `aggregations`. The wide-format collapses all these columns into a single `value` column.  
+The ODM long-format specifies a `measure` column in the `measures` table, as well as a column for `units` and one for `aggregations`. The wide-format collapses all these columns into a single `value` column.
 
 For example, the wide-name for mean chemical oxygen demand from a wastewater sampling site, recorded in milligrams per litre is `wat_si_NR_cod_mgL_m_NR_value`. Here the measure is taken from wastewater/water (`wat`), it's a measure of the site (`si`), the fraction analyzed is not reported (`NR`), it is a measure of chemical oxygen demand (`cod`), the units are mg/L (`mgL`), it's a mean measure (`m`), the index is not reported (`NR`), and lastly this is the value for this measure (`value`).
 
 ## Protocol steps
 
-Like measures, protocol step wide-names record the `value` field. With protocols, the wide-name formula depends on if the step uses a `measure` or a `method`. The formula if using a `method` is: `tableShortName_partTypeShortName_method_attribute`.
+Like measures, protocol step wide-names record the `value` field. With protocols, the wide-name formula depends on whether the step uses a `measure` or a `method`. The formula if using a `method` is: `tableShortName_partTypeShortName_method_attribute`.
 
-The formula if using a `measure` is: `tableShortName_partTypeShortName_measure_unit_aggregation_index_attribute`, where in both instances, the table short name always specifies the `protocolSteps` table (`ps`), and the `partType` short name specifies whether this is a measure (`mes`) or a method (`met`). The attribute is always `value`. 
+The formula if using a `measure` is: `tableShortName_partTypeShortName_measure_unit_aggregation_index_attribute`, where in both instances, the table short name always specifies the `protocolSteps` table (`ps`), and the `partType` short name specifies whether this is a measure (`mes`) or a method (`met`). The attribute is always `value`.
 
-For example, the wide-name for the sequencing strategy protocol step (ie. a protocol step using a method) for a wastewater program would be `ps_met_seqStrat_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a method part type (`met`), it reports the sequencing strategy (`seqStrat`), and the column records the value (`value`). 
+For example, the wide-name for the sequencing strategy protocol step (ie. a protocol step using a method) for a wastewater program would be `ps_met_seqStrat_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a method part type (`met`), it reports the sequencing strategy (`seqStrat`), and the column records the value (`value`).
 
-Similarly, the wide-name for a storage temperature (ie. a protocol step using a measure), would be `ps_mes_temp_cel_sin_NR_value`. he protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a measure part type (`mes`), it reports the temperature (`temp`) in degrees Celsius (`cel`), it is a single measure (`sin`, ie. not aggregated), the index is not reported (`NR`), and the column records the value (`value`). 
+Similarly, the wide-name for a storage temperature (i.e. a protocol step using a measure), would be `ps_mes_temp_cel_sin_NR_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a measure part type (`mes`), it reports the temperature (`temp`) in degrees Celsius (`cel`), it is a single measure (`sin`, i.e. not aggregated), the index is not reported (`NR`), and the column records the value (`value`).
 
-## For Combined Long- and Wide-Formats
+## For combined long- and wide-formats
 
-Many programs use combined long- and wide-format tables. To account for this, wide-names can contain a “see header” part for each piece of their formulas. These reference the header they point to, promoting data readability for machines and humans.
+Many environmental surveillance and research programs use combined long- and wide-format tables. To account for this, wide-names can contain a "see header" part for each piece of their formulas. These reference the header they point to, promoting data readability for machines and humans.
 
 For example, for a measure of the N1 allele of SARS-CoV-2, where the fraction analyzed in specified in a different column would use the wide-name `wat_sa_hFr_covN1_gcml_m_value`. Here the `hFr` indicates by its placement and the letters used that the fraction analyzed is specified elsewhere.
 
 Another example is for data is reported in long-format for one measure, but wide-format for all others. In this situation the fraction analyzed, the measure, the units, and the aggregation are all specified in other columns. Rather than simply reporting `value` as you would an attribute, you would use the wide name: `wat_sa_hFr_hMr_hUn_hAg_NR_value` to better link all the metadata pieces in other columns to this specific measurement.
 
-# Exceptional Wide-Names
+# Wide-name exceptions
 
-There is a diversity of wide-templates across labs. Sometimes these headers can combine two ODM attributes, or two or more methods or measures. This complicates mapping to the ODM, but exceptional or unique wide-names can be generated for these as well.
+There is a diversity of wide-templates across labs. Sometimes these headers can combine two ODM attributes, or two or more methods or measures. This complicates mapping to the ODM, but unique wide-names can be generated for these as well.
 
 ## Attribute naming exceptions
 
-For combined attributes, the regular attribute formula (`tableShortName_attribute`) becomes `tableShortName_n_attribute1_attributeN`. Where `n` is an integer indicating the number of attributes being combined together, and then the attributes are listed in snake case. This wide-names is still machine readable. 
+For combined attributes, the regular attribute formula (`tableShortName_attribute`) becomes `tableShortName_n_attribute1_attributeN`. Where `n` is an integer indicating the number of attributes being combined together, and then the attributes are listed in snake case. This wide-names is still machine readable.
 
-For example, a wide-column name where sample collection period and collection number are reported together would be: `sm_2_ collPer_collNum`.
+For example, a wide-column name where sample collection period and collection number are reported together would be: `sm_2_collPer_collNum`.
 
-## Measure and Method Naming Exceptions
+## Measure and nethod naming exceptions
 
 For combined measures or methods, the `..._n_...` approach is also used.
 
-For measures, the formula is: `compartment_specimen_fraction_n_measure1_measure2_..._measureN_unit_aggregation_index_attribute`, where all measures must share the same units and aggregation. For example, a column to measure the presence of “other” mutations, alleles, or variants uses the wide-name `wat_sa_liq_3_otherM_otherA_otherV_gcMl_m_value`.
+For measures, the formula is: `compartment_specimen_fraction_n_measure1_measure2_..._measureN_unit_aggregation_index_attribute`, where all measures must share the same units and aggregation. For example, a column to measure the presence of "other" mutations, alleles, or variants uses the wide-name `wat_sa_liq_3_otherM_otherA_otherV_gcMl_m_value`.
 
-For Methods the use case is slightly more constrained. Protocol steps are rarely combined into a single field. Protocol steps using one or more measures which report a single value would be highly unlikely to exist. Protocol steps using methods combinations only work and make sense because the inputs are categorical and defined. The suggested structure for a protocol step using only methods (and no measures) would follow the formula
-`tableShortName_partTypeShortName_n_method1_..._methodN_attribute`.
+For Methods the use case is slightly more constrained. Protocol steps are rarely combined into a single field. Protocol steps using one or more measures which report a single value would be highly unlikely to exist. Protocol steps using methods combinations only work and make sense because the inputs are categorical and defined. The suggested structure for a protocol step using only methods (and no measures) would follow the formula `tableShortName_partTypeShortName_n_method1_..._methodN_attribute`.
 
 For example a column where one specifies the protocol step for either pcr or sequencing strategy in a wastewater program would be called `ps_met_wat_sa_liq_2_pcrmeth_seqStrat_value`.
-
-
-
-
-
