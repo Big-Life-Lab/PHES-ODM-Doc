@@ -18,7 +18,7 @@ generate_bullet_point_display <- function(part_info, part_bullet_template){
   part_input[["status"]] <-
     part_info[[parts_sheet_column_names$status]]
   part_input[["firstReleased"]] <-
-    part_info[[parts_sheet_column_names$first_release]]
+    part_info[[parts_sheet_column_names$first_released]]
   part_input[["lastUpdated"]] <-
     part_info[[parts_sheet_column_names$last_updated]]
   
