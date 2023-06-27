@@ -1,6 +1,6 @@
 # Getting to know the ODM {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 ## What are "Parts" and "Part Types"? 
 

@@ -1,6 +1,6 @@
 # Reference guide {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 The reference guide is a technical description of the ODM `parts`. There are three sections to the reference guide.
 

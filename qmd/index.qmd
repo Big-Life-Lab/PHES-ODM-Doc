@@ -1,6 +1,6 @@
 # Introduction {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 > Facilitating the Collection and Sharing of High-Quality, Interoperable Environmental Surveillance Data: A Community Open Science Project. 
 

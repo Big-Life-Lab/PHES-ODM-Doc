@@ -1,6 +1,6 @@
 # Sets {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 Sets are lists of categories and other parts. For example, `Collection category set` ([collectionCatSet](file:///Users/dmanuel/github/PHES-ODM-Doc/docs/sets.html#collectCatSet)) contains a list of the different collection types including: `Moore swab`, `Grab sample`, `Flow proportional sample`, etc.
 

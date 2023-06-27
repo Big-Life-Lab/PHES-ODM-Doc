@@ -1,6 +1,6 @@
 # How to use the ODM {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 ## How-To guides
 

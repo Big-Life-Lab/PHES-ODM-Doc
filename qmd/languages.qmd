@@ -1,6 +1,6 @@
 # Languages {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 The language table by langID.
 ```{r setup, echo=FALSE}

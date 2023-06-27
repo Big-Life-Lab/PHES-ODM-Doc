@@ -1,6 +1,6 @@
 # Tables {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
 

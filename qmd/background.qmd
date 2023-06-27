@@ -1,6 +1,6 @@
 # Background {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 The ODM is designed to support a broad range of users in the field of environmental surveillance, including wastewater laboratories, municipalities, public health agencies, researchers, and citizen scientists. Its goal is to provide a comprehensive and extensible approach to data collection and management across the lifecycle of environmental surveillance, from sample collection and analysis to public reporting.
 
