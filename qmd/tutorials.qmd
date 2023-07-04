@@ -1,3 +1,5 @@
 # Tutorials {.unnumbered}
 
+{{< include _versions.qmd >}}
+
 If needed, we can have chapters with different tutorials

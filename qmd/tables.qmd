@@ -1,17 +1,6 @@
----
-project:
-  execute-dir: ../
----
-
-```{r setup, echo=FALSE}
-knitr::opts_knit$set(root.dir = normalizePath("../"))
-```
-
-<!--` reference1 -->
-
 # Tables {.unnumbered}
 
-{{< include _dictionary-version.qmd >}}
+{{< include _versions.qmd >}}
 
 The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
 
@@ -53,8 +42,9 @@ Each header may be classified as either `mandatory` or `optional`. In the `measu
 
 Additionally, there are special headers called `mandatoryIf` headers. These headers are mandatory if certain conditions apply. For example, the `protocol steps` table has row entries that are either `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes `mandatory` since all measures must have a unit. Therefore, units are `mandatoryIf` in the protocol steps table.
 
-<!--` reference1/ -->
-
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
 ```{r, echo=FALSE, warning=FALSE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions

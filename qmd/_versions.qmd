@@ -1,4 +1,6 @@
-
+```{r, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
 ```{r, echo=FALSE, warning=FALSE}
 source("R/get-latest-dictionary.R")
 
@@ -10,4 +12,8 @@ parts_table_source <- latest_version_info$dictionary$parts
 sets_table_source <- latest_version_info$dictionary$sets
 
 ```
-Dictionary `r dictionary_version_used`.
+
+```{r, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("./qmd"))
+```
+Dictionary v`r dictionary_version_used` Documentation v`r desc::desc_get_version()`
