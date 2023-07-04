@@ -38,7 +38,7 @@ part_bullet_template <- '**{partLabel}** <a href=\"/parts.html#{partID}\">({part
 # Format and order sets table on set type
 sets_table <- format_table(sets_table_source)
 sets_table <-
-  sets_table[order(sets_table[[sets_sheet_column_names$part_set_type_column_name]]),]
+  sets_table[order(sets_table[[sets$set_type$name]]),]
 
 # Format parts table
 parts_table <-
@@ -51,16 +51,16 @@ sets_list <- list()
 
 # Find then loop over unique setTypes
 unique_set_types <-
-  unique(sets_table[[sets_sheet_column_names$part_set_type_column_name]])
+  unique(sets_table[[sets$set_type$name]])
 for (set_type in unique_set_types) {
   # Removing dictSet set type and catSet
-  if (set_type == sets_sheet_values$set_type_is_dictSet || set_type == sets_sheet_values$set_type_is_catSet) {
+  if (set_type == sets$set_type$categories$dict_set || set_type == sets$set_type$categories$mma_set) {
     next()
   }
   
   # Create header for setType
   set_type_info <-
-    parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_type,]
+    parts_table[parts_table[[parts$part_id$name]] == set_type,]
   # Issue warning and skip if no matching information on setType is found in parts
   if (nrow(set_type_info) < 1) {
     warning(skipped_and_missing(set_type))
@@ -71,30 +71,30 @@ for (set_type in unique_set_types) {
   set_header_input <- list()
   set_header_input[["partID"]] <- set_type
   set_header_input[["partLabel"]] <-
-    set_type_info[[parts_sheet_column_names$part_label_column_name]]
+    set_type_info[[parts$part_label$name]]
   set_header_input[["partInstr"]] <-
-    set_type_info[[parts_sheet_column_names$part_instruction_column_name]]
+    set_type_info[[parts$part_instruction$name]]
   set_header_input[["partDesc"]] <-
-    set_type_info[[parts_sheet_column_names$part_description_column_name]]
+    set_type_info[[parts$part_description$name]]
   
   set_display <- generate_display(header_template, set_header_input, set_type)
   
   # Find and loop over unique setID according to set_type
   rows_for_current_set_type <-
-    sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == set_type, ]
+    sets_table[sets_table[[sets$set_type$name]] == set_type, ]
   unique_set_IDs <-
-    unique(rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]])
+    unique(rows_for_current_set_type[[sets$set_id$name]])
   unique_set_IDs <- sort(unique_set_IDs)
   for (set_ID in unique_set_IDs) {
     set_ID_info <-
-      parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == set_ID,]
+      parts_table[parts_table[[parts$part_id$name]] == set_ID,]
     # Handle no rows found for set_ID in parts
     if (nrow(set_ID_info) < 1) {
       warning(skipped_and_missing(set_ID))
       next()
     }
     set_ID_part_label <-
-      set_ID_info[[parts_sheet_column_names$part_label_column_name]]
+      set_ID_info[[parts$part_label$name]]
     # Create set_ID subsection
     set_display <- verify_and_append_content(
       set_display,
@@ -110,11 +110,11 @@ for (set_type in unique_set_types) {
     # Declare additional setID display
     set_ID_input <- list()
     set_ID_input[["partID"]] <- set_ID
-    set_ID_input[["partDesc"]] <- set_ID_info[[parts_sheet_column_names$part_description_column_name]]
-    set_ID_input[["partInstr"]] <- set_ID_info[[parts_sheet_column_names$part_instruction_column_name]]
-    set_ID_input[["status"]] <- set_ID_info[[parts_sheet_column_names$part_status_column_name]]
-    set_ID_input[["firstReleased"]] <- set_ID_info[[parts_sheet_column_names$part_first_release_column_name]]
-    set_ID_input[["lastUpdated"]] <- set_ID_info[[parts_sheet_column_names$part_last_updated_column_name]]
+    set_ID_input[["partDesc"]] <- set_ID_info[[parts$part_description$name]]
+    set_ID_input[["partInstr"]] <- set_ID_info[[parts$part_instruction$name]]
+    set_ID_input[["status"]] <- set_ID_info[[parts$status$name]]
+    set_ID_input[["firstReleased"]] <- set_ID_info[[parts$first_released$name]]
+    set_ID_input[["lastUpdated"]] <- set_ID_info[[parts$last_updated$name]]
     
     
     set_display <- glue::glue(
@@ -126,13 +126,13 @@ for (set_type in unique_set_types) {
     
     # Find and loop over unique partID according to set_ID
     current_set_ID_rows <-
-      rows_for_current_set_type[rows_for_current_set_type[[sets_sheet_column_names$part_set_ID_column_name]] == set_ID, ]
+      rows_for_current_set_type[rows_for_current_set_type[[sets$set_id$name]] == set_ID, ]
     unique_part_IDs <-
-      unique(current_set_ID_rows[[parts_sheet_column_names$part_ID_column_name]])
+      unique(current_set_ID_rows[[parts$part_id$name]])
     unique_part_IDs <- sort(unique_part_IDs)
     for (part_ID in unique_part_IDs) {
       part_info <-
-        parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == part_ID, ]
+        parts_table[parts_table[[parts$part_id$name]] == part_ID, ]
       # Verify that parts contains the requested part information
       if (nrow(part_info) < 1) {
         warning(
@@ -153,16 +153,16 @@ for (set_type in unique_set_types) {
 
 # Create lists
 list_set_rows <-
-  sets_table[sets_table[[sets_sheet_column_names$part_set_ID_column_name]] == sets_sheet_values$set_ID_is_list_set,]
+  sets_table[sets_table[[sets$set_id$name]] == sets$set_id$categories$list_set,]
 unique_list_part_IDs <-
-  unique(list_set_rows[[parts_sheet_column_names$part_ID_column_name]])
+  unique(list_set_rows[[parts$part_id$name]])
 
 # Create list to store lists
 list_of_lists <- list()
 
 for (list_ID in unique_list_part_IDs) {
   list_info_row <-
-    parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] ==
+    parts_table[parts_table[[parts$part_id$name]] ==
                   list_ID,]
   # Verify that parts contains the requested part information
   if (nrow(list_info_row) < 1) {
@@ -172,23 +172,23 @@ for (list_ID in unique_list_part_IDs) {
   list_input <- list()
   list_input[["partID"]] <- list_ID
   list_input[["partLabel"]] <-
-    list_info_row[[parts_sheet_column_names$part_label_column_name]]
+    list_info_row[[parts$part_label$name]]
   list_input[["partInstr"]] <-
-    list_info_row[[parts_sheet_column_names$part_instruction_column_name]]
+    list_info_row[[parts$part_instruction$name]]
   list_input[["partDesc"]] <-
-    list_info_row[[parts_sheet_column_names$part_description_column_name]]
+    list_info_row[[parts$part_description$name]]
   
   list_display_info <- generate_display(header_template, list_input, list_ID)
    
   
   list_elements_info_rows <-
-    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == list_ID,]
+    parts_table[parts_table[[parts$part_type$name]] == list_ID,]
   list_elements <-
-    unique(list_elements_info_rows[[parts_sheet_column_names$part_ID_column_name]])
+    unique(list_elements_info_rows[[parts$part_id$name]])
   list_elements_list <- list()
   for (element_ID in list_elements) {
     element_info <-
-      list_elements_info_rows[list_elements_info_rows[[parts_sheet_column_names$part_ID_column_name]] == element_ID,]
+      list_elements_info_rows[list_elements_info_rows[[parts$part_id$name]] == element_ID,]
     # Verify that parts contains the requested part information
     if (nrow(element_info) < 1) {
       warning(skipped_and_missing(element_ID))
@@ -204,10 +204,10 @@ for (list_ID in unique_list_part_IDs) {
 
 # Create list for categorical displays
 categories_list <- list()
-categories_info_table <- sets_table[sets_table[[sets_sheet_column_names$part_set_type_column_name]] == sets_sheet_values$set_type_is_catSet, ]
-unique_category_set_IDs <- unique(categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]])
+categories_info_table <- sets_table[sets_table[[sets$set_type$name]] == sets$set_type$categories$mma_set, ]
+unique_category_set_IDs <- unique(categories_info_table[[sets$set_id$name]])
 for (category_set_ID in unique_category_set_IDs) {
-  category_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]==category_set_ID, ]
+  category_info <- parts_table[parts_table[[parts$part_id$name]]==category_set_ID, ]
   if (nrow(category_info) < 1) {
     warning(skipped_and_missing(category_set_ID))
     next()
@@ -216,20 +216,20 @@ for (category_set_ID in unique_category_set_IDs) {
   category_input <- list()
   category_input[["partID"]] <- category_set_ID
   category_input[["partLabel"]] <-
-    category_info[[parts_sheet_column_names$part_label_column_name]]
+    category_info[[parts$part_label$name]]
   category_input[["partInstr"]] <-
-    category_info[[parts_sheet_column_names$part_instruction_column_name]]
+    category_info[[parts$part_instruction]]
   category_input[["partDesc"]] <-
-    category_info[[parts_sheet_column_names$part_description_column_name]]
+    category_info[[parts$part_description$name]]
   
   category_display <- generate_display(header_template, category_input, category_set_ID)
   
   # Create category sub categories
-  sub_categories_info_table <- categories_info_table[categories_info_table[[sets_sheet_column_names$part_set_ID_column_name]]== category_set_ID, ]
-  unique_sub_categories_parts <- unique(sub_categories_info_table[[parts_sheet_column_names$part_ID_column_name]])
+  sub_categories_info_table <- categories_info_table[categories_info_table[[sets$set_id$name]]== category_set_ID, ]
+  unique_sub_categories_parts <- unique(sub_categories_info_table[[parts$part_id$name]])
   sub_categories_list <- list()
   for (sub_category_ID in unique_sub_categories_parts) {
-    sub_category_info <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]] == sub_category_ID, ]
+    sub_category_info <- parts_table[parts_table[[parts$part_id$name]] == sub_category_ID, ]
     # Verify that parts contains the requested part information
     if (nrow(sub_category_info) < 1) {
       warning(skipped_and_missing(sub_category_ID))

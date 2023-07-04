@@ -1,11 +1,18 @@
-sets_sheet_column_names <- list()
-sets_sheet_values <- list()
+source(file.path(getwd(), "R", "sheet-metadata.R"))
 
-# Column names for sets sheet
-sets_sheet_column_names$part_set_type_column_name <- "setType"
-sets_sheet_column_names$part_set_ID_column_name <- "setID"
-
-# Sets specific values
-sets_sheet_values$set_type_is_dictSet <- "dictSet"
-sets_sheet_values$set_type_is_catSet <- "mmaSet"
-sets_sheet_values$set_ID_is_list_set <- "listSet"
+sets <- list(
+  set_id = list(
+    name = "setID",
+    categories = list(
+      list_set = "listSet"
+    )
+  ),
+  set_type = list(
+    name = "setType",
+    categories = list(
+      dict_set = "dictSet",
+      mma_set = "mmaSet"
+    )
+  )
+)
+sets_sheet_column_names <- get_column_names(sets)

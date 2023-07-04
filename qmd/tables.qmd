@@ -67,18 +67,18 @@ parts_table <- format_table(parts_table_source, parts_sheet_column_names, remove
 
 # Generate tables data.frame
 tables_data <-
-  parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
-                parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
+  parts_table[parts_table[[parts$part_type$name]] == parts$part_type$categories$table &
+                parts_table[[parts$status$name]] == parts$status$categories$active,]
 
 # Sort tables alphabetically based on partID
-tables_data <- tables_data[order(tables_data[[parts_sheet_column_names$part_ID_column_name]]),]
+tables_data <- tables_data[order(tables_data[[parts$part_id$name]]),]
 
 # Utilize tables_data to generate names of table specific columns
 all_required_column_names <-
-  glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Required')
+  glue::glue('{tables_data[[parts$part_id$name]]}Required')
 all_order_column_names <-
-  glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Order')
-all_table_column_names <- tables_data[[parts_sheet_column_names$part_ID_column_name]]
+  glue::glue('{tables_data[[parts$part_id$name]]}Order')
+all_table_column_names <- tables_data[[parts$part_id$name]]
 table_name_columns <- c(all_table_column_names, all_required_column_names, all_order_column_names)
 
 # Perform additional formatting on table specific columns
@@ -93,16 +93,16 @@ tables_info_display_content <- ""
 for (table_row_index in seq_len(nrow(tables_data))) {
   current_table_data <- tables_data[table_row_index, ]
   # Invalid partIDs are removed during format_table so no further verification is needed
-  current_table_ID <- current_table_data[[parts_sheet_column_names$part_ID_column_name]]
+  current_table_ID <- current_table_data[[parts$part_id$name]]
   current_table_order_column_name <- all_order_column_names[[table_row_index]]
   current_table_required_column_name <- all_required_column_names[[table_row_index]]
   
   
   # Acquire columns that belong to the table
   table_columns <-
-    parts_table[parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_PK |
-                  parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_FK |
-                  parts_table[[current_table_ID]] == parts$part_sheet_table_column_type_is_header,]
+    parts_table[parts_table[[current_table_ID]] == table_column_metadata$table$categories$primary_key |
+                  parts_table[[current_table_ID]] == table_column_metadata$table$categories$foreign_key |
+                  parts_table[[current_table_ID]] == table_column_metadata$table$categories$header,]
   # In case a table has no PK, FK, header
   if(nrow(table_columns)==0){
     warning(skipped_and_invalid(current_table_ID))
@@ -119,9 +119,9 @@ for (table_row_index in seq_len(nrow(tables_data))) {
   }
   
   # Pull out display content
-  current_table_label <- current_table_data[[parts_sheet_column_names$part_label_column_name]]
-  current_table_description <- current_table_data[[parts_sheet_column_names$part_description_column_name]]
-  current_table_instructions <- current_table_data[[parts_sheet_column_names$part_instruction_column_name]]
+  current_table_label <- current_table_data[[parts$part_label$name]]
+  current_table_description <- current_table_data[[parts$part_description$name]]
+  current_table_instructions <- current_table_data[[parts$part_instruction$name]]
   
   # Append table display content
   table_of_content <-
@@ -129,8 +129,8 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       '{table_of_content}<li><a href=\"#{current_table_ID}\">'
     )
   # Append table label related content
-  part_label_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_label_column_name, parts_sheet_column_names$part_label_column_name]
-  part_ID_label <- parts_table[parts_table[[parts_sheet_column_names$part_ID_column_name]]== parts_sheet_column_names$part_ID_column_name, parts_sheet_column_names$part_label_column_name]
+  part_label_label <- parts_table[parts_table[[parts$part_id$name]]== parts$part_label$name, parts$part_label$name]
+  part_ID_label <- parts_table[parts_table[[parts$part_id$name]]== parts$part_id$name, parts$part_label$name]
   table_of_content <- verify_and_append_content(
     table_of_content,
     current_table_label,
@@ -177,23 +177,23 @@ for (table_row_index in seq_len(nrow(tables_data))) {
     detected_column_role <- current_table_column[[current_table_ID]]
     column_role <- "NA"
     if (verify_input(detected_column_role, missing_warning("Valid column role", current_table_ID))) {
-      if (detected_column_role == parts$part_sheet_table_column_type_is_FK) {
+      if (detected_column_role == table_column_metadata$table$categories$foreign_key) {
         column_role <- part_sheet_table_column_type_set_FK
-      } else if (detected_column_role == parts$part_sheet_table_column_type_is_PK) {
+      } else if (detected_column_role == table_column_metadata$table$categories$primary_key) {
         column_role <- part_sheet_table_column_type_set_PK
-      } else if (detected_column_role == parts$part_sheet_table_column_type_is_header) {
+      } else if (detected_column_role == table_column_metadata$table$categories$header) {
         column_role <- part_sheet_table_column_type_set_header
       } 
     }
     
     # Column_ID is assumed to be always present missing ID means invalid part
-    column_ID <- current_table_column[[parts_sheet_column_names$part_ID_column_name]]
+    column_ID <- current_table_column[[parts$part_id$name]]
     
     # Variables being used in column display
-    column_label <- current_table_column[[parts_sheet_column_names$part_label_column_name]]
-    column_description <- current_table_column[[parts_sheet_column_names$part_description_column_name]]
+    column_label <- current_table_column[[parts$part_label$name]]
+    column_description <- current_table_column[[parts$part_description$name]]
     column_required <- current_table_column[[current_table_required_column_name]]
-    column_dataType <- current_table_column[[parts_sheet_column_names$part_data_type_column_name]]
+    column_dataType <- current_table_column[[parts$data_type$name]]
     
     # Append column display
     tables_info_display_content <-
@@ -244,8 +244,8 @@ for (table_row_index in seq_len(nrow(tables_data))) {
       ""
       )
     # Append link to catSetID if dataType is categorical
-    if (column_dataType == parts$data_type_is_categorical) {
-      column_catSetID <- current_table_column[[parts_sheet_column_names$part_cat_set_ID_column_name]]
+    if (column_dataType == parts$data_type$categories$categorical) {
+      column_catSetID <- current_table_column[[parts$mma_set$name]]
       tables_info_display_content <- verify_and_append_content(
         tables_info_display_content,
         column_catSetID,

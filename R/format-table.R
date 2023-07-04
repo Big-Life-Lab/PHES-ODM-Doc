@@ -2,6 +2,7 @@
 source(file.path(getwd(), "R", "odm-dictionary-file.R"))
 source(file.path(getwd(), "R", "parts-sheet.R"))
 source(file.path(getwd(), "R", "warning-utils.R"))
+source(file.path(getwd(), "R", "sets-sheet.R"))
 #' Format Table
 #'
 #' Formats table based on columns_to_format replacing any NA, "NA", or NULL with "N/A"
@@ -25,12 +26,12 @@ format_table <-
            strip_invalid_part_ID = TRUE,
            table_being_checked = "parts",
            replace_value = odm_dictionary$dictionary_missing_value_replacement,
-           ID_column_name = parts_sheet_column_names$part_ID_column_name,
+           ID_column_name = parts$part_id$name,
            remove_development_parts = TRUE,
            append_null_columns = TRUE,
            replace_invalid_values = TRUE) {
     status_column_name <-
-      parts_sheet_column_names$part_status_column_name
+      parts$status$name
     
     # Format all columns if columns_to_format is null
     if (is.null(columns_to_format)) {
@@ -43,7 +44,7 @@ format_table <-
     # Remove parts under development
     if (!is.null(input_table[[status_column_name]]) && remove_development_parts) {
       output_table <-
-        output_table[output_table[[status_column_name]] %!=na% parts$status_is_development, ]
+        output_table[output_table[[status_column_name]] %!=na% parts$status$categories$development, ]
     }
     
     # Strip off rows where partID is invalid
@@ -111,7 +112,7 @@ check_values_for_table <-
           invalid_parts_info <-
             input_table[input_table[[table_column]] == single_value,]
           partID <-
-            invalid_parts_info[[parts_sheet_column_names$part_ID_column_name]]
+            invalid_parts_info[[parts$part_id$name]]
           warning(
             glue::glue(
               'Part ID: {partID} contains an invalid value({single_value}), in column: {table_column}.\n\n'

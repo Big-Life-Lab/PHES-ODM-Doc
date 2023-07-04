@@ -9,16 +9,16 @@
 format_parts_table <- function(parts_table) {
   # Retrieve table related rows then columns
   tables_data <-
-    parts_table[parts_table[[parts_sheet_column_names$part_type_column_name]] == parts$part_type_is_table &
-                  parts_table[[parts_sheet_column_names$part_status_column_name]] == parts$status_is_active,]
+    parts_table[parts_table[[parts$part_type$name]] == parts$part_type$categories$table &
+                  parts_table[[parts$status$name]] == parts$status$categories$active,]
   
   # Utilize tables_data to generate names of table specific columns
   all_required_column_names <-
-    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Required')
+    glue::glue('{tables_data[[parts$part_id$name]]}Required')
   all_order_column_names <-
-    glue::glue('{tables_data[[parts_sheet_column_names$part_ID_column_name]]}Order')
+    glue::glue('{tables_data[[parts$part_id$name]]}Order')
   all_table_column_names <-
-    tables_data[[parts_sheet_column_names$part_ID_column_name]]
+    tables_data[[parts$part_id$name]]
   table_name_columns <-
     c(all_table_column_names,
       all_required_column_names,
@@ -31,10 +31,10 @@ format_parts_table <- function(parts_table) {
     formatted_parts_table,
     all_table_column_names,
     c(
-      parts$part_sheet_table_column_type_is_PK,
-      parts$part_sheet_table_column_type_is_FK,
-      parts$part_sheet_table_column_type_is_header,
-      parts$part_sheet_table_column_type_is_input,
+      table_column_metadata$table$categories$primary_key,
+      table_column_metadata$table$categories$foreign_key,
+      table_column_metadata$table$categories$header,
+      table_column_metadata$table$categories$input,
       odm_dictionary$dictionary_missing_value_replacement
     )
   )
