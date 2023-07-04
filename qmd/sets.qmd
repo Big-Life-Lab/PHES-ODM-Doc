@@ -83,7 +83,7 @@ for (set_type in unique_set_types) {
   rows_for_current_set_type <-
     sets_table[sets_table[[sets$set_type$name]] == set_type, ]
   unique_set_IDs <-
-    unique(rows_for_current_set_type[[sets$set_type$name]])
+    unique(rows_for_current_set_type[[sets$set_id$name]])
   unique_set_IDs <- sort(unique_set_IDs)
   for (set_ID in unique_set_IDs) {
     set_ID_info <-
