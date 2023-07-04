@@ -6,7 +6,7 @@
 #' 
 #' @return vector containing string column names
 get_column_names <- function(column_metadata){
-  column_names <- lapply(sets[names(sets)], `[[`, 1)
+  column_names <- lapply(column_metadata[names(column_metadata)], `[[`, 1)
   # convert to vector
   column_names <- unlist(column_names)
   
