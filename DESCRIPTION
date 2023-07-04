@@ -1,7 +1,7 @@
 Package: PHES.ODM.Doc
 Type: Package
 Title: PHES-ODM-Doc
-Version: 0.1.0
+Version: 2.1.0
 Authors@R: c(
     person(given = "Yulric", family = "Sequeira", role = c("aut"), email = "ysequeira@ohri.ca"),
     person(given = "Rostyslav", family = "Vyuha", role = c("aut","cre"), email = "rvyuha@toh.ca"))
@@ -12,7 +12,8 @@ Depends:
 Imports:
     rmarkdown,
     glue,
-    readxl
+    readxl,
+    desc
 License: cc-by-4.0 + file LICENSE
 URL: https://github.com/Big-Life-Lab/PHES-ODM-Doc
 BugReports: https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues

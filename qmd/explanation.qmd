@@ -1,5 +1,7 @@
 # Getting to know the ODM {.unnumbered}
 
+{{< include _versions.qmd >}}
+
 ## What are "Parts" and "Part Types"? 
 
 Within the ODM, every component or element of the model and the dictionary is called a "part". Parts are grouped into "part types".
