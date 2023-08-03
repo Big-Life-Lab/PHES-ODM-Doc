@@ -59,7 +59,7 @@ For example, to record the sample material in long-format you would navigate to 
 
 ## Measures
 
-For measures, what is being recorded is the `value` field. The wide-name formula for a measure or measure-value is`compartment_specimen_fraction_measure_unit_aggregation_index_attribute`, where the `attribute` at the end is always `value`.
+The wide-name formula for a measure or measure-value is `compartment_specimen_fraction_measure_unit_aggregation_index_attribute`, where the `attribute` at the end is always either `value`, `purpose`, or `qualityFlag`.
 
 The ODM long-format specifies a `measure` column in the `measures` table, as well as a column for `units` and one for `aggregations`. The wide-format collapses all these columns into a single `value` column.
 
@@ -93,7 +93,7 @@ For combined attributes, the regular attribute formula (`tableShortName_attribut
 
 For example, a wide-column name where sample collection period and collection number are reported together would be: `sm_2_collPer_collNum`.
 
-## Measure and nethod naming exceptions
+## Measure and method naming exceptions
 
 For combined measures or methods, the `..._n_...` approach is also used.
 
@@ -102,3 +102,31 @@ For measures, the formula is: `compartment_specimen_fraction_n_measure1_measure2
 For Methods the use case is slightly more constrained. Protocol steps are rarely combined into a single field. Protocol steps using one or more measures which report a single value would be highly unlikely to exist. Protocol steps using methods combinations only work and make sense because the inputs are categorical and defined. The suggested structure for a protocol step using only methods (and no measures) would follow the formula `tableShortName_partTypeShortName_n_method1_..._methodN_attribute`.
 
 For example a column where one specifies the protocol step for either pcr or sequencing strategy in a wastewater program would be called `ps_met_wat_sa_liq_2_pcrmeth_seqStrat_value`.
+
+# Tutorials
+
+Tutorials are lessons that take the reader by the hand through a series of steps to complete a project of some kind. They are what your project needs in order to show a beginner that they can achieve something with it.
+
+They are wholly learning-oriented, and specifically, they are oriented towards learning how rather than learning that.
+
+## Building a wide-format ODM table
+
+Transform an example long-format measure table to wide-format.Including some pulls from the methods table.
+
+Build a wide template?
+
+
+# How-To Guides
+
+A how-to guide is an answer to a question that only a user with some experience could even formulate. How-to guides take the reader through the steps required to solve a real-world problem.
+
+They are recipes, directions to achieve a specific end - for example: how to create a web form; how to plot a three-dimensional data-set; how to enable LDAP authentication.
+
+They are wholly goal-oriented.
+
+## Wide-name attributes
+
+How-to map from the airport template to the long format?
+
+or, how-to create a wide name, or wide name template
+
