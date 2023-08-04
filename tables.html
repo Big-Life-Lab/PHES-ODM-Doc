@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -94,18 +94,18 @@ ul.task-list li input[type="checkbox"] {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/tree/main/qmd/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/tree/main/qmd/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.1.0.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.pdf">
               <i class="bi bi-bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.1.0.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.epub">
               <i class="bi bi-bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -235,8 +235,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<!--` reference1 -->
-<p>Dictionary 2.1.0.</p>
+<p>Dictionary v2.1.0 Documentation v2.1.0</p>
 <p>The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as “long” tables as it stores data with one measurement per row. Each table has mandatory and optional headers.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -272,7 +271,6 @@ Data storage
 <h2 class="anchored" data-anchor-id="mandatory-optional-mandatoryif">Mandatory, optional, mandatoryIf</h2>
 <p>Each header may be classified as either <code>mandatory</code> or <code>optional</code>. In the <code>measures</code> table, examples of mandatory headers are the <code>measureID</code> and <code>measurement date</code>. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.</p>
 <p>Additionally, there are special headers called <code>mandatoryIf</code> headers. These headers are mandatory if certain conditions apply. For example, the <code>protocol steps</code> table has row entries that are either <code>measures</code> or <code>methods</code>. If the row entry is a <code>measure</code>, then a <code>unit</code> becomes <code>mandatory</code> since all measures must have a unit. Therefore, units are <code>mandatoryIf</code> in the protocol steps table.</p>
-<!--` reference1/ -->
 </section>
 <section id="table-list" class="level2">
 <h2 class="anchored" data-anchor-id="table-list">Table list</h2>
@@ -1195,7 +1193,7 @@ partID: <a href="./parts.html#zones">zones</a>. Look up table for the possible s
 <strong>English name of country sub-domains</strong> (<a href="./parts.html#zoneName">zoneName</a>). The english-language name for a given country sub-domain.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Thu Jun 22 00:00:00 2023.</p>
+<p>Page created on Fri Aug 4 00:00:00 2023.</p>
 
 
 </section>
@@ -1445,17 +1443,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Dictionary v2.1.0<br>Documentation v2.1.0</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
 
 
 
