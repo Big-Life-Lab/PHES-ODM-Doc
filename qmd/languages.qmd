@@ -1,18 +1,11 @@
----
-project:
-  execute-dir: ../
----
+# Languages {.unnumbered}
 
+{{< include _versions.qmd >}}
+
+The language table by langID.
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
-
-# Languages {.unnumbered}
-
-{{< include _dictionary-version.qmd >}}
-
-The language table by langID.
-
 
 ```{r, echo=FALSE, warning=FALSE}
 # Source utility functions
