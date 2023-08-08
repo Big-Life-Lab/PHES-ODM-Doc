@@ -43,7 +43,8 @@ The diversity in how wide-data is recorded can impact transparency and interoper
 
 The PHES-ODM is designed as a series of long-format tables, but aims to provide robust infrastructure to support wide-formats. This support includes managing mapping between long- and wide-formats. To streamline mapping between formats, we have created a standardized approach to generating wide-format column names (or wide-names).
 
-![**Figure 1 - Wide- and Long-names**](assets/Long-to-wide-name%20example.png){fig-align="center"}
+![**Figure 1 - Wide- and Long-names**](assets/Long-to-wide-name-example-measure.png){fig-align="center"}
+
 
 For long-formatted data in the ODM, names are all made using camel case (ex: `exampleName`). Each long format name is a 'part', which are the building blocks of the data model. All wide-format names are snake case (ex: `example_name`). Each section of the snake case wide name is an individual part that is combined to form the fully-specified wide-name. Using this approach, wide-names can be parsed automatically to move and transform data between formats without introducing errors.
 
