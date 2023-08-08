@@ -1,3 +1,77 @@
 # Languages {.unnumbered}
 
+{{< include _versions.qmd >}}
+
 The language table by langID.
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
+```{r, echo=FALSE, warning=FALSE}
+# Source utility functions
+source("R/qmd-utils.R")
+# Source table formatting
+source("R/format-table.R")
+
+# Read in and prepare languages data.frame
+languages_table_source <-
+  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
+                     sheet = constants$languages_sheet_name)
+languages_table <- format_table(languages_table_source, languages_sheet_column_names, strip_invalid_part_ID = FALSE)
+
+
+
+output_string <- ""
+
+# Loop over rows and create outputs per row
+for (row_index in seq_len(nrow(languages_table))) {
+  languages_table_row <- languages_table[row_index, ]
+  
+  #Assumed to be valid and present
+  lang_ID <- languages_table_row[[languages_sheet_column_names$lang_ID]]
+  
+  nat_name <- languages_table_row[[languages_sheet_column_names$nat_name]]
+  lang_fam <- languages_table_row[[languages_sheet_column_names$lang_fam]]
+  lang_name <- languages_table_row[[languages_sheet_column_names$lang_name]]
+  code_1 <- languages_table_row[[languages_sheet_column_names$iso6391]]
+  code_2 <- languages_table_row[[languages_sheet_column_names$iso6392B]]
+  code_3 <- languages_table_row[[languages_sheet_column_names$iso6392T]]
+  code_4 <- languages_table_row[[languages_sheet_column_names$iso6393]]
+  code_5 <- languages_table_row[[languages_sheet_column_names$iso6396]]
+  
+  # Verify display elements
+  verify_input(nat_name,
+               glue::glue('Natural name is missing for {lang_ID}'))
+  verify_input(lang_fam,
+               glue::glue('Language family is missing for {lang_ID}'))
+  verify_input(lang_name,
+               glue::glue('Language name is missing for {lang_ID}'))
+  verify_input(code_1,
+               glue::glue('{languages_sheet_column_names$iso6391} is missing for {lang_ID}'))
+  verify_input(code_2,
+               glue::glue('{languages_sheet_column_names$iso6392B} is missing for {lang_ID}'))
+  verify_input(code_3,
+               glue::glue('{languages_sheet_column_names$iso6392T} is missing for {lang_ID}'))
+  verify_input(code_4,
+               glue::glue('{languages_sheet_column_names$iso6393} is missing for {lang_ID}'))
+  verify_input(code_5,
+               glue::glue('{languages_sheet_column_names$iso6396} is missing for {lang_ID}'))
+  
+  # Construct the print 
+  output_string <- glue::glue('{output_string}
+  
+                              # {nat_name}({lang_ID})
+                              Language Family: {lang_fam}  
+                              Language name: {lang_name}  
+                              ISO639-1 code: {code_1} 
+                              ISO639-2B code: {code_2} 	
+                              ISO639-2T code:	{code_3}  
+                              ISO639-3 code: {code_4} 	
+                              ISO639-6 code: {code_5}')
+}
+
+
+```
+`r output_string`
+
+

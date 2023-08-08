@@ -1,3 +1,0 @@
-# Reference guide {.unnumbered}
-
-The book section has the parts and other lists. The chapters are organized so that there can be persistent links for the look-up tables (parts, sets, language, translations.)

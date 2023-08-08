@@ -1,0 +1,15 @@
+# Background {.unnumbered}
+
+{{< include _versions.qmd >}}
+
+The ODM is designed to support a broad range of users in the field of environmental surveillance, including wastewater laboratories, municipalities, public health agencies, researchers, and citizen scientists. Its goal is to provide a comprehensive and extensible approach to data collection and management across the lifecycle of environmental surveillance, from sample collection and analysis to public reporting.
+
+The ODM dictionary includes provisions for a wide range of biological, chemical, and physical properties, such as antimicrobial resistance, drugs, and toxins, as well as metadata for laboratory protocols that may affect measurement consistency across laboratories. The ODM supports laboratory information and management systems (LIMS) with measure to describe ensure data quality control and provenance.
+
+To support the open science principle of FAIR data (Findable, Accessible, Interoperable, and Reusable), the ODM strives to make its data easily discoverable, accessible, and usable by all stakeholders.[^background-1] It also adopts an open-source approach, allowing anyone to inspect, modify, and enhance the codebase in a transparent and collaborative manner on platforms like GitHub.
+
+While the ODM is a complex dictionary, it includes tools to support its use, such as data validation, input templates, and SQL database definitions for data storage. Additionally, it supports collaborations among different organizations seeking to share and combine samples and measurements. As an open model, third parties can extend the model, such as the European Union Digital European Exchange Platform (EU4S-DEEP) data templates for wastewater surveillance at airports, European Union [Digital European Exchange Platform (EU4S-DEEP)](https://wastewater-observatory.jrc.ec.europa.eu) data templates for wastewater surveillance at airports, the [CETO Epidemiologic platform](https://ceto.ca), and [Ottawa Automatic Data Pipeline](https://phes-odm.org) to analyse qPCR data and transform it to ODM format.
+
+Overall, the ODM aims to support the evolving field of environmental surveillance and science by providing a standardized, extensible approach to data collection and management.
+
+[^background-1]: [FAIR Priniciples](https://go-fair.org/fair-principles/).
