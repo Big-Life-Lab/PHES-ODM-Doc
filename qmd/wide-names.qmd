@@ -73,7 +73,7 @@ Like measures, protocol step wide-names record the `value` field. With protocols
 The formula if using a `measure` is: `tableShortName_partTypeShortName_measure_unit_aggregation_index_attribute`, where in both instances, the table short name always specifies the `protocolSteps` table (`ps`), and the `partType` short name specifies whether this is a measure (`mes`) or a method (`met`). The attribute is always `value`.
 
 For example, the wide-name for the sequencing strategy protocol step (ie. a protocol step using a method) for a wastewater program would be `ps_met_seqStrat_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a method part type (`met`), it reports the sequencing strategy (`seqStrat`), and the column records the value (`value`).
-
+There are various pros and cons to each format, but generally it is ideal for data to be stored and analyzed in a long-format table, while it can be easier to record the data in a wide-format table. Differences in how naming conventions work across formats can lead to mistakes in how the data is mapped, stored and used.
 Similarly, the wide-name for a storage temperature (i.e. a protocol step using a measure), would be `ps_mes_temp_cel_sin_NR_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a measure part type (`mes`), it reports the temperature (`temp`) in degrees Celsius (`cel`), it is a single measure (`sin`, i.e. not aggregated), the index is not reported (`NR`), and the column records the value (`value`).
 
 ## For combined long- and wide-formats
