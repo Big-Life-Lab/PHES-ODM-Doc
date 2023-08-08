@@ -77,7 +77,7 @@ For example, the wide-name for the sequencing strategy protocol step (ie. a prot
 Similarly, the wide-name for a storage temperature (i.e. a protocol step using a measure), would be `ps_mes_temp_cel_sin_NR_value`. The protocol steps table short name indicates the long-format table (`ps`), the protocol step uses a measure part type (`mes`), it reports the temperature (`temp`) in degrees Celsius (`cel`), it is a single measure (`sin`, i.e. not aggregated), the index is not reported (`NR`), and the column records the value (`value`).
 
 ## For combined long- and wide-formats
-
+The PHES-ODM is designed as a series of long-format tables, but it is our aim to be as robust and easy to use as possible. To avoid issues of incongruity when moving between wide-format data recording templates and the final long-format data storage tables, we have designed a ~~specific series~~ of formulae to generate wide-format column names (or wide-names) using the part IDs from long-format tables, headers, and values. This may, wide-names can be parsed automatically to reliably ~~move~~ translate data between formats ~~without introducing errors~~.
 Many environmental surveillance and research programs use combined long- and wide-format tables. To account for this, wide-names can contain a "see header" part for each piece of their formulas. These reference the header they point to, promoting data readability for machines and humans.
 
 For example, for a measure of the N1 allele of SARS-CoV-2, where the fraction analyzed in specified in a different column would use the wide-name `wat_sa_hFr_covN1_gcml_m_value`. Here the `hFr` indicates by its placement and the letters used that the fraction analyzed is specified elsewhere.
