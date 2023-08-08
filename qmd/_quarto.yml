@@ -21,6 +21,7 @@ book:
     - background.qmd
     - explanation.qmd
     - how-to.qmd
+    - sampleRelationships.qmd
     #- tutourials.qmd
     - part: ref-guide.qmd
       chapters:
