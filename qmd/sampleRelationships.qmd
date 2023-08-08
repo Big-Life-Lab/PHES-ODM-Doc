@@ -1,4 +1,6 @@
-# Sample Relationships
+# Sample Relationships {.unnumbered}
+
+{{< include _versions.qmd >}}
 
 ## Context
 
@@ -20,7 +22,7 @@ Samples can be related via:
 
 Example of sample relationship webs are found in Figure A.
 
-![Figure A: Various possible sample relationships.](./assets/how-to/SampleRelationships_ex1.svg)
+![Figure A: Various possible sample relationships.](./assets/how-to/SampleRelationships_ex1.png)
 
 Figure A: Various possible sample relationships.
 
