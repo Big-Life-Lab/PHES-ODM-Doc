@@ -153,6 +153,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Sample Relationships</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wide-names.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Long-format, wide-format, and wide-names</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./ref-guide.html" class="sidebar-item-text sidebar-link">
@@ -216,6 +222,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#dates-within-the-odm" id="toc-dates-within-the-odm" class="nav-link" data-scroll-target="#dates-within-the-odm">Dates within the ODM</a></li>
   <li><a href="#translation-and-language-capabilities" id="toc-translation-and-language-capabilities" class="nav-link" data-scroll-target="#translation-and-language-capabilities">Translation and language capabilities</a></li>
   <li><a href="#recording-protocols" id="toc-recording-protocols" class="nav-link" data-scroll-target="#recording-protocols">Recording protocols</a></li>
+  <li><a href="#recommended-formula-for-user-generated-ids" id="toc-recommended-formula-for-user-generated-ids" class="nav-link" data-scroll-target="#recommended-formula-for-user-generated-ids">Recommended formula for user-generated IDs</a></li>
   <li><a href="#questions-and-online-community" id="toc-questions-and-online-community" class="nav-link" data-scroll-target="#questions-and-online-community">Questions and online community</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/blob/main/qmd/explanation.qmd" class="toc-action">View source</a></p></div></div></nav>
@@ -371,6 +378,104 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">Figure A: Main entities and relationships used to represent protocols</figcaption>
 </figure>
 </div>
+</section>
+<section id="recommended-formula-for-user-generated-ids" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-formula-for-user-generated-ids">Recommended formula for user-generated IDs</h2>
+<p>There are 13 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn’t been provided. For a quick breakdown, see the below table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 60%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>User ID</th>
+<th>Formula</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Address ID</td>
+<td>country code + province code + 2-3 letters of municipality + row</td>
+<td>caOnOtt002</td>
+</tr>
+<tr class="even">
+<td>Contact ID</td>
+<td>orgID + first 3 letters of role</td>
+<td>caOnOtt002UniRes</td>
+</tr>
+<tr class="odd">
+<td>Dataset ID</td>
+<td>datasetID = orgID</td>
+<td>caOnOtt002Uni</td>
+</tr>
+<tr class="even">
+<td>Instrument ID</td>
+<td>first 3 letters of manufacturer + first 3 letters of name + first 3 letters of model + index</td>
+<td>fisHanHan</td>
+</tr>
+<tr class="odd">
+<td>Organization ID</td>
+<td>addID + first 3 letters of name</td>
+<td>caOnOtt002Uni</td>
+</tr>
+<tr class="even">
+<td>Polygon ID</td>
+<td>orgID + siteID</td>
+<td>caOnOtt002UniCaOnOttOtt</td>
+</tr>
+<tr class="odd">
+<td>Protocol ID</td>
+<td>first 5 letters of name + protocolVersion</td>
+<td>pmmov1</td>
+</tr>
+<tr class="even">
+<td>Protocol Step ID</td>
+<td>orgID + last 3 letters of part ID of method/measure</td>
+<td>caOnOtt002UniIon</td>
+</tr>
+<tr class="odd">
+<td>Quality ID</td>
+<td>quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for</td>
+<td>flagJcaOnOttOttawasite1202008021000covN1002</td>
+</tr>
+<tr class="even">
+<td>Measure report ID</td>
+<td>sampleID + part ID of measure + row number</td>
+<td>caOnOttOtt20200802Covn1002</td>
+</tr>
+<tr class="odd">
+<td>Measure set report ID</td>
+<td>Report ID of first measure in the set + # measures in the set</td>
+<td>caOnOttOtt20200801Covn1002003</td>
+</tr>
+<tr class="even">
+<td>Sample ID</td>
+<td>siteID + collDT/collDTEnd (not including time) + index (if applicable)</td>
+<td>caOnOttOtt20200801</td>
+</tr>
+<tr class="odd">
+<td>Site ID</td>
+<td>country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name</td>
+<td>caOnOttOtt</td>
+</tr>
+</tbody>
+</table>
+<p>To go into greater detail, the <em>Address ID</em> uses the recipe country code + province code + 2-3 letters of municipality + row. So it’s built using pieces of the metadata fields for the given address’ entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it’s recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.</p>
+<p>The <em>Contact ID</em> in the contacts table uses the recipe organization ID + first 3 letters of role, again building the ID from pieces of the metadata. So if, for example, we are building a contact ID for a research associate at an organization with the ID caOnOtt002Uni, the contact ID would be caOnOtt002UniRes.</p>
+<p>For the <em>Dataset ID</em>, we recommend it be the same as the <em>organization ID</em> (see below). So if, for example, we looked at our organization with the ID caOnOtt002Uni, the dataset ID would also be caOnOtt002Uni.</p>
+<p><em>Instrument ID</em> uses the same approach of building using metadata, with the recipe of first 3 letters of manufacturer + first 3 letters of name + first 3 letters of model + index to generate the ID. For example, if we wanted to record a HandyStep S Repeating Pipetter (name), manufactured by Fisherbrand, and is of the model HandyStep S Mechanical, the recommended ID that is generated would be fisHanHan.</p>
+<p>Our recommended recipe for <em>Organization ID</em> uses the address ID for an organization (see above for explanation) + the first 3 letters of the name. So if the organization in Ottawa described in the address ID section was the University of Ottawa, the ID would be caOnOtt002Uni.</p>
+<p>For the <em>Polygon ID</em>, the recipe uses associated IDs to generate the final product. Specifically, we recommend organization ID + site ID. So for a polygon managed by an organization using the ID caOnOtt002Uni and covering a site with the ID caOnOttOtt, for example, the polygon ID would be caOnOtt002UniCaOnOttOtt.</p>
+<p>The <em>Protocol ID</em> is generated using the first 5 letters of the name + the protocol version. For example, if using generating a protocol ID for a first version of a protocol called “PMMoV Process”, the ID would be pmmov1.</p>
+<p>For the <em>Protocol step ID</em>, we recommend constructing combining the organization ID + last 3 letters of the part ID for the method or measure used in the step. For example, a nucleic acid extraction method (partID = extraction) step from our university of Ottawa example lab with the organization ID caOnOtt002Uni would generate the protocol step ID of caOnOtt002UniIon.</p>
+<p><em>Quality ID</em> ia generated using the recipe of part ID for the given quality flag + either the measure report ID, the sample ID, or measure set report ID for which the quality report is being generated. Generating an example, if we are reporting the qulaity flag J - Weak signal extrapolation (partID = flagJ) for a measure report with the ID caOnOttOttawasite1202008021000covN1002, we get the quality ID of flagJcaOnOttOttawasite1202008021000covN1002.</p>
+<p>The <em>Measure Report ID</em> is built using sampleID + part ID of measure + row number. For example, taking a measure of the SARS-CoV-2 N1 gene region (partID = covN1) from a sample with the ID caOnOttOtt20200801, recorded in the second row of the table, we get the measure report ID of caOnOttOtt20200802Covn1002.</p>
+<p>The recommended recipe to generate a <em>Measure Set Report ID</em> is to use the Measure Report ID of the first measure in the set + the number of measures in the set. So for a set of 3 measures that starts with the same SARS-CoV-2 N1 gene region measure as described above (caOnOttOtt20200801Covn1002), you get the measure set report ID of caOnOttOtt20200801Covn1002003.</p>
+<p><em>Sample ID</em> is generated by combining the siteID for the sample + the collection Datetime OR the end of collection datetime fields (excluding the time and only using the date) + the index value (if applicable). So for a composite sample taken at a site with the ID caOnOttOtt, which finished collection on 2020-08-01 10:00:00, with no index, the sample ID would be caOnOttOtt20200801.</p>
+<p>Lastly, a <em>Site ID</em> can be generated by combining the country code (ISO) for the site + the province code (ISO) for the site + first 2-3 letters of municipality + 3 first letters of site name. So to generate a site ID for the wastewater treatment plant in Ottawa, Canada, we would take the ISO code for Canada (ca), for Ontario (on), The first three letters of Ottawa-Carleton (Ott) and the first three letters of the site name, where the name is Robert O. Pickard Environmental Centre (Rob). This gives us the recommended site ID of caOnOttRob.</p>
 </section>
 <section id="questions-and-online-community" class="level2">
 <h2 class="anchored" data-anchor-id="questions-and-online-community">Questions and online community</h2>

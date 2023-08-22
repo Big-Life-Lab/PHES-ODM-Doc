@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation - Long-format, wide-format, and wide-names</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ref-guide.html" rel="next">
+<link href="./sampleRelationships.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./wide-names.html">Long-format, wide-format, and wide-names</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="././assets/ODM-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/tree/main/qmd/" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./ODM-documentation-v2.0.1.epub">
+              <i class="bi bi-bi-journal pe-1"></i>
+            Download ePub
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./background.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Background</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./explanation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting to know the ODM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./how-to.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">How to use the ODM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sampleRelationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sample Relationships</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./wide-names.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Long-format, wide-format, and wide-names</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./ref-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reference guide</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./parts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Parts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#wide-format-and-long-format-data" id="toc-wide-format-and-long-format-data" class="nav-link active" data-scroll-target="#wide-format-and-long-format-data">Wide-format and long-format data</a></li>
+  <li><a href="#issues-with-moving-between-formats" id="toc-issues-with-moving-between-formats" class="nav-link" data-scroll-target="#issues-with-moving-between-formats">Issues with moving between formats</a></li>
+  <li><a href="#phes-odm-approach-to-wide--and-long-formats" id="toc-phes-odm-approach-to-wide--and-long-formats" class="nav-link" data-scroll-target="#phes-odm-approach-to-wide--and-long-formats">PHES-ODM approach to wide- and long-formats</a></li>
+  <li><a href="#wide-names" id="toc-wide-names" class="nav-link" data-scroll-target="#wide-names">Wide-names</a>
+  <ul class="collapse">
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes">Attributes</a></li>
+  <li><a href="#measures" id="toc-measures" class="nav-link" data-scroll-target="#measures">Measures</a></li>
+  <li><a href="#protocol-steps" id="toc-protocol-steps" class="nav-link" data-scroll-target="#protocol-steps">Protocol steps</a></li>
+  <li><a href="#for-combined-long--and-wide-formats" id="toc-for-combined-long--and-wide-formats" class="nav-link" data-scroll-target="#for-combined-long--and-wide-formats">For combined long- and wide-formats</a></li>
+  </ul></li>
+  <li><a href="#wide-name-exceptions" id="toc-wide-name-exceptions" class="nav-link" data-scroll-target="#wide-name-exceptions">Wide-name exceptions</a>
+  <ul class="collapse">
+  <li><a href="#attribute-naming-exceptions" id="toc-attribute-naming-exceptions" class="nav-link" data-scroll-target="#attribute-naming-exceptions">Attribute naming exceptions</a></li>
+  <li><a href="#measure-and-method-naming-exceptions" id="toc-measure-and-method-naming-exceptions" class="nav-link" data-scroll-target="#measure-and-method-naming-exceptions">Measure and method naming exceptions</a></li>
+  </ul></li>
+  <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Tutorials</a>
+  <ul class="collapse">
+  <li><a href="#building-a-wide-format-odm-headers" id="toc-building-a-wide-format-odm-headers" class="nav-link" data-scroll-target="#building-a-wide-format-odm-headers">Building a wide-format ODM headers</a></li>
+  <li><a href="#building-a-wide-format-odm-table" id="toc-building-a-wide-format-odm-table" class="nav-link" data-scroll-target="#building-a-wide-format-odm-table">Building a wide-format ODM table</a></li>
+  </ul></li>
+  <li><a href="#how-to-guides" id="toc-how-to-guides" class="nav-link" data-scroll-target="#how-to-guides">How-To Guides</a>
+  <ul class="collapse">
+  <li><a href="#wide-name-templates" id="toc-wide-name-templates" class="nav-link" data-scroll-target="#wide-name-templates">Wide-name Templates</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/issues/new" class="toc-action">Report an issue</a></p><p><a href="https://github.com/Big-Life-Lab/PHES-ODM-Doc/blob/main/qmd/wide-names.qmd" class="toc-action">View source</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Long-format, wide-format, and wide-names</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Dictionary v2.1.0 Documentation v2.1.0</p>
+<section id="wide-format-and-long-format-data" class="level2">
+<h2 class="anchored" data-anchor-id="wide-format-and-long-format-data">Wide-format and long-format data</h2>
+<p>Wide- and long-formats are two broad categories for describing how to store or record data. For our purposes, long-format describes a situation with one row for each observation, measure, or data point. Wide-format describes a situation where all observations, measures, or data points of one day are recorded in one row.</p>
+<p>For example, below is a long-format table for recording wastewater surveillance data:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>date</th>
+<th>measure</th>
+<th>value</th>
+<th>unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>covid N1</td>
+<td>32.1</td>
+<td>gc/mL</td>
+</tr>
+<tr class="even">
+<td>dec 17</td>
+<td>PMMoV</td>
+<td>16.2</td>
+<td>gc/mL</td>
+</tr>
+<tr class="odd">
+<td>dec 17</td>
+<td>pH</td>
+<td>8.2</td>
+<td>unitless</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>covid N1</td>
+<td>34.6</td>
+<td>gc/mL</td>
+</tr>
+<tr class="odd">
+<td>dec 20</td>
+<td>PMMoV</td>
+<td>19.6</td>
+<td>gc/mL</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>pH</td>
+<td>7.9</td>
+<td>unitless</td>
+</tr>
+</tbody>
+</table>
+<p>The same table but in a wide-format is shown here:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>date</th>
+<th>covid N1 (gc/mL)</th>
+<th>PMMoV (gc/mL)</th>
+<th>pH</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>32.1</td>
+<td>16.2</td>
+<td>8.2</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>34.6</td>
+<td>19.6</td>
+<td>7.9</td>
+</tr>
+</tbody>
+</table>
+<p>With each additional field for recording data points, the wide-format table becomes wider, and the long-format table become longer.</p>
+</section>
+<section id="issues-with-moving-between-formats" class="level2">
+<h2 class="anchored" data-anchor-id="issues-with-moving-between-formats">Issues with moving between formats</h2>
+<p>Data visualizations and analysis workflows commonly use wide-data, and it can be faster to input data in wide-format because there is less repetition. This is because date, sample ID, and other fields are not reentered across rows. Long-format is preferred for storage and aggregation.</p>
+<p>The diversity in how wide-data is recorded can impact transparency and interoperability. Particularly, this creates problems when merging data from multiple sources. When data is merged between labs, wide-format tables can have hundreds of columns and missing data in many fields. When transforming data from one format to another, there may be differences in naming conventions. This can lead to mistakes in how the data is mapped, and create errors in the database where information is being stored.</p>
+</section>
+<section id="phes-odm-approach-to-wide--and-long-formats" class="level2">
+<h2 class="anchored" data-anchor-id="phes-odm-approach-to-wide--and-long-formats">PHES-ODM approach to wide- and long-formats</h2>
+<p>The PHES-ODM is designed as a series of long-format tables, but aims to provide robust infrastructure to support wide-formats. This support includes managing mapping between long- and wide-formats. To streamline mapping between formats, we have created a standardized approach to generating wide-format column names (or wide-names).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/Long-to-wide-name-example-measure.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><strong>Figure 1 - Wide- and Long-names</strong></figcaption>
+</figure>
+</div>
+<p>For long-formatted data in the ODM, names are all made using camel case (ex: <code>exampleName</code>). Each long format name is a ‘part’, which are the building blocks of the data model. All wide-format names are snake case (ex: <code>example_name</code>). Each section of the snake case wide name is an individual part that is combined to form the fully-specified wide-name. Using this approach, wide-names can be parsed automatically to move and transform data between formats without introducing errors.</p>
+</section>
+<section id="wide-names" class="level1">
+<h1>Wide-names</h1>
+<p>The exact formula used to generate a wide-name in the ODM depends on the kind of data point you are recording. The three kinds of data and metadata for these column names are either attributes, measures, or protocol steps. An attribute column is metadata. These columns provide context about a measure, protocol, or sample. Measure columns report a specific measure, either from a site, sample, or population. Lastly, protocol columns report a specific protocol step or detail for a measure.</p>
+<section id="attributes" class="level2">
+<h2 class="anchored" data-anchor-id="attributes">Attributes</h2>
+<p>The wide-name formula for attributes is</p>
+<pre><code>tableShortName_attribute</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/Long-to-wide-name-example-attribute.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><strong>Figure 2 - Wide- to Long-format for Attributes</strong></figcaption>
+</figure>
+</div>
+<p>For example, to record the sample material in long-format you would navigate to the <code>samples</code> table and populate the <code>saMaterial</code> column. In wide-format, all data are recorded in a single table. The table and attribute are combined for the wide-name, creating the name</p>
+<pre><code>sm_saMaterial</code></pre>
+<p>for this attribute. Here <code>sm</code> is the short name for the samples table, and <code>saMaterial</code> is the column name for the sample matrix or material.</p>
+</section>
+<section id="measures" class="level2">
+<h2 class="anchored" data-anchor-id="measures">Measures</h2>
+<p>The wide-name formula for a measure or measure-value is</p>
+<pre><code>compartment_specimen_fraction_measure_unit_aggregation_index_attribute</code></pre>
+<p>where the <code>attribute</code> at the end is always either <code>value</code>, <code>purpose</code>, or <code>qualityFlag</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/Long-to-wide-name-example-measure.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><strong>Figure 3 - Wide- to Long-format for Measures</strong></figcaption>
+</figure>
+</div>
+<p>The ODM long-format specifies a <code>measure</code> column in the <code>measures</code> table, as well as a column for <code>units</code> and one for <code>aggregations</code>. The wide-format collapses all these columns into a single <code>value</code> column.</p>
+<p>For example, the wide-name for mean chemical oxygen demand from a wastewater sampling site, recorded in milligrams per litre is</p>
+<pre><code>wat_si_NR_cod_mgL_m_NR_value</code></pre>
+<p>Here the measure is taken from wastewater/water (<code>wat</code>), it’s a measure of the site (<code>si</code>), the fraction analyzed is not reported (<code>NR</code>), it is a measure of chemical oxygen demand (<code>cod</code>), the units are mg/L (<code>mgL</code>), it’s a mean measure (<code>m</code>), the index is not reported (<code>NR</code>), and lastly this is the value for this measure (<code>value</code>).</p>
+</section>
+<section id="protocol-steps" class="level2">
+<h2 class="anchored" data-anchor-id="protocol-steps">Protocol steps</h2>
+<p>Like measures, protocol step wide-names record the <code>value</code> field. With protocols, the wide-name formula depends on whether the step uses a <code>measure</code> or a <code>method</code>. The formula if using a <code>method</code> is:</p>
+<pre><code>tableShortName_partTypeShortName_method_attribute</code></pre>
+<p>The formula if using a <code>measure</code> is:</p>
+<pre><code>tableShortName_partTypeShortName_measure_unit_aggregation_index_attribute</code></pre>
+<p>where in both instances, the table short name always specifies the <code>protocolSteps</code> table (<code>ps</code>), and the <code>partType</code> short name specifies whether this is a measure (<code>mes</code>) or a method (<code>met</code>). The attribute is always <code>value</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/Long-to-wide-name-example-protocol.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><strong>Figure 4 - Wide- to Long-format for protocol</strong></figcaption>
+</figure>
+</div>
+<p>For example, the wide-name for the sequencing strategy protocol step (ie. a protocol step using a method) for a wastewater program would be</p>
+<pre><code>ps_met_seqStrat_value</code></pre>
+<p>The protocol steps table short name indicates the long-format table (<code>ps</code>), the protocol step uses a method part type (<code>met</code>), it reports the sequencing strategy (<code>seqStrat</code>), and the column records the value (<code>value</code>).</p>
+<p>There are various pros and cons to each format, but generally it is ideal for data to be stored and analyzed in a long-format table, while it can be easier to record the data in a wide-format table. Differences in how naming conventions work across formats can lead to mistakes in how the data is mapped, stored and used.</p>
+<p>Similarly, the wide-name for a storage temperature (i.e.&nbsp;a protocol step using a measure), would be</p>
+<pre><code>ps_mes_temp_cel_sin_NR_value</code></pre>
+<p>The protocol steps table short name indicates the long-format table (<code>ps</code>), the protocol step uses a measure part type (<code>mes</code>), it reports the temperature (<code>temp</code>) in degrees Celsius (<code>cel</code>), it is a single measure (<code>sin</code>, i.e.&nbsp;not aggregated), the index is not reported (<code>NR</code>), and the column records the value (<code>value</code>).</p>
+</section>
+<section id="for-combined-long--and-wide-formats" class="level2">
+<h2 class="anchored" data-anchor-id="for-combined-long--and-wide-formats">For combined long- and wide-formats</h2>
+<p>The PHES-ODM is designed as a series of long-format tables, but it is our aim to be as robust and easy to use as possible. To avoid issues of incongruity when moving between wide-format data recording templates and the final long-format data storage tables, we have designed a <del>specific series</del> of formulae to generate wide-format column names (or wide-names) using the part IDs from long-format tables, headers, and values. This may, wide-names can be parsed automatically to reliably <del>move</del> translate data between formats <del>without introducing errors</del>.</p>
+<p>Many environmental surveillance and research programs use combined long- and wide-format tables. To account for this, wide-names can contain a “see header” part for each piece of their formulas. These reference the header they point to, promoting data readability for machines and humans.</p>
+<p>Let’s return to the first example tables from the start of this page:</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>date</th>
+<th>compartment</th>
+<th>specimen</th>
+<th>fraction</th>
+<th>measure</th>
+<th>value</th>
+<th>unit</th>
+<th>aggregation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>32.1</td>
+<td>gc/mL</td>
+<td>single</td>
+</tr>
+<tr class="even">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>PMMoV</td>
+<td>16.2</td>
+<td>gc/mL</td>
+<td>single</td>
+</tr>
+<tr class="odd">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>pH</td>
+<td>8.2</td>
+<td>unitless</td>
+<td>single</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>34.6</td>
+<td>gc/mL</td>
+<td>single</td>
+</tr>
+<tr class="odd">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>PMMoV</td>
+<td>19.6</td>
+<td>gc/mL</td>
+<td>single</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>pH</td>
+<td>7.9</td>
+<td>unitless</td>
+<td>single</td>
+</tr>
+</tbody>
+</table>
+<p>This is long-format data, and I’ve added some additional columns to record the fraction analyzed, the compartment, the specimen, etc. Now if we were to move to a wide-format, we could use the formulae described above and generate this kind of table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>date</th>
+<th>wat_sa_ liq_covN1_ gcMl_sin_ NR</th>
+<th>wat_sa_ liq_pmmov_ gcMl_sin_ NR</th>
+<th>wat_sa_ liq_pH_ unitless_ sin_NR</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>32.1</td>
+<td>16.2</td>
+<td>8.2</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>34.6</td>
+<td>19.6</td>
+<td>7.9</td>
+</tr>
+</tbody>
+</table>
+<p>Now let’s look at an example of a mixed long- and wide-format table. Something like this might arise where the initial table was developed for ODM long-format, but ultimately it was decided that the program wanted to record multiple measures in a single row. For this, we have what looks like standard ODM long-format for the first eight columns, but then the wide-format for the last two.</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>date</th>
+<th>compartment</th>
+<th>specimen</th>
+<th>fraction</th>
+<th>measure</th>
+<th>value</th>
+<th>unit</th>
+<th>aggregation</th>
+<th>PMMoV (gc/ML)</th>
+<th>pH (unitless)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>32.1</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>16.2</td>
+<td>8.2</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>34.6</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>19.6</td>
+<td>7.9</td>
+</tr>
+</tbody>
+</table>
+<p>In this example, you can see that compartment, specimen, and fraction analyzed are applied also to the PMMoV and pH columns, as well as the measure column. In these instances a measure of PMMoV where the fraction analyzed in specified in a different column would use the wide-name:</p>
+<pre><code>wat_sa_hFr_covN1_gcml_m_value</code></pre>
+<p>Here the <code>hFr</code> indicates by its placement and the letters used that the fraction analyzed is specified elsewhere.</p>
+<p>Another example is for data is reported in long-format for one measure, but wide-format for all others. In this situation the fraction analyzed, the measure, the units, and the aggregation are all specified in other columns. Rather than simply reporting <code>value</code> as you would an attribute, you would use the wide name:</p>
+<pre><code>wat_sa_hFr_hMr_hUn_hAg_NR_value</code></pre>
+<p>to better link all the metadata pieces in other columns to this specific measurement. So to recreate the above mixed-format table with the ODM coded wide-names, we would get:</p>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 6%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>mr_ report Date</th>
+<th>mr_ compartment</th>
+<th>mr_ specimen</th>
+<th>mr_ fraction</th>
+<th>mr_ measure</th>
+<th>hCo_hSp_ hFr_hMr_ hUn_hAg_ NR_value</th>
+<th>mr_ unit</th>
+<th>mr_ aggregation</th>
+<th>hCo_hSp_ hFr_pmmov _gcMl_sin_ NR_value</th>
+<th>hCo_hSp_ hFr_pH_ unitless_ sin_NR_ value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>32.1</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>16.2</td>
+<td>8.2</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>covid N1</td>
+<td>34.6</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>19.6</td>
+<td>7.9</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="wide-name-exceptions" class="level1">
+<h1>Wide-name exceptions</h1>
+<p>There is a diversity of wide-templates across labs. Sometimes these headers can combine two ODM attributes, or two or more methods or measures. This complicates mapping to the ODM, but unique wide-names can be generated for these as well.</p>
+<section id="attribute-naming-exceptions" class="level2">
+<h2 class="anchored" data-anchor-id="attribute-naming-exceptions">Attribute naming exceptions</h2>
+<p>For combined attributes, the regular attribute formula (<code>tableShortName_attribute</code>) becomes</p>
+<pre><code>tableShortName_n_aggregation_attribute1_..._attributeN</code></pre>
+<p>Where <code>n</code> is an integer indicating the number of attributes being combined together, the <code>aggregation</code> is a boolean aggregation of either <code>OR</code> or <code>AND</code> to indicate whether the column records all of the attribute, or one or another. Finally, the attributes are listed in snake case. This wide-names is still machine readable.</p>
+<p>For example, a wide-column name where sample collection period and collection number are reported together would be:</p>
+<pre><code>sm_2_AND_collPer_collNum</code></pre>
+<p>For <code>_AND_</code> style wide-names, the default separator must be a period (<code>.</code>). So for the is example, where we are recording the sample collection period and number together, a value of a 24-hour period with 12 collections would be <code>24.12</code>.</p>
+</section>
+<section id="measure-and-method-naming-exceptions" class="level2">
+<h2 class="anchored" data-anchor-id="measure-and-method-naming-exceptions">Measure and method naming exceptions</h2>
+<p>For combined measures or methods, the <code>..._n_...</code> approach is also used.</p>
+<p>For measures, the formula is: <code>compartment_specimen_fraction_n_aggregation(bool)_measure1_measure2_..._measureN_unit_aggregation_index_attribute</code>, where all measures must share the same units and aggregation. For example, a column to measure the presence of “other” mutations, alleles, or variants uses the wide-name <code>wat_sa_liq_3_OR_otherM_otherA_otherV_gcMl_m_value</code>.</p>
+<p>For Methods the use case is slightly more constrained. Protocol steps are rarely combined into a single field. Protocol steps using one or more measures which report a single value would be highly unlikely to exist. Protocol steps using methods combinations only work and make sense because the inputs are categorical and defined. The suggested structure for a protocol step using only methods (and no measures) would follow the formula <code>tableShortName_partTypeShortName_n_aggregation_method1_..._methodN_attribute</code>.</p>
+<p>For example a column where one specifies the protocol step for either pcr or sequencing strategy in a wastewater program would be called <code>ps_met_wat_sa_liq_2_OR_pcrmeth_seqStrat_value</code>.</p>
+<p>In instances of <code>OR</code> wide names, the values sets for the different measures or methods are distinct, and the <code>sets</code> information for the input can be used to determine which method or measure is being reported.</p>
+</section>
+</section>
+<section id="tutorials" class="level1">
+<h1>Tutorials</h1>
+<p>Here’s an example to walk you through moving from long-format to wide-format. Try to go through slowly and see if you can determine the correct answer before you read it.</p>
+<section id="building-a-wide-format-odm-headers" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-wide-format-odm-headers">Building a wide-format ODM headers</h2>
+<p>We’re going to transform an example long-format measure table to wide-format. In figure 5 we see the list of all the possible headers in the <code>measures</code> table. Not all of the headers are mandatory, so you may choose not to use them all. Our tutorial here is just to write out what the wide name would be for each of these headers.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/measures_table_headers.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption"><strong>Figure 5 - Headers in the Measures Table</strong></figcaption>
+</figure>
+</div>
+<p>Everything in this table is an attribute, except for (eventually) the value field. We know that attributes use the structure:</p>
+<pre><code>tableShortName_attribute</code></pre>
+<p>So with that in mind, see if you can type up or write out what you think the ODM wide name would be for all of these headers - skipping the <code>value</code> header. Keep in mind that for <strong>headers that are foreign keys (noted FK in figure 5), that the table short name used should be the table in which those attributes are a primary key</strong>. You may want to consult the <a href="https://osf.io/cjtgf">ERD</a> and the <a href="https://osf.io/bse8m">parts list</a> to double check which tables host the primary keys and what the short names are for those tables.</p>
+<p>Once you have tried coming up with the wide names, check your answers against the equivalent wide names listed below:</p>
+<ul>
+<li>mr_measureRepID</li>
+<li>pr_protocolID</li>
+<li>sm_sampleID</li>
+<li>pa_purpose</li>
+<li>po_polygonID</li>
+<li>st_siteID</li>
+<li>ds_datasetID</li>
+<li>ms_meaureSetRepID</li>
+<li>mr_aDateStart</li>
+<li>mr_aDateEnd</li>
+<li>mr_reportDate</li>
+<li>pa_specimen</li>
+<li>pa_fraction</li>
+<li>pa_group</li>
+<li>pa_class</li>
+<li>pa_measure</li>
+<li>pa_unit</li>
+<li>pa_aggregation</li>
+<li>pa_nomenclature</li>
+<li>mr_index</li>
+<li>mr_mesureLic</li>
+<li>mr_reportable</li>
+<li>mr_organizationID</li>
+<li>mr_contactID</li>
+<li>mr_refLink</li>
+<li>mr_lastEdited</li>
+<li>mr_notes</li>
+</ul>
+</section>
+<section id="building-a-wide-format-odm-table" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-wide-format-odm-table">Building a wide-format ODM table</h2>
+<p>Now lets try an example using a shortened version of the measures table, populated with some fake data.</p>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 15%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>date</th>
+<th>compartment</th>
+<th>specimen</th>
+<th>fraction</th>
+<th>measure</th>
+<th>value</th>
+<th>unit</th>
+<th>aggregation</th>
+<th>index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>Mpox</td>
+<td>32.1</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>dec 17</td>
+<td>water</td>
+<td>sample</td>
+<td>mixed</td>
+<td>PMMoV</td>
+<td>16.2</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>dec 17</td>
+<td>air</td>
+<td>sample</td>
+<td>NA</td>
+<td>s2083i omicron-variant gene target</td>
+<td>8.2</td>
+<td>gc</td>
+<td>single</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>site</td>
+<td>liquid</td>
+<td>Flow rate</td>
+<td>34.6</td>
+<td>ML/day</td>
+<td>arith. mean</td>
+<td>NA</td>
+</tr>
+<tr class="odd">
+<td>dec 20</td>
+<td>surface</td>
+<td>sample</td>
+<td>NA</td>
+<td>Influenza virus A1</td>
+<td>19.6</td>
+<td>gc/mL</td>
+<td>single</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>water</td>
+<td>sample</td>
+<td>liquid</td>
+<td>pH</td>
+<td>7.9</td>
+<td>unitless</td>
+<td>single</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Everything in this mini-table is part of a measurement-value wide-name, except for date. We know that measurements use the structure:</p>
+<pre><code>compartment_specimen_fraction_measure_unit_aggregation_index_attribute</code></pre>
+<p>So with that in mind, see if you can type up or write out what you think the ODM wide name would be for all of these headers - including <code>date</code> as an attribute. You may want to consult the <a href="https://osf.io/cjtgf">ERD</a> and the <a href="https://osf.io/bse8m">parts list</a> to double check which tables host the primary keys and what the short names are for those tables.</p>
+<p>The answer key for the wide version of this mini-table is here:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>mr_ reportDate</th>
+<th>wat_sa_ liq_mpox _gcml_sin_ 1_value</th>
+<th>wat_sa_ mix_pmmov _gcml_sin_ 2_value</th>
+<th>air_sa_ NA_s2083i_ gc_sin_NA _value</th>
+<th>wat_si_ liq_floRate _mld_me_ NA_value</th>
+<th>surf_sa_ NA_fluA1_ gcml_sin_ NA_value</th>
+<th>wat_sa_ liq_pH_ unitless_ sin_2_ value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dec 17</td>
+<td>32.1</td>
+<td>16.2</td>
+<td>8.2</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr class="even">
+<td>dec 20</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+<td>34.6</td>
+<td>19.6</td>
+<td>7.9</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="how-to-guides" class="level1">
+<h1>How-To Guides</h1>
+<p>The <code>wideNames</code> table has been added for the v2.3 release, and includes the wide-names that are in current use of which we are aware. The table has also been set up with drop down menus, similar to the data input templates. This way, users can fill out the information for a given header, and have the ODM-formatted wide name generated automatically.</p>
+<section id="wide-name-templates" class="level2">
+<h2 class="anchored" data-anchor-id="wide-name-templates">Wide-name Templates</h2>
+<p>Please check out the wide names table and tamplate here [LINK TBA], and don’t forget to let us know what wide names you are using, so that we can add them to the list.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sampleRelationships.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Sample Relationships</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ref-guide.html" class="pagination-link">
+        <span class="nav-page-text">Reference guide</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
