@@ -22,6 +22,7 @@ book:
     - explanation.qmd
     - how-to.qmd
     - sampleRelationships.qmd
+    - wide-names.qmd
     #- tutourials.qmd
     - part: ref-guide.qmd
       chapters:

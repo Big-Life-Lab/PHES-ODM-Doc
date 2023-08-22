@@ -3,11 +3,9 @@ project:
   execute-dir: ../
 ---
 
-```{r setup, echo=FALSE}
-knitr::opts_knit$set(root.dir = normalizePath("../"))
-```
-
 # Long-format, wide-format, and wide-names {.unnumbered}
+
+{{< include _versions.qmd >}}
 
 ## Wide-format and long-format data
 
