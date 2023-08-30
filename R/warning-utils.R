@@ -1,5 +1,5 @@
 # Source constants
-source("R/constants.R")
+source(file.path(getwd(), "R", "parts-sheet.R"))
 
 #' Missing warning.
 #' 
@@ -70,8 +70,8 @@ skipped_order <- function(ID){
 #' @return String with the populated warning containing explanation of the invalid cat link.
 invalid_cat_link <- function(ID){
   glue::glue('ID: {ID} has data type of \\
-                   {constants$part_sheet_data_type_is_categorical} but no valid \\
-                   {parts_sheet_column_names$part_cat_set_ID_column_name}.\n')
+                   {parts$data_type$categories$categorical} but no valid \\
+                   {parts$mma_set$name}.\n')
 }
 
 #' Duplicated ID.

@@ -1,5 +1,7 @@
 # How to use the ODM {.unnumbered}
 
+{{< include _versions.qmd >}}
+
 ## How-To guides
 
 ## 1) How to use templates
@@ -326,41 +328,6 @@ You have now entered your data in the `Sample report` and `Sample relationships`
 In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is "A procedure for collecting a sample or performing a measure". Each entry in the `Protocols` (or `protocols`) template represents a unique protocol. A protocol is made up of protocol steps. In the `Protocol steps` (or `protocolSteps`) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the `Protocol relationships` (or `protocolRelationships`) template represents one of these relationships in the form, "subject - relationship - object". So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the `Protocol step ID` of A - `Is Before` - `Protocol Step ID` of B.
 
 You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([How-To guides]) and the Reference Guide - Parts document.
-
-When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. To store protocols efficiently in database tables, several challenges must be addressed:
-
-1\. Protocols are comprised of a collection of steps.
-
-2\. Protocol steps can consist of two entries:
-
--   They can prescribe the use of a specific quantity of something. This can be described using the different measures found in the PHES-ODM dictionary and assigning them a prescribed value and unit of measurement.
-
--   They can prescribe an action. The PHES-ODM calls this a method.
-
-3\. Protocol steps must be organised in the right order to convey the meaning of the protocol.
-
-4\. Steps may follow each other, or they can be done concurrently.
-
-5\. Measures found inside a protocol specify the quantity of reagents, supplies and conditions involved in the realization of a method.
-
-6\. Different protocols may use some of the same steps, but in a different order.
-
-7\. Protocols may have steps that consist in one or several (sub)protocols.
-
-8\. Protocols can be updated with new versions, or they can reference and build from other protocols.
-
-To solve these constraints, the PHES-ODM stores a protocol (e.g., what it does, who developed it, when it was developed) separately from its constituent steps. These protocol steps are stored in the \`Protocol Steps\` table. The entries in the steps table are either methods or measures.
-
-The protocol steps are linked together in their own \`Protocol Relationships\` table. Rows in the relationship table have four main attributes. The first is the protocol identifier. The three other attributes define a relationship between two steps in the protocol. The relationship is expressed in the form:
-
-\`subject → relationship → object\`
-
-Where the subject and the object can either be a protocol step or subprotocol. The available relationships (e.g., \`is_before\`, \`specifies\`, \`is_concurrent_with\`, etc.) allows one to organize the protocol is a more semantically meaningful way than by simply using a sequential order.
-
-This flexible structure allows protocol steps and subprotocols to be reused in any number of protocols. The relationships between protocols, protocol orderings, and protocol steps are shown in Figure A.
-
-![Figure A: Main entities and relationships used to represent protocols](./assets/how-to/protocols.png)How to report protocols, protocol steps and protocol relationships:
-
 
 ## Quick Start
 

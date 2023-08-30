@@ -1,5 +1,5 @@
 # Source constants when not using pkg.env
-source(file.path(getwd(), "R", "constants.R"))
+source(file.path(getwd(), "R", "odm-dictionary-file.R"))
 
 #' Verify Input
 #'
@@ -26,14 +26,14 @@ verify_input <- function(input_to_check, warning_text) {
 #' column only contains constants$dictionary_missing_value_replacement.
 #'
 #' @param column_to_check column values to check.
-#' @param warning_text warning to display if column was created with only constants$dictionary_missing_value_replacement
+#' @param warning_text warning to display if column was created with only odm_dictionary$dictionary_missing_value_replacement
 #'
-#' @return Boolean equal to if column was created with only constants$dictionary_missing_value_replacement
+#' @return Boolean equal to if column was created with only odm_dictionary$dictionary_missing_value_replacement
 verify_column <-
   function(column_to_check, warning_text) {
     is_valid_column <- TRUE
     if (length(unique(column_to_check)) == 1 &&
-        unique(column_to_check) == constants$dictionary_missing_value_replacement) {
+        unique(column_to_check) == odm_dictionary$dictionary_missing_value_replacement) {
       is_valid_column <- FALSE
       warning(warning_text)
     }
@@ -42,17 +42,17 @@ verify_column <-
 
 #' Verify String
 #'
-#' Verify that input contains values not equal to constants$dictionary_missing_value_replacement
+#' Verify that input contains values not equal to odm_dictionary$dictionary_missing_value_replacement
 #'
-#' @param string_to_check String to check for matching constants$dictionary_missing_value_replacement
-#' @param warning_text Warning to issue if string to check is constants$dictionary_missing_value_replacement
+#' @param string_to_check String to check for matching odm_dictionary$dictionary_missing_value_replacement
+#' @param warning_text Warning to issue if string to check is odm_dictionary$dictionary_missing_value_replacement
 #'
-#' @return Boolean equal to string to check matching constants$dictionary_missing_value_replacement or not
+#' @return Boolean equal to string to check matching odm_dictionary$dictionary_missing_value_replacement or not
 verify_string <-
   function(string_to_check,
            warning_text) {
     is_valid_string <- TRUE
-    if (string_to_check == constants$dictionary_missing_value_replacement) {
+    if (string_to_check == odm_dictionary$dictionary_missing_value_replacement) {
       is_valid_string <- FALSE
       warning(glue::glue('{warning_text}
                          
@@ -133,8 +133,10 @@ create_html_list <- function(string_to_append, list_values){
 #' 
 #' @return string with sets or parts depending on suffix of input_ID
 determine_link_source <- function(input_ID){
-  link_to_parts <- constants$parts_file_name
-  link_to_sets <- constants$sets_file_name
+  parts_qmd_file_name <- "parts"
+  sets_qmd_file_name <- "sets"
+  link_to_parts <- parts_qmd_file_name
+  link_to_sets <- sets_qmd_file_name
   
   link_source <- ""
   

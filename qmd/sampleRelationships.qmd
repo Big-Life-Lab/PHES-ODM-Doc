@@ -1,0 +1,79 @@
+# Sample Relationships {.unnumbered}
+
+{{< include _versions.qmd >}}
+
+## Context
+
+To fully interpret the measures coming out of samples, it is sometimes helpful to know how they are related to each other. For example, two samples taken at the same site, at the same time, with the same method, can be used to characterize the variablity inherent in the sampling strategy. When samples are composited from several subsamples, it is useful to know which subsamples were used and to what pooled samples they are related. Parts of samples can also be spiked with a viral target as part of a quality assurance protocol. Keeping a trace of the relationships linking various samples supports the retrieval of related samples inside the PHES-ODM database and thus improves the interpretability of the data.
+
+## Modelling sample relationships
+
+There are several ways in which samples can be related.
+
+Samples can be related via:
+
+1. The splitting of an original sample
+    1. A subsample is related to its parent sample
+    2. A sample split at the sampling location yields field replicates who are related to each other.
+    3. A field sample is related to a control sample processed alongside it.
+    4. A field sample is related to a subsample that has been modified as part of a quality control procedure.
+2. The combination of several samples
+    1. Parent samples related to the final pooled sample
+
+Example of sample relationship webs are found in Figure A.
+
+![Figure A: Various possible sample relationships.](./assets/how-to/SampleRelationships_ex1.png)
+
+Figure A: Various possible sample relationships.
+
+Because a single sample can be related to many others, the sample information and the relationships to other samples can’t be efficiently stored in a single database table.
+
+## Implementation
+
+The `SampleRelationships` table is responsible for linking samples with each other and for defining the nature of the relationships. Each row defines a relationship. A sample can have any number of relationships to other samples. The table implements three attributes:
+
+1. sampleIDSubject
+2. relationshipID
+3. sampleIDObject
+
+Each row can be read as a sentence of the form:
+
+```js
+[sampleIDSubject] is a[relationshipID] of [sampleIDObject]
+```
+
+The acceptable values for relationshipID are the followingat the moment, though some more could be added to the dictionary of the need arises:
+
+```js
+	- child
+	- replicate
+```
+
+To complete the picture presented by the `SampleRelationships` table, one can read the sample attributes that describe the sample’s nature:
+
+1. `repType` (replicate type) indicates what kind of replicate a sample is (field replicate, matrix spike replicate, lab control replicate)
+2. `pooled` indicates if the sample is the result of the combination of several samples. It is important to note that `pooled` is a transitive property: subsamples derived from a `pooled` sample are also `pooled`.
+
+Below are two examples of possible relationship webs between samples and the the resulting entries in a `SampleRelationships` table.
+
+![Example A](./assets/how-to/SampleRelationships_exA.png)
+
+| sampleIsSubject | relationshipID | sampleIsObject |
+| --- | --- | --- |
+| V | child | A |
+| V | child | B |
+| X | child | V |
+| Y | child | V |
+| Z | child | V |
+
+![Example B](./assets/how-to/SampleRelationships_exB.png)
+
+| sampleIsSubject | relationshipID | sampleIsObject |
+| --- | --- | --- |
+| V | child | A |
+| V | child | B |
+| U | child | B |
+| U | child | C |
+| X | child | V |
+| Y | child | V |
+| Z | child | U |
