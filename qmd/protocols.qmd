@@ -1,0 +1,77 @@
+---
+project:
+  execute-dir: ../
+---
+
+```{r setup, echo=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+```
+
+# Protocols {.unnumbered}
+
+## Overview
+
+When analyzing data from various sources, it is important to understand how the data was produced. The PHES-ODM recognizes this and includes protocols as one of its entities. Protocol data can be very complex and detailed, so finding a strong middle ground for the level of detail, robustness, and ease of use was a central concern.
+
+Ultimately, the current structure for recording protocols is designed to be readable by both machines and humans. This is useful for the possibility of automating certain protocols, but is also important for being able to analyze differences in measurement across protocols. Having these details also be human-readable and succinct also allows for labs to review and replicate protocols from other labs.
+
+The structure we have adopted also ensures that protocols can be mapped and replicated across different laboratory environments, and that modifications and version differences can be parsimoniously recorded. It can also be recorded such that it can be referenced by measures that all use an identical protocol, or can be used to record unique protocols that depend on external factors or the attributes of a sample.
+
+The protocols structure within the ODM is one of the more complicated aspects of the model, and joins (other approaches)[https://bioprotocols.github.io/labop/] for parsimonious and succinct protocol data storage that are out there. Where the ODM approach is different is that our approach allows you to store protocol data in csv or excel files in the same place as you store all your other surveillance data. Furthermore, there is no need to understand and additional ontologies or write in any additional markup languages, hopefully simplifying the use of our model.
+
+## Recording protocols
+
+To store protocols efficiently in database tables, several challenges must be addressed:
+
+1.  Protocols are comprised of a collection of steps.
+2.  Protocol steps can consist of two entries:
+    -   They can prescribe the use of a specific quantity of something. This can be described using the different measures found in the PHES-ODM dictionary and assigning them a prescribed value and unit of measurement.
+
+    -   They can prescribe an action. The PHES-ODM calls this a method.
+3.  Protocol steps must be organised in the right order to convey the meaning of the protocol.
+4.  Steps may follow each other, or they can be done concurrently.
+5.  Measures found inside a protocol specify the quantity of reagents, supplies, and conditions involved in the realization of a method.
+6.  Different protocols may use some of the same steps, but in a different order.
+7.  Protocols may have steps that consist in one or several (sub)protocols.
+8.  Protocols can be updated with new versions, or they can reference and build from other protocols.
+
+To solve these constraints, the PHES-ODM stores a protocol (e.g., what it does, who developed it, when it was developed) separately from its constituent steps. These protocol steps are stored in the `Protocol Steps` table. The entries in the steps table are either methods or measures.
+
+The protocol steps are linked together in the `Protocol Relationships` table. Rows in the relationship table have four main attributes. The first is the container protocol identifier. The three other attributes define a relationship between two steps in the protocol. The relationship is expressed in the form:
+
+`subject → relationship → object`
+
+Where the subject and the object can either be a protocol step or subprotocol. The available relationships (e.g., `is_before`, `specifies`, `is_concurrent_with`, etc.) allows one to organize the protocol is a more semantically meaningful way than by simply using a sequential order.
+
+This flexible structure allows protocol steps and subprotocols to be reused in any number of protocols. The relationships between protocols, protocol orderings, and protocol steps are shown in Figure A.
+
+![Figure A: Main entities and relationships used to represent protocols](./assets/protocols/protocols.png)
+
+## Suggested minimum Reporting
+
+As mentioned above, we know that protocols can be very complicated, and taking the time to record every detail of a protocol can be time consuming, and potentially tedious. While having such a granular level of data can be rewarding in its own right, establishing minimum standards for what should be reported in a protocol can free up valuable time. Building on the work of (McClary-Gutierrez, et al. 2021)[https://pubs.rsc.org/en/content/articlehtml/2021/ew/d1ew00235j], we recommend that the minimum protocol information follow what is laid out in the table below (adapted from McClary-Gutierrez, et al., 2021).
+
+| Method or Measure to Record in Protocols           | Example Values                                      |
+|----------------------------------------------------|-----------------------------------------------------|
+| Pre-concentration storage temperature	             | Degrees Celsius, Degree Farenheit, etc.             |
+| Concentration method & citation	                   | PEG precipitation, ultrafiltration, etc.            |
+| Recovery control name & efficiency	               | BCoV, BRSV, MHV, none, etc.                         |
+| Extraction method & citation	                     | promega manual tna kit, qiagen powerwater kit, etc. |
+| Amount of sample processed	                       | Starting volume [mL] or mass [g] of raw sample      |
+| Extraction blanks results	                         | Signal not detected, blanks not used, etc.          |
+| Target quantification	PCR type	                   | qPCR, ddPCR, etc.                                   |
+| Target gene(s)	                                   | Gene target and primers/assay                       |
+| Endogenous wastewater control name & concentration | PMMoV, crAssphage, none, etc.                       |
+
+## Example Protocol: Methods Text to ODM Data
+
+To show how protocol data can be reported in practice, we will use a portion of the methods section from (a paper from the Delatolla Research Group)[https://www.sciencedirect.com/science/article/pii/S0043135420310952?via%3Dihub] at the University of Ottawa. This group is among our closest collaborators, and have supported and worked substantially on the ODM.
+
+Lets start by looking at a chunk from the methods section of the paper. This section (Figure B) specifically is talking about different approaches of fractionating wastewater that were tested out while developing their protocol. 
+
+![Figure B: Methods Section Breakdown](./assets/protocols/Methods-to-methods.png)
+
+You can see in the paragraph, there are actually three protocls being described: one for the solid fraction of the post-grit wastewater sample (PGS), one for the liquid fraction of the PGS, and one for the eluate fraction of the PGS. Now that we have these three protocols separated out, we can start breaking each of them down into their constituent protocol steps.
+
+![Figure C: Methods Into Protocol Steps](./assets/protocols/methods-to-steps.png)
+
