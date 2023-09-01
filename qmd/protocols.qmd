@@ -145,3 +145,18 @@ Again, the final details on the protocols are stored in the protocols table (Fig
 
 ## Example Protocol: Methods Text to ODM Data - Tying it all Together
 
+the previous examples have pulled together ODM protocol data from various pieces of the methods section of a paper. For measures of viral presence in wastewater, however, all of these steps are used to arrive at the final reported result. Let's examine the flow chart diagram from the same (Delatolla Research Group paper)[https://www.sciencedirect.com/science/article/pii/S0043135420310952?via%3Dihub] in Figure R.
+
+![Figure R: Delatolla Group Protocol Flowchart](./assets/protocols/master_methods.png)
+
+Each pictured part of this flowchart has already been added as an ODM protocol in the above examples, but not we can try to tie them all together at the top level. The steps and protocols have already been generated, so we can go right to the protocol relationships table in Figure S where the processes from Figure R are summarized in the ODM format.
+
+![Figure S: Protocol Relationships - From Sample work-up to Quantification](./assets/protocols/master_relationships.png)
+
+Colour-coding is added to Figure S to help distinguish between the different streams. The protocol containers specify the different sample materials (though this information would also be stored explicitly with sample data). The different protocols for sample treatment, whether it is through solid separation or filter elution and resuspension, are then combined with the PEG precipitation, RNA extraction, and SARS-CoV-2 N1 PCR quantification protocols and steps to make on Protocol ID that refers to an entire process from start to finish. You can see how these complete protocol examples would be stored in the protocols table in Figure T.
+
+![Figure T: Protocols - Complete](./assets/protocols/master_protocols.png)
+
+The complete flow chart for all this data can also be found below in Figure U.
+
+![Figure U: Methods, Protocols, Protocol Steps, and Relationships - Complete](./assets/protocols/Protocols_Breakdown.png)
