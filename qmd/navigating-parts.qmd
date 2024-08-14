@@ -12,7 +12,7 @@ Given that these reference tables give structure to the model, being able to con
 
 ## Navigating Parts
 
-A video walkthrough of how to use the Parts table most effectively can be found on the ODM vimeo account here (LINK TBA).
+A video walkthrough of how to use the Parts table most effectively can be found on the ODM vimeo account [here] (https://vimeo.com/manage/videos/905692519).
 
 The Parts list can be initially intimidating because it lists everything within the entirety of the model. There are a variety of ways to filter results to help you find more information on specific parts, as well as better understand model components. 
 
