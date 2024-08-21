@@ -43,7 +43,11 @@ get_latest_dictionary <- function() {
       odm_dictionary$dictionary_directory,
       latest_version_file_name
     ),
-    sheet = odm_dictionary$sets_sheet_name
+    sheet = odm_dictionary$sets_sheet_name,
+    # Parse all columns as text so that even if a column has only numbers in it
+    # we can insert NA string values into it. If we do not do this then tidyr
+    # will complain and stop execution.
+    col_types = "text"
   )
   
   return(list(
