@@ -11,9 +11,9 @@ runs:
     - name: setup-r
       uses: r-lib/actions/setup-r@v2
       with:
-        r-version: "4.1.1"
+        r-version: "4.0.3"
     - name: Install R dependencies
-      uses: r-lib/actions/setup-r-dependencies@v2
+      uses: r-lib/actions/setup-renv@v2
     - name: Render quarto
       run: quarto render ./qmd
       shell: bash
