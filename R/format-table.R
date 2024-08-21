@@ -3,6 +3,8 @@ source(file.path(getwd(), "R", "odm-dictionary-file.R"))
 source(file.path(getwd(), "R", "parts-sheet.R"))
 source(file.path(getwd(), "R", "warning-utils.R"))
 source(file.path(getwd(), "R", "sets-sheet.R"))
+source(file.path(getwd(), "R", "qmd-utils.R"))
+
 #' Format Table
 #'
 #' Formats table based on columns_to_format replacing any NA, "NA", or NULL with "N/A"
