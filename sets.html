@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -275,6 +275,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#primerSet" id="toc-primerSet" class="nav-link" data-scroll-target="#primerSet">Genetic primer set</a></li>
   <li><a href="#protocolRelSet" id="toc-protocolRelSet" class="nav-link" data-scroll-target="#protocolRelSet">Protocol Relationships set</a></li>
   <li><a href="#purposeSet" id="toc-purposeSet" class="nav-link" data-scroll-target="#purposeSet">Purpose set</a></li>
+  <li><a href="#relSet" id="toc-relSet" class="nav-link" data-scroll-target="#relSet">General Relationship Set</a></li>
   <li><a href="#replicateSet" id="toc-replicateSet" class="nav-link" data-scroll-target="#replicateSet">Replicate Type set</a></li>
   <li><a href="#resusSet" id="toc-resusSet" class="nav-link" data-scroll-target="#resusSet">Resuspension method set</a></li>
   <li><a href="#retElSet" id="toc-retElSet" class="nav-link" data-scroll-target="#retElSet">Retained Element Set</a></li>
@@ -369,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Dictionary v2.2.2 Documentation v2.1.0</p>
+<p>Dictionary v2.2.3 Documentation v2.1.0</p>
 <p>Sets are lists of categories and other parts. For example, <code>Collection category set</code> (<a href="file:///Users/dmanuel/github/PHES-ODM-Doc/docs/sets.html#collectCatSet">collectionCatSet</a>) contains a list of the different collection types including: <code>Moore swab</code>, <code>Grab sample</code>, <code>Flow proportional sample</code>, etc.</p>
 <p>Sets can have parts that are reused. For example, there are different quality measures for sample collection (e.g.&nbsp;<code>Sample not collected</code>), PCR measures (<code>Inhibition preset</code>), and sequencing measures (<code>Low depth of coverage</code>), but all quality sets share the <code>No quality concerns</code> indicator.</p>
 <section id="aggregations" class="level2">
@@ -437,10 +438,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>Normalized standard deviation</strong> <a href="./parts.html#sdn">(sdn)</a>. Standard deviation, normalized. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Single</strong> <a href="./parts.html#sin">(sin)</a>. A value that is not an aggregate measurement (ie. not a mean, median, max or any other) and can be a replicate value. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+<strong>Standard Error</strong> <a href="./parts.html#stEr">(stEr)</a>. The standard error of a series of measurements. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Standard Error</strong> <a href="./parts.html#stEr">(stEr)</a>. The standard error of a series of measurements. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Single</strong> <a href="./parts.html#sin">(sin)</a>. A value that is not an aggregate measurement (ie. not a mean, median, max or any other) and can be a replicate value. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Rolling sum of previous 14 days</strong> <a href="./parts.html#sum14">(sum14)</a>. The rolling sum of case counts/some kind of count over the previous 14 days. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -1379,7 +1380,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Physical class</strong> <a href="./parts.html#physical">(physical)</a>. Measures and methods related to generic physical properties. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Precipitation class</strong> <a href="./parts.html#precipation">(precipation)</a>. Measures and methods related to precipitation. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>Precipitation class</strong> <a href="./parts.html#precipitation">(precipitation)</a>. Measures and methods related to precipitation. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Program decription tables</strong> <a href="./parts.html#programDescr">(programDescr)</a>. Tables used to describe surveillance and testing programs. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -2063,7 +2064,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Candida auris Group</strong> <a href="./parts.html#cAurisGrp">(cAurisGrp)</a>. A group of measures/methods related to Candida auris. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Chlamydia Group</strong> <a href="./parts.html#chalydiaGrp">(chalydiaGrp)</a>. A group of measures/methods related to chlamydia bacteria. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Chlamydia Group</strong> <a href="./parts.html#chlamydiaGrp">(chlamydiaGrp)</a>. A group of measures/methods related to chlamydia bacteria. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Chikungunya Group</strong> <a href="./parts.html#chikungunyaGrp">(chikungunyaGrp)</a>. A group of measures/methods related to chikungunya virus. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -2162,10 +2163,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>Metapneumovirus Group</strong> <a href="./parts.html#mpvGrp">(mpvGrp)</a>. A group of measures/methods related to metapneumoviruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>MPox Clade I Group</strong> <a href="./parts.html#mpxCldIGrp">(mpxCldIGrp)</a>. A group of measures/methods related to Mpox Clade I (formerly “Monkey Pox”). <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>MPox Clade I Group</strong> <a href="./parts.html#mpoxCldIGrp">(mpoxCldIGrp)</a>. A group of measures/methods related to Mpox Clade I (formerly “Monkey Pox”). <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>MPox Clade II Group</strong> <a href="./parts.html#mpxCldIIGrp">(mpxCldIIGrp)</a>. A group of measures/methods related to Mpox Clade II (formerly “Monkey Pox”). <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>MPox Clade II Group</strong> <a href="./parts.html#mpoxCldIIGrp">(mpoxCldIIGrp)</a>. A group of measures/methods related to Mpox Clade II (formerly “Monkey Pox”). <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Mumps Group</strong> <a href="./parts.html#mumpsGrp">(mumpsGrp)</a>. A group of measures/methods related to the mumps virus. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -2237,7 +2238,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>SARS-CoV-2</strong> <a href="./parts.html#sarsCov2">(sarsCov2)</a>. A group of measures/methods related to the SARS-CoV-2 virus. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Shigella Group</strong> <a href="./parts.html#shigellaGroup">(shigellaGroup)</a>. A group of measures/methods related to shigella bacteria. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Shigella Group</strong> <a href="./parts.html#shigellaGrp">(shigellaGrp)</a>. A group of measures/methods related to shigella bacteria. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Site features group</strong> <a href="./parts.html#siteFeat">(siteFeat)</a>. A group of environmental measures/methods and those pertaining to the features of a site. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -2286,6 +2287,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Yersinia Group</strong> <a href="./parts.html#yersiniaGrp">(yersiniaGrp)</a>. A group of measures/methods related to yersinia bacteria. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+</li>
+<li>
+<strong>Influenza Virus General Group</strong> <a href="./parts.html#fluGrp">(fluGrp)</a>. A group of measures/methods related to general influenza viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 </ul>
 </section>
@@ -2346,7 +2350,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Astrovirus</strong> <a href="./parts.html#astrovirus">(astrovirus)</a>. Astrovirus <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Mpox B6R Gene Target</strong> <a href="./parts.html#b6r">(b6r)</a>. Human MPox Virus (hMPXV) gene target. Envelope protien gene CDC Assay; selective for MPXV. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Mpox B6R Gene Target</strong> <a href="./parts.html#mpxB6R">(mpxB6R)</a>. Human MPox Virus (hMPXV) gene target. Envelope protien gene CDC Assay; selective for MPXV. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Babesia</strong> <a href="./parts.html#babesia">(babesia)</a>. Babesia <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -2403,7 +2407,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Brucella</strong> <a href="./parts.html#brucella">(brucella)</a>. Brucella <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Clade I Mpox C3L Gene Target</strong> <a href="./parts.html#c3l">(c3l)</a>. Human MPox Virus (hMPXV) Clade I gene target. hMPXV C3L primers and‚Äö√Ñ√òprobe‚Äö√Ñ√òdetect Clade I viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Clade I Mpox C3L Gene Target</strong> <a href="./parts.html#mpxC3L">(mpxC3L)</a>. Human MPox Virus (hMPXV) Clade I gene target. hMPXV C3L primers and‚Äö√Ñ√òprobe‚Äö√Ñ√òdetect Clade I viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Caffeine</strong> <a href="./parts.html#caff">(caff)</a>. Caffeine (usually measured as a human fecal chemical indicator) <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -2580,10 +2584,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>e484a omicron-variant gene target</strong> <a href="./parts.html#e484a">(e484a)</a>. e484a omicron-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Mpox &amp; Orthopox E9L-NVAR Gene Target</strong> <a href="./parts.html#e9lNVAR">(e9lNVAR)</a>. Human MPox Virus (hMPXV) gene target for Orthopoxvirus DNA polymerase. CDC Assay detects all hMPXV‚Äö√Ñ√£ clades and non-variola Orthopox viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Mpox &amp; Orthopox E9L-NVAR Gene Target</strong> <a href="./parts.html#mpxe9lNVAR">(mpxe9lNVAR)</a>. Human MPox Virus (hMPXV) gene target for Orthopoxvirus DNA polymerase. CDC Assay detects all hMPXV‚Äö√Ñ√£ clades and non-variola Orthopox viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Mpox &amp; Orthopox E9L-OPX3 Gene Target</strong> <a href="./parts.html#e9lOPX3">(e9lOPX3)</a>. Human MPox Virus (hMPXV) gene target using the generic orthopox virus OPX3. Lower sensitivity for MPox. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Mpox &amp; Orthopox E9L-OPX3 Gene Target</strong> <a href="./parts.html#mpxe9lOPX3">(mpxe9lOPX3)</a>. Human MPox Virus (hMPXV) gene target using the generic orthopox virus OPX3. Lower sensitivity for MPox. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Enteroaggregative Escherichia coli (EAEC)</strong> <a href="./parts.html#eaec">(eaec)</a>. Enteroaggregative Escherichia coli (EAEC) <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -2688,10 +2692,10 @@ ul.task-list li input[type="checkbox"] {
 <strong>g215c delta-variant gene target</strong> <a href="./parts.html#g215c">(g215c)</a>. g215c delta-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Mpox G2R-G Gene Target</strong> <a href="./parts.html#g2rG">(g2rG)</a>. Human MPox Virus (hMPXV) gene target using the G2R_G primers and‚Äö√Ñ√òprobe which ‚Äö√Ñ√òdetects all MPox Virus strains‚Äö√Ñ√ò‚Äö√Ñ√£. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Mpox G2R-G Gene Target</strong> <a href="./parts.html#mpxG2RG">(mpxG2RG)</a>. Human MPox Virus (hMPXV) gene target using the G2R_G primers and‚Äö√Ñ√òprobe which ‚Äö√Ñ√òdetects all MPox Virus strains‚Äö√Ñ√ò‚Äö√Ñ√£. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
-<strong>Clade II Mpox G2R-WA Gene Target</strong> <a href="./parts.html#g2rWA">(g2rWA)</a>. Human MPox Virus (hMPXV) Clade II gene target, measured with G2R_WA primers and probe to detects Clade II viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Clade II Mpox G2R-WA Gene Target</strong> <a href="./parts.html#mpxG2RWA">(mpxG2RWA)</a>. Human MPox Virus (hMPXV) Clade II gene target, measured with G2R_WA primers and probe to detects Clade II viruses. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>g339d omicron-variant gene target</strong> <a href="./parts.html#g339d">(g339d)</a>. g339d omicron-variant gene target <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -2706,7 +2710,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Gamma</strong> <a href="./parts.html#gam">(gam)</a>. P.1 <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>Mpox GT Molecular Gene Target</strong> <a href="./parts.html#gtmolMPox">(gtmolMPox)</a>. Human MPox Virus (hMPXV) gene target - this specific measure and gene target are proprietary to GT Molecular <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
+<strong>Mpox GT Molecular Gene Target</strong> <a href="./parts.html#mpxGTmol">(mpxGTmol)</a>. Human MPox Virus (hMPXV) gene target - this specific measure and gene target are proprietary to GT Molecular <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
 <strong>Influenza A H5 hemagglutinin gene</strong> <a href="./parts.html#h5hema">(h5hema)</a>. Measure of the H5 hemagglutinin gene from the Highly Pathogenic Avian Influenza Virus (HPAIV), the H5N1 Influenza A Virus (IAV) subtype. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
@@ -3290,6 +3294,54 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>Zika</strong> <a href="./parts.html#zika">(zika)</a>. Zika <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
+<li>
+<strong>SARS-CoV-2 S Gene Target</strong> <a href="./parts.html#covS">(covS)</a>. S sars-cov-2 gene target <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus NS5 Gene</strong> <a href="./parts.html#dnvNS5">(dnvNS5)</a>. Dengue Type 1-specific gene target. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus E Gene</strong> <a href="./parts.html#dnvE">(dnvE)</a>. Dengue Type 2-specific gene taget. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus prM Gene</strong> <a href="./parts.html#dnvprM">(dnvprM)</a>. Dengue Type 3 and 4-specific gene target. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Mpox Clade I F3L Gene Target</strong> <a href="./parts.html#mpxF3L">(mpxF3L)</a>. Human MPox Virus (hMPXV) Clade I gene target, F3L <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Mpox G2R-NML Gene Target</strong> <a href="./parts.html#mpxG2RNML">(mpxG2RNML)</a>. Human MPox Virus (hMPXV) gene target using the G2R_NML primers and probe which  detects all MPox Virus strains ​. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Influenza A H5 hemagglutinin gene</strong> <a href="./parts.html#fluH5hema">(fluH5hema)</a>. Measure of the H5 hemagglutinin gene from the Highly Pathogenic Avian Influenza Virus (HPAIV), the H5N1 Influenza A Virus (IAV) subtype. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Influenza A M gene</strong> <a href="./parts.html#fluIAVm">(fluIAVm)</a>. A measure of the M gene found in Influenza A viruses (IAV). The virus has segmented RNA genome and 7th segment, M gene, encodes 2 proteins. M1 is a matrix protein and M2 is a membrane protein. The M gene may be involved in determining host tropism. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Influenza A N1 neuraminidase gene</strong> <a href="./parts.html#fluN1neur">(fluN1neur)</a>. Measure of the N1 neuraminidase gene from the Highly Pathogenic Avian Influenza Virus (HPAIV), the H5N1 Influenza A Virus (IAV) subtype. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Mpox Clade I</strong> <a href="./parts.html#mpxClI">(mpxClI)</a>. The virus known as Mpox, previously also known as Monkey Pox, Clade I virus type. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Mpox Clade II</strong> <a href="./parts.html#mpxClII">(mpxClII)</a>. The virus known as Mpox, previously also known as Monkey Pox, Clade II virus type. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus Type 1</strong> <a href="./parts.html#den1">(den1)</a>. Dengue virus, Type 1, general measurement <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus Type 2</strong> <a href="./parts.html#den2">(den2)</a>. Dengue virus, Type 2, general measurement <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus Type 3</strong> <a href="./parts.html#den3">(den3)</a>. Dengue virus, Type 3, general measurement <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Dengue Virus Type 4</strong> <a href="./parts.html#den4">(den4)</a>. Dengue virus, Type 4, general measurement <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Male-specific (F+) coliphage - general</strong> <a href="./parts.html#fColiphage">(fColiphage)</a>. Male-specific (F+) coliphage - general <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
 </ul>
 </section>
 <section id="methods" class="level2">
@@ -3700,6 +3752,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Creative Commons Attribution 4.0</strong> <a href="./parts.html#ccby40">(ccby40)</a>. The licensing for the measure or data set is managed under the Creative Commons Attribution 4.0. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
+<strong>CC BY-NC 4.0 license</strong> <a href="./parts.html#ccbync40">(ccbync40)</a>. The licensing for the measure or data set is managed under the Creative Commons 4.0 by-attribution, non-commercial international license. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>CC BY-NC-SA 4.0 license</strong> <a href="./parts.html#ccbyncsa40">(ccbyncsa40)</a>. The licensing for the measure or data set is managed under the Creative Commons 4.0 by-attribution, non-commercial, and sharealike international license. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Creative Commons Attribution ShareAlike 4.0</strong> <a href="./parts.html#ccbysa40">(ccbysa40)</a>. The licensing for the measure or data set is managed under the Creative Commons Attribution ShareAlike 4.0. <br>Status: active. First released: 2.2.0. Last updated: 2.2.0.
 </li>
 <li>
@@ -4106,6 +4164,39 @@ ul.task-list li input[type="checkbox"] {
 </li>
 </ul>
 </section>
+<section id="relSet" class="level3">
+<h3 class="anchored" data-anchor-id="relSet">General Relationship Set</h3>
+<a href="./parts.html#relSet">(relSet)</a>set for valid values of relationshipID across all fields and tables. <br> Status: active. First Released: 2.2.3. Last updated: 2.2.3.
+<ul>
+<li>
+<strong>Is Before</strong> <a href="./parts.html#before">(before)</a>. Specifies that the object step or protocol occurs before the subject step or protocol in the overall protocol container. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Child relationship</strong> <a href="./parts.html#child">(child)</a>. Indicated that this is a sample generated from (an)other sample(s) either because of pooling or sub-sampling. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Co-located sample</strong> <a href="./parts.html#colocated">(colocated)</a>. Second or multiples samples collected at same location but different time (water, air) or at a nearby location (soil, sediment). Sent blind to laboratory. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Is concurrent to</strong> <a href="./parts.html#concurrent">(concurrent)</a>. Specifies that the object step or protocol occurs at the same time as the subject step or protocol in the overall protocol container. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Field sample replicate</strong> <a href="./parts.html#fieldReplicate">(fieldReplicate)</a>. A sample divided into two or more homogeneous parts. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Laboratory duplicate</strong> <a href="./parts.html#labDuplicate">(labDuplicate)</a>. Second (time or more) processing and analysis of sample. Usually for general chemistry or metals analyses. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Laboratory control sample duplicate</strong> <a href="./parts.html#lcsd">(lcsd)</a>. Known amounts of an analyte or representative compounds are added to a second “clean” matrix (lab water or clean sand) in laboratory. Duplicate of LCS <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Matrix spike duplicate</strong> <a href="./parts.html#msd">(msd)</a>. A known amounts of an analyte or representative compounds are added in the laboratory to a second aliquot of the sample used for matrix spike. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Specifies</strong> <a href="./parts.html#specifies">(specifies)</a>. Specifies that the object step or protocol occurs specifies details for the subject step or protocol in the overall protocol container. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+</ul>
+</section>
 <section id="replicateSet" class="level3">
 <h3 class="anchored" data-anchor-id="replicateSet">Replicate Type set</h3>
 <a href="./parts.html#replicateSet">(replicateSet)</a>The set for storing valid categorical values of replicate type. <br> Status: active. First Released: 2.0.0. Last updated: 2.0.0.
@@ -4162,13 +4253,31 @@ ul.task-list li input[type="checkbox"] {
 <strong>Air filter</strong> <a href="./parts.html#afu">(afu)</a>. Air filter as part of filtration or circulating unit. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Automatic composite sampling</strong> <a href="./parts.html#autoComp">(autoComp)</a>. A composite sampler which is automated to collect and store multiple wastewater samples across multiple time points. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Automatic sequential sampling</strong> <a href="./parts.html#autoSeq">(autoSeq)</a>. A composite sampler which is automated to collect and combine multiple samples of equal volume taken at a set time interval. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Cone-shaped sampling</strong> <a href="./parts.html#cone">(cone)</a>. Intrument type is a grab sample that has a controlled valve that opens to take a sample from a specific depth, then closes to bring the sample out. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Core sampling</strong> <a href="./parts.html#core">(core)</a>. Intrument type is a grab sampler that captures a vertical section of the substrate matrix of fecal sludge. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Desk or counter</strong> <a href="./parts.html#desk">(desk)</a>. Desk, table, countertop or other flat working surface. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Wastewater Effluent - non-specified</strong> <a href="./parts.html#effluNS">(effluNS)</a>. Sample material is wastewater effluent - whether primary, secondary or other is unspecified. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Fecal matter</strong> <a href="./parts.html#faeces">(faeces)</a>. Fecal matter. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Floor</strong> <a href="./parts.html#floor">(floor)</a>. Floor of a building or room. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Horizontal grab sampling</strong> <a href="./parts.html#horGrb">(horGrb)</a>. Intrument type is a grab sampler in which the container for the sample is mounted on the end of a rod, which is suitable for collecting discharge from a pipe or truck. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Holding tank wastewater</strong> <a href="./parts.html#htSam">(htSam)</a>. Wastewater sampled from a holding tank, such as from an airplane or ship <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -4201,6 +4310,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Septic tank wastewater</strong> <a href="./parts.html#septage">(septage)</a>. Wastewater from within a septic tank <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Wastewater Sludge - non-specified</strong> <a href="./parts.html#sludgeNS">(sludgeNS)</a>. Sample material is wastewater sludge - whether primary, secondary or other is unspecified. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Secondary clarifier sludge</strong> <a href="./parts.html#sSludge">(sSludge)</a>. Sludge produced by secondary clarifiers <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -4208,6 +4320,15 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Sewer sediment</strong> <a href="./parts.html#swrSed">(swrSed)</a>. Sediments obtained in sewer <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Passive (trap) sampling</strong> <a href="./parts.html#trap">(trap)</a>. A composite sampler that passively collects a sample without use of electricity or a battery. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Vacuum sludge sampling</strong> <a href="./parts.html#vac">(vac)</a>. Intrument type is a grab sampler that takes a sample at a designated depth with minimal disturbance to surrounding layers. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Vertical grab sampling</strong> <a href="./parts.html#vertGrb">(vertGrb)</a>. Intrument type is a grab sampler in which the container for the sample is mounted on the end of a rod, which is suitable for collecting waste from a tank. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 </ul>
 </section>
@@ -4312,6 +4433,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Airport</strong> <a href="./parts.html#airport">(airport)</a>. Airport sample shed category type <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Bus</strong> <a href="./parts.html#bus">(bus)</a>. A large motor vehicle carrying passengers by road, typically one serving the public on a fixed route and for a fare. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Bus Station</strong> <a href="./parts.html#busStat">(busStat)</a>. A terminal where buses arrive and depart. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Long-term acute care hospital</strong> <a href="./parts.html#ccc">(ccc)</a>. Acute care hospitals, or complex contuing care, that provide care for patients with average length of stay longer than 25 days. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -4333,6 +4460,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Hospital</strong> <a href="./parts.html#hosptl">(hosptl)</a>. Hospital <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Land-based Transit Hub</strong> <a href="./parts.html#landTH">(landTH)</a>. A transport hub is a place where passengers and cargo are exchanged between land-based vehicles and/or between land-based transport modes. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Long-term care facility</strong> <a href="./parts.html#ltcf">(ltcf)</a>. A residential healthcare facility that provides 24-medical care. These are also called skilled nursing facilities. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -4351,6 +4481,9 @@ ul.task-list li input[type="checkbox"] {
 <strong>Other residential building</strong> <a href="./parts.html#orb">(orb)</a>. Individual residential buildings or institutions not captured in other categories <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Port or Harbour</strong> <a href="./parts.html#port">(port)</a>. A harbor is any sheltered body of water where boats or ships may moor or anchor. A port is an installation that has been built around a harbor with facilities for loading and unloading such vessels. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>School</strong> <a href="./parts.html#school">(school)</a>. A school serving students in the kindergarten to 12th grade range <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -4363,7 +4496,22 @@ ul.task-list li input[type="checkbox"] {
 <strong>Airport terminal</strong> <a href="./parts.html#terminal">(terminal)</a>. Airport terminal sample shed category type <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Transport hub - General</strong> <a href="./parts.html#tHub">(tHub)</a>. A tansport hub not otherwise specified. i.e.&nbsp;a place where passengers and cargo are exchanged between vehicles or/and between transport modes. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Train</strong> <a href="./parts.html#train">(train)</a>. A series of railroad cars moved as a unit by a locomotive or by integral motors. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Transportation vehicle - general</strong> <a href="./parts.html#transp">(transp)</a>. A vehicle, i.e.&nbsp;a mobile machine, transporting people or cargo, of a type not otherwise specified. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Train Station</strong> <a href="./parts.html#trStat">(trStat)</a>. A place on a railroad line where trains regularly stop so that passengers can get on or off. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>University campus</strong> <a href="./parts.html#uCampus">(uCampus)</a>. Universityor college campus - comprising an entire campus or part of a campus. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Water-based Transit Hub</strong> <a href="./parts.html#waterTH">(waterTH)</a>. A transport hub is a place where passengers and cargo are exchanged between water-based vehicles and/or between water-based transport modes. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 </ul>
 </section>
@@ -4414,10 +4562,19 @@ ul.task-list li input[type="checkbox"] {
 <strong>Protocol relationships table Shorthand</strong> <a href="./parts.html#pr">(pr)</a>. The abbreviated short name used to reference the The table that contains the organizational information and details (such as order) about a given protocol, recorded as a series of protocol steps (protocolSteps). <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
 </li>
 <li>
+<strong>Protocols table Shorthand</strong> <a href="./parts.html#pro">(pro)</a>. The abbreviated short name used to reference the The table for protocols. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
+</li>
+<li>
 <strong>Protocol steps table Shorthand</strong> <a href="./parts.html#ps">(ps)</a>. The abbreviated short name used to reference the The table for collecting metadata on individual steps in a protocol, methodological process, or assay. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
 </li>
 <li>
 <strong>Quality reports table Shorthand</strong> <a href="./parts.html#qr">(qr)</a>. The abbreviated short name used to reference the The table for recording the various quality metrics and indicators for samples and measures. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
+</li>
+<li>
+<strong>Sample relationships table Shorthand</strong> <a href="./parts.html#sar">(sar)</a>. The abbreviated short name used to reference the Table for recording the relationships between samples. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
+</li>
+<li>
+<strong>Sample report table Shorthand</strong> <a href="./parts.html#sas">(sas)</a>. The abbreviated short name used to reference the The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
 </li>
 <li>
 <strong>Sets look-up table Shorthand</strong> <a href="./parts.html#se">(se)</a>. The abbreviated short name used to reference the Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together. <br>Status: active. First released: 2.2.2. Last updated: 2.2.2.
@@ -4450,6 +4607,12 @@ ul.task-list li input[type="checkbox"] {
 <strong>Building cleanout</strong> <a href="./parts.html#buildCO">(buildCO)</a>. Specifies a site type that is a capped pipe that connects to a building’s main sewer line. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
+<strong>Composting toilet</strong> <a href="./parts.html#compToi">(compToi)</a>. A self-contained toilet system wherein human waste is designed to be composted. Usually with the addition of secondary materials, like sawdust. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Sewer (drain)</strong> <a href="./parts.html#drain">(drain)</a>. A pipe that carries water or sewage away from a place, or an opening in a surface that leads to said pipe. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
 <strong>Estuary, natural water body</strong> <a href="./parts.html#estuary">(estuary)</a>. Estuary, natural water body <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
@@ -4460,6 +4623,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Lake, natural water body</strong> <a href="./parts.html#lake">(lake)</a>. Lake, natural water body <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Latrine</strong> <a href="./parts.html#latrine">(latrine)</a>. A toilet or outhouse, especially a communal one in a camp or barracks. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Major sewer pipeline</strong> <a href="./parts.html#mSwrPpl">(mSwrPpl)</a>. Major sewer pipeline <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -4487,6 +4653,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Sewage truck</strong> <a href="./parts.html#swgTrck">(swgTrck)</a>. Sewage truck <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Wastewater Triturator</strong> <a href="./parts.html#triturator">(triturator)</a>. The location where wastewater transportation vehicles unload wastewater. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Upstream sites</strong> <a href="./parts.html#upstream">(upstream)</a>. A general site type for upstream wastewater sampling sites. <br>Status: active. First released: 1.1.0. Last updated: 2.0.0.
@@ -4687,6 +4856,9 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>WHO nomenclature</strong> <a href="./parts.html#who">(who)</a>. Specifies variant or genetic nomenclature as set out by the World Health Organization. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
+<li>
+<strong>Nomenclaturre from the NCBI</strong> <a href="./parts.html#ncbiNom">(ncbiNom)</a>. Nomenclaturre from the National Center for Biotechnology Information <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
 </ul>
 </section>
 <section id="qualityIndicators" class="level2">
@@ -4774,6 +4946,12 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>Sample stored at wrong temperature</strong> <a href="./parts.html#wrongTemp">(wrongTemp)</a>. Sample was stored at an inappropriate temperature. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
+<li>
+<strong>Measured levels below LOQ</strong> <a href="./parts.html#belowLOQ">(belowLOQ)</a>. Indicates that a measurement detected the analyte, but at levels below the limit of quantification (LOQ). <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Delayed Arrival or Prolonged Transit</strong> <a href="./parts.html#delayArriv">(delayArriv)</a>. A substantial delay (ie. of more than 14 days) between sample collection and the start of analysis. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
 </ul>
 </section>
 <section id="qualityIndSets" class="level2">
@@ -4800,6 +4978,12 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>
 <strong>Below LOD</strong> <a href="./parts.html#beLOD">(beLOD)</a>. Measure is below the limit of detection (LOD) for a specific analyte. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Measured levels below LOQ</strong> <a href="./parts.html#belowLOQ">(belowLOQ)</a>. Indicates that a measurement detected the analyte, but at levels below the limit of quantification (LOQ). <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Delayed Arrival or Prolonged Transit</strong> <a href="./parts.html#delayArriv">(delayArriv)</a>. A substantial delay (ie. of more than 14 days) between sample collection and the start of analysis. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Experiment Failed</strong> <a href="./parts.html#expFail">(expFail)</a>. PCR experiment failed. No value reported. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -4855,6 +5039,9 @@ ul.task-list li input[type="checkbox"] {
 <li>
 <strong>Sparse coverage</strong> <a href="./parts.html#sC">(sC)</a>. Sequencing shows sparse coverage, ie. numerical breadth of coverage shows as adequate but coverage plots reveal missing genome pieces. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
+<li>
+<strong>Wide 95% interval</strong> <a href="./parts.html#wI">(wI)</a>. The 95% interval is too wide, low confidence in results. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
 </ul>
 </section>
 <section id="pcrQualitySet" class="level3">
@@ -4863,6 +5050,12 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>
 <strong>Below LOD</strong> <a href="./parts.html#beLOD">(beLOD)</a>. Measure is below the limit of detection (LOD) for a specific analyte. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Measured levels below LOQ</strong> <a href="./parts.html#belowLOQ">(belowLOQ)</a>. Indicates that a measurement detected the analyte, but at levels below the limit of quantification (LOQ). <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
+<li>
+<strong>Delayed Arrival or Prolonged Transit</strong> <a href="./parts.html#delayArriv">(delayArriv)</a>. A substantial delay (ie. of more than 14 days) between sample collection and the start of analysis. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
 </li>
 <li>
 <strong>Experiment Failed</strong> <a href="./parts.html#expFail">(expFail)</a>. PCR experiment failed. No value reported. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
@@ -4906,6 +5099,9 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="sampleQualitySet">Sample quality set</h3>
 <a href="./parts.html#sampleQualitySet">(sampleQualitySet)</a>Quality set for a sample. <br> Status: active. First Released: 2.0.0. Last updated: 2.0.0.
 <ul>
+<li>
+<strong>Delayed Arrival or Prolonged Transit</strong> <a href="./parts.html#delayArriv">(delayArriv)</a>. A substantial delay (ie. of more than 14 days) between sample collection and the start of analysis. <br>Status: active. First released: 2.2.3. Last updated: 2.2.3.
+</li>
 <li>
 <strong>Sample frozen</strong> <a href="./parts.html#frozen">(frozen)</a>. Sample was frozen before analysis or processing <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
@@ -4968,6 +5164,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>
 <strong>Sparse coverage</strong> <a href="./parts.html#sC">(sC)</a>. Sequencing shows sparse coverage, ie. numerical breadth of coverage shows as adequate but coverage plots reveal missing genome pieces. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+</li>
+<li>
+<strong>Wide 95% interval</strong> <a href="./parts.html#wI">(wI)</a>. The 95% interval is too wide, low confidence in results. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 </ul>
 </section>
@@ -5242,7 +5441,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Gene copies per copy of crAssphage</strong> <a href="./parts.html#gcCrA">(gcCrA)</a>. Gene or variant copies per copy of crAssphage. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>gene copies per day per 100,000</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>gene copies per day per 100,000 people</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Gene copies per gram solids</strong> <a href="./parts.html#gCGS">(gCGS)</a>. Gene or variant copies per gram solids. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -5500,7 +5699,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Gene copies per copy of crAssphage</strong> <a href="./parts.html#gcCrA">(gcCrA)</a>. Gene or variant copies per copy of crAssphage. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>gene copies per day per 100,000</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>gene copies per day per 100,000 people</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Gene copies per gram solids</strong> <a href="./parts.html#gCGS">(gCGS)</a>. Gene or variant copies per gram solids. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
@@ -5617,7 +5816,7 @@ ul.task-list li input[type="checkbox"] {
 <strong>Gene copies per copy of crAssphage</strong> <a href="./parts.html#gcCrA">(gcCrA)</a>. Gene or variant copies per copy of crAssphage. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
 </li>
 <li>
-<strong>gene copies per day per 100,000</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
+<strong>gene copies per day per 100,000 people</strong> <a href="./parts.html#gcD100">(gcD100)</a>. The unit for measures reflecting the gene copies per day per 100,000 people in the population. <br>Status: active. First released: 2.0.0. Last updated: 2.0.0.
 </li>
 <li>
 <strong>Gene copies per gram solids</strong> <a href="./parts.html#gCGS">(gCGS)</a>. Gene or variant copies per gram solids. <br>Status: active. First released: 1.0.0. Last updated: 2.0.0.
