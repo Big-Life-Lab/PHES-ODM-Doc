@@ -140,21 +140,24 @@ This flexible structure allows protocol steps and subprotocols to be reused in a
 
 There are 13 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn't been provided. For a quick breakdown, see the below table:
 
-| User ID               | Formula                                                                | Example                |
-|-----------------------|------------------------------------------------------------------------|------------------------|
-| Address ID            | country code + province code + 2-3 letters of municipality + row       | caOnOtt002             |
-| Contact ID            | orgID + first 3 letters of role                                        | caOnOtt002UniRes       |
-| Dataset ID            | datasetID = orgID                                                      | caOnOtt002Uni          |
-| Instrument ID         | first 3 letters of manufacturer  + first 3 letters of name  +  first 3 letters of model + index                                                                                                   | fisHanHan              |
-| Organization ID       | addID + first 3 letters of name                                        | caOnOtt002Uni          |
-| Polygon ID            | orgID + siteID                                                         | caOnOtt002UniCaOnOttOtt|
-| Protocol ID           | first 5 letters of name + protocolVersion                              | pmmov1                 |
-| Protocol Step ID      | orgID + last 3 letters of part ID of method/measure                    | caOnOtt002UniIon       |
-| Quality ID            | quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for                                                                        | flagJcaOnOttOttawasite1202008021000covN1002 |
-| Measure report ID     | sampleID + part ID of measure + row number                             |caOnOttOtt20200802Covn1002 |
-| Measure set report ID | Report ID of first measure in the set + # measures in the set          |caOnOttOtt20200801Covn1002003 |
-| Sample ID             | siteID + collDT/collDTEnd (not including time) + index (if applicable) | caOnOttOtt20200801     |
-| Site ID               | country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name                                                                                        | caOnOttOtt             |
+| User ID               | Formula                                            | Example                | Synonyms    |
+|-----------------------|----------------------------------------------------|------------------------|-------------|
+| Address ID            | country code + province code + 2-3 letters of municipality + row       | caOnOtt002     | None |
+| Contact ID            | orgID + first 3 letters of role                                        | caOnOtt002UniRes | None |
+| Dataset ID            | datasetID = orgID                                                | caOnOtt002Uni  | parDatasetID |
+| Instrument ID         | first 3 letters of manufacturer  + first 3 letters of name  +  first 3 letters of model + index                                                                                              | fisHanHan   |  None |
+| Organization ID       | addID + first 3 letters of name                       | caOnOtt002Uni | custodyID, funderID, 
+| Polygon ID            | orgID + siteID                                               | caOnOtt002UniCaOnOttOtt| None |
+| Protocol ID           | first 5 letters of name + protocolVersion                  | pmmov1  | protocolIDContainer |
+| Protocol Step ID      | orgID + last 3 letters of part ID of method/measure            | caOnOtt002UniIon | None |
+| Protocol Relationships ID | orgID + row number to four digits   | caOnOtt002Uni003 | None |
+| Quality Report ID            | quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for                                        | flagJcaOnOttOttawasite1202008021000covN1002 | None |
+| Measure report ID     | sampleID + part ID of measure + row number               |caOnOttOtt20200802Covn1002 | None |
+| Measure set report ID | Report ID of first measure in the set + # measures in the set          |caOnOttOtt20200801Covn1002003 |  None |
+| Sample ID             | siteID + collDT/collDTEnd (not including time) + index (if applicable) | caOnOttOtt20200801 | None |
+| Sample Relationships ID | Sample ID + row number to four digits   | caOnOttOtt20200801003 | None |
+| Site ID               | country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name                                                                        | caOnOttOtt       | parSiteID |
+
 
 To go into greater detail, the *Address ID* uses the recipe country code + province code + 2-3 letters of municipality + row. So it's built using pieces of the metadata fields for the given address' entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it's recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.
 
