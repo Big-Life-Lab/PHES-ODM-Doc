@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -31,15 +31,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./sets.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2530bb879c2d5a982b48ad574e4712b1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,7 +97,8 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="././assets/ODM-logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="././assets/ODM-logo.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="././assets/ODM-logo.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</a> 
@@ -208,7 +211,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#mandatory-optional-mandatoryif" id="toc-mandatory-optional-mandatoryif" class="nav-link" data-scroll-target="#mandatory-optional-mandatoryif">Mandatory, optional, mandatoryIf</a></li>
   <li><a href="#table-list" id="toc-table-list" class="nav-link" data-scroll-target="#table-list">Table list</a>
   <ul class="collapse">
+  <li><a href="#accessions" id="toc-accessions" class="nav-link" data-scroll-target="#accessions">accessions Table</a></li>
   <li><a href="#addresses" id="toc-addresses" class="nav-link" data-scroll-target="#addresses">Address table</a></li>
+  <li><a href="#calculations" id="toc-calculations" class="nav-link" data-scroll-target="#calculations">Calculations Table</a></li>
   <li><a href="#contacts" id="toc-contacts" class="nav-link" data-scroll-target="#contacts">Contact table</a></li>
   <li><a href="#countries" id="toc-countries" class="nav-link" data-scroll-target="#countries">Countries look-up tables</a></li>
   <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">Dataset table</a></li>
@@ -218,6 +223,8 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#measureSets" id="toc-measureSets" class="nav-link" data-scroll-target="#measureSets">Measure set report table</a></li>
   <li><a href="#organizations" id="toc-organizations" class="nav-link" data-scroll-target="#organizations">Organization table</a></li>
   <li><a href="#parts" id="toc-parts" class="nav-link" data-scroll-target="#parts">Parts Look-up table</a></li>
+  <li><a href="#phActions" id="toc-phActions" class="nav-link" data-scroll-target="#phActions">Public Health Actions Report Table</a></li>
+  <li><a href="#polygonRelationships" id="toc-polygonRelationships" class="nav-link" data-scroll-target="#polygonRelationships">Polygon Relationships Table</a></li>
   <li><a href="#polygons" id="toc-polygons" class="nav-link" data-scroll-target="#polygons">Polygon table</a></li>
   <li><a href="#protocolRelationships" id="toc-protocolRelationships" class="nav-link" data-scroll-target="#protocolRelationships">Protocol relationships table</a></li>
   <li><a href="#protocols" id="toc-protocols" class="nav-link" data-scroll-target="#protocols">Protocols table</a></li>
@@ -256,7 +263,323 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Dictionary v2.2.3 Documentation v2.1.0</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>New names:
+• `` -&gt; `...127`
+• `` -&gt; `...128`
+• `` -&gt; `...129`
+• `` -&gt; `...130`
+• `` -&gt; `...131`
+• `` -&gt; `...132`
+• `` -&gt; `...133`
+• `` -&gt; `...134`
+• `` -&gt; `...135`
+• `` -&gt; `...136`
+• `` -&gt; `...137`
+• `` -&gt; `...138`
+• `` -&gt; `...139`
+• `` -&gt; `...140`
+• `` -&gt; `...141`
+• `` -&gt; `...142`
+• `` -&gt; `...143`
+• `` -&gt; `...144`
+• `` -&gt; `...145`
+• `` -&gt; `...146`
+• `` -&gt; `...147`
+• `` -&gt; `...148`
+• `` -&gt; `...149`
+• `` -&gt; `...150`
+• `` -&gt; `...151`
+• `` -&gt; `...152`
+• `` -&gt; `...153`
+• `` -&gt; `...154`
+• `` -&gt; `...155`
+• `` -&gt; `...156`
+• `` -&gt; `...157`
+• `` -&gt; `...158`
+• `` -&gt; `...159`
+• `` -&gt; `...160`
+• `` -&gt; `...161`
+• `` -&gt; `...162`
+• `` -&gt; `...163`
+• `` -&gt; `...164`
+• `` -&gt; `...165`
+• `` -&gt; `...166`
+• `` -&gt; `...167`
+• `` -&gt; `...168`
+• `` -&gt; `...169`
+• `` -&gt; `...170`
+• `` -&gt; `...171`
+• `` -&gt; `...172`
+• `` -&gt; `...173`
+• `` -&gt; `...174`
+• `` -&gt; `...175`
+• `` -&gt; `...176`
+• `` -&gt; `...177`
+• `` -&gt; `...178`
+• `` -&gt; `...179`
+• `` -&gt; `...180`
+• `` -&gt; `...181`
+• `` -&gt; `...182`
+• `` -&gt; `...183`
+• `` -&gt; `...184`
+• `` -&gt; `...185`
+• `` -&gt; `...186`
+• `` -&gt; `...187`
+• `` -&gt; `...188`
+• `` -&gt; `...189`
+• `` -&gt; `...190`
+• `` -&gt; `...191`
+• `` -&gt; `...192`
+• `` -&gt; `...193`
+• `` -&gt; `...194`
+• `` -&gt; `...195`
+• `` -&gt; `...196`
+• `` -&gt; `...197`
+• `` -&gt; `...198`
+• `` -&gt; `...199`
+• `` -&gt; `...200`
+• `` -&gt; `...201`
+• `` -&gt; `...202`
+• `` -&gt; `...203`
+• `` -&gt; `...204`
+• `` -&gt; `...205`
+• `` -&gt; `...206`
+• `` -&gt; `...207`
+• `` -&gt; `...208`
+• `` -&gt; `...209`
+• `` -&gt; `...210`
+• `` -&gt; `...211`
+• `` -&gt; `...212`
+• `` -&gt; `...213`
+• `` -&gt; `...214`
+• `` -&gt; `...215`
+• `` -&gt; `...216`
+• `` -&gt; `...217`
+• `` -&gt; `...218`
+• `` -&gt; `...219`
+• `` -&gt; `...220`
+• `` -&gt; `...221`
+• `` -&gt; `...222`
+• `` -&gt; `...223`
+• `` -&gt; `...224`
+• `` -&gt; `...225`
+• `` -&gt; `...226`
+• `` -&gt; `...227`
+• `` -&gt; `...228`
+• `` -&gt; `...229`
+• `` -&gt; `...230`
+• `` -&gt; `...231`
+• `` -&gt; `...232`
+• `` -&gt; `...233`
+• `` -&gt; `...234`
+• `` -&gt; `...235`
+• `` -&gt; `...236`
+• `` -&gt; `...237`
+• `` -&gt; `...238`
+• `` -&gt; `...239`
+• `` -&gt; `...240`
+• `` -&gt; `...241`
+• `` -&gt; `...242`
+• `` -&gt; `...243`
+• `` -&gt; `...244`
+• `` -&gt; `...245`
+• `` -&gt; `...246`
+• `` -&gt; `...247`
+• `` -&gt; `...248`
+• `` -&gt; `...249`
+• `` -&gt; `...250`
+• `` -&gt; `...251`
+• `` -&gt; `...252`
+• `` -&gt; `...253`
+• `` -&gt; `...254`
+• `` -&gt; `...255`
+• `` -&gt; `...256`
+• `` -&gt; `...257`
+• `` -&gt; `...258`
+• `` -&gt; `...259`
+• `` -&gt; `...260`
+• `` -&gt; `...261`
+• `` -&gt; `...262`
+• `` -&gt; `...263`
+• `` -&gt; `...264`
+• `` -&gt; `...265`
+• `` -&gt; `...266`
+• `` -&gt; `...267`
+• `` -&gt; `...268`
+• `` -&gt; `...269`
+• `` -&gt; `...270`
+• `` -&gt; `...271`
+• `` -&gt; `...272`
+• `` -&gt; `...273`
+• `` -&gt; `...274`
+• `` -&gt; `...275`
+• `` -&gt; `...276`
+• `` -&gt; `...277`
+• `` -&gt; `...278`
+• `` -&gt; `...279`
+• `` -&gt; `...280`
+• `` -&gt; `...281`
+• `` -&gt; `...282`
+• `` -&gt; `...283`
+• `` -&gt; `...284`
+• `` -&gt; `...285`
+• `` -&gt; `...286`
+• `` -&gt; `...287`
+• `` -&gt; `...288`
+• `` -&gt; `...289`
+• `` -&gt; `...290`
+• `` -&gt; `...291`
+• `` -&gt; `...292`
+• `` -&gt; `...293`
+• `` -&gt; `...294`
+• `` -&gt; `...295`
+• `` -&gt; `...296`
+• `` -&gt; `...297`
+• `` -&gt; `...298`
+• `` -&gt; `...299`
+• `` -&gt; `...300`
+• `` -&gt; `...301`
+• `` -&gt; `...302`
+• `` -&gt; `...303`
+• `` -&gt; `...304`
+• `` -&gt; `...305`
+• `` -&gt; `...306`
+• `` -&gt; `...307`
+• `` -&gt; `...308`
+• `` -&gt; `...309`
+• `` -&gt; `...310`
+• `` -&gt; `...311`
+• `` -&gt; `...312`
+• `` -&gt; `...313`
+• `` -&gt; `...314`
+• `` -&gt; `...315`
+• `` -&gt; `...316`
+• `` -&gt; `...317`
+• `` -&gt; `...318`
+• `` -&gt; `...319`
+• `` -&gt; `...320`
+• `` -&gt; `...321`
+• `` -&gt; `...322`
+• `` -&gt; `...323`
+• `` -&gt; `...324`
+• `` -&gt; `...325`
+• `` -&gt; `...326`
+• `` -&gt; `...327`
+• `` -&gt; `...328`
+• `` -&gt; `...329`
+• `` -&gt; `...330`
+• `` -&gt; `...331`
+• `` -&gt; `...332`
+• `` -&gt; `...333`
+• `` -&gt; `...334`
+• `` -&gt; `...335`
+• `` -&gt; `...336`
+• `` -&gt; `...337`
+• `` -&gt; `...338`
+• `` -&gt; `...339`
+• `` -&gt; `...340`
+• `` -&gt; `...341`
+• `` -&gt; `...342`
+• `` -&gt; `...343`
+• `` -&gt; `...344`
+• `` -&gt; `...345`
+• `` -&gt; `...346`
+• `` -&gt; `...347`
+• `` -&gt; `...348`
+• `` -&gt; `...349`
+• `` -&gt; `...350`
+• `` -&gt; `...351`
+• `` -&gt; `...352`
+• `` -&gt; `...353`
+• `` -&gt; `...354`
+• `` -&gt; `...355`
+• `` -&gt; `...356`
+• `` -&gt; `...357`
+• `` -&gt; `...358`
+• `` -&gt; `...359`
+• `` -&gt; `...360`
+• `` -&gt; `...361`
+• `` -&gt; `...362`
+• `` -&gt; `...363`
+• `` -&gt; `...364`
+• `` -&gt; `...365`
+• `` -&gt; `...366`
+• `` -&gt; `...367`
+• `` -&gt; `...368`
+• `` -&gt; `...369`
+• `` -&gt; `...370`
+• `` -&gt; `...371`
+• `` -&gt; `...372`
+• `` -&gt; `...373`
+• `` -&gt; `...374`
+• `` -&gt; `...375`
+• `` -&gt; `...376`
+• `` -&gt; `...377`
+• `` -&gt; `...378`
+• `` -&gt; `...379`
+• `` -&gt; `...380`
+• `` -&gt; `...381`
+• `` -&gt; `...382`
+• `` -&gt; `...383`
+• `` -&gt; `...384`
+• `` -&gt; `...385`
+• `` -&gt; `...386`
+• `` -&gt; `...387`
+• `` -&gt; `...388`
+• `` -&gt; `...389`
+• `` -&gt; `...390`
+• `` -&gt; `...391`
+• `` -&gt; `...392`
+• `` -&gt; `...393`
+• `` -&gt; `...394`
+• `` -&gt; `...395`
+• `` -&gt; `...396`
+• `` -&gt; `...397`
+• `` -&gt; `...398`
+• `` -&gt; `...399`
+• `` -&gt; `...400`
+• `` -&gt; `...401`
+• `` -&gt; `...402`
+• `` -&gt; `...403`
+• `` -&gt; `...404`
+• `` -&gt; `...405`
+• `` -&gt; `...406`
+• `` -&gt; `...407`
+• `` -&gt; `...408`
+• `` -&gt; `...409`
+• `` -&gt; `...410`
+• `` -&gt; `...411`
+• `` -&gt; `...412`
+• `` -&gt; `...413`
+• `` -&gt; `...414`
+• `` -&gt; `...415`
+• `` -&gt; `...416`
+• `` -&gt; `...417`
+• `` -&gt; `...418`
+• `` -&gt; `...419`
+• `` -&gt; `...420`
+• `` -&gt; `...421`
+• `` -&gt; `...422`
+• `` -&gt; `...423`
+• `` -&gt; `...424`
+• `` -&gt; `...425`
+• `` -&gt; `...426`
+• `` -&gt; `...427`
+• `` -&gt; `...428`
+• `` -&gt; `...429`
+• `` -&gt; `...430`
+• `` -&gt; `...431`
+• `` -&gt; `...432`
+• `` -&gt; `...433`
+• `` -&gt; `...434`
+• `` -&gt; `...435`
+• `` -&gt; `...436`
+• `` -&gt; `...437`</code></pre>
+</div>
+</div>
+<p>Dictionary v3.0.0 Documentation v2.1.0</p>
 <p>The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as “long” tables as it stores data with one measurement per row. Each table has mandatory and optional headers.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -264,7 +587,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Data storage
+<span class="screen-reader-only">Note</span>Data storage
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -297,7 +620,13 @@ Data storage
 <h2 class="anchored" data-anchor-id="table-list">Table list</h2>
 <ul>
 <li>
+<a href="#accessions">accessions Table</a>
+</li>
+<li>
 <a href="#addresses">Address table</a>
+</li>
+<li>
+<a href="#calculations">Calculations Table</a>
 </li>
 <li>
 <a href="#contacts">Contact table</a>
@@ -325,6 +654,12 @@ Data storage
 </li>
 <li>
 <a href="#parts">Parts Look-up table</a>
+</li>
+<li>
+<a href="#phActions">Public Health Actions Report Table</a>
+</li>
+<li>
+<a href="#polygonRelationships">Polygon Relationships Table</a>
 </li>
 <li>
 <a href="#polygons">Polygon table</a>
@@ -363,9 +698,27 @@ Data storage
 <a href="#zones">Zones look-up table</a>
 </li>
 </ul>
+<section id="accessions" class="level3">
+<h3 class="anchored" data-anchor-id="accessions">accessions Table</h3>
+partID: <a href="./parts.html#accessions">accessions</a>. Table for recording accession IDs for external data, namely sequences in large sequencing databases and repositories. The short name for the table (partID) can be found in the instructions field. ac
+<ul>
+<li>
+<strong>Accession Number in Repository</strong> (<a href="./parts.html#accessNum">accessNum</a>). The accession number for the data entry in the given data repository or hosting platform.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Version of Data Hosting Platform/Repository</strong> (<a href="./parts.html#hostVersion">hostVersion</a>). The version of the data repository or hosting platform being used.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+</ul>
+</section>
 <section id="addresses" class="level3">
 <h3 class="anchored" data-anchor-id="addresses">Address table</h3>
-partID: <a href="./parts.html#addresses">addresses</a>. The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals). The Sites, Organizations, and Contacts tables include a link to the addresses table through Address ID.
+partID: <a href="./parts.html#addresses">addresses</a>. The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals). The Sites, Organizations, and Contacts tables include a link to the addresses table through Address ID. The short name for the table (partID) can be found in the instructions field. ad
 <ul>
 <li>
 <strong>Address Line 1</strong> (<a href="./parts.html#addL1">addL1</a>). Line 1 (the street name, number and direction) for a given address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -377,28 +730,49 @@ partID: <a href="./parts.html#addresses">addresses</a>. The table that contains 
 <strong>City</strong> (<a href="./parts.html#city">city</a>). The city where a site or organization is located; part of the address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>State, Province, or Region</strong> (<a href="./parts.html#stateProvReg">stateProvReg</a>). The state, province, or region where a site or organization is located; part of the address.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
-</li>
-<li>
 <strong>Postal or Zip Code</strong> (<a href="./parts.html#pCode">pCode</a>). The zip code or postal code for a given address, specifying a specifc geographic area.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+</ul>
+</section>
+<section id="calculations" class="level3">
+<h3 class="anchored" data-anchor-id="calculations">Calculations Table</h3>
+partID: <a href="./parts.html#calculations">calculations</a>. Table for recording data on data treatments and calculations applied to measurements and reported values. cl
+<ul>
+<li>
+<strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>ISO 3166-1 alpha-2 country code</strong> (<a href="./parts.html#isoCode">isoCode</a>). The ISO 3166-1 alpha-2 code, a two-letter country code which is also used to create the ISO 3166-2 country subdivision code and the Internet country code top-level domain.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Summary worksheet</strong> (<a href="./parts.html#summary">summary</a>). Summary sheet of the dictionary.xlxs file.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>ISO 3166-2 code for country sub-domain</strong> (<a href="./parts.html#isoZone">isoZone</a>). The ISO 3166-2 codes for the names of the principal subdivisions (e.g., provinces, states, departments, regions) of all countries coded in ISO 3166-1.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Sequence Order</strong> (<a href="./parts.html#order">order</a>). The order a single calculation/data treatment takes within the full container pipeline/workflow.<br>Role: Header.<br>Requirement: recommended.<br>Data type: integer.
+</li>
+<li>
+<strong>Equation</strong> (<a href="./parts.html#equation">equation</a>). The equation used in the calculation/data treatment.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
+</li>
+<li>
+<strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Source Code</strong> (<a href="./parts.html#sourceCode">sourceCode</a>). The source code for the calculation/data treatment, more applicable for algorithms/more complex steps.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
+</li>
+<li>
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="contacts" class="level3">
 <h3 class="anchored" data-anchor-id="contacts">Contact table</h3>
-partID: <a href="./parts.html#contacts">contacts</a>. The table that contains information about a contact; a person who is the contact of a site or laboratory. adapt from verson 1 documentation
+partID: <a href="./parts.html#contacts">contacts</a>. The table that contains information about a contact; a person who is the contact of a site or laboratory. The short name for the table (partID) can be found in the instructions field. co
 <ul>
 <li>
 <strong>First name of contact</strong> (<a href="./parts.html#firstName">firstName</a>). Specifies the first name of a given contact.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -419,13 +793,13 @@ partID: <a href="./parts.html#contacts">contacts</a>. The table that contains in
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="countries" class="level3">
 <h3 class="anchored" data-anchor-id="countries">Countries look-up tables</h3>
-partID: <a href="./parts.html#countries">countries</a>. Look up table for the possible country inputs.
+partID: <a href="./parts.html#countries">countries</a>. Look up table for the possible country inputs. The short name for the table (partID) can be found in the instructions field. cu
 <ul>
 <li>
 <strong>ISO 3166-1 alpha-3 country code</strong> (<a href="./parts.html#isoCodeX">isoCodeX</a>). The ISO 3166-1 alpha-3 code, a three-letter country code which may allow a better visual association between the code and the country names than the 3166-1 alpha-2 code.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -449,22 +823,22 @@ partID: <a href="./parts.html#countries">countries</a>. Look up table for the po
 <strong>Country exonym</strong> (<a href="./parts.html#countryExonym">countryExonym</a>). The English name foreigners use for the country.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Capital city exonym</strong> (<a href="./parts.html#capitalExonym">capitalExonym</a>). The English name foreigners use for the country‚Äö√Ñ√¥s capital.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Capital city exonym</strong> (<a href="./parts.html#capitalExonym">capitalExonym</a>). The English name foreigners use for the country’s capital.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Country endonym</strong> (<a href="./parts.html#countryEndonym">countryEndonym</a>). The name locals use for their country.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Capital city endonym</strong> (<a href="./parts.html#capitalEndonym">capitalEndonym</a>). The name locals use for their country‚Äö√Ñ√¥s capital.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Capital city endonym</strong> (<a href="./parts.html#capitalEndonym">capitalEndonym</a>). The name locals use for their country’s capital.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>National language script</strong> (<a href="./parts.html#langScript">langScript</a>). The language(s) and script(s) used for the country‚Äö√Ñ√¥s capital endonyms.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>National language script</strong> (<a href="./parts.html#langScript">langScript</a>). The language(s) and script(s) used for the country’s capital endonyms.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Country national phone prefix</strong> (<a href="./parts.html#phone">phone</a>). International dialing code for the country.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Coordinated universal time (UTC) zone</strong> (<a href="./parts.html#utc">utc</a>). UTC ‚Äö√Ñ√¨ Time zone.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+<strong>Coordinated universal time (UTC) zone</strong> (<a href="./parts.html#utc">utc</a>). UTC – Time zone.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
 <strong>Coordinated universal time (UTC) zone in daylight savings</strong> (<a href="./parts.html#utcDST">utcDST</a>). Time zone during Daylight Saving Time.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -473,7 +847,7 @@ partID: <a href="./parts.html#countries">countries</a>. Look up table for the po
 </section>
 <section id="datasets" class="level3">
 <h3 class="anchored" data-anchor-id="datasets">Dataset table</h3>
-partID: <a href="./parts.html#datasets">datasets</a>. A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors.
+partID: <a href="./parts.html#datasets">datasets</a>. A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors. The short name for the table (partID) can be found in the instructions field. ds
 <ul>
 <li>
 <strong>Dataset creation date</strong> (<a href="./parts.html#datasetDate">datasetDate</a>). Specifies the date a given dataset was created.<br>Role: Header.<br>Requirement: recommended.<br>Data type: datetime.
@@ -488,16 +862,19 @@ partID: <a href="./parts.html#datasets">datasets</a>. A report table for capturi
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
+<strong>Original Data Format</strong> (<a href="./parts.html#originalFormat">originalFormat</a>). The original structure or model used to record and store the data. This helps indicate if data have been transformed or mapped into the ODM structure.<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#ogFormSet">ogFormSet</a>
+</li>
+<li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="instruments" class="level3">
 <h3 class="anchored" data-anchor-id="instruments">Instrument table</h3>
-partID: <a href="./parts.html#instruments">instruments</a>. The table that contains information about instruments. adapt from verson 1 documentation
+partID: <a href="./parts.html#instruments">instruments</a>. The table that contains information about instruments. The short name for the table (partID) can be found in the instructions field. in
 <ul>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
@@ -524,13 +901,13 @@ partID: <a href="./parts.html#instruments">instruments</a>. The table that conta
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="languages" class="level3">
 <h3 class="anchored" data-anchor-id="languages">Language Look-up table</h3>
-partID: <a href="./parts.html#languages">languages</a>. Look up table for all languages, used to give structure to the translation table.
+partID: <a href="./parts.html#languages">languages</a>. Look up table for all languages, used to give structure to the translation table. The short name for the table (partID) can be found in the instructions field. la
 <ul>
 <li>
 <strong>Language family</strong> (<a href="./parts.html#langFam">langFam</a>). Specifies the language family of a given language for translation and language tracking purposes.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -545,16 +922,7 @@ partID: <a href="./parts.html#languages">languages</a>. Look up table for all la
 <strong>ISO639-1</strong> (<a href="./parts.html#iso6391">iso6391</a>). The first part of the ISO 639 series of international standards for language codes. Part 1 covers the registration of two-letter codes. There are 183 two-letter codes registered as of June 2021. The registered codes cover the world’s major languages.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
-<strong>ISO639-2B</strong> (<a href="./parts.html#iso6392B">iso6392B</a>). A set of international standards that lists short codes for language names. These ISO639-2 are the three-letter codes defined in part two (ISO 639-2) of the standard, including the corresponding two-letter (ISO 639-1) codes where they exist. The ‘B’ specifies the bibliographic code (B code).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
-</li>
-<li>
 <strong>ISO639-2T</strong> (<a href="./parts.html#iso6392T">iso6392T</a>). A set of international standards that lists short codes for language names. These ISO639-2 are the three-letter codes defined in part two (ISO 639-2) of the standard, including the corresponding two-letter (ISO 639-1) codes where they exist. The ‘T’ specifies the terminological code (T code).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
-</li>
-<li>
-<strong>ISO639-3</strong> (<a href="./parts.html#iso6393">iso6393</a>). A set of international standards that lists short codes for language names. ISO 639-3 extends the ISO 639-2 alpha-3 codes with an aim to cover all known natural languages.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
-</li>
-<li>
-<strong>ISO639-6</strong> (<a href="./parts.html#iso6396">iso6396</a>). A set of international standards that lists short codes for language names. ISO 639-6 builds off ISO639-3 with the use of four-letter codes, and allowing users to differenciate between variants of languages and language families, such as histroical vs.&nbsp;revived versions of languages.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>First released version</strong> (<a href="./parts.html#firstReleased">firstReleased</a>). The version in which a part was first released<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -566,14 +934,17 @@ partID: <a href="./parts.html#languages">languages</a>. Look up table for all la
 <strong>Changes column</strong> (<a href="./parts.html#changes">changes</a>). A column for recording the changes from a previous version.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="measures" class="level3">
 <h3 class="anchored" data-anchor-id="measures">Measure report table</h3>
-partID: <a href="./parts.html#measures">measures</a>. The table that contains information and details about a given measure adapt from verson 1 documentation
+partID: <a href="./parts.html#measures">measures</a>. The table that contains information and details about a given measure. The short name for the table (partID) can be found in the instructions field. mr
 <ul>
+<li>
+<strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
 <li>
 <strong>Analysis date start</strong> (<a href="./parts.html#aDateStart">aDateStart</a>). Date the measurement or analysis was started.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
@@ -581,10 +952,28 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Analysis date end</strong> (<a href="./parts.html#aDateEnd">aDateEnd</a>). Date the measurement or analysis was completed.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: datetime.
 </li>
 <li>
+<strong>EpiWeek Start Date</strong> (<a href="./parts.html#epiWeekStart">epiWeekStart</a>). Start date of a given epi week. Noted that not all epi weeks use the same start dates, despite being a standard, so including the start dat resolves the possible ambiguity.<br>Role: Header.<br>Requirement: optional.<br>Data type: date.
+</li>
+<li>
+<strong>EpiWeek Number</strong> (<a href="./parts.html#epiWeek">epiWeek</a>). The number of the epi week in which a sample what collected, or to which a measure would apply.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+</li>
+<li>
+<strong>Year of the EpiWeek</strong> (<a href="./parts.html#epiYear">epiYear</a>). The year in which the epi week is occuring.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+</li>
+<li>
+<strong>Measure relevance start date</strong> (<a href="./parts.html#relDateStart">relDateStart</a>). The start date of the relevancy period of a measure - mostly for time-varrying metrics for sites or polygons.<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: datetime.
+</li>
+<li>
+<strong>Measure relevance end date</strong> (<a href="./parts.html#relDateEnd">relDateEnd</a>). The end date of the relevancy period of a measure - mostly for time-varrying metrics for sites or polygons.<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: datetime.
+</li>
+<li>
 <strong>Report date</strong> (<a href="./parts.html#reportDate">reportDate</a>). The date a measure was reported.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
 <strong>Value</strong> (<a href="./parts.html#value">value</a>). Value of a measure, observation or attribute.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Value Treatment</strong> (<a href="./parts.html#valTreat">valTreat</a>). A field which specifies what kinds of data treatments or the nature of the measurement value.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#valTreatSet">valTreatSet</a>
 </li>
 <li>
 <strong>Index</strong> (<a href="./parts.html#index">index</a>). Index number in case the measurement was taken multiple times.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -596,25 +985,19 @@ partID: <a href="./parts.html#measures">measures</a>. The table that contains in
 <strong>Reportable</strong> (<a href="./parts.html#reportable">reportable</a>). Flag for whether a measure is reportable or not, based on confidence in the measure and methods applied.<br>Role: Header.<br>Requirement: optional.<br>Data type: boolean.
 </li>
 <li>
-<strong>Organization ID</strong> (<a href="./parts.html#organizationID">organizationID</a>). A unique identifier for the organization to which the reporter is affiliated.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Contact ID</strong> (<a href="./parts.html#contactID">contactID</a>). A unique identifier for a given contact person.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
-</li>
-<li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="measureSets" class="level3">
 <h3 class="anchored" data-anchor-id="measureSets">Measure set report table</h3>
-partID: <a href="./parts.html#measureSets">measureSets</a>. The table that identifies sets of measures. Examples of measure sets include a set of replicates, dilutions (used to generate a Ct curve) or varients that are identified in a single sample.
+partID: <a href="./parts.html#measureSets">measureSets</a>. The table that identifies sets of measures. Examples of measure sets include a set of replicates, dilutions (used to generate a Ct curve) or varients that are identified in a single sample. The short name for the table (partID) can be found in the instructions field. ms
 <ul>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -623,13 +1006,13 @@ partID: <a href="./parts.html#measureSets">measureSets</a>. The table that ident
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="organizations" class="level3">
 <h3 class="anchored" data-anchor-id="organizations">Organization table</h3>
-partID: <a href="./parts.html#organizations">organizations</a>. The table that contains information about a laboratory. adapt from verson 1 documentation
+partID: <a href="./parts.html#organizations">organizations</a>. The table that contains information about a laboratory. The short name for the table (partID) can be found in the instructions field. or
 <ul>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
@@ -650,19 +1033,19 @@ partID: <a href="./parts.html#organizations">organizations</a>. The table that c
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="parts" class="level3">
 <h3 class="anchored" data-anchor-id="parts">Parts Look-up table</h3>
-partID: <a href="./parts.html#parts">parts</a>. Look up table containing all parts in of the data model. Contains all parts, including self-referential parts.
+partID: <a href="./parts.html#parts">parts</a>. Look up table containing all parts in of the data model. Contains all parts, including self-referential parts. The short name for the table (partID) can be found in the instructions field. pa
 <ul>
 <li>
 <strong>Label</strong> (<a href="./parts.html#label">label</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Part types</strong> (<a href="./parts.html#partType">partType</a>). Part types describe the purpose or use of the part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
+<strong>Part types</strong> (<a href="./parts.html#partType">partType</a>). Part types describe the purpose or use of the part. Enivornment data has three main part types: measure (i.e.&nbsp;covN1 viral measures, wasteawater flow rate, temperature), method (e.g.&nbsp;how the measure was taken), and attribute (such as a site name). See description of each of the part types within setID = partTypeCatSets.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Short names</strong> (<a href="./parts.html#shortName">shortName</a>). Shortened names for tables and other important parts for use in wide names.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -707,10 +1090,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Changes column</strong> (<a href="./parts.html#changes">changes</a>). A column for recording the changes from a previous version.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Protocol steps table</strong> (<a href="./parts.html#protocolSteps">protocolSteps</a>). The table for collecting metadata on individual steps in a protocol, methodological process, or assay.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Protocol Relationship table required headers</strong> (<a href="./parts.html#protocolRelationshipsRequired">protocolRelationshipsRequired</a>). Specifies the columns required in the Protocol Organization table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Protocol steps table</strong> (<a href="./parts.html#protocolSteps">protocolSteps</a>). The table for collecting metadata on individual steps in a protocol, methodological process, or assay. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Protocol steps table required headers</strong> (<a href="./parts.html#protocolStepsRequired">protocolStepsRequired</a>). Specifies the columns required in a Protocol Steps table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -719,13 +1099,16 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Protocol steps table column order</strong> (<a href="./parts.html#protocolStepsOrder">protocolStepsOrder</a>). Specifies the order of the columns in a Protocol Steps table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Protocol relationships table</strong> (<a href="./parts.html#protocolRelationships">protocolRelationships</a>). The table that contains the organizational information and details (such as order) about a given protocol, recorded as a series of protocol steps (protocolSteps).<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Protocol relationships table</strong> (<a href="./parts.html#protocolRelationships">protocolRelationships</a>). The table that contains the organizational information and details (such as order) about a given protocol, recorded as a series of protocol steps (protocolSteps). Protocols are a group of related protocol steps. For example a protocol step can describe a sample concentration, extraction, inhibition or a measurement. Protocols can include both methodID (a proceedure) and measureIDs (a measure). An example of a method is centrifugation; where the centriguation rotation speed is described as a measure. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Protocol Relationship table required headers</strong> (<a href="./parts.html#protocolRelationshipsRequired">protocolRelationshipsRequired</a>). Specifies the columns required in the Protocol Organization table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Protocol relationships table column order</strong> (<a href="./parts.html#protocolRelationshipsOrder">protocolRelationshipsOrder</a>). Specifies the order of the columns in the Protocol Organization table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Measure report table</strong> (<a href="./parts.html#measures">measures</a>). The table that contains information and details about a given measure<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Measure report table</strong> (<a href="./parts.html#measures">measures</a>). The table that contains information and details about a given measure. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Measures table required headers</strong> (<a href="./parts.html#measuresRequired">measuresRequired</a>). Specifies the columns required in a Measures table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -734,7 +1117,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Measures table column order</strong> (<a href="./parts.html#measuresOrder">measuresOrder</a>). Specifies the order of the columns in a Measures table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Measure set report table</strong> (<a href="./parts.html#measureSets">measureSets</a>). The table that identifies sets of measures.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Measure set report table</strong> (<a href="./parts.html#measureSets">measureSets</a>). The table that identifies sets of measures. Examples of measure sets include a set of replicates, dilutions (used to generate a Ct curve) or varients that are identified in a single sample. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Measure sets table column order</strong> (<a href="./parts.html#measureSetsOrder">measureSetsOrder</a>). Specifies the order of the columns in a Measure Sets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
@@ -743,7 +1126,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Measure Set table required headers</strong> (<a href="./parts.html#measureSetsRequired">measureSetsRequired</a>). Specifies the columns required in a Measure Sets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Dataset table</strong> (<a href="./parts.html#datasets">datasets</a>). A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Dataset table</strong> (<a href="./parts.html#datasets">datasets</a>). A report table for capturing details about data’s parental data set and data custodians. Supplying attribution for data collectors. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Dataset table required headers</strong> (<a href="./parts.html#datasetsRequired">datasetsRequired</a>). Specifies the columns required in a Datasets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -752,7 +1135,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Datasets table column order</strong> (<a href="./parts.html#datasetsOrder">datasetsOrder</a>). Specifies the order of the columns in a Datasets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Sites table</strong> (<a href="./parts.html#sites">sites</a>). The table that contains information about a site; the location where an environmental sample was taken.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Sites table</strong> (<a href="./parts.html#sites">sites</a>). The table that contains information about a site; the location where an environmental sample was taken. The site of an eviromental sample. Information in the site table does not regularly change. Consider using the MeasureReport table if the infomation changes often. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sites table required headers</strong> (<a href="./parts.html#sitesRequired">sitesRequired</a>). Specifies the columns required in a Sites table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -761,7 +1144,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sites table column order</strong> (<a href="./parts.html#sitesOrder">sitesOrder</a>). Specifies the order of the columns in a Sites table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Sample report table</strong> (<a href="./parts.html#samples">samples</a>). The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Sample report table</strong> (<a href="./parts.html#samples">samples</a>). The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site.Samples can be combined, split, stored and reused. The <code>Sample relationships</code> (sampleRelationships) is used to describe the relationships between samples. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sample table required headers</strong> (<a href="./parts.html#samplesRequired">samplesRequired</a>). Specifies the columns required in a Samples table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -770,7 +1153,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Samples table column order</strong> (<a href="./parts.html#samplesOrder">samplesOrder</a>). Specifies the order of the columns in a Samples table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Address table</strong> (<a href="./parts.html#addresses">addresses</a>). The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals).<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Address table</strong> (<a href="./parts.html#addresses">addresses</a>). The table that contains information about addresses. Addresses can recorded for sites, organizations or contacts (indivduals). The Sites, Organizations, and Contacts tables include a link to the addresses table through Address ID. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Address table required headers</strong> (<a href="./parts.html#addressesRequired">addressesRequired</a>). Specifies the columns required in a Addresses table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -779,7 +1162,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Addresses table column order</strong> (<a href="./parts.html#addressesOrder">addressesOrder</a>). Specifies the order of the columns in the Addresses table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Contact table</strong> (<a href="./parts.html#contacts">contacts</a>). The table that contains information about a contact; a person who is the contact of a site or laboratory.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Contact table</strong> (<a href="./parts.html#contacts">contacts</a>). The table that contains information about a contact; a person who is the contact of a site or laboratory. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Contact table required headers</strong> (<a href="./parts.html#contactsRequired">contactsRequired</a>). Specifies the columns required in a Contacts table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -788,7 +1171,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Contacts table column order</strong> (<a href="./parts.html#contactsOrder">contactsOrder</a>). Specifies the order of the columns in a Contacts table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Organization table</strong> (<a href="./parts.html#organizations">organizations</a>). The table that contains information about a laboratory.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Organization table</strong> (<a href="./parts.html#organizations">organizations</a>). The table that contains information about a laboratory. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Organziation table required headers</strong> (<a href="./parts.html#organizationsRequired">organizationsRequired</a>). Specifies the columns required in a Organizations table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -797,7 +1180,25 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Organizations table column order</strong> (<a href="./parts.html#organizationsOrder">organizationsOrder</a>). Specifies the order of the columns in a Organizations table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Instrument table</strong> (<a href="./parts.html#instruments">instruments</a>). The table that contains information about instruments.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Public Health Actions Report Table</strong> (<a href="./parts.html#phActions">phActions</a>). Table for recording information on public health actions. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Public health actions table required headers</strong> (<a href="./parts.html#phActionsRequired">phActionsRequired</a>). Required headers in the public health actions table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Public health actions table column order</strong> (<a href="./parts.html#phActionsOrder">phActionsOrder</a>). Specifies the order of the columns in the public health actions table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
+</li>
+<li>
+<strong>Calculations Table</strong> (<a href="./parts.html#calculations">calculations</a>). Table for recording data on data treatments and calculations applied to measurements and reported values.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Calculations table required headers</strong> (<a href="./parts.html#calculationsRequired">calculationsRequired</a>). Required headers in the calculations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Calculations table column order</strong> (<a href="./parts.html#calculationsOrder">calculationsOrder</a>). Specifies the order of the columns in the calculations table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
+</li>
+<li>
+<strong>Instrument table</strong> (<a href="./parts.html#instruments">instruments</a>). The table that contains information about instruments. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Instrutment table required headers</strong> (<a href="./parts.html#instrumentsRequired">instrumentsRequired</a>). Specifies the columns required in the Instruments table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -806,7 +1207,16 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Instruments table column order</strong> (<a href="./parts.html#instrumentsOrder">instrumentsOrder</a>). Specifies the order of the columns in the Instruments table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Polygon table</strong> (<a href="./parts.html#polygons">polygons</a>). The table that contains information about the geometry of a geographic area.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Polygon Relationships Table</strong> (<a href="./parts.html#polygonRelationships">polygonRelationships</a>). Table for recording the relationships between polygons. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Polygon relationships table required headers</strong> (<a href="./parts.html#polygonRelationshipsRequired">polygonRelationshipsRequired</a>). Required headers in the polygon relationships table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Polygon relationships table column order</strong> (<a href="./parts.html#polygonRelationshipsOrder">polygonRelationshipsOrder</a>). Specifies the order of the columns in the polygon relationships table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
+</li>
+<li>
+<strong>Polygon table</strong> (<a href="./parts.html#polygons">polygons</a>). The table that contains information about the geometry of a geographic area. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Polygon table required headers</strong> (<a href="./parts.html#polygonsRequired">polygonsRequired</a>). Specifies the columns required in a Polygons table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -815,7 +1225,16 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Polygons table column order</strong> (<a href="./parts.html#polygonsOrder">polygonsOrder</a>). Specifies the order of the columns in a Polygons table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Language Look-up table</strong> (<a href="./parts.html#languages">languages</a>). Look up table for all languages, used to give structure to the translation table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>accessions Table</strong> (<a href="./parts.html#accessions">accessions</a>). Table for recording accession IDs for external data, namely sequences in large sequencing databases and repositories. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+<li>
+<strong>Accessions table required headers</strong> (<a href="./parts.html#accessionsRequired">accessionsRequired</a>). Required headers in the accessions table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
+</li>
+<li>
+<strong>Accessions table column order</strong> (<a href="./parts.html#accessionsOrder">accessionsOrder</a>). Specifies the order of the columns in the accessions table.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: integer.
+</li>
+<li>
+<strong>Language Look-up table</strong> (<a href="./parts.html#languages">languages</a>). Look up table for all languages, used to give structure to the translation table. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Language table required headers</strong> (<a href="./parts.html#languagesRequired">languagesRequired</a>). Required headers in the Languages table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -824,34 +1243,34 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Language table column order</strong> (<a href="./parts.html#languagesOrder">languagesOrder</a>). Specifies the order of the columns in the Languages table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Translation look-up table</strong> (<a href="./parts.html#translations">translations</a>). Look up table for translations of the description, label, and instruction for all parts.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Parts Look-up table</strong> (<a href="./parts.html#parts">parts</a>). Look up table containing all parts in of the data model.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Translation look-up table</strong> (<a href="./parts.html#translations">translations</a>). Look up table for translations of the description, label, and instruction for all parts. The default language if a translation is not specified is English. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Translation table required headers</strong> (<a href="./parts.html#translationsRequired">translationsRequired</a>). Required headers in the Translations table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Parts table column order</strong> (<a href="./parts.html#partsOrder">partsOrder</a>). Order of headers in the Parts table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Translation table column order</strong> (<a href="./parts.html#translationsOrder">translationsOrder</a>). Specifies the order of the columns in the Translation table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Translation table column order</strong> (<a href="./parts.html#translationsOrder">translationsOrder</a>). Specifies the order of the columns in the Translation table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+<strong>Parts Look-up table</strong> (<a href="./parts.html#parts">parts</a>). Look up table containing all parts in of the data model. Contains all parts, including self-referential parts. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Parts table required headers</strong> (<a href="./parts.html#partsRequired">partsRequired</a>). Required headers in the Parts table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Sets look-up table</strong> (<a href="./parts.html#sets">sets</a>). Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Parts table column order</strong> (<a href="./parts.html#partsOrder">partsOrder</a>). Order of headers in the Parts table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Sets table column order</strong> (<a href="./parts.html#setsOrder">setsOrder</a>). Specifies the order of the columns in the Sets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+<strong>Sets look-up table</strong> (<a href="./parts.html#sets">sets</a>). Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together. This table manages many-to-many relationships and category recycling within the ODM. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sets table required headers</strong> (<a href="./parts.html#setsRequired">setsRequired</a>). Required headers in the Sets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Quality reports table</strong> (<a href="./parts.html#qualityReports">qualityReports</a>). The table for recording the various quality metrics and indicators for samples and measures.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Sets table column order</strong> (<a href="./parts.html#setsOrder">setsOrder</a>). Specifies the order of the columns in the Sets table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+</li>
+<li>
+<strong>Quality reports table</strong> (<a href="./parts.html#qualityReports">qualityReports</a>). The table for recording the various quality metrics and indicators for samples and measures. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Quality report table required headers</strong> (<a href="./parts.html#qualityReportsRequired">qualityReportsRequired</a>). Specifies the columns required in the Quality Reports table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -860,7 +1279,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Quality rerpots table column order</strong> (<a href="./parts.html#qualityReportsOrder">qualityReportsOrder</a>). Specifies the order of the columns in the Quality Reports table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Sample relationships table</strong> (<a href="./parts.html#sampleRelationships">sampleRelationships</a>). Table for recording the relationships between samples.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Sample relationships table</strong> (<a href="./parts.html#sampleRelationships">sampleRelationships</a>). Table for recording the relationships between samples.Samples can be pooled or split. The sample relationships table holds information on parent-child relationships between samples, and allow for tracking sample lineage for single and pooled samples. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Sample relationships table required headers</strong> (<a href="./parts.html#sampleRelationshipsRequired">sampleRelationshipsRequired</a>). Specifies the columns required in a Sample Relationships table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -869,7 +1288,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Sample relationships table column order</strong> (<a href="./parts.html#sampleRelationshipsOrder">sampleRelationshipsOrder</a>). Specifies the order of the columns in a Sample Relationships table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Protocols table</strong> (<a href="./parts.html#protocols">protocols</a>). The table for protocols.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Protocols table</strong> (<a href="./parts.html#protocols">protocols</a>). The table for protocols. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Protocols table required headers</strong> (<a href="./parts.html#protocolsRequired">protocolsRequired</a>). Specifies the columns required in the Protocols table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -878,7 +1297,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Protocols table column order</strong> (<a href="./parts.html#protocolsOrder">protocolsOrder</a>). Specifies the order of the columns in the Protocols table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Countries look-up tables</strong> (<a href="./parts.html#countries">countries</a>). Look up table for the possible country inputs.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Countries look-up tables</strong> (<a href="./parts.html#countries">countries</a>). Look up table for the possible country inputs. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Counries table required headers</strong> (<a href="./parts.html#countriesRequired">countriesRequired</a>). Required headers in the countries table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -887,7 +1306,7 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Countries table column order</strong> (<a href="./parts.html#countriesOrder">countriesOrder</a>). Specifies the order of the columns in the countries table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Zones look-up table</strong> (<a href="./parts.html#zones">zones</a>). Look up table for the possible sub-national region or zone inputs.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Zones look-up table</strong> (<a href="./parts.html#zones">zones</a>). Look up table for the possible sub-national region or zone inputs. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Zones table required headers</strong> (<a href="./parts.html#zonesRequired">zonesRequired</a>). Required headers in the zones table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -896,19 +1315,19 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 <strong>Zones table column order</strong> (<a href="./parts.html#zonesOrder">zonesOrder</a>). Specifies the order of the columns in the zones table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
-<strong>Wide name table</strong> (<a href="./parts.html#wideNames">wideNames</a>). The table for wide names.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Wide name table</strong> (<a href="./parts.html#wideNames">wideNames</a>). The table for wide names. The short name for the table (partID) can be found in the instructions field.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Wide name table required</strong> (<a href="./parts.html#wideNamesRequired">wideNamesRequired</a>). Column for indicating which fields in the wide names table are mandatory.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Wide name table order</strong> (<a href="./parts.html#wideNamesOrder">wideNamesOrder</a>). Column for indicating the order of the fields in the wide names table.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Wide name table order</strong> (<a href="./parts.html#wideNamesOrder">wideNamesOrder</a>). Column for indicating the order of the fields in the wide names table.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Data types</strong> (<a href="./parts.html#dataTypes">dataTypes</a>). The data type for a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
+<strong>Data types</strong> (<a href="./parts.html#dataTypes">dataTypes</a>). The data type for a part. Data types used in the ODM include: varchar, booleen, float, category, date, time, datetime, url, email. dataType corresponds the the entry or cell within a data table, most commonly within a report table. If the data entry has a unit, then the dataType corresponds to the unit and the dataType refers to ‘unit’. If the data entry is a category, then the dataType refers to ‘category’. All categories are varchar. Otherwise the dataType is identifed within the part entry. TBA: dataType for dictionary.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
 </li>
 <li>
 <strong>Minimum value part support</strong> (<a href="./parts.html#minValue">minValue</a>). The minimum value of part.<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
@@ -924,18 +1343,42 @@ partID: <a href="./parts.html#parts">parts</a>. Look up table containing all par
 </li>
 </ul>
 </section>
+<section id="phActions" class="level3">
+<h3 class="anchored" data-anchor-id="phActions">Public Health Actions Report Table</h3>
+partID: <a href="./parts.html#phActions">phActions</a>. Table for recording information on public health actions. The short name for the table (partID) can be found in the instructions field. pha
+<ul>
+<li>
+<strong>Public health action datetime</strong> (<a href="./parts.html#actionDT">actionDT</a>). The date and Time of the public health action.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+</ul>
+</section>
+<section id="polygonRelationships" class="level3">
+<h3 class="anchored" data-anchor-id="polygonRelationships">Polygon Relationships Table</h3>
+partID: <a href="./parts.html#polygonRelationships">polygonRelationships</a>. Table for recording the relationships between polygons. The short name for the table (partID) can be found in the instructions field. por
+<ul>
+<li>
+<strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
+</li>
+<li>
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+</li>
+</ul>
+</section>
 <section id="polygons" class="level3">
 <h3 class="anchored" data-anchor-id="polygons">Polygon table</h3>
-partID: <a href="./parts.html#polygons">polygons</a>. The table that contains information about the geometry of a geographic area.
+partID: <a href="./parts.html#polygons">polygons</a>. The table that contains information about the geometry of a geographic area. The short name for the table (partID) can be found in the instructions field. po
 <ul>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
 </li>
 <li>
 <strong>Description</strong> (<a href="./parts.html#descr">descr</a>). A detailed description of a measure, method, or attribute.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Polygon Population</strong> (<a href="./parts.html#polyPop">polyPop</a>). An attribute of a polygon, which specifies the population of that polygon. A rough estimate of the number of human residents.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
 </li>
 <li>
 <strong>Type of geography</strong> (<a href="./parts.html#geoType">geoType</a>). Type of geography that is represented by the polygon.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#geoTypeSet">geoTypeSet</a>
@@ -947,40 +1390,37 @@ partID: <a href="./parts.html#polygons">polygons</a>. The table that contains in
 <strong>Well-known text</strong> (<a href="./parts.html#geoWKT">geoWKT</a>). Well-known text of the polygon<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>File location of polygon</strong> (<a href="./parts.html#fileLocation">fileLocation</a>). The location of the file containing the geometry of the polygon.<br>Role: Header.<br>Requirement: optional.<br>Data type: blob.
+<strong>File location of polygon</strong> (<a href="./parts.html#fileLocation">fileLocation</a>). The location of the file containing the geometry of the polygon.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
 <strong>Reference link</strong> (<a href="./parts.html#refLink">refLink</a>). Link to the reference material for a part. May link to literature on a method, measure, etc.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Organization ID</strong> (<a href="./parts.html#organizationID">organizationID</a>). A unique identifier for the organization to which the reporter is affiliated.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Contact ID</strong> (<a href="./parts.html#contactID">contactID</a>). A unique identifier for a given contact person.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Polygon License</strong> (<a href="./parts.html#poLic">poLic</a>). The license for the availability of the polygon shapefile.<br>Role: Header.<br>Requirement: recommended.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#licSet">licSet</a>
 </li>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="protocolRelationships" class="level3">
 <h3 class="anchored" data-anchor-id="protocolRelationships">Protocol relationships table</h3>
-partID: <a href="./parts.html#protocolRelationships">protocolRelationships</a>. The table that contains the organizational information and details (such as order) about a given protocol, recorded as a series of protocol steps (protocolSteps). Protocols are a group of related protocol steps. For example a protocol step can describe a sample concentration, extraction, inhibition or a measurement. Protocols can include both methodID (a proceedure) and measureIDs (a measure). An example of a method is centrifugation; where the centriguation rotation speed is described as a measure.
+partID: <a href="./parts.html#protocolRelationships">protocolRelationships</a>. The table that contains the organizational information and details (such as order) about a given protocol, recorded as a series of protocol steps (protocolSteps). Protocols are a group of related protocol steps. For example a protocol step can describe a sample concentration, extraction, inhibition or a measurement. Protocols can include both methodID (a proceedure) and measureIDs (a measure). An example of a method is centrifugation; where the centriguation rotation speed is described as a measure. The short name for the table (partID) can be found in the instructions field. pr
 <ul>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="protocols" class="level3">
 <h3 class="anchored" data-anchor-id="protocols">Protocols table</h3>
-partID: <a href="./parts.html#protocols">protocols</a>. The table for protocols.
+partID: <a href="./parts.html#protocols">protocols</a>. The table for protocols. The short name for the table (partID) can be found in the instructions field. pro
 <ul>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -998,13 +1438,13 @@ partID: <a href="./parts.html#protocols">protocols</a>. The table for protocols.
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="protocolSteps" class="level3">
 <h3 class="anchored" data-anchor-id="protocolSteps">Protocol steps table</h3>
-partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for collecting metadata on individual steps in a protocol, methodological process, or assay.
+partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for collecting metadata on individual steps in a protocol, methodological process, or assay. The short name for the table (partID) can be found in the instructions field. ps
 <ul>
 <li>
 <strong>Summary</strong> (<a href="./parts.html#summ">summ</a>). Short description of the assay and how it is different from the other assay methods.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
@@ -1022,13 +1462,13 @@ partID: <a href="./parts.html#protocolSteps">protocolSteps</a>. The table for co
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="qualityReports" class="level3">
 <h3 class="anchored" data-anchor-id="qualityReports">Quality reports table</h3>
-partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for recording the various quality metrics and indicators for samples and measures.
+partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for recording the various quality metrics and indicators for samples and measures. The short name for the table (partID) can be found in the instructions field. qr
 <ul>
 <li>
 <strong>Quality flag</strong> (<a href="./parts.html#qualityFlag">qualityFlag</a>). A field for reporting any quality concerns - of lack thereof - for a sample or measure.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
@@ -1040,31 +1480,31 @@ partID: <a href="./parts.html#qualityReports">qualityReports</a>. The table for 
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="sampleRelationships" class="level3">
 <h3 class="anchored" data-anchor-id="sampleRelationships">Sample relationships table</h3>
-partID: <a href="./parts.html#sampleRelationships">sampleRelationships</a>. Table for recording the relationships between samples. Samples can be pooled or split. The sample relationships table holds information on parent-child relationships between samples, and allow for tracking sample lineage for single and pooled samples.
+partID: <a href="./parts.html#sampleRelationships">sampleRelationships</a>. Table for recording the relationships between samples.Samples can be pooled or split. The sample relationships table holds information on parent-child relationships between samples, and allow for tracking sample lineage for single and pooled samples. The short name for the table (partID) can be found in the instructions field. sar
 <ul>
 <li>
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="samples" class="level3">
 <h3 class="anchored" data-anchor-id="samples">Sample report table</h3>
-partID: <a href="./parts.html#samples">samples</a>. The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. Samples can be combined, split, stored and reused. The <code>Sample relationships</code> (sampleRelationships) is used to describe the relationships between samples.
+partID: <a href="./parts.html#samples">samples</a>. The table that contains information about a sample. A sample is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site.Samples can be combined, split, stored and reused. The <code>Sample relationships</code> (sampleRelationships) is used to describe the relationships between samples. The short name for the table (partID) can be found in the instructions field. sas
 <ul>
 <li>
 <strong>Organization ID</strong> (<a href="./parts.html#organizationID">organizationID</a>). A unique identifier for the organization to which the reporter is affiliated.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Sample origin</strong> (<a href="./parts.html#origin">origin</a>). An attribute of a sample specifying the origin.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.
+<strong>Sample origin</strong> (<a href="./parts.html#origin">origin</a>). An attribute of a sample specifying the origin.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#originSet">originSet</a>
 </li>
 <li>
 <strong>Sample collection type</strong> (<a href="./parts.html#collType">collType</a>). The type of collection.<br>Role: Foreign Key.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#collectSet">collectSet</a>
@@ -1088,6 +1528,21 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 <strong>Collection date time end</strong> (<a href="./parts.html#collDTEnd">collDTEnd</a>). For integrated time average samples this is the date, time and timezone the sample was finished being taken.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
+<strong>Collection Date (time not included)</strong> (<a href="./parts.html#collDate">collDate</a>). Sample collection date, where time is reported in a separate field.<br>Role: Header.<br>Requirement: optional.<br>Data type: date.
+</li>
+<li>
+<strong>Collection Approximate Time Period</strong> (<a href="./parts.html#collAppxT">collAppxT</a>). The general time period (ie. Morning, afternoon, evening) of sample collection.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#collAppxSet">collAppxSet</a>
+</li>
+<li>
+<strong>EpiWeek Start Date</strong> (<a href="./parts.html#epiWeekStart">epiWeekStart</a>). Start date of a given epi week. Noted that not all epi weeks use the same start dates, despite being a standard, so including the start dat resolves the possible ambiguity.<br>Role: Header.<br>Requirement: optional.<br>Data type: date.
+</li>
+<li>
+<strong>EpiWeek Number</strong> (<a href="./parts.html#epiWeek">epiWeek</a>). The number of the epi week in which a sample what collected, or to which a measure would apply.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+</li>
+<li>
+<strong>Year of the EpiWeek</strong> (<a href="./parts.html#epiYear">epiYear</a>). The year in which the epi week is occuring.<br>Role: Header.<br>Requirement: optional.<br>Data type: integer.
+</li>
+<li>
 <strong>Date sample was sent</strong> (<a href="./parts.html#sentDate">sentDate</a>). Date that the sample was sent from the collection site to the lab.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
@@ -1100,17 +1555,17 @@ partID: <a href="./parts.html#samples">samples</a>. The table that contains info
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Collection period and number</strong> (<a href="./parts.html#collNumPer">collNumPer</a>). Composite collection number.period.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="sets" class="level3">
 <h3 class="anchored" data-anchor-id="sets">Sets look-up table</h3>
-partID: <a href="./parts.html#sets">sets</a>. Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together. This table manages many-to-many relationships and category recycling within the ODM.
+partID: <a href="./parts.html#sets">sets</a>. Look up table for all sets, managing how categorical inputs for various methods and attributes are grouped together. This table manages many-to-many relationships and category recycling within the ODM. The short name for the table (partID) can be found in the instructions field. se
 <ul>
+<li>
+<strong>Set type</strong> (<a href="./parts.html#setType">setType</a>). The type of set. i.e.&nbsp;quality set, aggregation set, unit set<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.
+</li>
 <li>
 <strong>Label</strong> (<a href="./parts.html#label">label</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
@@ -1130,19 +1585,19 @@ partID: <a href="./parts.html#sets">sets</a>. Look up table for all sets, managi
 <strong>Changes column</strong> (<a href="./parts.html#changes">changes</a>). A column for recording the changes from a previous version.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="sites" class="level3">
 <h3 class="anchored" data-anchor-id="sites">Sites table</h3>
-partID: <a href="./parts.html#sites">sites</a>. The table that contains information about a site; the location where an environmental sample was taken. The site of an eviromental sample. Information in the site table does not regularly change. Consider using the MeasureReport table if the infomation changes often.
+partID: <a href="./parts.html#sites">sites</a>. The table that contains information about a site; the location where an environmental sample was taken. The site of an eviromental sample. Information in the site table does not regularly change. Consider using the MeasureReport table if the infomation changes often. The short name for the table (partID) can be found in the instructions field. si
 <ul>
 <li>
 <strong>Sample shed</strong> (<a href="./parts.html#sampleShed">sampleShed</a>). A geographic area, physical space, or structure. A sample is taken from a sampleshed for a representative measurement of a substance(s).<br>Role: Header.<br>Requirement: mandatory.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#shedSet">shedSet</a>
 </li>
 <li>
-<strong>Organization ID</strong> (<a href="./parts.html#organizationID">organizationID</a>). A unique identifier for the organization to which the reporter is affiliated.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Level of Aggregation of a Sampling Site</strong> (<a href="./parts.html#siteLevel">siteLevel</a>). Specifies the level of aggregation that occurs at the site - essentially, what size and type of region is represented by the base sewershed. This can be used to pool together or average results across similar sewersheds, and avoid trying to average different scales of sewershed together without a correction for size.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.<br>Measure, method or attribute set: <a href="./sets.html#siteLevelSet">siteLevelSet</a>
 </li>
 <li>
 <strong>Name</strong> (<a href="./parts.html#name">name</a>). Name of a domain, specimen, group, class, attribute, unit, nomeclature or other entity.<br>Role: Header.<br>Requirement: recommended.<br>Data type: varchar.
@@ -1151,16 +1606,7 @@ partID: <a href="./parts.html#sites">sites</a>. The table that contains informat
 <strong>Description</strong> (<a href="./parts.html#descr">descr</a>). A detailed description of a measure, method, or attribute.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Primary reporting authority ID</strong> (<a href="./parts.html#repOrg1">repOrg1</a>). The primary or most responsible authority for rountine surveillance reports or findings, or where the site is located.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Secondary reporting authority ID</strong> (<a href="./parts.html#repOrg2">repOrg2</a>). The secondary, additional or alternative authority for rountine surveillance reports or findings, or where the site is located.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
 <strong>Health Region for a Site</strong> (<a href="./parts.html#healthRegion">healthRegion</a>). A free-text variable for listing the health region for a given site.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
-</li>
-<li>
-<strong>Population Served</strong> (<a href="./parts.html#popServ">popServ</a>). An attribute of a site, which specifies the population of/population served by a given site.<br>Role: Header.<br>Requirement: optional.<br>Data type: categorical.
 </li>
 <li>
 <strong>Latitude</strong> (<a href="./parts.html#geoLat">geoLat</a>). Geographical location, latitude in decimal coordinates, ie.: (45.424721)<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: float.
@@ -1175,13 +1621,13 @@ partID: <a href="./parts.html#sites">sites</a>. The table that contains informat
 <strong>Last edited</strong> (<a href="./parts.html#lastEdited">lastEdited</a>). The date the entry was last updated.<br>Role: Header.<br>Requirement: optional.<br>Data type: datetime.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="translations" class="level3">
 <h3 class="anchored" data-anchor-id="translations">Translation look-up table</h3>
-partID: <a href="./parts.html#translations">translations</a>. Look up table for translations of the description, label, and instruction for all parts. The default language if a translation is not specified is English.
+partID: <a href="./parts.html#translations">translations</a>. Look up table for translations of the description, label, and instruction for all parts. The default language if a translation is not specified is English. The short name for the table (partID) can be found in the instructions field. tr
 <ul>
 <li>
 <strong>Label</strong> (<a href="./parts.html#label">label</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1202,13 +1648,13 @@ partID: <a href="./parts.html#translations">translations</a>. Look up table for 
 <strong>Changes column</strong> (<a href="./parts.html#changes">changes</a>). A column for recording the changes from a previous version.<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 <li>
-<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attrbitutes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
+<strong>Notes</strong> (<a href="./parts.html#notes">notes</a>). A note used to describe details that are not captured in other attributes<br>Role: Header.<br>Requirement: optional.<br>Data type: varchar.
 </li>
 </ul>
 </section>
 <section id="wideNames" class="level3">
 <h3 class="anchored" data-anchor-id="wideNames">Wide name table</h3>
-partID: <a href="./parts.html#wideNames">wideNames</a>. The table for wide names.
+partID: <a href="./parts.html#wideNames">wideNames</a>. The table for wide names. The short name for the table (partID) can be found in the instructions field. wn
 <ul>
 <li>
 <strong>Label</strong> (<a href="./parts.html#label">label</a>). A human readable label of a part.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
@@ -1223,16 +1669,13 @@ partID: <a href="./parts.html#wideNames">wideNames</a>. The table for wide names
 <strong>Wide name source</strong> (<a href="./parts.html#source">source</a>). The database or table sourced for the wide name.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 <li>
-<strong>Measure identification (wide table)</strong> (<a href="./parts.html#wideMeasure">wideMeasure</a>). Unique identifier for a measure in a wide table only.¬¨‚Ä†<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
+<strong>Measure identification (wide table)</strong> (<a href="./parts.html#wideMeasure">wideMeasure</a>). Unique identifier for a measure in a wide table only.&nbsp;<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
 </li>
 <li>
-<strong>Specified protocol (wide table)</strong> (<a href="./parts.html#wideProtocol">wideProtocol</a>). Unique identifier for a protocol in a wide table only.¬¨‚Ä†<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
+<strong>Specified protocol (wide table)</strong> (<a href="./parts.html#wideProtocol">wideProtocol</a>). Unique identifier for a protocol in a wide table only.&nbsp;<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
 </li>
 <li>
-<strong>Specified attribute (wide table)</strong> (<a href="./parts.html#wideAttribute">wideAttribute</a>). Unique identifier for an attribute in a wide table only.¬¨‚Ä†<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
-</li>
-<li>
-<strong>Wide name type</strong> (<a href="./parts.html#wideNameType">wideNameType</a>). The type of wide name generated. Possible options are measure, protocol or attribute.<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
+<strong>Specified attribute (wide table)</strong> (<a href="./parts.html#wideAttribute">wideAttribute</a>). Unique identifier for an attribute in a wide table only.&nbsp;<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
 </li>
 <li>
 <strong>Report table name (wide table)</strong> (<a href="./parts.html#reportTableName">reportTableName</a>). The report table that the wide name calls from.<br>Role: Header.<br>Requirement: mandatoryIf.<br>Data type: varchar.
@@ -1271,13 +1714,13 @@ partID: <a href="./parts.html#wideNames">wideNames</a>. The table for wide names
 </section>
 <section id="zones" class="level3">
 <h3 class="anchored" data-anchor-id="zones">Zones look-up table</h3>
-partID: <a href="./parts.html#zones">zones</a>. Look up table for the possible sub-national region or zone inputs.
+partID: <a href="./parts.html#zones">zones</a>. Look up table for the possible sub-national region or zone inputs. The short name for the table (partID) can be found in the instructions field. zo
 <ul>
 <li>
 <strong>English name of country sub-domains</strong> (<a href="./parts.html#zoneName">zoneName</a>). The english-language name for a given country sub-domain.<br>Role: Header.<br>Requirement: mandatory.<br>Data type: varchar.
 </li>
 </ul>
-<p>Page created on Tue Oct 29 00:00:00 2024.</p>
+<p>Page created on Thu Jan 22 00:00:00 2026.</p>
 
 
 </section>
@@ -1285,239 +1728,243 @@ partID: <a href="./parts.html#zones">zones</a>. Look up table for the possible s
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        return container.innerHTML
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1525,185 +1972,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./sets.html" class="pagination-link" aria-label="Sets">
