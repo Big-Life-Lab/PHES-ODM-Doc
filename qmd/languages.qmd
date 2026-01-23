@@ -16,7 +16,7 @@ source("R/format-table.R")
 # Read in and prepare languages data.frame
 languages_table_source <-
   readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
-                     sheet = constants$languages_sheet_name)
+                     sheet = constants$languages_sheet_name, .name_repair = "unique_quiet")
 languages_table <- format_table(languages_table_source, languages_sheet_column_names, strip_invalid_part_ID = FALSE)
 
 

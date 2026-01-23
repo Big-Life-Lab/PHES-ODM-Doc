@@ -36,7 +36,7 @@ get_latest_dictionary <- function() {
     file_names[which(version_numbers == latest_version)]
   
   parts_sheet <- readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, latest_version_file_name),
-                     sheet = odm_dictionary$parts_sheet_name)
+                     sheet = odm_dictionary$parts_sheet_name, .name_repair = "unique_quiet")
   sets_sheet <- readxl::read_excel(
     file.path(
       getwd(),
@@ -47,7 +47,8 @@ get_latest_dictionary <- function() {
     # Parse all columns as text so that even if a column has only numbers in it
     # we can insert NA string values into it. If we do not do this then tidyr
     # will complain and stop execution.
-    col_types = "text"
+    col_types = "text",
+    .name_repair = "unique_quiet"
   )
   
   return(list(
