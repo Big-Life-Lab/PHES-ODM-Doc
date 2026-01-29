@@ -3,9 +3,11 @@ project:
   execute-dir: ../
 ---
 
+
 # Long-format, wide-format, and wide-names {.unnumbered}
 
 {{< include _versions.qmd >}}
+
 
 ## Wide-format and long-format data
 
@@ -50,6 +52,7 @@ For long-formatted data in the ODM, names are all made using camel case (ex: `ex
 The exact formula used to generate a wide-name in the ODM depends on the kind of data point you are recording. The three kinds of data and metadata for these column names are either attributes, measures, or protocol steps. An attribute column is metadata. These columns provide context about a measure, protocol, or sample. Measure columns report a specific measure, either from a site, sample, or population. Lastly, protocol columns report a specific protocol step or detail for a measure.
 
 ## Attributes
+
 
 The wide-name formula for attributes is
 
@@ -182,6 +185,7 @@ to better link all the metadata pieces in other columns to this specific measure
 There is a diversity of wide-templates across labs. Sometimes these headers can combine two ODM attributes, or two or more methods or measures. This complicates mapping to the ODM, but unique wide-names can be generated for these as well.
 
 ## Attribute naming exceptions
+
 
 For combined attributes, the regular attribute formula (`tableShortName_attribute`) becomes
 

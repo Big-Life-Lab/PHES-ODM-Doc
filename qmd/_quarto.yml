@@ -24,6 +24,7 @@ book:
     - sampleRelationships.qmd
     - wide-names.qmd
     #- tutourials.qmd
+    - protocols.qmd
     - part: ref-guide.qmd
       chapters:
         - parts.qmd
