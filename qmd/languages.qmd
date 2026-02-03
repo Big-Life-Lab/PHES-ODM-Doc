@@ -3,6 +3,7 @@
 {{< include _versions.qmd >}}
 
 The language table by langID.
+
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
@@ -72,6 +73,5 @@ for (row_index in seq_len(nrow(languages_table))) {
 
 
 ```
+
 `r output_string`
-
-
