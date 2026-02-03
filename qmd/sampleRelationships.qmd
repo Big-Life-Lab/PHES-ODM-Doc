@@ -4,7 +4,7 @@
 
 ## Context
 
-To fully interpret the measures coming out of samples, it is sometimes helpful to know how they are related to each other. For example, two samples taken at the same site, at the same time, with the same method, can be used to characterize the variablity inherent in the sampling strategy. When samples are composited from several subsamples, it is useful to know which subsamples were used and to what pooled samples they are related. Parts of samples can also be spiked with a viral target as part of a quality assurance protocol. Keeping a trace of the relationships linking various samples supports the retrieval of related samples inside the PHES-ODM database and thus improves the interpretability of the data.
+To fully interpret the measures coming out of samples, it is sometimes helpful to know how they are related to each other. For example, two samples taken at the same site, at the same time, with the same method, can be used to characterize the variability inherent to the sampling strategy or sampling matrix. When samples are composited from several subsamples, it is useful to know which subsamples were used and where they came frame. Conversely, it is also helpful to know what pooled samples are related to a given subsample. Parts of samples can also be spiked with a viral target as part of a quality assurance protocol. Keeping a trace of the relationships linking various samples supports the retrieval of related samples inside the PHES-ODM database and thus improves the interpretability of the data.
 
 ## Modelling sample relationships
 
@@ -12,68 +12,74 @@ There are several ways in which samples can be related.
 
 Samples can be related via:
 
-1. The splitting of an original sample
-    1. A subsample is related to its parent sample
-    2. A sample split at the sampling location yields field replicates who are related to each other.
-    3. A field sample is related to a control sample processed alongside it.
-    4. A field sample is related to a subsample that has been modified as part of a quality control procedure.
-2. The combination of several samples
-    1. Parent samples related to the final pooled sample
+1.  The splitting of an original sample
+    1.  A subsample is related to its parent sample (`child`).
+    2.  A sample split at the sampling location yields field replicates who are related to each other (`fieldReplicate`).
+    3.  A field sample is related to a sample generated from it in the laboratory (`labDuplicate`).
+    4.  Two samples collected at the same time and place are related to each other (`colocated`).
+    5.  A field sample is related to a control sample processed alongside it (`control`).
+    6.  A field sample is related to a subsample that has been modified as part of a general quality control procedure (`lcsd`), or as part of a recovery efficiency protocol (`msd`).
+2.  The combination of several samples
+    1.  Parent samples related to the final pooled sample (`pooled`).
 
 Example of sample relationship webs are found in Figure A.
 
-![Figure A: Various possible sample relationships.](./assets/how-to/SampleRelationships_ex1.png)
+![**Figure A: Various possible sample relationships.**](./assets/how-to/SampleRelationships_ex1.png)
 
-Figure A: Various possible sample relationships.
-
-Because a single sample can be related to many others, the sample information and the relationships to other samples can’t be efficiently stored in a single database table.
+Because a single sample can be related to many others, efficiently storing both the sample information (recorded in `samples`) and that sample's relationships to other samples in a single database table is impossible. This realization led to the creation of the separate `sampleRelationships` table in the PHES-ODM.
 
 ## Implementation
 
-The `SampleRelationships` table is responsible for linking samples with each other and for defining the nature of the relationships. Each row defines a relationship. A sample can have any number of relationships to other samples. The table implements three attributes:
+The `SampleRelationships` table is responsible for linking samples with each other and for defining the nature of the relationships. Each row defines a relationship. A sample can have any number of relationships to other samples. The table implements four attributes:
 
-1. sampleIDSubject
-2. relationshipID
-3. sampleIDObject
+1.  `sampleRelationshipsID`
+2.  `sampleIDSubject`
+3.  `relationshipID`
+4.  `sampleIDObject`
 
-Each row can be read as a sentence of the form:
+Where `sampleRelationshipsID` exists as a primary key and unique reference for each row, while the remaining attributes of each row can be read as a sentence of the form:
 
-```js
-[sampleIDSubject] is a[relationshipID] of [sampleIDObject]
+``` js
+[sampleIDSubject] is a [relationshipID] of [sampleIDObject]
 ```
 
-The acceptable values for relationshipID are the followingat the moment, though some more could be added to the dictionary of the need arises:
+The acceptable values for relationshipID are the following at the moment, though some more could be added to the dictionary of the need arises: (to request an new part to be added to the PHES-ODM, create a [new issue](https://github.com/Big-Life-Lab/PHES-ODM/issues/new/choose) on the GitHub repository, or fill out this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLScJoxXzRT86h8ToddG2LZa8c1AGfxQM9SG9sDx7Zr2AoNEdSw/viewform?usp=sharing&ouid=108384693366853895220))
 
-```js
-	- child
-	- replicate
+``` js
+    - child
+    - colocated
+    - fieldReplicate
+    - msd
+    - labDuplicate
+    - lcsd
+    - control
 ```
 
-To complete the picture presented by the `SampleRelationships` table, one can read the sample attributes that describe the sample’s nature:
+To complete the picture presented by the `sampleRelationships` table, one can read the attributes in the `samples` table that describe the sample’s nature:
 
-1. `repType` (replicate type) indicates what kind of replicate a sample is (field replicate, matrix spike replicate, lab control replicate)
-2. `pooled` indicates if the sample is the result of the combination of several samples. It is important to note that `pooled` is a transitive property: subsamples derived from a `pooled` sample are also `pooled`.
+1.  `repType` (replicate type) indicates what kind of replicate a sample is (field replicate, matrix spike replicate, lab control replicate, etc. - see [replicateSet](https://docs.phes-odm.org/sets.html#replicateSet) for the full list).
+2.  `pooled` indicates if the sample is the result of the combination of several samples. It is important to note that `pooled` is a transitive property: subsamples derived from a `pooled` sample are also `pooled`. This is a boolean variable, carrying either TRUE or FALSE as possible values.
 
-Below are two examples of possible relationship webs between samples and the the resulting entries in a `SampleRelationships` table.
+Below are two examples of possible relationship webs between samples and the the resulting entries in a `sampleRelationships` table.
 
 ![Example A](./assets/how-to/SampleRelationships_exA.png)
 
 | sampleIsSubject | relationshipID | sampleIsObject |
-| --- | --- | --- |
-| V | child | A |
-| V | child | B |
-| X | child | V |
-| Y | child | V |
-| Z | child | V |
+|-----------------|----------------|----------------|
+| V               | child          | A              |
+| V               | child          | B              |
+| X               | child          | V              |
+| Y               | child          | V              |
+| Z               | child          | V              |
 
 ![Example B](./assets/how-to/SampleRelationships_exB.png)
 
 | sampleIsSubject | relationshipID | sampleIsObject |
-| --- | --- | --- |
-| V | child | A |
-| V | child | B |
-| U | child | B |
-| U | child | C |
-| X | child | V |
-| Y | child | V |
-| Z | child | U |
+|-----------------|----------------|----------------|
+| V               | child          | A              |
+| V               | child          | B              |
+| U               | child          | B              |
+| U               | child          | C              |
+| X               | child          | V              |
+| Y               | child          | V              |
+| Z               | child          | U              |
