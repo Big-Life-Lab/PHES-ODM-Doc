@@ -10,23 +10,29 @@ This documentation is intended for those who want to understand how the ODM mode
 
 ## How to use the documentation
 
-There are three <!--# actually four sections once tutorials are added --> document sections, each with a different purpose.[^index-1]
+There are six document sections, each with a different purpose.[^index-1]
 
 [^index-1]: [David Laing and Divio's Grand Unified Theory of Documentation.](https://documentation.divio.com/#:~:text=The%20Grand%20Unified%20Theory%20of,guides%2C%20technical%20reference%20and%20explanation.)
+
+[*Background*](background.qmd) provides some additional context and explanation about the history and guiding principles of the PHES-ODM project. This section is not as important for users trying to get started with the model.
 
 [*Getting to know the ODM*](explanation.qmd) is oriented to understanding the ODM. This section explains the ODM, its structure, and how the model was designed and developed.
 
 [*How to use the ODM*](how-to.qmd) are step-by-step guides to help you use different aspects of the ODM such as report templates.
 
-[*Reference*](ref-guide.qmd) is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
+[*Sample relationships*](sampleRelationships.qmd) provides a deeper overview of sample relationships and sample provenance, and how to record it accurately in the ODM.
+
+[*Long-format, wide-format, and wide-names*](wide-names.qmd) is an overview of the differences between "long" and "wide" formatted data, and how the ODM can be used in both formats. It also provides instructions on how to alternate reproducibly between the two.
+
+[*Reference guide*](ref-guide.qmd) is a description of each part of the ODM. It serves as a reference for the other sections, and the definitive record of each part, table and set -- along with their attributes.
 
 ### Future documentation
 
-Tutorials and videos are being develop. Tutorials will help newcomers get started. They will be lessons on how to:
+Video tutorials and explanations are available in our [vimeo library](https://vimeo.com/user/126292027/folder/6496228?isPrivate=false), with new videos and tutorials still in development. Tutorials will help newcomers get started. Further documentation and lessons that are still forthcoming include items on how to:
 
 -   Describe a protocol using protocol tables. <!--#  *Tutorials:* Oriented to learning, this piece must allow the newcomer to get started. This piece of the documentation should ideally take the form of a lesson. As an analogy, consider tutorials as being akin to teaching a small child how to cook.-->
-
--   Make wide names and report templates using wide names.
+-   Use of the `accessions`, and `calculations` tables.
+-   Further guidance and walk-throughs on how to use ODM tools
 
 ## Quick start
 
@@ -45,7 +51,7 @@ You can view mandatory and optional data field here: ([samples](https://docs.phe
 ::: {.callout-tip collapse="true"}
 ## What are ODM parts and how to find them?
 
-In the ODM, tables are an example of an part. A part name can be identified by its text style like `this`. The part identifier often follows the part in parenthesis, with a link to the part in the reference section.
+In the ODM, tables are an example of a part. A part name can be identified by its text style like `this`. The part identifier often follows the part in parenthesis, with a link to the part in the reference section.
 
 So, `Sample report table` is the part name, and ([samples](tables.qmd#samples)) is the part ID and link to the documentation for that part.
 
@@ -54,17 +60,17 @@ You can find out more about parts on the [reference guide section](parts.qmd).
 
 ### 3. Try entering example data in ODM Excel templates
 
-Keep in mind, ODM templates are only examples of how to use the ODM dictionary to record data. Templates are available at [OSF.io](https://osf.io/ab9se/). The '[How to use the ODM](https://docs.phes-odm.org/how-to.html)" section describes how to enter information into tables.
+Keep in mind, ODM templates are only examples of how to use the ODM dictionary to record data. Templates are available at [the PHES-ODM OSF.io repository](https://osf.io/ab9se/files/osfstorage). The '[How to use the ODM](https://docs.phes-odm.org/how-to.html)" section describes how to enter information into tables.
 
 #### Storing sample data in an ODM template
 
-A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. The sample template stores one sample per row. The `Sample report table` has seven mandatory fields that are listed in the [reference[(tables.qmd#samples)] for the table. 
+A `sample` ([sampleID](parts.qmd#sampleID)) is defined as a representative volume of wastewater (or other forms of water or liquid), air, or surface area taken from a site. The sample template stores one sample per row. The `Sample report table` has seven mandatory fields that are listed in the [reference](tables.qmd#samples)] for the table. 
 
 {{< video https://vimeo.com/802349692 >}}
 
 #### Storing measure data in an ODM template
 
-A `measure` ([measure](parts.qmd#measureID)) is an observation or measurement of any substance, including biological, physical, or chemical substances, obtained from a specimen such including a site, sample, person, or population. Each measure is stored in the `Measures table` template as a separate row, following the "long" table format, which is the primary method for storing measures. For example, if you recorded PCR results for two SARS-CoV-2 regions, covN1 and covN2, you would record each measurement on a separate line. Alternatively, you can use a "wide" table format to store multiple measures in a single row or create tables that combine both long and wide headers. The [European Union airport template](https://osf.io/ab9se/) is a hybrid template that exemplifies this (found in the "Airports" folder).
+A `measure` ([measure](parts.qmd#measureID)) is an observation or measurement of any substance, including biological, physical, or chemical substances, obtained from a specimen such including a site, sample, person, or population. Each measure is stored in the `Measures table` template as a separate row, following the "long" table format, which is the primary method for storing measures. For example, if you recorded PCR results for two SARS-CoV-2 regions, covN1 and covN2, you would record each measurement on a separate line. Alternatively, you can use a "wide" table format to store multiple measures in a single row or create tables that combine both long and wide headers. The [European Union supersites template](https://osf.io/ab9se/files/osfstorage) is a hybrid template that exemplifies this (found in the "supersites - FKA airports" folder).
 
 (Video)
 
@@ -72,7 +78,7 @@ A `measure` ([measure](parts.qmd#measureID)) is an observation or measurement of
 
 In addition to recording measures from samples, you can also record measures for a specific site, such as wastewater flow rate ([flowRate](parts.qmd#flowrate)), or the population served by the site, such as the Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed or municipality. **Figure 2** illustrates the these three types of measurements: `sample`, `site`, and `population`.
 
-The "who, where, and why" of these measurements is stored in contact tables, while the "how," which refers to the measurement protocol or method, is stored in the protocols tables.
+The "who, where, and why" of these measurements are stored in the contact information tables, geospatial tables, and data source & processing tables; while the "how," which refers to the measurement protocol or method, is stored in the protocol or methods tables, and the results tables.
 
 ![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/subway.png){fig-align="center"}
 
