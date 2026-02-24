@@ -122,7 +122,7 @@ The above examples takes the previous example table, and adds the `Measure set r
 
 1.  **Columns A to I**
 
-    ![](assets/how-to/measures_Col_AI.png){fig-align="center" width="679"}
+![](assets/how-to/measures_Col_AI.png){fig-align="center" width="679"}
 
     i)  Columns A-C, and E-H
 
@@ -136,7 +136,7 @@ The above examples takes the previous example table, and adds the `Measure set r
 
     ii) Column D
 
-        -   `Purpose` has a drop-down menu. If you are unsure what to put, select `Regular` for regular pathogen surveillance. For more information on the different possible categories for purpose, please refer to ([purposeSet](https://docs.phes-odm.org/sets.html#purposeSet)).
+        -   `Purpose` has a drop-down menu. If you are unsure what to put, select `Regular` for regular pathogen surveillance. For more information on the different possible categories for purpose, please refer to [purposeSet](https://docs.phes-odm.org/sets.html#purposeSet).
     
     iii) Column I
     
@@ -144,7 +144,7 @@ The above examples takes the previous example table, and adds the `Measure set r
 
 2.  **Columns J to P**
 
-    ![](assets/how-to/measures_Col_JP.png){fig-align="center"}
+![](assets/how-to/measures_Col_JP.png){fig-align="center"}
 
     i)  Columns J to P
         -   These are date fields where you can enter the dates associated with your measure in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries in columns J, K, L, and P use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30`
@@ -157,7 +157,7 @@ The above examples takes the previous example table, and adds the `Measure set r
 
 3.  **Columns Q to AA**
 
-    ![](assets/how-to/measures_Col_QAA.png){fig-align="center"}
+![](assets/how-to/measures_Col_QAA.png){fig-align="center"}
         
     i) Columns R, S, and T
         -   `Compartment`, `Specimen` and `Fraction analyzed` have drop-down menus. In general these fields are optional, but are recommended (see next point for the exception).
@@ -188,7 +188,7 @@ The above examples takes the previous example table, and adds the `Measure set r
 
 4.  **Columns AB to AK**
 
-    ![](assets/how-to/measures_Col_ABAK.png){fig-align="center"}
+![](assets/how-to/measures_Col_ABAK.png){fig-align="center"}
 
     i)  Columns AB, AC, and AD
         -   AB is an identifier field used for connecting to detailed calculations or data treatment details in the `Calculations table`, while AC contains drop-down menus, and AD is a free text field.
@@ -212,23 +212,23 @@ The above examples takes the previous example table, and adds the `Measure set r
 
 1.  **Columns A to G**
 
-    ![](assets/how-to/measureSets_Col_AG.png){fig-align="center" width="671"}
+![](assets/how-to/measureSets_Col_AG.png){fig-align="center" width="671"}
 
-    i)  Columns A, B, D and E
+    i)     Columns A, B, D and E
 
         -   These are identifier fields.
 
-        -   `Report Set ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. In essence, each value of `Report set ID` represents a unique measure set. This field can be any combination of letters or words up to 30 characters.
+        -   `Measure set report set ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. In essence, each value of `Measure set report set ID` represents a unique measure set. This field can be any combination of letters or words up to 30 characters.
 
         -   For the rest, you can repeat the identifier between entries (if needed). For instance, if you are entering two different measure sets that came from the same organization, then the `Organization ID` (column D) will be the same.
 
-        -   You may have already created these identifiers in another template. For instance you may have created `Organization ID` in the `Organization` template.
+        -   You may have already created these identifiers in another template. For instance you may have created `Organization ID` in the `Organization table` template.
 
-        Columns C and G
+    ii)    Columns C and G
 
         -   These are free form fields in which you can enter the indicated information. `Name` (column C) refers to the name that you have given to the measure set.
 
-    ii) Column F
+    iii)   Column F
 
         -   `Last edited` is a date field in which you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.
 
@@ -236,9 +236,9 @@ You have now entered your data in the `Measure report` and `Measure set report` 
 
 ## 3) How to report samples and sample relationships:
 
-In this guide you will learn how to enter information about samples and sample relationships into their respective templates. In the `Sample report` (or `samples` tab) template, each entry represents a sample. A sample is the wastewater that you collected so that measures can be made. Along the same lines, each entry in the `Sample relationships` (or`sampleRelationships`) template represents an interaction (or relationship) between two samples in the form "subject - relationship - object". So, to specify that Sample A is a field sample replicate of Sample B, you would enter `Sample ID` of A - `Field sample replicate` - `Sample ID` of B.
+In this guide you will learn how to enter information about samples and sample relationships into their respective templates. In the `Sample report table` (or `samples` tab) template, each entry represents a sample. A sample is the wastewater that you collected so that measures can be made - but it may also be a sample from a surface, from air, or other environmental material. Along the same lines, each entry in the `Sample relationships table` (or the `sampleRelationships` tab) template represents an interaction (or relationship) between two samples in the form "subject - relationship - object". So, to specify that Sample A is a field sample replicate of Sample B, you would enter `Sample ID` of A - `Field sample replicate` - `Sample ID` of B.
 
-You can find additional information regarding terms and the colour-coding of columns at the beginning of this document ([How-To guides]) and the Reference Guide - Parts document.
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this document ([How-To guides](how-to.qmd)) and the [Reference Guide - Parts document](parts.qmd).
 
 ## Quick Start
 
@@ -264,101 +264,161 @@ Below you will find the fields that are mandatory for the `Sample report` and `S
 
 2.  **Examples**
 
-    *Image will be added*
+![](assets/how-to/samples-example.png)
+
+**this example data is pulled from open data sources using the ODM at the [Ontario Wastewater Surveillance Consortium](https://github.com/OntarioWastewaterSurveillanceConsortium/sars-cov-2-data/tree/main)**
+
 
 ### Sample Relationships Template
 
 1.  **Mandatory fields**
 
+-   **Synthetic ID for the sampleRelationships table**: A unique identifier for each row of the `Sample relationships table`. Can be any combination of characters, as long as there are fewer than 30.
+
 -   **`Sample ID object`**: The object (or one of the samples) of a relationship between two samples. This will always be a `Sample ID` that was previously created in the `Sample report` template.
 
--   **`Relationship`**: Describes the relationship between two samples.
+-   **`Relationship`**: Describes the relationship between two samples. For the list of possible relationships, please refer to [sampleRelSet](https://docs.phes-odm.org/sets.html#sampleRelSet).
 
 -   **`Sample ID subject`**: The subject (or one of the samples) of a relationship between two samples. This will always be a `Sample ID` that was previously created in the `Sample report` template.
 
 2.  **Examples**
 
-    *Image will be added*
+![](assets/how-to/sampleRelationships-example.png)
 
 ## Detailed Description
 
-### `Sample report` template
+### `Sample report table` template
 
-1.  **Columns A to G**
+**Columns A to J**
 
-    ![](assets/how-to/samples_Col_AG.png){fig-align="center"}
+![](assets/how-to/samples_Col_AJ.png){fig-align="center"}
 
-    i)  Columns A to E:
+    i)  Columns A to E, and H:
 
         -   These are identifier fields.
 
-        -   `Sample ID` (column A) is the unique identifier for this template and cannot be repeated between entries. You can think of each `Sample ID` value as representing a unique sample. This field can be any combination of letters or words up to 30 characters.
+        -   `Sample ID` (column A) is the unique identifier for this template and cannot be repeated between entries. You can think of each `Sample ID` value as representing a unique sample. This field can be any combination of letters, numbers, or words up to 30 characters.
 
         -   For the rest of the fields, you can repeat values between entries. For instance, if you are entering two different samples from the same site, then the `Site ID` (column E) will be the same.
 
-        -   You may have already created these identifiers in another template. For instance you may have created `Site ID` in the `Sites` template.
+        -   The sample logic applies for sampling protocols (`Protocol ID`), for the individual or organization collecting the sample (`Organization ID` and `Contact ID`), and the dataset the data is found in (`Dataset ID`).
+        
+        -   You may have already created these identifiers in another template. For instance you may have created `Site ID` in the `Sites table` template.
 
     ii) Columns F to G:
 
-        -   These are fields that contain drop-down menus where you can enter information regarding the `Purpose` (column F) and `Sample material` (column G) of your sample.
+        -   These are fields that contain drop-down menus where you can enter information regarding the `Purpose` (column F, [purposeSet](https://docs.phes-odm.org/sets.html#purposeSet)) and `Sample material` (column G, [sampleMatSet](https://docs.phes-odm.org/sets.html#sampleMatSet)) of your sample.
+        
+    ii) Columns I to J:
 
-2.  **Columns H to O**
+        -   These are fields that contain drop-down menus where you can enter information regarding the `Sample origin` (column I, [originSet](https://docs.phes-odm.org/sets.html#originSet)) and the `Replicate type` (column J, [replicateSet](https://docs.phes-odm.org/sets.html#replicateSet)) of your sample.
+        
+2.  **Columns K to Q**
 
-    ![](assets/how-to/samples_Col_HO.png)
+![](assets/how-to/samples_Col_KQ.png)
 
-    i)  Columns H:
-        -   `Dataset ID` is an identifier field for the dataset that your sample is associated with.
-    ii) Columns I to K, O:
+        
+    i) Columns K, N:
+    
         -   These fields contain drop-down menus and are related to various characteristics of your sample.
 
-        -   `Sample collection type` (column K) refers to the collection technique you used to obtain the sample.
+        -   `Sample collection type` (column K, [collectSet](https://docs.phes-odm.org/sets.html#collectSet)) refers to the collection technique you used to obtain the sample.
 
-        -   `Pooled` (column O) refers to whether or not the sample that you are entering is made up of multiple child samples.
-    iii) Columns L to N:
+        -   `Pooled` (column O, [booleanSet](https://docs.phes-odm.org/sets.html#booleanSet)) refers to whether or not the sample that you are entering is made up of multiple parent samples; a combination of multiple samples.
+        
+    ii) Columns L to M:
+    
          -   These are free form fields.
-         -   `Collection period` (column L) refers to the number of hours that you took to collect the sample.
-         -   `Collection number` (column M) refers to the number of subsamples that were used to create Sample that you are entering.
-         -   `Collection number and period` (column N) is a combination of the previous two fields.
+         
+         -   `Collection period` (column L) refers to the number of hours that you took to collect the sample. Please note that this is one field in the ODM where the units are implied, and **must be recorded in hours**.
+         
+         -   `Collection number` (column M) refers to the number of subsamples that were used to create Sample that you are entering. For grab samples this value will always just be 1.
+         
+    iii) Columns O to Q:
+    
+        -   These fields are datetime fields to record details about when exactly a sample was collected. These dates will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30.`
+        
+        -   For single collection or grab samples, users can use `Collection date time` (Column O) to record the date and time of colelction. 
+        
+        -   For composite or agragated samples, users can use `Colelction date time start` (Column P) to record the date and time that sample collection was begun, and `Colelction date time end` (Column Q) to record when the collection was halted.
+        
+3.  **Columns R to V**
 
-3.  **Columns P to W**
+![](assets/how-to/samples_Col_RV.png)
 
-    ![](assets/how-to/samples_Col_PW.png)
+    i)  Columns R and T:
+    
+        -   These are optional date fields that are related to your sample. These dates will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30.`
+        
+        -   `Collection Date (time not included)` (Column R) is where you can enter the date of collection when time wasn't recorded. THis is an optional field because it records less data, but is a good option for programs where detailed time stamps may be unfeasible - including for composite samples. 
+        
+        -   `EpiWeek Start Date` (Column T) is an optional date field used when recording [epiWeeks](https://epiweeks.readthedocs.io/en/stable/background.html) (columns U and V). This specifies the start date of the EpiWeek to avoid confusion due to differences in USCDC and ISO8601 reporting standards.
+        
+    ii) Column S:
+    
+        -   `Approximate Time` (column S) is an optional time field when using `Collection Date (time not included)`. If users did have some information about time, this is a categorical drop down field to report approximate times of day in which the sample was collected. For information on these categories, please see [collAppxSet](https://docs.phes-odm.org/sets.html#collAppxSet).
 
-    i)  Columns P to T, V:
-        -   These are date fields that are related to your sample. These dates will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30.`
-        -   `Last edited` is where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.
-    ii) Column U and W:
-        -   `Reportable` (column U) is a drop-down menu field where you can indicate if the sample should not be used for regular reporting due to quality concerns. You can record more details of the quality concerns in the `Quality reports` table.
+    iii) Columns U and V:
+    
+        -   These are optional free-text fields to be used as accessories to a date field. 
+        
+        -   `EpiWeek Number` (collumn U) specifies the number of the EpiWeek (between 1 and 52 or 53) of sample collection. 
+        
+        -   `Year of the EpiWeek` (column V) specifies the year of the epiWeek. 
+        
+        -   In order for epiWeek information to be useful, **all three pieces (`EpiWeek Start Date`, column T; `EpiWeek Number`, collumn U; and `Year of the EpiWeek`, column V) must be present and recorded**.
+
+4.  **Columns W to AA**
+
+![](assets/how-to/samples_Col_WAA.png)
+
+    i)  Columns W, X, and Z:
+    
+        -   These fields are datetime fields to record details about when exactly a sample was sent from the collection point to the lab, and when it was recieved in the analysis lab. These dates will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30.`
+        
+        -   `Date sample was sent` (column W) records when a sample leaves the collection point and is sent to the lab for analysis. `Date sample recieved` (Column X) records when that sample then arrives in the lab for analysis. These two fields, when combined with `Collection date time` and `Analysis date time start` (from the `Measure report table`), give a complete timeline from collection to analysis. This helps provide contextual metadata for how long samples are sitting, and any implications that may have on the measurement results.
+        
+        -   `Last edited` ( Column Z) is where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.
+        
+    ii) Columns Y and AA:
+    
+        -   `Reportable` (column U, [booleanSet](https://docs.phes-odm.org/sets.html#booleanSet)) is a drop-down menu field where you can indicate if the sample should not be used for regular reporting due to quality concerns. You can record more details of the quality concerns in the `Quality reports` table.
+        
         -   `Notes` (column W) is a free form field where you can indicate anything of interest.
-
+        
 ### `Sample relationships` template
 
-1.  **Columns A to E**
+1.  **Columns A to J**
 
-    ![](assets/how-to/sampleRel_Col_AE.png){fig-align="center"}
+![](assets/how-to/sampleRel_Col_AF.png){fig-align="center"}
 
-    i)  Columns A and C:
+    i)  Columns A, B, and D:
 
         -   These are identifier fields.
-
-        -   Both of these identifiers are `Sample ID` values and represent samples. You would have created them previously in the `Sample report` template. Neither of them are unique identifiers and, thus, can be repeated between entries.
+        
+        -   `Synthetic ID for the sampleRelationships table` is a unique identifier for each row in the "Sample relationships table`, and they cannot be repeated. This operates as the primary key for this table.
+        
+        -   Both of the identifiers for subject (Column B) and object (Column D) are `Sample ID` values and represent samples. You would have created them previously in the `Sample report` template. Neither of them are unique identifiers and, thus, can be repeated between entries.
 
     ii) Columns B:
 
-        -   `Relationship` is a drop-down menu field where you can select the type of relationship between two samples. For instance, if Sample B was a child of Sample A, you would put the `Sample ID` of Sample A in the `Sample ID subject` field (column A), and the `Sample ID` of Sample B in `Sample ID object` field (column C). Then you would chose `Child relationship` from the menu in this column.
+        -   `Relationship` (Column C, [sampleRelSet](https://docs.phes-odm.org/sets.html#sampleRelSet) is a drop-down menu field where you can select the type of relationship between two samples. For instance, if Sample B was a child of Sample A, you would put the `Sample ID` of Sample A in the `Sample ID subject` field (column B), and the `Sample ID` of Sample B in `Sample ID object` field (column D). Then you would chose `Child relationship` from the menu in this column.
 
-    iii) Columns D and E:
+    iii) Columns E and F:
 
-         -   These are a date field (column D) and a free form field (column E) where you can enter in the indicated information.
-         -   `Last edited` (column D) is where you can enter in the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.
+         -   These are a date field (column E) and a free form field (column F) where you can enter in the indicated information.
+         
+         -   `Last edited` (column E) is where you can enter in the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the entry was entered with no updates.
 
+        -   `Notes` (column F) is a free form field where you can indicate anything of interest.
+        
 You have now entered your data in the `Sample report` and `Sample relationships` templates, congratulations!
 
 ## 4) How to record a protocol
 
-In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is "A procedure for collecting a sample or performing a measure". Each entry in the `Protocols` (or `protocols`) template represents a unique protocol. A protocol is made up of protocol steps. In the `Protocol steps` (or `protocolSteps`) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the `Protocol relationships` (or `protocolRelationships`) template represents one of these relationships in the form, "subject - relationship - object". So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the `Protocol step ID` of A - `Is Before` - `Protocol Step ID` of B.
+In this guide you will learn how to enter protocols, protocol steps and protocol relationships into their respective templates. A protocol is "A procedure for collecting a sample or performing a measure". Each entry in the `Protocols table` (or [protocols](https://docs.phes-odm.org/tables.html#protocols)) template represents a unique protocol. A protocol is made up of protocol steps. In the `Protocol steps table` (or [protocolSteps](https://docs.phes-odm.org/tables.html#protocolSteps)) template, each entry is one of these steps. Finally, protocols and protocol steps can be linked to each other. Each entry in the `Protocol relationships` (or [protocolRelationships](https://docs.phes-odm.org/tables.html#protocolRelationships)) template represents one of these relationships in the form, "subject - relationship - object". So, for example, if you want to specify that Protocol step A needs to be done before Protocol step B, you would enter the `Protocol step ID` of A - `Is Before` - `Protocol Step ID` of B.
 
-You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([How-To guides]) and the Reference Guide - Parts document.
+You can find additional information regarding terms and the colour-coding of columns at the beginning of this guide ([How-To guides](how-to.qmd)) and the [Reference Guide - Parts document](https://docs.phes-odm.org/tables.html).
 
 ## Quick Start
 
@@ -376,13 +436,16 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 -   `Value`: Value of the entry. This is only mandatory if the entry is a measure.
 
--   `Aggregation`: Statistical measures used to report a measure (for example, "mean"). This is only mandatory if the entry is a measure.
-
 -   `Unit`: The units of the value. This is only mandatory if the entry is a measure.
+
+-   `Aggregation`: Statistical measures used to report a measure (for example, "mean"). This is only mandatory if the entry is a measure.
 
 2.  **Examples**
 
-    *Image will be added*
+![](assets/how-to/protSteps-example.png)
+
+**this example data is pulled from open data sources using the ODM at the [Ontario Wastewater Surveillance Consortium](https://github.com/OntarioWastewaterSurveillanceConsortium/sars-cov-2-data/tree/main)**
+
 
 ### **`Protocols` template**
 
@@ -392,27 +455,34 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 2.  **Examples**
 
-*Image will be added*
+![](assets/how-to/protocols-example.png)
+**this example data is pulled from open data sources using the ODM at the [Ontario Wastewater Surveillance Consortium](https://github.com/OntarioWastewaterSurveillanceConsortium/sars-cov-2-data/tree/main)**
+
 
 ### **`Protocol relationships` template**
 
 1.  **Mandatory fields**
 
+-   `Synthetic ID for the protocolRelationships table`: A unique identifier for each row of the `Sample relationships table`. Can be any combination of characters, as long as there are fewer than 30.
+
 -   `Protocol ID container`: The unique identifier for the `Protocol relationships` template. Each value represents a protocol, and the step(s) and other protocol(s) that make it up. This identifier should also be a `Protocol ID` that was created using the `Protocols` template.
-
--   `Relationship`: Describes the relationship between the subject and object.
-
--   `Protocol ID subject`: Identifier of the subject of a relationship between a protocol, and a protocol step or protocol. This is only mandatory is the subject is a procotol.
-
--   `Protocol step ID subject`: Identifier of the subject of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory is the subject is a protocol step.
 
 -   `Protocol ID object`: Identifier of the object of a relationship between a protocol, and a protocol step or protocol. This is only mandatory if the object is a protocol.
 
--   `Protocol ID step object`: Identifier of the object of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory if the object is a protocol step.
+-   `Step ID Object`: Identifier of the object of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory if the object is a protocol step.
+
+-   `Relationship between entities`: Describes the relationship between the subject and object.
+
+-   `Protocol ID subject`: Identifier of the subject of a relationship between a protocol, and a protocol step or protocol. This is only mandatory is the subject is a protocol.
+
+-   `Step ID Subject`:  Identifier of the subject of a relationship between a protocol step, and a protocol step or protocol. This is only mandatory is the subject is a protocol step.
+
 
 2.  **Examples**
 
-*Image will be added*
+![](assets/how-to/protRel-example.png)
+**this example data is pulled from open data sources using the ODM at the [Ontario Wastewater Surveillance Consortium](https://github.com/OntarioWastewaterSurveillanceConsortium/sars-cov-2-data/tree/main)**
+
 
 ## Detailed Description
 
@@ -420,7 +490,7 @@ Below you will find the fields that are mandatory for the `Protocols`, `Protocol
 
 1.  **Columns A to G**
 
-    ![](assets/how-to/protSteps_Col_AG.png){fig-align="center"}
+![](assets/how-to/protSteps_Col_AG.png){fig-align="center"}
 
     i)  Column A and E:
         -   These are identifier fields.
