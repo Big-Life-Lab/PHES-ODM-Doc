@@ -40,9 +40,11 @@ You can get to know the ODM by imaging how to record a polymerase chain reaction
 
 ### 1. Get oriented to the ODM tables where you record results
 
-![**Figure 1 - Key ODM tables for recording data**](assets/intro/ODM-model-tables.png){fig-align="center"}
+![**Figure 1 - Key ODM tables for recording data**](assets/intro/figure1-ODMSubway-simple.png){fig-align="center"}
 
 The `Sample report table` ([samples](https://docs.phes-odm.org/tables.html#samples "Samples report table")) and the `Measure report table` ([measures](https://docs.phes-odm.org/tables.html#samples "Measures report table")) are where you record information about samples and measures.
+
+If you want to go deeper, the `Sites report table`([Sites](https://docs.phes-odm.org/tables.html#sites "Sites report table")) will capture data about where samples are collected, and the `Polygons report table`([Polygons](https://docs.phes-odm.org/tables.html#polygons "Polygons report table")) will record information about the regions that are represented by environmental samples.
 
 ### 2. View mandatory and optional data fields in the tables reference guide
 
@@ -76,11 +78,13 @@ A `measure` ([measure](parts.qmd#measureID)) is an observation or measurement of
 
 ### 4. Next steps
 
-In addition to recording measures from samples, you can also record measures for a specific site, such as wastewater flow rate ([flowRate](parts.qmd#flowrate)), or the population served by the site, such as the Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed or municipality. **Figure 2** illustrates the these three types of measurements: `sample`, `site`, and `population`.
+In addition to recording measures from samples, you can also record measures for a specific site, such as wastewater flow rate ([flowRate](parts.qmd#flowrate)), or the population served by the site, such as the Covid-19 hospitalization rate for a wastewater treatment plant's wasteshed or municipality. **Figure 2** illustrates the these three types of measurements: `sample`, `site`, and `polygon`.
 
 The "who, where, and why" of these measurements are stored in the contact information tables, geospatial tables, and data source & processing tables; while the "how," which refers to the measurement protocol or method, is stored in the protocol or methods tables, and the results tables.
 
-![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/subway.png){fig-align="center"}
+The "who, where, and what else" are extended in version 3 to also integrate public health actions and external dataset linkages. These are included as optional extensions for programs that want to incorporate these items, and operate at this level of detail.
+
+![**Figure 2 - ODM tables and 'subway' lines for storing measures**](assets/intro/Figure2-ODMSubway-complete.png){fig-align="center"}
 
 ### Getting help
 
