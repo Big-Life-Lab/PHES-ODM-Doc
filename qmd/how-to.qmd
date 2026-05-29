@@ -814,54 +814,83 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
 ### `Accessions` template
 
-1.  **Columns A to E**
+1.  **Columns A to F**
 
-    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
+![](assets/how-to/accessions_Col_AF.png){fig-align="center"}
 
-    i)  Columns A and B:
+    i)  Columns A to D, and F:
 
         -   These are identifier fields.
+        
+        -   `Accessions Index ID` (column A) is the unique identifier for each row of the `accesions` table
+        
+        -   `Measure report ID` (column B), `Measure set report ID` (column C), and `Public Health Action ID` (column D) are unique identifiers that refer out to related measures, measure sets, *or* public health actions. Never more than one.
+        
+        -   `Organization ID` (column F) is an field to link the organization who made the public health action, and their information.
 
+    ii)  Column E:
+
+        -   `Host Data Repository or Bank` (column E) is the field for listing the name of the repository where the external data is stored (ex. GitHub, GISAID, etc.). This is a cetegirical field populated by enumerated values - see [Data Repository Set](https://docs.phes-odm.org/sets.html#dataRepoSet) for more information.
+
+2.  **Columns G to J**
+
+![](assets/how-to/accessions_Col_GJ.png){fig-align="center"}
+    
+    i)  Columns G, H, and J:
+
+        -   These are free form fields in which you can enter various information about the the specific data repository. 
+        
+        -   `Accession number in Repository` (column G) should be the unique reference to find the data in the external reposory.
+        
+        -   `Version of Data Hosting Platform/Repository` (column H) sets the version of the linked repository.
+        
+        -   `Notes` (column J) is a free text field to record additional comments which may not belong in any other fields.  
+
+    ii)  Columns I:
+
+         -   `Last Edited` (column I) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+         
 
 ### `Address` template
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
+![](assets/how-to/addresses_Col_AI.png){fig-align="center"}
 
-    i)  Columns A and B:
+    i)  Columns A:
 
-        -   These are identifier fields.
+        -   This is the identifier field.
 
         -   `Address ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each `Address ID` value as representing a unique address. This field can be any combination of letters or words up to 30 characters.
 
-        -   For `Dataset ID` (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different addresses from the same dataset, then this column will be the same.
-
-        -   You may have already created the `Dataset ID` in the `Dataset` template.
-
-    ii) Columns C to E:
+    ii) Columns B to D, and F:
 
         -   These are free form fields in which you can enter various information about the address.
+        
+        -   `Address Line 1` (column B) and `Address Line 2` (column C) record specific street address and unit number details, while `City` (column D) and `Postal or Zip Code` (column F) record the mailing and city data.
 
-2.  **Columns F to J**
 
-    ![](assets/how-to/addresses_Col_FJ.png){fig-align="center"}
+    iii)  Columns E and G:
 
-    i)  Columns F to J:
+        -   These are categorical fields that take predetermined ennumerated values. 
 
-        -   Most of these are free form fields where you can enter the indicated information about the address.
+        -   The values for `State, Province, or Region` (column E) are the ISO 3166-2 code for country sub-domainm, which can be found in the [`Zones table`](https://docs.phes-odm.org/tables.html#zones)
+        
+        -   The values for `Country` (column G) are the ISO 3166-1 alpha-2 country codes, which can be found in the [`Countries table`](https://docs.phes-odm.org/tables.html#countries).
+        
+    iv)  Columns H to I:
+    
+        -   `Last edited` (column H) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
 
-        -   `Last edited` (column I) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
-
-            This date will be in the format yyyy-mm-dd. Including hours and minutes is optional, but all date-entries use the ISO 8601 format. `2022-01-01T06:11:54` or `2022-01-01T06:11:54+13:30.`
+        -   `Notes` (column I) is for any extr comments or information.
 
 ### `Contact` template
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/contacts_Col_AE.png){fig-align="center"}
+![](assets/how-to/contacts_Col_AI.png){fig-align="center"}
 
-    i)  Columns A to C:
+    i)  Columns A to B:
 
         -   These are identifier fields.
 
@@ -871,30 +900,67 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
         -   You may have already created these Identifiers in another template. For instance you may have created `Organization ID` in the `Organization` template.
 
-    ii) Columns D and E:
+    ii) Columns C and G:
 
-        -   These are free form fields in which you can enter the name of the contact.
+        -   These are free form fields in which you can enter the name(s) and various contact information of the contact.
 
-2.  **Columns F to J**
+    iii)  Columns H to I:
 
-    ![](assets/how-to/contacts_Col_FJ.png){fig-align="center"}
-
-    i)  Columns F to J:
-
-        -   Most of these fields are free form in which you can enter various information regarding the contact.
-        -   `Last Edited` (column I) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+        -   `Last Edited` (column H) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+       
+        -   `Notes` (column I) is for any extr comments or information.
 
 ### `Calculations` template
 
-1.  **Columns A to E**
+1.  **Columns A to G**
 
-    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
+![](assets/how-to/calculations_Col_AG.png){fig-align="center"}
 
-    i)  Columns A and B:
+    i)  Columns A to C:
 
         -   These are identifier fields.
+        
+        -   `Calculation ID` (column A) is a unique identifier for each row in the `calculations` table, it is typocally generated by concatenating the pipeline and treatment IDs together.
+
+        -   `Pipeline ID` (column B) is a unique identifier for the data pipeline, or sequence of calculations/data treatments applied to the data.
+
+        -   `Treatment ID` (column C) is a unique identifier for each treatment or step in the calcution or data pipeline that generated the reported measure.
+
+    ii)  Columns D and G:
+
+        -   These are free-text fields.
+        
+        -   `Name` (column D) is a name used for a given data treatment, while `summary` (column G) is a natural language summary of the data treatment.
+
+    iii)  Columns E and F:
+
+        -   These are categorical or enumerated fields.
+
+        -   `Calculation Type` (column E) is An ennumerated field to explain the purpose/nature of a single calculation/data treatment. To review the possible values, please see [`calculation type set`](https://docs.phes-odm.org/sets.html#calcTypeSet).
+        
+        -   `Standard for adjustment` (column F) is used for smoothing or standardisation calculation types, used to specify what the measure is being standardized against or smoothed with. It is populated by [`measurement` part types](https://docs.phes-odm.org/sets.html#measurements)
 
 
+1.  **Columns H to M**
+
+![](assets/how-to/calculations_Col_HM.png){fig-align="center"}
+   
+    i)  Columns H to K:
+
+        -   These are free-text fields.
+        
+        -   `Sequence order` (column H) is an integer value to specify the position in the order sequence of a data treatment within the larger pipeline. 
+        
+        -   `Equation` (column I) and `Source code` (column K) specify addition details about the data treatment, either in mathematical or coding notation. The source code may also be a web link.
+        
+        -   `Reference Link` (column J) is another external reference to details on a data treatment or pipeline.
+
+    ii)  Columns L and M:
+
+        -   `Last Edited` (column H) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+       
+        -   `Notes` (column I) is for any extr comments or information.
+        
 ### `Dataset` template
 
 1.  **Columns A to G**
