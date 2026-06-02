@@ -941,7 +941,7 @@ Below you will find the fields that are mandatory for the metadata-related templ
         -   `Standard for adjustment` (column F) is used for smoothing or standardisation calculation types, used to specify what the measure is being standardized against or smoothed with. It is populated by [`measurement` part types](https://docs.phes-odm.org/sets.html#measurements)
 
 
-1.  **Columns H to M**
+2.  **Columns H to M**
 
 ![](assets/how-to/calculations_Col_HM.png){fig-align="center"}
    
@@ -959,13 +959,13 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
         -   `Last Edited` (column H) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
        
-        -   `Notes` (column I) is for any extr comments or information.
+        -   `Notes` (column I) is for any extra comments or information.
         
 ### `Dataset` template
 
-1.  **Columns A to G**
+1.  **Columns A to H**
 
-    ![](assets/how-to/datasets_Col_AG.png){fig-align="center"}
+![](assets/how-to/datasets_Col_AH.png){fig-align="center"}
 
     i)  Columns A and B:
 
@@ -977,89 +977,127 @@ Below you will find the fields that are mandatory for the metadata-related templ
 
     ii) Column C
 
-        -   `Dataset creation date` is a date field where you can enter the date that the dataset was created.
+        -   `Dataset creation date` (column C) is a date field where you can enter the date that the dataset was created.
 
-    iii) Columns D to G:
+    iii) Columns D, F, and G:
 
          -   These are free form fields in which you can enter various information related to the dataset.
+         
+         -   `Name` (column D) and `Summary` (column G) are optional field to report more details or names on the dataset
+         
+         -   `Reference Link` (column F) points to an external link for additional information, or to another access point.
 
-2.  **Columns H to N**
+    iv) Columns E and H:
 
-    ![](assets/how-to/datasets_Col_HN.png){fig-align="center"}
+         -   These are categorical input fields for reporting additional metadata on the dataset.
+         
+         -   `License` (column E) reports to usage rights of the dataset. For example, whether the dataset is open, or if it is entirely privileged information. A full list of possible license values can be found in the [`Data license set`](https://docs.phes-odm.org/sets.html#licSet).
+         
+         -   `Language ID` is the ISO-6393 code for the natural language in which the dataset was originally recorded. These values are pre-set and present in the [`languages` reference table](https://docs.phes-odm.org/parts.html#languages).
 
-    i)  Columns H to L:
+2.  **Columns I to O**
+
+![](assets/how-to/datasets_Col_IO.png){fig-align="center"}
+
+    i)  Columns I to L:
 
         -   These are identifier fields.
+        
         -   For information regarding funders, you can enter their `Funder Contact ID` (which is a `Contact ID` created in the `Contact` template) and `Funding Agency` (which is a `Organization ID` created in the `Organization` template) in columns I and K.
+        
         -   For information regarding Data Custodians, you can enter their `Custody Contact ID` (which is a `Contact ID` created in the `Contact` template) and `Data Custodian ID` (which is a `Organization ID` created in the `Organization` template) in columns J and L.
 
-    ii) Columns M and N:
+    ii) Columns M, N and O:
 
-        -   These are a date field (column M) and a free form field (column N) where you can enter in the indicated information.
+        -   These are a categorical field (column M), date field (column N) and a free form field (column O) where you can enter in the indicated information.
+        
+        -   `Original data format` (column M) is used to report the original stucture or model used to record the data in this dataset. This is for datasets that have been mapped into the PHES-ODM to explain any structural odities resulting from the mapping process or differences in structure. The list of possible values for this field can be found in the [`Original Data Format Set`](https://docs.phes-odm.org/sets.html#ogFormSet).
+        
         -   `Last edited` (column M) is the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+        
+        -   `Notes` (column O) is for any extra comments or information.
 
 ### `Instrument` template
 
 1.  **Columns A to G**
 
-    ![](assets/how-to/instruments_Col_AG.png){fig-align="center"}
+![](assets/how-to/instruments_Col_AH.png){fig-align="center"}
 
-    i)  Columns A, B, F and G:
-        -   These are identifier fields.
+    i)  Columns A:
+    
+        -   This is the identifier field.
 
         -   `Instrument ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. In essence, you can think of each `Instrument ID` value as representing a unique instrument. This field can be any combination of letters or words up to 30 characters.
 
-        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different instruments from the same dataset, then `Dataset ID` column will be the same.
+    ii) Columns B to F:
+    
+        -   These are free-text fields where you can enter the `Name` (column B), `Model` (column C) and `Manufacturer` (column D) of the instrument.
+        
+        -   A `Description` (coliumn E) and `Reference link` (column F) can also be provided.
+    
+    iii) Columns G to H:
 
-        -   You may have already created some of the identifiers in other templates. For instance, you may have already created `Dataset ID` in the `Datasets` template.
-    ii) Columns C to E
-        -   These are free form fields where you can enter the `Name` (column C), `Model` (column D) and `Manufacturer` (column E) of the instrument.
+        -   `Instrument Type` (column G) is a categorical input to better describe the type of instrument being recorded here. A full break down of the categorical options can be found in the [`Instrument Set`](https://docs.phes-odm.org/sets.html#insTypeSet).
+        
+        -   `Describe other instrument type, if applcable` (column H) is a free text field to describe the nature of the instrument when the provided ennumeration options are insufficient.
 
-2.  **Columns H to N**
+2.  **Columns I to K**
 
-    ![](assets/how-to/instruments_Col_HN.png)
+![](assets/how-to/instruments_Col_IK.png)
 
-    i)  Columns H, I, L to N:
+    i)  Columns I to K:
+    
         -   Most of these fields are free form in which you can enter relevant information regarding your instrument
-        -   You can use `Index` (column L) to differentiate two entries of data that are the same in the other fields.
-        -   `Last Edited` (column M) is a date field where you can indicate the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
-    ii) Columns J and K:
-        -   For `Instrument type` (column J), you can select from the drop-down menu the type of instrument. If you do not see your instrument, you can enter `Other instrument`.
-
-        -   If you entered `Other instrument` in the `Instrument type` field, you can use the `Describe other instrument type, if applicable` field (column K) to describe your instrument.
+        
+        -   You can use `Index` (column I) to differentiate two entries of data that are the same in the other fields.
+        
+        -   `Last Edited` (column J) is a date field where you can indicate the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+        
+        -   `Notes` (column K) is for any extra comments or information.
 
 ### `Organization` template
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/organizations_Col_AE.png)
+![](assets/how-to/organizations_Col_AI.png)
 
-    i)  Columns A, D and E:
+    i)  Columns A and D:
+    
         -   These are identifier fields.
 
         -   `Organization ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of `Orgnization ID` as representing a unique organization. This field can be any combination of letters or words up to 30 characters.
 
-        -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different organizations with the same address, then the `Address ID` will be the same.
+        -   For `Address ID` (column D), you can repeat the value between entries (if needed). For instance, if you are entering two different organizations with the same address, then the `Address ID` will be the same.
 
         -   You may have already created some of the identifiers in other templates. For instance, you may have already created the `Address ID` in the `Address` template.
+        
     ii) Columns B and C:
+    
         -   These columns are free form fields in which you can enter additional information regarding the organization.
 
-2.  **Columns F to J**
-
-    ![](assets/how-to/organizations_Col_FJ.png)
-
-    i)  Columns F to H:
+    iii)  Columns E to G:
+    
         -   These are fields with drop-down menus where you can select various characteristics of the organization that you are entering.
-    ii) Columns I and J:
-        -   These are a date field (column I) and a free form field (column J) where you can enter in the indicated information.
-        -   `Last edited` (column I) is the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+
+        -   For the possible categorical values for `Organization type` (column E), please see the [`Organization type set`](https://docs.phes-odm.org/sets.html#orgTypeSet).
+
+        -   For the possible categorical values for `Organization level` (column F), please see the [`Organization level set`](https://docs.phes-odm.org/sets.html#orgLevelSet).
+
+        -   For the possible categorical values for `Organization sector` (column G), please see the [`Organization sector set`](https://docs.phes-odm.org/sets.html#orgSectorSet).
+        
+    iv) Columns H and I:
+    
+        -   These are a date field (column H) and a free form field (column I) where you can enter in the indicated information.
+        
+        -   `Last edited` (column H) is the date when the entry was updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+
+        -   `Notes` (column I) is for any extra comments or information.
 
 ### `Polygon` template
 
-1.  **Columns A to G**
+1.  **Columns A to I**
 
-    ![](assets/how-to/polygons_Col_AG.png)
+![](assets/how-to/polygons_Col_AI.png)
 
     i)  Columns A and B:
         -   These are identifier fields.
@@ -1069,55 +1107,114 @@ Below you will find the fields that are mandatory for the metadata-related templ
         -   For `Dataset ID` (column B), you can repeat the value between entries (if needed). For instance, if you are entering two different polygons from the same dataset, then this column will have the same value.
 
         -   You may have already created the `Dataset ID` in the `Dataset` template.
-    ii) Columns C to E, G:
+        
+    ii) Columns C to D, F to I:
+    
         -   These are free form fields in which you can enter additional information regarding the Polygon.
-        -   `Name` (column C) is the name of the polygon.
-        -   `European Petroleum Survey Group Coordinates` (column G) is a coordinate system that can be used to identify where a polygon is.
+        
+        -   `Name` (column C) is the name of the polygon, and `Description` (column D) offers a description.
+        
+        -   `European Petroleum Survey Group Coordinates` (or EPSG coordinates) (column F) is a coordinate system that can be used to identify where a polygon is. While the `Well-Known Text` (column G) provides wkt (the text markup language that can be used to represent the polygon) information on the polygon.
+        
+        -   `File location of the polygon` (column H) and `Reference link` (column I) are similar in that both fields are used to point to location details for the polygon file. The file location may be a file path or URL, for the file that describes the geometry of the polygon. The reference link must be a URL, however, and may simply point to more general metadata on the polygon.
+    
     iii) Columns F:
-         -   For `Type of geography` (column F) of the polygon, you can select one of the values from the drop-down menu.
+    
+         -   For `Type of geography` (column E) of the polygon, you can select one of the values from the drop-down menu.The possible values can be found in the [`Geographic set`](https://docs.phes-odm.org/sets.html#geoTypeSet).
 
-2.  **Columns H to N**
+2.  **Columns J to N**
 
-    ![](assets/how-to/polygons_Col_HN.png)
+![](assets/how-to/polygons_Col_JN.png)
 
-    i)  Columns H to J, M and N:
-        -   These are free form fields and a date field in which you can enter relevant information regarding the polygon.
+    i) Columns J and K:
+    
+        -   These are identifier fields. 
+        
+        -   `Organization ID` (column J) and `Contact ID` (column K) are for linking identities associated with the polygon.
 
-        -   `Well-known text` (column H) refers to the text markup language that can be used to represent the polygon.
+    ii)  Column L:
 
+        -   `Polygon license` (column L) is for specifying the usage rights of the polygon information. Many polygon files are protected information, so the field allows the usage rights to be specified.
+        
+    iii)  Columns M and N:
+    
         -   `Last edited` (column M) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
-    ii) Columns K and L:
-        -   These are identifier fields in which the `Organization ID` and the `Contact ID` associated with the polygon are entered.
+        
+        -   `Notes` (column N) is for any extra comments or information.
+
 
 ### `Polygon Relationships` template
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
+![](assets/how-to/polygonRelationships_Col_AF.png){fig-align="center"}
 
-    i)  Columns A and B:
+    i)  Columns A, B, and D:
 
         -   These are identifier fields.
+        
+        -   `Polygon relationship ID` (column A) is a unique identifier for each row of this table and cannot be repeated. 
+        
+        -   `Polygon ID subject` (column B) and `Polygon ID object` (column D) reference rows in the polygons table. The table should be read as "`Polygon ID subject` is `relationship between entities` to `Polygon ID object`" to describe relationships between polygons.
 
+    ii)  Column C:
+
+        -   `relationship between entities` (column C) describes the actual relationship between polygons, with possible values for this feel being enumerated in the [`polygon relationsship set`](https://docs.phes-odm.org/sets.html#polyRelSet).
+        
+    iii)  Columns E to F:
+    
+        -   `Last edited` (column E) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+
+        -   `Notes` (column F) is for any extra comments or information.
 
 ### `Public Helath Actions` template
 
 1.  **Columns A to E**
 
-    ![](assets/how-to/addresses_Col_AE.png){fig-align="center"}
+![](assets/how-to/phActions_Col_AF.png){fig-align="center"}
 
-    i)  Columns A and B:
+    i)  Columns A to F:
 
         -   These are identifier fields.
+        
+        -   `Public health action ID` (column B) is the unique identifier for each row in the table, and it does not repeat. It can, however, appear multiple times in the `Public health action group ID` (column A) as a way of group multiple actions into a single action group.
+        
+        -   `Measure Report ID` (column C) and `Measure set report ID` (column D) are used to link the public health action to a specifc measure or set of meausures.
+        
+        -   `Organization ID` (column E) links to the organization orchestrating the action (such as a public health department), while `site ID` (column F) records the site being targetted or affected by the action.
 
+2.  **Columns G to N**
+
+![](assets/how-to/phActions_Col_GN.png){fig-align="center"}
+ 
+    i)  Columns G to I:
+    
+        -   Thesee are categorical fields used to describe the nature and the target of the public health action.
+        
+        -   `Public health acction type` (column G) describes the high-level nature of the action (action types are listed in [`Public Health Action Type Value Set`](https://docs.phes-odm.org/sets.html#actionTypeSet)), while `public health action` (column H) provides slightly more detail (possible actions are listed in [`All Public Health Action Set`](https://docs.phes-odm.org/sets.html#allActionsSet)).
+        
+        -   `Public health thrat targetted by action` is exactly as it describes, and it takes measurement part types as its possible input values. A full like of these canbe found under [`measurements`](https://docs.phes-odm.org/sets.html#measurements)
+
+    ii)  Columns J to L:
+    
+        -   These are all date fields.
+        
+        -   `Public health action datetime` (column J) specifies when the action was taken, while the `relevance start date` (column K) and `relevance end date` (column L), specify over what period the action will be or was active. 
+        
+    iii)  Columns M to N:
+
+        -   `Last edited` (column M) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+
+        -   `Notes` (column N) is for any extra comments or information.
 
 ### `Quality reports` template
 
 1.  **Columns A to H**
 
-    ![](assets/how-to/qualityReports_Col_AH.png)
+![](assets/how-to/qualityReports_Col_AH.png)
 
     i)  Columns A to D:
+    
         -   These are identifier fields.
 
         -   `Quality report ID` (column A) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of `Quality Report ID` as representing a unique quality issue that you want to report. This field can be any combination of letters or words up to 30 characters.
@@ -1125,20 +1222,29 @@ Below you will find the fields that are mandatory for the metadata-related templ
         -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different quality reports for the same sample, then the `Sample ID` column will be the same.
 
         -   You may have already created some of the identifiers in other templates. For instance, you may have already created the `Sample ID` in the `Sample report` template.
+        
     ii) Columns E and F:
-        -   `Quality flag` (column E) is a drop-down menu field where you can select the type of quality issue that you would like to enter.
-        -   `Severity indicator` (column F) is is also a drop-down menu field where you can indicate the severity of the quality flag.
+    
+        -   `Quality flag` (column E) is a drop-down menu field where you can select the type of quality issue that you would like to enter. Possible values can be found under [`Quality Indicators`](https://docs.phes-odm.org/sets.html#qualityIndicators).
+        
+        -   `Severity indicator` (column F) is is also a drop-down menu field where you can indicate the severity of the quality flag. Possible values for this field can be found in the [`Severity set`](https://docs.phes-odm.org/sets.html#sevSet).
+        
     iii) Columns G and H:
+    
          -   These are a free form field and a date field in which you can enter the indicated information.
-         -   `Last edited` (column M) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+         
+         -   `Last edited` (column G) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+               
+        -   `Notes` (column H) is for any extra comments or information.
 
 ### `Sites` template
 
-1.  **Columns A to F**
+1.  **Columns A to J**
 
-    ![](assets/how-to/sites_Col_AF.png)
+![](assets/how-to/sites_Col_AJ.png)
 
-    i)  Columns A to D:
+    i)  Columns A to D, and H to J:
+    
         -   These are identifier fields.
 
         -   `Site ID` (column B) is the unique identifier for this template, and cannot be repeated between entries. You can think of each value of `Site ID` as representing a unique site. This field can be any combination of letters or words up to 30 characters.
@@ -1146,26 +1252,48 @@ Below you will find the fields that are mandatory for the metadata-related templ
         -   For the rest of the columns, you can repeat the value between entries (if needed). For instance, if you are entering two different sites that are found in the same polygon, then the `Polygon ID` values will be the same.
 
         -   `Parent site ID` (column A) refers to the site that is parent to the site that is being entered. For example if the site that is being entered is a room in a facility, then the `Parent site ID` would refer to the facility.
-    ii) Columns E and F:
-        -   These are drop-down menu fields in which you can specify the `Site Type` (column E) and the type of `Sample shed` (column F).
+        
+        -   `Address ID` (column H), `Organization ID` (column I), and `Contact ID` (column J) link out to the other tables to link data on the address of the site, the organization in charge, and who to contact about the site.
+        
+    ii) Columns E to G:
+    
+        -   These are drop-down menu fields in which you can specify the `Site Type` (column E), the phsyical infrastructure where a sample is collected, and the type of `Sample shed` (column F), the social role of the location where the sample was collected. 
+        
+        -   A list of site types can be found in the [`Site Set`](https://docs.phes-odm.org/sets.html#siteTypeSet), and the sheds can be found in the [`Sampleshed Set`](https://docs.phes-odm.org/sets.html#shedSet).
+        
+        -   The `Level of Aggregation of a Sampling Site` (column G) is a field to specifie the level of aggregation that occurs at the site - essentially, what size and type of region is represented by the base sewershed. This can be used to pool together or average results across similar sewersheds, and avoid trying to average different scales of sewershed together without a correction for size.
+        
+        -   Possible values for `Level of Aggregation of a Sampling Site` (column G) can be found in the [`Site Level Category Set`](https://docs.phes-odm.org/sets.html#siteLevelSet).
 
-2.  **Columns G to M**
+2.  **Columns K to T**
 
-    ![](assets/how-to/sites_Col_GM.png)
+![](assets/how-to/sites_Col_KT.png)
 
-    i)  Columns G to I, L and M:
-        -   These are identifier fields that you can use to record additional information about the site. `Primary reporting authority ID` (column L) and `Secondary reporting authority ID` (column M) are `Organization ID`s that you would have created using the `Organization` template.
-    ii) Columns J and K:
+    i)  Columns K, L, and O:
+
         -   These are all free form fields in which you can enter in relevant information about the site.
+        
+        -   `Name` (column K) and `Description` (column L) are for more internal details describing the site.
+        
+        -   `Health Region for Site` (column O) reports the health region, and should match how the region names itself in oublic documents to avoid confusion.
+    
+    ii) Columns M and N:
+    
+        -   These are identifier fields that you can use to record additional information about the site. `Primary reporting authority ID` (column M) and `Secondary reporting authority ID` (column N) are `Organization ID`s that you would have created using the `Organization` template.
+        
+        - These field differ from the `Organization ID` (column I) field in that these are for linking health or surveillance reporting authorities, rather than the organization managing the site.
 
-3.  **Columns N to S**
+    iii)  Columns P to R:
+    
+        -   These are free form fields where you can enter in additional information about the Site.
+        
+        -   `European Petroleum Survey Group Coordinates` (column Q) is a coordinate system that can be used to identify where your site is, along with the geographic `Latitude` (column P) and `Longitude` (column Q) points.
+        
+    iv)  Columns S to T:
 
-    ![](assets/how-to/sites_Col_NS.png)
-
-    i)  Columns N to S:
-        -   These are free form fields and a date field where you can enter in additional information about the Site.
-        -   `European Petroleum Survey Group Coordinates` (column Q) is a coordinate system that can be used to identify where your site is.
         -   `Last Edited` (column S) is a date field where you can enter the date when the entry was last updated. This field is used when you modify an entry after your initial recording. Leave this field blank if the measure was entered with no updates.
+
+        -   `Notes` (column T) is for any extra comments or information.
 
 You have now entered in your metadata, congratulations!
 
@@ -1175,21 +1303,23 @@ You have now entered in your metadata, congratulations!
 
 #### Adding more conditional menus
 
+**NOTE: The conditional drop-downs in the excel templates are very fragile. They have also been depreciated in version 3+ of the PHES-ODM. Drop-down menus are still available, but not with the conditional menus.**
+
 -   The code to determine the entries for the conditional menus are found to the right of the main template. Unlike the main template, the rows containing the code will not be alternating in colour.
 
 -   The code is only present for the first three rows. If you want to use conditional menus for additional rows, you will need to copy the code to these rows as well as create the menus in the desired cells. As an example, pretend that you wanted to add a `Measure` field conditional menu to row 5 in the `Measure report` template. The first thing you would do is copy the code from AF4 to AF5 (see below, all images in this example are from Excel Online).
 
-    ![](assets/how-to/ccond_menu.png)
+![](assets/how-to/ccond_menu.png)
 
 -   Then, to create the new menu, you would go to P5 (which is where the new conditional menu will be located). You would select "Data validation", which is under "Data Tools" in the "Data" tab (it is outlined in red in the image below).
 
-    ![](assets/how-to/ccond_menu2.png)
+![](assets/how-to/ccond_menu2.png)
 
 -   Finally, you would select "List" from the "Allow" menu and then enter the following text "=\$AF\$5#" under "Source". The column and row indicators ("AF" and "5", in this example) match up with where you copied the new code ("AF5").
 
-    ![](assets/how-to/ccond_menu3.png)
+![](assets/how-to/ccond_menu3.png)
 
-    For additional menus, repeat the above steps. Adding conditional menus in an online environment (such as Excel Online) may slow down the templates considerably.
+For additional menus, repeat the above steps. Adding conditional menus in an online environment (such as Excel Online) may slow down the templates considerably.
 
 #### Troubleshooting conditional menus
 
