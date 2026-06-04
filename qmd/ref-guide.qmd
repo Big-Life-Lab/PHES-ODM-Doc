@@ -4,9 +4,9 @@
 
 The reference guide is a technical description of the ODM `parts`. There are three sections to the reference guide.
 
--   [`parts`](https://docs.phes-odm.org/parts.html) -- Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. There are over 900 parts, all listed in alphabetical order. Each part has up to 60 different attributes such as the part name and description.
+-   [`parts`](https://docs.phes-odm.org/parts.html) -- Parts are the smallest way of describing anything in the ODM. An analogy to parts of a car can be used to illustrate this point. If you own a car, your garage can access a parts list that contains every part of your car, right down to every nut and bolt. There are over 2200 parts, all listed in alphabetical order. Each part has up to 60 different attributes such as the part name and description.
 
--   [`tables`](https://docs.phes-odm.org/tables.html) - The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. The most important tables are the 'report' tables that are used for daily reporting of measures and samples.
+-   [`tables`](https://docs.phes-odm.org/tables.html) - The ODM database model has 26 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. The most important tables are the 'report' tables that are used for daily reporting of measures and samples.
 
 -   [`sets`](https://docs.phes-odm.org/sets.html) - Sets are lists or collections of parts. You can think of sets as the elements of drop down lists or categories.
 
@@ -15,5 +15,5 @@ The reference guide is a technical description of the ODM `parts`. There are thr
 
 Every part, table, and set has its own URL, that is created using the partID. partIDs are usually parentheses that follow a part, table, or set name.
 
-For example, 'airport' is a sample shed category which would appear as: `Airport` ([airport](https://docs.phes-odm.org/parts.html#airport)). The pernament link to the airport partID is, <https://docs.phes-odm.org/parts.html#airport>. Airport also is listed in the `Sampleshed category set` ([shedCatSet](https://docs.phes-odm.org/sets.html#shedCatSet)).
+For example, 'airport' is a sample shed category which would appear as: `Airport` ([airport](https://docs.phes-odm.org/parts.html#airport)). The permanent link to the airport partID is, <https://docs.phes-odm.org/parts.html#airport>. Airport also is listed in the `Sampleshed category set` ([shedCatSet](https://docs.phes-odm.org/sets.html#shedCatSet)).
 :::

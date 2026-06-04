@@ -2,49 +2,54 @@
 
 {{< include _versions.qmd >}}
 
-The ODM database model has 21 tables in its full relational database. The full model is commonly referred to as "long" tables as it stores data with one measurement per row. Each table has mandatory and optional headers.
+The ODM database model has 26 tables in its full relational database, with 19 tables for reporting data, and 7 look-up or reference tables. Of these report tables, only 3 are mandatory for the simplest micro-report template. In addition to many of the tables being optional, each table also has a mix of mandatory and optional headers. The full model is commonly referred to as "long" tables as it stores data with one measurement per row, though wide versions are also possible (see section on wide names).
 
 ::: callout-note
 ## Data storage
 
-Store all ODM data in the 21 recommended tables to ensure optimal interoprablity and support by the [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries.
+While storing data in the full suite of 26 tables in the PHES-ODM ensures optimal interoperablity and support by the [ODM validation toolkit](https://validate-docs.phes-odm.org "ODM validation toolkit") and other ODM libraries, as long as data is recorded in some of the tables, the validation library and other tools will still be functional and will ensure compliance with the data structure. Not all tables are relevant for all programs, just as not all fields are relevant for all programs. The PHES-ODM is modular, setting up a standard structure and vocabulary so that data can be compared and combined accurately - regardless of program, collection, or analysis approach.
 
-Users can, however, create custom tables or 'views' by merging fields from any table. A common format for data entry format are "wide" table format, with *one day per row* and multiple measures or attributes per row. It is important to note that this guide does not provide instructions on generating wide tables.
+Users can also create custom tables or 'views' by merging fields from any table. A common format for data entry format is the "wide" table format, with *one day per row* and multiple measures or attributes per row (as opposed to the "long" *one measure per row* approach). This page does not provide guidance on generating wide tables, but there is a wide name and wide table section that can support efforts to implement that structure.
 :::
 
 ## Table types
 
-There are five table types:
+There are three general table types, which can be further thematically categorized:
 
-1\) **Regular report tables**. The `measures` and `samples` tables are used for daily reporting of new measurements and information on sample collection. There are three tables that support regular reporting:- `measureSets` (optional) is used to link measures, `sampleRelationships` (optional) is used when samples are pooled or split, and `qualityReports` is used for detailed quality assurance and control measures.
+1\) **Results tables**. These are the main tables of interest for environmental surveillance reporting, which store information on samples and on the results of analysis of samples. Tables in this category include the `measures` and `samples` tables, which are used for regular reporting of new measurements and information on sample collection. There are three additional results tables that support regular reporting, but that are optional: - `measureSets` (optional) is used to link measures, - `sampleRelationships` (optional) is used when samples are pooled or split, and - `qualityReports` (optional) is used for detailed quality assurance and control measures.
 
-2\) **Contact information tables**. The `sites`, `organizations`, `contacts`, and `addresses` tables store contact information for the testing site and the person who performed the testing.
+2\) **Program description tables**. Tables in this category store administrative information about the organizations involved in testing, locations where tests were conducted, protocols used, etc. These are tables that are updated much more infrequently than results tables. These can be further divided into:
 
-3\) **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
+-   **Contact information tables**. The `organizations`, `contacts`, and `addresses` tables store contact information for the testing site and/or the person who performed the testing.
 
-4\) **Other report tables**. The `polygons` table stores information on the sample area and the `datasets` table includes information on the data custodian and owner.
+-   **Protocol or methods tables**. The `protocols` and `instruments` tables hold information on the methods used for sample collection or measurement. `protocolSteps` and `protocolRelationships` tables are used in conjunction with the `protocols` table.
 
-5\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations. The `countries` and `zones` tables standardize location information to the ISO-2 and ISO-3 to reduce ambiguity and free-text errors when populating these fields, while improving interoperability of location metadata.
+-   **Data source & processing tables**. The `accessions`, `datasets`, and `calculations` tables record details about data provenance and ownership. `accessions` provides links to external datasets were either complimentary data (ie. sequencing ouptputs) or the original data may be found. The `datasets` table includes information on the data custodian and owner, as well as licensing.`calculations` records the kinds of calculations, models, or data treatments used to generate the data from raw inputs.
+
+-   **Geospatial tables**. The `polygons` and `sites` tables stores information on the sample area. `sites` records details about the physical sampling site and its context, while `polygons` records geospatial data about the area the aa site may reflect - for example if the site is a wastewater treatment plant, the polygon would reflect the treatment plant's catchment area. The `polygonRelationships` table is used in conjunction with the `polygons` table.
+
+3\) **Dictionary reference tables**. The `parts` table describes all elements of the ODM, including tables, table headers, measures, methods, categories, and units. The `sets` table stores collections of parts, such as units grouped together in a unitSet. The `languages` and `translations` tables support translations for the `parts` and `sets` tables. The `countries` and `zones` tables standardize location information to the ISO-2 and ISO-3 to reduce ambiguity and free-text errors when populating these fields, while improving interoperability of location metadata. `wideNames` is used for recording "wide names" (ie. variables or table headers for "wide" format data) in current use across various PHES-ODM templates, and has built in code to assist users in generating their own ODM-compatible "wide names". 
 
 ## Header roles
 
-Each table in the ODM has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.
+Each table in the PHES-ODM has column headers, also known as table variables, fields, or entity relationship attributes. The header serves as the top row and contains the variable name.
 
-**Primary key** (PK) - With the exception of the dictionary tables, all tables have one primary key. The primary key serves as a unique identifier for each row in the table, meaning that a primary key value cannot be repeated.
+**Primary key** (PK) - All tables have one primary key. The primary key serves as a unique identifier for each row in the table, meaning that a primary key value cannot be repeated.
 
-**Foreign key** (FK) - Tables may have one or more foreign keys. A foreign key connects an entry to another table with a primary key. This allows for relationships to be established between tables, making it possible to link data between different tables.
+**Foreign key** (FK) - Tables may have one or more foreign keys. A foreign key is when a primary key being referenced in another table, connecting an entry in one table to an entry in another table. This allows for relationships to be established between tables, making it possible to link data between different tables.
 
 **Header** (header) - This label is used in a table description when a header is not a primary or foreign key.
 
 ## Mandatory, optional, mandatoryIf
 
-Each header may be classified as either `mandatory` or `optional`. In the `measures` table, examples of mandatory headers are the `measureID` and `measurement date`. The ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.
+Each header may be classified as either `mandatory` or `optional`. In the `measures` table, examples of mandatory headers are the `measureID` and `aDateEnd`. The PHES-ODM validation toolkit can be used to validate data, and will return an error if a table lacks a mandatory header or if there are missing row entries for mandatory fields.
 
 Additionally, there are special headers called `mandatoryIf` headers. These headers are mandatory if certain conditions apply. For example, the `protocol steps` table has row entries that are either `measures` or `methods`. If the row entry is a `measure`, then a `unit` becomes `mandatory` since all measures must have a unit. Therefore, units are `mandatoryIf` in the protocol steps table.
 
 ```{r setup, echo=FALSE}
 knitr::opts_knit$set(root.dir = normalizePath("../"))
 ```
+
 ```{r, echo=FALSE, warning=FALSE}
 # Can put warning=FALSE above if warnings in display are an issue
 # Source utility functions

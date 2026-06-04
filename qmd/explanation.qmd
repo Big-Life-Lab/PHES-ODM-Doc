@@ -8,28 +8,43 @@ Within the ODM, every component or element of the model and the dictionary is ca
 
 Because the term "parts" refers to every component of the ODM, "part types" are a way to differentiate between parts which have different functions and structures. The three most important part types are:
 
-- **Measures**: A measurement or observation of any substance including a biological, physical or chemical substance.
-- **Methods**: A procedure for collecting a sample or performing a measure. 
-- **Attributes**: A description of the who, where, when, and why of environmental surveillance. 
+- **[Measures](https://docs.phes-odm.org/parts.html#measurements)**: A measurement or observation of any substance including a biological, physical or chemical substance.
+- **[Methods](https://docs.phes-odm.org/parts.html#methods)**: A procedure for collecting a sample or performing a measure. 
+- **[Attributes](https://docs.phes-odm.org/parts.html#attributes)**: A description of the who, where, when, and why of environmental surveillance. 
 
 See the [parts reference document](ref-guide.qmd) for more details.
 
-The are additional part types to support the dictionary including:
+There are additional part types to support the dictionary including:
 
--   Aggregations
--   Aggregation scales
--   Categories
--   Classes
--   Compartments
--   Dictionary support
--   Domains
--   Groups
--   Missingness
--   Nomenclature
--   Quality indicators
--   Specimens
--   Tables
--   Units
+-   [Aggregations](https://docs.phes-odm.org/parts.html#aggregations)
+-   [Aggregation scales](https://docs.phes-odm.org/parts.html#aggregationScales)
+-   [Aggregation sets](https://docs.phes-odm.org/parts.html#aggregationSets)
+-   [Categories](https://docs.phes-odm.org/parts.html#categories)
+-   [Classes](https://docs.phes-odm.org/parts.html#classes)
+-   [Compartments](https://docs.phes-odm.org/parts.html#compartments)
+-   [Compartment sets](https://docs.phes-odm.org/parts.html#compartmentSets)
+-   [Data types](https://docs.phes-odm.org/parts.html#dataTypes)
+-   [Additional dictionary sheets](https://docs.phes-odm.org/parts.html#dictionarySupport)
+-   [Dictionary set type](https://docs.phes-odm.org/parts.html#dictSets)
+-   [Domains](https://docs.phes-odm.org/parts.html#domains)
+-   [Exceptions Part Type](https://docs.phes-odm.org/parts.html#exceptions)
+-   [Groups](https://docs.phes-odm.org/parts.html#groups)
+-   [Missingness](https://docs.phes-odm.org/parts.html#missingness)
+-   [Missingness sets](https://docs.phes-odm.org/parts.html#missingnessSets)
+-   [Measure, method, or attribute sets](https://docs.phes-odm.org/parts.html#mmaSets)
+-   [Nomenclatures](https://docs.phes-odm.org/parts.html#nomenclatures)
+-   [Part Support](https://docs.phes-odm.org/parts.html#partSupport)
+-   [Part types](https://docs.phes-odm.org/parts.html#partType)
+-   [Quality indicators](https://docs.phes-odm.org/parts.html#qualityIndicators)
+-   [Quality indicator sets](https://docs.phes-odm.org/parts.html#qualityIndSets)
+-   [Short names](https://docs.phes-odm.org/parts.html#shortName)
+-   [Shorthand or Short Name Set Type](https://docs.phes-odm.org/parts.html#shortSets)
+-   [Specimens](https://docs.phes-odm.org/parts.html#specimens)
+-   [Specimen sets](https://docs.phes-odm.org/parts.html#specimenSets)
+-   [Tables](https://docs.phes-odm.org/parts.html#tables)
+-   [Table Support](https://docs.phes-odm.org/parts.html#tableSupport)
+-   [Units](https://docs.phes-odm.org/parts.html#units)
+-   [Unit sets](https://docs.phes-odm.org/parts.html#unitSets)
 
 For information and details about all the part types, please see the [parts reference document](ref-guide.qmd).
 
@@ -37,20 +52,24 @@ For information and details about all the part types, please see the [parts refe
 
 "Sets" are a way of grouping together different possible categorical inputs within the ODM. The purpose behind sets is to group options together so that users only need to check a few options from a drop-down menu, rather than scroll through a long list. Sets are also designed so that a single part can be used in multiple sets, which avoids the need to create multiple versions of this part for these different use contexts. For example, if you're taking a measure of concentration, that measure will likely populate the unit choice drop-down list with units from the "standard concentration unit set". Units in this set include Milligrams per litre, parts per million, and Percent Primary Sludge. Similarly, if one were measuring the amount of oxygen in a wastewater sample they would be offered units from the "dissolved gas unit set". The units in this set include parts per million, and Milligrams per litre. You see here how Milligrams per litre is used twice across the sets, but exists still as a single part in the parts list. Unit sets are only one type of set, with the others being:
 
--   Aggregation sets
--   Compartment sets
--   Quality sets
--   Specimen sets
+-   [Aggregation sets](https://docs.phes-odm.org/parts.html#aggregationSets)
+-   [Compartment sets](https://docs.phes-odm.org/parts.html#compartmentSets)
+-   [Dictionary sets](https://docs.phes-odm.org/parts.html#dictSets)
+-   [Missingness sets](https://docs.phes-odm.org/parts.html#missingnessSets)
+-   [Measure, method, or attribute sets](https://docs.phes-odm.org/parts.html#mmaSets)
+-   [Quality indicator sets](https://docs.phes-odm.org/parts.html#qualityIndSets)
+-   [Shorthand or Short Name Sets](https://docs.phes-odm.org/parts.html#shortSets)
+-   [Specimen sets](https://docs.phes-odm.org/parts.html#specimenSets)
 
-Details about these sets are their similar - but unique - applications can be found in the [parts reference document](link forthcoming). Importantly, "category sets" are not considered a "set" like these others. See the section below for an explanation of this difference.
+Details about these sets are their similar - but unique - applications can be found in the at their individual links. Importantly, "Measure, method, or attribute sets", or "MMA sets" are a little different. See the section below for an explanation of this difference.
 
-### Why category sets are treated differently
+### Why MMA sets are a little different
 
-One of the reasons why "sets" are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the [parts reference document](link forthcoming).
+One of the reasons why "sets" are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. "Measure, method, or attribute sets", or "MMA sets" are, however, an exception to this rule because the categories that make up a category set are - in general - used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while MMA sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). MMA sets are also a distinct part type, and more information about them can be found in the entry for [Measure, method, or attribute sets](https://docs.phes-odm.org/parts.html#mmaSets).
 
 ## The "what" and "why" of Specimen IDs
 
-Specimen IDs indicate the level at which a measure is being done. This can be: a site measure, ie. a measure at a site such as temperature or weather; a sample measure, ie. a laboratory measurement on a sample, such as gene copies of SARS-CoV-2 per mL; a person measure, ie. a measure of something at the level of an individual person, such as a blood pressure reading; or a population measure, ie. an aggregate measure of a population, such as the number of confirmed cases of a given illness. While there is currently nothing in version 2.0 of the ODM with uses the person specimen ID explicitly, it has been included to allow for the possibility of storing individual-level data in a future version. The reason specimen IDs were created was so that there could be a single manner in which measures and methods are recorded, regardless of the level at which they were performed, while still maintaining the possibility to collect site, sample, and population measures as a distinct types of metadata.
+Specimen IDs indicate the level at which a measure is being done. This can be: a site measure, ie. a measure at a site such as temperature or weather; a sample measure, ie. a laboratory measurement on a sample, such as gene copies of SARS-CoV-2 per mL; a polygon measure, ie. case numbers within a health region's polygon; or a population measure, ie. an aggregate measure of a population, such as the number of confirmed cases of a given illness. The reason specimen IDs were created was so that there could be a single manner in which measures and methods are recorded, regardless of the level at which they were performed, while still maintaining the possibility to collect site, sample, and population measures as a distinct types of metadata.
 
 ## The "what" and "why" of Groups and Classes
 
@@ -58,7 +77,7 @@ Groups and classes, similar to sets, are ways of grouping together different mea
 
 ## Tables and table types within the ODM
 
-Within the ODM there are three types of tables: program description tables, results tables, and look-up tables. These table types exist to differentiate the function of these tables and to highlight these differences to users. The different tables take different types of inputs and maintenance from users, so understanding the differences can be important. 
+Within the ODM there are three types of tables: program description tables, results tables, and look-up tables. These table types exist to differentiate the function of these tables and to highlight these differences to users. The different tables take different types of inputs and maintenance from users, [so understanding the differences can be important](https://docs.phes-odm.org/tables.html#table-types). 
 
 ### Program description tables
 
@@ -78,11 +97,11 @@ While there are many part types, there are three main part types users should be
 
 ### Measures
 
-Measures are actually types of measures that can be performed. These can range from temperature to the number of gene copies in a sample. The measure, or `measureID`, can be selected from a drop down in the templates and it specifies the kind of measure you intend to record. The actual value of the measure is then recorded in the `value` field of the `measures` table, with units and aggregation specified in the `unitID` and `aggregationID` fields.
+Measures are actually types of measures that can be performed. These can range from temperature to the number of gene copies in a sample. The measure, or `measurement`, can be selected from a drop down in the templates and it specifies the kind of measure you intend to record. The actual value of the measure is then recorded in the `value` field of the `measures` table, with units and aggregation specified in the `unit` and `aggregation` fields.
 
 ### Methods
 
-Similar to measures, methods are types of methods that can be performed to accomplish a measurement. These can be diverse, ranging from incubation, qPCR, or nucleic acid extraction. The method itself (`methodID`) is selected from a drop down in the templates, specifying in general terms the kind of method the user wishes to record. From there, the `value` field of the `methodSteps` table can be populated by one of the inputs from the category set associated with that `methodID`. This provides a higher level of detail for a given method. For example, the `methodID` might be `solidSep` for solid separation of a sample. The value field might then be populated with `cent` for centrifugation, indicating more details about how the sample settling was done.
+Similar to measures, methods are types of methods that can be performed to accomplish a measurement. These can be diverse, ranging from incubation, qPCR, or nucleic acid extraction. The method itself (`method`) is selected from a drop down in the templates, specifying in general terms the kind of method the user wishes to record. From there, the `value` field of the `protocolSteps` table can be populated by one of the inputs from the category set associated with that `method`. This provides a higher level of detail for a given method. For example, the `method` might be `solidSep` for solid separation of a sample. The value field might then be populated with `cent` for centrifugation, indicating more details about how the sample settling was done.
 
 ### Attributes
 
@@ -90,7 +109,7 @@ Attributes are the largest category of part type, as these refer to most of the 
 
 ## Data quality and reportability
 
-Within the ODM there is a `qualityFlag` field present in both the `samples` and `measures` tables. This field serves to highlight whether or not there is a quality issues with the sample or the measure. The quality flag also allows a user to specify the type of quality issue. This is managed through the use of quality sets, which are the sets that contain the possible quality flags for a given measure or for samples. The idea is that this provides data on any issues with a sample and an indication of the nature of that issue. Having data about the nature and presence of a quality issue is often not sufficient for decision makers who are trying to use and interpret the data. As such, there is also a `reportable` field which is a Boolean indicator of whether or not data can or should be reported or included in final reports and decisions. 
+Within the ODM there is a `qualityFlag` field located in the `qualityReports` table. Each row of this table has a unique ID (`qualityReportID`) which can then be linked to specific measures, measure sets, and/or samples in the `measures`, `measureSets`, or `samples` tables. This field serves to highlight whether or not there is a quality issues with the sample or the measure(s). The quality flag also allows a user to specify the type of quality issue. This is managed through the use of quality sets, which are the sets that contain the possible quality flags for a given measure or for samples. The idea is that this provides data on any issues with a sample and an indication of the nature of that issue. Having data about the nature and presence of a quality issue is often not sufficient for decision makers who are trying to use and interpret the data. As such, there is also a `reportable` field which is a Boolean indicator of whether or not data can or should be reported or included in final reports and decisions, and a `severity` indicator with a "traffic light" style reporting to indicate how serious the issue is. In previous versions of the ODM, `qualityFlag` was included as an attirubute in the `measures` and `samples` tables. Separating it out like this allows for multiple flags to be noted on the same measure/sample, and a higher level of detail on the quality issues identified. It can be added back to be reported with measures, however, using a [wide table template](https://docs.phes-odm.org/wide-names.html). 
 
 ## Time periods for samples and measures
 
@@ -102,11 +121,11 @@ For samples, there is `collDT`, `collDTStart`, and `collDTEnd`. The first field 
 
 There are a number of date fields within the ODM which all serve different purposes. Collection datetime (`collDT`) is the date a sample was collected, used only for grab samples. This field is left blank if the collection datetime start and end fields (`collDTstart` and `collDTEnd`) have been populated instead. Inversely, collection datetime start and end fields should be left blank if the collection datetime filed has been populated. Similarly, analysis datetime start and analysis datetime end (`aDateStart` and `aDateEnd`) are used to report the date and or timeline of an analysis for a measure. 
 
-Date fields that are more related to data processing and labratory infrastructure are: the last edited date (`lastEdited`) which indicates the last time a table, or a measure or sample details, were last edited or updated; the sent date (`sentDate`), or date that a sample was sent to the lab from the field; the received date (`recDate`), or the date the sample was recieved in the lab; and the report date (`repDate`), or the date that the analysis results or measures were reported. These give a greater indication of how up to date data is, but also on the speed and efficiency of the pipeline between sampling and reported results. Dates should be reported in day/month/year format to accommodate the most popular global convention.
+Date fields that are more related to data processing and laboratory infrastructure are: the last edited date (`lastEdited`) which indicates the last time a table, or a measure or sample details, were last edited or updated; the sent date (`sentDate`), or date that a sample was sent to the lab from the field; the received date (`recDate`), or the date the sample was received in the lab; and the report date (`repDate`), or the date that the analysis results or measures were reported. These give a greater indication of how up to date data is, but also on the speed and efficiency of the pipeline between sampling and reported results. Dates should be reported in day/month/year format to accommodate the most popular global convention.
 
 ## Translation and language capabilities
 
-The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (`languageLUs`), the translation look-up table (`translationLUs`), and the parts table (`partsLUs`). When a translation for a given part is not available, the dictionary will default to the English term. The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (`languageID`). In the translation table, the language ID is paired with every part ID (`partID`), along with the label (`partLabel`), description (`partDesc`), and instructions (`partInstr`) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.
+The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. Beta versions of Spanish and Portuguese translations are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table ([`languages`](https://docs.phes-odm.org/tables.html#languages)), the translation look-up table ([`translations`](https://docs.phes-odm.org/tables.html#translations)), and the parts table ([`parts`](https://docs.phes-odm.org/tables.html#parts)). When a translation for a given part is not available, the dictionary will default to the English term. The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (`languageID`). In the translation table, the language ID is paired with every part ID (`partID`), along with the label (`partLabel`), description (`partDesc`), and instructions (`partInstr`) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.
 
 ## Recording protocols
 
@@ -138,25 +157,34 @@ This flexible structure allows protocol steps and subprotocols to be reused in a
 
 ## Recommended formula for user-generated IDs
 
-There are 13 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn't been provided. For a quick breakdown, see the below table:
+There are 18 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn't been provided. For a quick breakdown, see the below table:
 
-| User ID               | Formula                                                                | Example                |
-|-----------------------|------------------------------------------------------------------------|------------------------|
-| Address ID            | country code + province code + 2-3 letters of municipality + row       | caOnOtt002             |
-| Contact ID            | orgID + first 3 letters of role                                        | caOnOtt002UniRes       |
-| Dataset ID            | datasetID = orgID                                                      | caOnOtt002Uni          |
-| Instrument ID         | first 3 letters of manufacturer  + first 3 letters of name  +  first 3 letters of model + index                                                                                                   | fisHanHan              |
-| Organization ID       | addID + first 3 letters of name                                        | caOnOtt002Uni          |
-| Polygon ID            | orgID + siteID                                                         | caOnOtt002UniCaOnOttOtt|
-| Protocol ID           | first 5 letters of name + protocolVersion                              | pmmov1                 |
-| Protocol Step ID      | orgID + last 3 letters of part ID of method/measure                    | caOnOtt002UniIon       |
-| Quality ID            | quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for                                                                        | flagJcaOnOttOttawasite1202008021000covN1002 |
-| Measure report ID     | sampleID + part ID of measure + row number                             |caOnOttOtt20200802Covn1002 |
-| Measure set report ID | Report ID of first measure in the set + # measures in the set          |caOnOttOtt20200801Covn1002003 |
-| Sample ID             | siteID + collDT/collDTEnd (not including time) + index (if applicable) | caOnOttOtt20200801     |
-| Site ID               | country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name                                                                                        | caOnOttOtt             |
+| User ID                 | Formula                                                                | Example                           |
+|-------------------------|------------------------------------------------------------------------|-----------------------------------|
+| Accessions Index ID     | datahost + accessNum                                                   | sraPRJNA788395                    |
+| Address ID              | country code + province code + 2-3 letters of municipality + row       | caOnOtt002                        |
+| Calculation ID          | pipelineID + treatmentID                                               | standardizationpmmov15standardizationpmmov1 |
+| Contact ID              | orgID + first 3 letters of role                                        | caOnOtt002UniRes                  |
+| Dataset ID              | datasetID = orgID                                                      | caOnOtt002Uni                     |
+| Instrument ID           | first 3 letters of manufacturer  + first 3 letters of name  +  first 3 letters of model + index                                                                                                   | fisHanHan                                                   |
+| Organization ID         | addID + first 3 letters of name                                        | caOnOtt002Uni                     |
+| Pipeline ID             | First Treatment ID in the pipeline + # treatments in the pipeline      | standardizationpmmov15            |
+| Polygon ID              | orgID + siteID                                                         | caOnOtt002UniCaOnOttOtt           |
+| Protocol ID             | first 5 letters of name + protocolVersion                              | pmmov1                            |
+| Protocol Step ID        | orgID + last 3 letters of part ID of method/measure                    | caOnOtt002UniIon                  |
+| Public Health Action ID | actionType + action + threatTarget + actionDT                          | survAlerttargSurvsarsCov228022027 |
+| Quality Report ID       | quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for                                                                        | flagJcaOnOttOttawasite1202008021000covN1002               |
+| Measure report ID       | sampleID + part ID of measure + row number                             |caOnOttOtt20200802Covn1002         |
+| Measure set report ID   | Report ID of first measure in the set + # measures in the set          |caOnOttOtt20200801Covn1002003      |
+| Sample ID               | siteID + collDT/collDTEnd (not including time) + index (if applicable) | caOnOttOtt20200801                |
+| Site ID                 | country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name                                                                                        | caOnOttOtt                                                 |
+| Treatment ID            | calcType + standard + order                                            | standardizationpmmov1             |
 
-To go into greater detail, the *Address ID* uses the recipe country code + province code + 2-3 letters of municipality + row. So it's built using pieces of the metadata fields for the given address' entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it's recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.
+To go into greater detail, the *Accessions Index ID* is a unique ID for each row in the `accessions` table, and is made by concatenating the value of the `dataHost` field and the `accessNum` field. For example, an SRA entry with the accession index number of PRJNA788395 would give an accessions index ID of sraPRJNA788395.
+
+The *Address ID* uses the recipe country code + province code + 2-3 letters of municipality + row. So it's built using pieces of the metadata fields for the given address' entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it's recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.
+
+For the *Calculation ID*, as a composite key, will just be generated by concatenating the pipelineID and the treatmentID of a given row. For example, if a row contains the pipeline ID "standardizationpmmov15" and the treatment ID "standardizationpmmov1", the calculation ID would be standardizationpmmov15standardizationpmmov1.
 
 The *Contact ID* in the contacts table uses the recipe organization ID + first 3 letters of role, again building the ID from pieces of the metadata. So if, for example, we are building a contact ID for a research associate at an organization with the ID caOnOtt002Uni, the contact ID would be caOnOtt002UniRes.
 
@@ -166,13 +194,17 @@ For the *Dataset ID*, we recommend it be the same as the *organization ID* (see 
 
 Our recommended recipe for *Organization ID* uses the address ID for an organization (see above for explanation) + the first 3 letters of the name. So if the organization in Ottawa described in the address ID section was the University of Ottawa, the ID would be caOnOtt002Uni.
 
+The *Pipeline ID* recommended recipe is to use the treatment ID of the first data treatment in the pipeline, and concatenate that with the number of treatments in the pipeline as a whole. For example, if the first treatment in a pipeline has the ID "standardizationpmmov1" and there are five treatments in the pipeline, the pipeline ID would be standardizationpmmov15.
+
 For the *Polygon ID*, the recipe uses associated IDs to generate the final product. Specifically, we recommend organization ID + site ID. So for a polygon managed by an organization using the ID caOnOtt002Uni and covering a site with the ID caOnOttOtt, for example, the polygon ID would be caOnOtt002UniCaOnOttOtt.
 
 The *Protocol ID* is generated using the first 5 letters of the name + the protocol version. For example, if using generating a protocol ID for a first version of a protocol called "PMMoV Process", the ID would be pmmov1.
 
 For the *Protocol step ID*, we recommend constructing combining the organization ID + last 3 letters of the part ID for the method or measure used in the step. For example, a nucleic acid extraction method (partID = extraction) step from our university of Ottawa example lab with the organization ID caOnOtt002Uni would generate the protocol step ID of caOnOtt002UniIon.
 
-*Quality ID* ia generated using the recipe of part ID for the given quality flag + either the measure report ID, the sample ID, or measure set report ID for which the quality report is being generated. Generating an example, if we are reporting the qulaity flag J - Weak signal extrapolation (partID = flagJ) for a measure report with the ID caOnOttOttawasite1202008021000covN1002, we get the quality ID of flagJcaOnOttOttawasite1202008021000covN1002.
+For the *Public Health Action ID*, we recommend concatenating the value for the actionType field, the action field, the threatTarget, and the actionDT field (just the numbers). So if, for example, a surveillance alert (survAlert) action was taken to have targeted surveillance (targSurv) roll out for SARS-CoV-2 (sarsCov2) on February 28, 2027, the public health action ID would be survAlerttargSurvsarsCov228022027.
+
+*Quality Report ID* ia generated using the recipe of part ID for the given quality flag + either the measure report ID, the sample ID, or measure set report ID for which the quality report is being generated. Generating an example, if we are reporting the qulaity flag J - Weak signal extrapolation (partID = flagJ) for a measure report with the ID caOnOttOttawasite1202008021000covN1002, we get the quality ID of flagJcaOnOttOttawasite1202008021000covN1002.
 
 The *Measure Report ID* is built using sampleID + part ID of measure + row number. For example, taking a measure of the SARS-CoV-2 N1 gene region (partID = covN1) from a sample with the ID caOnOttOtt20200801, recorded in the second row of the table, we get the measure report ID of caOnOttOtt20200802Covn1002.
 
@@ -180,7 +212,9 @@ The recommended recipe to generate a *Measure Set Report ID* is to use the Measu
 
 *Sample ID* is generated by combining the siteID for the sample + the collection Datetime OR the end of collection datetime fields (excluding the time and only using the date) + the index value (if applicable). So for a composite sample taken at a site with the ID caOnOttOtt, which finished collection on 2020-08-01 10:00:00, with no index, the sample ID would be  caOnOttOtt20200801.
 
-Lastly, a *Site ID* can be generated by combining the country code (ISO) for the site + the province code (ISO) for the site + first 2-3 letters of municipality + 3 first letters of site name. So to generate a site ID for the wastewater treatment plant in Ottawa, Canada, we would take the ISO code for Canada (ca), for Ontario (on), The first three letters of Ottawa-Carleton (Ott) and the first three letters of the site name, where the name is Robert O. Pickard Environmental Centre (Rob). This gives us the recommended site ID of caOnOttRob. 
+A *Site ID* can be generated by combining the country code (ISO) for the site + the province code (ISO) for the site + first 2-3 letters of municipality + 3 first letters of site name. So to generate a site ID for the wastewater treatment plant in Ottawa, Canada, we would take the ISO code for Canada (ca), for Ontario (on), The first three letters of Ottawa-Carleton (Ott) and the first three letters of the site name, where the name is Robert O. Pickard Environmental Centre (Rob). This gives us the recommended site ID of caOnOttRob. 
+
+Lastly, a *Treatment ID* can be generated using the recipe of concatenating the value from the calcType field, the standard field, and then the value for the order in a pipeline. For example, if a data treatment that standardizes to circulating levels of pepper mild mottle virus (PMMoV) and is the first step in a data pipeline, its treatment ID would be standardizationpmmov1.
 
 ## Questions and online community
 
