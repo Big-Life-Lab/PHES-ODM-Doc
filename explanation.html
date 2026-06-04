@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Getting to know the ODM – Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./background.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2530bb879c2d5a982b48ad574e4712b1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-77a802b6171c4886c53ccb8cccc3d66c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -210,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#what-are-parts-and-part-types" id="toc-what-are-parts-and-part-types" class="nav-link active" data-scroll-target="#what-are-parts-and-part-types">What are “Parts” and “Part Types”?</a></li>
   <li><a href="#sets-and-the-rationale-behind-sets" id="toc-sets-and-the-rationale-behind-sets" class="nav-link" data-scroll-target="#sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</a>
   <ul class="collapse">
-  <li><a href="#why-category-sets-are-treated-differently" id="toc-why-category-sets-are-treated-differently" class="nav-link" data-scroll-target="#why-category-sets-are-treated-differently">Why category sets are treated differently</a></li>
+  <li><a href="#why-mma-sets-are-a-little-different" id="toc-why-mma-sets-are-a-little-different" class="nav-link" data-scroll-target="#why-mma-sets-are-a-little-different">Why MMA sets are a little different</a></li>
   </ul></li>
   <li><a href="#the-what-and-why-of-specimen-ids" id="toc-the-what-and-why-of-specimen-ids" class="nav-link" data-scroll-target="#the-what-and-why-of-specimen-ids">The “what” and “why” of Specimen IDs</a></li>
   <li><a href="#the-what-and-why-of-groups-and-classes" id="toc-the-what-and-why-of-groups-and-classes" class="nav-link" data-scroll-target="#the-what-and-why-of-groups-and-classes">The “what” and “why” of Groups and Classes</a></li>
@@ -264,27 +266,42 @@ ul.task-list li input[type="checkbox"] {
 <p>Within the ODM, every component or element of the model and the dictionary is called a “part”. Parts are grouped into “part types”.</p>
 <p>Because the term “parts” refers to every component of the ODM, “part types” are a way to differentiate between parts which have different functions and structures. The three most important part types are:</p>
 <ul>
-<li><strong>Measures</strong>: A measurement or observation of any substance including a biological, physical or chemical substance.</li>
-<li><strong>Methods</strong>: A procedure for collecting a sample or performing a measure.</li>
-<li><strong>Attributes</strong>: A description of the who, where, when, and why of environmental surveillance.</li>
+<li><strong><a href="https://docs.phes-odm.org/parts.html#measurements">Measures</a></strong>: A measurement or observation of any substance including a biological, physical or chemical substance.</li>
+<li><strong><a href="https://docs.phes-odm.org/parts.html#methods">Methods</a></strong>: A procedure for collecting a sample or performing a measure.</li>
+<li><strong><a href="https://docs.phes-odm.org/parts.html#attributes">Attributes</a></strong>: A description of the who, where, when, and why of environmental surveillance.</li>
 </ul>
 <p>See the <a href="./ref-guide.html">parts reference document</a> for more details.</p>
-<p>The are additional part types to support the dictionary including:</p>
+<p>There are additional part types to support the dictionary including:</p>
 <ul>
-<li>Aggregations</li>
-<li>Aggregation scales</li>
-<li>Categories</li>
-<li>Classes</li>
-<li>Compartments</li>
-<li>Dictionary support</li>
-<li>Domains</li>
-<li>Groups</li>
-<li>Missingness</li>
-<li>Nomenclature</li>
-<li>Quality indicators</li>
-<li>Specimens</li>
-<li>Tables</li>
-<li>Units</li>
+<li><a href="https://docs.phes-odm.org/parts.html#aggregations">Aggregations</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#aggregationScales">Aggregation scales</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#aggregationSets">Aggregation sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#categories">Categories</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#classes">Classes</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#compartments">Compartments</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#compartmentSets">Compartment sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#dataTypes">Data types</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#dictionarySupport">Additional dictionary sheets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#dictSets">Dictionary set type</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#domains">Domains</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#exceptions">Exceptions Part Type</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#groups">Groups</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#missingness">Missingness</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#missingnessSets">Missingness sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#mmaSets">Measure, method, or attribute sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#nomenclatures">Nomenclatures</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#partSupport">Part Support</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#partType">Part types</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#qualityIndicators">Quality indicators</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#qualityIndSets">Quality indicator sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#shortName">Short names</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#shortSets">Shorthand or Short Name Set Type</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#specimens">Specimens</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#specimenSets">Specimen sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#tables">Tables</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#tableSupport">Table Support</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#units">Units</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#unitSets">Unit sets</a></li>
 </ul>
 <p>For information and details about all the part types, please see the <a href="./ref-guide.html">parts reference document</a>.</p>
 </section>
@@ -292,20 +309,24 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="sets-and-the-rationale-behind-sets">“Sets” and the rationale behind sets</h2>
 <p>“Sets” are a way of grouping together different possible categorical inputs within the ODM. The purpose behind sets is to group options together so that users only need to check a few options from a drop-down menu, rather than scroll through a long list. Sets are also designed so that a single part can be used in multiple sets, which avoids the need to create multiple versions of this part for these different use contexts. For example, if you’re taking a measure of concentration, that measure will likely populate the unit choice drop-down list with units from the “standard concentration unit set”. Units in this set include Milligrams per litre, parts per million, and Percent Primary Sludge. Similarly, if one were measuring the amount of oxygen in a wastewater sample they would be offered units from the “dissolved gas unit set”. The units in this set include parts per million, and Milligrams per litre. You see here how Milligrams per litre is used twice across the sets, but exists still as a single part in the parts list. Unit sets are only one type of set, with the others being:</p>
 <ul>
-<li>Aggregation sets</li>
-<li>Compartment sets</li>
-<li>Quality sets</li>
-<li>Specimen sets</li>
+<li><a href="https://docs.phes-odm.org/parts.html#aggregationSets">Aggregation sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#compartmentSets">Compartment sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#dictSets">Dictionary sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#missingnessSets">Missingness sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#mmaSets">Measure, method, or attribute sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#qualityIndSets">Quality indicator sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#shortSets">Shorthand or Short Name Sets</a></li>
+<li><a href="https://docs.phes-odm.org/parts.html#specimenSets">Specimen sets</a></li>
 </ul>
-<p>Details about these sets are their similar - but unique - applications can be found in the <a href="link forthcoming">parts reference document</a>. Importantly, “category sets” are not considered a “set” like these others. See the section below for an explanation of this difference.</p>
-<section id="why-category-sets-are-treated-differently" class="level3">
-<h3 class="anchored" data-anchor-id="why-category-sets-are-treated-differently">Why category sets are treated differently</h3>
-<p>One of the reasons why “sets” are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. Category sets are, however, an exception to this rule because the categories that make up a category set are used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while category sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). Category sets are also a distinct part type, and more information about them can be found in the <a href="link forthcoming">parts reference document</a>.</p>
+<p>Details about these sets are their similar - but unique - applications can be found in the at their individual links. Importantly, “Measure, method, or attribute sets”, or “MMA sets” are a little different. See the section below for an explanation of this difference.</p>
+<section id="why-mma-sets-are-a-little-different" class="level3">
+<h3 class="anchored" data-anchor-id="why-mma-sets-are-a-little-different">Why MMA sets are a little different</h3>
+<p>One of the reasons why “sets” are set up and organized the way that they are, is to allow for the re-use of parts in multiple sets. “Measure, method, or attribute sets”, or “MMA sets” are, however, an exception to this rule because the categories that make up a category set are - in general - used in only one set. Furthermore, the general sets are needed for almost every measure or method (which require unit, aggregation, quality, and compartment information), while MMA sets are used only in specific circumstances for specific fields. These are things such as collection metadata (example: Sample collection category set), dictionary metadata and model architecture (example: Data Type Category Set), or more detailed types of certain methods (example: Nucleic Acid Extraction Category Set). MMA sets are also a distinct part type, and more information about them can be found in the entry for <a href="https://docs.phes-odm.org/parts.html#mmaSets">Measure, method, or attribute sets</a>.</p>
 </section>
 </section>
 <section id="the-what-and-why-of-specimen-ids" class="level2">
 <h2 class="anchored" data-anchor-id="the-what-and-why-of-specimen-ids">The “what” and “why” of Specimen IDs</h2>
-<p>Specimen IDs indicate the level at which a measure is being done. This can be: a site measure, ie. a measure at a site such as temperature or weather; a sample measure, ie. a laboratory measurement on a sample, such as gene copies of SARS-CoV-2 per mL; a person measure, ie. a measure of something at the level of an individual person, such as a blood pressure reading; or a population measure, ie. an aggregate measure of a population, such as the number of confirmed cases of a given illness. While there is currently nothing in version 2.0 of the ODM with uses the person specimen ID explicitly, it has been included to allow for the possibility of storing individual-level data in a future version. The reason specimen IDs were created was so that there could be a single manner in which measures and methods are recorded, regardless of the level at which they were performed, while still maintaining the possibility to collect site, sample, and population measures as a distinct types of metadata.</p>
+<p>Specimen IDs indicate the level at which a measure is being done. This can be: a site measure, ie. a measure at a site such as temperature or weather; a sample measure, ie. a laboratory measurement on a sample, such as gene copies of SARS-CoV-2 per mL; a polygon measure, ie. case numbers within a health region’s polygon; or a population measure, ie. an aggregate measure of a population, such as the number of confirmed cases of a given illness. The reason specimen IDs were created was so that there could be a single manner in which measures and methods are recorded, regardless of the level at which they were performed, while still maintaining the possibility to collect site, sample, and population measures as a distinct types of metadata.</p>
 </section>
 <section id="the-what-and-why-of-groups-and-classes" class="level2">
 <h2 class="anchored" data-anchor-id="the-what-and-why-of-groups-and-classes">The “what” and “why” of Groups and Classes</h2>
@@ -313,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="tables-and-table-types-within-the-odm" class="level2">
 <h2 class="anchored" data-anchor-id="tables-and-table-types-within-the-odm">Tables and table types within the ODM</h2>
-<p>Within the ODM there are three types of tables: program description tables, results tables, and look-up tables. These table types exist to differentiate the function of these tables and to highlight these differences to users. The different tables take different types of inputs and maintenance from users, so understanding the differences can be important.</p>
+<p>Within the ODM there are three types of tables: program description tables, results tables, and look-up tables. These table types exist to differentiate the function of these tables and to highlight these differences to users. The different tables take different types of inputs and maintenance from users, <a href="https://docs.phes-odm.org/tables.html#table-types">so understanding the differences can be important</a>.</p>
 <section id="program-description-tables" class="level3">
 <h3 class="anchored" data-anchor-id="program-description-tables">Program description tables</h3>
 <p>Program description tables (represented in yellow in the ERD) are tables used to record metadata on the organizations, locations, methods, and appurtenance. These tables help to describe surveillance and testing programs, and are intended to be updated infrequently.</p>
@@ -332,11 +353,11 @@ ul.task-list li input[type="checkbox"] {
 <p>While there are many part types, there are three main part types users should be most familiar with: measures, methods, and attributes. These three have parallels with the three table types, and the differences and details of these parts are useful to understand.</p>
 <section id="measures" class="level3">
 <h3 class="anchored" data-anchor-id="measures">Measures</h3>
-<p>Measures are actually types of measures that can be performed. These can range from temperature to the number of gene copies in a sample. The measure, or <code>measureID</code>, can be selected from a drop down in the templates and it specifies the kind of measure you intend to record. The actual value of the measure is then recorded in the <code>value</code> field of the <code>measures</code> table, with units and aggregation specified in the <code>unitID</code> and <code>aggregationID</code> fields.</p>
+<p>Measures are actually types of measures that can be performed. These can range from temperature to the number of gene copies in a sample. The measure, or <code>measurement</code>, can be selected from a drop down in the templates and it specifies the kind of measure you intend to record. The actual value of the measure is then recorded in the <code>value</code> field of the <code>measures</code> table, with units and aggregation specified in the <code>unit</code> and <code>aggregation</code> fields.</p>
 </section>
 <section id="methods" class="level3">
 <h3 class="anchored" data-anchor-id="methods">Methods</h3>
-<p>Similar to measures, methods are types of methods that can be performed to accomplish a measurement. These can be diverse, ranging from incubation, qPCR, or nucleic acid extraction. The method itself (<code>methodID</code>) is selected from a drop down in the templates, specifying in general terms the kind of method the user wishes to record. From there, the <code>value</code> field of the <code>methodSteps</code> table can be populated by one of the inputs from the category set associated with that <code>methodID</code>. This provides a higher level of detail for a given method. For example, the <code>methodID</code> might be <code>solidSep</code> for solid separation of a sample. The value field might then be populated with <code>cent</code> for centrifugation, indicating more details about how the sample settling was done.</p>
+<p>Similar to measures, methods are types of methods that can be performed to accomplish a measurement. These can be diverse, ranging from incubation, qPCR, or nucleic acid extraction. The method itself (<code>method</code>) is selected from a drop down in the templates, specifying in general terms the kind of method the user wishes to record. From there, the <code>value</code> field of the <code>protocolSteps</code> table can be populated by one of the inputs from the category set associated with that <code>method</code>. This provides a higher level of detail for a given method. For example, the <code>method</code> might be <code>solidSep</code> for solid separation of a sample. The value field might then be populated with <code>cent</code> for centrifugation, indicating more details about how the sample settling was done.</p>
 </section>
 <section id="attributes" class="level3">
 <h3 class="anchored" data-anchor-id="attributes">Attributes</h3>
@@ -345,7 +366,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-quality-and-reportability" class="level2">
 <h2 class="anchored" data-anchor-id="data-quality-and-reportability">Data quality and reportability</h2>
-<p>Within the ODM there is a <code>qualityFlag</code> field present in both the <code>samples</code> and <code>measures</code> tables. This field serves to highlight whether or not there is a quality issues with the sample or the measure. The quality flag also allows a user to specify the type of quality issue. This is managed through the use of quality sets, which are the sets that contain the possible quality flags for a given measure or for samples. The idea is that this provides data on any issues with a sample and an indication of the nature of that issue. Having data about the nature and presence of a quality issue is often not sufficient for decision makers who are trying to use and interpret the data. As such, there is also a <code>reportable</code> field which is a Boolean indicator of whether or not data can or should be reported or included in final reports and decisions.</p>
+<p>Within the ODM there is a <code>qualityFlag</code> field located in the <code>qualityReports</code> table. Each row of this table has a unique ID (<code>qualityReportID</code>) which can then be linked to specific measures, measure sets, and/or samples in the <code>measures</code>, <code>measureSets</code>, or <code>samples</code> tables. This field serves to highlight whether or not there is a quality issues with the sample or the measure(s). The quality flag also allows a user to specify the type of quality issue. This is managed through the use of quality sets, which are the sets that contain the possible quality flags for a given measure or for samples. The idea is that this provides data on any issues with a sample and an indication of the nature of that issue. Having data about the nature and presence of a quality issue is often not sufficient for decision makers who are trying to use and interpret the data. As such, there is also a <code>reportable</code> field which is a Boolean indicator of whether or not data can or should be reported or included in final reports and decisions, and a <code>severity</code> indicator with a “traffic light” style reporting to indicate how serious the issue is. In previous versions of the ODM, <code>qualityFlag</code> was included as an attirubute in the <code>measures</code> and <code>samples</code> tables. Separating it out like this allows for multiple flags to be noted on the same measure/sample, and a higher level of detail on the quality issues identified. It can be added back to be reported with measures, however, using a <a href="https://docs.phes-odm.org/wide-names.html">wide table template</a>.</p>
 </section>
 <section id="time-periods-for-samples-and-measures" class="level2">
 <h2 class="anchored" data-anchor-id="time-periods-for-samples-and-measures">Time periods for samples and measures</h2>
@@ -355,11 +376,11 @@ ul.task-list li input[type="checkbox"] {
 <section id="dates-within-the-odm" class="level2">
 <h2 class="anchored" data-anchor-id="dates-within-the-odm">Dates within the ODM</h2>
 <p>There are a number of date fields within the ODM which all serve different purposes. Collection datetime (<code>collDT</code>) is the date a sample was collected, used only for grab samples. This field is left blank if the collection datetime start and end fields (<code>collDTstart</code> and <code>collDTEnd</code>) have been populated instead. Inversely, collection datetime start and end fields should be left blank if the collection datetime filed has been populated. Similarly, analysis datetime start and analysis datetime end (<code>aDateStart</code> and <code>aDateEnd</code>) are used to report the date and or timeline of an analysis for a measure.</p>
-<p>Date fields that are more related to data processing and labratory infrastructure are: the last edited date (<code>lastEdited</code>) which indicates the last time a table, or a measure or sample details, were last edited or updated; the sent date (<code>sentDate</code>), or date that a sample was sent to the lab from the field; the received date (<code>recDate</code>), or the date the sample was recieved in the lab; and the report date (<code>repDate</code>), or the date that the analysis results or measures were reported. These give a greater indication of how up to date data is, but also on the speed and efficiency of the pipeline between sampling and reported results. Dates should be reported in day/month/year format to accommodate the most popular global convention.</p>
+<p>Date fields that are more related to data processing and laboratory infrastructure are: the last edited date (<code>lastEdited</code>) which indicates the last time a table, or a measure or sample details, were last edited or updated; the sent date (<code>sentDate</code>), or date that a sample was sent to the lab from the field; the received date (<code>recDate</code>), or the date the sample was received in the lab; and the report date (<code>repDate</code>), or the date that the analysis results or measures were reported. These give a greater indication of how up to date data is, but also on the speed and efficiency of the pipeline between sampling and reported results. Dates should be reported in day/month/year format to accommodate the most popular global convention.</p>
 </section>
 <section id="translation-and-language-capabilities" class="level2">
 <h2 class="anchored" data-anchor-id="translation-and-language-capabilities">Translation and language capabilities</h2>
-<p>The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (<code>languageLUs</code>), the translation look-up table (<code>translationLUs</code>), and the parts table (<code>partsLUs</code>). When a translation for a given part is not available, the dictionary will default to the English term. The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (<code>languageID</code>). In the translation table, the language ID is paired with every part ID (<code>partID</code>), along with the label (<code>partLabel</code>), description (<code>partDesc</code>), and instructions (<code>partInstr</code>) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.</p>
+<p>The default language of the ODM is English, but French translations of all descriptive elements of the data model dictionary are also available. Beta versions of Spanish and Portuguese translations are also available. As additional nation states and partners adopt the ODM, we anticipate that these fields will be translated into other languages as well. The translation capacities are managed through the language look-up table (<a href="https://docs.phes-odm.org/tables.html#languages"><code>languages</code></a>), the translation look-up table (<a href="https://docs.phes-odm.org/tables.html#translations"><code>translations</code></a>), and the parts table (<a href="https://docs.phes-odm.org/tables.html#parts"><code>parts</code></a>). When a translation for a given part is not available, the dictionary will default to the English term. The language look-up table stores linguistic and classification codes for spoken human languages, with the most recent ISO639 code being the language ID (<code>languageID</code>). In the translation table, the language ID is paired with every part ID (<code>partID</code>), along with the label (<code>partLabel</code>), description (<code>partDesc</code>), and instructions (<code>partInstr</code>) translated to that language. The part IDs are linked to the full parts list which otherwise contains metadata that is coded in variables and requires no further translation.</p>
 </section>
 <section id="recording-protocols" class="level2">
 <h2 class="anchored" data-anchor-id="recording-protocols">Recording protocols</h2>
@@ -392,12 +413,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="recommended-formula-for-user-generated-ids" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-formula-for-user-generated-ids">Recommended formula for user-generated IDs</h2>
-<p>There are 13 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn’t been provided. For a quick breakdown, see the below table:</p>
+<p>There are 18 user-generated IDs used in the ODM. These IDs are necessary unique identifiers used to organize observations and metadata. The ODM is not opinionated about IDs, and users are free to use whatever formula or naming convention they prefer for these IDs. We have prepared a recommended formula for these IDs, however, which users are free to use. These are the formulas used by the ODM tools to machine generate IDs where one hasn’t been provided. For a quick breakdown, see the below table:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 19%">
-<col style="width: 60%">
-<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 54%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -408,9 +429,19 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td>Accessions Index ID</td>
+<td>datahost + accessNum</td>
+<td>sraPRJNA788395</td>
+</tr>
+<tr class="even">
 <td>Address ID</td>
 <td>country code + province code + 2-3 letters of municipality + row</td>
 <td>caOnOtt002</td>
+</tr>
+<tr class="odd">
+<td>Calculation ID</td>
+<td>pipelineID + treatmentID</td>
+<td>standardizationpmmov15standardizationpmmov1</td>
 </tr>
 <tr class="even">
 <td>Contact ID</td>
@@ -433,22 +464,32 @@ ul.task-list li input[type="checkbox"] {
 <td>caOnOtt002Uni</td>
 </tr>
 <tr class="even">
+<td>Pipeline ID</td>
+<td>First Treatment ID in the pipeline + # treatments in the pipeline</td>
+<td>standardizationpmmov15</td>
+</tr>
+<tr class="odd">
 <td>Polygon ID</td>
 <td>orgID + siteID</td>
 <td>caOnOtt002UniCaOnOttOtt</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Protocol ID</td>
 <td>first 5 letters of name + protocolVersion</td>
 <td>pmmov1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Protocol Step ID</td>
 <td>orgID + last 3 letters of part ID of method/measure</td>
 <td>caOnOtt002UniIon</td>
 </tr>
+<tr class="even">
+<td>Public Health Action ID</td>
+<td>actionType + action + threatTarget + actionDT</td>
+<td>survAlerttargSurvsarsCov228022027</td>
+</tr>
 <tr class="odd">
-<td>Quality ID</td>
+<td>Quality Report ID</td>
 <td>quality flag part ID + either the measure report ID, the sample ID, or measure set report ID that the quality report is for</td>
 <td>flagJcaOnOttOttawasite1202008021000covN1002</td>
 </tr>
@@ -472,21 +513,31 @@ ul.task-list li input[type="checkbox"] {
 <td>country code (ISO) + province code (ISO) + first 2-3 letters of municipality + 3 first letters of site name</td>
 <td>caOnOttOtt</td>
 </tr>
+<tr class="even">
+<td>Treatment ID</td>
+<td>calcType + standard + order</td>
+<td>standardizationpmmov1</td>
+</tr>
 </tbody>
 </table>
-<p>To go into greater detail, the <em>Address ID</em> uses the recipe country code + province code + 2-3 letters of municipality + row. So it’s built using pieces of the metadata fields for the given address’ entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it’s recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.</p>
+<p>To go into greater detail, the <em>Accessions Index ID</em> is a unique ID for each row in the <code>accessions</code> table, and is made by concatenating the value of the <code>dataHost</code> field and the <code>accessNum</code> field. For example, an SRA entry with the accession index number of PRJNA788395 would give an accessions index ID of sraPRJNA788395.</p>
+<p>The <em>Address ID</em> uses the recipe country code + province code + 2-3 letters of municipality + row. So it’s built using pieces of the metadata fields for the given address’ entry in the addresses table, and the row it occupies in that table. For example, the ID for an address in Ottawa would use Country Code = Canada, Province Code = Ontario, Municipality = Ottawa-Carleton, and lets say it’s recorded in the second row of the table, so Row = 002. This gives us an address ID of caOnOtt002.</p>
+<p>For the <em>Calculation ID</em>, as a composite key, will just be generated by concatenating the pipelineID and the treatmentID of a given row. For example, if a row contains the pipeline ID “standardizationpmmov15” and the treatment ID “standardizationpmmov1”, the calculation ID would be standardizationpmmov15standardizationpmmov1.</p>
 <p>The <em>Contact ID</em> in the contacts table uses the recipe organization ID + first 3 letters of role, again building the ID from pieces of the metadata. So if, for example, we are building a contact ID for a research associate at an organization with the ID caOnOtt002Uni, the contact ID would be caOnOtt002UniRes.</p>
 <p>For the <em>Dataset ID</em>, we recommend it be the same as the <em>organization ID</em> (see below). So if, for example, we looked at our organization with the ID caOnOtt002Uni, the dataset ID would also be caOnOtt002Uni.</p>
 <p><em>Instrument ID</em> uses the same approach of building using metadata, with the recipe of first 3 letters of manufacturer + first 3 letters of name + first 3 letters of model + index to generate the ID. For example, if we wanted to record a HandyStep S Repeating Pipetter (name), manufactured by Fisherbrand, and is of the model HandyStep S Mechanical, the recommended ID that is generated would be fisHanHan.</p>
 <p>Our recommended recipe for <em>Organization ID</em> uses the address ID for an organization (see above for explanation) + the first 3 letters of the name. So if the organization in Ottawa described in the address ID section was the University of Ottawa, the ID would be caOnOtt002Uni.</p>
+<p>The <em>Pipeline ID</em> recommended recipe is to use the treatment ID of the first data treatment in the pipeline, and concatenate that with the number of treatments in the pipeline as a whole. For example, if the first treatment in a pipeline has the ID “standardizationpmmov1” and there are five treatments in the pipeline, the pipeline ID would be standardizationpmmov15.</p>
 <p>For the <em>Polygon ID</em>, the recipe uses associated IDs to generate the final product. Specifically, we recommend organization ID + site ID. So for a polygon managed by an organization using the ID caOnOtt002Uni and covering a site with the ID caOnOttOtt, for example, the polygon ID would be caOnOtt002UniCaOnOttOtt.</p>
 <p>The <em>Protocol ID</em> is generated using the first 5 letters of the name + the protocol version. For example, if using generating a protocol ID for a first version of a protocol called “PMMoV Process”, the ID would be pmmov1.</p>
 <p>For the <em>Protocol step ID</em>, we recommend constructing combining the organization ID + last 3 letters of the part ID for the method or measure used in the step. For example, a nucleic acid extraction method (partID = extraction) step from our university of Ottawa example lab with the organization ID caOnOtt002Uni would generate the protocol step ID of caOnOtt002UniIon.</p>
-<p><em>Quality ID</em> ia generated using the recipe of part ID for the given quality flag + either the measure report ID, the sample ID, or measure set report ID for which the quality report is being generated. Generating an example, if we are reporting the qulaity flag J - Weak signal extrapolation (partID = flagJ) for a measure report with the ID caOnOttOttawasite1202008021000covN1002, we get the quality ID of flagJcaOnOttOttawasite1202008021000covN1002.</p>
+<p>For the <em>Public Health Action ID</em>, we recommend concatenating the value for the actionType field, the action field, the threatTarget, and the actionDT field (just the numbers). So if, for example, a surveillance alert (survAlert) action was taken to have targeted surveillance (targSurv) roll out for SARS-CoV-2 (sarsCov2) on February 28, 2027, the public health action ID would be survAlerttargSurvsarsCov228022027.</p>
+<p><em>Quality Report ID</em> ia generated using the recipe of part ID for the given quality flag + either the measure report ID, the sample ID, or measure set report ID for which the quality report is being generated. Generating an example, if we are reporting the qulaity flag J - Weak signal extrapolation (partID = flagJ) for a measure report with the ID caOnOttOttawasite1202008021000covN1002, we get the quality ID of flagJcaOnOttOttawasite1202008021000covN1002.</p>
 <p>The <em>Measure Report ID</em> is built using sampleID + part ID of measure + row number. For example, taking a measure of the SARS-CoV-2 N1 gene region (partID = covN1) from a sample with the ID caOnOttOtt20200801, recorded in the second row of the table, we get the measure report ID of caOnOttOtt20200802Covn1002.</p>
 <p>The recommended recipe to generate a <em>Measure Set Report ID</em> is to use the Measure Report ID of the first measure in the set + the number of measures in the set. So for a set of 3 measures that starts with the same SARS-CoV-2 N1 gene region measure as described above (caOnOttOtt20200801Covn1002), you get the measure set report ID of caOnOttOtt20200801Covn1002003.</p>
 <p><em>Sample ID</em> is generated by combining the siteID for the sample + the collection Datetime OR the end of collection datetime fields (excluding the time and only using the date) + the index value (if applicable). So for a composite sample taken at a site with the ID caOnOttOtt, which finished collection on 2020-08-01 10:00:00, with no index, the sample ID would be caOnOttOtt20200801.</p>
-<p>Lastly, a <em>Site ID</em> can be generated by combining the country code (ISO) for the site + the province code (ISO) for the site + first 2-3 letters of municipality + 3 first letters of site name. So to generate a site ID for the wastewater treatment plant in Ottawa, Canada, we would take the ISO code for Canada (ca), for Ontario (on), The first three letters of Ottawa-Carleton (Ott) and the first three letters of the site name, where the name is Robert O. Pickard Environmental Centre (Rob). This gives us the recommended site ID of caOnOttRob.</p>
+<p>A <em>Site ID</em> can be generated by combining the country code (ISO) for the site + the province code (ISO) for the site + first 2-3 letters of municipality + 3 first letters of site name. So to generate a site ID for the wastewater treatment plant in Ottawa, Canada, we would take the ISO code for Canada (ca), for Ontario (on), The first three letters of Ottawa-Carleton (Ott) and the first three letters of the site name, where the name is Robert O. Pickard Environmental Centre (Rob). This gives us the recommended site ID of caOnOttRob.</p>
+<p>Lastly, a <em>Treatment ID</em> can be generated using the recipe of concatenating the value from the calcType field, the standard field, and then the value for the order in a pipeline. For example, if a data treatment that standardizes to circulating levels of pepper mild mottle virus (PMMoV) and is the first step in a data pipeline, its treatment ID would be standardizationpmmov1.</p>
 </section>
 <section id="questions-and-online-community" class="level2">
 <h2 class="anchored" data-anchor-id="questions-and-online-community">Questions and online community</h2>

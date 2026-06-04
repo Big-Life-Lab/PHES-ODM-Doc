@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-ca" xml:lang="en-ca"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Parts – Public Health Environmental Surveillance Open Data Model (PHES-ODM) Documentation</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -34,15 +37,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="./ref-guide.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2530bb879c2d5a982b48ad574e4712b1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-77a802b6171c4886c53ccb8cccc3d66c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -2490,7 +2492,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Each part ID starts with a lowercase character and contains no special characters. Parts have less than 12 characters, while part types such as units and aggregations have a maximum of seven characters.</p>
-<p>The unique construction of part IDs serves several purposes in addition to generating valid URLs. Users can create wide table variable names (headers) using part IDs that are valid in all open software languages. ODM supports a standard method of generating wide variable names by concatenating partIDs with an underscore, <code>_</code>. For this reason, some part types have a limit of seven characters to ensure the total length of wide names remains less than 35 characters, which is the character limit length of some statistical language software. The wide variable naming method will be added to the documentation.</p>
+<p>The unique construction of part IDs serves several purposes in addition to generating valid URLs. Users can create wide table variable names (headers) using part IDs that are valid in all open software languages. ODM supports a standard method of generating wide variable names by concatenating partIDs with an underscore, <code>_</code>. For this reason, some part types have a limit of seven characters to ensure the total length of wide names remains less than 35 characters, which is the character limit length of some statistical language software. Details on wide variable naming and standards can be found in the <a href="https://docs.phes-odm.org/wide-names.html">Long-format, wide-format, and wide-names</a> section.</p>
 </div>
 </div>
 </div>
