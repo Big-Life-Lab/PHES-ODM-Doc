@@ -1,0 +1,27 @@
+## Getting Started
+
+Quarto
+
+## data generators, analysts, data aggregators, knowledge synthesisers and decision-makers
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+|                                         | Stakeholder includes                                                                                     | Example model needs                                                                                                                                                                                                                                                                                                |
+|-----------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Data generators                         | Municipal sampling sites and testing laboratories                                                        | Alignment with and support for laboratory operations. Support sample management, instrument integration, audit and compliance management, quality assurance and control, traceability, and analysis workflows.                                                                                                     |
+| Analysts                                | Researchers, modellers, and public health analysts                                                       | Ability to transform data during data normalisation, modelling, and reporting. - Support translation from relational databases (how WBE data is stored) into combined unified summary tables (how data is analysed). -Support the calculation of commonly derived variables such as aggregation and normalisation. |
+| Data aggregators                        | Data repositories, including national and international public health organisations and aggregator sites | Ability to easily aggregate data from numerous WBE and other surveillance systems. - Consistent and standard data that is easily accessed using application program interfaces. - Clearly defined data use statements.                                                                                             |
+| Knowledge synthesis and decision-makers | Public health departments, news agencies, citizen scientists, businesses, and individual citizens        | Ability to combine WBE data with other health and surveillance data using different standards and models. - a WBE data model that is a good player with other data forms: builds from existing ontologies and modelling approaches.                                                                                |
+
+```{r}
+1 + 1
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
