@@ -13,11 +13,13 @@ knitr::opts_knit$set(root.dir = normalizePath("../"))
 source("R/qmd-utils.R")
 # Source table formatting
 source("R/format-table.R")
+source("R/odm-dictionary-file.R")
+source("R/languages-sheet.R")
 
 # Read in and prepare languages data.frame
 languages_table_source <-
-  readxl::read_excel(file.path(getwd(),constants$dictionary_directory, dictionary_full_file_name),
-                     sheet = constants$languages_sheet_name, .name_repair = "unique_quiet")
+  readxl::read_excel(file.path(getwd(),odm_dictionary$dictionary_directory, dictionary_full_file_name),
+                     sheet = odm_dictionary$languages_sheet_name, .name_repair = "unique_quiet")
 languages_table <- format_table(languages_table_source, languages_sheet_column_names, strip_invalid_part_ID = FALSE)
 
 
@@ -29,32 +31,32 @@ for (row_index in seq_len(nrow(languages_table))) {
   languages_table_row <- languages_table[row_index, ]
   
   #Assumed to be valid and present
-  lang <- languages_table_row[[languages_sheet_column_names$lang]]
-  
-  lang_fam <- languages_table_row[[languages_sheet_column_names$lang_fam]]
-  lang_name <- languages_table_row[[languages_sheet_column_names$lang_name]]
-  natName <- languages_table_row[[languages_sheet_column_names$natName]]
-  code_1 <- languages_table_row[[languages_sheet_column_names$iso6391]]
-  code_3 <- languages_table_row[[languages_sheet_column_names$iso6392T]]
-  firstReleased	 <- languages_table_row[[languages_sheet_column_names$firstReleased]]
-  lastUpdated <- languages_table_row[[languages_sheet_column_names$lastUpdated]]
-  changes <- languages_table_row[[languages_sheet_column_names$changes]]
-  notes <- languages_table_row[[languages_sheet_column_names$notes]]
+  lang <- languages_table_row[[languages$lang$name]]
+
+  lang_fam <- languages_table_row[[languages$lang_fam$name]]
+  lang_name <- languages_table_row[[languages$lang_name$name]]
+  natName <- languages_table_row[[languages$natName$name]]
+  code_1 <- languages_table_row[[languages$iso6391$name]]
+  code_3 <- languages_table_row[[languages$iso6392T$name]]
+  firstReleased	 <- languages_table_row[[languages$firstReleased$name]]
+  lastUpdated <- languages_table_row[[languages$lastUpdated$name]]
+  changes <- languages_table_row[[languages$changes$name]]
+  notes <- languages_table_row[[languages$notes$name]]
 
   # Verify display elements
   verify_input(lang_fam,
-               glue::glue('Language family is missing for {lang_ID}'))
+               glue::glue('Language family is missing for {lang}'))
   verify_input(lang_name,
-               glue::glue('Language name is missing for {lang_ID}'))
+               glue::glue('Language name is missing for {lang}'))
   verify_input(code_1,
-               glue::glue('{languages_sheet_column_names$iso6391} is missing for {lang_ID}'))
+               glue::glue('{languages$iso6391$name} is missing for {lang}'))
   verify_input(code_3,
-               glue::glue('{languages_sheet_column_names$iso6392T} is missing for {lang_ID}'))
+               glue::glue('{languages$iso6392T$name} is missing for {lang}'))
 
-  # Construct the print 
+  # Construct the print
   output_string <- glue::glue('{output_string}
-  
-                              # {nat_name}({lang_ID})
+
+                              # {natName}({lang})
                               Language Family: {lang_fam}  
                               Language name: {lang_name}  
                               ISO639-1 code: {code_1} 
