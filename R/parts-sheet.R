@@ -94,8 +94,8 @@ table_column_metadata = list(
   table = list(
     name = "{table_name}",
     categories = list(
-      primary_key = "pk",
-      foreign_key = "fk",
+      primary_key = "pK",
+      foreign_key = "fK",
       header = "header",
       input = "input"
     )
